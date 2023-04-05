@@ -38,6 +38,11 @@ class LoginView: UIView {
         button.titleLabel?.font = UIFont(name: "Helvetica", size: 12)
         return button
     }()
+    private let showLockLabel: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "lock"), for: .normal)
+        return button
+    }()
     private let loginButton: UIButton = {
         let button = UIButton()
         button.setTitle("Let's go!", for: .normal)
@@ -60,6 +65,7 @@ private extension LoginView {
         addSubview(loginField)
         addSubview(passwordLabel)
         addSubview(passwordField)
+        passwordField.addSubview(showLockLabel)
         addSubview(secondPasswordField)
         addSubview(accountButton)
         addSubview(loginButton)
@@ -82,6 +88,10 @@ private extension LoginView {
             make.top.equalTo(passwordLabel.snp.bottom).offset(15)
             make.left.right.equalToSuperview().inset(20)
             make.height.equalTo(40)
+        }
+        showLockLabel.snp.makeConstraints { make in
+            make.centerY.equalTo(passwordField.snp.centerY)
+            make.right.equalTo(passwordField.snp.right).inset(10)
         }
         secondPasswordField.snp.makeConstraints { make in
             make.top.equalTo(passwordField.snp.bottom).offset(15)
