@@ -33,7 +33,7 @@ private extension LoginViewController {
         let height = view.frame.width
         animationView.snp.makeConstraints { make in
             make.top.left.right.equalToSuperview()
-            make.height.equalToSuperview().inset(height / 1.5)
+            make.height.equalToSuperview().inset(height / 1.6)
         }
         loginView.snp.makeConstraints { make in
             make.top.equalTo(animationView.snp.bottom).inset(80)
