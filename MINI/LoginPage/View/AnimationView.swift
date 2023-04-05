@@ -31,7 +31,7 @@ private extension AnimationView {
         addSubview(animationView)
         animationView.snp.makeConstraints({ make in
             make.center.equalToSuperview()
-            make.width.height.equalTo(200)
+            make.height.equalTo(220)
         })
         animationView.loopMode = .autoReverse
         animationView.play()
