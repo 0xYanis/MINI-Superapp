@@ -21,6 +21,12 @@ class PasswordField: UITextField {
 
 private extension PasswordField {
     func initialize() {
-        
+        isSecureTextEntry = true
+        backgroundColor = .white
+        layer.cornerRadius = 10
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 0.1
+        layer.shadowOffset = CGSize(width: 0, height: 0)
+        layer.shadowRadius = 5
     }
 }

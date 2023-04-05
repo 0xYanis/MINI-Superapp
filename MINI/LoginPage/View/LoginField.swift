@@ -21,6 +21,11 @@ class LoginField: UITextField {
 
 private extension LoginField {
     func initialize() {
-        
+        backgroundColor = .white
+        layer.cornerRadius = 10
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 0.1
+        layer.shadowOffset = CGSize(width: 0, height: 0)
+        layer.shadowRadius = 5
     }
 }
