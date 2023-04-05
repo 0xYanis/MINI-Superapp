@@ -7,12 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09035D0529DDA985003D4B0B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09035D0429DDA985003D4B0B /* LoginViewController.swift */; };
+		09035D0929DDAE2F003D4B0B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 09035D0829DDAE2F003D4B0B /* SnapKit */; };
+		09035D0E29DDAEE6003D4B0B /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09035D0D29DDAEE6003D4B0B /* AnimationView.swift */; };
+		09035D1029DDAFA7003D4B0B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09035D0F29DDAFA7003D4B0B /* LoginView.swift */; };
+		09035D1229DDB3B0003D4B0B /* LoginField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09035D1129DDB3B0003D4B0B /* LoginField.swift */; };
+		09035D1429DDB3C1003D4B0B /* PasswordField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09035D1329DDB3C1003D4B0B /* PasswordField.swift */; };
 		091095FE29DB32F000338D22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091095FD29DB32F000338D22 /* AppDelegate.swift */; };
 		0910960029DB32F000338D22 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091095FF29DB32F000338D22 /* SceneDelegate.swift */; };
 		0910960729DB32F400338D22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0910960629DB32F400338D22 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		09035D0429DDA985003D4B0B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		09035D0D29DDAEE6003D4B0B /* AnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationView.swift; sourceTree = "<group>"; };
+		09035D0F29DDAFA7003D4B0B /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		09035D1129DDB3B0003D4B0B /* LoginField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginField.swift; sourceTree = "<group>"; };
+		09035D1329DDB3C1003D4B0B /* PasswordField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordField.swift; sourceTree = "<group>"; };
 		091095FA29DB32F000338D22 /* MINI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MINI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		091095FD29DB32F000338D22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		091095FF29DB32F000338D22 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -25,12 +36,33 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09035D0929DDAE2F003D4B0B /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		09035D0329DDA95C003D4B0B /* LoginPage */ = {
+			isa = PBXGroup;
+			children = (
+				09035D0A29DDAE69003D4B0B /* View */,
+			);
+			path = LoginPage;
+			sourceTree = "<group>";
+		};
+		09035D0A29DDAE69003D4B0B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				09035D0429DDA985003D4B0B /* LoginViewController.swift */,
+				09035D0D29DDAEE6003D4B0B /* AnimationView.swift */,
+				09035D0F29DDAFA7003D4B0B /* LoginView.swift */,
+				09035D1129DDB3B0003D4B0B /* LoginField.swift */,
+				09035D1329DDB3C1003D4B0B /* PasswordField.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		091095F129DB32F000338D22 = {
 			isa = PBXGroup;
 			children = (
@@ -51,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				0910961129DB332600338D22 /* Application */,
+				09035D0329DDA95C003D4B0B /* LoginPage */,
 				0910961229DB333400338D22 /* Resources */,
 			);
 			path = MINI;
@@ -90,6 +123,9 @@
 			dependencies = (
 			);
 			name = MINI;
+			packageProductDependencies = (
+				09035D0829DDAE2F003D4B0B /* SnapKit */,
+			);
 			productName = MINI;
 			productReference = 091095FA29DB32F000338D22 /* MINI.app */;
 			productType = "com.apple.product-type.application";
@@ -118,6 +154,9 @@
 				Base,
 			);
 			mainGroup = 091095F129DB32F000338D22;
+			packageReferences = (
+				09035D0729DDAE2F003D4B0B /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 091095FB29DB32F000338D22 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -143,7 +182,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09035D0529DDA985003D4B0B /* LoginViewController.swift in Sources */,
+				09035D0E29DDAEE6003D4B0B /* AnimationView.swift in Sources */,
+				09035D1229DDB3B0003D4B0B /* LoginField.swift in Sources */,
 				091095FE29DB32F000338D22 /* AppDelegate.swift in Sources */,
+				09035D1429DDB3C1003D4B0B /* PasswordField.swift in Sources */,
+				09035D1029DDAFA7003D4B0B /* LoginView.swift in Sources */,
 				0910960029DB32F000338D22 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -347,6 +391,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		09035D0729DDAE2F003D4B0B /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		09035D0829DDAE2F003D4B0B /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 09035D0729DDAE2F003D4B0B /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 091095F229DB32F000338D22 /* Project object */;
 }
