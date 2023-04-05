@@ -38,6 +38,7 @@ class LoginField: UITextField {
 
 private extension LoginField {
     func initialize() {
+        textContentType = .emailAddress
         backgroundColor = .white
         layer.cornerRadius = 10
         layer.shadowColor = UIColor.black.cgColor
