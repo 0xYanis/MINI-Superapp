@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 
 class LoginViewController: UIViewController {
+    var presenter: LoginPresenter!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,7 @@ class LoginViewController: UIViewController {
 
 private extension LoginViewController {
     func initialize() {
+        presenter = LoginPresenter(view: loginView)
         view.backgroundColor = .white
         view.insertSubview(animationView, at: 0)
         view.insertSubview(loginView, at: 1)

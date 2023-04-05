@@ -19,6 +19,8 @@ class LoginView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    weak var delegate: LoginViewDelegate?
+    
     private let loginLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Helvetica", size: 20)
@@ -38,7 +40,7 @@ class LoginView: UIView {
         button.titleLabel?.font = UIFont(name: "Helvetica", size: 12)
         return button
     }()
-    private let showLockLabel: UIButton = {
+    private let lockButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "lock"), for: .normal)
         return button
@@ -65,18 +67,40 @@ private extension LoginView {
         addSubview(loginField)
         addSubview(passwordLabel)
         addSubview(passwordField)
-        passwordField.addSubview(showLockLabel)
+        passwordField.addSubview(lockButton)
         addSubview(secondPasswordField)
         addSubview(accountButton)
         addSubview(loginButton)
         setViewsСonstraints()
+        lockButton.addTarget(
+            self, action: #selector(lockAction), for: .touchUpInside
+        )
+        accountButton.addTarget(
+            self, action: #selector(accountAction), for: .touchUpInside
+        )
+        loginButton.addTarget(
+            self, action: #selector(loginAction), for: .touchUpInside
+        )
     }
+    
+    @objc func lockAction() {
+        delegate?.didTapLock()
+    }
+    
+    @objc func accountAction() {
+        delegate?.didTapAccount()
+    }
+    
+    @objc func loginAction() {
+        delegate?.didTapLogin()
+    }
+    
     func setViewsСonstraints() {
         setLoginLabel()
         setLoginField()
         setPasswordLabel()
         setPasswordField()
-        setLockLabel()
+        setLockButton()
         setSecondPasswordField()
         setAccountButton()
         setLoginButton()
@@ -106,8 +130,8 @@ private extension LoginView {
             make.height.equalTo(40)
         }
     }
-    func setLockLabel() {
-        showLockLabel.snp.makeConstraints { make in
+    func setLockButton() {
+        lockButton.snp.makeConstraints { make in
             make.centerY.equalTo(passwordField.snp.centerY)
             make.right.equalTo(passwordField.snp.right).inset(10)
         }
