@@ -20,21 +20,20 @@ class AnimationView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private var animationView: LottieAnimationView?
+    private let animationView = LottieAnimationView(name: "scan")
     
 }
 
 private extension AnimationView {
     func initalize() {
         backgroundColor = .systemCyan
-        animationView = .init(name: "scan")
-        animationView!.contentMode = .scaleAspectFit
-        addSubview(animationView!)
-        animationView?.snp.makeConstraints({ make in
+        animationView.contentMode = .scaleAspectFit
+        addSubview(animationView)
+        animationView.snp.makeConstraints({ make in
             make.center.equalToSuperview()
             make.height.equalTo(220)
         })
-        animationView?.loopMode = .autoReverse
-        animationView?.play()
+        animationView.loopMode = .autoReverse
+        animationView.play()
     }
 }
