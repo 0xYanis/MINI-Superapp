@@ -31,10 +31,18 @@ private extension LoginViewController {
     
     func setViewsСonstraints() {
         let height = view.frame.width
+        setAnimationView(height: height)
+        setLoginView(height: height)
+    }
+    
+    func setAnimationView(height: CGFloat) {
         animationView.snp.makeConstraints { make in
             make.top.left.right.equalToSuperview()
             make.height.equalToSuperview().inset(height / 1.6)
         }
+    }
+    
+    func setLoginView(height: CGFloat) {
         loginView.snp.makeConstraints { make in
             make.top.equalTo(animationView.snp.bottom).inset(80)
             make.height.equalToSuperview().inset(height / 1.7)
