@@ -34,7 +34,7 @@ class LoginView: UIView {
     private let accountButton: UIButton = {
         let button = UIButton()
         button.setTitle("Already have been account?", for: .normal)
-        button.setTitleColor(.black, for: .normal)
+        button.setTitleColor(.systemCyan, for: .normal)
         button.titleLabel?.font = UIFont(name: "Helvetica", size: 12)
         return button
     }()

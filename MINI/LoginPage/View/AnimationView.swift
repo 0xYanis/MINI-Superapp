@@ -12,7 +12,7 @@ class AnimationView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .green
+        backgroundColor = .systemCyan
     }
     
     required init?(coder: NSCoder) {
