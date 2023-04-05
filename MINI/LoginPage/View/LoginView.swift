@@ -46,7 +46,7 @@ class LoginView: UIView {
     private let loginButton: UIButton = {
         let button = UIButton()
         button.setTitle("Let's go!", for: .normal)
-        button.titleLabel?.font = UIFont(name: "Helvetica-Bold", size: 20)
+        button.titleLabel?.font = UIFont(name: "Helvetica", size: 20)
         button.clipsToBounds = true
         button.layer.cornerRadius = 10
         button.backgroundColor = .systemCyan
