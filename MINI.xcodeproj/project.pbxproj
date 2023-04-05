@@ -50,7 +50,6 @@
 		09035D0329DDA95C003D4B0B /* LoginPage */ = {
 			isa = PBXGroup;
 			children = (
-				091CD49129DDEB2F0041627F /* Lottie */,
 				09035D0A29DDAE69003D4B0B /* View */,
 			);
 			path = LoginPage;
@@ -59,6 +58,7 @@
 		09035D0A29DDAE69003D4B0B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				091CD49129DDEB2F0041627F /* Lottie */,
 				09035D0429DDA985003D4B0B /* LoginViewController.swift */,
 				09035D0D29DDAEE6003D4B0B /* AnimationView.swift */,
 				09035D0F29DDAFA7003D4B0B /* LoginView.swift */,
@@ -117,7 +117,8 @@
 			children = (
 				091CD49229DDEB3F0041627F /* scan.json */,
 			);
-			path = Lottie;
+			name = Lottie;
+			path = ../Lottie;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
