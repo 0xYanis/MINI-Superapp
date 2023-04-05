@@ -16,6 +16,8 @@
 		091095FE29DB32F000338D22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091095FD29DB32F000338D22 /* AppDelegate.swift */; };
 		0910960029DB32F000338D22 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091095FF29DB32F000338D22 /* SceneDelegate.swift */; };
 		0910960729DB32F400338D22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0910960629DB32F400338D22 /* Assets.xcassets */; };
+		091CD49029DDE9250041627F /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 091CD48F29DDE9250041627F /* Lottie */; };
+		091CD49329DDEB3F0041627F /* scan.json in Resources */ = {isa = PBXBuildFile; fileRef = 091CD49229DDEB3F0041627F /* scan.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,7 @@
 		091095FF29DB32F000338D22 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		0910960629DB32F400338D22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0910960B29DB32F500338D22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		091CD49229DDEB3F0041627F /* scan.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = scan.json; path = ../../../../../../Downloads/scan.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +40,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				09035D0929DDAE2F003D4B0B /* SnapKit in Frameworks */,
+				091CD49029DDE9250041627F /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +50,7 @@
 		09035D0329DDA95C003D4B0B /* LoginPage */ = {
 			isa = PBXGroup;
 			children = (
+				091CD49129DDEB2F0041627F /* Lottie */,
 				09035D0A29DDAE69003D4B0B /* View */,
 			);
 			path = LoginPage;
@@ -107,6 +112,14 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		091CD49129DDEB2F0041627F /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				091CD49229DDEB3F0041627F /* scan.json */,
+			);
+			path = Lottie;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -125,6 +138,7 @@
 			name = MINI;
 			packageProductDependencies = (
 				09035D0829DDAE2F003D4B0B /* SnapKit */,
+				091CD48F29DDE9250041627F /* Lottie */,
 			);
 			productName = MINI;
 			productReference = 091095FA29DB32F000338D22 /* MINI.app */;
@@ -156,6 +170,7 @@
 			mainGroup = 091095F129DB32F000338D22;
 			packageReferences = (
 				09035D0729DDAE2F003D4B0B /* XCRemoteSwiftPackageReference "SnapKit" */,
+				091CD48E29DDE9250041627F /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 091095FB29DB32F000338D22 /* Products */;
 			projectDirPath = "";
@@ -172,6 +187,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0910960729DB32F400338D22 /* Assets.xcassets in Resources */,
+				091CD49329DDEB3F0041627F /* scan.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,6 +417,14 @@
 				kind = branch;
 			};
 		};
+		091CD48E29DDE9250041627F /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -408,6 +432,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 09035D0729DDAE2F003D4B0B /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		091CD48F29DDE9250041627F /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 091CD48E29DDE9250041627F /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
