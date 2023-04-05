@@ -20,7 +20,10 @@ class LoginView: UIView {
     }
     
     weak var delegate: LoginViewDelegate?
+    let passwordField = PasswordField()
+    let secondPasswordField = PasswordField()
     
+    private let loginField = LoginField()
     private let loginLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Helvetica", size: 20)
@@ -54,10 +57,6 @@ class LoginView: UIView {
         button.backgroundColor = .systemCyan
         return button
     }()
-    
-    private let loginField = LoginField()
-    private let passwordField = PasswordField()
-    private let secondPasswordField = PasswordField()
 }
 
 private extension LoginView {
