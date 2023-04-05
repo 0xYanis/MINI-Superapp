@@ -13,7 +13,6 @@ class LoginView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         initialize()
-        backgroundColor = .red
     }
     
     required init?(coder: NSCoder) {
@@ -36,6 +35,7 @@ class LoginView: UIView {
 
 private extension LoginView {
     func initialize() {
+        backgroundColor = .white
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.addArrangedSubview(loginLabel)
