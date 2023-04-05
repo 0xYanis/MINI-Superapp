@@ -72,36 +72,60 @@ private extension LoginView {
         setViewsСonstraints()
     }
     func setViewsСonstraints() {
+        setLoginLabel()
+        setLoginField()
+        setPasswordLabel()
+        setPasswordField()
+        setLockLabel()
+        setSecondPasswordField()
+        setAccountButton()
+        setLoginButton()
+    }
+    func setLoginLabel() {
         loginLabel.snp.makeConstraints { make in
             make.top.left.equalToSuperview().inset(20)
         }
+    }
+    func setLoginField() {
         loginField.snp.makeConstraints { make in
             make.top.equalTo(loginLabel.snp.bottom).offset(15)
             make.left.right.equalToSuperview().inset(20)
             make.height.equalTo(40)
         }
+    }
+    func setPasswordLabel() {
         passwordLabel.snp.makeConstraints { make in
             make.top.equalTo(loginField.snp.bottom).offset(15)
             make.left.equalToSuperview().inset(20)
         }
+    }
+    func setPasswordField() {
         passwordField.snp.makeConstraints { make in
             make.top.equalTo(passwordLabel.snp.bottom).offset(15)
             make.left.right.equalToSuperview().inset(20)
             make.height.equalTo(40)
         }
+    }
+    func setLockLabel() {
         showLockLabel.snp.makeConstraints { make in
             make.centerY.equalTo(passwordField.snp.centerY)
             make.right.equalTo(passwordField.snp.right).inset(10)
         }
+    }
+    func setSecondPasswordField() {
         secondPasswordField.snp.makeConstraints { make in
             make.top.equalTo(passwordField.snp.bottom).offset(15)
             make.left.right.equalToSuperview().inset(20)
             make.height.equalTo(40)
         }
+    }
+    func setAccountButton() {
         accountButton.snp.makeConstraints { make in
             make.top.equalTo(secondPasswordField.snp.bottom).offset(15)
             make.centerX.equalToSuperview()
         }
+    }
+    func setLoginButton() {
         loginButton.snp.makeConstraints { make in
             make.top.equalTo(accountButton.snp.bottom).offset(15)
             make.centerX.equalToSuperview()
