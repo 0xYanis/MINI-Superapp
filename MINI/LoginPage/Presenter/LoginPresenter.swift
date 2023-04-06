@@ -16,6 +16,7 @@ protocol LoginViewDelegate: AnyObject {
 class LoginPresenter: LoginViewDelegate {
     
     let view: LoginView
+    var isSecure = false
 
     init(view: LoginView) {
         self.view = view
@@ -25,6 +26,9 @@ class LoginPresenter: LoginViewDelegate {
     func didTapLock() {
         print("lock")
         view.lockButton.addPulseAnimation()
+        view.passwordField.isSecureTextEntry = isSecure
+        view.secondPasswordField.isSecureTextEntry = isSecure
+        isSecure = !isSecure
     }
     
     func didTapAccount() {

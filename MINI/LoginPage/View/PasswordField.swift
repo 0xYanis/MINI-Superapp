@@ -38,6 +38,7 @@ class PasswordField: UITextField {
 
 private extension PasswordField {
     func initialize() {
+        isSecureTextEntry = true
         clearsOnBeginEditing = true
         textContentType = .password
         backgroundColor = .white
