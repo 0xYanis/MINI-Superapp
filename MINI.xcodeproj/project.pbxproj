@@ -18,7 +18,7 @@
 		0910960029DB32F000338D22 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091095FF29DB32F000338D22 /* SceneDelegate.swift */; };
 		0910960729DB32F400338D22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0910960629DB32F400338D22 /* Assets.xcassets */; };
 		091CD49029DDE9250041627F /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 091CD48F29DDE9250041627F /* Lottie */; };
-		091CD49329DDEB3F0041627F /* scan.json in Resources */ = {isa = PBXBuildFile; fileRef = 091CD49229DDEB3F0041627F /* scan.json */; };
+		0921F35C29DF1A0B00B3D4F7 /* scan.json in Resources */ = {isa = PBXBuildFile; fileRef = 0921F35B29DF1A0A00B3D4F7 /* scan.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +33,7 @@
 		091095FF29DB32F000338D22 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		0910960629DB32F400338D22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0910960B29DB32F500338D22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		091CD49229DDEB3F0041627F /* scan.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = scan.json; path = ../../../../../../Downloads/scan.json; sourceTree = "<group>"; };
+		0921F35B29DF1A0A00B3D4F7 /* scan.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = scan.json; path = MINI/LoginPage/View/Lottie/scan.json; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,7 +126,7 @@
 		091CD49129DDEB2F0041627F /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
-				091CD49229DDEB3F0041627F /* scan.json */,
+				0921F35B29DF1A0A00B3D4F7 /* scan.json */,
 			);
 			name = Lottie;
 			path = ../Lottie;
@@ -198,8 +198,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0921F35C29DF1A0B00B3D4F7 /* scan.json in Resources */,
 				0910960729DB32F400338D22 /* Assets.xcassets in Resources */,
-				091CD49329DDEB3F0041627F /* scan.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
