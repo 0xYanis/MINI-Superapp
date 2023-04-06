@@ -20,6 +20,7 @@ class LoginView: UIView {
     }
     
     weak var delegate: LoginViewDelegate?
+    
     let passwordField = PasswordField()
     let secondPasswordField = PasswordField()
     
