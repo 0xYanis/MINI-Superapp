@@ -13,14 +13,40 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
-        setButtonTargets()
     }
+    
+    private var isSecure = true
     
     lazy private var animationView = AnimationView()
     lazy private var loginView = LoginView()
 }
 
 extension LoginViewController {
+    @objc func lockAction() {
+        isSecure = !isSecure
+        loginView.lockButton.addPulseAnimation()
+        loginView.passwordField.isSecureTextEntry = isSecure
+        loginView.secondPasswordField.isSecureTextEntry = isSecure
+    }
+    @objc func accountAction() {
+        loginView.accountButton.addPulseAnimation()
+    }
+    @objc func loginAction() {
+        loginView.loginButton.addPulseAnimation()
+    }
+}
+
+private extension LoginViewController {
+    func initialize() {
+        view.backgroundColor = .white
+        view.insertSubview(animationView, at: 0)
+        view.insertSubview(loginView, at: 1)
+        setButtonTargets()
+        setViewsСonstraints()
+        setViewsRadius()
+        setViewsShadow()
+    }
+    
     func setButtonTargets() {
         loginView.lockButton.addTarget(
             self, action: #selector(lockAction), for: .touchUpInside
@@ -31,25 +57,6 @@ extension LoginViewController {
         loginView.loginButton.addTarget(
             self, action: #selector(loginAction), for: .touchUpInside
         )
-    }
-    @objc func lockAction() {
-    }
-    
-    @objc func accountAction() {
-    }
-    
-    @objc func loginAction() {
-    }
-}
-
-private extension LoginViewController {
-    func initialize() {
-        view.backgroundColor = .white
-        view.insertSubview(animationView, at: 0)
-        view.insertSubview(loginView, at: 1)
-        setViewsСonstraints()
-        setViewsRadius()
-        setViewsShadow()
     }
     
     func setViewsСonstraints() {
