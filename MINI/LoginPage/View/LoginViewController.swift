@@ -9,20 +9,41 @@ import UIKit
 import SnapKit
 
 class LoginViewController: UIViewController {
-    var presenter: LoginPresenter!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
+        setButtonTargets()
     }
     
     lazy private var animationView = AnimationView()
     lazy private var loginView = LoginView()
 }
 
+extension LoginViewController {
+    func setButtonTargets() {
+        loginView.lockButton.addTarget(
+            self, action: #selector(lockAction), for: .touchUpInside
+        )
+        loginView.accountButton.addTarget(
+            self, action: #selector(accountAction), for: .touchUpInside
+        )
+        loginView.loginButton.addTarget(
+            self, action: #selector(loginAction), for: .touchUpInside
+        )
+    }
+    @objc func lockAction() {
+    }
+    
+    @objc func accountAction() {
+    }
+    
+    @objc func loginAction() {
+    }
+}
+
 private extension LoginViewController {
     func initialize() {
-        presenter = LoginPresenter(view: loginView)
         view.backgroundColor = .white
         view.insertSubview(animationView, at: 0)
         view.insertSubview(loginView, at: 1)

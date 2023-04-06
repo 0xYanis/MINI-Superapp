@@ -19,8 +19,6 @@ class LoginView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    weak var delegate: LoginViewDelegate?
-    
     let passwordField = PasswordField()
     let secondPasswordField = PasswordField()
     
@@ -73,29 +71,7 @@ private extension LoginView {
         addSubview(accountButton)
         addSubview(loginButton)
         setViewsСonstraints()
-        lockButton.addTarget(
-            self, action: #selector(lockAction), for: .touchUpInside
-        )
-        accountButton.addTarget(
-            self, action: #selector(accountAction), for: .touchUpInside
-        )
-        loginButton.addTarget(
-            self, action: #selector(loginAction), for: .touchUpInside
-        )
     }
-    
-    @objc func lockAction() {
-        delegate?.didTapLock()
-    }
-    
-    @objc func accountAction() {
-        delegate?.didTapAccount()
-    }
-    
-    @objc func loginAction() {
-        delegate?.didTapLogin()
-    }
-    
     func setViewsСonstraints() {
         setLoginLabel()
         setLoginField()
