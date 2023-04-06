@@ -19,6 +19,7 @@
 		0910960729DB32F400338D22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0910960629DB32F400338D22 /* Assets.xcassets */; };
 		091CD49029DDE9250041627F /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 091CD48F29DDE9250041627F /* Lottie */; };
 		0921F35C29DF1A0B00B3D4F7 /* scan.json in Resources */ = {isa = PBXBuildFile; fileRef = 0921F35B29DF1A0A00B3D4F7 /* scan.json */; };
+		0921F35F29DF1FE000B3D4F7 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0921F35E29DF1FE000B3D4F7 /* UIButton+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		0910960629DB32F400338D22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0910960B29DB32F500338D22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0921F35B29DF1A0A00B3D4F7 /* scan.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = scan.json; path = MINI/LoginPage/View/Lottie/scan.json; sourceTree = SOURCE_ROOT; };
+		0921F35E29DF1FE000B3D4F7 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 			children = (
 				0910961129DB332600338D22 /* Application */,
 				09035D0329DDA95C003D4B0B /* LoginPage */,
+				0921F35D29DF1FD100B3D4F7 /* Helpers */,
 				0910961229DB333400338D22 /* Resources */,
 			);
 			path = MINI;
@@ -130,6 +133,14 @@
 			);
 			name = Lottie;
 			path = ../Lottie;
+			sourceTree = "<group>";
+		};
+		0921F35D29DF1FD100B3D4F7 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				0921F35E29DF1FE000B3D4F7 /* UIButton+Extension.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,6 +222,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0905BF3F29DE2D2000D89393 /* LoginPresenter.swift in Sources */,
+				0921F35F29DF1FE000B3D4F7 /* UIButton+Extension.swift in Sources */,
 				09035D0529DDA985003D4B0B /* LoginViewController.swift in Sources */,
 				09035D0E29DDAEE6003D4B0B /* AnimationView.swift in Sources */,
 				09035D1229DDB3B0003D4B0B /* LoginField.swift in Sources */,

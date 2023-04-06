@@ -36,19 +36,20 @@ class LoginView: UIView {
         label.text = "Password"
         return label
     }()
-    private let accountButton: UIButton = {
+    
+    let accountButton: UIButton = {
         let button = UIButton()
         button.setTitle("Already have been account?", for: .normal)
         button.setTitleColor(.systemCyan, for: .normal)
         button.titleLabel?.font = UIFont(name: "Helvetica", size: 12)
         return button
     }()
-    private let lockButton: UIButton = {
+    let lockButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "lock"), for: .normal)
         return button
     }()
-    private let loginButton: UIButton = {
+    let loginButton: UIButton = {
         let button = UIButton()
         button.setTitle("Let's go!", for: .normal)
         button.titleLabel?.font = UIFont(name: "Helvetica", size: 20)

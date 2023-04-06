@@ -24,13 +24,16 @@ class LoginPresenter: LoginViewDelegate {
     
     func didTapLock() {
         print("lock")
+        view.lockButton.addPulseAnimation()
     }
     
     func didTapAccount() {
         print("account")
+        view.accountButton.addPulseAnimation()
     }
     
     func didTapLogin() {
         print("login")
+        view.loginButton.addPulseAnimation()
     }
 }
