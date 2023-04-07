@@ -9,7 +9,8 @@ import UIKit
 import SnapKit
 
 protocol LoginViewControllerProtocol: AnyObject {
-    
+    func isNotSecureField(secure: Bool)
+    func resizeLoginView()
 }
 
 class LoginViewController: UIViewController {
@@ -26,18 +27,28 @@ class LoginViewController: UIViewController {
 }
 
 extension LoginViewController: LoginViewControllerProtocol {
+    func isNotSecureField(secure: Bool) {
+        loginView.passwordField.isSecureTextEntry = secure
+        loginView.secondPasswordField.isSecureTextEntry = secure
+    }
     
+    func resizeLoginView() {
+        shrinkLoginView()
+    }
 }
 
 extension LoginViewController {
     @objc func lockAction() {
-        
+        loginView.lockButton.addPulseAnimation()
+        presenter?.didTapLock()
     }
     @objc func accountAction() {
-        
+        loginView.accountButton.addPulseAnimation()
+        presenter?.didTapAccount()
     }
     @objc func loginAction() {
-        
+        loginView.loginButton.addPulseAnimation()
+        presenter?.didTapLogin()
     }
 }
 
@@ -96,5 +107,14 @@ private extension LoginViewController {
         loginView.layer.shadowOpacity = 0.3
         loginView.layer.shadowOffset = CGSize(width: 0, height: 0)
         loginView.layer.shadowRadius = 10
+    }
+    
+    func shrinkLoginView() {
+        UIView.animate(withDuration: 0.3) {
+            self.loginView.snp.updateConstraints { make in
+                make.height.equalToSuperview().inset(self.loginView.frame.height / 1.7 - 50)
+            }
+            self.view.layoutIfNeeded()
+        }
     }
 }
