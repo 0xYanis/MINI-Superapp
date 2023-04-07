@@ -14,8 +14,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
-        let mainVC = LoginViewController()
-        window.rootViewController = UINavigationController(rootViewController: mainVC)
+        let viewController = LoginAssembly.loginBuld()
+        window.rootViewController = UINavigationController(rootViewController: viewController)
         self.window = window
         window.makeKeyAndVisible()
     }
