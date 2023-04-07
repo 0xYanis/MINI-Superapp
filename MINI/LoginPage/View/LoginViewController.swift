@@ -15,24 +15,19 @@ class LoginViewController: UIViewController {
         initialize()
     }
     
-    private var isSecure = true
-    
     lazy private var animationView = AnimationView()
     lazy private var loginView = LoginView()
 }
 
 extension LoginViewController {
     @objc func lockAction() {
-        isSecure = !isSecure
-        loginView.lockButton.addPulseAnimation()
-        loginView.passwordField.isSecureTextEntry = isSecure
-        loginView.secondPasswordField.isSecureTextEntry = isSecure
+        
     }
     @objc func accountAction() {
-        loginView.accountButton.addPulseAnimation()
+        
     }
     @objc func loginAction() {
-        loginView.loginButton.addPulseAnimation()
+        
     }
 }
 
