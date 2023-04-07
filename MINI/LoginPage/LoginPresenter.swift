@@ -18,8 +18,7 @@ class LoginPresenter {
     var router: LoginRouterProtocol
     var interactor: LoginInteractorProtocol
     
-    var isSecureField = false
-    var isHidden = false
+    private var isSecureField = false
     
     init(router: LoginRouterProtocol, interactor: LoginInteractorProtocol) {
         self.router = router
@@ -34,11 +33,10 @@ extension LoginPresenter: LoginPresenterProtocol {
     }
     
     func didTapAccount() {
-        view?.resizeLoginView(resize: isHidden)
-        isHidden = !isHidden
+        
     }
     
     func didTapLogin() {
-        interactor.willGoNextView()
+        interactor.willLogin()
     }
 }

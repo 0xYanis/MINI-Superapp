@@ -8,14 +8,14 @@
 import Foundation
 
 protocol LoginInteractorProtocol: AnyObject {
-    func willGoNextView()
+    func willLogin()
 }
 
 class LoginInteractor: LoginInteractorProtocol {
     
     weak var presenter: LoginPresenterProtocol?
     
-    func willGoNextView() {
+    func willLogin() {
         ///
     }
 }

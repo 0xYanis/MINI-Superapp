@@ -10,7 +10,6 @@ import SnapKit
 
 protocol LoginViewControllerProtocol: AnyObject {
     func isNotSecureField(secure: Bool)
-    func resizeLoginView(resize: Bool)
 }
 
 class LoginViewController: UIViewController {
@@ -30,10 +29,6 @@ extension LoginViewController: LoginViewControllerProtocol {
     func isNotSecureField(secure: Bool) {
         loginView.passwordField.isSecureTextEntry = secure
         loginView.secondPasswordField.isSecureTextEntry = secure
-    }
-    
-    func resizeLoginView(resize: Bool) {
-        
     }
 }
 
