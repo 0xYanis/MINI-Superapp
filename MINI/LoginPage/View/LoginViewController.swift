@@ -8,7 +8,13 @@
 import UIKit
 import SnapKit
 
+protocol LoginViewControllerProtocol: AnyObject {
+    
+}
+
 class LoginViewController: UIViewController {
+    
+    var presenter: LoginPresenterProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,6 +23,10 @@ class LoginViewController: UIViewController {
     
     lazy private var animationView = AnimationView()
     lazy private var loginView = LoginView()
+}
+
+extension LoginViewController: LoginViewControllerProtocol {
+    
 }
 
 extension LoginViewController {
