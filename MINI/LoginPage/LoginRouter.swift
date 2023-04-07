@@ -6,11 +6,26 @@
 //
 
 import Foundation
+import UIKit
 
 protocol LoginRouterProtocol: AnyObject {
-    
+    func openLoginModule()
+    func openMainModule()
 }
 
 class LoginRouter: LoginRouterProtocol {
+    
     weak var viewController: LoginViewController?
+    
+    func openLoginModule() {
+        let vc = UIViewController()
+        vc.view.backgroundColor = .red
+        viewController?.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func openMainModule() {
+        let vc = UIViewController()
+        vc.view.backgroundColor = .green
+        viewController?.navigationController?.pushViewController(vc, animated: false)
+    }
 }

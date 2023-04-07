@@ -11,6 +11,8 @@ protocol LoginPresenterProtocol: AnyObject {
     func didTapLock()
     func didTapAccount()
     func didTapLogin()
+    
+    func goToMain()
 }
 
 class LoginPresenter {
@@ -33,10 +35,14 @@ extension LoginPresenter: LoginPresenterProtocol {
     }
     
     func didTapAccount() {
-        
+        router.openLoginModule()
     }
     
     func didTapLogin() {
         interactor.willLogin()
+    }
+    
+    func goToMain() {
+        router.openMainModule()
     }
 }

@@ -16,6 +16,6 @@ class LoginInteractor: LoginInteractorProtocol {
     weak var presenter: LoginPresenterProtocol?
     
     func willLogin() {
-        ///
+        presenter?.goToMain()
     }
 }
