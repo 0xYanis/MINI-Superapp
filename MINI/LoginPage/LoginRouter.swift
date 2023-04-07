@@ -19,7 +19,6 @@ class LoginRouter: LoginRouterProtocol {
     
     func openAuthModule() {
         let vc = AuthAssembly.authBiuld()
-        vc.view.backgroundColor = .red
         viewController?.navigationController?.pushViewController(vc, animated: true)
     }
     
