@@ -19,10 +19,10 @@
 		091CD49029DDE9250041627F /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 091CD48F29DDE9250041627F /* Lottie */; };
 		0921F35C29DF1A0B00B3D4F7 /* scan.json in Resources */ = {isa = PBXBuildFile; fileRef = 0921F35B29DF1A0A00B3D4F7 /* scan.json */; };
 		0921F35F29DF1FE000B3D4F7 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0921F35E29DF1FE000B3D4F7 /* UIButton+Extension.swift */; };
-		098E1E1129E07BD60016CE0F /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098E1E1029E07BD60016CE0F /* LoginRouter.swift */; };
-		098E1E1329E07BE50016CE0F /* LoginAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098E1E1229E07BE50016CE0F /* LoginAssembly.swift */; };
 		098E1E1529E07BF20016CE0F /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098E1E1429E07BF20016CE0F /* LoginPresenter.swift */; };
 		098E1E1729E07BFD0016CE0F /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098E1E1629E07BFD0016CE0F /* LoginInteractor.swift */; };
+		098E1E1A29E07D440016CE0F /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098E1E1929E07D440016CE0F /* LoginRouter.swift */; };
+		098E1E1C29E07D6C0016CE0F /* LoginAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098E1E1B29E07D6C0016CE0F /* LoginAssembly.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,10 +38,10 @@
 		0910960B29DB32F500338D22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0921F35B29DF1A0A00B3D4F7 /* scan.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = scan.json; path = MINI/LoginPage/View/Lottie/scan.json; sourceTree = SOURCE_ROOT; };
 		0921F35E29DF1FE000B3D4F7 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
-		098E1E1029E07BD60016CE0F /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
-		098E1E1229E07BE50016CE0F /* LoginAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAssembly.swift; sourceTree = "<group>"; };
 		098E1E1429E07BF20016CE0F /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		098E1E1629E07BFD0016CE0F /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
+		098E1E1929E07D440016CE0F /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
+		098E1E1B29E07D6C0016CE0F /* LoginAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAssembly.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,10 +60,11 @@
 		09035D0329DDA95C003D4B0B /* LoginPage */ = {
 			isa = PBXGroup;
 			children = (
+				098E1E1B29E07D6C0016CE0F /* LoginAssembly.swift */,
 				098E1E0D29E07B5A0016CE0F /* Interactor */,
 				098E1E0E29E07B630016CE0F /* Presenter */,
+				098E1E1829E07D350016CE0F /* Router */,
 				09035D0A29DDAE69003D4B0B /* View */,
-				098E1E0F29E07B710016CE0F /* Wireframe */,
 			);
 			path = LoginPage;
 			sourceTree = "<group>";
@@ -159,13 +160,12 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
-		098E1E0F29E07B710016CE0F /* Wireframe */ = {
+		098E1E1829E07D350016CE0F /* Router */ = {
 			isa = PBXGroup;
 			children = (
-				098E1E1029E07BD60016CE0F /* LoginRouter.swift */,
-				098E1E1229E07BE50016CE0F /* LoginAssembly.swift */,
+				098E1E1929E07D440016CE0F /* LoginRouter.swift */,
 			);
-			path = Wireframe;
+			path = Router;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,15 +247,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				0921F35F29DF1FE000B3D4F7 /* UIButton+Extension.swift in Sources */,
-				098E1E1329E07BE50016CE0F /* LoginAssembly.swift in Sources */,
 				09035D0529DDA985003D4B0B /* LoginViewController.swift in Sources */,
 				09035D0E29DDAEE6003D4B0B /* AnimationView.swift in Sources */,
 				098E1E1529E07BF20016CE0F /* LoginPresenter.swift in Sources */,
 				09035D1229DDB3B0003D4B0B /* LoginField.swift in Sources */,
-				098E1E1129E07BD60016CE0F /* LoginRouter.swift in Sources */,
 				091095FE29DB32F000338D22 /* AppDelegate.swift in Sources */,
 				098E1E1729E07BFD0016CE0F /* LoginInteractor.swift in Sources */,
+				098E1E1C29E07D6C0016CE0F /* LoginAssembly.swift in Sources */,
 				09035D1429DDB3C1003D4B0B /* PasswordField.swift in Sources */,
+				098E1E1A29E07D440016CE0F /* LoginRouter.swift in Sources */,
 				09035D1029DDAFA7003D4B0B /* LoginView.swift in Sources */,
 				0910960029DB32F000338D22 /* SceneDelegate.swift in Sources */,
 			);
