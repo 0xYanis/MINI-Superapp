@@ -22,6 +22,13 @@ class AnimationView: UIView {
     
     private let animationView = LottieAnimationView(name: "scan")
     
+    func animationIsHidden(hide: Bool) {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.animationView.alpha = hide ? 0 : 1
+        }, completion: { finished in
+            self.animationView.isHidden = hide
+        })
+    }
 }
 
 private extension AnimationView {
