@@ -35,7 +35,7 @@ extension LoginPresenter: LoginPresenterProtocol {
     }
     
     func didTapAccount() {
-        router.openLoginModule()
+        router.openAuthModule()
     }
     
     func didTapLogin() {

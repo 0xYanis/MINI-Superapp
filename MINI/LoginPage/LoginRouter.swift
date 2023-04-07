@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol LoginRouterProtocol: AnyObject {
-    func openLoginModule()
+    func openAuthModule()
     func openMainModule()
 }
 
@@ -17,8 +17,8 @@ class LoginRouter: LoginRouterProtocol {
     
     weak var viewController: LoginViewController?
     
-    func openLoginModule() {
-        let vc = UIViewController()
+    func openAuthModule() {
+        let vc = AuthAssembly.authBiuld()
         vc.view.backgroundColor = .red
         viewController?.navigationController?.pushViewController(vc, animated: true)
     }
