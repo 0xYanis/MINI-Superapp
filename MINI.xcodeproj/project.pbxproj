@@ -7,51 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		09035D0529DDA985003D4B0B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09035D0429DDA985003D4B0B /* LoginViewController.swift */; };
 		09035D0929DDAE2F003D4B0B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 09035D0829DDAE2F003D4B0B /* SnapKit */; };
-		09035D0E29DDAEE6003D4B0B /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09035D0D29DDAEE6003D4B0B /* AnimationView.swift */; };
-		09035D1029DDAFA7003D4B0B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09035D0F29DDAFA7003D4B0B /* LoginView.swift */; };
-		09035D1229DDB3B0003D4B0B /* LoginField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09035D1129DDB3B0003D4B0B /* LoginField.swift */; };
-		09035D1429DDB3C1003D4B0B /* PasswordField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09035D1329DDB3C1003D4B0B /* PasswordField.swift */; };
 		091095FE29DB32F000338D22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091095FD29DB32F000338D22 /* AppDelegate.swift */; };
 		0910960029DB32F000338D22 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091095FF29DB32F000338D22 /* SceneDelegate.swift */; };
 		0910960729DB32F400338D22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0910960629DB32F400338D22 /* Assets.xcassets */; };
 		091CD49029DDE9250041627F /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 091CD48F29DDE9250041627F /* Lottie */; };
-		0921F35C29DF1A0B00B3D4F7 /* scan.json in Resources */ = {isa = PBXBuildFile; fileRef = 0921F35B29DF1A0A00B3D4F7 /* scan.json */; };
 		0921F35F29DF1FE000B3D4F7 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0921F35E29DF1FE000B3D4F7 /* UIButton+Extension.swift */; };
-		0969AC6D29E0AF31008DBF47 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0969AC6C29E0AF31008DBF47 /* LoginPresenter.swift */; };
-		0969AC6F29E0AF42008DBF47 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0969AC6E29E0AF42008DBF47 /* LoginInteractor.swift */; };
-		0969AC7129E0AF4B008DBF47 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0969AC7029E0AF4B008DBF47 /* LoginRouter.swift */; };
-		0969AC7329E0AF57008DBF47 /* LoginAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0969AC7229E0AF57008DBF47 /* LoginAssembly.swift */; };
-		0969AC7629E0C6A8008DBF47 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0969AC7529E0C6A8008DBF47 /* AuthViewController.swift */; };
-		0969AC7829E0C6BA008DBF47 /* AuthPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0969AC7729E0C6BA008DBF47 /* AuthPresenter.swift */; };
-		0969AC7A29E0C6C4008DBF47 /* AuthInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0969AC7929E0C6C4008DBF47 /* AuthInteractor.swift */; };
-		0969AC7C29E0C6CB008DBF47 /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0969AC7B29E0C6CB008DBF47 /* AuthRouter.swift */; };
-		0969AC8029E0C6F4008DBF47 /* AuthAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0969AC7F29E0C6F4008DBF47 /* AuthAssembly.swift */; };
+		09E9E81229EAE6030084416B /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E9E81129EAE6030084416B /* UILabel+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		09035D0429DDA985003D4B0B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		09035D0D29DDAEE6003D4B0B /* AnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationView.swift; sourceTree = "<group>"; };
-		09035D0F29DDAFA7003D4B0B /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		09035D1129DDB3B0003D4B0B /* LoginField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginField.swift; sourceTree = "<group>"; };
-		09035D1329DDB3C1003D4B0B /* PasswordField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordField.swift; sourceTree = "<group>"; };
 		091095FA29DB32F000338D22 /* MINI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MINI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		091095FD29DB32F000338D22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		091095FF29DB32F000338D22 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		0910960629DB32F400338D22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0910960B29DB32F500338D22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0921F35B29DF1A0A00B3D4F7 /* scan.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = scan.json; path = MINI/LoginPage/View/Lottie/scan.json; sourceTree = SOURCE_ROOT; };
 		0921F35E29DF1FE000B3D4F7 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
-		0969AC6C29E0AF31008DBF47 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
-		0969AC6E29E0AF42008DBF47 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
-		0969AC7029E0AF4B008DBF47 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
-		0969AC7229E0AF57008DBF47 /* LoginAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAssembly.swift; sourceTree = "<group>"; };
-		0969AC7529E0C6A8008DBF47 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
-		0969AC7729E0C6BA008DBF47 /* AuthPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPresenter.swift; sourceTree = "<group>"; };
-		0969AC7929E0C6C4008DBF47 /* AuthInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthInteractor.swift; sourceTree = "<group>"; };
-		0969AC7B29E0C6CB008DBF47 /* AuthRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRouter.swift; sourceTree = "<group>"; };
-		0969AC7F29E0C6F4008DBF47 /* AuthAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAssembly.swift; sourceTree = "<group>"; };
+		09E9E81129EAE6030084416B /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,31 +39,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		09035D0329DDA95C003D4B0B /* LoginPage */ = {
-			isa = PBXGroup;
-			children = (
-				09035D0A29DDAE69003D4B0B /* View */,
-				0969AC6C29E0AF31008DBF47 /* LoginPresenter.swift */,
-				0969AC6E29E0AF42008DBF47 /* LoginInteractor.swift */,
-				0969AC7029E0AF4B008DBF47 /* LoginRouter.swift */,
-				0969AC7229E0AF57008DBF47 /* LoginAssembly.swift */,
-			);
-			path = LoginPage;
-			sourceTree = "<group>";
-		};
-		09035D0A29DDAE69003D4B0B /* View */ = {
-			isa = PBXGroup;
-			children = (
-				091CD49129DDEB2F0041627F /* Lottie */,
-				09035D0429DDA985003D4B0B /* LoginViewController.swift */,
-				09035D0D29DDAEE6003D4B0B /* AnimationView.swift */,
-				09035D0F29DDAFA7003D4B0B /* LoginView.swift */,
-				09035D1129DDB3B0003D4B0B /* LoginField.swift */,
-				09035D1329DDB3C1003D4B0B /* PasswordField.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		091095F129DB32F000338D22 = {
 			isa = PBXGroup;
 			children = (
@@ -112,8 +59,6 @@
 			isa = PBXGroup;
 			children = (
 				0910961129DB332600338D22 /* Application */,
-				0969AC7429E0C605008DBF47 /* AuthenticationPage */,
-				09035D0329DDA95C003D4B0B /* LoginPage */,
 				0921F35D29DF1FD100B3D4F7 /* Helpers */,
 				0910961229DB333400338D22 /* Resources */,
 			);
@@ -138,33 +83,13 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		091CD49129DDEB2F0041627F /* Lottie */ = {
-			isa = PBXGroup;
-			children = (
-				0921F35B29DF1A0A00B3D4F7 /* scan.json */,
-			);
-			name = Lottie;
-			path = ../Lottie;
-			sourceTree = "<group>";
-		};
 		0921F35D29DF1FD100B3D4F7 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
 				0921F35E29DF1FE000B3D4F7 /* UIButton+Extension.swift */,
+				09E9E81129EAE6030084416B /* UILabel+Extension.swift */,
 			);
 			path = Helpers;
-			sourceTree = "<group>";
-		};
-		0969AC7429E0C605008DBF47 /* AuthenticationPage */ = {
-			isa = PBXGroup;
-			children = (
-				0969AC7529E0C6A8008DBF47 /* AuthViewController.swift */,
-				0969AC7729E0C6BA008DBF47 /* AuthPresenter.swift */,
-				0969AC7929E0C6C4008DBF47 /* AuthInteractor.swift */,
-				0969AC7B29E0C6CB008DBF47 /* AuthRouter.swift */,
-				0969AC7F29E0C6F4008DBF47 /* AuthAssembly.swift */,
-			);
-			path = AuthenticationPage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,7 +158,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0921F35C29DF1A0B00B3D4F7 /* scan.json in Resources */,
 				0910960729DB32F400338D22 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -245,22 +169,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09E9E81229EAE6030084416B /* UILabel+Extension.swift in Sources */,
 				0921F35F29DF1FE000B3D4F7 /* UIButton+Extension.swift in Sources */,
-				09035D0529DDA985003D4B0B /* LoginViewController.swift in Sources */,
-				09035D0E29DDAEE6003D4B0B /* AnimationView.swift in Sources */,
-				0969AC6D29E0AF31008DBF47 /* LoginPresenter.swift in Sources */,
-				09035D1229DDB3B0003D4B0B /* LoginField.swift in Sources */,
-				0969AC8029E0C6F4008DBF47 /* AuthAssembly.swift in Sources */,
 				091095FE29DB32F000338D22 /* AppDelegate.swift in Sources */,
-				09035D1429DDB3C1003D4B0B /* PasswordField.swift in Sources */,
-				0969AC7329E0AF57008DBF47 /* LoginAssembly.swift in Sources */,
-				0969AC7829E0C6BA008DBF47 /* AuthPresenter.swift in Sources */,
-				0969AC7629E0C6A8008DBF47 /* AuthViewController.swift in Sources */,
-				09035D1029DDAFA7003D4B0B /* LoginView.swift in Sources */,
-				0969AC7A29E0C6C4008DBF47 /* AuthInteractor.swift in Sources */,
-				0969AC7129E0AF4B008DBF47 /* LoginRouter.swift in Sources */,
-				0969AC6F29E0AF42008DBF47 /* LoginInteractor.swift in Sources */,
-				0969AC7C29E0C6CB008DBF47 /* AuthRouter.swift in Sources */,
 				0910960029DB32F000338D22 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

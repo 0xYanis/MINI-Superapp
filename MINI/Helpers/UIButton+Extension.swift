@@ -21,3 +21,7 @@ extension UIButton {
         layer.add(pulse, forKey: "pulse")
     }
 }
+
+extension UILabel {
+    
+}
