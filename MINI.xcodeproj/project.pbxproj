@@ -76,6 +76,7 @@
 			children = (
 				0910961129DB332600338D22 /* Application */,
 				09E9E81529EAE8F50084416B /* LoginModule */,
+				09E9E82829EB119D0084416B /* ServiceLayer */,
 				0921F35D29DF1FD100B3D4F7 /* Helpers */,
 				0910961229DB333400338D22 /* Resources */,
 			);
@@ -119,9 +120,16 @@
 				09E9E81E29EAE95D0084416B /* LoginRouter.swift */,
 				09E9E82029EAE9650084416B /* LoginEntity.swift */,
 				09E9E81629EAE9360084416B /* LoginBuilder.swift */,
-				09E9E82629EB0B3F0084416B /* BiometryService.swift */,
 			);
 			path = LoginModule;
+			sourceTree = "<group>";
+		};
+		09E9E82829EB119D0084416B /* ServiceLayer */ = {
+			isa = PBXGroup;
+			children = (
+				09E9E82629EB0B3F0084416B /* BiometryService.swift */,
+			);
+			path = ServiceLayer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
