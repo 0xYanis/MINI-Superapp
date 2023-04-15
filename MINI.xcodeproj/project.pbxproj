@@ -20,6 +20,7 @@
 		09E9E81D29EAE9540084416B /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E9E81C29EAE9540084416B /* LoginInteractor.swift */; };
 		09E9E81F29EAE95D0084416B /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E9E81E29EAE95D0084416B /* LoginRouter.swift */; };
 		09E9E82129EAE9650084416B /* LoginEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E9E82029EAE9650084416B /* LoginEntity.swift */; };
+		09E9E82329EAFC770084416B /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E9E82229EAFC770084416B /* UIView+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		09E9E81C29EAE9540084416B /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
 		09E9E81E29EAE95D0084416B /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
 		09E9E82029EAE9650084416B /* LoginEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntity.swift; sourceTree = "<group>"; };
+		09E9E82229EAFC770084416B /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			children = (
 				0921F35E29DF1FE000B3D4F7 /* UIButton+Extension.swift */,
 				09E9E81129EAE6030084416B /* UILabel+Extension.swift */,
+				09E9E82229EAFC770084416B /* UIView+Extension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -195,6 +198,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09E9E82329EAFC770084416B /* UIView+Extension.swift in Sources */,
 				09E9E82129EAE9650084416B /* LoginEntity.swift in Sources */,
 				09E9E81929EAE9410084416B /* LoginViewController.swift in Sources */,
 				09E9E81229EAE6030084416B /* UILabel+Extension.swift in Sources */,
