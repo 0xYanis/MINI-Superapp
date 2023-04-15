@@ -40,8 +40,23 @@ extension LoginViewController: LoginViewProtocol {
 private extension LoginViewController {
     func initialize() {
         view.backgroundColor = .white
+        createNavBarButtons()
         createAnimationView()
         createLoginView()
+    }
+    func createNavBarButtons() {
+        let image = UIImage(systemName: "link.icloud.fill")
+        let button = UIButton(type: .system)
+        button.tintColor = .white
+        button.setImage(image, for: .normal)
+        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        let barButton = UIBarButtonItem(customView: button)
+        navigationItem.leftBarButtonItem = barButton
+    }
+    @objc func buttonAction() {
+        if let url = URL(string: "https://github.com/0xYanis") {
+            UIApplication.shared.open(url)
+        }
     }
     func createAnimationView() {
         animationView.backgroundColor = .systemCyan
