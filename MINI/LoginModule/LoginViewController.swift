@@ -15,14 +15,15 @@ protocol LoginViewProtocol: AnyObject {
 final class LoginViewController: UIViewController {
     
     var presenter: LoginPresenterProtocol?
-    let animationView = UIView()
-    let loginView = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
-        presenter?.userDidTapBiometry()
     }
+    
+    private let animationView = UIView()
+    private let loginView = UIView()
+    private var isLoginViewExpanded = true
 }
 
 extension LoginViewController: LoginViewProtocol {
@@ -60,6 +61,19 @@ private extension LoginViewController {
             make.centerX.equalToSuperview()
             make.left.right.equalToSuperview().inset(20)
             make.height.equalTo(view.frame.height / 2.2)
+        }
+    }
+    func textFieldPressed() {
+        isLoginViewExpanded.toggle()
+        resizeLoginView(isExpanded: isLoginViewExpanded)
+    }
+    func resizeLoginView(isExpanded: Bool) {
+        let newHeight: CGFloat = isExpanded ? view.frame.height / 2.2 : view.frame.height / 3
+        UIView.animate(withDuration: 0.3) {
+            self.loginView.snp.updateConstraints { make in
+                make.height.equalTo(newHeight)
+            }
+            self.view.layoutIfNeeded()
         }
     }
 }
