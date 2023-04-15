@@ -21,6 +21,7 @@
 		09E9E81F29EAE95D0084416B /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E9E81E29EAE95D0084416B /* LoginRouter.swift */; };
 		09E9E82129EAE9650084416B /* LoginEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E9E82029EAE9650084416B /* LoginEntity.swift */; };
 		09E9E82329EAFC770084416B /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E9E82229EAFC770084416B /* UIView+Extension.swift */; };
+		09E9E82729EB0B3F0084416B /* BiometryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E9E82629EB0B3F0084416B /* BiometryService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		09E9E81E29EAE95D0084416B /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
 		09E9E82029EAE9650084416B /* LoginEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntity.swift; sourceTree = "<group>"; };
 		09E9E82229EAFC770084416B /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		09E9E82629EB0B3F0084416B /* BiometryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometryService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 				09E9E81E29EAE95D0084416B /* LoginRouter.swift */,
 				09E9E82029EAE9650084416B /* LoginEntity.swift */,
 				09E9E81629EAE9360084416B /* LoginBuilder.swift */,
+				09E9E82629EB0B3F0084416B /* BiometryService.swift */,
 			);
 			path = LoginModule;
 			sourceTree = "<group>";
@@ -198,6 +201,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09E9E82729EB0B3F0084416B /* BiometryService.swift in Sources */,
 				09E9E82329EAFC770084416B /* UIView+Extension.swift in Sources */,
 				09E9E82129EAE9650084416B /* LoginEntity.swift in Sources */,
 				09E9E81929EAE9410084416B /* LoginViewController.swift in Sources */,
@@ -339,6 +343,7 @@
 				DEVELOPMENT_TEAM = 2B85PH5M9P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MINI/Resources/Info.plist;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -369,6 +374,7 @@
 				DEVELOPMENT_TEAM = 2B85PH5M9P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MINI/Resources/Info.plist;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

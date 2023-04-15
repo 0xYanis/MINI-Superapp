@@ -12,10 +12,12 @@ final class LoginBuilder {
         let viewController = LoginViewController()
         let router = LoginRouter()
         let interactor = LoginInteractor()
+        let biometryService = BiometryService()
         let presenter = LoginPresenter(interactor: interactor, router: router)
         viewController.presenter = presenter
         presenter.view = viewController
         interactor.presenter = presenter
+        interactor.biometryService = biometryService
         router.view = viewController
         return viewController
     }
