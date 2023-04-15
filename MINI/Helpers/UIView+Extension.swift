@@ -8,6 +8,10 @@
 import UIKit
 
 extension UIView {
+    func radiusAndShadow(radius: Double, color: UIColor = .black, opacity: Float = 0.2, shadowSize: CGFloat = 15) {
+        roundCorners(radius: radius)
+        shadow(color: color, opacity: opacity, radius: shadowSize)
+    }
     func shadow(color: UIColor, opacity: Float, radius: CGFloat) {
         layer.shadowColor = color.cgColor
         layer.shadowOpacity = opacity

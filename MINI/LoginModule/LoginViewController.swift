@@ -63,9 +63,8 @@ private extension LoginViewController {
         }
     }
     func createLoginView() {
-        loginView.roundCorners(radius: 30)
         loginView.backgroundColor = .white
-        loginView.shadow(color: .black, opacity: 0.2, radius: 15)
+        loginView.radiusAndShadow(radius: 30)
         view.insertSubview(loginView, at: 1)
         loginView.snp.makeConstraints { make in
             make.top.equalTo(animationView.snp.bottom).inset(view.frame.height / 9)
