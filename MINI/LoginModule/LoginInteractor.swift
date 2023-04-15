@@ -8,7 +8,7 @@
 import Foundation
 
 protocol LoginInteractorProtocol: AnyObject {
-    func userWantLogin(_ email: String,_ password: String)
+    func userWantLogin(_ name: String,_ password: String)
     func userWantBiometry()
 }
 
@@ -18,8 +18,8 @@ final class LoginInteractor: LoginInteractorProtocol {
     var entity: LoginEntity?
     var biometryService: BiometryServiceProtocol?
     
-    func userWantLogin(_ email: String,_ password: String) {
-        if email == "123" && password == "123" {
+    func userWantLogin(_ name: String,_ password: String) {
+        if name == "123" && password == "123" {
             presenter?.loginIsCorrect()
         } else {
             presenter?.loginIsNotCorrect()

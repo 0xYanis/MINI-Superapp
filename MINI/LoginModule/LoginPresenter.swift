@@ -8,7 +8,7 @@
 import Foundation
 
 protocol LoginPresenterProtocol: AnyObject {
-    func userDidTapLogin(email: String, password: String)
+    func userDidTapLogin(name: String, password: String)
     func userDidTapBiometry()
     func loginIsCorrect()
     func loginIsNotCorrect()
@@ -27,8 +27,8 @@ final class LoginPresenter {
 }
 
 extension LoginPresenter: LoginPresenterProtocol {
-    func userDidTapLogin(email: String, password: String) {
-        interactor.userWantLogin(email, password)
+    func userDidTapLogin(name: String, password: String) {
+        interactor.userWantLogin(name, password)
     }
     func userDidTapBiometry() {
         interactor.userWantBiometry()
