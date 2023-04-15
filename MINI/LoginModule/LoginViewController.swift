@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 protocol LoginViewProtocol: AnyObject {
-    func showAlert(message: String)
+    func showAlert(_ title: String, message: String)
 }
 
 final class LoginViewController: UIViewController {
@@ -27,13 +27,9 @@ final class LoginViewController: UIViewController {
 }
 
 extension LoginViewController: LoginViewProtocol {
-    func showAlert(message: String) {
-        let alertController = UIAlertController(
-            title: "Error", message: message, preferredStyle: .alert
-        )
-        let cancelAction = UIAlertAction(title: "Закрыть", style: .cancel)
-        alertController.addAction(cancelAction)
-        present(alertController, animated: true, completion: nil)
+    func showAlert(_ title: String, message: String) {
+        let alert = UIAlertController()
+        alert.showAlert(title: title, message: message, from: self)
     }
 }
 
