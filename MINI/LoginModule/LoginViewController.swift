@@ -69,6 +69,7 @@ private extension LoginViewController {
             make.height.equalTo(view.frame.height / 3)
         }
         loginView.loginButt.addTarget(self, action: #selector(userDidTapLogin), for: .touchUpInside)
+        loginView.passField.delegate = self
         resizeLoginView()
     }
     func resizeLoginView() {
@@ -83,16 +84,28 @@ private extension LoginViewController {
         }
     }
     
-    //MARK: functionality methods
+    //MARK: - functionality methods
     @objc func goToWebsiteAction() {
         if let url = URL(string: "https://github.com/0xYanis") {
             UIApplication.shared.open(url)
         }
     }
     @objc func userDidTapLogin() {
-        onLoginTap(loginView.nameField.text ?? "", loginView.passField.text ?? "")
+        var name = loginView.nameField.text ?? ""
+        var pass = loginView.passField.text ?? ""
+        presenter?.userDidTapLogin(name: name, password: pass)
     }
-    func onLoginTap(_ name: String,_ password: String) {
-        presenter?.userDidTapLogin(name: name, password: password)
+}
+
+//MARK: - protocol UITextFieldDelegate
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case loginView.nameField:
+            loginView.passField.becomeFirstResponder()
+        default:
+            loginView.passField.resignFirstResponder()
+        }
+        return true
     }
 }
