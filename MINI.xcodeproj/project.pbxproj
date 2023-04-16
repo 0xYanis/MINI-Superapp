@@ -15,9 +15,9 @@
 		0921F35F29DF1FE000B3D4F7 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0921F35E29DF1FE000B3D4F7 /* UIButton+Extension.swift */; };
 		092E739429EBEB1F00165D37 /* LoginAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E739329EBEB1E00165D37 /* LoginAnimationView.swift */; };
 		092E739629EBEB3000165D37 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E739529EBEB3000165D37 /* LoginView.swift */; };
-		092E739829EBF07000165D37 /* hello.json in Resources */ = {isa = PBXBuildFile; fileRef = 092E739729EBF07000165D37 /* hello.json */; };
 		092E739A29EBFB8800165D37 /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E739929EBFB8800165D37 /* UIStackView+Extension.swift */; };
 		092E739C29EBFD9100165D37 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E739B29EBFD9100165D37 /* UITextField+Extension.swift */; };
+		09581B0E29EC769F000CC093 /* hello.json in Resources */ = {isa = PBXBuildFile; fileRef = 09581B0D29EC769F000CC093 /* hello.json */; };
 		097E039B29EC447000CE2A6F /* BankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097E039A29EC447000CE2A6F /* BankViewController.swift */; };
 		097E039D29EC448F00CE2A6F /* BankPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097E039C29EC448F00CE2A6F /* BankPresenter.swift */; };
 		097E039F29EC449900CE2A6F /* BankInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097E039E29EC449900CE2A6F /* BankInteractor.swift */; };
@@ -46,9 +46,9 @@
 		0921F35E29DF1FE000B3D4F7 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		092E739329EBEB1E00165D37 /* LoginAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAnimationView.swift; sourceTree = "<group>"; };
 		092E739529EBEB3000165D37 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		092E739729EBF07000165D37 /* hello.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = hello.json; path = ../../../../../Downloads/hello.json; sourceTree = "<group>"; };
 		092E739929EBFB8800165D37 /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
 		092E739B29EBFD9100165D37 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		09581B0D29EC769F000CC093 /* hello.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = hello.json; sourceTree = "<group>"; };
 		097E039A29EC447000CE2A6F /* BankViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankViewController.swift; sourceTree = "<group>"; };
 		097E039C29EC448F00CE2A6F /* BankPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankPresenter.swift; sourceTree = "<group>"; };
 		097E039E29EC449900CE2A6F /* BankInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankInteractor.swift; sourceTree = "<group>"; };
@@ -156,6 +156,7 @@
 		09E9E81529EAE8F50084416B /* LoginModule */ = {
 			isa = PBXGroup;
 			children = (
+				09581B0D29EC769F000CC093 /* hello.json */,
 				092E739329EBEB1E00165D37 /* LoginAnimationView.swift */,
 				092E739529EBEB3000165D37 /* LoginView.swift */,
 				09E9E81829EAE9410084416B /* LoginViewController.swift */,
@@ -164,7 +165,6 @@
 				09E9E81E29EAE95D0084416B /* LoginRouter.swift */,
 				09E9E82029EAE9650084416B /* LoginEntity.swift */,
 				09E9E81629EAE9360084416B /* LoginBuilder.swift */,
-				092E739729EBF07000165D37 /* hello.json */,
 			);
 			path = LoginModule;
 			sourceTree = "<group>";
@@ -245,8 +245,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09581B0E29EC769F000CC093 /* hello.json in Resources */,
 				0910960729DB32F400338D22 /* Assets.xcassets in Resources */,
-				092E739829EBF07000165D37 /* hello.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
