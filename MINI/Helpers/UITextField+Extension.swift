@@ -7,8 +7,12 @@
 
 import UIKit
 
-//extension UITextField {
-//    convenience init(label: String, lineColor: UIColor, cornerRadius: CGFloat = 10, height: CGFloat, width: CGFloat) {
-//
-//    }
-//}
+extension UITextField {
+    convenience init(label: String, borderColor: UIColor = .systemCyan, cornerRadius: Double = 10, fontSize: CGFloat = 18, height: CGFloat, width: CGFloat) {
+        self.init(frame: .zero)
+        self.roundCorners(radius: cornerRadius)
+        self.backgroundColor = .white
+        self.layer.borderColor = borderColor.cgColor
+        self.font = .systemFont(ofSize: fontSize)
+    }
+}
