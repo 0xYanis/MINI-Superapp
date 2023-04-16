@@ -36,7 +36,7 @@ extension LoginViewController: LoginViewProtocol {
 //MARK: - Private methods
 private extension LoginViewController {
     func initialize() {
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(named: "backColor")
         createNavBarButtons()
         createAnimationView()
         createLoginView()
@@ -51,7 +51,7 @@ private extension LoginViewController {
         navigationItem.leftBarButtonItem = barButton
     }
     func createAnimationView() {
-        animationView.backgroundColor = .systemCyan
+        animationView.backgroundColor = UIColor(named: "frontColor")
         view.insertSubview(animationView, at: 0)
         animationView.snp.makeConstraints { make in
             make.top.left.right.equalToSuperview()
@@ -63,7 +63,7 @@ private extension LoginViewController {
         loginView.radiusAndShadow(radius: 30)
         view.insertSubview(loginView, at: 1)
         loginView.snp.makeConstraints { make in
-            make.top.equalTo(animationView.snp.bottom).inset(view.frame.height / 9)
+            make.top.equalTo(animationView.snp.bottom).inset(view.frame.height / 15)
             make.centerX.equalToSuperview()
             make.left.right.equalToSuperview().inset(20)
             make.height.equalTo(view.frame.height / 3)
