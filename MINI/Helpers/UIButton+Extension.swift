@@ -9,16 +9,12 @@ import UIKit
 import SnapKit
 
 extension UIButton {
-    convenience init(label: String, color: UIColor, cornerRadius: CGFloat = 10, height: CGFloat, width: CGFloat) {
+    convenience init(label: String, color: UIColor, cornerRadius: CGFloat = 10) {
         self.init(frame: .zero)
         self.setTitle(label, for: .normal)
         self.backgroundColor = color
         self.tintColor = .white
         self.layer.cornerRadius = cornerRadius
-        self.snp.makeConstraints { make in
-            make.height.equalTo(height)
-            make.width.equalTo(width)
-        }
     }
     func addPulseAnimation() {
         addTarget(self, action: #selector(pulseButton), for: .touchUpInside)

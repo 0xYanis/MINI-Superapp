@@ -16,6 +16,7 @@ final class LoginRouter: LoginRouterProtocol {
     
     func userDidLogin() {
         let nextView = UIViewController()
-        view?.navigationController?.pushViewController(nextView, animated: true)
+        nextView.view.backgroundColor = .white
+        self.view?.navigationController?.pushViewController(nextView, animated: true)
     }
 }

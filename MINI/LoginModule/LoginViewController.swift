@@ -67,7 +67,20 @@ private extension LoginViewController {
             make.top.equalTo(animationView.snp.bottom).inset(view.frame.height / 9)
             make.centerX.equalToSuperview()
             make.left.right.equalToSuperview().inset(20)
-            make.height.equalTo(view.frame.height / 2.2)
+            make.height.equalTo(view.frame.height / 3)
+        }
+        loginView.loginButt.addTarget(self, action: #selector(userDidTapLogin), for: .touchUpInside)
+        resizeLoginView()
+    }
+    func resizeLoginView() {
+        loginView.nameField.snp.makeConstraints { make in
+            make.height.equalTo(view.frame.height / 17)
+        }
+        loginView.passField.snp.makeConstraints { make in
+            make.height.equalTo(view.frame.height / 17)
+        }
+        loginView.loginButt.snp.makeConstraints { make in
+            make.height.equalTo(view.frame.height / 17)
         }
     }
     
@@ -77,17 +90,10 @@ private extension LoginViewController {
             UIApplication.shared.open(url)
         }
     }
-    func textFieldPressed() {
-        isLoginViewExpanded.toggle()
-        resizeLoginView(isExpanded: isLoginViewExpanded)
+    @objc func userDidTapLogin() {
+        onLoginTap(loginView.nameField.text ?? "", loginView.passField.text ?? "")
     }
-    func resizeLoginView(isExpanded: Bool) {
-        let newHeight: CGFloat = isExpanded ? view.frame.height / 2.2 : view.frame.height / 3
-        UIView.animate(withDuration: 0.3) {
-            self.loginView.snp.updateConstraints { make in
-                make.height.equalTo(newHeight)
-            }
-            self.view.layoutIfNeeded()
-        }
+    func onLoginTap(_ name: String,_ password: String) {
+        presenter?.userDidTapLogin(name: name, password: password)
     }
 }

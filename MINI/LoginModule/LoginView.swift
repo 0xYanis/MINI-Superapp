@@ -10,10 +10,10 @@ import SnapKit
 
 class LoginView: UIView {
     
-    private let helloLabel = UILabel(text: "Hello, Yanis!", font: .boldSystemFont(ofSize: 30), color: .black)
-    private let nameField = UITextField()
-    private let passField = UITextField()
-    private let loginButt = UIButton(label: "Login", color: .systemCyan, height: 50, width: 100)
+    private let helloLabel = UILabel(text: "Hello, Yanis!", font: .boldSystemFont(ofSize: 26), color: .black)
+    let nameField = UITextField()
+    let passField = UITextField()
+    let loginButt = UIButton(label: "Login!", color: .systemCyan)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -45,7 +45,6 @@ private extension LoginView {
         nameField.snp.makeConstraints { make in
             make.top.equalTo(helloLabel.snp.bottom).offset(15)
             make.left.right.equalToSuperview().inset(20)
-            make.height.equalTo(50)
         }
     }
     func createPassField() {
@@ -54,14 +53,13 @@ private extension LoginView {
         passField.snp.makeConstraints { make in
             make.top.equalTo(nameField.snp.bottom).offset(15)
             make.left.right.equalToSuperview().inset(20)
-            make.height.equalTo(50)
         }
     }
     func createLoginButton() {
         addSubview(loginButt)
         loginButt.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().inset(20)
+            make.top.equalTo(passField.snp.bottom).offset(15)
+            make.left.right.equalToSuperview().inset(20)
         }
         loginButt.addPulseAnimation()
     }
