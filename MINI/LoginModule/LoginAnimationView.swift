@@ -11,7 +11,7 @@ import Lottie
 
 class LoginAnimationView: UIView {
     
-    private var animationView = LottieAnimationView(name: "hello")
+    let animationView = LottieAnimationView(name: "hello")
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -44,7 +44,6 @@ private extension LoginAnimationView {
         addSubview(animationView)
         animationView.snp.makeConstraints { make in
             make.center.equalToSuperview()
-            make.height.equalToSuperview()
         }
     }
 }

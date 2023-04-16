@@ -72,9 +72,12 @@ private extension LoginViewController {
         loginView.loginButt.addTarget(self, action: #selector(userDidTapLogin), for: .touchUpInside)
         loginView.nameField.delegate = self
         loginView.passField.delegate = self
-        resizeLoginView()
+        resizeViews()
     }
-    func resizeLoginView() {
+    func resizeViews() {
+        animationView.animationView.snp.makeConstraints { make in
+            make.height.equalTo(view.frame.height / 4)
+        }
         loginView.nameField.snp.makeConstraints { make in
             make.height.equalTo(view.frame.height / 17)
         }
