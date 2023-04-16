@@ -15,8 +15,7 @@ final class LoginRouter: LoginRouterProtocol {
     weak var view: LoginViewController?
     
     func userDidLogin() {
-        let nextView = UIViewController()
-        nextView.view.backgroundColor = .white
+        let nextView = BankBuilder.build()
         self.view?.navigationController?.pushViewController(nextView, animated: true)
     }
 }
