@@ -70,6 +70,7 @@ private extension LoginViewController {
         }
         loginView.faceIDButton.addTarget(self, action: #selector(userDidTapFaceID), for: .touchUpInside)
         loginView.loginButt.addTarget(self, action: #selector(userDidTapLogin), for: .touchUpInside)
+        loginView.nameField.delegate = self
         loginView.passField.delegate = self
         resizeLoginView()
     }
