@@ -9,14 +9,11 @@ import UIKit
 import SnapKit
 
 extension UITextField {
-    convenience init(label: String, borderColor: UIColor = .systemCyan, cornerRadius: Double = 10, fontSize: CGFloat = 18, height: CGFloat = 60) {
+    convenience init(label: String, borderColor: UIColor = .systemCyan, cornerRadius: Double = 10, fontSize: CGFloat = 18) {
         self.init(frame: .zero)
         self.roundCorners(radius: cornerRadius)
-        self.backgroundColor = .white
+        self.backgroundColor = .red
         self.layer.borderColor = borderColor.cgColor
         self.font = .systemFont(ofSize: fontSize)
-        self.snp.makeConstraints { make in
-            make.height.equalTo(height)
-        }
     }
 }
