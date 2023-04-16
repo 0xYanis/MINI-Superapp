@@ -16,7 +16,7 @@ final class LoginInteractor: LoginInteractorProtocol {
 
     weak var presenter: LoginPresenterProtocol?
     var entity: LoginEntity?
-    var biometryService = BiometryService()
+    var biometryService: BiometryServiceProtocol?
     
     func userWantLogin(_ name: String,_ password: String) {
         if name == "123" && password == "123" {
@@ -26,7 +26,7 @@ final class LoginInteractor: LoginInteractorProtocol {
         }
     }
     func userWantBiometry() {
-        biometryService.authWithFaceID(completion: { [weak self] result, _ in
+        biometryService?.authWithFaceID(completion: { [weak self] result, _ in
             if result {
                 self?.presenter?.loginIsCorrect()
             }
