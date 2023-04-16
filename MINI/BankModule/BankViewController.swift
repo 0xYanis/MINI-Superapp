@@ -8,7 +8,8 @@
 import UIKit
 
 protocol BankViewProtocol: AnyObject {
-    
+    func updateCards()
+    func updateHistory()
 }
 
 final class BankViewController: UIViewController {
@@ -22,7 +23,13 @@ final class BankViewController: UIViewController {
 }
 
 extension BankViewController: BankViewProtocol {
+    func updateCards() {
+        
+    }
     
+    func updateHistory() {
+        
+    }
 }
 
 private extension BankViewController {

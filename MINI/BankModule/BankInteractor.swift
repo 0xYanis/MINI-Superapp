@@ -8,9 +8,14 @@
 import Foundation
 
 protocol BankInteractorProtocol: AnyObject {
-    
+    func viewDidLoaded()
 }
 
 final class BankInteractor: BankInteractorProtocol {
+    
     weak var presenter: BankPresenterProtocol?
+    
+    func viewDidLoaded() {
+        
+    }
 }

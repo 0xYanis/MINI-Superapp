@@ -8,7 +8,11 @@
 import Foundation
 
 protocol BankPresenterProtocol: AnyObject {
-    
+    func viewDidLoaded()
+    func userDidTapCard(id: Int)
+    func userDidTapTransaction(id: Int)
+    func setNewCard()
+    func setNewTransaction()
 }
 
 final class BankPresenter {
@@ -21,9 +25,26 @@ final class BankPresenter {
         self.router = router
         self.interactor = interactor
     }
-    
 }
 
 extension BankPresenter: BankPresenterProtocol {
+    func viewDidLoaded() {
+        interactor.viewDidLoaded()
+    }
     
+    func userDidTapCard(id: Int) {
+        router.goToDetailCard(id: id)
+    }
+    
+    func userDidTapTransaction(id: Int) {
+        router.goToDetailTransaction(id: id)
+    }
+    
+    func setNewCard() {
+        view?.updateCards()
+    }
+    
+    func setNewTransaction() {
+        view?.updateHistory()
+    }
 }
