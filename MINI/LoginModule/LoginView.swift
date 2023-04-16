@@ -27,7 +27,10 @@ class LoginView: UIView {
 
 private extension LoginView {
     func initialize() {
-        
+        createHelloLabel()
+        createNameField()
+        createPassField()
+        createLoginButton()
     }
     func createHelloLabel() {
         
