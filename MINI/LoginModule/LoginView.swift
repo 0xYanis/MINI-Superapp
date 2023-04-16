@@ -50,6 +50,7 @@ private extension LoginView {
     }
     func createNameField() {
         addSubview(nameField)
+        nameField.keyboardType = .emailAddress
         nameField.setCustomAppearance(withBorderColor: .systemCyan, cornerRadius: 15, padding: 10)
         nameField.placeholder = "Введите Имя"
         nameField.snp.makeConstraints { make in
@@ -59,6 +60,7 @@ private extension LoginView {
     }
     func createPassField() {
         addSubview(passField)
+        passField.isSecureTextEntry = true
         passField.setCustomAppearance(withBorderColor: .systemCyan, cornerRadius: 15, padding: 10)
         passField.placeholder = "Введите Пароль"
         passField.snp.makeConstraints { make in
