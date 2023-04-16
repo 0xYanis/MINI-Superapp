@@ -15,6 +15,7 @@
 		0921F35F29DF1FE000B3D4F7 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0921F35E29DF1FE000B3D4F7 /* UIButton+Extension.swift */; };
 		092E739429EBEB1F00165D37 /* LoginAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E739329EBEB1E00165D37 /* LoginAnimationView.swift */; };
 		092E739629EBEB3000165D37 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E739529EBEB3000165D37 /* LoginView.swift */; };
+		092E739829EBF07000165D37 /* hello.json in Resources */ = {isa = PBXBuildFile; fileRef = 092E739729EBF07000165D37 /* hello.json */; };
 		09E9E81229EAE6030084416B /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E9E81129EAE6030084416B /* UILabel+Extension.swift */; };
 		09E9E81729EAE9360084416B /* LoginBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E9E81629EAE9360084416B /* LoginBuilder.swift */; };
 		09E9E81929EAE9410084416B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E9E81829EAE9410084416B /* LoginViewController.swift */; };
@@ -38,6 +39,7 @@
 		0921F35E29DF1FE000B3D4F7 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		092E739329EBEB1E00165D37 /* LoginAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAnimationView.swift; sourceTree = "<group>"; };
 		092E739529EBEB3000165D37 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		092E739729EBF07000165D37 /* hello.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = hello.json; path = ../../../../../Downloads/hello.json; sourceTree = "<group>"; };
 		09E9E81129EAE6030084416B /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		09E9E81629EAE9360084416B /* LoginBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBuilder.swift; sourceTree = "<group>"; };
 		09E9E81829EAE9410084416B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				09E9E81E29EAE95D0084416B /* LoginRouter.swift */,
 				09E9E82029EAE9650084416B /* LoginEntity.swift */,
 				09E9E81629EAE9360084416B /* LoginBuilder.swift */,
+				092E739729EBF07000165D37 /* hello.json */,
 			);
 			path = LoginModule;
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0910960729DB32F400338D22 /* Assets.xcassets in Resources */,
+				092E739829EBF07000165D37 /* hello.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
