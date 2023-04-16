@@ -13,7 +13,6 @@ protocol LoginViewProtocol: AnyObject {
 }
 
 final class LoginViewController: UIViewController {
-    
     var presenter: LoginPresenterProtocol?
     
     override func viewDidLoad() {
@@ -21,11 +20,13 @@ final class LoginViewController: UIViewController {
         initialize()
     }
     
+    //MARK: private properties
     private let animationView = LoginAnimationView()
     private let loginView = LoginView()
     private var isLoginViewExpanded = true
 }
 
+//MARK: - LoginViewProtocol
 extension LoginViewController: LoginViewProtocol {
     func showAlert(_ title: String, message: String) {
         let alert = UIAlertController()
@@ -33,6 +34,7 @@ extension LoginViewController: LoginViewProtocol {
     }
 }
 
+//MARK: - Private methods
 private extension LoginViewController {
     func initialize() {
         view.backgroundColor = .white
@@ -73,6 +75,8 @@ private extension LoginViewController {
             make.height.equalTo(view.frame.height / 2.2)
         }
     }
+    
+    //MARK: functionality methods
     func textFieldPressed() {
         isLoginViewExpanded.toggle()
         resizeLoginView(isExpanded: isLoginViewExpanded)
