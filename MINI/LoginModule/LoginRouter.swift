@@ -16,6 +16,9 @@ final class LoginRouter: LoginRouterProtocol {
     
     func userDidLogin() {
         let nextView = BankBuilder.build()
-        self.view?.navigationController?.pushViewController(nextView, animated: true)
+        var controllers = view?.navigationController?.viewControllers
+        controllers?.removeLast()
+        controllers?.append(nextView)
+        view?.navigationController?.setViewControllers(controllers ?? [], animated: true)
     }
 }
