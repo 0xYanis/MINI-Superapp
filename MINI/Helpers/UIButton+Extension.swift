@@ -9,8 +9,9 @@ import UIKit
 import SnapKit
 
 extension UIButton {
-    convenience init(color: UIColor, cornerRadius: CGFloat, height: CGFloat, width: CGFloat) {
+    convenience init(label: String, color: UIColor, cornerRadius: CGFloat = 10, height: CGFloat, width: CGFloat) {
         self.init(frame: .zero)
+        self.setTitle(label, for: .normal)
         self.backgroundColor = color
         self.tintColor = .white
         self.layer.cornerRadius = cornerRadius

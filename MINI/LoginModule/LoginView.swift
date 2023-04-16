@@ -11,11 +11,9 @@ import SnapKit
 class LoginView: UIView {
     
     private let helloLabel = UILabel(text: "Hello!", font: .boldSystemFont(ofSize: 20), color: .black)
-    private let nameLabel = UILabel(text: "Name", font: .systemFont(ofSize: 16), color: .black)
-    private let passLabel = UILabel(text: "Password", font: .systemFont(ofSize: 16), color: .black)
     private let nameField = UITextField()
     private let passField = UITextField()
-    private let loginButt = UIButton()
+    private let loginButt = UIButton(label: "Login", color: .systemCyan, height: 30, width: 90)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,6 +27,18 @@ class LoginView: UIView {
 
 private extension LoginView {
     func initialize() {
+        
+    }
+    func createHelloLabel() {
+        
+    }
+    func createNameField() {
+        
+    }
+    func createPassField() {
+        
+    }
+    func createLoginButton() {
         
     }
 }

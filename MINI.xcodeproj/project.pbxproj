@@ -16,6 +16,7 @@
 		092E739429EBEB1F00165D37 /* LoginAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E739329EBEB1E00165D37 /* LoginAnimationView.swift */; };
 		092E739629EBEB3000165D37 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E739529EBEB3000165D37 /* LoginView.swift */; };
 		092E739829EBF07000165D37 /* hello.json in Resources */ = {isa = PBXBuildFile; fileRef = 092E739729EBF07000165D37 /* hello.json */; };
+		092E739A29EBFB8800165D37 /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E739929EBFB8800165D37 /* UIStackView+Extension.swift */; };
 		09E9E81229EAE6030084416B /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E9E81129EAE6030084416B /* UILabel+Extension.swift */; };
 		09E9E81729EAE9360084416B /* LoginBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E9E81629EAE9360084416B /* LoginBuilder.swift */; };
 		09E9E81929EAE9410084416B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E9E81829EAE9410084416B /* LoginViewController.swift */; };
@@ -40,6 +41,7 @@
 		092E739329EBEB1E00165D37 /* LoginAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAnimationView.swift; sourceTree = "<group>"; };
 		092E739529EBEB3000165D37 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		092E739729EBF07000165D37 /* hello.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = hello.json; path = ../../../../../Downloads/hello.json; sourceTree = "<group>"; };
+		092E739929EBFB8800165D37 /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
 		09E9E81129EAE6030084416B /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		09E9E81629EAE9360084416B /* LoginBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBuilder.swift; sourceTree = "<group>"; };
 		09E9E81829EAE9410084416B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				09E9E81129EAE6030084416B /* UILabel+Extension.swift */,
 				09E9E82229EAFC770084416B /* UIView+Extension.swift */,
 				09E9E82F29EB24840084416B /* UIAlertController+Extension.swift */,
+				092E739929EBFB8800165D37 /* UIStackView+Extension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 				09E9E82329EAFC770084416B /* UIView+Extension.swift in Sources */,
 				09E9E82129EAE9650084416B /* LoginEntity.swift in Sources */,
 				09E9E81929EAE9410084416B /* LoginViewController.swift in Sources */,
+				092E739A29EBFB8800165D37 /* UIStackView+Extension.swift in Sources */,
 				09E9E81229EAE6030084416B /* UILabel+Extension.swift in Sources */,
 				09E9E83029EB24840084416B /* UIAlertController+Extension.swift in Sources */,
 				092E739429EBEB1F00165D37 /* LoginAnimationView.swift in Sources */,
