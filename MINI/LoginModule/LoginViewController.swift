@@ -23,7 +23,6 @@ final class LoginViewController: UIViewController {
     //MARK: private properties
     private let animationView = LoginAnimationView()
     private let loginView = LoginView()
-    private var isLoginViewExpanded = true
 }
 
 //MARK: - LoginViewProtocol
