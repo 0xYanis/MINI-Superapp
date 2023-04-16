@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import UIKit
+
 protocol LoginRouterProtocol: AnyObject {
     func userDidLogin()
 }
