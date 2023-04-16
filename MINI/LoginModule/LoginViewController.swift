@@ -47,14 +47,9 @@ private extension LoginViewController {
         let button = UIButton(type: .system)
         button.tintColor = .white
         button.setImage(image, for: .normal)
-        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        button.addTarget(self, action: #selector(goToWebsiteAction), for: .touchUpInside)
         let barButton = UIBarButtonItem(customView: button)
         navigationItem.leftBarButtonItem = barButton
-    }
-    @objc func buttonAction() {
-        if let url = URL(string: "https://github.com/0xYanis") {
-            UIApplication.shared.open(url)
-        }
     }
     func createAnimationView() {
         animationView.backgroundColor = .systemCyan
@@ -77,6 +72,11 @@ private extension LoginViewController {
     }
     
     //MARK: functionality methods
+    @objc func goToWebsiteAction() {
+        if let url = URL(string: "https://github.com/0xYanis") {
+            UIApplication.shared.open(url)
+        }
+    }
     func textFieldPressed() {
         isLoginViewExpanded.toggle()
         resizeLoginView(isExpanded: isLoginViewExpanded)
