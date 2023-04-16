@@ -21,8 +21,8 @@ final class LoginViewController: UIViewController {
         initialize()
     }
     
-    private let animationView = UIView()
-    private let loginView = UIView()
+    private let animationView = LoginAnimationView()
+    private let loginView = LoginView()
     private var isLoginViewExpanded = true
 }
 
