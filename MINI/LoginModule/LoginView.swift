@@ -11,6 +11,7 @@ import SnapKit
 class LoginView: UIView {
     
     private let helloLabel = UILabel(text: "Hello, Yanis!", font: .boldSystemFont(ofSize: 26), color: .black)
+    let faceIDButton = UIButton(systemImage: "faceid", color: .black, size: 26)
     let nameField = UITextField()
     let passField = UITextField()
     let loginButt = UIButton(label: "Login!", color: .systemCyan)
@@ -29,6 +30,7 @@ class LoginView: UIView {
 private extension LoginView {
     func initialize() {
         createHelloLabel()
+        createFaceIDButton()
         createNameField()
         createPassField()
         createLoginButton()
@@ -37,6 +39,13 @@ private extension LoginView {
         addSubview(helloLabel)
         helloLabel.snp.makeConstraints { make in
             make.top.left.equalToSuperview().inset(20)
+        }
+    }
+    func createFaceIDButton() {
+        addSubview(faceIDButton)
+        faceIDButton.addPulseAnimation()
+        faceIDButton.snp.makeConstraints { make in
+            make.top.right.equalToSuperview().inset(20)
         }
     }
     func createNameField() {

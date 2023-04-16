@@ -16,6 +16,14 @@ extension UIButton {
         self.tintColor = .white
         self.layer.cornerRadius = cornerRadius
     }
+    convenience init(systemImage: String, color: UIColor, size: CGFloat) {
+        self.init(frame: .zero)
+        let image = UIImage(systemName: systemImage)
+        self.setImage(image, for: .normal)
+        self.tintColor = color
+        let scale = size / (image?.size.width ?? 1)
+        self.transform = CGAffineTransform(scaleX: scale, y: scale)
+    }
     func addPulseAnimation() {
         addTarget(self, action: #selector(pulseButton), for: .touchUpInside)
     }
