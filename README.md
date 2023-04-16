@@ -1,1 +1,1 @@
-# MINI-VIPER-LoginPage
+# MINI-VIPER-SuperApp
