@@ -68,6 +68,7 @@ private extension LoginViewController {
             make.left.right.equalToSuperview().inset(20)
             make.height.equalTo(view.frame.height / 3)
         }
+        loginView.faceIDButton.addTarget(self, action: #selector(userDidTapFaceID), for: .touchUpInside)
         loginView.loginButt.addTarget(self, action: #selector(userDidTapLogin), for: .touchUpInside)
         loginView.passField.delegate = self
         resizeLoginView()
@@ -89,6 +90,9 @@ private extension LoginViewController {
         if let url = URL(string: "https://github.com/0xYanis") {
             UIApplication.shared.open(url)
         }
+    }
+    @objc func userDidTapFaceID() {
+        presenter?.userDidTapBiometry()
     }
     @objc func userDidTapLogin() {
         var name = loginView.nameField.text ?? ""
