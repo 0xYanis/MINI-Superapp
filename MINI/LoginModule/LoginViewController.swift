@@ -95,8 +95,8 @@ private extension LoginViewController {
         presenter?.userDidTapBiometry()
     }
     @objc func userDidTapLogin() {
-        var name = loginView.nameField.text ?? ""
-        var pass = loginView.passField.text ?? ""
+        let name = loginView.nameField.text ?? ""
+        let pass = loginView.passField.text ?? ""
         presenter?.userDidTapLogin(name: name, password: pass)
     }
 }
