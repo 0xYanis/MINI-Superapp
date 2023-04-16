@@ -9,11 +9,15 @@ import UIKit
 import SnapKit
 
 extension UITextField {
-    convenience init(label: String, borderColor: UIColor = .systemCyan, cornerRadius: Double = 10, fontSize: CGFloat = 18) {
-        self.init(frame: .zero)
-        self.roundCorners(radius: cornerRadius)
-        self.backgroundColor = .red
-        self.layer.borderColor = borderColor.cgColor
-        self.font = .systemFont(ofSize: fontSize)
+    func setCustomAppearance(withBorderColor borderColor: UIColor, cornerRadius: CGFloat, padding: CGFloat) {
+        layer.cornerRadius = cornerRadius
+        layer.borderWidth = 1
+        layer.borderColor = borderColor.cgColor
+        let leftPaddingView = UIView(frame: CGRect(x: 0, y: 0, width: padding, height: frame.height))
+        let rightPaddingView = UIView(frame: CGRect(x: frame.width - padding, y: 0, width: padding, height: frame.height))
+        leftView = leftPaddingView
+        leftViewMode = .always
+        rightView = rightPaddingView
+        rightViewMode = .always
     }
 }

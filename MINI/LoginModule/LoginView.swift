@@ -41,7 +41,8 @@ private extension LoginView {
     }
     func createNameField() {
         addSubview(nameField)
-        nameField.backgroundColor = .red
+        nameField.setCustomAppearance(withBorderColor: .systemCyan, cornerRadius: 15, padding: 10)
+        nameField.placeholder = "Введите Имя"
         nameField.snp.makeConstraints { make in
             make.top.equalTo(helloLabel.snp.bottom).offset(15)
             make.left.right.equalToSuperview().inset(20)
@@ -49,7 +50,8 @@ private extension LoginView {
     }
     func createPassField() {
         addSubview(passField)
-        passField.backgroundColor = .green
+        passField.setCustomAppearance(withBorderColor: .systemCyan, cornerRadius: 15, padding: 10)
+        passField.placeholder = "Введите Пароль"
         passField.snp.makeConstraints { make in
             make.top.equalTo(nameField.snp.bottom).offset(15)
             make.left.right.equalToSuperview().inset(20)

@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 extension UIButton {
-    convenience init(label: String, color: UIColor, cornerRadius: CGFloat = 10) {
+    convenience init(label: String, color: UIColor, cornerRadius: CGFloat = 15) {
         self.init(frame: .zero)
         self.setTitle(label, for: .normal)
         self.backgroundColor = color
