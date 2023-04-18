@@ -18,7 +18,8 @@ class BankHistoryTableViewController: UITableViewController {
 
 private extension BankHistoryTableViewController {
     func intialize() {
-        //tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellId1")
+        tableView.register(BankTransactionCell.self,
+                           forCellReuseIdentifier: BankTransactionCell.cellId)
     }
     
 }
@@ -34,7 +35,7 @@ extension BankHistoryTableViewController {
             cell.backgroundColor = .red
             return cell
         } else {
-            let cell = UITableViewCell()
+            let cell = tableView.dequeueReusableCell(withIdentifier: BankTransactionCell.cellId, for: indexPath) as! BankTransactionCell
             cell.backgroundColor = .red
             return cell
         }
