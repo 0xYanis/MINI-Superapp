@@ -18,7 +18,8 @@
 		092E739A29EBFB8800165D37 /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E739929EBFB8800165D37 /* UIStackView+Extension.swift */; };
 		092E739C29EBFD9100165D37 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E739B29EBFD9100165D37 /* UITextField+Extension.swift */; };
 		09581B0E29EC769F000CC093 /* hello.json in Resources */ = {isa = PBXBuildFile; fileRef = 09581B0D29EC769F000CC093 /* hello.json */; };
-		09581B1429EC9E15000CC093 /* BankTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09581B1329EC9E15000CC093 /* BankTableView.swift */; };
+		09632FCC29ED8A7D00DB2641 /* BankCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09632FCB29ED8A7D00DB2641 /* BankCardCell.swift */; };
+		09632FCE29ED8A8800DB2641 /* BankTemplateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09632FCD29ED8A8800DB2641 /* BankTemplateCell.swift */; };
 		097E039B29EC447000CE2A6F /* BankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097E039A29EC447000CE2A6F /* BankViewController.swift */; };
 		097E039D29EC448F00CE2A6F /* BankPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097E039C29EC448F00CE2A6F /* BankPresenter.swift */; };
 		097E039F29EC449900CE2A6F /* BankInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097E039E29EC449900CE2A6F /* BankInteractor.swift */; };
@@ -50,7 +51,8 @@
 		092E739929EBFB8800165D37 /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
 		092E739B29EBFD9100165D37 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		09581B0D29EC769F000CC093 /* hello.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = hello.json; sourceTree = "<group>"; };
-		09581B1329EC9E15000CC093 /* BankTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTableView.swift; sourceTree = "<group>"; };
+		09632FCB29ED8A7D00DB2641 /* BankCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankCardCell.swift; sourceTree = "<group>"; };
+		09632FCD29ED8A8800DB2641 /* BankTemplateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTemplateCell.swift; sourceTree = "<group>"; };
 		097E039A29EC447000CE2A6F /* BankViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankViewController.swift; sourceTree = "<group>"; };
 		097E039C29EC448F00CE2A6F /* BankPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankPresenter.swift; sourceTree = "<group>"; };
 		097E039E29EC449900CE2A6F /* BankInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankInteractor.swift; sourceTree = "<group>"; };
@@ -146,12 +148,13 @@
 		097E039929EC444400CE2A6F /* BankModule */ = {
 			isa = PBXGroup;
 			children = (
+				09632FCB29ED8A7D00DB2641 /* BankCardCell.swift */,
+				09632FCD29ED8A8800DB2641 /* BankTemplateCell.swift */,
 				097E039A29EC447000CE2A6F /* BankViewController.swift */,
 				097E039C29EC448F00CE2A6F /* BankPresenter.swift */,
 				097E039E29EC449900CE2A6F /* BankInteractor.swift */,
 				097E03A029EC44A500CE2A6F /* BankRouter.swift */,
 				097E03A229EC44BD00CE2A6F /* BankBuilder.swift */,
-				09581B1329EC9E15000CC093 /* BankTableView.swift */,
 			);
 			path = BankModule;
 			sourceTree = "<group>";
@@ -268,12 +271,13 @@
 				09E9E82129EAE9650084416B /* LoginEntity.swift in Sources */,
 				09E9E81929EAE9410084416B /* LoginViewController.swift in Sources */,
 				097E03A329EC44BD00CE2A6F /* BankBuilder.swift in Sources */,
-				09581B1429EC9E15000CC093 /* BankTableView.swift in Sources */,
 				092E739A29EBFB8800165D37 /* UIStackView+Extension.swift in Sources */,
 				09E9E81229EAE6030084416B /* UILabel+Extension.swift in Sources */,
+				09632FCE29ED8A8800DB2641 /* BankTemplateCell.swift in Sources */,
 				09E9E83029EB24840084416B /* UIAlertController+Extension.swift in Sources */,
 				092E739429EBEB1F00165D37 /* LoginAnimationView.swift in Sources */,
 				09E9E82E29EB16E10084416B /* KeyChain.swift in Sources */,
+				09632FCC29ED8A7D00DB2641 /* BankCardCell.swift in Sources */,
 				09E9E81B29EAE94B0084416B /* LoginPresenter.swift in Sources */,
 				092E739629EBEB3000165D37 /* LoginView.swift in Sources */,
 				0921F35F29DF1FE000B3D4F7 /* UIButton+Extension.swift in Sources */,

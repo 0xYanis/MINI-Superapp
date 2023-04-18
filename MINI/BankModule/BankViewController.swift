@@ -11,6 +11,7 @@ import SnapKit
 protocol BankViewProtocol: AnyObject {
     func updateCards()
     func updateHistory()
+    func configureView()
 }
 
 final class BankViewController: UIViewController {
@@ -22,7 +23,7 @@ final class BankViewController: UIViewController {
         initialize()
     }
     
-    private let bankTableView = BankTableView()
+    private let bankCollectionView = UICollectionView()
 }
 
 extension BankViewController: BankViewProtocol {
@@ -33,23 +34,28 @@ extension BankViewController: BankViewProtocol {
     func updateHistory() {
         
     }
+    
+    func configureView() {
+        
+    }
 }
 
 private extension BankViewController {
     func initialize() {
         view.backgroundColor = UIColor(named: "backColor")
         createNavigation()
-        createBankTableView()
+        createBankCollectionView()
         createSheet()
     }
+    
     func createNavigation() {
         navigationItem.title = "Home"
         navigationController?.navigationBar.prefersLargeTitles = true
     }
-    func createBankTableView() {
-        bankTableView.backgroundColor = .systemCyan
-        view.addSubview(bankTableView)
-        bankTableView.snp.makeConstraints { make in
+    func createBankCollectionView() {
+        bankCollectionView.backgroundColor = .systemCyan
+        view.addSubview(bankCollectionView)
+        bankCollectionView.snp.makeConstraints { make in
             make.width.equalToSuperview()
             make.height.equalToSuperview().multipliedBy(0.6)
         }
