@@ -20,7 +20,6 @@ final class BankHistoryTableViewController: UITableViewController {
 //MARK: - Private methods
 private extension BankHistoryTableViewController {
     func intialize() {
-        tableView.allowsSelection = false
         tableView.separatorStyle = .none
         tableView.register(BankHistoryFirstCell.self, forCellReuseIdentifier: BankHistoryFirstCell.cellId)
         tableView.register(BankTransactionCell.self, forCellReuseIdentifier: BankTransactionCell.cellId)
@@ -29,6 +28,12 @@ private extension BankHistoryTableViewController {
 
 //MARK: - Delegate & DataSource
 extension BankHistoryTableViewController {
+    override func tableView(_ tableView: UITableView,
+                            willDisplay cell: UITableViewCell,
+                            forRowAt indexPath: IndexPath) {
+        cell.selectionStyle = .none
+    }
+    
     override func tableView(_ tableView: UITableView,
                             numberOfRowsInSection section: Int) -> Int {
         return 10
@@ -57,7 +62,7 @@ extension BankHistoryTableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.row {
         case 0:
-            return 65
+            return 55
         default:
             return 100
         }
