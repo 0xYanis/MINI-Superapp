@@ -54,7 +54,7 @@ private extension BankViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     func createBankCollectionView() {
-        bankTableView.backgroundColor = .systemCyan
+        bankTableView.backgroundColor = UIColor(named: "backColor")
         view.addSubview(bankTableView)
         bankTableView.snp.makeConstraints { make in
             make.width.equalToSuperview()
