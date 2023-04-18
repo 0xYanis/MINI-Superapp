@@ -24,6 +24,7 @@ final class BankViewController: UIViewController {
     }
     
     private let bankTableView = UITableView()
+    private let historyTableVC = BankHistoryTableViewController()
 }
 
 extension BankViewController: BankViewProtocol {
@@ -45,7 +46,7 @@ private extension BankViewController {
         view.backgroundColor = UIColor(named: "backColor")
         createNavigation()
         createBankCollectionView()
-        createSheet()
+        createBottomSheet()
     }
     
     func createNavigation() {
@@ -60,7 +61,21 @@ private extension BankViewController {
             make.height.equalToSuperview().multipliedBy(0.6)
         }
     }
-    func createSheet() {
-        
+    func createBottomSheet() {
+        let height = view.frame.height * 0.4
+        let smallId = UISheetPresentationController.Detent.Identifier("smallId")
+        let smallDetent = UISheetPresentationController.Detent.custom(
+            identifier: smallId) { context in
+                return height
+        }
+        historyTableVC.isModalInPresentation = true
+        if let sheet = historyTableVC.sheetPresentationController {
+            sheet.detents = [smallDetent, .large()]
+            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+            sheet.prefersGrabberVisible = true
+            sheet.largestUndimmedDetentIdentifier = smallId
+            sheet.preferredCornerRadius = 30
+        }
+        navigationController?.present(historyTableVC, animated: true)
     }
 }
