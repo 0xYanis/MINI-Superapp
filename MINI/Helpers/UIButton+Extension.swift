@@ -16,14 +16,17 @@ extension UIButton {
         self.tintColor = .white
         self.layer.cornerRadius = cornerRadius
     }
-    convenience init(systemImage: String, color: UIColor, size: CGFloat) {
+    convenience init(systemImage: String, color: UIColor, size: CGFloat = 0) {
         self.init(frame: .zero)
         let image = UIImage(systemName: systemImage)
         self.setImage(image, for: .normal)
         self.tintColor = color
-        let scale = size / (image?.size.width ?? 1)
-        self.transform = CGAffineTransform(scaleX: scale, y: scale)
+        if size != 0 {
+            let scale = size / (image?.size.width ?? 1)
+            self.transform = CGAffineTransform(scaleX: scale, y: scale)
+        }
     }
+    
     func addPulseAnimation() {
         addTarget(self, action: #selector(pulseButton), for: .touchUpInside)
     }
@@ -31,7 +34,7 @@ extension UIButton {
     @objc private func pulseButton() {
         let pulse = CASpringAnimation(keyPath: "transform.scale")
         pulse.duration = 0.13
-        pulse.fromValue = 0.83
+        pulse.fromValue = 0.9
         pulse.toValue = 1.0
         pulse.initialVelocity = 2.0
         layer.add(pulse, forKey: "pulse")

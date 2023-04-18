@@ -42,10 +42,7 @@ private extension LoginViewController {
         createLoginView()
     }
     func createNavBarButtons() {
-        let image = UIImage(systemName: "link.icloud.fill")
-        let button = UIButton(type: .system)
-        button.tintColor = .white
-        button.setImage(image, for: .normal)
+        let button = UIButton(systemImage: "link.icloud.fill", color: .white)
         button.addTarget(self, action: #selector(goToWebsiteAction), for: .touchUpInside)
         let barButton = UIBarButtonItem(customView: button)
         navigationItem.leftBarButtonItem = barButton
