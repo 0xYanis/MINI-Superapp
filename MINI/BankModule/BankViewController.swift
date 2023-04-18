@@ -23,7 +23,7 @@ final class BankViewController: UIViewController {
         initialize()
     }
     
-    private let bankCollectionView = UICollectionView()
+    private let bankTableView = UITableView()
 }
 
 extension BankViewController: BankViewProtocol {
@@ -53,9 +53,9 @@ private extension BankViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     func createBankCollectionView() {
-        bankCollectionView.backgroundColor = .systemCyan
-        view.addSubview(bankCollectionView)
-        bankCollectionView.snp.makeConstraints { make in
+        bankTableView.backgroundColor = .systemCyan
+        view.addSubview(bankTableView)
+        bankTableView.snp.makeConstraints { make in
             make.width.equalToSuperview()
             make.height.equalToSuperview().multipliedBy(0.6)
         }
