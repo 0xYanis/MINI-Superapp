@@ -170,12 +170,20 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		09E9E81529EAE8F50084416B /* LoginModule */ = {
+		09D509D229EF35F7009CC219 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				09581B0D29EC769F000CC093 /* hello.json */,
 				092E739329EBEB1E00165D37 /* LoginAnimationView.swift */,
 				092E739529EBEB3000165D37 /* LoginView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		09E9E81529EAE8F50084416B /* LoginModule */ = {
+			isa = PBXGroup;
+			children = (
+				09D509D229EF35F7009CC219 /* Views */,
 				09E9E81829EAE9410084416B /* LoginViewController.swift */,
 				09E9E81A29EAE94B0084416B /* LoginPresenter.swift */,
 				09E9E81C29EAE9540084416B /* LoginInteractor.swift */,
