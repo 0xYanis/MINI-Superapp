@@ -9,7 +9,7 @@ import UIKit
 
 final class BankTemplateCell: UICollectionViewCell {
     
-    static let cellId = "BankCardCell"
+    static let cellId = "BankTemplateCell"
     
     override init(frame: CGRect) {
         super.init(frame: frame)
