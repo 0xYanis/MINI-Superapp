@@ -14,14 +14,14 @@ final class BankTransactionCell: UITableViewCell {
     
     private let iconView: UIImageView = {
         let view = UIImageView(cornerRadius: 15)
-        view.layer.borderColor = UIColor.red.cgColor
+        view.layer.borderColor = UIColor.systemOrange.cgColor
         view.layer.borderWidth = 1
         return view
     }()
-    private let transactionLabel = UILabel(text: "Wallmart: apples, cola, glock-17", font: .systemFont(ofSize: 16), numberOfLines: 2, color: .black)
+    private let transactionLabel = UILabel(text: "Wallmart: apples, cola, glock-17", font: .systemFont(ofSize: 16), numberOfLines: 2, color: .none)
     private let dateLabel = UILabel(text: "19 Apr 2023", font: .systemFont(ofSize: 14), color: .gray)
-    private let costLabel = UILabel(text: "-$78", font: .boldSystemFont(ofSize: 16), color: .black)
-    private let cardLabel = UILabel(text: "*4631", font: .systemFont(ofSize: 14), color: .black)
+    private let costLabel = UILabel(text: "-$78", font: .boldSystemFont(ofSize: 16), color: .none)
+    private let cardLabel = UILabel(text: "*4631", font: .systemFont(ofSize: 14), color: .none)
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

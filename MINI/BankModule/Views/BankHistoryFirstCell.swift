@@ -12,7 +12,7 @@ final class BankHistoryFirstCell: UITableViewCell {
     
     static let cellId = "BankHistoryFirstCell"
     
-    private let historyLabel = UILabel(text: "Transaction History", font: .boldSystemFont(ofSize: 20), color: .black)
+    private let historyLabel = UILabel(text: "Transaction History", font: .boldSystemFont(ofSize: 20), color: .none)
     private let searchButton = UIButton(systemImage: "magnifyingglass.circle.fill", color: .systemOrange, size: 35)
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

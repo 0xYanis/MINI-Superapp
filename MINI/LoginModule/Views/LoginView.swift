@@ -10,7 +10,7 @@ import SnapKit
 
 class LoginView: UIView {
     
-    private let helloLabel = UILabel(text: "Welcome!", font: .boldSystemFont(ofSize: 26), color: .systemOrange)
+    private let helloLabel = UILabel(text: "Welcome!", font: .boldSystemFont(ofSize: 26), color: .none)
     let faceIDButton = UIButton(systemImage: "faceid", color: .systemOrange, size: 26)
     let nameField = UITextField()
     let passField = UITextField()
