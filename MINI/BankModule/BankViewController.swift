@@ -58,11 +58,11 @@ private extension BankViewController {
         view.addSubview(bankTableView)
         bankTableView.snp.makeConstraints { make in
             make.width.equalToSuperview()
-            make.height.equalToSuperview().multipliedBy(0.6)
+            make.height.equalToSuperview().multipliedBy(0.65)
         }
     }
     func createBottomSheet() {
-        let height = view.frame.height * 0.4
+        let height = view.frame.height * 0.35
         let smallId = UISheetPresentationController.Detent.Identifier("smallId")
         let smallDetent = UISheetPresentationController.Detent.custom(
             identifier: smallId) { context in
