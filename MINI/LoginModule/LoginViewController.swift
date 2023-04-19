@@ -56,7 +56,7 @@ private extension LoginViewController {
         }
     }
     func createLoginView() {
-        loginView.backgroundColor = .white
+        loginView.backgroundColor = .systemBackground
         loginView.radiusAndShadow(radius: 30)
         view.insertSubview(loginView, at: 1)
         loginView.snp.makeConstraints { make in

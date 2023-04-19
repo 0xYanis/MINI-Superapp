@@ -10,11 +10,11 @@ import SnapKit
 
 class LoginView: UIView {
     
-    private let helloLabel = UILabel(text: "Welcome!", font: .boldSystemFont(ofSize: 26), color: .black)
-    let faceIDButton = UIButton(systemImage: "faceid", color: .black, size: 26)
+    private let helloLabel = UILabel(text: "Welcome!", font: .boldSystemFont(ofSize: 26), color: .systemOrange)
+    let faceIDButton = UIButton(systemImage: "faceid", color: .systemOrange, size: 26)
     let nameField = UITextField()
     let passField = UITextField()
-    let loginButt = UIButton(label: "Login!", color: .systemCyan)
+    let loginButt = UIButton(label: "Login!", color: .systemOrange)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -51,7 +51,7 @@ private extension LoginView {
     func createNameField() {
         addSubview(nameField)
         nameField.keyboardType = .emailAddress
-        nameField.setCustomAppearance(withBorderColor: .systemCyan, cornerRadius: 15, padding: 10)
+        nameField.setCustomAppearance(withBorderColor: .systemOrange, cornerRadius: 15, padding: 10)
         nameField.placeholder = "Введите Имя"
         nameField.snp.makeConstraints { make in
             make.top.equalTo(helloLabel.snp.bottom).offset(15)
@@ -61,7 +61,7 @@ private extension LoginView {
     func createPassField() {
         addSubview(passField)
         passField.isSecureTextEntry = true
-        passField.setCustomAppearance(withBorderColor: .systemCyan, cornerRadius: 15, padding: 10)
+        passField.setCustomAppearance(withBorderColor: .systemOrange, cornerRadius: 15, padding: 10)
         passField.placeholder = "Введите Пароль"
         passField.snp.makeConstraints { make in
             make.top.equalTo(nameField.snp.bottom).offset(15)
