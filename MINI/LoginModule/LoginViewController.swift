@@ -93,6 +93,8 @@ private extension LoginViewController {
         }
     }
     @objc func userDidTapFaceID() {
+        loginView.nameField.resignFirstResponder()
+        loginView.passField.resignFirstResponder()
         presenter?.userDidTapBiometry()
     }
     @objc func userDidTapLogin() {
