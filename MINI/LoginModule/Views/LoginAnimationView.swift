@@ -23,6 +23,11 @@ class LoginAnimationView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        roundBottomCorners(radius: 60)
+    }
+    
     deinit {
         animationView.stop()
     }
