@@ -32,6 +32,7 @@ final class BankTransactionCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Public method
     func configure(icon: UIImage, transaction: String, date: String, cost: String, card: String) {
         iconView.image = icon
         transactionLabel.text = transaction

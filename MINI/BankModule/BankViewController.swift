@@ -59,8 +59,8 @@ private extension BankViewController {
         bankTableView.delegate = self
         bankTableView.showsVerticalScrollIndicator = false
         bankTableView.backgroundColor = UIColor(named: "backColor")
-        bankTableView.register(BankCardCell.self, forCellReuseIdentifier: BankCardCell.cellId)
-        bankTableView.register(BankTemplateCell.self, forCellReuseIdentifier: BankTemplateCell.cellId)
+        bankTableView.register(BankCardSet.self, forCellReuseIdentifier: BankCardSet.cellId)
+        bankTableView.register(BankTemplateSet.self, forCellReuseIdentifier: BankTemplateSet.cellId)
         view.addSubview(bankTableView)
         bankTableView.snp.makeConstraints { make in
             make.width.equalToSuperview()
@@ -98,14 +98,14 @@ extension BankViewController: UITableViewDataSource {
         switch indexPath.row {
         case 0:
             guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: BankCardCell.cellId,
-                for: indexPath) as? BankCardCell else { return defaultCell }
-            cell.layoutIfNeeded()
+                withIdentifier: BankCardSet.cellId,
+                for: indexPath) as? BankCardSet else { return defaultCell }
+            cell.configure()
             return cell
         case 1:
             guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: BankTemplateCell.cellId,
-                for: indexPath) as? BankTemplateCell else { return defaultCell }
+                withIdentifier: BankTemplateSet.cellId,
+                for: indexPath) as? BankTemplateSet else { return defaultCell }
             cell.layoutIfNeeded()
             return cell
         default:

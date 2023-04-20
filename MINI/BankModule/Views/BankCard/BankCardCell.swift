@@ -2,17 +2,17 @@
 //  BankCardCell.swift
 //  MINI
 //
-//  Created by Yan Rybkin on 17.04.2023.
+//  Created by Yan Rybkin on 20.04.2023.
 //
 
 import UIKit
 
-final class BankCardCell: UITableViewCell {
+final class BankCardCell: UICollectionViewCell {
     
     static let cellId = "BankCardCell"
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         initialize()
     }
     
@@ -23,6 +23,6 @@ final class BankCardCell: UITableViewCell {
 
 private extension BankCardCell {
     func initialize() {
-        
+        backgroundColor = .blue
     }
 }
