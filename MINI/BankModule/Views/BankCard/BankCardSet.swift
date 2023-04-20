@@ -41,14 +41,19 @@ private extension BankCardSet {
         collectionView = UICollectionView(
             frame: .zero, collectionViewLayout: layout
         )
+        collectionView.dataSource = self
+        collectionView.delegate = self
         collectionView.showsHorizontalScrollIndicator = false
-        collectionView.register(BankCardCell.self, forCellWithReuseIdentifier: BankCardCell.cellId)
+        collectionView.register(
+            BankCardCell.self, forCellWithReuseIdentifier: BankCardCell.cellId
+        )
     }
     func addConstraintsOfView() {
         contentView.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        collectionView.backgroundColor = UIColor(named: "backColor")
     }
 }
 
@@ -62,16 +67,11 @@ extension BankCardSet: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let defaultCell = UICollectionViewCell()
-        
-        switch indexPath.row {
-        case 0:
-            guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: BankCardCell.cellId,
-                for: indexPath) as? BankCardCell else { return defaultCell }
-            return cell
-        default:
-            return defaultCell
-        }
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: BankCardCell.cellId,
+            for: indexPath) as? BankCardCell else { return defaultCell }
+        cell.configure()
+        return cell
     }
 }
 
@@ -79,7 +79,20 @@ extension BankCardSet: UICollectionViewDataSource {
 extension BankCardSet: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 20
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return .init(width: 50, height: 50)
+        let width = frame.width / 2.5
+        return .init(width: width, height: frame.height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+        return .init(top: 0, left: 20, bottom: 0, right: 20)
     }
 }

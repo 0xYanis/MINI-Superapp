@@ -27,6 +27,7 @@ final class BankViewController: UIViewController {
     private let historyTableVC = BankHistoryTableViewController()
 }
 
+//MARK: - BankViewProtocol
 extension BankViewController: BankViewProtocol {
     func updateCards() {
         
@@ -41,6 +42,7 @@ extension BankViewController: BankViewProtocol {
     }
 }
 
+//MARK: - Private methods
 private extension BankViewController {
     func initialize() {
         view.backgroundColor = UIColor(named: "backColor")
@@ -86,6 +88,7 @@ private extension BankViewController {
     }
 }
 
+//MARK: - UITableViewDataSource
 extension BankViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
@@ -114,9 +117,11 @@ extension BankViewController: UITableViewDataSource {
     }
 }
 
+//MARK: - UITableViewDelegate
 extension BankViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView,
                    heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 180
+        let height = view.frame.height
+        return (height/4.7)
     }
 }
