@@ -7,12 +7,12 @@
 
 import UIKit
 
-final class BankTemplateCell: UICollectionViewCell {
+final class BankTemplateCell: UITableViewCell {
     
     static let cellId = "BankTemplateCell"
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         initialize()
     }
     

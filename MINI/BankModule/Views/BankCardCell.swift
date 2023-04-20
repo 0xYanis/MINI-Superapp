@@ -7,12 +7,12 @@
 
 import UIKit
 
-final class BankCardCell: UICollectionViewCell {
+final class BankCardCell: UITableViewCell {
     
     static let cellId = "BankCardCell"
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         initialize()
     }
     
@@ -23,6 +23,6 @@ final class BankCardCell: UICollectionViewCell {
 
 private extension BankCardCell {
     func initialize() {
-        backgroundColor = .red
+        
     }
 }

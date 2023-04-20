@@ -45,7 +45,7 @@ private extension BankViewController {
     func initialize() {
         view.backgroundColor = UIColor(named: "backColor")
         createNavigation()
-        createBankCollectionView()
+        createBankTableView()
         createBottomSheet()
     }
     
@@ -53,8 +53,14 @@ private extension BankViewController {
         navigationItem.title = "Home"
         navigationController?.navigationBar.prefersLargeTitles = true
     }
-    func createBankCollectionView() {
+    func createBankTableView() {
+        bankTableView.separatorColor = .clear
+        bankTableView.dataSource = self
+        bankTableView.delegate = self
+        bankTableView.showsVerticalScrollIndicator = false
         bankTableView.backgroundColor = UIColor(named: "backColor")
+        bankTableView.register(BankCardCell.self, forCellReuseIdentifier: BankCardCell.cellId)
+        bankTableView.register(BankTemplateCell.self, forCellReuseIdentifier: BankTemplateCell.cellId)
         view.addSubview(bankTableView)
         bankTableView.snp.makeConstraints { make in
             make.width.equalToSuperview()
@@ -67,7 +73,7 @@ private extension BankViewController {
         let smallDetent = UISheetPresentationController.Detent.custom(
             identifier: smallId) { context in
                 return height
-        }
+            }
         historyTableVC.isModalInPresentation = true
         if let sheet = historyTableVC.sheetPresentationController {
             sheet.detents = [smallDetent, .large()]
@@ -77,5 +83,40 @@ private extension BankViewController {
             sheet.preferredCornerRadius = 30
         }
         navigationController?.present(historyTableVC, animated: true)
+    }
+}
+
+extension BankViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView,
+                   numberOfRowsInSection section: Int) -> Int {
+        return 2
+    }
+    func tableView(_ tableView: UITableView,
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let defaultCell = UITableViewCell()
+        
+        switch indexPath.row {
+        case 0:
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: BankCardCell.cellId,
+                for: indexPath) as? BankCardCell else { return defaultCell }
+            cell.layoutIfNeeded()
+            return cell
+        case 1:
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: BankTemplateCell.cellId,
+                for: indexPath) as? BankTemplateCell else { return defaultCell }
+            cell.layoutIfNeeded()
+            return cell
+        default:
+            return defaultCell
+        }
+    }
+}
+
+extension BankViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView,
+                   heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 180
     }
 }
