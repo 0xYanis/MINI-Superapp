@@ -62,6 +62,7 @@ private extension BankViewController {
         bankTableView.showsVerticalScrollIndicator = false
         bankTableView.backgroundColor = UIColor(named: "backColor")
         bankTableView.register(BankCardSet.self, forCellReuseIdentifier: BankCardSet.cellId)
+        bankTableView.register(BankTemplateLabelCell.self, forCellReuseIdentifier: BankTemplateLabelCell.cellId)
         bankTableView.register(BankTemplateSet.self, forCellReuseIdentifier: BankTemplateSet.cellId)
         view.addSubview(bankTableView)
         bankTableView.snp.makeConstraints { make in
@@ -92,7 +93,7 @@ private extension BankViewController {
 extension BankViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 3
     }
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -106,6 +107,11 @@ extension BankViewController: UITableViewDataSource {
             cell.configure()
             return cell
         case 1:
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: BankTemplateLabelCell.cellId,
+                for: indexPath) as? BankTemplateLabelCell else { return defaultCell }
+            return cell
+        case 2:
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: BankTemplateSet.cellId,
                 for: indexPath) as? BankTemplateSet else { return defaultCell }
@@ -122,6 +128,15 @@ extension BankViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView,
                    heightForRowAt indexPath: IndexPath) -> CGFloat {
         let height = view.frame.height
-        return (height/4.7)
+        switch indexPath.row {
+        case 0:
+            return (height/4.7)
+        case 1:
+            return (height/18)
+        case 2:
+            return (height/6.3)
+        default:
+            return (height/4.7)
+        }
     }
 }
