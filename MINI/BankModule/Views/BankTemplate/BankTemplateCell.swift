@@ -48,12 +48,28 @@ private extension BankTemplateCell {
         }
     }
     func createCircleView() {
-        
+        circleView.backgroundColor = .systemGray2
+        templateView.addSubview(circleView)
+        circleView.roundCorners(radius: 20)
+        circleView.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalToSuperview().inset(17)
+            make.width.height.equalTo(40)
+        }
     }
     func createImageView() {
-        
+        imageView.tintColor = .black
+        circleView.addSubview(imageView)
+        imageView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.width.height.equalToSuperview().inset(7)
+        }
     }
     func createTextLabel() {
-        
+        templateView.addSubview(textLabel)
+        textLabel.snp.makeConstraints { make in
+            make.top.equalTo(circleView.snp.bottom).offset(10)
+            make.centerX.equalToSuperview()
+        }
     }
 }
