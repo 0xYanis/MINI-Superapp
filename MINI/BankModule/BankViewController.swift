@@ -56,6 +56,7 @@ private extension BankViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     func createBankTableView() {
+        bankTableView.backgroundColor = .clear
         bankTableView.separatorColor = .clear
         bankTableView.dataSource = self
         bankTableView.delegate = self
@@ -87,6 +88,9 @@ private extension BankViewController {
         }
         navigationController?.present(historyTableVC, animated: true)
     }
+    @objc func didTapSeeAllButt() {
+        presenter?.userDidTapSeeAll()
+    }
 }
 
 //MARK: - UITableViewDataSource
@@ -110,12 +114,12 @@ extension BankViewController: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: BankTemplateLabelCell.cellId,
                 for: indexPath) as? BankTemplateLabelCell else { return defaultCell }
+            cell.seeAllButt.addTarget(self, action: #selector(didTapSeeAllButt), for: .touchUpInside)
             return cell
         case 2:
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: BankTemplateSet.cellId,
                 for: indexPath) as? BankTemplateSet else { return defaultCell }
-            cell.layoutIfNeeded()
             return cell
         default:
             return defaultCell

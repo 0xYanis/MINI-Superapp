@@ -26,6 +26,7 @@ final class BankTemplateSet: UITableViewCell {
 //MARK: - Private methods
 private extension BankTemplateSet {
     func initialize() {
+        backgroundColor = .clear
         createCollectionView()
         addConstraintsOfView()
     }

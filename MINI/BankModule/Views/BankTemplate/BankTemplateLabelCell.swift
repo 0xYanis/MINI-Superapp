@@ -21,15 +21,27 @@ final class BankTemplateLabelCell: UITableViewCell {
     }
     
     private let titleLabel = UILabel(text: "Templates", font: .boldSystemFont(ofSize: 24), color: .black)
+    let seeAllButt: UIButton = {
+        let button = UIButton()
+        button.addPulseAnimation()
+        button.setTitle("See All", for: .normal)
+        button.setTitleColor(.systemOrange, for: .normal)
+        return button
+    }()
 }
 
 private extension BankTemplateLabelCell {
     func initialize() {
         backgroundColor = .clear
-        addSubview(titleLabel)
+        contentView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.left.equalToSuperview().inset(20)
+        }
+        contentView.addSubview(seeAllButt)
+        seeAllButt.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.right.equalToSuperview().inset(20)
         }
     }
 }

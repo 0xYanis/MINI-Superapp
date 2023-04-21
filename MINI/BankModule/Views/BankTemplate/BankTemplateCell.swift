@@ -33,6 +33,7 @@ final class BankTemplateCell: UICollectionViewCell {
 
 private extension BankTemplateCell {
     func initialize() {
+        backgroundColor = .clear
         createTemplateView()
         createCircleView()
         createImageView()

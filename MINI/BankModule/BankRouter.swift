@@ -10,6 +10,7 @@ import UIKit
 
 protocol BankRouterProtocol: AnyObject {
     func goToDetailCard(id: Int)
+    func goToAllTemplates()
     func goToDetailTransaction(id: Int)
     func didAddNewCard()
     func didAddNewTransaction()
@@ -23,6 +24,12 @@ final class BankRouter: BankRouterProtocol {
         let cardView = UIViewController()
         cardView.view.backgroundColor = .white
         view?.navigationController?.pushViewController(cardView, animated: true)
+    }
+    
+    func goToAllTemplates() {
+        let allTemplatesView = UIViewController()
+        allTemplatesView.view.backgroundColor = .white
+        view?.navigationController?.pushViewController(allTemplatesView, animated: true)
     }
     
     func goToDetailTransaction(id: Int) {
