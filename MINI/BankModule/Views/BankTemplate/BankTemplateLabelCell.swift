@@ -20,7 +20,7 @@ final class BankTemplateLabelCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private let titleLabel = UILabel(text: "Templates", font: .boldSystemFont(ofSize: 24), color: .black)
+    private let titleLabel = UILabel(text: "Templates", font: .boldSystemFont(ofSize: 24), color: UIColor(named: "textColor"))
     let seeAllButt: UIButton = {
         let button = UIButton()
         button.addPulseAnimation()

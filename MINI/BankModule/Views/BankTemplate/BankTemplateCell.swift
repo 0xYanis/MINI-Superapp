@@ -28,7 +28,7 @@ final class BankTemplateCell: UICollectionViewCell {
     private let templateView = UIView()
     private let circleView = UIView()
     private let imageView = UIImageView(image: UIImage(systemName: "gear"))
-    private let textLabel = UILabel(text: "Utility Payments", font: .systemFont(ofSize: 15), color: .black)
+    private let textLabel = UILabel(text: "Utility Payments", font: .systemFont(ofSize: 15), color: UIColor(named: "textColor"))
 }
 
 private extension BankTemplateCell {
@@ -40,7 +40,7 @@ private extension BankTemplateCell {
         createTextLabel()
     }
     func createTemplateView() {
-        templateView.backgroundColor = .white
+        templateView.backgroundColor = UIColor(named: "whiteColor")
         templateView.radiusAndShadow(radius: 10, shadowSize: 7)
         addSubview(templateView)
         templateView.snp.makeConstraints { make in
