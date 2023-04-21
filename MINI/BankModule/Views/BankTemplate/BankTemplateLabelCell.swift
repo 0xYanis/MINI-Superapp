@@ -32,6 +32,7 @@ final class BankTemplateLabelCell: UITableViewCell {
 
 private extension BankTemplateLabelCell {
     func initialize() {
+        selectionStyle = .none
         backgroundColor = .clear
         contentView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
