@@ -95,4 +95,8 @@ extension BankCardSet: UICollectionViewDelegateFlowLayout {
                         insetForSectionAt section: Int) -> UIEdgeInsets {
         return .init(top: 0, left: 20, bottom: 0, right: 20)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+    }
 }
