@@ -70,6 +70,8 @@ extension BankHistoryTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.handleTapOnTransactionCell(id: indexPath.row)
+        if indexPath.row > 0 {
+            delegate?.handleTapOnTransactionCell(id: indexPath.row)
+        }
     }
 }

@@ -33,8 +33,8 @@ final class BankViewController: UIViewController {
         createBottomSheet()
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        navigationController?.dismiss(animated: true)
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.dismiss(animated: false)
     }
     
     
