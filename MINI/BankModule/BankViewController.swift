@@ -8,6 +8,12 @@
 import UIKit
 import SnapKit
 
+protocol BankViewCellDelegate: AnyObject {
+    func handleTapOnCardCell(id: Int)
+    func handleTapOnTemplateCell(id: Int)
+    func handleTapOnTransactionCell(id: Int)
+}
+
 protocol BankViewProtocol: AnyObject {
     func updateCards()
     func updateHistory()
@@ -27,6 +33,11 @@ final class BankViewController: UIViewController {
         createBottomSheet()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        navigationController?.dismiss(animated: true)
+    }
+    
+    
     private let bankTableView = UITableView()
     private let historyTableVC = BankHistoryTableViewController()
 }
@@ -43,6 +54,20 @@ extension BankViewController: BankViewProtocol {
     
     func configureView() {
         
+    }
+}
+
+extension BankViewController: BankViewCellDelegate {
+    func handleTapOnCardCell(id: Int) {
+        presenter?.userDidTapCard(id: id)
+    }
+    
+    func handleTapOnTemplateCell(id: Int) {
+        
+    }
+    
+    func handleTapOnTransactionCell(id: Int) {
+        presenter?.userDidTapTransaction(id: id)
     }
 }
 
@@ -97,7 +122,6 @@ private extension BankViewController {
 private extension BankViewController {
     @objc func didTapSeeAllButt() {
         presenter?.userDidTapSeeAll()
-        navigationController?.dismiss(animated: true)
     }
 }
 
@@ -117,6 +141,7 @@ extension BankViewController: UITableViewDataSource {
                 withIdentifier: BankCardSet.cellId,
                 for: indexPath) as? BankCardSet else { return defaultCell }
             cell.configure()
+            cell.delegate = self
             return cell
         case 1:
             guard let cell = tableView.dequeueReusableCell(

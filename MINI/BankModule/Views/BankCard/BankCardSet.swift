@@ -8,6 +8,7 @@
 import UIKit
 
 final class BankCardSet: UITableViewCell {
+    weak var delegate: BankViewCellDelegate?
     
     static let cellId = "BankCardSet"
     
@@ -97,6 +98,6 @@ extension BankCardSet: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        delegate?.handleTapOnCardCell(id: indexPath.item)
     }
 }

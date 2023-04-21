@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 
 final class BankHistoryTableViewController: UITableViewController {
+    weak var delegate: BankViewCellDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,5 +67,9 @@ extension BankHistoryTableViewController {
         default:
             return 100
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.handleTapOnTransactionCell(id: indexPath.row)
     }
 }

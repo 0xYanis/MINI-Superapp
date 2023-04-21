@@ -8,6 +8,7 @@
 import UIKit
 
 final class BankTemplateSet: UITableViewCell {
+    weak var delegate: BankViewCellDelegate?
     
     static let cellId = "BankTemplateSet"
     
@@ -93,4 +94,7 @@ extension BankTemplateSet: UICollectionViewDelegateFlowLayout {
         return .init(top: 0, left: 20, bottom: 0, right: 20)
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.handleTapOnTemplateCell(id: indexPath.item)
+    }
 }
