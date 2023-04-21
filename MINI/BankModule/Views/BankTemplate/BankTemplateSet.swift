@@ -22,34 +22,36 @@ final class BankTemplateSet: UITableViewCell {
     }
     
     private var collectionView: UICollectionView!
+    private let snapLayout = StackFlowLayout()
 }
 
 //MARK: - Private methods
 private extension BankTemplateSet {
     func initialize() {
-        backgroundColor = .clear
         createCollectionView()
         addConstraintsOfView()
     }
+    
     func createCollectionView() {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
         collectionView = UICollectionView(
-            frame: .zero, collectionViewLayout: layout
+            frame: .zero, collectionViewLayout: snapLayout
         )
+        collectionView.decelerationRate = .fast
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.register(
             BankTemplateCell.self, forCellWithReuseIdentifier: BankTemplateCell.cellId
         )
+        collectionView.backgroundColor = UIColor(named: "backColor")
+        collectionView.contentInset = .init(top: 0, left: 20, bottom: 0, right: 20)
     }
+    
     func addConstraintsOfView() {
         contentView.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        collectionView.backgroundColor = UIColor(named: "backColor")
     }
 }
 
@@ -86,12 +88,6 @@ extension BankTemplateSet: UICollectionViewDelegateFlowLayout {
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = frame.width / 3
         return .init(width: width, height: frame.height)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        insetForSectionAt section: Int) -> UIEdgeInsets {
-        return .init(top: 0, left: 20, bottom: 0, right: 20)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
