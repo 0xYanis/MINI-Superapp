@@ -24,6 +24,7 @@ final class BankViewController: UIViewController {
     
     var presenter: BankPresenterProtocol?
     
+    //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
@@ -37,7 +38,7 @@ final class BankViewController: UIViewController {
         navigationController?.dismiss(animated: false)
     }
     
-    
+    //MARK: Private properties
     private let bankTableView = UITableView()
     private let historyTableVC = BankHistoryTableViewController()
 }
@@ -57,6 +58,7 @@ extension BankViewController: BankViewProtocol {
     }
 }
 
+//MARK: - BankViewCellDelegate
 extension BankViewController: BankViewCellDelegate {
     func handleTapOnCardCell(id: Int) {
         presenter?.userDidTapCard(id: id)
