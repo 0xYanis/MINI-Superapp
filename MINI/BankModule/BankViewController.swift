@@ -23,6 +23,10 @@ final class BankViewController: UIViewController {
         initialize()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        createBottomSheet()
+    }
+    
     private let bankTableView = UITableView()
     private let historyTableVC = BankHistoryTableViewController()
 }
@@ -48,7 +52,6 @@ private extension BankViewController {
         view.backgroundColor = UIColor(named: "backColor")
         createNavigation()
         createBankTableView()
-        createBottomSheet()
     }
     
     func createNavigation() {
@@ -88,8 +91,13 @@ private extension BankViewController {
         }
         navigationController?.present(historyTableVC, animated: true)
     }
+}
+
+//MARK: - Action private methods
+private extension BankViewController {
     @objc func didTapSeeAllButt() {
         presenter?.userDidTapSeeAll()
+        navigationController?.dismiss(animated: true)
     }
 }
 
