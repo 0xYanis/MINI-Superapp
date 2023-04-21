@@ -43,7 +43,7 @@ extension BankPresenter: BankPresenterProtocol {
     }
     
     func userDidTapTemplate(id: Int) {
-        
+        router.goToDetailTemplate(id: id)
     }
     
     func userDidTapTransaction(id: Int) {

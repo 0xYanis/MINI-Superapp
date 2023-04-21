@@ -63,7 +63,7 @@ extension BankViewController: BankViewCellDelegate {
     }
     
     func handleTapOnTemplateCell(id: Int) {
-        
+        presenter?.userDidTapTemplate(id: id)
     }
     
     func handleTapOnTransactionCell(id: Int) {
@@ -107,6 +107,7 @@ private extension BankViewController {
                 return height
             }
         historyTableVC.isModalInPresentation = true
+        historyTableVC.delegate = self
         if let sheet = historyTableVC.sheetPresentationController {
             sheet.detents = [smallDetent, .large()]
             sheet.prefersScrollingExpandsWhenScrolledToEdge = false
@@ -153,6 +154,7 @@ extension BankViewController: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: BankTemplateSet.cellId,
                 for: indexPath) as? BankTemplateSet else { return defaultCell }
+            cell.delegate = self
             return cell
         default:
             return defaultCell
