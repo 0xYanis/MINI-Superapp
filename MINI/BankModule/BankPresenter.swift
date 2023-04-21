@@ -11,6 +11,7 @@ protocol BankPresenterProtocol: AnyObject {
     func viewDidLoaded()
     func userDidTapCard(id: Int)
     func userDidTapSeeAll()
+    func userDidTapTemplate(id: Int)
     func userDidTapTransaction(id: Int)
     func setNewCard()
     func setNewTransaction()
@@ -39,6 +40,10 @@ extension BankPresenter: BankPresenterProtocol {
     
     func userDidTapSeeAll() {
         router.goToAllTemplates()
+    }
+    
+    func userDidTapTemplate(id: Int) {
+        
     }
     
     func userDidTapTransaction(id: Int) {
