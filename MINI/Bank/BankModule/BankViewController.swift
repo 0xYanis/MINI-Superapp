@@ -117,6 +117,7 @@ private extension BankViewController {
     }
     
     func createBankTableView() {
+        bankTableView.isScrollEnabled = false
         bankTableView.backgroundColor = .clear
         bankTableView.separatorColor = .clear
         bankTableView.dataSource = self
