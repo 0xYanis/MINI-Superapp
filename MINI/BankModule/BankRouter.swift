@@ -13,8 +13,8 @@ protocol BankRouterProtocol: AnyObject {
     func goToDetailTemplate(id: Int)
     func goToAllTemplates()
     func goToDetailTransaction(id: Int)
-    func didAddNewCard()
-    func didAddNewTransaction()
+    func willAddNewCard()
+    func willAddNewTransaction()
 }
 
 final class BankRouter: BankRouterProtocol {
@@ -45,12 +45,16 @@ final class BankRouter: BankRouterProtocol {
         view?.navigationController?.pushViewController(transactionView, animated: true)
     }
     
-    func didAddNewCard() {
-        
+    func willAddNewCard() {
+        let cardCreator = UIViewController()
+        cardCreator.view.backgroundColor = .white
+        view?.navigationController?.pushViewController(cardCreator, animated: true)
     }
     
-    func didAddNewTransaction() {
-        
+    func willAddNewTransaction() {
+        let templateCreator = UIViewController()
+        templateCreator.view.backgroundColor = .gray
+        view?.navigationController?.pushViewController(templateCreator, animated: true)
     }
     
 }

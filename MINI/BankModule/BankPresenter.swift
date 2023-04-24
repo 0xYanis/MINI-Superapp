@@ -9,6 +9,8 @@ import Foundation
 
 protocol BankPresenterProtocol: AnyObject {
     func viewDidLoaded()
+    func userDidTapNewCard()
+    func userDidTapNewTemplate()
     func userDidTapCard(id: Int)
     func userDidTapSeeAll()
     func userDidTapTemplate(id: Int)
@@ -32,6 +34,14 @@ final class BankPresenter {
 extension BankPresenter: BankPresenterProtocol {
     func viewDidLoaded() {
         interactor.viewDidLoaded()
+    }
+    
+    func userDidTapNewCard() {
+        
+    }
+    
+    func userDidTapNewTemplate() {
+        
     }
     
     func userDidTapCard(id: Int) {
