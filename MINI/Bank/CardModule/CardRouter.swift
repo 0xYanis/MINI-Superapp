@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol CardRouterProtocol {
+protocol CardRouterProtocol: AnyObject {
     
 }
 
