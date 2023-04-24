@@ -15,10 +15,11 @@ final class LoginRouter: LoginRouterProtocol {
     weak var view: LoginViewController?
     
     func userDidLogin() {
-        let nextView = BankBuilder.build()
+        let nextView = BaseTabBarController()
         var controllers = view?.navigationController?.viewControllers
         controllers?.removeLast()
         controllers?.append(nextView)
+        view?.navigationController?.navigationBar.isHidden = true
         view?.navigationController?.setViewControllers(controllers ?? [], animated: true)
     }
 }
