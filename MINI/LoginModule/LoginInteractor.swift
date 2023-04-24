@@ -22,8 +22,8 @@ final class LoginInteractor: LoginInteractorProtocol {
         // TODO: Выполнить запрос на сервер для аутентификации и получить токен аутентификации
         if name == "123" && password == "123" {
             
-            let authToken = "YourAuthToken"
-            UserDefaults.standard.set(authToken, forKey: "authToken")
+            let authToken = "YourAuthToken" // Временный токен
+            saveAuthToken(authToken: authToken)
             
             presenter?.loginIsCorrect()
         } else {
@@ -34,8 +34,14 @@ final class LoginInteractor: LoginInteractorProtocol {
     func userWantBiometry() {
         biometryService?.authWithFaceID(completion: { [weak self] result, _ in
             if result {
+                let authToken = "YourAuthToken" // Временный токен
+                self?.saveAuthToken(authToken: authToken)
                 self?.presenter?.loginIsCorrect()
             }
         })
+    }
+    
+    private func saveAuthToken(authToken: String) {
+        UserDefaults.standard.set(authToken, forKey: "authToken")
     }
 }
