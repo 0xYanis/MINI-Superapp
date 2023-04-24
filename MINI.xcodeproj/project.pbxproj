@@ -29,6 +29,11 @@
 		097E03A329EC44BD00CE2A6F /* BankBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097E03A229EC44BD00CE2A6F /* BankBuilder.swift */; };
 		099A79C029F16406004B95C7 /* BankCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099A79BF29F16406004B95C7 /* BankCardCell.swift */; };
 		099A79C229F16417004B95C7 /* BankTemplateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099A79C129F16417004B95C7 /* BankTemplateCell.swift */; };
+		099D4F6729F71A2C0002C24A /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099D4F6629F71A2C0002C24A /* CardViewController.swift */; };
+		099D4F6929F71A380002C24A /* CardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099D4F6829F71A380002C24A /* CardPresenter.swift */; };
+		099D4F6B29F71A420002C24A /* CardInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099D4F6A29F71A420002C24A /* CardInteractor.swift */; };
+		099D4F6D29F71A530002C24A /* CardRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099D4F6C29F71A530002C24A /* CardRouter.swift */; };
+		099D4F6F29F71A610002C24A /* CardBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099D4F6E29F71A610002C24A /* CardBuilder.swift */; };
 		09AADD3A29F6D71A00C4965F /* BankHistoryLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AADD3929F6D71A00C4965F /* BankHistoryLabelCell.swift */; };
 		09D509CE29EF1E76009CC219 /* BankHistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D509CD29EF1E76009CC219 /* BankHistoryTableViewController.swift */; };
 		09D509D629EF379A009CC219 /* BankTransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D509D529EF379A009CC219 /* BankTransactionCell.swift */; };
@@ -74,6 +79,11 @@
 		097E03A229EC44BD00CE2A6F /* BankBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankBuilder.swift; sourceTree = "<group>"; };
 		099A79BF29F16406004B95C7 /* BankCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankCardCell.swift; sourceTree = "<group>"; };
 		099A79C129F16417004B95C7 /* BankTemplateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTemplateCell.swift; sourceTree = "<group>"; };
+		099D4F6629F71A2C0002C24A /* CardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
+		099D4F6829F71A380002C24A /* CardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPresenter.swift; sourceTree = "<group>"; };
+		099D4F6A29F71A420002C24A /* CardInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInteractor.swift; sourceTree = "<group>"; };
+		099D4F6C29F71A530002C24A /* CardRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRouter.swift; sourceTree = "<group>"; };
+		099D4F6E29F71A610002C24A /* CardBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBuilder.swift; sourceTree = "<group>"; };
 		09AADD3929F6D71A00C4965F /* BankHistoryLabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankHistoryLabelCell.swift; sourceTree = "<group>"; };
 		09D509CD29EF1E76009CC219 /* BankHistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankHistoryTableViewController.swift; sourceTree = "<group>"; };
 		09D509D529EF379A009CC219 /* BankTransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTransactionCell.swift; sourceTree = "<group>"; };
@@ -294,6 +304,11 @@
 		09F86C5A29F6FD4200307432 /* CardModule */ = {
 			isa = PBXGroup;
 			children = (
+				099D4F6629F71A2C0002C24A /* CardViewController.swift */,
+				099D4F6829F71A380002C24A /* CardPresenter.swift */,
+				099D4F6A29F71A420002C24A /* CardInteractor.swift */,
+				099D4F6C29F71A530002C24A /* CardRouter.swift */,
+				099D4F6E29F71A610002C24A /* CardBuilder.swift */,
 			);
 			path = CardModule;
 			sourceTree = "<group>";
@@ -412,12 +427,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				092E739C29EBFD9100165D37 /* UITextField+Extension.swift in Sources */,
+				099D4F6B29F71A420002C24A /* CardInteractor.swift in Sources */,
 				09E9E82729EB0B3F0084416B /* BiometryService.swift in Sources */,
 				09F86C4F29F6E96C00307432 /* TabbarController.swift in Sources */,
 				09E9E82A29EB16210084416B /* KeyChainService.swift in Sources */,
 				097E039D29EC448F00CE2A6F /* BankPresenter.swift in Sources */,
 				099A79C029F16406004B95C7 /* BankCardCell.swift in Sources */,
 				09E9E82329EAFC770084416B /* UIView+Extension.swift in Sources */,
+				099D4F6F29F71A610002C24A /* CardBuilder.swift in Sources */,
 				09D509CE29EF1E76009CC219 /* BankHistoryTableViewController.swift in Sources */,
 				09E9E82129EAE9650084416B /* LoginEntity.swift in Sources */,
 				09503EB829F2D44000254F53 /* StackFlowLayout.swift in Sources */,
@@ -432,8 +449,11 @@
 				092E739429EBEB1F00165D37 /* LoginAnimationView.swift in Sources */,
 				09D509D829EF4EDE009CC219 /* UIImageView+Extension.swift in Sources */,
 				09E9E82E29EB16E10084416B /* KeyChain.swift in Sources */,
+				099D4F6D29F71A530002C24A /* CardRouter.swift in Sources */,
 				09632FCC29ED8A7D00DB2641 /* BankCardSet.swift in Sources */,
 				09F86C4C29F6E75600307432 /* AuthenticationManager.swift in Sources */,
+				099D4F6729F71A2C0002C24A /* CardViewController.swift in Sources */,
+				099D4F6929F71A380002C24A /* CardPresenter.swift in Sources */,
 				09E9E81B29EAE94B0084416B /* LoginPresenter.swift in Sources */,
 				092E739629EBEB3000165D37 /* LoginView.swift in Sources */,
 				09D509D629EF379A009CC219 /* BankTransactionCell.swift in Sources */,

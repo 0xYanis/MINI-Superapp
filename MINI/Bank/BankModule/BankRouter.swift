@@ -22,8 +22,7 @@ final class BankRouter: BankRouterProtocol {
     weak var view: BankViewController?
     
     func goToDetailCard(id: Int) {
-        let cardView = UIViewController()
-        cardView.view.backgroundColor = .green
+        let cardView = CardBuilder.build()
         view?.navigationController?.pushViewController(cardView, animated: true)
     }
     
