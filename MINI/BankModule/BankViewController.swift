@@ -83,8 +83,33 @@ private extension BankViewController {
     
     func createNavigation() {
         navigationItem.title = "Home"
+        navigationItem.rightBarButtonItem = createRightBarButtonItem()
         navigationController?.navigationBar.prefersLargeTitles = true
     }
+    
+    func createRightBarButtonItem() -> UIBarButtonItem {
+        let image = UIImage(systemName: "")
+        return UIBarButtonItem(systemItem: .edit,
+                               primaryAction: .none,
+                               menu: createRightMenu()
+        )
+    }
+    
+    func createRightMenu() -> UIMenu {
+        let cardImage = UIImage(systemName: "")
+        let addCard = UIAction(title: "Add new Card", image: cardImage) { [weak self] _ in
+            
+        }
+        let templateImage = UIImage(systemName: "")
+        let addTemplate = UIAction(title: "Add new Template", image: templateImage) { [weak self] _ in
+            
+        }
+        let menu = UIMenu(children: [
+            addCard, addTemplate
+        ])
+        return menu
+    }
+    
     func createBankTableView() {
         bankTableView.backgroundColor = .clear
         bankTableView.separatorColor = .clear
@@ -101,6 +126,7 @@ private extension BankViewController {
             make.height.equalToSuperview().multipliedBy(0.65)
         }
     }
+    
     func createBottomSheet() {
         let height = view.frame.height * 0.35
         let smallId = UISheetPresentationController.Detent.Identifier("smallId")
