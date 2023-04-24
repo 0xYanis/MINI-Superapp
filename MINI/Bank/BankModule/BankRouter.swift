@@ -14,7 +14,7 @@ protocol BankRouterProtocol: AnyObject {
     func goToAllTemplates()
     func goToDetailTransaction(id: Int)
     func goToAddNewCard()
-    func goToAddNewTransaction()
+    func goToAddNewTemplate()
 }
 
 final class BankRouter: BankRouterProtocol {
@@ -49,10 +49,9 @@ final class BankRouter: BankRouterProtocol {
         view?.navigationController?.pushViewController(newCard, animated: true)
     }
     
-    func goToAddNewTransaction() {
-        let templateCreator = UIViewController()
-        templateCreator.view.backgroundColor = .gray
-        view?.navigationController?.pushViewController(templateCreator, animated: true)
+    func goToAddNewTemplate() {
+        let newTemplate = NewTemplateBuilder.build()
+        view?.navigationController?.pushViewController(newTemplate, animated: true)
     }
     
 }
