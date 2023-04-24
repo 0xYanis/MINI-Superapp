@@ -129,8 +129,8 @@
 			isa = PBXGroup;
 			children = (
 				0910961129DB332600338D22 /* Application */,
-				097E039929EC444400CE2A6F /* BankModule */,
-				09E9E81529EAE8F50084416B /* LoginModule */,
+				09F86C5829F6FD1200307432 /* Bank */,
+				09F86C5929F6FD1B00307432 /* Login */,
 				09E9E82829EB119D0084416B /* ServiceLayer */,
 				0921F35D29DF1FD100B3D4F7 /* Helpers */,
 				0910961229DB333400338D22 /* Resources */,
@@ -267,6 +267,70 @@
 				09E9E82D29EB16E10084416B /* KeyChain.swift */,
 			);
 			path = ServiceLayer;
+			sourceTree = "<group>";
+		};
+		09F86C5829F6FD1200307432 /* Bank */ = {
+			isa = PBXGroup;
+			children = (
+				097E039929EC444400CE2A6F /* BankModule */,
+				09F86C5A29F6FD4200307432 /* CardModule */,
+				09F86C5D29F6FDAB00307432 /* NewCardModule */,
+				09F86C5E29F6FDB900307432 /* NewTemplateModule */,
+				09F86C5B29F6FD5900307432 /* TemplateModule */,
+				09F86C5F29F6FDEE00307432 /* AllTemplatesModule */,
+				09F86C5C29F6FD6600307432 /* TransactionModule */,
+			);
+			path = Bank;
+			sourceTree = "<group>";
+		};
+		09F86C5929F6FD1B00307432 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				09E9E81529EAE8F50084416B /* LoginModule */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		09F86C5A29F6FD4200307432 /* CardModule */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CardModule;
+			sourceTree = "<group>";
+		};
+		09F86C5B29F6FD5900307432 /* TemplateModule */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TemplateModule;
+			sourceTree = "<group>";
+		};
+		09F86C5C29F6FD6600307432 /* TransactionModule */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TransactionModule;
+			sourceTree = "<group>";
+		};
+		09F86C5D29F6FDAB00307432 /* NewCardModule */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NewCardModule;
+			sourceTree = "<group>";
+		};
+		09F86C5E29F6FDB900307432 /* NewTemplateModule */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NewTemplateModule;
+			sourceTree = "<group>";
+		};
+		09F86C5F29F6FDEE00307432 /* AllTemplatesModule */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AllTemplatesModule;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
