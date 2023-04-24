@@ -11,7 +11,7 @@ final class AuthenticationManager: NSObject {
     
     static func auth(window: UIWindow?) -> UIViewController {
         if let _ = UserDefaults.standard.string(forKey: "authToken") {
-            let tabbarController = TabbarController()
+            let tabbarController = BaseTabBarController()
             window?.rootViewController = tabbarController
             return tabbarController
         } else {

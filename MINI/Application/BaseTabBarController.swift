@@ -1,5 +1,5 @@
 //
-//  TabbarController.swift
+//  BaseTabBarController.swift
 //  MINI
 //
 //  Created by Yan Rybkin on 24.04.2023.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class TabbarController: UITabBarController {
+final class BaseTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,7 +15,7 @@ final class TabbarController: UITabBarController {
     }
 }
 
-private extension TabbarController {
+private extension BaseTabBarController {
     func initialize() {
         viewControllers = [
             createVC(BankBuilder.build(), barTitle: "Bank", image: "house.fill"),
