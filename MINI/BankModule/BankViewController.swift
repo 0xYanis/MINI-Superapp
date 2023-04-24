@@ -88,7 +88,6 @@ private extension BankViewController {
     }
     
     func createRightBarButtonItem() -> UIBarButtonItem {
-        let image = UIImage(systemName: "")
         return UIBarButtonItem(systemItem: .edit,
                                primaryAction: .none,
                                menu: createRightMenu()
@@ -96,13 +95,13 @@ private extension BankViewController {
     }
     
     func createRightMenu() -> UIMenu {
-        let cardImage = UIImage(systemName: "")
+        let cardImage = UIImage(systemName: "creditcard.fill")
         let addCard = UIAction(title: "Add new Card", image: cardImage) { [weak self] _ in
-            
+            self?.presenter?.userDidTapNewCard()
         }
-        let templateImage = UIImage(systemName: "")
+        let templateImage = UIImage(systemName: "plus.rectangle.fill")
         let addTemplate = UIAction(title: "Add new Template", image: templateImage) { [weak self] _ in
-            
+            self?.presenter?.userDidTapNewTemplate()
         }
         let menu = UIMenu(children: [
             addCard, addTemplate
