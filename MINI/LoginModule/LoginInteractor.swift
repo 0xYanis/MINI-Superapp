@@ -19,12 +19,18 @@ final class LoginInteractor: LoginInteractorProtocol {
     var biometryService: BiometryServiceProtocol?
     
     func userWantLogin(_ name: String,_ password: String) {
+        // TODO: Выполнить запрос на сервер для аутентификации и получить токен аутентификации
         if name == "123" && password == "123" {
+            
+            let authToken = "YourAuthToken"
+            UserDefaults.standard.set(authToken, forKey: "authToken")
+            
             presenter?.loginIsCorrect()
         } else {
             presenter?.loginIsNotCorrect()
         }
     }
+
     func userWantBiometry() {
         biometryService?.authWithFaceID(completion: { [weak self] result, _ in
             if result {
