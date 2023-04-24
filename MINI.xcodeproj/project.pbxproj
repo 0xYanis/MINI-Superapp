@@ -29,6 +29,7 @@
 		097E03A329EC44BD00CE2A6F /* BankBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097E03A229EC44BD00CE2A6F /* BankBuilder.swift */; };
 		099A79C029F16406004B95C7 /* BankCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099A79BF29F16406004B95C7 /* BankCardCell.swift */; };
 		099A79C229F16417004B95C7 /* BankTemplateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099A79C129F16417004B95C7 /* BankTemplateCell.swift */; };
+		09AADD3A29F6D71A00C4965F /* BankHistoryLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AADD3929F6D71A00C4965F /* BankHistoryLabelCell.swift */; };
 		09D509CE29EF1E76009CC219 /* BankHistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D509CD29EF1E76009CC219 /* BankHistoryTableViewController.swift */; };
 		09D509D629EF379A009CC219 /* BankTransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D509D529EF379A009CC219 /* BankTransactionCell.swift */; };
 		09D509D829EF4EDE009CC219 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D509D729EF4EDE009CC219 /* UIImageView+Extension.swift */; };
@@ -70,6 +71,7 @@
 		097E03A229EC44BD00CE2A6F /* BankBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankBuilder.swift; sourceTree = "<group>"; };
 		099A79BF29F16406004B95C7 /* BankCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankCardCell.swift; sourceTree = "<group>"; };
 		099A79C129F16417004B95C7 /* BankTemplateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTemplateCell.swift; sourceTree = "<group>"; };
+		09AADD3929F6D71A00C4965F /* BankHistoryLabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankHistoryLabelCell.swift; sourceTree = "<group>"; };
 		09D509CD29EF1E76009CC219 /* BankHistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankHistoryTableViewController.swift; sourceTree = "<group>"; };
 		09D509D529EF379A009CC219 /* BankTransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTransactionCell.swift; sourceTree = "<group>"; };
 		09D509D729EF4EDE009CC219 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
@@ -205,12 +207,21 @@
 			path = BankSheet;
 			sourceTree = "<group>";
 		};
+		09AADD3829F6D6DC00C4965F /* HistoryLabel */ = {
+			isa = PBXGroup;
+			children = (
+				09AADD3929F6D71A00C4965F /* BankHistoryLabelCell.swift */,
+			);
+			path = HistoryLabel;
+			sourceTree = "<group>";
+		};
 		09D509D129EF3571009CC219 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				099A79C329F1641E004B95C7 /* BankCard */,
 				099A79C429F16427004B95C7 /* BankTemplate */,
 				099A79C529F16441004B95C7 /* BankSheet */,
+				09AADD3829F6D6DC00C4965F /* HistoryLabel */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -343,6 +354,7 @@
 				09E9E81229EAE6030084416B /* UILabel+Extension.swift in Sources */,
 				09632FCE29ED8A8800DB2641 /* BankTemplateSet.swift in Sources */,
 				09E9E83029EB24840084416B /* UIAlertController+Extension.swift in Sources */,
+				09AADD3A29F6D71A00C4965F /* BankHistoryLabelCell.swift in Sources */,
 				092E739429EBEB1F00165D37 /* LoginAnimationView.swift in Sources */,
 				09D509D829EF4EDE009CC219 /* UIImageView+Extension.swift in Sources */,
 				09E9E82E29EB16E10084416B /* KeyChain.swift in Sources */,

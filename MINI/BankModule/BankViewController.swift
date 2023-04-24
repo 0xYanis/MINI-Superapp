@@ -12,6 +12,7 @@ protocol BankViewCellDelegate: AnyObject {
     func handleTapOnCardCell(id: Int)
     func handleTapOnTemplateCell(id: Int)
     func handleTapOnTransactionCell(id: Int)
+    func handleTapOnSeeHistoryCell()
 }
 
 protocol BankViewProtocol: AnyObject {
@@ -28,10 +29,6 @@ final class BankViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        createBottomSheet()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -70,6 +67,10 @@ extension BankViewController: BankViewCellDelegate {
     
     func handleTapOnTransactionCell(id: Int) {
         presenter?.userDidTapTransaction(id: id)
+    }
+    
+    func handleTapOnSeeHistoryCell() {
+        createBottomSheet()
     }
 }
 
@@ -119,10 +120,11 @@ private extension BankViewController {
         bankTableView.register(BankCardSet.self, forCellReuseIdentifier: BankCardSet.cellId)
         bankTableView.register(BankTemplateLabelCell.self, forCellReuseIdentifier: BankTemplateLabelCell.cellId)
         bankTableView.register(BankTemplateSet.self, forCellReuseIdentifier: BankTemplateSet.cellId)
+        bankTableView.register(BankHistoryLabelCell.self, forCellReuseIdentifier: BankHistoryLabelCell.cellId)
         view.addSubview(bankTableView)
         bankTableView.snp.makeConstraints { make in
             make.width.equalToSuperview()
-            make.height.equalToSuperview().multipliedBy(0.65)
+            make.height.equalToSuperview().multipliedBy(0.7)
         }
     }
     
@@ -133,7 +135,6 @@ private extension BankViewController {
             identifier: smallId) { context in
                 return height
             }
-        historyTableVC.isModalInPresentation = true
         historyTableVC.delegate = self
         if let sheet = historyTableVC.sheetPresentationController {
             sheet.detents = [smallDetent, .large()]
@@ -157,7 +158,7 @@ private extension BankViewController {
 extension BankViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 4
     }
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -183,6 +184,12 @@ extension BankViewController: UITableViewDataSource {
                 for: indexPath) as? BankTemplateSet else { return defaultCell }
             cell.delegate = self
             return cell
+        case 3:
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: BankHistoryLabelCell.cellId,
+                for: indexPath) as? BankHistoryLabelCell else { return defaultCell }
+            cell.delegate = self
+            return cell
         default:
             return defaultCell
         }
@@ -201,6 +208,8 @@ extension BankViewController: UITableViewDelegate {
             return (height/18)
         case 2:
             return (height/6.3)
+        case 3:
+            return (height/18)
         default:
             return (height/4.7)
         }
