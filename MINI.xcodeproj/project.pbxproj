@@ -46,6 +46,7 @@
 		09E9E82A29EB16210084416B /* KeyChainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E9E82929EB16210084416B /* KeyChainService.swift */; };
 		09E9E82E29EB16E10084416B /* KeyChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E9E82D29EB16E10084416B /* KeyChain.swift */; };
 		09E9E83029EB24840084416B /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E9E82F29EB24840084416B /* UIAlertController+Extension.swift */; };
+		09F86C4C29F6E75600307432 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F86C4B29F6E75600307432 /* AuthenticationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +89,7 @@
 		09E9E82929EB16210084416B /* KeyChainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainService.swift; sourceTree = "<group>"; };
 		09E9E82D29EB16E10084416B /* KeyChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChain.swift; sourceTree = "<group>"; };
 		09E9E82F29EB24840084416B /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
+		09F86C4B29F6E75600307432 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 			children = (
 				091095FD29DB32F000338D22 /* AppDelegate.swift */,
 				091095FF29DB32F000338D22 /* SceneDelegate.swift */,
+				09F86C4B29F6E75600307432 /* AuthenticationManager.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 				09D509D829EF4EDE009CC219 /* UIImageView+Extension.swift in Sources */,
 				09E9E82E29EB16E10084416B /* KeyChain.swift in Sources */,
 				09632FCC29ED8A7D00DB2641 /* BankCardSet.swift in Sources */,
+				09F86C4C29F6E75600307432 /* AuthenticationManager.swift in Sources */,
 				09E9E81B29EAE94B0084416B /* LoginPresenter.swift in Sources */,
 				092E739629EBEB3000165D37 /* LoginView.swift in Sources */,
 				09D509D629EF379A009CC219 /* BankTransactionCell.swift in Sources */,
