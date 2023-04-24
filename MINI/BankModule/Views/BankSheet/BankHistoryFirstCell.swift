@@ -29,23 +29,22 @@ final class BankHistoryFirstCell: UITableViewCell {
 
 extension BankHistoryFirstCell {
     @objc func searchButtonTapped() {
-        if isSearchBarShown {
-            historyLabel.snp.updateConstraints { make in
-                make.top.equalToSuperview().inset(20)
-            }
-            animateSearchBar(alphaVisible: !isSearchBarShown)
-            isSearchBarShown = false
-            searchButton.setImage(UIImage(systemName: "magnifyingglass.circle.fill"), for: .normal)
-        } else {
-            historyLabel.snp.updateConstraints { make in
-                make.top.equalToSuperview().inset(-100)
-            }
-            animateSearchBar(alphaVisible: !isSearchBarShown)
-            isSearchBarShown = true
-            searchButton.setImage(UIImage(systemName: "xmark"), for: .normal)
+        let newTopInset: CGFloat = isSearchBarShown ? 20 : -100
+        historyLabel.snp.updateConstraints { make in
+            make.top.equalToSuperview().inset(newTopInset)
         }
+        animateSearchBar(alphaVisible: !isSearchBarShown)
+        isSearchBarShown.toggle()
+        searchButton.alpha = isSearchBarShown ? 0.0 : 1.0
         UIView.animate(withDuration: 0.4) {
             self.layoutIfNeeded()
+        }
+    }
+    
+    @objc func handleTap(_ gesture: UITapGestureRecognizer) {
+        let bankVC = BankViewController()
+        if !searchBar.frame.contains(gesture.location(in: bankVC.view)) {
+            searchButtonTapped()
         }
     }
 }
@@ -55,6 +54,7 @@ private extension BankHistoryFirstCell {
         createLabel()
         createSearchButton()
         createSearchBar()
+        createTapGesture()
     }
     
     func createLabel() {
@@ -78,11 +78,16 @@ private extension BankHistoryFirstCell {
         searchBar.placeholder = "Search transactions.."
         contentView.addSubview(searchBar)
         searchBar.snp.makeConstraints { make in
-            make.left.equalToSuperview().inset(15)
-            make.right.equalToSuperview().inset(50)
+            make.left.equalToSuperview().inset(25)
+            make.right.equalToSuperview().inset(25)
             make.top.bottom.equalToSuperview()
         }
         searchBar.alpha = 0.0
+    }
+    
+    func createTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        addGestureRecognizer(tapGesture)
     }
     
     func animateSearchBar(alphaVisible: Bool) {
