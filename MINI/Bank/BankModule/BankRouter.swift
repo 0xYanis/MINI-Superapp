@@ -45,9 +45,8 @@ final class BankRouter: BankRouterProtocol {
     }
     
     func goToAddNewCard() {
-        let cardCreator = UIViewController()
-        cardCreator.view.backgroundColor = .white
-        view?.navigationController?.pushViewController(cardCreator, animated: true)
+        let newCard = NewCardBuilder.build()
+        view?.navigationController?.pushViewController(newCard, animated: true)
     }
     
     func goToAddNewTransaction() {
