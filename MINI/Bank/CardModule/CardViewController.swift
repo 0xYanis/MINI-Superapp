@@ -35,6 +35,7 @@ private extension CardViewController {
     func initialize() {
         view.backgroundColor = .white
         createNavigation()
+        cardTableViewRegister()
     }
     
     func createNavigation() {
@@ -43,10 +44,11 @@ private extension CardViewController {
     }
     
     func createCardTableView() {
-        cardTableView.isScrollEnabled = false
         cardTableView.backgroundColor = .clear
         cardTableView.separatorColor = .clear
         cardTableView.showsVerticalScrollIndicator = false
+        cardTableView.delegate = self
+        
         view.addSubview(cardTableView)
         cardTableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -54,6 +56,30 @@ private extension CardViewController {
     }
     
     func cardTableViewRegister() {
-        cardTableView.register(CardDetailView.self, forCellReuseIdentifier: CardDetailView.cellId)
+        cardTableView.register(CardDetailViewCell.self, forCellReuseIdentifier: CardDetailViewCell.cellId)
+    }
+}
+
+extension CardViewController: UITableViewDelegate {
+    
+}
+
+extension CardViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let defaultCell = UITableViewCell()
+        
+        switch indexPath.row {
+        case 0:
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: CardDetailViewCell.cellId,
+                for: indexPath) as? CardDetailViewCell else { return defaultCell }
+            return cell
+        default:
+            return defaultCell
+        }
     }
 }

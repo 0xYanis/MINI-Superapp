@@ -1,5 +1,5 @@
 //
-//  CardDetailView.swift
+//  CardDetailViewCell.swift
 //  MINI
 //
 //  Created by Yan Rybkin on 26.04.2023.
@@ -7,9 +7,9 @@
 
 import UIKit
 
-final class CardDetailView: UITableViewCell {
+final class CardDetailViewCell: UITableViewCell {
     
-    static let cellId = "CardDetailView"
+    static let cellId = "CardDetailViewCell"
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -23,7 +23,7 @@ final class CardDetailView: UITableViewCell {
     
 }
 
-private extension CardDetailView {
+private extension CardDetailViewCell {
     func initialize() {
         backgroundColor = .green
     }
