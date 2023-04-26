@@ -136,18 +136,12 @@ private extension BankViewController {
     }
     
     func createBottomSheet() {
-        let height = view.frame.height * 0.35
-        let smallId = UISheetPresentationController.Detent.Identifier("smallId")
-        let smallDetent = UISheetPresentationController.Detent.custom(
-            identifier: smallId) { context in
-                return height
-            }
         historyTableVC.delegate = self
         if let sheet = historyTableVC.sheetPresentationController {
-            sheet.detents = [smallDetent, .large()]
+            sheet.detents = [.medium(), .large()]
             sheet.prefersScrollingExpandsWhenScrolledToEdge = false
             sheet.prefersGrabberVisible = true
-            sheet.largestUndimmedDetentIdentifier = smallId
+            sheet.largestUndimmedDetentIdentifier = .medium
             sheet.preferredCornerRadius = 30
         }
         navigationController?.present(historyTableVC, animated: true)
