@@ -8,5 +8,6 @@
 import Foundation
 
 struct TemplateEntity {
-    
+    let templateName: String
+    let templateImage: String
 }

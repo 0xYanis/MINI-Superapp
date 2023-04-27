@@ -11,6 +11,11 @@ final class AllTemplatesViewCell: UICollectionViewCell {
     
     static let cellId = "AllTemplatesViewCell"
     
+    func configure(name: String, image: String) {
+        textLabel.text = name
+        imageView.image = UIImage(systemName: image)
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         initialize()
@@ -22,9 +27,11 @@ final class AllTemplatesViewCell: UICollectionViewCell {
     
     //MARK: - Private properties
     private let templateView = UIView()
-    private let circleView = UIView()
-    private let imageView = UIImageView(image: UIImage(systemName: "gear"))
-    private let textLabel = UILabel(text: "Utility Payments", font: .systemFont(ofSize: 15), color: UIColor(named: "textColor"))
+    private let circleView   = UIView()
+    private let imageView    = UIImageView(image: UIImage(systemName: "gear"))
+    private let textLabel    = UILabel(text: "Utility Payments",
+                                       font: .systemFont(ofSize: 15),
+                                       color: UIColor(named: "textColor"))
 }
 
 private extension AllTemplatesViewCell {
@@ -35,6 +42,7 @@ private extension AllTemplatesViewCell {
         createImageView()
         createTextLabel()
     }
+    
     func createTemplateView() {
         templateView.backgroundColor = UIColor(named: "whiteColor")
         templateView.radiusAndShadow(radius: 10, shadowSize: 7)
@@ -43,6 +51,7 @@ private extension AllTemplatesViewCell {
             make.edges.equalToSuperview()
         }
     }
+    
     func createCircleView() {
         circleView.backgroundColor = .systemGray2
         templateView.addSubview(circleView)
@@ -53,6 +62,7 @@ private extension AllTemplatesViewCell {
             make.width.height.equalTo(60)
         }
     }
+    
     func createImageView() {
         imageView.tintColor = .black
         circleView.addSubview(imageView)
@@ -61,6 +71,7 @@ private extension AllTemplatesViewCell {
             make.width.height.equalToSuperview().inset(14)
         }
     }
+    
     func createTextLabel() {
         templateView.addSubview(textLabel)
         textLabel.snp.makeConstraints { make in

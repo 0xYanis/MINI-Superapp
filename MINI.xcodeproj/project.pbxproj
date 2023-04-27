@@ -394,7 +394,7 @@
 		09F86C5F29F6FDEE00307432 /* AllTemplatesModule */ = {
 			isa = PBXGroup;
 			children = (
-				09FC394229FAC53200B2D97E /* AllTemplatesViewCell.swift */,
+				09FC394429FAD27200B2D97E /* AllTemplatesView */,
 				09FC393629FABF2D00B2D97E /* AllTemplatesViewController.swift */,
 				09FC393829FABF4200B2D97E /* AllTemplatesPresenter.swift */,
 				09FC393A29FABF4A00B2D97E /* AllTemplatesInteractor.swift */,
@@ -403,6 +403,14 @@
 				09FC393E29FABF5B00B2D97E /* AllTemplatesBuilder.swift */,
 			);
 			path = AllTemplatesModule;
+			sourceTree = "<group>";
+		};
+		09FC394429FAD27200B2D97E /* AllTemplatesView */ = {
+			isa = PBXGroup;
+			children = (
+				09FC394229FAC53200B2D97E /* AllTemplatesViewCell.swift */,
+			);
+			path = AllTemplatesView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
