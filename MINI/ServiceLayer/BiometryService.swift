@@ -16,7 +16,7 @@ class BiometryService: BiometryServiceProtocol {
     
     private let context = LAContext()
     
-    func authWithFaceID(completion: @escaping (Bool, Error?) -> Void) {
+    func authWithBiometry(completion: @escaping (Bool, Error?) -> Void) {
         
         let reason = "Аутентификация с помощью Face ID"
         var error: NSError?
