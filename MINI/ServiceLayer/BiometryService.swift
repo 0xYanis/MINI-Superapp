@@ -9,7 +9,7 @@ import Foundation
 import LocalAuthentication
 
 protocol BiometryServiceProtocol: AnyObject {
-    func authWithFaceID(completion: @escaping (Bool, Error?) -> Void)
+    func authWithBiometry(completion: @escaping (Bool, Error?) -> Void)
 }
 
 class BiometryService: BiometryServiceProtocol {

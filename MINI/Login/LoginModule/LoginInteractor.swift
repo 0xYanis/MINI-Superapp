@@ -32,7 +32,7 @@ final class LoginInteractor: LoginInteractorProtocol {
     }
 
     func userWantBiometry() {
-        biometryService?.authWithFaceID(completion: { [weak self] result, _ in
+        biometryService?.authWithBiometry(completion: { [weak self] result, _ in
             if result {
                 let authToken = "YourAuthToken" // Временный токен
                 self?.saveAuthToken(authToken: authToken)
