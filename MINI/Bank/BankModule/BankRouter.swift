@@ -33,8 +33,7 @@ final class BankRouter: BankRouterProtocol {
     }
     
     func goToAllTemplates() {
-        let allTemplatesView = UIViewController()
-        allTemplatesView.view.backgroundColor = .systemPink
+        let allTemplatesView = AllTemplatesBuilder.build()
         view?.navigationController?.pushViewController(allTemplatesView, animated: true)
     }
     

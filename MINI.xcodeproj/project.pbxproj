@@ -66,6 +66,12 @@
 		09F86C4C29F6E75600307432 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F86C4B29F6E75600307432 /* AuthenticationManager.swift */; };
 		09F86C4F29F6E96C00307432 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F86C4E29F6E96C00307432 /* BaseTabBarController.swift */; };
 		09F86C5729F6F8A000307432 /* UITabBarController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F86C5629F6F8A000307432 /* UITabBarController+Extension.swift */; };
+		09FC393729FABF2D00B2D97E /* AllTemplatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FC393629FABF2D00B2D97E /* AllTemplatesViewController.swift */; };
+		09FC393929FABF4200B2D97E /* AllTemplatesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FC393829FABF4200B2D97E /* AllTemplatesPresenter.swift */; };
+		09FC393B29FABF4A00B2D97E /* AllTemplatesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FC393A29FABF4A00B2D97E /* AllTemplatesInteractor.swift */; };
+		09FC393D29FABF5200B2D97E /* AllTemplatesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FC393C29FABF5200B2D97E /* AllTemplatesRouter.swift */; };
+		09FC393F29FABF5B00B2D97E /* AllTemplatesBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FC393E29FABF5B00B2D97E /* AllTemplatesBuilder.swift */; };
+		09FC394129FABF6B00B2D97E /* AllTemplatesEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FC394029FABF6B00B2D97E /* AllTemplatesEntity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -128,6 +134,12 @@
 		09F86C4B29F6E75600307432 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		09F86C4E29F6E96C00307432 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		09F86C5629F6F8A000307432 /* UITabBarController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarController+Extension.swift"; sourceTree = "<group>"; };
+		09FC393629FABF2D00B2D97E /* AllTemplatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTemplatesViewController.swift; sourceTree = "<group>"; };
+		09FC393829FABF4200B2D97E /* AllTemplatesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTemplatesPresenter.swift; sourceTree = "<group>"; };
+		09FC393A29FABF4A00B2D97E /* AllTemplatesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTemplatesInteractor.swift; sourceTree = "<group>"; };
+		09FC393C29FABF5200B2D97E /* AllTemplatesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTemplatesRouter.swift; sourceTree = "<group>"; };
+		09FC393E29FABF5B00B2D97E /* AllTemplatesBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTemplatesBuilder.swift; sourceTree = "<group>"; };
+		09FC394029FABF6B00B2D97E /* AllTemplatesEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTemplatesEntity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -380,6 +392,12 @@
 		09F86C5F29F6FDEE00307432 /* AllTemplatesModule */ = {
 			isa = PBXGroup;
 			children = (
+				09FC393629FABF2D00B2D97E /* AllTemplatesViewController.swift */,
+				09FC393829FABF4200B2D97E /* AllTemplatesPresenter.swift */,
+				09FC393A29FABF4A00B2D97E /* AllTemplatesInteractor.swift */,
+				09FC393C29FABF5200B2D97E /* AllTemplatesRouter.swift */,
+				09FC394029FABF6B00B2D97E /* AllTemplatesEntity.swift */,
+				09FC393E29FABF5B00B2D97E /* AllTemplatesBuilder.swift */,
 			);
 			path = AllTemplatesModule;
 			sourceTree = "<group>";
@@ -463,7 +481,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				092E739C29EBFD9100165D37 /* UITextField+Extension.swift in Sources */,
+				09FC393929FABF4200B2D97E /* AllTemplatesPresenter.swift in Sources */,
 				099D4F8529F72B050002C24A /* NewTemplateBuilder.swift in Sources */,
+				09FC394129FABF6B00B2D97E /* AllTemplatesEntity.swift in Sources */,
 				099D4F8329F72AFD0002C24A /* NewTemplateRouter.swift in Sources */,
 				099D4F6B29F71A420002C24A /* CardInteractor.swift in Sources */,
 				09E9E82729EB0B3F0084416B /* BiometryService.swift in Sources */,
@@ -490,6 +510,8 @@
 				09AADD3A29F6D71A00C4965F /* BankHistoryLabelCell.swift in Sources */,
 				092E739429EBEB1F00165D37 /* LoginAnimationView.swift in Sources */,
 				09D509D829EF4EDE009CC219 /* UIImageView+Extension.swift in Sources */,
+				09FC393D29FABF5200B2D97E /* AllTemplatesRouter.swift in Sources */,
+				09FC393729FABF2D00B2D97E /* AllTemplatesViewController.swift in Sources */,
 				09E9E82E29EB16E10084416B /* KeyChain.swift in Sources */,
 				099D4F6D29F71A530002C24A /* CardRouter.swift in Sources */,
 				09632FCC29ED8A7D00DB2641 /* BankCardSet.swift in Sources */,
@@ -510,6 +532,8 @@
 				09E9E81F29EAE95D0084416B /* LoginRouter.swift in Sources */,
 				099D4F7729F722F50002C24A /* NewCardRouter.swift in Sources */,
 				09E9E81729EAE9360084416B /* LoginBuilder.swift in Sources */,
+				09FC393F29FABF5B00B2D97E /* AllTemplatesBuilder.swift in Sources */,
+				09FC393B29FABF4A00B2D97E /* AllTemplatesInteractor.swift in Sources */,
 				097E03A129EC44A500CE2A6F /* BankRouter.swift in Sources */,
 				099D4F7F29F72AEA0002C24A /* NewTemplatePresenter.swift in Sources */,
 				091095FE29DB32F000338D22 /* AppDelegate.swift in Sources */,
