@@ -107,7 +107,9 @@ extension AllTemplatesViewController: UICollectionViewDataSource {
 
 // MARK: - UICollectionViewDelegateFlowLayout
 extension AllTemplatesViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout
+                        collectionViewLayout: UICollectionViewLayout, sizeForItemAt
+                        indexPath: IndexPath) -> CGSize {
         let itemSpacing: CGFloat = 16
         let width = (collectionView.bounds.width - itemSpacing * 3) / 2
         return CGSize(width: width, height: width)

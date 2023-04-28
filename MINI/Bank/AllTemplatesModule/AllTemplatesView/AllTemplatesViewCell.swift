@@ -55,10 +55,10 @@ private extension AllTemplatesViewCell {
     func createCircleView() {
         circleView.backgroundColor = .systemGray2
         templateView.addSubview(circleView)
-        circleView.roundCorners(radius: 20)
+        circleView.roundCorners(radius: 30)
         circleView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalToSuperview().inset(20)
+            make.top.equalToSuperview().inset(40)
             make.width.height.equalTo(60)
         }
     }
@@ -75,7 +75,7 @@ private extension AllTemplatesViewCell {
     func createTextLabel() {
         templateView.addSubview(textLabel)
         textLabel.snp.makeConstraints { make in
-            make.top.equalTo(circleView.snp.bottom).offset(15)
+            make.top.equalTo(circleView.snp.bottom).offset(25)
             make.centerX.equalToSuperview()
         }
     }
