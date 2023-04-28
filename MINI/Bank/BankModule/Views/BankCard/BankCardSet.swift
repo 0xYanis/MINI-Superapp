@@ -8,11 +8,16 @@
 import UIKit
 
 final class BankCardSet: UITableViewCell {
-    weak var delegate: BankViewCellDelegate?
     
+    //MARK: Private properties
+    private var collectionView: UICollectionView!
+    private let snapLayout = StackFlowLayout()
+    
+    //MARK: Public properties
+    weak var delegate: BankViewCellDelegate?
     static let cellId = "BankCardSet"
     
-    // MARK: - Public method
+    // MARK: Public methods
     func configure() {
         
         collectionView.reloadData()
@@ -26,9 +31,6 @@ final class BankCardSet: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    private var collectionView: UICollectionView!
-    private let snapLayout = StackFlowLayout()
 }
 
 //MARK: - Private methods
