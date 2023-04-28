@@ -44,8 +44,8 @@ private extension AllTemplatesViewCell {
     }
     
     func createTemplateView() {
-        templateView.backgroundColor = UIColor(named: "whiteColor")
-        templateView.radiusAndShadow(radius: 10, shadowSize: 7)
+        templateView.backgroundColor = .red
+        templateView.roundCorners(radius: 10)
         addSubview(templateView)
         templateView.snp.makeConstraints { make in
             make.edges.equalToSuperview()

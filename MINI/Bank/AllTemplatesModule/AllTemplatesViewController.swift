@@ -33,9 +33,7 @@ final class AllTemplatesViewController: UIViewController {
     }
     
     //MARK: - private properties
-    private let templateCollectionView = UICollectionView(
-        frame: .zero, collectionViewLayout: UICollectionViewLayout()
-    )
+    private var templateCollectionView: UICollectionView!
 }
 
 //MARK: - AllTemplatesViewProtocol
@@ -53,17 +51,26 @@ extension AllTemplatesViewController: AllTemplatesViewProtocol {
 private extension AllTemplatesViewController {
     func initialize() {
         view.backgroundColor = .white
+        createNavigation()
         createCollectionView()
         collectionViewRegistrate()
     }
     
+    func createNavigation() {
+        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationItem.title = "All Templates"
+    }
+    
     func createCollectionView() {
+        let layout = UICollectionViewFlowLayout()
+        templateCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         templateCollectionView.delegate = self
         templateCollectionView.dataSource = self
         view.addSubview(templateCollectionView)
         templateCollectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        templateCollectionView.contentInset = .init(top: 0, left: 20, bottom: 0, right: 20)
     }
     
     func collectionViewRegistrate() {
@@ -101,8 +108,7 @@ extension AllTemplatesViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let height = view.frame.height / 6
-        return .init(width: view.frame.width, height: height)
+        return .init(width: 150, height: 130)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
