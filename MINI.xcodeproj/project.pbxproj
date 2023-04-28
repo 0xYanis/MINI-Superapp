@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		09035D0929DDAE2F003D4B0B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 09035D0829DDAE2F003D4B0B /* SnapKit */; };
 		0909D1C329F192E50078EEB5 /* BankTemplateLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0909D1C229F192E50078EEB5 /* BankTemplateLabelCell.swift */; };
+		090AE1DB29FBAA020092515D /* TemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090AE1DA29FBAA020092515D /* TemplateViewController.swift */; };
+		090AE1DD29FBAA080092515D /* TemplatePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090AE1DC29FBAA080092515D /* TemplatePresenter.swift */; };
+		090AE1DF29FBAA120092515D /* TemplateInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090AE1DE29FBAA120092515D /* TemplateInteractor.swift */; };
+		090AE1E129FBAA190092515D /* TemplateRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090AE1E029FBAA190092515D /* TemplateRouter.swift */; };
+		090AE1E329FBAA200092515D /* TemplateBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090AE1E229FBAA200092515D /* TemplateBuilder.swift */; };
+		090AE1E529FBAA2F0092515D /* TemplateEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090AE1E429FBAA2F0092515D /* TemplateEntity.swift */; };
 		091095FE29DB32F000338D22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091095FD29DB32F000338D22 /* AppDelegate.swift */; };
 		0910960029DB32F000338D22 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091095FF29DB32F000338D22 /* SceneDelegate.swift */; };
 		0910960729DB32F400338D22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0910960629DB32F400338D22 /* Assets.xcassets */; };
@@ -83,6 +89,12 @@
 
 /* Begin PBXFileReference section */
 		0909D1C229F192E50078EEB5 /* BankTemplateLabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTemplateLabelCell.swift; sourceTree = "<group>"; };
+		090AE1DA29FBAA020092515D /* TemplateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateViewController.swift; sourceTree = "<group>"; };
+		090AE1DC29FBAA080092515D /* TemplatePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplatePresenter.swift; sourceTree = "<group>"; };
+		090AE1DE29FBAA120092515D /* TemplateInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateInteractor.swift; sourceTree = "<group>"; };
+		090AE1E029FBAA190092515D /* TemplateRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateRouter.swift; sourceTree = "<group>"; };
+		090AE1E229FBAA200092515D /* TemplateBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateBuilder.swift; sourceTree = "<group>"; };
+		090AE1E429FBAA2F0092515D /* TemplateEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateEntity.swift; sourceTree = "<group>"; };
 		091095FA29DB32F000338D22 /* MINI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MINI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		091095FD29DB32F000338D22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		091095FF29DB32F000338D22 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -169,6 +181,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		090AE1D929FBA9DE0092515D /* TemplateModule */ = {
+			isa = PBXGroup;
+			children = (
+				090AE1DA29FBAA020092515D /* TemplateViewController.swift */,
+				090AE1DC29FBAA080092515D /* TemplatePresenter.swift */,
+				090AE1DE29FBAA120092515D /* TemplateInteractor.swift */,
+				090AE1E029FBAA190092515D /* TemplateRouter.swift */,
+				090AE1E229FBAA200092515D /* TemplateBuilder.swift */,
+				090AE1E429FBAA2F0092515D /* TemplateEntity.swift */,
+			);
+			path = TemplateModule;
+			sourceTree = "<group>";
+		};
 		091095F129DB32F000338D22 = {
 			isa = PBXGroup;
 			children = (
@@ -344,6 +369,7 @@
 				09F86C5A29F6FD4200307432 /* CardModule */,
 				09F86C5D29F6FDAB00307432 /* NewCardModule */,
 				09F86C5E29F6FDB900307432 /* NewTemplateModule */,
+				090AE1D929FBA9DE0092515D /* TemplateModule */,
 				09F86C5F29F6FDEE00307432 /* AllTemplatesModule */,
 				09F86C5C29F6FD6600307432 /* TransactionModule */,
 			);
@@ -521,17 +547,20 @@
 				09E9E82A29EB16210084416B /* KeyChainService.swift in Sources */,
 				09A7496029F992940005A649 /* CardDetailViewCell.swift in Sources */,
 				09FC394E29FAD3FB00B2D97E /* TransactionBuilder.swift in Sources */,
+				090AE1DF29FBAA120092515D /* TemplateInteractor.swift in Sources */,
 				097E039D29EC448F00CE2A6F /* BankPresenter.swift in Sources */,
 				099A79C029F16406004B95C7 /* BankCardCell.swift in Sources */,
 				09E9E82329EAFC770084416B /* UIView+Extension.swift in Sources */,
 				099D4F6F29F71A610002C24A /* CardBuilder.swift in Sources */,
 				099D4F7D29F72ADB0002C24A /* NewTemplateViewController.swift in Sources */,
 				09D509CE29EF1E76009CC219 /* BankHistoryTableViewController.swift in Sources */,
+				090AE1E329FBAA200092515D /* TemplateBuilder.swift in Sources */,
 				099D4F7B29F723090002C24A /* NewCardBuilder.swift in Sources */,
 				09E9E82129EAE9650084416B /* LoginEntity.swift in Sources */,
 				09503EB829F2D44000254F53 /* StackFlowLayout.swift in Sources */,
 				09E9E81929EAE9410084416B /* LoginViewController.swift in Sources */,
 				09FC394A29FAD3ED00B2D97E /* TransactionInteractor.swift in Sources */,
+				090AE1DB29FBAA020092515D /* TemplateViewController.swift in Sources */,
 				099D4F7929F723010002C24A /* NewCardInteractor.swift in Sources */,
 				09FC394629FAD3DA00B2D97E /* TransactionViewController.swift in Sources */,
 				099A79C229F16417004B95C7 /* BankTemplateCell.swift in Sources */,
@@ -554,14 +583,17 @@
 				09F86C4C29F6E75600307432 /* AuthenticationManager.swift in Sources */,
 				099D4F6729F71A2C0002C24A /* CardViewController.swift in Sources */,
 				099D4F7529F722EC0002C24A /* NewCardPresenter.swift in Sources */,
+				090AE1E529FBAA2F0092515D /* TemplateEntity.swift in Sources */,
 				099D4F6929F71A380002C24A /* CardPresenter.swift in Sources */,
 				09E9E81B29EAE94B0084416B /* LoginPresenter.swift in Sources */,
 				092E739629EBEB3000165D37 /* LoginView.swift in Sources */,
 				09D509D629EF379A009CC219 /* BankTransactionCell.swift in Sources */,
 				0921F35F29DF1FE000B3D4F7 /* UIButton+Extension.swift in Sources */,
+				090AE1E129FBAA190092515D /* TemplateRouter.swift in Sources */,
 				09D509DA29EF50AC009CC219 /* BankHistoryFirstCell.swift in Sources */,
 				09E9E81D29EAE9540084416B /* LoginInteractor.swift in Sources */,
 				09F86C5729F6F8A000307432 /* UITabBarController+Extension.swift in Sources */,
+				090AE1DD29FBAA080092515D /* TemplatePresenter.swift in Sources */,
 				09FC395029FAD40500B2D97E /* TransactionEntity.swift in Sources */,
 				097E039F29EC449900CE2A6F /* BankInteractor.swift in Sources */,
 				09FC394829FAD3E300B2D97E /* TransactionPresenter.swift in Sources */,
