@@ -40,7 +40,7 @@ private extension BankTemplateCell {
         createTextLabel()
     }
     func createTemplateView() {
-        templateView.backgroundColor = UIColor(named: "whiteColor")
+        templateView.backgroundColor = .systemGray6//UIColor(named: "whiteColor")
         templateView.radiusAndShadow(radius: 10, shadowSize: 7)
         addSubview(templateView)
         templateView.snp.makeConstraints { make in

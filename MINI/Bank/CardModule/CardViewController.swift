@@ -33,7 +33,7 @@ extension CardViewController: CardViewProtocol {
 
 private extension CardViewController {
     func initialize() {
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(named: "backColor")
         createNavigation()
         cardTableViewRegister()
     }

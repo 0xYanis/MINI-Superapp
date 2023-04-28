@@ -31,6 +31,6 @@ extension NewCardViewController: NewCardViewProtocol {
 
 private extension NewCardViewController {
     func initialize() {
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(named: "backColor")
     }
 }

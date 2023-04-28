@@ -31,7 +31,7 @@ extension NewTemplateViewController: NewTemplateViewProtocol {
 
 private extension NewTemplateViewController {
     func initialize() {
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(named: "backColor")
     }
 }
 

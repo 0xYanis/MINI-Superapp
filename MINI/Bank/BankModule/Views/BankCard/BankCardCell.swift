@@ -40,7 +40,7 @@ private extension BankCardCell {
         createCardAmount()
     }
     func createCardView() {
-        cardView.backgroundColor = UIColor(named: "cardColor")
+        cardView.backgroundColor = .systemGreen
         cardView.roundCorners(radius: 10)
         addSubview(cardView)
         cardView.snp.makeConstraints { make in
