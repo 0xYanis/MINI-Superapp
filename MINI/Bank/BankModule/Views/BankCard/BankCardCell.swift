@@ -10,9 +10,18 @@ import SnapKit
 
 final class BankCardCell: UICollectionViewCell {
     
+    //MARK: Private properties
+    private let cardView = UIView()
+    private let cardLogo = UIImageView(image: UIImage(systemName: "globe"))
+    private let cardAmount = UILabel(
+        text: "$1,200", font: .boldSystemFont(ofSize: 20), color: .white)
+    private let cardNumber = UILabel(
+        text: "*4631", font: .systemFont(ofSize: 16), color: .gray)
+    
+    //MARK: Public properties
     static let cellId = "BankCardCell"
     
-    // MARK: - Public method
+    // MARK: - Public methods
     func configure() {
         
     }
@@ -25,11 +34,6 @@ final class BankCardCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    private let cardView = UIView()
-    private let cardLogo = UIImageView(image: UIImage(systemName: "globe"))
-    private let cardAmount = UILabel(text: "$1,200", font: .boldSystemFont(ofSize: 20), color: .white)
-    private let cardNumber = UILabel(text: "*4631", font: .systemFont(ofSize: 16), color: .gray)
 }
 
 private extension BankCardCell {
