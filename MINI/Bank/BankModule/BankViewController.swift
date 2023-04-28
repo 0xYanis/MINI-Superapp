@@ -23,6 +23,11 @@ protocol BankViewProtocol: AnyObject {
 
 final class BankViewController: UIViewController {
     
+    //MARK: Private properties
+    private let bankTableView = UITableView()
+    private let historyTableVC = BankHistoryTableViewController()
+    
+    //MARK: Public properties
     var presenter: BankPresenterProtocol?
     
     //MARK: Lifecycle
@@ -40,10 +45,6 @@ final class BankViewController: UIViewController {
         super.viewWillDisappear(animated)
         navigationController?.dismiss(animated: false)
     }
-    
-    //MARK: Private properties
-    private let bankTableView = UITableView()
-    private let historyTableVC = BankHistoryTableViewController()
 }
 
 //MARK: - BankViewProtocol
@@ -86,6 +87,7 @@ private extension BankViewController {
         view.backgroundColor = UIColor(named: "backColor")
         createNavigation()
         createBankTableView()
+        createBankTableViewRegisters()
     }
     
     func createNavigation() {
@@ -124,15 +126,18 @@ private extension BankViewController {
         bankTableView.delegate = self
         bankTableView.showsVerticalScrollIndicator = false
         bankTableView.backgroundColor = UIColor(named: "backColor")
-        bankTableView.register(BankCardSet.self, forCellReuseIdentifier: BankCardSet.cellId)
-        bankTableView.register(BankTemplateLabelCell.self, forCellReuseIdentifier: BankTemplateLabelCell.cellId)
-        bankTableView.register(BankTemplateSet.self, forCellReuseIdentifier: BankTemplateSet.cellId)
-        bankTableView.register(BankHistoryLabelCell.self, forCellReuseIdentifier: BankHistoryLabelCell.cellId)
         view.addSubview(bankTableView)
         bankTableView.snp.makeConstraints { make in
             make.width.equalToSuperview()
             make.height.equalToSuperview().multipliedBy(0.7)
         }
+    }
+    
+    func createBankTableViewRegisters() {
+        bankTableView.register(BankCardSet.self, forCellReuseIdentifier: BankCardSet.cellId)
+        bankTableView.register(BankTemplateLabelCell.self, forCellReuseIdentifier: BankTemplateLabelCell.cellId)
+        bankTableView.register(BankTemplateSet.self, forCellReuseIdentifier: BankTemplateSet.cellId)
+        bankTableView.register(BankHistoryLabelCell.self, forCellReuseIdentifier: BankHistoryLabelCell.cellId)
     }
     
     func createBottomSheet() {
