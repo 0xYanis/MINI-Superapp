@@ -14,6 +14,16 @@ protocol TransactionViewProtocol: AnyObject {
 
 final class TransactionViewController: UIViewController {
     var presenter: TransactionPresenterProtocol?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        initialize()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.hideTabBar()
+    }
 }
 
 extension TransactionViewController: TransactionViewProtocol {
@@ -23,5 +33,11 @@ extension TransactionViewController: TransactionViewProtocol {
 private extension TransactionViewController {
     func initialize() {
         view.backgroundColor = .white
+        createNavigation()
+    }
+    
+    func createNavigation() {
+        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationItem.title = "Transaction"
     }
 }
