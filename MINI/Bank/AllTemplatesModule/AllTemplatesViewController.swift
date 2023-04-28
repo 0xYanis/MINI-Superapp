@@ -14,6 +14,11 @@ protocol AllTemplatesViewProtocol: AnyObject {
 }
 
 final class AllTemplatesViewController: UIViewController {
+    
+    //MARK: - Private properties
+    private var templateCollectionView: UICollectionView!
+    
+    //MARK: - Public properties
     var presenter: AllTemplatesPresenterProtocol?
     
     //MARK: - public methdods
@@ -31,9 +36,6 @@ final class AllTemplatesViewController: UIViewController {
         super.viewWillAppear(animated)
         tabBarController?.hideTabBar()
     }
-    
-    //MARK: - private properties
-    private var templateCollectionView: UICollectionView!
 }
 
 //MARK: - AllTemplatesViewProtocol
@@ -62,15 +64,19 @@ private extension AllTemplatesViewController {
     }
     
     func createCollectionView() {
-        let layout = UICollectionViewFlowLayout()
-        templateCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.scrollDirection = .vertical
+        flowLayout.minimumLineSpacing = 16
+        flowLayout.minimumInteritemSpacing = 16
+        flowLayout.sectionInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+        templateCollectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         templateCollectionView.delegate = self
         templateCollectionView.dataSource = self
+        templateCollectionView.backgroundColor = .clear
         view.addSubview(templateCollectionView)
         templateCollectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        templateCollectionView.contentInset = .init(top: 0, left: 20, bottom: 0, right: 20)
     }
     
     func collectionViewRegistrate() {
@@ -101,14 +107,10 @@ extension AllTemplatesViewController: UICollectionViewDataSource {
 
 // MARK: - UICollectionViewDelegateFlowLayout
 extension AllTemplatesViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout
-                        collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt
-                        section: Int) -> CGFloat {
-        return 20
-    }
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return .init(width: 150, height: 130)
+        let itemSpacing: CGFloat = 16
+        let width = (collectionView.bounds.width - itemSpacing * 3) / 2
+        return CGSize(width: width, height: width)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

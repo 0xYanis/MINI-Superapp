@@ -44,7 +44,7 @@ private extension AllTemplatesViewCell {
     }
     
     func createTemplateView() {
-        templateView.backgroundColor = .red
+        templateView.backgroundColor = .systemGray6
         templateView.roundCorners(radius: 10)
         addSubview(templateView)
         templateView.snp.makeConstraints { make in
