@@ -38,8 +38,7 @@ final class BankRouter: BankRouterProtocol {
     }
     
     func goToDetailTransaction(id: Int) {
-        let transactionView = UIViewController()
-        transactionView.view.backgroundColor = .systemOrange
+        let transactionView = TransactionBuilder.build()
         view?.navigationController?.pushViewController(transactionView, animated: true)
     }
     
