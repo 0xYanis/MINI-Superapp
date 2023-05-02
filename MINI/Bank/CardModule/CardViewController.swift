@@ -12,6 +12,9 @@ protocol CardViewProtocol: AnyObject {
 }
 
 final class CardViewController: UIViewController {
+    
+    private let cardTableView = UITableView()
+    
     var presenter: CardPresenterProtocol?
     
     override func viewDidLoad() {
@@ -23,8 +26,6 @@ final class CardViewController: UIViewController {
         super.viewWillAppear(animated)
         tabBarController?.hideTabBar()
     }
-    
-    private let cardTableView = UITableView()
 }
 
 extension CardViewController: CardViewProtocol {
