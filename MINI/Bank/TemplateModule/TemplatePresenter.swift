@@ -6,3 +6,24 @@
 //
 
 import Foundation
+
+protocol TemplatePresenterProtocol: AnyObject {
+    
+}
+
+final class TemplatePresenter {
+    
+    weak var view: TemplateViewProtocol?
+    var interactor: TemplateInteractorProtocol
+    var router: TemplateRouterProtocol
+    
+    init(interactor: TemplateInteractorProtocol, router: TemplateRouterProtocol) {
+        self.interactor = interactor
+        self.router = router
+    }
+    
+}
+
+extension TemplatePresenter: TemplatePresenterProtocol {
+    
+}

@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+protocol TemplateInteractorProtocol: AnyObject {
+    
+}
+
+final class TemplateInteractor: TemplateInteractorProtocol {
+    weak var presenter: TemplatePresenterProtocol?
+    
+}

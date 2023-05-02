@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+protocol TemplateRouterProtocol: AnyObject {
+    
+}
+
+final class TemplateRouter: TemplateRouterProtocol {
+    weak var view: TemplateViewController?
+    
+}
