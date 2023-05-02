@@ -162,62 +162,68 @@ private extension BankViewController {
 
 //MARK: - UITableViewDataSource
 extension BankViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView,
-                   numberOfRowsInSection section: Int) -> Int {
-        return 4
-    }
-    func tableView(_ tableView: UITableView,
-                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let defaultCell = UITableViewCell()
-        
-        switch indexPath.row {
-        case 0:
-            guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: BankCardSet.cellId,
-                for: indexPath) as? BankCardSet else { return defaultCell }
-            cell.configure()
-            cell.delegate = self
-            return cell
-        case 1:
-            guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: BankTemplateLabelCell.cellId,
-                for: indexPath) as? BankTemplateLabelCell else { return defaultCell }
-            cell.seeAllButt.addTarget(self, action: #selector(didTapSeeAllButt), for: .touchUpInside)
-            return cell
-        case 2:
-            guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: BankTemplateSet.cellId,
-                for: indexPath) as? BankTemplateSet else { return defaultCell }
-            cell.delegate = self
-            return cell
-        case 3:
-            guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: BankHistoryLabelCell.cellId,
-                for: indexPath) as? BankHistoryLabelCell else { return defaultCell }
-            cell.delegate = self
-            return cell
-        default:
-            return defaultCell
+    func tableView(
+        _ tableView: UITableView,
+        numberOfRowsInSection section: Int) -> Int {
+            return 4
         }
-    }
+    func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            
+            let defaultCell = UITableViewCell()
+            
+            switch indexPath.row {
+            case 0:
+                guard let cell = tableView.dequeueReusableCell(
+                    withIdentifier: BankCardSet.cellId,
+                    for: indexPath) as? BankCardSet else { return defaultCell }
+                cell.configure()
+                cell.delegate = self
+                return cell
+            case 1:
+                guard let cell = tableView.dequeueReusableCell(
+                    withIdentifier: BankTemplateLabelCell.cellId,
+                    for: indexPath) as? BankTemplateLabelCell else { return defaultCell }
+                cell.seeAllButt.addTarget(self, action: #selector(didTapSeeAllButt), for: .touchUpInside)
+                return cell
+            case 2:
+                guard let cell = tableView.dequeueReusableCell(
+                    withIdentifier: BankTemplateSet.cellId,
+                    for: indexPath) as? BankTemplateSet else { return defaultCell }
+                cell.delegate = self
+                return cell
+            case 3:
+                guard let cell = tableView.dequeueReusableCell(
+                    withIdentifier: BankHistoryLabelCell.cellId,
+                    for: indexPath) as? BankHistoryLabelCell else { return defaultCell }
+                cell.delegate = self
+                return cell
+            default:
+                return defaultCell
+            }
+        }
+    
 }
 
 //MARK: - UITableViewDelegate
 extension BankViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView,
-                   heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let height = view.frame.height
-        switch indexPath.row {
-        case 0:
-            return (height/4.7)
-        case 1:
-            return (height/18)
-        case 2:
-            return (height/6.3)
-        case 3:
-            return (height/18)
-        default:
-            return (height/4.7)
+    func tableView(
+        _ tableView: UITableView,
+        heightForRowAt indexPath: IndexPath) -> CGFloat {
+            let height = view.frame.height
+            switch indexPath.row {
+            case 0:
+                return (height/4.7)
+            case 1:
+                return (height/18)
+            case 2:
+                return (height/6.3)
+            case 3:
+                return (height/18)
+            default:
+                return (height/4.7)
+            }
         }
-    }
+    
 }
