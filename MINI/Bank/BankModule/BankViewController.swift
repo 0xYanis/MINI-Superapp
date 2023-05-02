@@ -97,9 +97,10 @@ private extension BankViewController {
     }
     
     func createRightBarButtonItem() -> UIBarButtonItem {
-        return UIBarButtonItem(systemItem: .edit,
-                               primaryAction: .none,
-                               menu: createRightMenu()
+        return UIBarButtonItem(
+            systemItem: .edit,
+            primaryAction: .none,
+            menu: createRightMenu()
         )
     }
     
