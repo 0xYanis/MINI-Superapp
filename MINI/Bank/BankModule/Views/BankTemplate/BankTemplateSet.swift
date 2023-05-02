@@ -8,8 +8,11 @@
 import UIKit
 
 final class BankTemplateSet: UITableViewCell {
-    weak var delegate: BankViewCellDelegate?
     
+    private var collectionView: UICollectionView!
+    private let snapLayout = StackFlowLayout()
+    
+    weak var delegate: BankViewCellDelegate?
     static let cellId = "BankTemplateSet"
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -20,9 +23,6 @@ final class BankTemplateSet: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    private var collectionView: UICollectionView!
-    private let snapLayout = StackFlowLayout()
 }
 
 //MARK: - Private methods

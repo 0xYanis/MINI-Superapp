@@ -10,6 +10,15 @@ import UIKit
 
 final class BankTemplateCell: UICollectionViewCell {
     
+    private let templateView = UIView()
+    private let circleView = UIView()
+    private let imageView = UIImageView(image: UIImage(systemName: "gear"))
+    private let textLabel = UILabel(
+        text: "Utility Payments",
+        font: .systemFont(ofSize: 15),
+        color: UIColor(named: "textColor")
+    )
+    
     static let cellId = "BankTemplateCell"
     
     func configure() {
@@ -24,11 +33,6 @@ final class BankTemplateCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    private let templateView = UIView()
-    private let circleView = UIView()
-    private let imageView = UIImageView(image: UIImage(systemName: "gear"))
-    private let textLabel = UILabel(text: "Utility Payments", font: .systemFont(ofSize: 15), color: UIColor(named: "textColor"))
 }
 
 private extension BankTemplateCell {
