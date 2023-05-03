@@ -8,7 +8,7 @@
 import Foundation
 
 protocol AviaPresenterProtocol: AnyObject {
-    
+    func userDidTapResult(id: Int)
 }
 
 final class AviaPresenter {
@@ -24,5 +24,9 @@ final class AviaPresenter {
 }
 
 extension AviaPresenter: AviaPresenterProtocol {
+    func userDidTapResult(id: Int) {
+        
+    }
+    
     
 }

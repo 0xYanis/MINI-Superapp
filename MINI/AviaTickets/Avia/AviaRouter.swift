@@ -6,13 +6,18 @@
 //
 
 import Foundation
+import UIKit
 
 protocol AviaRouterProtocol: AnyObject {
-    
+    func goDetailResult(id: Int)
 }
 
 final class AviaRouter: AviaRouterProtocol {
     weak var view: AviaViewController?
     
-    
+    func goDetailResult(id: Int) {
+        let resultView = UIViewController()
+        resultView.view.backgroundColor = .white
+        view?.navigationController?.pushViewController(resultView, animated: true)
+    }
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct TemplateEntity {
+struct AllTemplatesEntity {
     let templateName: String
     let templateImage: String
 }

@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 protocol AllTemplatesViewProtocol: AnyObject {
-    func viewDidLoaded(data: TemplateEntity)
+    func viewDidLoaded(data: AllTemplatesEntity)
     func userWantToDeleteTemplate(id: Int)
 }
 
@@ -40,7 +40,7 @@ final class AllTemplatesViewController: UIViewController {
 
 //MARK: - AllTemplatesViewProtocol
 extension AllTemplatesViewController: AllTemplatesViewProtocol {
-    func viewDidLoaded(data: TemplateEntity) {
+    func viewDidLoaded(data: AllTemplatesEntity) {
         
     }
     
