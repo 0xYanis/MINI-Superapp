@@ -15,6 +15,11 @@
 		090AE1E129FBAA190092515D /* TemplateRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090AE1E029FBAA190092515D /* TemplateRouter.swift */; };
 		090AE1E329FBAA200092515D /* TemplateBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090AE1E229FBAA200092515D /* TemplateBuilder.swift */; };
 		090AE1E529FBAA2F0092515D /* TemplateEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090AE1E429FBAA2F0092515D /* TemplateEntity.swift */; };
+		090BAB8E2A0298F5006AE8F9 /* AviaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090BAB8D2A0298F5006AE8F9 /* AviaViewController.swift */; };
+		090BAB902A029914006AE8F9 /* AviaPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090BAB8F2A029914006AE8F9 /* AviaPresenter.swift */; };
+		090BAB922A02991D006AE8F9 /* AviaInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090BAB912A02991D006AE8F9 /* AviaInteractor.swift */; };
+		090BAB942A029924006AE8F9 /* AviaRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090BAB932A029924006AE8F9 /* AviaRouter.swift */; };
+		090BAB962A02992A006AE8F9 /* AviaBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090BAB952A02992A006AE8F9 /* AviaBuilder.swift */; };
 		091095FE29DB32F000338D22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091095FD29DB32F000338D22 /* AppDelegate.swift */; };
 		0910960029DB32F000338D22 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091095FF29DB32F000338D22 /* SceneDelegate.swift */; };
 		0910960729DB32F400338D22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0910960629DB32F400338D22 /* Assets.xcassets */; };
@@ -95,6 +100,11 @@
 		090AE1E029FBAA190092515D /* TemplateRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateRouter.swift; sourceTree = "<group>"; };
 		090AE1E229FBAA200092515D /* TemplateBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateBuilder.swift; sourceTree = "<group>"; };
 		090AE1E429FBAA2F0092515D /* TemplateEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateEntity.swift; sourceTree = "<group>"; };
+		090BAB8D2A0298F5006AE8F9 /* AviaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AviaViewController.swift; sourceTree = "<group>"; };
+		090BAB8F2A029914006AE8F9 /* AviaPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AviaPresenter.swift; sourceTree = "<group>"; };
+		090BAB912A02991D006AE8F9 /* AviaInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AviaInteractor.swift; sourceTree = "<group>"; };
+		090BAB932A029924006AE8F9 /* AviaRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AviaRouter.swift; sourceTree = "<group>"; };
+		090BAB952A02992A006AE8F9 /* AviaBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AviaBuilder.swift; sourceTree = "<group>"; };
 		091095FA29DB32F000338D22 /* MINI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MINI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		091095FD29DB32F000338D22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		091095FF29DB32F000338D22 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -194,6 +204,26 @@
 			path = TemplateModule;
 			sourceTree = "<group>";
 		};
+		090BAB8B2A029889006AE8F9 /* AviaTickets */ = {
+			isa = PBXGroup;
+			children = (
+				090BAB8C2A0298C8006AE8F9 /* Avia */,
+			);
+			path = AviaTickets;
+			sourceTree = "<group>";
+		};
+		090BAB8C2A0298C8006AE8F9 /* Avia */ = {
+			isa = PBXGroup;
+			children = (
+				090BAB8D2A0298F5006AE8F9 /* AviaViewController.swift */,
+				090BAB8F2A029914006AE8F9 /* AviaPresenter.swift */,
+				090BAB912A02991D006AE8F9 /* AviaInteractor.swift */,
+				090BAB932A029924006AE8F9 /* AviaRouter.swift */,
+				090BAB952A02992A006AE8F9 /* AviaBuilder.swift */,
+			);
+			path = Avia;
+			sourceTree = "<group>";
+		};
 		091095F129DB32F000338D22 = {
 			isa = PBXGroup;
 			children = (
@@ -214,6 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				0910961129DB332600338D22 /* Application */,
+				090BAB8B2A029889006AE8F9 /* AviaTickets */,
 				09F86C5829F6FD1200307432 /* Bank */,
 				09F86C5929F6FD1B00307432 /* Login */,
 				09E9E82829EB119D0084416B /* ServiceLayer */,
@@ -548,6 +579,7 @@
 				09A7496029F992940005A649 /* CardDetailViewCell.swift in Sources */,
 				09FC394E29FAD3FB00B2D97E /* TransactionBuilder.swift in Sources */,
 				090AE1DF29FBAA120092515D /* TemplateInteractor.swift in Sources */,
+				090BAB942A029924006AE8F9 /* AviaRouter.swift in Sources */,
 				097E039D29EC448F00CE2A6F /* BankPresenter.swift in Sources */,
 				099A79C029F16406004B95C7 /* BankCardCell.swift in Sources */,
 				09E9E82329EAFC770084416B /* UIView+Extension.swift in Sources */,
@@ -555,6 +587,7 @@
 				099D4F7D29F72ADB0002C24A /* NewTemplateViewController.swift in Sources */,
 				09D509CE29EF1E76009CC219 /* BankHistoryTableViewController.swift in Sources */,
 				090AE1E329FBAA200092515D /* TemplateBuilder.swift in Sources */,
+				090BAB8E2A0298F5006AE8F9 /* AviaViewController.swift in Sources */,
 				099D4F7B29F723090002C24A /* NewCardBuilder.swift in Sources */,
 				09E9E82129EAE9650084416B /* LoginEntity.swift in Sources */,
 				09503EB829F2D44000254F53 /* StackFlowLayout.swift in Sources */,
@@ -565,7 +598,9 @@
 				09FC394629FAD3DA00B2D97E /* TransactionViewController.swift in Sources */,
 				099A79C229F16417004B95C7 /* BankTemplateCell.swift in Sources */,
 				097E03A329EC44BD00CE2A6F /* BankBuilder.swift in Sources */,
+				090BAB902A029914006AE8F9 /* AviaPresenter.swift in Sources */,
 				092E739A29EBFB8800165D37 /* UIStackView+Extension.swift in Sources */,
+				090BAB922A02991D006AE8F9 /* AviaInteractor.swift in Sources */,
 				09E9E81229EAE6030084416B /* UILabel+Extension.swift in Sources */,
 				09632FCE29ED8A8800DB2641 /* BankTemplateSet.swift in Sources */,
 				09E9E83029EB24840084416B /* UIAlertController+Extension.swift in Sources */,
@@ -589,6 +624,7 @@
 				092E739629EBEB3000165D37 /* LoginView.swift in Sources */,
 				09D509D629EF379A009CC219 /* BankTransactionCell.swift in Sources */,
 				0921F35F29DF1FE000B3D4F7 /* UIButton+Extension.swift in Sources */,
+				090BAB962A02992A006AE8F9 /* AviaBuilder.swift in Sources */,
 				090AE1E129FBAA190092515D /* TemplateRouter.swift in Sources */,
 				09D509DA29EF50AC009CC219 /* BankHistoryFirstCell.swift in Sources */,
 				09E9E81D29EAE9540084416B /* LoginInteractor.swift in Sources */,
