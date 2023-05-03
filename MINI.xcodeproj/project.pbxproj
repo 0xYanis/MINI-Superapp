@@ -21,6 +21,7 @@
 		090BAB942A029924006AE8F9 /* AviaRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090BAB932A029924006AE8F9 /* AviaRouter.swift */; };
 		090BAB962A02992A006AE8F9 /* AviaBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090BAB952A02992A006AE8F9 /* AviaBuilder.swift */; };
 		090BAB982A02BC2C006AE8F9 /* AviaSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090BAB972A02BC2C006AE8F9 /* AviaSearchView.swift */; };
+		090BAB9B2A02BE53006AE8F9 /* AviaResultsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090BAB9A2A02BE53006AE8F9 /* AviaResultsCell.swift */; };
 		091095FE29DB32F000338D22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091095FD29DB32F000338D22 /* AppDelegate.swift */; };
 		0910960029DB32F000338D22 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091095FF29DB32F000338D22 /* SceneDelegate.swift */; };
 		0910960729DB32F400338D22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0910960629DB32F400338D22 /* Assets.xcassets */; };
@@ -107,6 +108,7 @@
 		090BAB932A029924006AE8F9 /* AviaRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AviaRouter.swift; sourceTree = "<group>"; };
 		090BAB952A02992A006AE8F9 /* AviaBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AviaBuilder.swift; sourceTree = "<group>"; };
 		090BAB972A02BC2C006AE8F9 /* AviaSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AviaSearchView.swift; sourceTree = "<group>"; };
+		090BAB9A2A02BE53006AE8F9 /* AviaResultsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AviaResultsCell.swift; sourceTree = "<group>"; };
 		091095FA29DB32F000338D22 /* MINI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MINI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		091095FD29DB32F000338D22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		091095FF29DB32F000338D22 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				090BAB992A02BC30006AE8F9 /* SearchView */,
+				090BAB9C2A02BE58006AE8F9 /* ResultsCell */,
 				090BAB8D2A0298F5006AE8F9 /* AviaViewController.swift */,
 				090BAB8F2A029914006AE8F9 /* AviaPresenter.swift */,
 				090BAB912A02991D006AE8F9 /* AviaInteractor.swift */,
@@ -233,6 +236,14 @@
 				090BAB972A02BC2C006AE8F9 /* AviaSearchView.swift */,
 			);
 			path = SearchView;
+			sourceTree = "<group>";
+		};
+		090BAB9C2A02BE58006AE8F9 /* ResultsCell */ = {
+			isa = PBXGroup;
+			children = (
+				090BAB9A2A02BE53006AE8F9 /* AviaResultsCell.swift */,
+			);
+			path = ResultsCell;
 			sourceTree = "<group>";
 		};
 		091095F129DB32F000338D22 = {
@@ -613,6 +624,7 @@
 				090BAB902A029914006AE8F9 /* AviaPresenter.swift in Sources */,
 				092E739A29EBFB8800165D37 /* UIStackView+Extension.swift in Sources */,
 				090BAB922A02991D006AE8F9 /* AviaInteractor.swift in Sources */,
+				090BAB9B2A02BE53006AE8F9 /* AviaResultsCell.swift in Sources */,
 				09E9E81229EAE6030084416B /* UILabel+Extension.swift in Sources */,
 				09632FCE29ED8A8800DB2641 /* BankTemplateSet.swift in Sources */,
 				09E9E83029EB24840084416B /* UIAlertController+Extension.swift in Sources */,

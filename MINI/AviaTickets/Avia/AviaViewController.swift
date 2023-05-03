@@ -68,30 +68,33 @@ private extension AviaViewController {
     }
     
     func resultsTableRegistrate() {
-        
+        resultsTable.register(
+            AviaResultsCell.self, forCellReuseIdentifier: AviaResultsCell.cellId
+        )
     }
-    
 }
 
 //MARK: - UITableViewDataSource
 extension AviaViewController: UITableViewDataSource {
-    func tableView(
-        _ tableView: UITableView,
-        numberOfRowsInSection section: Int) -> Int {
-            return 15
-        }
+    func tableView(_ tableView: UITableView,
+                   numberOfRowsInSection section: Int) -> Int {
+        return 15
+    }
     
-    func tableView(
-        _ tableView: UITableView,
-        cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = UITableViewCell()
-            cell.backgroundColor = .clear
-            cell.textLabel?.text = "Ячейка номер: \(indexPath.row + 1)"
-            cell.detailTextLabel?.text = "by Yanis"
-            cell.imageView?.image = UIImage(systemName: "globe")
+    func tableView(_ tableView: UITableView,
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let defaultCell = UITableViewCell()
+        
+        switch indexPath.row {
+        case 0:
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: AviaResultsCell.cellId, for: indexPath
+            ) as? AviaResultsCell else { return defaultCell }
             return cell
+        default:
+            return defaultCell
         }
-    
+    }
     
 }
 
