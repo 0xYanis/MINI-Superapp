@@ -15,7 +15,7 @@ protocol AviaViewProtocol: AnyObject {
 final class AviaViewController: UIViewController {
     
     //MARK: - Private properties
-    private let searchView = UIView()
+    private let searchView = AviaSearchView()
     private let resultsTable = UITableView()
     
     //MARK: - Public properties
@@ -47,7 +47,6 @@ private extension AviaViewController {
     }
     
     func createSearchView() {
-        searchView.backgroundColor = .green
         searchView.roundBottomCorners(radius: 30)
         view.addSubview(searchView)
         searchView.snp.makeConstraints { make in
