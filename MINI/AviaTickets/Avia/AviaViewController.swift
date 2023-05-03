@@ -48,6 +48,7 @@ private extension AviaViewController {
     
     func createSearchView() {
         searchView.backgroundColor = .green
+        searchView.roundBottomCorners(radius: 30)
         view.addSubview(searchView)
         searchView.snp.makeConstraints { make in
             make.left.top.right.equalToSuperview()
@@ -57,12 +58,13 @@ private extension AviaViewController {
     
     func createResultsTable() {
         resultsTable.backgroundColor = .cyan
+        resultsTable.roundTopCorners(radius: 30)
         resultsTable.dataSource = self
         resultsTable.delegate = self
         view.addSubview(resultsTable)
         resultsTable.snp.makeConstraints { make in
             make.bottom.left.right.equalToSuperview()
-            make.top.equalTo(searchView.snp.bottom)
+            make.top.equalTo(searchView.snp.bottom).offset(10)
         }
     }
     

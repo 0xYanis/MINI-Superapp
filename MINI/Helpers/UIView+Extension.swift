@@ -12,6 +12,7 @@ extension UIView {
         roundCorners(radius: radius)
         shadow(color: color, opacity: opacity, radius: shadowSize)
     }
+    
     func shadow(color: UIColor, opacity: Float, radius: CGFloat) {
         layer.shadowColor = color.cgColor
         layer.shadowOpacity = opacity
@@ -19,17 +20,34 @@ extension UIView {
         layer.shadowOffset = CGSize(width: 0, height: 0)
         layer.masksToBounds = false
     }
+    
     func roundCorners(radius: Double) {
         self.layer.cornerRadius = CGFloat(radius)
         self.clipsToBounds = true
     }
+    
     func roundBottomCorners(radius: CGFloat) {
         let cornerRadius: CGFloat = radius
-        let maskPath = UIBezierPath(roundedRect: bounds,
-                                    byRoundingCorners: [.bottomLeft, .bottomRight],
-                                    cornerRadii: CGSize(width: cornerRadius, height: cornerRadius))
+        let maskPath = UIBezierPath(
+            roundedRect: bounds,
+            byRoundingCorners: [.bottomLeft, .bottomRight],
+            cornerRadii: CGSize(width: cornerRadius, height: cornerRadius)
+        )
         let shape = CAShapeLayer()
         shape.path = maskPath.cgPath
         layer.mask = shape
     }
+    
+    func roundTopCorners(radius: CGFloat) {
+        let cornerRadius: CGFloat = radius
+        let maskPath = UIBezierPath(
+            roundedRect: bounds,
+            byRoundingCorners: [.topLeft, .topRight],
+            cornerRadii: CGSize(width: cornerRadius, height: cornerRadius)
+        )
+        let shape = CAShapeLayer()
+        shape.path = maskPath.cgPath
+        layer.mask = shape
+    }
+    
 }
