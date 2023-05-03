@@ -19,7 +19,7 @@ private extension BaseTabBarController {
     func initialize() {
         viewControllers = [
             createVC(BankBuilder.build(), barTitle: "Bank", image: "house.fill"),
-            createVC(UIViewController(), barTitle: "Tickets", image: "airplane"),
+            createVC(AviaBuilder.build(), barTitle: "Tickets", image: "airplane"),
             createVC(UIViewController(), barTitle: "Grocery", image: "basket.fill"),
             createVC(UIViewController(), barTitle: "Profile", image: "person.fill")
         ]
