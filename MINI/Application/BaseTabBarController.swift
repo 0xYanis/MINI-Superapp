@@ -24,6 +24,7 @@ private extension BaseTabBarController {
             createVC(UIViewController(), barTitle: "Profile", image: "person.fill")
         ]
         createBorder()
+        addBackgroundColor()
     }
     
     func createVC(_ vc: UIViewController, barTitle: String, image: String) -> UIViewController {
@@ -39,5 +40,9 @@ private extension BaseTabBarController {
         topBorder.frame = CGRect(x: 0, y: 0, width: tabBar.frame.width, height: 0.5)
         topBorder.backgroundColor = UIColor.gray.cgColor
         tabBar.layer.addSublayer(topBorder)
+    }
+    
+    func addBackgroundColor() {
+        tabBar.backgroundColor = .systemGray5
     }
 }
