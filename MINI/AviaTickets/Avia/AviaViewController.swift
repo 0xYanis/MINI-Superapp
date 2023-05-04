@@ -39,6 +39,7 @@ private extension AviaViewController {
         createNavigation()
         createSearchView()
         createtableView()
+        tableViewRegistrate()
     }
     
     func createNavigation() {
@@ -61,28 +62,46 @@ private extension AviaViewController {
         tableView.separatorColor = .black
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.roundCorners(radius: 30)
         tableView.backgroundColor = .clear
+        tableView.roundCorners(radius: 30)
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
             make.left.right.bottom.equalToSuperview()
             make.top.equalTo(searchView.snp.bottom).offset(15)
         }
     }
+    
+    func tableViewRegistrate() {
+        tableView.register(
+            AviaResultsCell.self, forCellReuseIdentifier: AviaResultsCell.cellId
+        )
+    }
 }
 
 extension AviaViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView,
+                   numberOfRowsInSection section: Int) -> Int {
         return 15
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.backgroundColor = .systemGray6
-        return cell
+    func tableView(_ tableView: UITableView,
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let defaultCell = UITableViewCell()
+        
+        switch indexPath.row {
+        case 0...15:
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: AviaResultsCell.cellId,
+                for: indexPath
+            ) as? AviaResultsCell else { return defaultCell }
+            return cell
+            
+        default:
+            return defaultCell
+        }
     }
 }
 
 extension AviaViewController: UITableViewDelegate {
-    
+    //TODO: - updateConstraints при скроллинге
 }
