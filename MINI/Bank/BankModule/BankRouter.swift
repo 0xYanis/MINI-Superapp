@@ -27,8 +27,7 @@ final class BankRouter: BankRouterProtocol {
     }
     
     func goToDetailTemplate(id: Int) {
-        let templateView = UIViewController()
-        templateView.view.backgroundColor = .blue
+        let templateView = TemplateBuilder.build()
         view?.navigationController?.pushViewController(templateView, animated: true)
     }
     

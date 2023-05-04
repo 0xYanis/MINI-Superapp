@@ -19,6 +19,11 @@ final class TemplateViewController: UIViewController {
         super.viewDidLoad()
         initialize()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.hideTabBar()
+    }
 }
 
 extension TemplateViewController: TemplateViewProtocol {
@@ -27,6 +32,6 @@ extension TemplateViewController: TemplateViewProtocol {
 
 private extension TemplateViewController {
     func initialize() {
-        
+        view.backgroundColor = UIColor(named: "backColor")
     }
 }

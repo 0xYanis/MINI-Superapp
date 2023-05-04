@@ -16,8 +16,7 @@ final class AllTemplatesRouter: AllTemplatesRouterProtocol {
     weak var view: AllTemplatesViewController?
     
     func goToTemplate() {
-        let templateView = UIViewController()
-        templateView.view.backgroundColor = .white
+        let templateView = TemplateBuilder.build()
         view?.navigationController?.pushViewController(templateView, animated: false)
     }
 }
