@@ -53,7 +53,7 @@ private extension AviaViewController {
         view.addSubview(searchView)
         searchView.snp.makeConstraints { make in
             make.top.left.right.equalToSuperview()
-            make.height.equalTo(view.frame.height / 2.5)
+            make.height.equalTo(view.frame.height / 3)
         }
     }
     
