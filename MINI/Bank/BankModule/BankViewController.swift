@@ -106,17 +106,18 @@ private extension BankViewController {
     
     func createRightMenu() -> UIMenu {
         let cardImage = UIImage(systemName: "creditcard.fill")
-        let addCard = UIAction(title: "Add new Card", image: cardImage) { [weak self] _ in
-            self?.presenter?.userDidTapNewCard()
-        }
+        let addCard = UIAction(
+            title: "Add new Card",
+            image: cardImage) { [weak self] _ in
+                self?.presenter?.userDidTapNewCard()
+            }
         let templateImage = UIImage(systemName: "plus.rectangle.fill")
-        let addTemplate = UIAction(title: "Add new Template", image: templateImage) { [weak self] _ in
-            self?.presenter?.userDidTapNewTemplate()
-        }
-        let menu = UIMenu(children: [
-            addCard, addTemplate
-        ])
-        return menu
+        let addTemplate = UIAction(
+            title: "Add new Template",
+            image: templateImage) { [weak self] _ in
+                self?.presenter?.userDidTapNewTemplate()
+            }
+        return UIMenu(children: [addCard, addTemplate])
     }
     
     func createBankTableView() {
@@ -168,43 +169,41 @@ extension BankViewController: UITableViewDataSource {
         numberOfRowsInSection section: Int) -> Int {
             return 4
         }
-    func tableView(
-        _ tableView: UITableView,
-        cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            
-            let defaultCell = UITableViewCell()
-            
-            switch indexPath.row {
-            case 0:
-                guard let cell = tableView.dequeueReusableCell(
-                    withIdentifier: BankCardSet.cellId,
-                    for: indexPath) as? BankCardSet else { return defaultCell }
-                cell.configure()
-                cell.delegate = self
-                return cell
-            case 1:
-                guard let cell = tableView.dequeueReusableCell(
-                    withIdentifier: BankTemplateLabelCell.cellId,
-                    for: indexPath) as? BankTemplateLabelCell else { return defaultCell }
-                cell.seeAllButt.addTarget(self, action: #selector(didTapSeeAllButt), for: .touchUpInside)
-                return cell
-            case 2:
-                guard let cell = tableView.dequeueReusableCell(
-                    withIdentifier: BankTemplateSet.cellId,
-                    for: indexPath) as? BankTemplateSet else { return defaultCell }
-                cell.delegate = self
-                return cell
-            case 3:
-                guard let cell = tableView.dequeueReusableCell(
-                    withIdentifier: BankHistoryLabelCell.cellId,
-                    for: indexPath) as? BankHistoryLabelCell else { return defaultCell }
-                cell.delegate = self
-                return cell
-            default:
-                return defaultCell
-            }
+    func tableView(_ tableView: UITableView,
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let defaultCell = UITableViewCell()
+        
+        switch indexPath.row {
+        case 0:
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: BankCardSet.cellId,
+                for: indexPath) as? BankCardSet else { return defaultCell }
+            cell.configure()
+            cell.delegate = self
+            return cell
+        case 1:
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: BankTemplateLabelCell.cellId,
+                for: indexPath) as? BankTemplateLabelCell else { return defaultCell }
+            cell.seeAllButt.addTarget(self, action: #selector(didTapSeeAllButt), for: .touchUpInside)
+            return cell
+        case 2:
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: BankTemplateSet.cellId,
+                for: indexPath) as? BankTemplateSet else { return defaultCell }
+            cell.delegate = self
+            return cell
+        case 3:
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: BankHistoryLabelCell.cellId,
+                for: indexPath) as? BankHistoryLabelCell else { return defaultCell }
+            cell.delegate = self
+            return cell
+        default:
+            return defaultCell
         }
-    
+    }
 }
 
 //MARK: - UITableViewDelegate
