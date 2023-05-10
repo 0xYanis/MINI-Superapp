@@ -10,6 +10,7 @@ import SnapKit
 
 final class BankHistoryLabel: UIView {
     
+    private let graberView = UIView()
     private let historyLabel = UILabel(text: "Transaction History", font: .boldSystemFont(ofSize: 20), color: .none)
     private let searchButton = UIButton(systemImage: "magnifyingglass.circle.fill", color: .systemOrange, size: 35)
     private let searchBar = UISearchBar()
@@ -49,10 +50,23 @@ extension BankHistoryLabel {
 
 private extension BankHistoryLabel {
     func initialize() {
+        createGraberView()
         createLabel()
         createSearchButton()
         createSearchBar()
         createTapGesture()
+    }
+    
+    func createGraberView() {
+        graberView.backgroundColor = .init(white: 0.4, alpha: 0.7)
+        graberView.roundCorners(radius: 3)
+        addSubview(graberView)
+        graberView.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalToSuperview().inset(4)
+            make.width.equalTo(45)
+            make.height.equalTo(6)
+        }
     }
     
     func createLabel() {
