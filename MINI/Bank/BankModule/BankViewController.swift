@@ -27,6 +27,7 @@ final class BankViewController: UIViewController {
     //MARK: Private properties
     private let bankTableView = UITableView()
     private let historyTableVC = BankHistoryViewController()
+    private let refreshControl = UIRefreshControl()
     
     //MARK: Public properties
     var presenter: BankPresenterProtocol?
@@ -91,14 +92,15 @@ extension BankViewController: BankViewCellDelegate {
 private extension BankViewController {
     func initialize() {
         view.backgroundColor = UIColor(named: "backColor")
-        createNavigation()
-        createBankTableView()
-        createBankTableViewRegisters()
+        createNavigation(title: "Home")
+        createTableView(bankTableView)
+        createTableViewRegisters(in: bankTableView)
         createBottomSheet()
+        createRefreshControl(scrollView: bankTableView)
     }
     
-    func createNavigation() {
-        navigationItem.title = "Home"
+    func createNavigation(title: String) {
+        navigationItem.title = title
         navigationItem.rightBarButtonItem = createRightBarButtonItem()
         navigationController?.navigationBar.prefersLargeTitles = true
     }
@@ -132,25 +134,25 @@ private extension BankViewController {
         return UIMenu(children: [addCard, addTemplate])
     }
     
-    func createBankTableView() {
-        bankTableView.backgroundColor = .clear
-        bankTableView.separatorColor = .clear
-        bankTableView.dataSource = self
-        bankTableView.delegate = self
-        bankTableView.showsVerticalScrollIndicator = false
-        bankTableView.backgroundColor = UIColor(named: "backColor")
-        view.addSubview(bankTableView)
-        bankTableView.snp.makeConstraints { make in
+    func createTableView(_ tableView: UITableView) {
+        tableView.backgroundColor = .clear
+        tableView.separatorColor = .clear
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.showsVerticalScrollIndicator = false
+        tableView.backgroundColor = UIColor(named: "backColor")
+        view.addSubview(tableView)
+        tableView.snp.makeConstraints { make in
             make.width.equalToSuperview()
             make.height.equalToSuperview().multipliedBy(0.7)
         }
     }
     
-    func createBankTableViewRegisters() {
-        bankTableView.register(BankCardSet.self, forCellReuseIdentifier: BankCardSet.cellId)
-        bankTableView.register(BankTemplateLabelCell.self, forCellReuseIdentifier: BankTemplateLabelCell.cellId)
-        bankTableView.register(BankTemplateSet.self, forCellReuseIdentifier: BankTemplateSet.cellId)
-        bankTableView.register(BankHistoryLabelCell.self, forCellReuseIdentifier: BankHistoryLabelCell.cellId)
+    func createTableViewRegisters(in tableView: UITableView) {
+        tableView.register(BankCardSet.self, forCellReuseIdentifier: BankCardSet.cellId)
+        tableView.register(BankTemplateLabelCell.self, forCellReuseIdentifier: BankTemplateLabelCell.cellId)
+        tableView.register(BankTemplateSet.self, forCellReuseIdentifier: BankTemplateSet.cellId)
+        tableView.register(BankHistoryLabelCell.self, forCellReuseIdentifier: BankHistoryLabelCell.cellId)
     }
     
     func createBottomSheet() {
@@ -167,12 +169,23 @@ private extension BankViewController {
         historyTableVC.view.layer.cornerRadius = 30
         historyTableVC.view.clipsToBounds = true
     }
+    
+    func createRefreshControl(scrollView: UIScrollView) {
+        refreshControl.tintColor = .systemOrange
+        refreshControl.addTarget(self, action: #selector(refreshAction), for: .valueChanged)
+        scrollView.refreshControl = refreshControl
+    }
 }
 
 //MARK: - Action private methods
 private extension BankViewController {
     @objc func didTapSeeAllButt() {
         presenter?.userDidTapSeeAll()
+    }
+    
+    @objc func refreshAction() {
+        ///
+        refreshControl.endRefreshing()
     }
 }
 
@@ -236,7 +249,7 @@ extension BankViewController: UITableViewDelegate {
             case 3:
                 return (height/23)
             default:
-                return (height/4.7)
+                return tableView.rowHeight
             }
         }
     
