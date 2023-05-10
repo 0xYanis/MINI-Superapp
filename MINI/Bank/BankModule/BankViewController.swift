@@ -147,7 +147,7 @@ private extension BankViewController {
         addChild(historyTableVC)
         view.addSubview(historyTableVC.view)
         historyTableVC.didMove(toParent: self)
-        
+        historyTableVC.delegate = self
         historyTableVC.view.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalToSuperview()
             make.height.equalToSuperview().multipliedBy(0.25).offset(tabBarController?.tabBar.frame.height ?? 0)
