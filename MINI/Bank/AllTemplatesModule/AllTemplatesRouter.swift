@@ -9,14 +9,14 @@ import Foundation
 import UIKit
 
 protocol AllTemplatesRouterProtocol: AnyObject {
-    func goToTemplate()
+    func goToTemplate(id: Int)
 }
 
 final class AllTemplatesRouter: AllTemplatesRouterProtocol {
     weak var view: AllTemplatesViewController?
     
-    func goToTemplate() {
+    func goToTemplate(id: Int) {
         let templateView = TemplateBuilder.build()
-        view?.navigationController?.pushViewController(templateView, animated: false)
+        view?.navigationController?.pushViewController(templateView, animated: true)
     }
 }

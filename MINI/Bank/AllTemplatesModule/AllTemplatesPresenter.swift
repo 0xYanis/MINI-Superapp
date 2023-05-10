@@ -25,7 +25,7 @@ final class AllTemplatesPresenter {
 
 extension AllTemplatesPresenter: AllTemplatesPresenterProtocol {
     func userDidTapTemplate(id: Int) {
-        router.goToTemplate()
+        router.goToTemplate(id: id)
     }
     
     func userWillDeleteTemplate(id: Int) {
