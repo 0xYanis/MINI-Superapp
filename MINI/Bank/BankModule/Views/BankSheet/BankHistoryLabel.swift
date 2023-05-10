@@ -1,5 +1,5 @@
 //
-//  BankHistoryFirstCell.swift
+//  BankHistoryLabel.swift
 //  MINI
 //
 //  Created by Yan Rybkin on 19.04.2023.
@@ -8,17 +8,15 @@
 import UIKit
 import SnapKit
 
-final class BankHistoryFirstCell: UITableViewCell {
-    
-    static let cellId = "BankHistoryFirstCell"
+final class BankHistoryLabel: UIView {
     
     private let historyLabel = UILabel(text: "Transaction History", font: .boldSystemFont(ofSize: 20), color: .none)
     private let searchButton = UIButton(systemImage: "magnifyingglass.circle.fill", color: .systemOrange, size: 35)
     private let searchBar = UISearchBar()
     private var isSearchBarShown = false
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         initialize()
     }
     
@@ -27,7 +25,7 @@ final class BankHistoryFirstCell: UITableViewCell {
     }
 }
 
-extension BankHistoryFirstCell {
+extension BankHistoryLabel {
     @objc func searchButtonTapped() {
         let newTopInset: CGFloat = isSearchBarShown ? 20 : -100
         historyLabel.snp.updateConstraints { make in
@@ -49,7 +47,7 @@ extension BankHistoryFirstCell {
     }
 }
 
-private extension BankHistoryFirstCell {
+private extension BankHistoryLabel {
     func initialize() {
         createLabel()
         createSearchButton()
@@ -58,7 +56,7 @@ private extension BankHistoryFirstCell {
     }
     
     func createLabel() {
-        contentView.addSubview(historyLabel)
+        addSubview(historyLabel)
         historyLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(20)
             make.left.equalToSuperview().inset(16)
@@ -66,7 +64,7 @@ private extension BankHistoryFirstCell {
     }
     
     func createSearchButton() {
-        contentView.addSubview(searchButton)
+        addSubview(searchButton)
         searchButton.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(20)
             make.right.equalToSuperview().inset(20)
@@ -76,7 +74,7 @@ private extension BankHistoryFirstCell {
     
     func createSearchBar() {
         searchBar.placeholder = "Search transactions.."
-        contentView.addSubview(searchBar)
+        addSubview(searchBar)
         searchBar.snp.makeConstraints { make in
             make.left.equalToSuperview().inset(25)
             make.right.equalToSuperview().inset(25)

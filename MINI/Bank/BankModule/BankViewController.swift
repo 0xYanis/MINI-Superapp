@@ -26,7 +26,7 @@ final class BankViewController: UIViewController {
     
     //MARK: Private properties
     private let bankTableView = UITableView()
-    private let historyTableVC = BankHistoryTableViewController()
+    private let historyTableVC = BankHistoryViewController()
     
     //MARK: Public properties
     var presenter: BankPresenterProtocol?
@@ -156,7 +156,7 @@ private extension BankViewController {
         historyTableVC.delegate = self
         historyTableVC.view.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalToSuperview()
-            make.height.equalToSuperview().multipliedBy(0.25).offset(tabBarController?.tabBar.frame.height ?? 0)
+            make.height.equalToSuperview().multipliedBy(0.26).offset(tabBarController?.tabBar.frame.height ?? 0)
         }
         
         historyTableVC.view.layer.cornerRadius = 30
