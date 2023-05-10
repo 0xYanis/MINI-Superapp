@@ -149,7 +149,7 @@ private extension BankViewController {
         historyTableVC.didMove(toParent: self)
         historyTableVC.view.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalToSuperview()
-            make.height.equalToSuperview().multipliedBy(0.3).offset(self.tabBarController?.tabBar.frame.height ?? 0)
+            make.height.equalToSuperview().multipliedBy(0.23).offset(self.tabBarController?.tabBar.frame.height ?? 0)
         }
         historyTableVC.view.layer.cornerRadius = 35
         historyTableVC.view.clipsToBounds = true
