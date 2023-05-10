@@ -39,7 +39,6 @@ final class BankViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.showTabBar()
-        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -95,6 +94,7 @@ private extension BankViewController {
     func createNavigation() {
         navigationItem.title = "Home"
         navigationItem.rightBarButtonItem = createRightBarButtonItem()
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     func createRightBarButtonItem() -> UIBarButtonItem {
