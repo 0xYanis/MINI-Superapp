@@ -62,10 +62,20 @@ extension UIView {
         }
     }
     
-    func resetToOriginalState() {
+    func resetToOriginalState(with animation: Bool) {
         guard let superview = superview else { return }
         let bottomMargin = superview.safeAreaInsets.bottom
-        UIView.animate(withDuration: 0.3) {
+        if animation {
+            UIView.animate(withDuration: 0.3) {
+                self.snp.remakeConstraints { make in
+                    make.leading.trailing.bottom.equalToSuperview()
+                    make.height.equalToSuperview()
+                        .multipliedBy(0.25)
+                        .offset(bottomMargin)
+                }
+                superview.layoutIfNeeded()
+            }
+        } else {
             self.snp.remakeConstraints { make in
                 make.leading.trailing.bottom.equalToSuperview()
                 make.height.equalToSuperview()

@@ -13,6 +13,7 @@ protocol BankViewCellDelegate: AnyObject {
     func handleTapOnTemplateCell(id: Int)
     func handleTapOnTransactionCell(id: Int)
     func handleTapOnSeeHistoryCell()
+    func resetBottomSheetSize()
 }
 
 protocol BankViewProtocol: AnyObject {
@@ -44,6 +45,7 @@ final class BankViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.dismiss(animated: false)
+        historyTableVC.view.resetToOriginalState(with: false)
     }
 }
 
@@ -78,6 +80,10 @@ extension BankViewController: BankViewCellDelegate {
     
     func handleTapOnSeeHistoryCell() {
         historyTableVC.view.animateToSuperviewSize()
+    }
+    
+    func resetBottomSheetSize() {
+        historyTableVC.view.resetToOriginalState(with: true)
     }
 }
 
@@ -155,10 +161,6 @@ private extension BankViewController {
         
         historyTableVC.view.layer.cornerRadius = 30
         historyTableVC.view.clipsToBounds = true
-        
-        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(resetToOriginalState))
-        swipeGesture.direction = .down
-        historyTableVC.view.addGestureRecognizer(swipeGesture)
     }
 }
 
@@ -166,10 +168,6 @@ private extension BankViewController {
 private extension BankViewController {
     @objc func didTapSeeAllButt() {
         presenter?.userDidTapSeeAll()
-    }
-    
-    @objc func resetToOriginalState() {
-        historyTableVC.view.resetToOriginalState()
     }
 }
 

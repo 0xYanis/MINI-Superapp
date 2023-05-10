@@ -26,6 +26,10 @@ private extension BankHistoryTableViewController {
         tableView.register(BankHistoryFirstCell.self, forCellReuseIdentifier: BankHistoryFirstCell.cellId)
         tableView.register(BankTransactionCell.self, forCellReuseIdentifier: BankTransactionCell.cellId)
     }
+    
+    @objc func resetToOriginalState() {
+        delegate?.resetBottomSheetSize()
+    }
 }
 
 //MARK: - Delegate & DataSource
@@ -51,6 +55,9 @@ extension BankHistoryTableViewController {
                 withIdentifier: BankHistoryFirstCell.cellId,
                 for: indexPath) as? BankHistoryFirstCell else { return defaultCell }
             cell.layoutIfNeeded()
+            let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(resetToOriginalState))
+            swipeGesture.direction = .down
+            cell.addGestureRecognizer(swipeGesture)
             return cell
         default:
             guard let cell = tableView.dequeueReusableCell(
