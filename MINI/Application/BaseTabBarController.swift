@@ -24,7 +24,7 @@ private extension BaseTabBarController {
             createVC(UIViewController(), barTitle: "Profile", image: "person.fill")
         ]
         createBorder()
-        addBackgroundColor()
+        addBlurEffect()
     }
     
     func createVC(_ vc: UIViewController, barTitle: String, image: String) -> UIViewController {
@@ -44,5 +44,19 @@ private extension BaseTabBarController {
     
     func addBackgroundColor() {
         tabBar.backgroundColor = .systemGray5
+    }
+    
+    func addBlurEffect() {
+        tabBar.backgroundImage = UIImage()
+        tabBar.shadowImage = UIImage()
+        tabBar.isTranslucent = true
+        tabBar.backgroundColor = .clear
+
+        let blurEffect = UIBlurEffect(style: .regular)
+        let blurView = UIVisualEffectView(effect: blurEffect)
+        blurView.frame = tabBar.bounds
+        blurView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+
+        tabBar.insertSubview(blurView, at: 0)
     }
 }
