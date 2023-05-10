@@ -12,7 +12,7 @@ protocol BiometryServiceProtocol: AnyObject {
     func authWithBiometry(completion: @escaping (Bool, Error?) -> Void)
 }
 
-class BiometryService: BiometryServiceProtocol {
+final class BiometryService: BiometryServiceProtocol {
     
     private let context = LAContext()
     

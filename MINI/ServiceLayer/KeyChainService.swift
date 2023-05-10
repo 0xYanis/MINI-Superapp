@@ -13,7 +13,7 @@ protocol KeyChainServiceProtocol {
     func removeValue(forKey key: String)
 }
 
-class KeyChainService: KeyChainServiceProtocol {
+final class KeyChainService: KeyChainServiceProtocol {
     private let keyChain: KeyChainProtocol
     
     init(keyChain: KeyChainProtocol = KeyChain()) {

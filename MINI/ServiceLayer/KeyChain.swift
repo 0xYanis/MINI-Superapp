@@ -13,7 +13,7 @@ protocol KeyChainProtocol {
     func removeValue(forKey key: String)
 }
 
-class KeyChain: KeyChainProtocol {
+final class KeyChain: KeyChainProtocol {
     func getValue(forKey key: String) -> String? {
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
