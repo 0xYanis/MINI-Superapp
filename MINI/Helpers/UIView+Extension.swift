@@ -53,29 +53,22 @@ extension UIView {
     func animateToSuperviewSize() {
         guard let superview = superview else { return }
         let topMargin = superview.safeAreaInsets.top
-        UIView.animate(withDuration: 0.4) {
+        UIView.animate(withDuration: 0.2, delay: 0, options: [.curveEaseInOut], animations: {
             self.snp.remakeConstraints { make in
                 make.top.equalToSuperview().offset(topMargin)
                 make.left.right.bottom.equalToSuperview()
             }
             superview.layoutIfNeeded()
+        }) {_ in
+            
         }
     }
     
     func resetToOriginalState(with animation: Bool) {
         guard let superview = superview else { return }
         let bottomMargin = superview.safeAreaInsets.bottom
-        if animation {
-            UIView.animate(withDuration: 0.3) {
-                self.snp.remakeConstraints { make in
-                    make.leading.trailing.bottom.equalToSuperview()
-                    make.height.equalToSuperview()
-                        .multipliedBy(0.25)
-                        .offset(bottomMargin)
-                }
-                superview.layoutIfNeeded()
-            }
-        } else {
+        let duration = animation ? 0.2 : 0
+        UIView.animate(withDuration: duration, delay: 0, options: [.curveEaseInOut], animations: {
             self.snp.remakeConstraints { make in
                 make.leading.trailing.bottom.equalToSuperview()
                 make.height.equalToSuperview()
@@ -83,6 +76,8 @@ extension UIView {
                     .offset(bottomMargin)
             }
             superview.layoutIfNeeded()
+        }) {_ in
+            
         }
     }
 }
