@@ -156,7 +156,8 @@ private extension BankViewController {
         historyTableVC.delegate = self
         historyTableVC.view.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalToSuperview()
-            make.height.equalToSuperview().multipliedBy(0.26).offset(tabBarController?.tabBar.frame.height ?? 0)
+            make.height.equalToSuperview().multipliedBy(0.3)
+                .offset(tabBarController?.tabBar.frame.height ?? 0)
         }
         
         historyTableVC.view.layer.cornerRadius = 30

@@ -72,7 +72,7 @@ extension UIView {
             self.snp.remakeConstraints { make in
                 make.leading.trailing.bottom.equalToSuperview()
                 make.height.equalToSuperview()
-                    .multipliedBy(0.25)
+                    .multipliedBy(0.3)
                     .offset(bottomMargin)
             }
             superview.layoutIfNeeded()
