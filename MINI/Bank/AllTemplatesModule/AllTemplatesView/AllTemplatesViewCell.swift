@@ -37,6 +37,8 @@ final class AllTemplatesViewCell: UICollectionViewCell {
 private extension AllTemplatesViewCell {
     func initialize() {
         backgroundColor = .clear
+        layer.cornerRadius = 10
+        layer.masksToBounds = true
         createTemplateView()
         createCircleView()
         createImageView()
@@ -45,7 +47,6 @@ private extension AllTemplatesViewCell {
     
     func createTemplateView() {
         templateView.backgroundColor = .systemGray6
-        templateView.roundCorners(radius: 10)
         addSubview(templateView)
         templateView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
