@@ -50,4 +50,29 @@ extension UIView {
         layer.mask = shape
     }
     
+    func animateToSuperviewSize() {
+        guard let superview = superview else { return }
+        let topMargin = superview.safeAreaInsets.top
+        UIView.animate(withDuration: 0.4) {
+            self.snp.remakeConstraints { make in
+                make.top.equalToSuperview().offset(topMargin)
+                make.left.right.bottom.equalToSuperview()
+            }
+            superview.layoutIfNeeded()
+        }
+    }
+    
+    func resetToOriginalState() {
+        guard let superview = superview else { return }
+        let bottomMargin = superview.safeAreaInsets.bottom
+        UIView.animate(withDuration: 0.3) {
+            self.snp.remakeConstraints { make in
+                make.leading.trailing.bottom.equalToSuperview()
+                make.height.equalToSuperview()
+                    .multipliedBy(0.25)
+                    .offset(bottomMargin)
+            }
+            superview.layoutIfNeeded()
+        }
+    }
 }

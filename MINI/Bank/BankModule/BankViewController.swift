@@ -77,7 +77,7 @@ extension BankViewController: BankViewCellDelegate {
     }
     
     func handleTapOnSeeHistoryCell() {
-        ///
+        historyTableVC.view.animateToSuperviewSize()
     }
 }
 
@@ -144,15 +144,21 @@ private extension BankViewController {
     }
     
     func createBottomSheet() {
-        self.addChild(historyTableVC)
-        self.view.addSubview(historyTableVC.view)
+        addChild(historyTableVC)
+        view.addSubview(historyTableVC.view)
         historyTableVC.didMove(toParent: self)
+        
         historyTableVC.view.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalToSuperview()
-            make.height.equalToSuperview().multipliedBy(0.23).offset(self.tabBarController?.tabBar.frame.height ?? 0)
+            make.height.equalToSuperview().multipliedBy(0.25).offset(tabBarController?.tabBar.frame.height ?? 0)
         }
-        historyTableVC.view.layer.cornerRadius = 35
+        
+        historyTableVC.view.layer.cornerRadius = 30
         historyTableVC.view.clipsToBounds = true
+        
+        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(resetToOriginalState))
+        swipeGesture.direction = .down
+        historyTableVC.view.addGestureRecognizer(swipeGesture)
     }
 }
 
@@ -160,6 +166,10 @@ private extension BankViewController {
 private extension BankViewController {
     @objc func didTapSeeAllButt() {
         presenter?.userDidTapSeeAll()
+    }
+    
+    @objc func resetToOriginalState() {
+        historyTableVC.view.resetToOriginalState()
     }
 }
 
@@ -221,7 +231,7 @@ extension BankViewController: UITableViewDelegate {
             case 2:
                 return (height/6.3)
             case 3:
-                return (height/18)
+                return (height/23)
             default:
                 return (height/4.7)
             }
