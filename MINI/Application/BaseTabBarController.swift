@@ -17,14 +17,18 @@ final class BaseTabBarController: UITabBarController {
 
 private extension BaseTabBarController {
     func initialize() {
+        addViewControllers()
+        createBorder()
+        addBlurEffect()
+    }
+    
+    func addViewControllers() {
         viewControllers = [
             createVC(BankBuilder.build(), barTitle: "Bank", image: "house.fill"),
             createVC(AviaBuilder.build(), barTitle: "Tickets", image: "airplane"),
             createVC(UIViewController(), barTitle: "Grocery", image: "basket.fill"),
             createVC(UIViewController(), barTitle: "Profile", image: "person.fill")
         ]
-        createBorder()
-        addBlurEffect()
     }
     
     func createVC(_ vc: UIViewController, barTitle: String, image: String) -> UIViewController {
@@ -37,16 +41,13 @@ private extension BaseTabBarController {
     
     func createBorder() {
         let topBorder = CALayer()
-        topBorder.frame = CGRect(x: 0, y: 0, width: tabBar.frame.width, height: 0.5)
+        topBorder.frame = CGRect(x: 0, y: 0, width: tabBar.frame.width, height: 0.3)
         topBorder.backgroundColor = UIColor.gray.cgColor
         tabBar.layer.addSublayer(topBorder)
     }
     
-    func addBackgroundColor() {
-        tabBar.backgroundColor = .systemGray5
-    }
-    
     func addBlurEffect() {
+        tabBar.tintColor = .systemOrange
         tabBar.backgroundImage = UIImage()
         tabBar.shadowImage = UIImage()
         tabBar.isTranslucent = true
