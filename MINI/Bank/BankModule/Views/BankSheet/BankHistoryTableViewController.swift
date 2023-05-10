@@ -21,6 +21,7 @@ final class BankHistoryTableViewController: UITableViewController {
 //MARK: - Private methods
 private extension BankHistoryTableViewController {
     func intialize() {
+        self.modalPresentationStyle = .overCurrentContext
         tableView.separatorStyle = .none
         tableView.register(BankHistoryFirstCell.self, forCellReuseIdentifier: BankHistoryFirstCell.cellId)
         tableView.register(BankTransactionCell.self, forCellReuseIdentifier: BankTransactionCell.cellId)

@@ -39,6 +39,7 @@ final class BankViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.showTabBar()
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -77,7 +78,7 @@ extension BankViewController: BankViewCellDelegate {
     }
     
     func handleTapOnSeeHistoryCell() {
-        createBottomSheet()
+        ///
     }
 }
 
@@ -88,12 +89,12 @@ private extension BankViewController {
         createNavigation()
         createBankTableView()
         createBankTableViewRegisters()
+        createBottomSheet()
     }
     
     func createNavigation() {
         navigationItem.title = "Home"
         navigationItem.rightBarButtonItem = createRightBarButtonItem()
-        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     func createRightBarButtonItem() -> UIBarButtonItem {
@@ -143,15 +144,15 @@ private extension BankViewController {
     }
     
     func createBottomSheet() {
-        historyTableVC.delegate = self
-        if let sheet = historyTableVC.sheetPresentationController {
-            sheet.detents = [.medium(), .large()]
-            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
-            sheet.prefersGrabberVisible = true
-            sheet.largestUndimmedDetentIdentifier = .medium
-            sheet.preferredCornerRadius = 30
+        self.addChild(historyTableVC)
+        self.view.addSubview(historyTableVC.view)
+        historyTableVC.didMove(toParent: self)
+        historyTableVC.view.snp.makeConstraints { make in
+            make.leading.trailing.bottom.equalToSuperview()
+            make.height.equalToSuperview().multipliedBy(0.3).offset(self.tabBarController?.tabBar.frame.height ?? 0)
         }
-        navigationController?.present(historyTableVC, animated: true)
+        historyTableVC.view.layer.cornerRadius = 35
+        historyTableVC.view.clipsToBounds = true
     }
 }
 
