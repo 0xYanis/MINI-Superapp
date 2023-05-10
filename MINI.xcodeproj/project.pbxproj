@@ -209,12 +209,12 @@
 		090BAB8B2A029889006AE8F9 /* AviaTickets */ = {
 			isa = PBXGroup;
 			children = (
-				090BAB8C2A0298C8006AE8F9 /* Avia */,
+				090BAB8C2A0298C8006AE8F9 /* AviaModule */,
 			);
 			path = AviaTickets;
 			sourceTree = "<group>";
 		};
-		090BAB8C2A0298C8006AE8F9 /* Avia */ = {
+		090BAB8C2A0298C8006AE8F9 /* AviaModule */ = {
 			isa = PBXGroup;
 			children = (
 				090BAB992A02BC30006AE8F9 /* SearchView */,
@@ -225,7 +225,7 @@
 				090BAB932A029924006AE8F9 /* AviaRouter.swift */,
 				090BAB952A02992A006AE8F9 /* AviaBuilder.swift */,
 			);
-			path = Avia;
+			path = AviaModule;
 			sourceTree = "<group>";
 		};
 		090BAB992A02BC30006AE8F9 /* SearchView */ = {
