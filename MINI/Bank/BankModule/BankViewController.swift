@@ -104,11 +104,16 @@ private extension BankViewController {
     }
     
     func createRightBarButtonItem() -> UIBarButtonItem {
-        return UIBarButtonItem(
+        let editButton = UIBarButtonItem(
             systemItem: .edit,
             primaryAction: .none,
             menu: createRightMenu()
         )
+        editButton.setTitleTextAttributes(
+            [NSAttributedString.Key.foregroundColor: UIColor.systemOrange],
+            for: .normal)
+        
+        return editButton
     }
     
     func createRightMenu() -> UIMenu {
