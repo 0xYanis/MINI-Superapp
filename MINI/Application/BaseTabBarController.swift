@@ -24,10 +24,22 @@ private extension BaseTabBarController {
     
     func addViewControllers() {
         viewControllers = [
-            createVC(BankBuilder.build(), barTitle: "Bank", image: "house.fill"),
-            createVC(AviaBuilder.build(), barTitle: "Tickets", image: "airplane"),
-            createVC(UIViewController(), barTitle: "Grocery", image: "basket.fill"),
-            createVC(UIViewController(), barTitle: "Profile", image: "person.fill")
+            createVC(
+                BankBuilder.build(),
+                barTitle: "Bank",
+                image: "house.fill"),
+            createVC(
+                AviaBuilder.build(),
+                barTitle: "Tickets",
+                image: "airplane"),
+            createVC(
+                UIViewController(),
+                barTitle: "Grocery",
+                image: "basket.fill"),
+            createVC(
+                UIViewController(),
+                barTitle: "Profile",
+                image: "person.fill")
         ]
     }
     
@@ -52,12 +64,12 @@ private extension BaseTabBarController {
         tabBar.shadowImage = UIImage()
         tabBar.isTranslucent = true
         tabBar.backgroundColor = .clear
-
+        
         let blurEffect = UIBlurEffect(style: .regular)
         let blurView = UIVisualEffectView(effect: blurEffect)
         blurView.frame = tabBar.bounds
         blurView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-
+        
         tabBar.insertSubview(blurView, at: 0)
     }
 }

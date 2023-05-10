@@ -8,8 +8,7 @@
 import UIKit
 
 final class AuthenticationManager: NSObject {
-    
-    static func auth(window: UIWindow?) -> UIViewController {
+    static func auth(to window: UIWindow?) -> UIViewController {
         if let _ = UserDefaults.standard.string(forKey: "authToken") {
             let tabbarController = BaseTabBarController()
             window?.rootViewController = tabbarController
