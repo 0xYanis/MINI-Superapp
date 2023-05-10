@@ -37,7 +37,6 @@ private extension TransactionViewController {
     }
     
     func createNavigation() {
-        navigationController?.navigationBar.prefersLargeTitles = false
         navigationItem.title = "Transaction"
     }
 }

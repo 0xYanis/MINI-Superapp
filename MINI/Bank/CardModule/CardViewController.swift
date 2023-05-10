@@ -40,7 +40,6 @@ private extension CardViewController {
     }
     
     func createNavigation() {
-        navigationController?.navigationBar.prefersLargeTitles = false
         navigationItem.title = "Visa Classic"
     }
     
