@@ -8,7 +8,6 @@
 import UIKit
 
 final class AviaBuilder {
-    
     static func build() -> UIViewController {
         let viewController = AviaViewController()
         let router = AviaRouter()

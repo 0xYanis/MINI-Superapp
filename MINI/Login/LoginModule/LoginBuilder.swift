@@ -14,11 +14,14 @@ final class LoginBuilder {
         let interactor = LoginInteractor()
         let presenter = LoginPresenter(interactor: interactor, router: router)
         let biometryService = BiometryService()
+        
         viewController.presenter = presenter
         presenter.view = viewController
         interactor.presenter = presenter
         interactor.biometryService = biometryService
         router.view = viewController
+        
         return viewController
     }
+    
 }

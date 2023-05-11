@@ -13,10 +13,13 @@ final class AllTemplatesBuilder {
         let router = AllTemplatesRouter()
         let interactor = AllTemplatesInteractor()
         let presenter = AllTemplatesPresenter(router: router, interactor: interactor)
+        
         viewController.presenter = presenter
         presenter.view = viewController
         interactor.presenter = presenter
         router.view = viewController
+        
         return viewController
     }
+    
 }

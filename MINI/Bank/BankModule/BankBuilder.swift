@@ -13,10 +13,13 @@ final class BankBuilder {
         let router = BankRouter()
         let interactor = BankInteractor()
         let presenter = BankPresenter(router: router, interactor: interactor)
+        
         viewController.presenter = presenter
         presenter.view = viewController
         interactor.presenter = presenter
         router.view = viewController
+        
         return viewController
     }
+    
 }

@@ -101,15 +101,15 @@ private extension BankViewController {
     
     func createNavigation(title: String) {
         navigationItem.title = title
-        navigationItem.rightBarButtonItem = createRightBarButtonItem()
+        navigationItem.rightBarButtonItem = createRightBarButtonItem
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
-    func createRightBarButtonItem() -> UIBarButtonItem {
+    var createRightBarButtonItem: UIBarButtonItem {
         let editButton = UIBarButtonItem(
             systemItem: .edit,
             primaryAction: .none,
-            menu: createRightMenu()
+            menu: createRightMenu
         )
         editButton.setTitleTextAttributes(
             [NSAttributedString.Key.foregroundColor: UIColor.systemOrange],
@@ -118,7 +118,7 @@ private extension BankViewController {
         return editButton
     }
     
-    func createRightMenu() -> UIMenu {
+    var createRightMenu: UIMenu {
         let cardImage = UIImage(systemName: "creditcard.fill")
         let addCard = UIAction(
             title: "Add new Card",

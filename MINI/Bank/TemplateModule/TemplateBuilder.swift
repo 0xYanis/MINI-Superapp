@@ -9,7 +9,6 @@ import UIKit
 
 final class TemplateBuilder {
     static func build() -> UIViewController {
-        
         let viewController = TemplateViewController()
         let interactor = TemplateInteractor()
         let router = TemplateRouter()
