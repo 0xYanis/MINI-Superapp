@@ -8,9 +8,13 @@
 import Foundation
 
 protocol CardRouterProtocol: AnyObject {
-    
+    func goBackToBankView()
 }
 
 final class CardRouter: CardRouterProtocol {
     weak var view: CardViewController?
+    
+    func goBackToBankView() {
+        view?.navigationController?.popViewController(animated: true)
+    }
 }

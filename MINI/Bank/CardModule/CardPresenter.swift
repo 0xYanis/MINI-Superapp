@@ -35,6 +35,7 @@ extension CardPresenter: CardPresenterProtocol {
     }
     
     func userWantToDeleteCard() {
-        
+        router.goBackToBankView()
+        // delete card
     }
 }

@@ -75,35 +75,28 @@ private extension CardViewController {
 // MARK: - Navigation Bar buttons
 private extension CardViewController {
     func addButtonsToNavBar() {
-        navigationItem.rightBarButtonItem = createRightBarButtonItem
-        navigationItem.leftBarButtonItem = createLeftBarButtonItem
+        navigationItem.rightBarButtonItems = [
+            createEditBarButtonItem, createDeleteBarButtonItem
+        ]
     }
     
-    var createRightBarButtonItem: UIBarButtonItem {
+    var createEditBarButtonItem: UIBarButtonItem {
         let editButton = UIBarButtonItem(
-            title: "Edit",
+            image: UIImage(systemName: "square.and.pencil"),
             style: .plain,
             target: self,
             action: #selector(rightButtonAction)
         )
-        editButton.setTitleTextAttributes(
-            [NSAttributedString.Key.foregroundColor: UIColor.systemOrange],
-            for: .normal)
-        
         return editButton
     }
     
-    var createLeftBarButtonItem: UIBarButtonItem {
+    var createDeleteBarButtonItem: UIBarButtonItem {
         let deleteButton = UIBarButtonItem(
-            title: "Delete",
+            image: UIImage(systemName: "trash"),
             style: .plain,
             target: self,
             action: #selector(leftButtonAction)
         )
-        deleteButton.setTitleTextAttributes(
-            [NSAttributedString.Key.foregroundColor: UIColor.systemOrange],
-            for: .normal)
-        
         return deleteButton
     }
     
@@ -114,7 +107,7 @@ private extension CardViewController {
     @objc func leftButtonAction() {
         let alert = UIAlertController(
             title: "Внимание",
-            message: "Вы уверены что хотите удалить карту?",
+            message: "Вы уверены, что хотите удалить карту?",
             preferredStyle: .alert
         )
         
