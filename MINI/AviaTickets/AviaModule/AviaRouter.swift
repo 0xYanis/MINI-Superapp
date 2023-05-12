@@ -13,7 +13,7 @@ protocol AviaRouterProtocol: AnyObject {
 }
 
 final class AviaRouter: AviaRouterProtocol {
-    weak var view: AviaViewController?
+    weak var view: UIViewController?
     
     func goDetailResult(id: Int) {
         let resultView = UIViewController()

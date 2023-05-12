@@ -13,7 +13,7 @@ protocol AllTemplatesRouterProtocol: AnyObject {
 }
 
 final class AllTemplatesRouter: AllTemplatesRouterProtocol {
-    weak var view: AllTemplatesViewController?
+    weak var view: UIViewController?
     
     func goToTemplate(id: Int) {
         let templateView = TemplateBuilder.build()

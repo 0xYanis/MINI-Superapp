@@ -5,14 +5,14 @@
 //  Created by Yan Rybkin on 15.04.2023.
 //
 
-import Foundation
+import UIKit
 
 protocol LoginRouterProtocol: AnyObject {
     func userDidLogin()
 }
 
 final class LoginRouter: LoginRouterProtocol {
-    weak var view: LoginViewController?
+    weak var view: UIViewController?
     
     func userDidLogin() {
         let nextView = BaseTabBarController()

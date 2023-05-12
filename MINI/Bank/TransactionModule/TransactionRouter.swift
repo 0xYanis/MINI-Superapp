@@ -5,14 +5,14 @@
 //  Created by Yan Rybkin on 27.04.2023.
 //
 
-import Foundation
+import UIKit
 
 protocol TransactionRouterProtocol: AnyObject {
     
 }
 
 final class TransactionRouter: TransactionRouterProtocol {
-    weak var view: TransactionViewController?
+    weak var view: UIViewController?
     
     
 }

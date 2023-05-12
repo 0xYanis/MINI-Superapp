@@ -19,7 +19,7 @@ protocol BankRouterProtocol: AnyObject {
 
 final class BankRouter: BankRouterProtocol {
     
-    weak var view: BankViewController?
+    weak var view: UIViewController?
     
     func goToDetailCard(id: Int) {
         let cardView = CardBuilder.build()

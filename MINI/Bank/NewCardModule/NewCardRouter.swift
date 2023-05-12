@@ -6,11 +6,12 @@
 //
 
 import Foundation
+import UIKit
 
 protocol NewCardRouterProtocol: AnyObject {
     
 }
 
 final class NewCardRouter: NewCardRouterProtocol {
-    weak var view: NewCardViewController?
+    weak var view: UIViewController?
 }
