@@ -33,6 +33,7 @@ extension CardViewController: CardViewProtocol {
     
 }
 
+// MARK: - private methods
 private extension CardViewController {
     func initialize() {
         view.backgroundColor = UIColor(named: "backColor")
@@ -40,6 +41,7 @@ private extension CardViewController {
         createCardView(uiView: cardView)
         createTableView(tableView: detailTableView, cardView)
         
+        addButtonsToNavBar()
         createViewRotation(uiView: cardView)
     }
     
@@ -68,6 +70,66 @@ private extension CardViewController {
             make.left.right.bottom.equalToSuperview()
         }
     }
+}
+
+// MARK: - Navigation Bar buttons
+private extension CardViewController {
+    func addButtonsToNavBar() {
+        navigationItem.rightBarButtonItem = createRightBarButtonItem
+        navigationItem.leftBarButtonItem = createLeftBarButtonItem
+    }
+    
+    var createRightBarButtonItem: UIBarButtonItem {
+        let editButton = UIBarButtonItem(
+            title: "Edit",
+            style: .plain,
+            target: self,
+            action: #selector(rightButtonAction)
+        )
+        editButton.setTitleTextAttributes(
+            [NSAttributedString.Key.foregroundColor: UIColor.systemOrange],
+            for: .normal)
+        
+        return editButton
+    }
+    
+    var createLeftBarButtonItem: UIBarButtonItem {
+        let deleteButton = UIBarButtonItem(
+            title: "Delete",
+            style: .plain,
+            target: self,
+            action: #selector(leftButtonAction)
+        )
+        deleteButton.setTitleTextAttributes(
+            [NSAttributedString.Key.foregroundColor: UIColor.systemOrange],
+            for: .normal)
+        
+        return deleteButton
+    }
+    
+    @objc func rightButtonAction() {
+        
+    }
+    
+    @objc func leftButtonAction() {
+        let alert = UIAlertController(
+            title: "Внимание",
+            message: "Вы уверены что хотите удалить карту?",
+            preferredStyle: .alert
+        )
+        
+        let deleteAction = UIAlertAction(title: "Удалить", style: .destructive) { (_) in
+            self.presenter?.userWantToDeleteCard()
+        }
+        alert.addAction(deleteAction)
+        
+        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    
 }
 
 // MARK: - Rotation animation CardView

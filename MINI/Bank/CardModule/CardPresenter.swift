@@ -9,6 +9,8 @@ import Foundation
 
 protocol CardPresenterProtocol: AnyObject {
     func viewDidLoaded()
+    func userWantToEditCard()
+    func userWantToDeleteCard()
 }
 
 final class CardPresenter {
@@ -28,4 +30,11 @@ extension CardPresenter: CardPresenterProtocol {
         interactor.viewDidLoaded()
     }
     
+    func userWantToEditCard() {
+        
+    }
+    
+    func userWantToDeleteCard() {
+        
+    }
 }
