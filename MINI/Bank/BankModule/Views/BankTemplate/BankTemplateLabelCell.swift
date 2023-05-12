@@ -41,12 +41,12 @@ private extension BankTemplateLabelCell {
         contentView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.left.equalToSuperview().inset(20)
+            make.left.equalToSuperview().inset(16)
         }
         contentView.addSubview(seeAllButt)
         seeAllButt.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.right.equalToSuperview().inset(20)
+            make.right.equalToSuperview().inset(16)
         }
     }
 }

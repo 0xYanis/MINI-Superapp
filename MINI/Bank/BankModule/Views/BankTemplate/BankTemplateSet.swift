@@ -44,7 +44,7 @@ private extension BankTemplateSet {
             BankTemplateCell.self, forCellWithReuseIdentifier: BankTemplateCell.cellId
         )
         collectionView.backgroundColor = UIColor(named: "backColor")
-        collectionView.contentInset = .init(top: 0, left: 20, bottom: 0, right: 20)
+        collectionView.contentInset = .init(top: 0, left: 16, bottom: 0, right: 16)
     }
     
     func addConstraintsOfView() {
@@ -80,7 +80,7 @@ extension BankTemplateSet: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 12
+        return 8
     }
     
     func collectionView(_ collectionView: UICollectionView,

@@ -59,7 +59,7 @@ private extension BankCardSet {
             make.edges.equalToSuperview()
         }
         collectionView.backgroundColor = UIColor(named: "backColor")
-        collectionView.contentInset = .init(top: 0, left: 20, bottom: 0, right: 20)
+        collectionView.contentInset = .init(top: 0, left: 16, bottom: 0, right: 16)
     }
 }
 
@@ -86,7 +86,7 @@ extension BankCardSet: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 20
+        return 16
     }
     
     func collectionView(_ collectionView: UICollectionView,
