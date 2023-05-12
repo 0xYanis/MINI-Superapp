@@ -33,8 +33,8 @@ final class BankTransactionCell: UITableViewCell {
     }
     
     // MARK: - Public method
-    func configure(icon: UIImage, transaction: String, date: String, cost: String, card: String) {
-        iconView.image = icon
+    func configure(_ icon: UIImage,_ transaction: String,_ date: String,_ cost: String,_ card: String) {
+        iconView.image = UIImage(named: "american")
         transactionLabel.text = transaction
         dateLabel.text = date
         costLabel.text = cost
@@ -51,6 +51,7 @@ extension BankTransactionCell {
         createCard()
     }
     func createIcon() {
+        iconView.contentMode = .scaleAspectFit
         addSubview(iconView)
         iconView.snp.makeConstraints { make in
             make.left.equalToSuperview().inset(16)

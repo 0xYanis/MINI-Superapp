@@ -8,18 +8,25 @@
 import UIKit
 
 final class BankCardSet: UITableViewCell {
+    //MARK: Public properties
+    weak var delegate: BankViewCellDelegate?
+    static let cellId = "BankCardSet"
     
     //MARK: Private properties
     private var collectionView: UICollectionView!
     private let snapLayout = StackFlowLayout()
     
-    //MARK: Public properties
-    weak var delegate: BankViewCellDelegate?
-    static let cellId = "BankCardSet"
+    private var color: UIColor = .black
+    private var logo: String   = "visa"
+    private var amount: String = "$12.5"
+    private var number: String = "*5312"
     
     // MARK: Public methods
-    func configure() {
-        
+    func configure(_ color: UIColor,_ logo: String,_ amount: String,_ number: String) {
+        self.color = color
+        self.logo = logo
+        self.amount = amount
+        self.number = number
         collectionView.reloadData()
     }
     
@@ -76,7 +83,7 @@ extension BankCardSet: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: BankCardCell.cellId,
             for: indexPath) as? BankCardCell else { return defaultCell }
-        cell.configure()
+        cell.configure(color, logo, amount, number)
         return cell
     }
 }

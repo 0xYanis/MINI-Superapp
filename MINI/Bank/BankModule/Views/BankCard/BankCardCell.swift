@@ -12,7 +12,7 @@ final class BankCardCell: UICollectionViewCell {
     
     //MARK: Private properties
     private let cardView = UIView()
-    private let cardLogo = UIImageView(image: UIImage(systemName: "globe"))
+    private let cardLogo = UIImageView()
     private let cardAmount = UILabel(
         text: "$1,200", font: .boldSystemFont(ofSize: 20), color: .white)
     private let cardNumber = UILabel(
@@ -22,8 +22,11 @@ final class BankCardCell: UICollectionViewCell {
     static let cellId = "BankCardCell"
     
     // MARK: - Public methods
-    func configure() {
-        
+    func configure(_ color: UIColor,_ logo: String,_ amount: String,_ number: String) {
+        cardView.backgroundColor = color
+        cardLogo.image = UIImage(named: logo)
+        cardAmount.text = amount
+        cardNumber.text = number
     }
     
     override init(frame: CGRect) {
@@ -53,10 +56,14 @@ private extension BankCardCell {
         }
     }
     func createCardLogo() {
+        let image = UIImage(systemName: "globe")
+        cardLogo.image = image
+        cardLogo.contentMode = .scaleAspectFit
         cardView.addSubview(cardLogo)
         cardLogo.snp.makeConstraints { make in
-            make.top.left.equalToSuperview().inset(18)
-            make.width.equalTo(20)
+            make.top.equalToSuperview().inset(8)
+            make.left.equalToSuperview().inset(18)
+            make.width.height.equalTo(40)
         }
     }
     func createCardNumber() {

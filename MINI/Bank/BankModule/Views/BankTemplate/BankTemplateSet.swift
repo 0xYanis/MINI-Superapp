@@ -9,11 +9,19 @@ import UIKit
 
 final class BankTemplateSet: UITableViewCell {
     
+    weak var delegate: BankViewCellDelegate?
+    static let cellId = "BankTemplateSet"
+    
     private var collectionView: UICollectionView!
     private let snapLayout = StackFlowLayout()
     
-    weak var delegate: BankViewCellDelegate?
-    static let cellId = "BankTemplateSet"
+    private var image: String = "gear"
+    private var templateName: String = "Template"
+    
+    func configure(_ image: String,_ template: String) {
+        self.image = image
+        templateName = template
+    }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -68,8 +76,7 @@ extension BankTemplateSet: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: BankTemplateCell.cellId,
             for: indexPath) as? BankTemplateCell else { return UICollectionViewCell() }
-        cell.configure()
-        
+        cell.configure(image, templateName)
         return cell
     }
     

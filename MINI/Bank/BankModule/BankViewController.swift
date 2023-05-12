@@ -19,7 +19,6 @@ protocol BankViewCellDelegate: AnyObject {
 protocol BankViewProtocol: AnyObject {
     func updateCards()
     func updateHistory()
-    func configureView()
 }
 
 final class BankViewController: UIViewController {
@@ -53,15 +52,11 @@ final class BankViewController: UIViewController {
 //MARK: - BankViewProtocol
 extension BankViewController: BankViewProtocol {
     func updateCards() {
-        
+        bankTableView.reloadData()
     }
     
     func updateHistory() {
-        
-    }
-    
-    func configureView() {
-        
+        historyTableVC.reloadInputViews()
     }
 }
 
@@ -152,7 +147,6 @@ private extension BankViewController {
         tableView.register(BankCardSet.self, forCellReuseIdentifier: BankCardSet.cellId)
         tableView.register(BankTemplateLabelCell.self, forCellReuseIdentifier: BankTemplateLabelCell.cellId)
         tableView.register(BankTemplateSet.self, forCellReuseIdentifier: BankTemplateSet.cellId)
-        tableView.register(BankHistoryLabelCell.self, forCellReuseIdentifier: BankHistoryLabelCell.cellId)
     }
     
     func createBottomSheet() {
@@ -165,9 +159,9 @@ private extension BankViewController {
             make.height.equalToSuperview().multipliedBy(0.3)
                 .offset(tabBarController?.tabBar.frame.height ?? 0)
         }
-        
         historyTableVC.view.layer.cornerRadius = 30
         historyTableVC.view.clipsToBounds = true
+        //historyTableVC.configure( , "", "", "", "")
     }
     
     func createRefreshControl(scrollView: UIScrollView) {
@@ -194,7 +188,7 @@ extension BankViewController: UITableViewDataSource {
     func tableView(
         _ tableView: UITableView,
         numberOfRowsInSection section: Int) -> Int {
-            return 4
+            return 3
         }
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -206,7 +200,7 @@ extension BankViewController: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: BankCardSet.cellId,
                 for: indexPath) as? BankCardSet else { return defaultCell }
-            cell.configure()
+            cell.configure(.black, "mir", "$12.5", "*1234")
             cell.delegate = self
             return cell
         case 1:
@@ -219,12 +213,7 @@ extension BankViewController: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: BankTemplateSet.cellId,
                 for: indexPath) as? BankTemplateSet else { return defaultCell }
-            cell.delegate = self
-            return cell
-        case 3:
-            guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: BankHistoryLabelCell.cellId,
-                for: indexPath) as? BankHistoryLabelCell else { return defaultCell }
+            cell.configure("gear", "Template")
             cell.delegate = self
             return cell
         default:
@@ -246,8 +235,6 @@ extension BankViewController: UITableViewDelegate {
                 return (height/18)
             case 2:
                 return (height/6.3)
-            case 3:
-                return (height/23)
             default:
                 return tableView.rowHeight
             }

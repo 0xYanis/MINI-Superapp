@@ -12,7 +12,7 @@ final class BankTemplateCell: UICollectionViewCell {
     
     private let templateView = UIView()
     private let circleView = UIView()
-    private let imageView = UIImageView(image: UIImage(systemName: "gear"))
+    private let imageView = UIImageView()
     private let textLabel = UILabel(
         text: "Utility Payments",
         font: .systemFont(ofSize: 15),
@@ -21,8 +21,9 @@ final class BankTemplateCell: UICollectionViewCell {
     
     static let cellId = "BankTemplateCell"
     
-    func configure() {
-        
+    func configure(_ image: String,_ template: String) {
+        imageView.image = UIImage(systemName: image)
+        textLabel.text = template
     }
     
     override init(frame: CGRect) {
@@ -63,6 +64,8 @@ private extension BankTemplateCell {
         }
     }
     func createImageView() {
+        imageView.image = UIImage(systemName: "gear")
+        imageView.contentMode = .scaleAspectFit
         imageView.tintColor = .black
         circleView.addSubview(imageView)
         imageView.snp.makeConstraints { make in
