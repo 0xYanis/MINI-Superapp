@@ -12,10 +12,8 @@ final class CardDetailView: UIView {
     //MARK: Private properties
     private let cardView = UIView()
     private let cardLogo = UIImageView(image: UIImage(systemName: "globe"))
-    private let cardAmount = UILabel(
-        text: "$1,200", font: .boldSystemFont(ofSize: 20), color: .white)
     private let cardNumber = UILabel(
-        text: "*4631", font: .systemFont(ofSize: 16), color: .gray)
+        text: "1234 5678 9123 4567", font: .systemFont(ofSize: 28), color: .white)
     
     static let cellId = "CardDetailViewCell"
     
@@ -37,11 +35,10 @@ private extension CardDetailView {
         createCardView()
         createCardLogo()
         createCardNumber()
-        createCardAmount()
     }
     func createCardView() {
         cardView.backgroundColor = .systemGreen
-        cardView.roundCorners(radius: 20)
+        cardView.radiusAndShadow(radius: 20, shadowSize: 10)
         addSubview(cardView)
         cardView.snp.makeConstraints { make in
             make.left.right.equalToSuperview().inset(20)
@@ -51,21 +48,19 @@ private extension CardDetailView {
     func createCardLogo() {
         cardView.addSubview(cardLogo)
         cardLogo.snp.makeConstraints { make in
-            make.top.left.equalToSuperview().inset(18)
-            make.width.equalTo(20)
+            make.top.left.equalToSuperview().inset(35)
+            make.width.height.equalTo(45)
         }
     }
     func createCardNumber() {
         cardView.addSubview(cardNumber)
+        cardNumber.layer.shadowColor = UIColor.black.cgColor
+        cardNumber.layer.shadowOffset = CGSize(width: 0, height: 2)
+        cardNumber.layer.shadowRadius = 2.0
+        cardNumber.layer.shadowOpacity = 0.5
         cardNumber.snp.makeConstraints { make in
-            make.bottom.left.equalToSuperview().inset(18)
-        }
-    }
-    func createCardAmount() {
-        cardView.addSubview(cardAmount)
-        cardAmount.snp.makeConstraints { make in
-            make.left.equalToSuperview().inset(18)
-            make.centerY.equalToSuperview().offset(18)
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().inset(20)
         }
     }
 }
