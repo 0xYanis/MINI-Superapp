@@ -13,7 +13,8 @@ protocol CardViewProtocol: AnyObject {
 
 final class CardViewController: UIViewController {
     
-    private let cardTableView = UITableView()
+    private let cardView = CardDetailView()
+    private let detailTableView = UITableView(frame: .zero, style: .plain)
     
     var presenter: CardPresenterProtocol?
     
@@ -35,51 +36,88 @@ extension CardViewController: CardViewProtocol {
 private extension CardViewController {
     func initialize() {
         view.backgroundColor = UIColor(named: "backColor")
-        createNavigation()
-        cardTableViewRegister()
-    }
-    
-    func createNavigation() {
-        navigationItem.title = "Visa Classic"
-    }
-    
-    func createCardTableView() {
-        cardTableView.backgroundColor = .clear
-        cardTableView.separatorColor = .clear
-        cardTableView.showsVerticalScrollIndicator = false
-        cardTableView.delegate = self
+        createNavigation(title: "Visa Classic")
+        createCardView(uiView: cardView)
+        createTableView(tableView: detailTableView, cardView)
         
-        view.addSubview(cardTableView)
-        cardTableView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+        createViewRotation(uiView: cardView)
+    }
+    
+    func createNavigation(title: String) {
+        navigationItem.title = title
+    }
+    
+    func createCardView(uiView: UIView) {
+        view.addSubview(uiView)
+        uiView.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
+            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
+            make.height.equalToSuperview().multipliedBy(0.25)
         }
     }
     
-    func cardTableViewRegister() {
-        cardTableView.register(CardDetailViewCell.self, forCellReuseIdentifier: CardDetailViewCell.cellId)
+    func createTableView(tableView: UITableView,_ topView: UIView) {
+        tableView.isScrollEnabled = false
+        tableView.dataSource = self
+        tableView.backgroundColor = .clear
+        tableView.separatorColor = .black
+        view.addSubview(tableView)
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(topView.snp.bottom).offset(40)
+            make.left.right.bottom.equalToSuperview()
+        }
     }
 }
 
-extension CardViewController: UITableViewDelegate {
+// MARK: - Rotation animation CardView
+private extension CardViewController {
+    func createViewRotation(uiView: UIView) {
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe))
+        swipeRight.direction = .right
+        uiView.addGestureRecognizer(swipeRight)
+        
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe))
+        swipeLeft.direction = .left
+        uiView.addGestureRecognizer(swipeLeft)
+    }
     
+    @objc func handleSwipe(gestureRecognizer: UISwipeGestureRecognizer) {
+        switch gestureRecognizer.direction {
+        case .right:
+            rotateView(uiView: cardView, duration: 0.4)
+        case .left:
+            rotateView(uiView: cardView, duration: 0.4)
+        default:
+            break
+        }
+    }
+    
+    func rotateView(uiView: UIView, duration: Double = 1.0) {
+        let rotationTransform = CABasicAnimation(keyPath: "transform.rotation.y")
+        rotationTransform.fromValue = 0.0
+        rotationTransform.toValue = CGFloat(.pi * 1.0)
+        rotationTransform.duration = duration
+        rotationTransform.repeatCount = .zero
+        uiView.layer.add(rotationTransform, forKey: nil)
+    }
 }
 
+// MARK: - UITableViewDataSource
 extension CardViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        return 6
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let defaultCell = UITableViewCell()
-        
-        switch indexPath.row {
-        case 0:
-            guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: CardDetailViewCell.cellId,
-                for: indexPath) as? CardDetailViewCell else { return defaultCell }
-            return cell
-        default:
-            return defaultCell
-        }
+        defaultCell.selectionStyle = .none
+        defaultCell.backgroundColor = .clear
+        defaultCell.textLabel?.text = "Visa classic: \(indexPath.row)"
+        defaultCell.detailTextLabel?.text = "Some label"
+        defaultCell.imageView?.image = UIImage(systemName: "globe")
+        return defaultCell
     }
+    
+    
 }
