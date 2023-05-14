@@ -8,12 +8,27 @@
 import UIKit
 import SnapKit
 
+protocol BankTransactionKeyboardDelegate: AnyObject {
+    func userDidBeginUseKeyboard()
+    func userDidEndUseKeyboard()
+}
+
 final class BankHistoryLabel: UIView {
     
-    private let graberView = UIView()
-    private let historyLabel = UILabel(text: "Transaction History", font: .boldSystemFont(ofSize: 20), color: .none)
-    private let searchButton = UIButton(systemImage: "magnifyingglass.circle.fill", color: .systemOrange, size: 35)
-    private let searchBar = UISearchBar()
+    var delegate: BankTransactionKeyboardDelegate?
+    
+    private lazy var graberView = UIView()
+    private lazy var historyLabel = UILabel(
+        text: "Transaction History",
+        font: .boldSystemFont(ofSize: 20),
+        color: .none
+    )
+    private lazy var searchButton = UIButton(
+        systemImage: "magnifyingglass.circle.fill",
+        color: .systemOrange,
+        size: 35
+    )
+    private lazy var searchBar = UISearchBar()
     private var isSearchBarShown = false
     
     override init(frame: CGRect) {
@@ -28,33 +43,22 @@ final class BankHistoryLabel: UIView {
 
 extension BankHistoryLabel {
     @objc func searchButtonTapped() {
-        let newTopInset: CGFloat = isSearchBarShown ? 20 : -100
-        historyLabel.snp.updateConstraints { make in
-            make.top.equalToSuperview().inset(newTopInset)
-        }
-        animateSearchBar(alphaVisible: !isSearchBarShown)
-        isSearchBarShown.toggle()
-        searchButton.alpha = isSearchBarShown ? 0.0 : 1.0
-        UIView.animate(withDuration: 0.4) {
+        historyLabel.alpha = isSearchBarShown ? 1.0 : 0.0
+        animateSearchBar(visible: !isSearchBarShown)
+        searchButton.alpha = isSearchBarShown ? 1.0 : 0.0
+        UIView.animate(withDuration: 0.3) {
             self.layoutIfNeeded()
         }
-    }
-    
-    @objc func handleTap(_ gesture: UITapGestureRecognizer) {
-        let bankVC = BankViewController()
-        if !searchBar.frame.contains(gesture.location(in: bankVC.view)) {
-            searchButtonTapped()
-        }
+        isSearchBarShown.toggle()
     }
 }
 
 private extension BankHistoryLabel {
     func initialize() {
         createGraberView()
-        createLabel()
+        createLabel(label: historyLabel)
         createSearchButton()
         createSearchBar()
-        createTapGesture()
     }
     
     func createGraberView() {
@@ -69,9 +73,9 @@ private extension BankHistoryLabel {
         }
     }
     
-    func createLabel() {
-        addSubview(historyLabel)
-        historyLabel.snp.makeConstraints { make in
+    func createLabel(label: UILabel) {
+        addSubview(label)
+        label.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(20)
             make.left.equalToSuperview().inset(16)
         }
@@ -83,29 +87,49 @@ private extension BankHistoryLabel {
             make.top.equalToSuperview().inset(20)
             make.right.equalToSuperview().inset(20)
         }
-        searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
+        searchButton.addTarget(
+            self,
+            action: #selector(searchButtonTapped),
+            for: .touchUpInside
+        )
+        
     }
     
     func createSearchBar() {
+        searchBar.tintColor = .systemOrange
+        searchBar.keyboardType = .webSearch
+        searchBar.delegate = self
+        searchBar.showsCancelButton = true
         searchBar.placeholder = "Search transactions.."
         addSubview(searchBar)
+        searchBar.alpha = 0.0
         searchBar.snp.makeConstraints { make in
-            make.left.equalToSuperview().inset(25)
-            make.right.equalToSuperview().inset(25)
+            make.left.right.equalToSuperview().inset(5)
             make.top.bottom.equalToSuperview()
         }
-        searchBar.alpha = 0.0
     }
     
-    func createTapGesture() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
-        addGestureRecognizer(tapGesture)
-    }
-    
-    func animateSearchBar(alphaVisible: Bool) {
-        searchBar.isUserInteractionEnabled = alphaVisible
-        UIView.animate(withDuration: 0.4) {
-            self.searchBar.alpha = alphaVisible ? 1.0 : 0.0
+    func animateSearchBar(visible: Bool) {
+        searchBar.isUserInteractionEnabled = visible
+        UIView.animate(withDuration: 0.3) {
+            self.searchBar.alpha = visible ? 1.0 : 0.0
         }
+    }
+}
+
+//MARK: - UISearchBarDelegate
+extension BankHistoryLabel: UISearchBarDelegate {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchButtonTapped()
+        searchBar.resignFirstResponder()
+        delegate?.userDidEndUseKeyboard()
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        delegate?.userDidBeginUseKeyboard()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        //search
     }
 }

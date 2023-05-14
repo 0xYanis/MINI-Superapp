@@ -37,6 +37,6 @@ private extension BankHistoryLabelCell {
     }
     
     @objc func tapHistoryAction() {
-        delegate?.handleTapOnSeeHistoryCell()
+        delegate?.setBigHeightOfHistory()
     }
 }

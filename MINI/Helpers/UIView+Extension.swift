@@ -53,7 +53,7 @@ extension UIView {
     func animateToSuperviewSize() {
         guard let superview = superview else { return }
         let topMargin = superview.safeAreaInsets.top
-        UIView.animate(withDuration: 0.2, delay: 0, options: [.curveEaseInOut], animations: {
+        UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseInOut], animations: {
             self.snp.remakeConstraints { make in
                 make.top.equalToSuperview().offset(topMargin)
                 make.left.right.bottom.equalToSuperview()
@@ -67,7 +67,7 @@ extension UIView {
     func resetToOriginalState(with animation: Bool) {
         guard let superview = superview else { return }
         let bottomMargin = superview.safeAreaInsets.bottom
-        let duration = animation ? 0.2 : 0
+        let duration = animation ? 0.3 : 0
         UIView.animate(withDuration: duration, delay: 0, options: [.curveEaseInOut], animations: {
             self.snp.remakeConstraints { make in
                 make.leading.trailing.bottom.equalToSuperview()

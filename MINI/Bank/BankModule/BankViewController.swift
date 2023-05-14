@@ -8,17 +8,17 @@
 import UIKit
 import SnapKit
 
+protocol BankViewProtocol: AnyObject {
+    func updateCards()
+    func updateHistory()
+}
+
 protocol BankViewCellDelegate: AnyObject {
     func handleTapOnCardCell(id: Int)
     func handleTapOnTemplateCell(id: Int)
     func handleTapOnTransactionCell(id: Int)
-    func handleTapOnSeeHistoryCell()
+    func setBigHeightOfHistory()
     func resetBottomSheetSize()
-}
-
-protocol BankViewProtocol: AnyObject {
-    func updateCards()
-    func updateHistory()
 }
 
 final class BankViewController: UIViewController {
@@ -74,7 +74,7 @@ extension BankViewController: BankViewCellDelegate {
         presenter?.userDidTapTransaction(id: id)
     }
     
-    func handleTapOnSeeHistoryCell() {
+    func setBigHeightOfHistory() {
         historyTableVC.view.animateToSuperviewSize()
     }
     
@@ -203,12 +203,14 @@ extension BankViewController: UITableViewDataSource {
             cell.configure(.black, "mir", "$12.5", "*1234")
             cell.delegate = self
             return cell
+            
         case 1:
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: BankTemplateLabelCell.cellId,
                 for: indexPath) as? BankTemplateLabelCell else { return defaultCell }
             cell.seeAllButt.addTarget(self, action: #selector(didTapSeeAllButt), for: .touchUpInside)
             return cell
+            
         case 2:
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: BankTemplateSet.cellId,
@@ -216,6 +218,7 @@ extension BankViewController: UITableViewDataSource {
             cell.configure("gear", "Template")
             cell.delegate = self
             return cell
+            
         default:
             return defaultCell
         }
@@ -224,20 +227,18 @@ extension BankViewController: UITableViewDataSource {
 
 //MARK: - UITableViewDelegate
 extension BankViewController: UITableViewDelegate {
-    func tableView(
-        _ tableView: UITableView,
-        heightForRowAt indexPath: IndexPath) -> CGFloat {
-            let height = view.frame.height
-            switch indexPath.row {
-            case 0:
-                return (height/4.7)
-            case 1:
-                return (height/18)
-            case 2:
-                return (height/6.3)
-            default:
-                return tableView.rowHeight
-            }
+    func tableView(_ tableView: UITableView,
+                   heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let height = view.frame.height
+        switch indexPath.row {
+        case 0:
+            return (height/4.7)
+        case 1:
+            return (height/18)
+        case 2:
+            return (height/6.3)
+        default:
+            return tableView.rowHeight
         }
-    
+    }
 }

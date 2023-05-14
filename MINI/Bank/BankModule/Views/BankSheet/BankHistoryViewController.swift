@@ -12,8 +12,8 @@ final class BankHistoryViewController: UIViewController {
     
     weak var delegate: BankViewCellDelegate?
     
-    private let labelView = BankHistoryLabel()
-    private let tableView = UITableView()
+    private lazy var labelView = BankHistoryLabel()
+    private lazy var tableView = UITableView()
     private var icon = UIImage()
     private var transaction = "Wallmart: apples, cola, glock-17"
     private var date = "12 Mar 2023"
@@ -43,6 +43,7 @@ private extension BankHistoryViewController {
     }
     
     func createSeeAllLabel() {
+        labelView.delegate = self
         labelView.backgroundColor = .black
         view.addSubview(labelView)
         labelView.snp.makeConstraints { make in
@@ -91,7 +92,18 @@ private extension BankHistoryViewController {
     }
     
     @objc func setBigHeight() {
-        delegate?.handleTapOnSeeHistoryCell()
+        delegate?.setBigHeightOfHistory()
+    }
+}
+
+//MARK: - BankTransactionKeyboardDelegate
+extension BankHistoryViewController: BankTransactionKeyboardDelegate {
+    func userDidBeginUseKeyboard() {
+        delegate?.setBigHeightOfHistory()
+    }
+    
+    func userDidEndUseKeyboard() {
+        delegate?.resetBottomSheetSize()
     }
 }
 
