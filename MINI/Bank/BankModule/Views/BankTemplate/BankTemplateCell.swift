@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import SkeletonView
 
 final class BankTemplateCell: UICollectionViewCell {
     
@@ -38,6 +38,8 @@ final class BankTemplateCell: UICollectionViewCell {
 
 private extension BankTemplateCell {
     func initialize() {
+        isSkeletonable = true
+        skeletonCornerRadius = 10
         backgroundColor = .clear
         createTemplateView()
         createCircleView()

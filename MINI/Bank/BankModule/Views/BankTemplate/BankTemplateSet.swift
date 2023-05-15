@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SkeletonView
 
 final class BankTemplateSet: UITableViewCell {
     
@@ -14,14 +15,6 @@ final class BankTemplateSet: UITableViewCell {
     
     private var collectionView: UICollectionView!
     private let snapLayout = StackFlowLayout()
-    
-    private var image: String = "gear"
-    private var templateName: String = "Template"
-    
-    func configure(_ image: String,_ template: String) {
-        self.image = image
-        templateName = template
-    }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -57,6 +50,11 @@ private extension BankTemplateSet {
         )
         collectionView.backgroundColor = UIColor(named: "backColor")
         collectionView.contentInset = .init(top: 0, left: 16, bottom: 0, right: 16)
+        collectionView.isSkeletonable = true
+        collectionView.showAnimatedSkeleton(
+            usingColor: .flatOrange,
+            transition: .crossDissolve(0.25)
+        )
     }
     
     func addConstraintsOfView() {
@@ -65,26 +63,50 @@ private extension BankTemplateSet {
             make.edges.equalToSuperview()
         }
     }
+    
+    func stopSkeleton() {
+        collectionView.stopSkeletonAnimation()
+        hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.25))
+    }
 }
 
 // MARK: - UICollectionViewDataSource
-extension BankTemplateSet: UICollectionViewDataSource {
+extension BankTemplateSet: SkeletonCollectionViewDataSource {
+    func collectionSkeletonView(_ skeletonView: UICollectionView,
+                                cellIdentifierForItemAt indexPath: IndexPath) -> SkeletonView.ReusableCellIdentifier {
+        return BankTemplateCell.cellId
+    }
+    
+    
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        guard let templateData = delegate?.getTemplateData() else { return 1 }
-        return templateData.count
+        return delegate?.getTemplateData().count ?? 5
     }
+    
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
+
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: BankTemplateCell.cellId,
-            for: indexPath) as? BankTemplateCell else { return UICollectionViewCell() }
-        guard let templateData = delegate?.getTemplateData() else { return UICollectionViewCell() }
-        cell.configure(with: templateData[indexPath.row])
+            for: indexPath) as? BankTemplateCell else {
+            return UICollectionViewCell()
+        }
         return cell
     }
+    
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        willDisplay cell: UICollectionViewCell,
+                        forItemAt indexPath: IndexPath) {
+        guard let templateData = delegate?.getTemplateData(), indexPath.row < templateData.count else { return }
+        
+        if let cell = cell as? BankTemplateCell {
+            cell.configure(with: templateData[indexPath.row])
+            self.stopSkeleton()
+        }
+    }
+    
     
 }
 
