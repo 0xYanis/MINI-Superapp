@@ -82,6 +82,7 @@
 		09F5BFD72A1285F500BC3B7C /* BankCardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F5BFD62A1285F500BC3B7C /* BankCardService.swift */; };
 		09F5BFD92A12880000BC3B7C /* BankTemplateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F5BFD82A12880000BC3B7C /* BankTemplateService.swift */; };
 		09F5BFDB2A1288A300BC3B7C /* BankTransactionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F5BFDA2A1288A300BC3B7C /* BankTransactionService.swift */; };
+		09F5BFE02A12B47800BC3B7C /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = 09F5BFDF2A12B47800BC3B7C /* SkeletonView */; };
 		09F86C4C29F6E75600307432 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F86C4B29F6E75600307432 /* AuthenticationManager.swift */; };
 		09F86C4F29F6E96C00307432 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F86C4E29F6E96C00307432 /* BaseTabBarController.swift */; };
 		09F86C5729F6F8A000307432 /* UITabBarController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F86C5629F6F8A000307432 /* UITabBarController+Extension.swift */; };
@@ -200,6 +201,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				09035D0929DDAE2F003D4B0B /* SnapKit in Frameworks */,
+				09F5BFE02A12B47800BC3B7C /* SkeletonView in Frameworks */,
 				091CD49029DDE9250041627F /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -539,6 +541,7 @@
 			packageProductDependencies = (
 				09035D0829DDAE2F003D4B0B /* SnapKit */,
 				091CD48F29DDE9250041627F /* Lottie */,
+				09F5BFDF2A12B47800BC3B7C /* SkeletonView */,
 			);
 			productName = MINI;
 			productReference = 091095FA29DB32F000338D22 /* MINI.app */;
@@ -571,6 +574,7 @@
 			packageReferences = (
 				09035D0729DDAE2F003D4B0B /* XCRemoteSwiftPackageReference "SnapKit" */,
 				091CD48E29DDE9250041627F /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				09F5BFDE2A12B47800BC3B7C /* XCRemoteSwiftPackageReference "SkeletonView" */,
 			);
 			productRefGroup = 091095FB29DB32F000338D22 /* Products */;
 			projectDirPath = "";
@@ -911,6 +915,14 @@
 				minimumVersion = 4.0.0;
 			};
 		};
+		09F5BFDE2A12B47800BC3B7C /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Juanpe/SkeletonView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -923,6 +935,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 091CD48E29DDE9250041627F /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
+		};
+		09F5BFDF2A12B47800BC3B7C /* SkeletonView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 09F5BFDE2A12B47800BC3B7C /* XCRemoteSwiftPackageReference "SkeletonView" */;
+			productName = SkeletonView;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

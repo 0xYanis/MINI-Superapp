@@ -73,14 +73,14 @@ extension BankCardSet: UICollectionViewDataSource {
         return cardData.count
     }
     
-    func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let defaultCell = UICollectionViewCell()
-        guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: BankCardCell.cellId,
-            for: indexPath) as? BankCardCell else { return defaultCell }
-        guard let cardData = delegate?.getCardData() else { return defaultCell }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BankCardCell.cellId,for: indexPath) as? BankCardCell else {
+            return UICollectionViewCell()
+        }
+        
+        guard let cardData = delegate?.getCardData() else { return UICollectionViewCell() }
         cell.configure(with: cardData[indexPath.row])
+        
         return cell
     }
 }
