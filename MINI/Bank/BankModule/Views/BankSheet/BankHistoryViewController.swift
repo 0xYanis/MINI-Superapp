@@ -115,43 +115,40 @@ extension BankHistoryViewController: BankTransactionKeyboardDelegate {
 //MARK: - UITableViewDataSource
 extension BankHistoryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isSearching {
-            let filteredData = delegate?.getFilteredData() ?? []
-            return filteredData.count
-        } else {
-            let transactionData = delegate?.getTransactionData() ?? []
-            return transactionData.count
-        }
+        return (isSearching ? delegate?.getFilteredData().count : delegate?.getTransactionData().count) ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let defaultCell = UITableViewCell()
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: BankTransactionCell.cellId,
-            for: indexPath) as? BankTransactionCell else { return defaultCell }
-        
-        if isSearching {
-            guard let filteredData = delegate?.getFilteredData() else { return defaultCell }
-            cell.configure(with: filteredData[indexPath.row])
-        } else {
-            guard let transactionData = delegate?.getTransactionData() else { return defaultCell }
-            cell.configure(with: transactionData[indexPath.row])
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: BankTransactionCell.cellId, for: indexPath) as? BankTransactionCell else {
+            return UITableViewCell()
         }
+        
+        let data = isSearching ? delegate?.getFilteredData() : delegate?.getTransactionData()
+        guard let transactionData = data else { return UITableViewCell() }
+        
+        cell.configure(with: transactionData[indexPath.row])
         return cell
     }
 }
 
 //MARK: - UITableViewDelegate
 extension BankHistoryViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.handleTapOnTransactionCell(id: indexPath.row)
-    }
+    func tableView(
+        _ tableView: UITableView,
+        didSelectRowAt indexPath: IndexPath) {
+            delegate?.handleTapOnTransactionCell(id: indexPath.row)
+        }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.selectionStyle = .none
-    }
+    func tableView(
+        _ tableView: UITableView,
+        willDisplay cell: UITableViewCell,
+        forRowAt indexPath: IndexPath) {
+            cell.selectionStyle = .none
+        }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
-    }
+    func tableView(
+        _ tableView: UITableView,
+        heightForRowAt indexPath: IndexPath) -> CGFloat {
+            return 100
+        }
 }
