@@ -21,11 +21,6 @@ final class BankCardSet: UITableViewCell {
     private var amount: String = "$12.5"
     private var number: String = "*5312"
     
-    // MARK: Public methods
-    func configure(with cards: BankCardEntity) {
-        
-    }
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         initialize()
@@ -33,6 +28,10 @@ final class BankCardSet: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func reloadData() {
+        collectionView.reloadData()
     }
 }
 

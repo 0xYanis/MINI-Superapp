@@ -227,6 +227,7 @@ extension BankViewController: UITableViewDataSource {
                 withIdentifier: BankCardSet.cellId,
                 for: indexPath) as? BankCardSet else { return defaultCell }
             cell.delegate = self
+            cell.reloadData()
             return cell
             
         case 1:
@@ -241,6 +242,7 @@ extension BankViewController: UITableViewDataSource {
                 withIdentifier: BankTemplateSet.cellId,
                 for: indexPath) as? BankTemplateSet else { return defaultCell }
             cell.delegate = self
+            cell.reloadData()
             return cell
             
         default:
