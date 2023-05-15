@@ -8,6 +8,7 @@
 import Foundation
 
 struct BankCardEntity: Codable, Equatable {
+    let id: Int
     let cardColor: String
     let logo: String
     let amount: String
