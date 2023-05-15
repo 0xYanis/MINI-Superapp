@@ -14,6 +14,12 @@ protocol CardInteractorProtocol: AnyObject {
 final class CardInteractor: CardInteractorProtocol {
     weak var presenter: CardPresenterProtocol?
     
+    var id: Int
+    
+    init(id: Int) {
+        self.id = id
+    }
+    
     func viewDidLoaded() {
         
     }

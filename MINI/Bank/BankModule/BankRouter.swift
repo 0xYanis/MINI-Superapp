@@ -22,7 +22,7 @@ final class BankRouter: BankRouterProtocol {
     weak var view: UIViewController?
     
     func goToDetailCard(id: Int) {
-        let cardView = CardBuilder.build()
+        let cardView = CardBuilder.build(id: id)
         view?.navigationController?.pushViewController(cardView, animated: true)
     }
     
