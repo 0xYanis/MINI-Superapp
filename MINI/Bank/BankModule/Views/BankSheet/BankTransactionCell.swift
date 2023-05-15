@@ -50,13 +50,7 @@ final class BankTransactionCell: UITableViewCell {
     }
     
     // MARK: - Public method
-    func configure(_ icon: UIImage,_ transaction: String,_ date: String,_ cost: String,_ card: String) {
-        iconView.image = UIImage(named: "american")
-        transactionLabel.text = transaction
-        dateLabel.text = date
-        costLabel.text = cost
-        cardLabel.text = card
-    }
+    
 }
 
 extension BankTransactionCell {

@@ -14,23 +14,10 @@ final class BankHistoryViewController: UIViewController {
     
     private lazy var labelView = BankHistoryLabel()
     private lazy var tableView = UITableView()
-    private var icon = UIImage()
-    private var transaction = "Wallmart: apples, cola, glock-17"
-    private var date = "12 Mar 2023"
-    private var cost = "-$78"
-    private var card = "*4631"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         intialize()
-    }
-    
-    func configure(_ icon: UIImage,_ transaction: String,_ date: String,_ cost: String,_ card: String) {
-        self.icon = icon
-        self.transaction = transaction
-        self.date = date
-        self.cost = cost
-        self.card = card
     }
 }
 
@@ -118,7 +105,7 @@ extension BankHistoryViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: BankTransactionCell.cellId,
             for: indexPath) as? BankTransactionCell else { return defaultCell }
-        cell.configure(icon, transaction, date, cost, card)
+        
         cell.layoutIfNeeded()
         return cell
     }

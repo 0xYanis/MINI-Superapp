@@ -161,7 +161,6 @@ private extension BankViewController {
         }
         historyTableVC.view.layer.cornerRadius = 30
         historyTableVC.view.clipsToBounds = true
-        //historyTableVC.configure( , "", "", "", "")
     }
     
     func createRefreshControl(scrollView: UIScrollView) {
@@ -178,21 +177,20 @@ private extension BankViewController {
     }
     
     @objc func refreshAction() {
-        ///
+        presenter?.viewDidLoaded()
         refreshControl.endRefreshing()
     }
 }
 
 //MARK: - UITableViewDataSource
 extension BankViewController: UITableViewDataSource {
-    func tableView(
-        _ tableView: UITableView,
-        numberOfRowsInSection section: Int) -> Int {
-            return 3
-        }
+    func tableView(_ tableView: UITableView,
+                   numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let defaultCell = UITableViewCell()
         
         switch indexPath.row {
@@ -200,7 +198,7 @@ extension BankViewController: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: BankCardSet.cellId,
                 for: indexPath) as? BankCardSet else { return defaultCell }
-            cell.configure(.black, "mir", "$12.5", "*1234")
+            
             cell.delegate = self
             return cell
             
@@ -215,7 +213,7 @@ extension BankViewController: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: BankTemplateSet.cellId,
                 for: indexPath) as? BankTemplateSet else { return defaultCell }
-            cell.configure("gear", "Template")
+            
             cell.delegate = self
             return cell
             
