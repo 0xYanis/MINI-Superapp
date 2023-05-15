@@ -23,6 +23,9 @@ protocol BankViewCellDelegate: AnyObject {
     func getCardData() -> [BankCardEntity]
     func getTemplateData() -> [BankTemplateEntity]
     func getTransactionData() -> [BankTransactionEntity]
+    
+    func searchBarTextDidChange(with searchText: String)
+    func getFilteredData() -> [BankTransactionEntity]
 }
 
 final class BankViewController: UIViewController {
@@ -60,7 +63,7 @@ extension BankViewController: BankViewProtocol {
     }
     
     func updateHistory() {
-        historyTableVC.reloadInputViews()
+        historyTableVC.reloadData()
     }
 }
 
@@ -96,6 +99,14 @@ extension BankViewController: BankViewCellDelegate {
     
     func getTransactionData() -> [BankTransactionEntity] {
         presenter?.getTransactionData() ?? []
+    }
+    
+    func searchBarTextDidChange(with searchText: String) {
+        presenter?.searchBarTextDidChange(with: searchText)
+    }
+    
+    func getFilteredData() -> [BankTransactionEntity] {
+        presenter?.getFilteredData() ?? []
     }
 }
 

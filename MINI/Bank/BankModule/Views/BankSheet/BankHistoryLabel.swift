@@ -11,6 +11,8 @@ import SnapKit
 protocol BankTransactionKeyboardDelegate: AnyObject {
     func userDidBeginUseKeyboard()
     func userDidEndUseKeyboard()
+    
+    func searchBarTextDidChange(with searchText: String)
 }
 
 final class BankHistoryLabel: UIView {
@@ -130,6 +132,6 @@ extension BankHistoryLabel: UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        //search
+        delegate?.searchBarTextDidChange(with: searchText)
     }
 }

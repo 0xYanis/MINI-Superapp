@@ -14,10 +14,15 @@ final class BankHistoryViewController: UIViewController {
     
     private lazy var labelView = BankHistoryLabel()
     private lazy var tableView = UITableView()
+    private var isSearching = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         intialize()
+    }
+    
+    func reloadData() {
+        tableView.reloadData()
     }
 }
 
@@ -91,14 +96,32 @@ extension BankHistoryViewController: BankTransactionKeyboardDelegate {
     
     func userDidEndUseKeyboard() {
         delegate?.resetBottomSheetSize()
+        isSearching = false
+        tableView.reloadData()
+    }
+    
+    func searchBarTextDidChange(with searchText: String) {
+        if !searchText.isEmpty {
+            delegate?.searchBarTextDidChange(with: searchText)
+            isSearching = true
+            tableView.reloadData()
+        } else {
+            isSearching = false
+            tableView.reloadData()
+        }
     }
 }
 
 //MARK: - UITableViewDataSource
 extension BankHistoryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let transactionData = delegate?.getTransactionData() else { return 1 }
-        return transactionData.count
+        if isSearching {
+            let filteredData = delegate?.getFilteredData() ?? []
+            return filteredData.count
+        } else {
+            let transactionData = delegate?.getTransactionData() ?? []
+            return transactionData.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -106,9 +129,14 @@ extension BankHistoryViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: BankTransactionCell.cellId,
             for: indexPath) as? BankTransactionCell else { return defaultCell }
-        guard let transactionData = delegate?.getTransactionData() else { return defaultCell }
-        cell.configure(with: transactionData[indexPath.row])
-        cell.layoutIfNeeded()
+        
+        if isSearching {
+            guard let filteredData = delegate?.getFilteredData() else { return defaultCell }
+            cell.configure(with: filteredData[indexPath.row])
+        } else {
+            guard let transactionData = delegate?.getTransactionData() else { return defaultCell }
+            cell.configure(with: transactionData[indexPath.row])
+        }
         return cell
     }
 }

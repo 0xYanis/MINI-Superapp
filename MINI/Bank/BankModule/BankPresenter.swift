@@ -21,6 +21,9 @@ protocol BankPresenterProtocol: AnyObject {
     func getCardData() -> [BankCardEntity]
     func getTemplateData() -> [BankTemplateEntity]
     func getTransactionData() -> [BankTransactionEntity]
+    
+    func searchBarTextDidChange(with searchText: String)
+    func getFilteredData() -> [BankTransactionEntity]
 }
 
 final class BankPresenter {
@@ -37,7 +40,10 @@ final class BankPresenter {
 
 extension BankPresenter: BankPresenterProtocol {
     func viewDidLoaded() {
-        interactor.viewDidLoaded()
+        DispatchQueue.main.async {
+            self.view?.updateBankTable()
+            self.view?.updateHistory()
+        }
     }
     
     func userDidTapNewCard() {
@@ -82,5 +88,13 @@ extension BankPresenter: BankPresenterProtocol {
     
     func getTransactionData() -> [BankTransactionEntity] {
         interactor.getTransactionData()
+    }
+    
+    func searchBarTextDidChange(with searchText: String) {
+        interactor.searchBarTextDidChange(with: searchText)
+    }
+    
+    func getFilteredData() -> [BankTransactionEntity] {
+        interactor.getFilteredData()
     }
 }
