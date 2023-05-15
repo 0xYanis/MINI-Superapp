@@ -16,11 +16,6 @@ final class BankCardSet: UITableViewCell {
     private var collectionView: UICollectionView!
     private let snapLayout = StackFlowLayout()
     
-    private var color: UIColor = .black
-    private var logo: String   = "visa"
-    private var amount: String = "$12.5"
-    private var number: String = "*5312"
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         initialize()
@@ -44,43 +39,47 @@ private extension BankCardSet {
     
     func createCollectionView() {
         collectionView = UICollectionView(
-            frame: .zero, collectionViewLayout: snapLayout
-        )
+            frame: .zero,
+            collectionViewLayout: snapLayout)
         collectionView.decelerationRate = .fast
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.register(
-            BankCardCell.self, forCellWithReuseIdentifier: BankCardCell.cellId
+            BankCardCell.self,
+            forCellWithReuseIdentifier: BankCardCell.cellId
         )
     }
     
     func addConstraintsOfView() {
+        collectionView.backgroundColor = UIColor(named: "backColor")
+        collectionView.contentInset = .init(top: 0, left: 16, bottom: 0, right: 16)
         contentView.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        collectionView.backgroundColor = UIColor(named: "backColor")
-        collectionView.contentInset = .init(top: 0, left: 16, bottom: 0, right: 16)
     }
 }
+
 
 // MARK: - UICollectionViewDataSource
 extension BankCardSet: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return delegate?.getCardData().count ?? 10
     }
-
+    
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BankCardCell.cellId, for: indexPath) as? BankCardCell,
-            let cardData = delegate?.getCardData(),
-            indexPath.row < cardData.count else {
-                return UICollectionViewCell()
+              let cardData = delegate?.getCardData(),
+              indexPath.row < cardData.count else {
+            return UICollectionViewCell()
         }
         
         cell.configure(with: cardData[indexPath.row])
         return cell
     }
+    
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         guard let cardData = delegate?.getCardData(), indexPath.row < cardData.count else {
@@ -90,7 +89,10 @@ extension BankCardSet: UICollectionViewDataSource {
             cell.configure(with: cardData[indexPath.row])
         }
     }
+    
+    
 }
+
 
 // MARK: - UICollectionViewDelegateFlowLayout
 extension BankCardSet: UICollectionViewDelegateFlowLayout {
