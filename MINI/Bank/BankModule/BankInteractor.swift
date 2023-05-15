@@ -19,45 +19,78 @@ protocol BankInteractorProtocol: AnyObject {
 final class BankInteractor: BankInteractorProtocol {
     
     weak var presenter: BankPresenterProtocol?
+    var cardService: BankCardServiceProtocol
+    var templateService: BankTemplateServiceProtocol
+    var transactionService: BankTransactionServiceProtocol
     
-    private let cardData = [BankCardEntity(id: 0, cardColor: "visa", logo: "visa", amount: "$512.5", number: "*3215"),
-                            BankCardEntity(id: 1, cardColor: "mir", logo: "mir", amount: "59,000.99", number: "*5672"),
-                            BankCardEntity(id: 2, cardColor: "mastercard", logo: "mastercard", amount: "$12.5", number: "*5621"),
-                            BankCardEntity(id: 3, cardColor: "american", logo: "american", amount: "$990.0", number: "*6432"),
-                            BankCardEntity(id: 4, cardColor: "mir", logo: "mir", amount: "29,000", number: "*2234")]
+    private var cardsData: [BankCardEntity]               = []
+    private var templatesData: [BankTemplateEntity]       = []
+    private var transactionsData: [BankTransactionEntity] = []
+    private var filteredData: [BankTransactionEntity]     = []
     
-    private let templateData = [BankTemplateEntity(image: "phone.fill", label: "Phone number"),
-                                BankTemplateEntity(image: "fork.knife", label: "Sunday BBQ"),
-                                BankTemplateEntity(image: "4k.tv.fill", label: "Netflix"),
-                                BankTemplateEntity(image: "carrot", label: "Amazon Plus"),
-                                BankTemplateEntity(image: "photo.tv", label: "HBO Max"),
-                                BankTemplateEntity(image: "y.square", label: "Yandex: Kinopoisk")]
     
-    private let transactionData = [BankTransactionEntity(icon: "", name: "Wallmart", date: "14 May 2023", cost: "$99.50", cardNumber: "*3215"),
-                                   BankTransactionEntity(icon: "", name: "GYM", date: "11 May 2023", cost: "$15.99", cardNumber: "*6432"),
-                                   BankTransactionEntity(icon: "", name: "Tacobell", date: "9 May 2023", cost: "$25.50", cardNumber: "*3215"),
-                                   BankTransactionEntity(icon: "", name: "Jack in the Box", date: "25 April 2023", cost: "$15.25", cardNumber: "*6432"),
-                                   BankTransactionEntity(icon: "", name: "Filippo Berio Store", date: "22 April 2023", cost: "$89.9", cardNumber: "*6432"),
-                                   BankTransactionEntity(icon: "", name: "Saint Antonio Grocery", date: "10 Aplril 2023", cost: "$189.99", cardNumber: "*3215")]
-    private var filteredData = [BankTransactionEntity]()
+    init(
+        cardService: BankCardServiceProtocol,
+        templateService: BankTemplateServiceProtocol,
+        transactionService: BankTransactionServiceProtocol
+    ) {
+        self.cardService = cardService
+        self.templateService = templateService
+        self.transactionService = transactionService
+    }
+    
     
     func getCardData() -> [BankCardEntity] {
-        return cardData
+        cardService.getCardsData { [weak self] result in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let cards):
+                    self.cardsData = cards ?? []
+                    self.presenter?.viewDidLoaded()
+                case .failure(let error):
+                    self.presenter?.loadingDataGetFailed(with: error.localizedDescription)
+                }
+            }
+        }
+        return cardsData
     }
     
     func getTemplateData() -> [BankTemplateEntity] {
-        return templateData
+        templateService.getTemplatesData { [weak self] result in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let templates):
+                    self.templatesData = templates ?? []
+                case .failure(let error):
+                    self.presenter?.loadingDataGetFailed(with: error.localizedDescription)
+                }
+            }
+        }
+        return templatesData
     }
     
     func getTransactionData() -> [BankTransactionEntity] {
-        return transactionData
+        transactionService.getTransactionsData { [weak self] result in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let transactions):
+                    self.transactionsData = transactions ?? []
+                case .failure(let error):
+                    self.presenter?.loadingDataGetFailed(with: error.localizedDescription)
+                }
+            }
+        }
+        return transactionsData
     }
     
     func searchBarTextDidChange(with searchText: String) {
         if searchText.isEmpty {
             filteredData.removeAll()
         } else {
-            filteredData = transactionData.filter {
+            filteredData = transactionsData.filter {
                 $0.name.lowercased().contains(searchText.lowercased())
             }
         }

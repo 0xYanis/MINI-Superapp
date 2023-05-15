@@ -24,6 +24,8 @@ protocol BankPresenterProtocol: AnyObject {
     
     func searchBarTextDidChange(with searchText: String)
     func getFilteredData() -> [BankTransactionEntity]
+    
+    func loadingDataGetFailed(with error: String)
 }
 
 final class BankPresenter {
@@ -96,5 +98,9 @@ extension BankPresenter: BankPresenterProtocol {
     
     func getFilteredData() -> [BankTransactionEntity] {
         interactor.getFilteredData()
+    }
+    
+    func loadingDataGetFailed(with error: String) {
+        
     }
 }

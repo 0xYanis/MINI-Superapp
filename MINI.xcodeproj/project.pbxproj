@@ -79,6 +79,9 @@
 		09E9E82A29EB16210084416B /* KeyChainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E9E82929EB16210084416B /* KeyChainService.swift */; };
 		09E9E82E29EB16E10084416B /* KeyChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E9E82D29EB16E10084416B /* KeyChain.swift */; };
 		09E9E83029EB24840084416B /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E9E82F29EB24840084416B /* UIAlertController+Extension.swift */; };
+		09F5BFD72A1285F500BC3B7C /* BankCardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F5BFD62A1285F500BC3B7C /* BankCardService.swift */; };
+		09F5BFD92A12880000BC3B7C /* BankTemplateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F5BFD82A12880000BC3B7C /* BankTemplateService.swift */; };
+		09F5BFDB2A1288A300BC3B7C /* BankTransactionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F5BFDA2A1288A300BC3B7C /* BankTransactionService.swift */; };
 		09F86C4C29F6E75600307432 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F86C4B29F6E75600307432 /* AuthenticationManager.swift */; };
 		09F86C4F29F6E96C00307432 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F86C4E29F6E96C00307432 /* BaseTabBarController.swift */; };
 		09F86C5729F6F8A000307432 /* UITabBarController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F86C5629F6F8A000307432 /* UITabBarController+Extension.swift */; };
@@ -170,6 +173,9 @@
 		09E9E82929EB16210084416B /* KeyChainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainService.swift; sourceTree = "<group>"; };
 		09E9E82D29EB16E10084416B /* KeyChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChain.swift; sourceTree = "<group>"; };
 		09E9E82F29EB24840084416B /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
+		09F5BFD62A1285F500BC3B7C /* BankCardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankCardService.swift; sourceTree = "<group>"; };
+		09F5BFD82A12880000BC3B7C /* BankTemplateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTemplateService.swift; sourceTree = "<group>"; };
+		09F5BFDA2A1288A300BC3B7C /* BankTransactionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTransactionService.swift; sourceTree = "<group>"; };
 		09F86C4B29F6E75600307432 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		09F86C4E29F6E96C00307432 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		09F86C5629F6F8A000307432 /* UITabBarController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarController+Extension.swift"; sourceTree = "<group>"; };
@@ -331,6 +337,9 @@
 				09E24C102A12239A00A91F74 /* BankCardEntity.swift */,
 				09E24C142A1228D000A91F74 /* BankTemplateEntity.swift */,
 				09E24C162A122C2E00A91F74 /* BankTransactionEntity.swift */,
+				09F5BFD62A1285F500BC3B7C /* BankCardService.swift */,
+				09F5BFD82A12880000BC3B7C /* BankTemplateService.swift */,
+				09F5BFDA2A1288A300BC3B7C /* BankTransactionService.swift */,
 			);
 			path = BankModule;
 			sourceTree = "<group>";
@@ -608,6 +617,7 @@
 				097E039D29EC448F00CE2A6F /* BankPresenter.swift in Sources */,
 				099A79C029F16406004B95C7 /* BankCardCell.swift in Sources */,
 				09E9E82329EAFC770084416B /* UIView+Extension.swift in Sources */,
+				09F5BFD92A12880000BC3B7C /* BankTemplateService.swift in Sources */,
 				099D4F6F29F71A610002C24A /* CardBuilder.swift in Sources */,
 				099D4F7D29F72ADB0002C24A /* NewTemplateViewController.swift in Sources */,
 				098AC7D02A03D03400CD694B /* AviaResultsCell.swift in Sources */,
@@ -637,9 +647,11 @@
 				09D509D829EF4EDE009CC219 /* UIImageView+Extension.swift in Sources */,
 				09FC393D29FABF5200B2D97E /* AllTemplatesRouter.swift in Sources */,
 				09FC393729FABF2D00B2D97E /* AllTemplatesViewController.swift in Sources */,
+				09F5BFDB2A1288A300BC3B7C /* BankTransactionService.swift in Sources */,
 				09E9E82E29EB16E10084416B /* KeyChain.swift in Sources */,
 				099D4F6D29F71A530002C24A /* CardRouter.swift in Sources */,
 				09632FCC29ED8A7D00DB2641 /* BankCardSet.swift in Sources */,
+				09F5BFD72A1285F500BC3B7C /* BankCardService.swift in Sources */,
 				099D4F8129F72AF40002C24A /* NewTemplateInteractor.swift in Sources */,
 				099D4F7329F722DE0002C24A /* NewCardViewController.swift in Sources */,
 				09F86C4C29F6E75600307432 /* AuthenticationManager.swift in Sources */,
@@ -809,6 +821,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -841,6 +854,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
