@@ -42,6 +42,7 @@ final class BankViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
+        presenter?.viewDidLoaded()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -204,9 +205,7 @@ private extension BankViewController {
     }
     
     @objc func refreshAction() {
-        presenter?.viewDidLoaded()
-        updateBankTable()
-        updateHistory()
+        presenter?.updateView()
         refreshControl.endRefreshing()
     }
 }

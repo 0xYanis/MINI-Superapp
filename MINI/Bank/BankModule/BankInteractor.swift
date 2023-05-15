@@ -8,6 +8,8 @@
 import Foundation
 
 protocol BankInteractorProtocol: AnyObject {
+    func viewDidLoaded()
+    
     func getCardData() -> [BankCardEntity]
     func getTemplateData() -> [BankTemplateEntity]
     func getTransactionData() -> [BankTransactionEntity]
@@ -15,6 +17,7 @@ protocol BankInteractorProtocol: AnyObject {
     func searchBarTextDidChange(with searchText: String)
     func getFilteredData() -> [BankTransactionEntity]
 }
+
 
 final class BankInteractor: BankInteractorProtocol {
     
@@ -39,50 +42,20 @@ final class BankInteractor: BankInteractorProtocol {
         self.transactionService = transactionService
     }
     
+    func viewDidLoaded() {
+        getCards()
+        getTemplates()
+        getTransactions()
+        presenter?.updateView()
+    }
     
     func getCardData() -> [BankCardEntity] {
-        cardService.getCardsData { [weak self] result in
-            guard let self = self else { return }
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let cards):
-                    self.cardsData = cards ?? []
-                    self.presenter?.viewDidLoaded()
-                case .failure(let error):
-                    self.presenter?.loadingDataGetFailed(with: error.localizedDescription)
-                }
-            }
-        }
         return cardsData
     }
-    
     func getTemplateData() -> [BankTemplateEntity] {
-        templateService.getTemplatesData { [weak self] result in
-            guard let self = self else { return }
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let templates):
-                    self.templatesData = templates ?? []
-                case .failure(let error):
-                    self.presenter?.loadingDataGetFailed(with: error.localizedDescription)
-                }
-            }
-        }
         return templatesData
     }
-    
     func getTransactionData() -> [BankTransactionEntity] {
-        transactionService.getTransactionsData { [weak self] result in
-            guard let self = self else { return }
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let transactions):
-                    self.transactionsData = transactions ?? []
-                case .failure(let error):
-                    self.presenter?.loadingDataGetFailed(with: error.localizedDescription)
-                }
-            }
-        }
         return transactionsData
     }
     
@@ -94,10 +67,55 @@ final class BankInteractor: BankInteractorProtocol {
                 $0.name.lowercased().contains(searchText.lowercased())
             }
         }
-        presenter?.viewDidLoaded()
+        presenter?.updateView()
     }
     
     func getFilteredData() -> [BankTransactionEntity] {
         return filteredData
+    }
+}
+
+//MARK: - Private methods
+private extension BankInteractor {
+    func getCards() {
+        cardService.getCardsData { [weak self] result in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let cards):
+                    self.cardsData = cards ?? []
+                case .failure(let error):
+                    self.presenter?.loadingDataGetFailed(with: error.localizedDescription)
+                }
+            }
+        }
+    }
+    
+    func getTemplates() {
+        templateService.getTemplatesData { [weak self] result in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let templates):
+                    self.templatesData = templates ?? []
+                case .failure(let error):
+                    self.presenter?.loadingDataGetFailed(with: error.localizedDescription)
+                }
+            }
+        }
+    }
+    
+    func getTransactions() {
+        transactionService.getTransactionsData { [weak self] result in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let transactions):
+                    self.transactionsData = transactions ?? []
+                case .failure(let error):
+                    self.presenter?.loadingDataGetFailed(with: error.localizedDescription)
+                }
+            }
+        }
     }
 }

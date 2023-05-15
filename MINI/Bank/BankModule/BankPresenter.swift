@@ -9,6 +9,7 @@ import Foundation
 
 protocol BankPresenterProtocol: AnyObject {
     func viewDidLoaded()
+    func updateView()
     func userDidTapNewCard()
     func userDidTapNewTemplate()
     func userDidTapCard(id: Int)
@@ -42,6 +43,10 @@ final class BankPresenter {
 
 extension BankPresenter: BankPresenterProtocol {
     func viewDidLoaded() {
+        interactor.viewDidLoaded()
+    }
+    
+    func updateView() {
         DispatchQueue.main.async {
             self.view?.updateBankTable()
             self.view?.updateHistory()
