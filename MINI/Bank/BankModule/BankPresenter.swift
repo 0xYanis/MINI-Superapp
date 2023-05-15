@@ -17,6 +17,8 @@ protocol BankPresenterProtocol: AnyObject {
     func userDidTapTransaction(id: Int)
     func setNewCard()
     func setNewTransaction()
+    
+    func getCardData() -> [BankCardEntity]
 }
 
 final class BankPresenter {
@@ -66,5 +68,9 @@ extension BankPresenter: BankPresenterProtocol {
     
     func setNewTransaction() {
         view?.updateHistory()
+    }
+    
+    func getCardData() -> [BankCardEntity] {
+        interactor.getCardData()
     }
 }

@@ -64,6 +64,8 @@
 		09D509D629EF379A009CC219 /* BankTransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D509D529EF379A009CC219 /* BankTransactionCell.swift */; };
 		09D509D829EF4EDE009CC219 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D509D729EF4EDE009CC219 /* UIImageView+Extension.swift */; };
 		09D509DA29EF50AC009CC219 /* BankHistoryLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D509D929EF50AC009CC219 /* BankHistoryLabel.swift */; };
+		09E24C112A12239A00A91F74 /* BankCardEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E24C102A12239A00A91F74 /* BankCardEntity.swift */; };
+		09E24C132A1227C200A91F74 /* cardsColor.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09E24C122A1227C200A91F74 /* cardsColor.xcassets */; };
 		09E9E81229EAE6030084416B /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E9E81129EAE6030084416B /* UILabel+Extension.swift */; };
 		09E9E81729EAE9360084416B /* LoginBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E9E81629EAE9360084416B /* LoginBuilder.swift */; };
 		09E9E81929EAE9410084416B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E9E81829EAE9410084416B /* LoginViewController.swift */; };
@@ -152,6 +154,8 @@
 		09D509D529EF379A009CC219 /* BankTransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTransactionCell.swift; sourceTree = "<group>"; };
 		09D509D729EF4EDE009CC219 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		09D509D929EF50AC009CC219 /* BankHistoryLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankHistoryLabel.swift; sourceTree = "<group>"; };
+		09E24C102A12239A00A91F74 /* BankCardEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankCardEntity.swift; sourceTree = "<group>"; };
+		09E24C122A1227C200A91F74 /* cardsColor.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = cardsColor.xcassets; sourceTree = "<group>"; };
 		09E9E81129EAE6030084416B /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		09E9E81629EAE9360084416B /* LoginBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBuilder.swift; sourceTree = "<group>"; };
 		09E9E81829EAE9410084416B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -292,6 +296,7 @@
 				0910960629DB32F400338D22 /* Assets.xcassets */,
 				0910960B29DB32F500338D22 /* Info.plist */,
 				09BBA70E2A0E76950020E3C9 /* cardsLogo.xcassets */,
+				09E24C122A1227C200A91F74 /* cardsColor.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -321,6 +326,7 @@
 				097E039E29EC449900CE2A6F /* BankInteractor.swift */,
 				097E03A029EC44A500CE2A6F /* BankRouter.swift */,
 				097E03A229EC44BD00CE2A6F /* BankBuilder.swift */,
+				09E24C102A12239A00A91F74 /* BankCardEntity.swift */,
 			);
 			path = BankModule;
 			sourceTree = "<group>";
@@ -579,6 +585,7 @@
 				09BBA70F2A0E76950020E3C9 /* cardsLogo.xcassets in Resources */,
 				09581B0E29EC769F000CC093 /* hello.json in Resources */,
 				0910960729DB32F400338D22 /* Assets.xcassets in Resources */,
+				09E24C132A1227C200A91F74 /* cardsColor.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -641,6 +648,7 @@
 				099D4F7329F722DE0002C24A /* NewCardViewController.swift in Sources */,
 				09F86C4C29F6E75600307432 /* AuthenticationManager.swift in Sources */,
 				099D4F6729F71A2C0002C24A /* CardViewController.swift in Sources */,
+				09E24C112A12239A00A91F74 /* BankCardEntity.swift in Sources */,
 				099D4F7529F722EC0002C24A /* NewCardPresenter.swift in Sources */,
 				090AE1E529FBAA2F0092515D /* TemplateEntity.swift in Sources */,
 				099D4F6929F71A380002C24A /* CardPresenter.swift in Sources */,

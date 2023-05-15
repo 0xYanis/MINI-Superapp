@@ -19,17 +19,19 @@ protocol BankViewCellDelegate: AnyObject {
     func handleTapOnTransactionCell(id: Int)
     func setBigHeightOfHistory()
     func resetBottomSheetSize()
+    
+    func getCardData() -> [BankCardEntity]
 }
 
 final class BankViewController: UIViewController {
+    
+    //MARK: Public properties
+    var presenter: BankPresenterProtocol?
     
     //MARK: Private properties
     private let bankTableView = UITableView()
     private let historyTableVC = BankHistoryViewController()
     private let refreshControl = UIRefreshControl()
-    
-    //MARK: Public properties
-    var presenter: BankPresenterProtocol?
     
     //MARK: Lifecycle
     override func viewDidLoad() {
@@ -80,6 +82,10 @@ extension BankViewController: BankViewCellDelegate {
     
     func resetBottomSheetSize() {
         historyTableVC.view.resetToOriginalState(with: true)
+    }
+    
+    func getCardData() -> [BankCardEntity] {
+        presenter?.getCardData() ?? []
     }
 }
 

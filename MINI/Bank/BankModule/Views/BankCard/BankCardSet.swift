@@ -22,12 +22,8 @@ final class BankCardSet: UITableViewCell {
     private var number: String = "*5312"
     
     // MARK: Public methods
-    func configure(_ color: UIColor,_ logo: String,_ amount: String,_ number: String) {
-        self.color = color
-        self.logo = logo
-        self.amount = amount
-        self.number = number
-        collectionView.reloadData()
+    func configure(with cards: BankCardEntity) {
+        
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -74,7 +70,8 @@ private extension BankCardSet {
 extension BankCardSet: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return 10
+        guard let cardData = delegate?.getCardData() else { return 10 }
+        return cardData.count
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -83,7 +80,8 @@ extension BankCardSet: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: BankCardCell.cellId,
             for: indexPath) as? BankCardCell else { return defaultCell }
-        cell.configure(color, logo, amount, number)
+        guard let cardData = delegate?.getCardData() else { return defaultCell }
+        cell.configure(with: cardData[indexPath.row])
         return cell
     }
 }

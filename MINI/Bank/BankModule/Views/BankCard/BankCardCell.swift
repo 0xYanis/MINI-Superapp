@@ -14,19 +14,25 @@ final class BankCardCell: UICollectionViewCell {
     private let cardView = UIView()
     private let cardLogo = UIImageView()
     private let cardAmount = UILabel(
-        text: "$1,200", font: .boldSystemFont(ofSize: 20), color: .white)
+        text: "$1,200",
+        font: .boldSystemFont(ofSize: 20),
+        color: .white
+    )
     private let cardNumber = UILabel(
-        text: "*4631", font: .systemFont(ofSize: 16), color: .gray)
+        text: "*4631",
+        font: .systemFont(ofSize: 16),
+        color: .white
+    )
     
     //MARK: Public properties
     static let cellId = "BankCardCell"
     
     // MARK: - Public methods
-    func configure(_ color: UIColor,_ logo: String,_ amount: String,_ number: String) {
-        cardView.backgroundColor = color
-        cardLogo.image = UIImage(named: logo)
-        cardAmount.text = amount
-        cardNumber.text = number
+    func configure(with card: BankCardEntity) {
+        cardView.backgroundColor = UIColor(named: card.cardColor)
+        cardLogo.image = UIImage(named: card.logo)
+        cardAmount.text = card.amount
+        cardNumber.text = card.number
     }
     
     override init(frame: CGRect) {
