@@ -21,9 +21,9 @@ final class BankTemplateCell: UICollectionViewCell {
     
     static let cellId = "BankTemplateCell"
     
-    func configure(_ image: String,_ template: String) {
-        imageView.image = UIImage(systemName: image)
-        textLabel.text = template
+    func configure(with template: BankTemplateEntity) {
+        imageView.image = UIImage(systemName: template.image)
+        textLabel.text = template.label
     }
     
     override init(frame: CGRect) {

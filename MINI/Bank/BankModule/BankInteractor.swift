@@ -10,6 +10,7 @@ import Foundation
 protocol BankInteractorProtocol: AnyObject {
     func viewDidLoaded()
     func getCardData() -> [BankCardEntity]
+    func getTemplateData() -> [BankTemplateEntity]
 }
 
 final class BankInteractor: BankInteractorProtocol {
@@ -29,4 +30,17 @@ final class BankInteractor: BankInteractorProtocol {
         cardData.append(BankCardEntity(cardColor: "mir", logo: "mir", amount: "29,000", number: "*2234"))
         return cardData
     }
+    
+    func getTemplateData() -> [BankTemplateEntity] {
+        var templateData = [BankTemplateEntity]()
+        templateData.append(BankTemplateEntity(image: "phone.fill", label: "Phone number"))
+        templateData.append(BankTemplateEntity(image: "fork.knife", label: "Sunday BBQ"))
+        templateData.append(BankTemplateEntity(image: "4k.tv.fill", label: "Netflix"))
+        templateData.append(BankTemplateEntity(image: "carrot", label: "Amazon Plus"))
+        templateData.append(BankTemplateEntity(image: "photo.tv", label: "HBO Max"))
+        templateData.append(BankTemplateEntity(image: "y.square", label: "Yandex: Kinopoisk"))
+        return templateData
+    }
+    
+    
 }

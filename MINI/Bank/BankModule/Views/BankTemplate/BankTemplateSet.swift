@@ -67,7 +67,8 @@ private extension BankTemplateSet {
 extension BankTemplateSet: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return 10
+        guard let templateData = delegate?.getTemplateData() else { return 1 }
+        return templateData.count
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -76,7 +77,8 @@ extension BankTemplateSet: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: BankTemplateCell.cellId,
             for: indexPath) as? BankTemplateCell else { return UICollectionViewCell() }
-        cell.configure(image, templateName)
+        guard let templateData = delegate?.getTemplateData() else { return UICollectionViewCell() }
+        cell.configure(with: templateData[indexPath.row])
         return cell
     }
     

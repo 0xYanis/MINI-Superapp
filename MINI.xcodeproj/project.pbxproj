@@ -66,6 +66,7 @@
 		09D509DA29EF50AC009CC219 /* BankHistoryLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D509D929EF50AC009CC219 /* BankHistoryLabel.swift */; };
 		09E24C112A12239A00A91F74 /* BankCardEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E24C102A12239A00A91F74 /* BankCardEntity.swift */; };
 		09E24C132A1227C200A91F74 /* cardsColor.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09E24C122A1227C200A91F74 /* cardsColor.xcassets */; };
+		09E24C152A1228D000A91F74 /* BankTemplateEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E24C142A1228D000A91F74 /* BankTemplateEntity.swift */; };
 		09E9E81229EAE6030084416B /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E9E81129EAE6030084416B /* UILabel+Extension.swift */; };
 		09E9E81729EAE9360084416B /* LoginBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E9E81629EAE9360084416B /* LoginBuilder.swift */; };
 		09E9E81929EAE9410084416B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E9E81829EAE9410084416B /* LoginViewController.swift */; };
@@ -156,6 +157,7 @@
 		09D509D929EF50AC009CC219 /* BankHistoryLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankHistoryLabel.swift; sourceTree = "<group>"; };
 		09E24C102A12239A00A91F74 /* BankCardEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankCardEntity.swift; sourceTree = "<group>"; };
 		09E24C122A1227C200A91F74 /* cardsColor.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = cardsColor.xcassets; sourceTree = "<group>"; };
+		09E24C142A1228D000A91F74 /* BankTemplateEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTemplateEntity.swift; sourceTree = "<group>"; };
 		09E9E81129EAE6030084416B /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		09E9E81629EAE9360084416B /* LoginBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBuilder.swift; sourceTree = "<group>"; };
 		09E9E81829EAE9410084416B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -327,6 +329,7 @@
 				097E03A029EC44A500CE2A6F /* BankRouter.swift */,
 				097E03A229EC44BD00CE2A6F /* BankBuilder.swift */,
 				09E24C102A12239A00A91F74 /* BankCardEntity.swift */,
+				09E24C142A1228D000A91F74 /* BankTemplateEntity.swift */,
 			);
 			path = BankModule;
 			sourceTree = "<group>";
@@ -624,6 +627,7 @@
 				09503EB829F2D44000254F53 /* StackFlowLayout.swift in Sources */,
 				09E9E81929EAE9410084416B /* LoginViewController.swift in Sources */,
 				09FC394A29FAD3ED00B2D97E /* TransactionInteractor.swift in Sources */,
+				09E24C152A1228D000A91F74 /* BankTemplateEntity.swift in Sources */,
 				090AE1DB29FBAA020092515D /* TemplateViewController.swift in Sources */,
 				099D4F7929F723010002C24A /* NewCardInteractor.swift in Sources */,
 				09FC394629FAD3DA00B2D97E /* TransactionViewController.swift in Sources */,

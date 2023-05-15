@@ -21,6 +21,7 @@ protocol BankViewCellDelegate: AnyObject {
     func resetBottomSheetSize()
     
     func getCardData() -> [BankCardEntity]
+    func getTemplateData() -> [BankTemplateEntity]
 }
 
 final class BankViewController: UIViewController {
@@ -86,6 +87,10 @@ extension BankViewController: BankViewCellDelegate {
     
     func getCardData() -> [BankCardEntity] {
         presenter?.getCardData() ?? []
+    }
+    
+    func getTemplateData() -> [BankTemplateEntity] {
+        presenter?.getTemplateData() ?? []
     }
 }
 
@@ -204,7 +209,6 @@ extension BankViewController: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: BankCardSet.cellId,
                 for: indexPath) as? BankCardSet else { return defaultCell }
-            
             cell.delegate = self
             return cell
             
