@@ -97,7 +97,8 @@ extension BankHistoryViewController: BankTransactionKeyboardDelegate {
 //MARK: - UITableViewDataSource
 extension BankHistoryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        guard let transactionData = delegate?.getTransactionData() else { return 1 }
+        return transactionData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -105,7 +106,8 @@ extension BankHistoryViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: BankTransactionCell.cellId,
             for: indexPath) as? BankTransactionCell else { return defaultCell }
-        
+        guard let transactionData = delegate?.getTransactionData() else { return defaultCell }
+        cell.configure(with: transactionData[indexPath.row])
         cell.layoutIfNeeded()
         return cell
     }

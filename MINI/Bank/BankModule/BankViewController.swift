@@ -22,6 +22,7 @@ protocol BankViewCellDelegate: AnyObject {
     
     func getCardData() -> [BankCardEntity]
     func getTemplateData() -> [BankTemplateEntity]
+    func getTransactionData() -> [BankTransactionEntity]
 }
 
 final class BankViewController: UIViewController {
@@ -91,6 +92,10 @@ extension BankViewController: BankViewCellDelegate {
     
     func getTemplateData() -> [BankTemplateEntity] {
         presenter?.getTemplateData() ?? []
+    }
+    
+    func getTransactionData() -> [BankTransactionEntity] {
+        presenter?.getTransactionData() ?? []
     }
 }
 
@@ -223,7 +228,6 @@ extension BankViewController: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: BankTemplateSet.cellId,
                 for: indexPath) as? BankTemplateSet else { return defaultCell }
-            
             cell.delegate = self
             return cell
             

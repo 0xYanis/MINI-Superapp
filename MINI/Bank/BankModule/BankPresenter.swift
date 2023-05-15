@@ -20,6 +20,7 @@ protocol BankPresenterProtocol: AnyObject {
     
     func getCardData() -> [BankCardEntity]
     func getTemplateData() -> [BankTemplateEntity]
+    func getTransactionData() -> [BankTransactionEntity]
 }
 
 final class BankPresenter {
@@ -77,5 +78,9 @@ extension BankPresenter: BankPresenterProtocol {
     
     func getTemplateData() -> [BankTemplateEntity] {
         interactor.getTemplateData()
+    }
+    
+    func getTransactionData() -> [BankTransactionEntity] {
+        interactor.getTransactionData()
     }
 }
