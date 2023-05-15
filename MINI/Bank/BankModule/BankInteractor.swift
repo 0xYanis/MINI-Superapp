@@ -18,11 +18,11 @@ final class BankInteractor: BankInteractorProtocol {
     
     weak var presenter: BankPresenterProtocol?
     
-    private let cardData = [BankCardEntity(cardColor: "visa", logo: "visa", amount: "$512.5", number: "*3215"),
-                    BankCardEntity(cardColor: "mir", logo: "mir", amount: "59,000.99", number: "*5672"),
-                    BankCardEntity(cardColor: "mastercard", logo: "mastercard", amount: "$12.5", number: "*5621"),
-                    BankCardEntity(cardColor: "american", logo: "american", amount: "$990.0", number: "*6432"),
-                    BankCardEntity(cardColor: "mir", logo: "mir", amount: "29,000", number: "*2234")]
+    private let cardData = [BankCardEntity(id: 0, cardColor: "visa", logo: "visa", amount: "$512.5", number: "*3215"),
+                            BankCardEntity(id: 1, cardColor: "mir", logo: "mir", amount: "59,000.99", number: "*5672"),
+                            BankCardEntity(id: 2, cardColor: "mastercard", logo: "mastercard", amount: "$12.5", number: "*5621"),
+                            BankCardEntity(id: 3, cardColor: "american", logo: "american", amount: "$990.0", number: "*6432"),
+                            BankCardEntity(id: 4, cardColor: "mir", logo: "mir", amount: "29,000", number: "*2234")]
 
     private let templateData = [BankTemplateEntity(image: "phone.fill", label: "Phone number"),
                         BankTemplateEntity(image: "fork.knife", label: "Sunday BBQ"),
