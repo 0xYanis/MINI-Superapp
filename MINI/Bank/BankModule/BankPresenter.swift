@@ -65,7 +65,7 @@ extension BankPresenter: BankPresenterProtocol {
     }
     
     func setNewCard() {
-        view?.updateCards()
+        view?.updateBankTable()
     }
     
     func setNewTransaction() {

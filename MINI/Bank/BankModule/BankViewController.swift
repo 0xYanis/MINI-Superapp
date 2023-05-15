@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 protocol BankViewProtocol: AnyObject {
-    func updateCards()
+    func updateBankTable()
     func updateHistory()
 }
 
@@ -55,7 +55,7 @@ final class BankViewController: UIViewController {
 
 //MARK: - BankViewProtocol
 extension BankViewController: BankViewProtocol {
-    func updateCards() {
+    func updateBankTable() {
         bankTableView.reloadData()
     }
     
@@ -194,6 +194,8 @@ private extension BankViewController {
     
     @objc func refreshAction() {
         presenter?.viewDidLoaded()
+        updateBankTable()
+        updateHistory()
         refreshControl.endRefreshing()
     }
 }
