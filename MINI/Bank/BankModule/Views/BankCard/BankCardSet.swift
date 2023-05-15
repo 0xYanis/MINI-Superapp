@@ -67,21 +67,28 @@ private extension BankCardSet {
 
 // MARK: - UICollectionViewDataSource
 extension BankCardSet: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView,
-                        numberOfItemsInSection section: Int) -> Int {
-        guard let cardData = delegate?.getCardData() else { return 10 }
-        return cardData.count
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return delegate?.getCardData().count ?? 10
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BankCardCell.cellId,for: indexPath) as? BankCardCell else {
-            return UICollectionViewCell()
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BankCardCell.cellId, for: indexPath) as? BankCardCell,
+            let cardData = delegate?.getCardData(),
+            indexPath.row < cardData.count else {
+                return UICollectionViewCell()
         }
         
-        guard let cardData = delegate?.getCardData() else { return UICollectionViewCell() }
         cell.configure(with: cardData[indexPath.row])
-        
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard let cardData = delegate?.getCardData(), indexPath.row < cardData.count else {
+            return
+        }
+        if let cell = cell as? BankCardCell {
+            cell.configure(with: cardData[indexPath.row])
+        }
     }
 }
 
