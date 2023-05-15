@@ -48,6 +48,8 @@ final class BankCardCell: UICollectionViewCell {
 
 private extension BankCardCell {
     func initialize() {
+        isSkeletonable = true
+        skeletonCornerRadius = 10
         createCardView()
         createCardLogo()
         createCardNumber()
