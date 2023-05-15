@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import SkeletonView
 
 final class BankCardCell: UICollectionViewCell {
     
@@ -14,12 +15,12 @@ final class BankCardCell: UICollectionViewCell {
     private let cardView = UIView()
     private let cardLogo = UIImageView()
     private let cardAmount = UILabel(
-        text: "$1,200",
+        text: "",
         font: .boldSystemFont(ofSize: 20),
         color: .white
     )
     private let cardNumber = UILabel(
-        text: "*4631",
+        text: "",
         font: .systemFont(ofSize: 16),
         color: .white
     )
@@ -53,7 +54,6 @@ private extension BankCardCell {
         createCardAmount()
     }
     func createCardView() {
-        cardView.backgroundColor = .systemGreen
         cardView.roundCorners(radius: 10)
         addSubview(cardView)
         cardView.snp.makeConstraints { make in
@@ -62,7 +62,7 @@ private extension BankCardCell {
         }
     }
     func createCardLogo() {
-        let image = UIImage(systemName: "globe")
+        let image = UIImage()
         cardLogo.image = image
         cardLogo.contentMode = .scaleAspectFit
         cardView.addSubview(cardLogo)
