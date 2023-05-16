@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import SkeletonView
 
 final class BankHistoryViewController: UIViewController {
     
@@ -23,6 +24,11 @@ final class BankHistoryViewController: UIViewController {
     
     func reloadData() {
         tableView.reloadData()
+    }
+    
+    func stopSkeleton() {
+        tableView.stopSkeletonAnimation()
+        view.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.25))
     }
 }
 
@@ -70,6 +76,11 @@ private extension BankHistoryViewController {
             make.top.equalTo(labelView.snp.bottom)
             make.left.right.bottom.equalToSuperview()
         }
+        tableView.isSkeletonable = true
+        tableView.showAnimatedSkeleton(
+            usingColor: .asbestos,
+            transition: .crossDissolve(0.25)
+        )
     }
     
     func tableViewRegister() {
@@ -113,22 +124,37 @@ extension BankHistoryViewController: BankTransactionKeyboardDelegate {
 }
 
 //MARK: - UITableViewDataSource
-extension BankHistoryViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (isSearching ? delegate?.getFilteredData().count : delegate?.getTransactionData().count) ?? 0
+extension BankHistoryViewController: SkeletonTableViewDataSource {
+    func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
+        BankTransactionCell.cellId
     }
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return (isSearching ? delegate?.getFilteredData().count : delegate?.getTransactionData().count) ?? 10
+    }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: BankTransactionCell.cellId, for: indexPath) as? BankTransactionCell else {
             return UITableViewCell()
         }
-        
-        let data = isSearching ? delegate?.getFilteredData() : delegate?.getTransactionData()
-        guard let transactionData = data else { return UITableViewCell() }
-        
-        cell.configure(with: transactionData[indexPath.row])
         return cell
     }
+    
+    
+    func tableView(_ tableView: UITableView,
+                   willDisplay cell: UITableViewCell,
+                   forRowAt indexPath: IndexPath) {
+        guard let data = isSearching ? delegate?.getFilteredData() : delegate?.getTransactionData() else { return }
+        
+        if let cell = cell as? BankTransactionCell {
+            cell.configure(with: data[indexPath.row])
+            self.stopSkeleton()
+        }
+    }
+    
+    
 }
 
 //MARK: - UITableViewDelegate
@@ -139,16 +165,12 @@ extension BankHistoryViewController: UITableViewDelegate {
             delegate?.handleTapOnTransactionCell(id: indexPath.row)
         }
     
-    func tableView(
-        _ tableView: UITableView,
-        willDisplay cell: UITableViewCell,
-        forRowAt indexPath: IndexPath) {
-            cell.selectionStyle = .none
-        }
     
     func tableView(
         _ tableView: UITableView,
         heightForRowAt indexPath: IndexPath) -> CGFloat {
             return 100
         }
+    
+    
 }

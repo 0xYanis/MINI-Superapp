@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import SkeletonView
 
 final class BankTransactionCell: UITableViewCell {
     
@@ -61,6 +62,8 @@ final class BankTransactionCell: UITableViewCell {
 
 extension BankTransactionCell {
     func initialize() {
+        isSkeletonable = true
+        selectionStyle = .none
         createIcon()
         createTransaction()
         createDate()
@@ -68,6 +71,7 @@ extension BankTransactionCell {
         createCard()
     }
     func createIcon() {
+        iconView.isSkeletonable = true
         iconView.contentMode = .scaleAspectFit
         addSubview(iconView)
         iconView.snp.makeConstraints { make in
@@ -77,6 +81,7 @@ extension BankTransactionCell {
         }
     }
     func createTransaction() {
+        transactionLabel.isSkeletonable = true
         addSubview(transactionLabel)
         transactionLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(20)
@@ -85,6 +90,7 @@ extension BankTransactionCell {
         }
     }
     func createDate() {
+        dateLabel.isSkeletonable = true
         addSubview(dateLabel)
         dateLabel.snp.makeConstraints { make in
             make.bottom.equalToSuperview().inset(20)
@@ -92,6 +98,7 @@ extension BankTransactionCell {
         }
     }
     func createCost() {
+        costLabel.isSkeletonable = true
         addSubview(costLabel)
         costLabel.snp.makeConstraints { make in
             make.right.equalToSuperview().inset(16)
@@ -99,6 +106,7 @@ extension BankTransactionCell {
         }
     }
     func createCard() {
+        cardLabel.isSkeletonable = true
         addSubview(cardLabel)
         cardLabel.snp.makeConstraints { make in
             make.right.equalToSuperview().inset(16)
