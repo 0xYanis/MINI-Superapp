@@ -15,8 +15,6 @@ protocol GroceryViewProtocol: AnyObject {
 
 final class GroceryViewController: UIViewController {
     
-    let dataText = "Для создания динамического размера ячейки в UITableView с использованием SnapKit необходимо выполнить следующие шаги: 1. Установить свойство `tableView.estimatedRowHeight` равным некоторому приблизительному значению высоты ячейки, например, 150. ```swift tableView.estimatedRowHeight = 150 ``` 2. В методе `tableView(_:cellForRowAt:)` установить свойство `cell.textLabel?.numberOfLines` равным нулю, чтобы многострочный текст в ячейке отображался корректно.```swift cell.textLabel?.numberOfLines = 0 ```"
-    
     //MARK: Public properties
     var presenter: GroceryPresenterProtocol?
     
@@ -24,8 +22,15 @@ final class GroceryViewController: UIViewController {
     //MARK: Private properties
     private lazy var tableView = UITableView()
     private lazy var refreshControl = UIRefreshControl()
-    private lazy var searchController = GrocerySearchController()
     private lazy var adressVC = AdressViewController()
+    private lazy var searchController: UISearchController = {
+        let controller = UISearchController(searchResultsController: UIViewController())
+        controller.searchResultsUpdater = self
+        controller.obscuresBackgroundDuringPresentation = false
+        controller.searchBar.placeholder = "Search for groceries"
+        controller.searchBar.delegate = self
+        return controller
+    }()
     
     
     override func viewDidLoad() {
@@ -106,9 +111,9 @@ private extension GroceryViewController {
         tableView.refreshControl = refreshControl
     }
     
-    func createAdressBottomSheet() {
+    func createAdressBottomSheet(multiply: CGFloat) {
         adressVC.delegate = self
-        let height = view.frame.height * 0.3
+        let height = view.frame.height * multiply
         let smallId = UISheetPresentationController.Detent.Identifier("smallId")
         let small = UISheetPresentationController.Detent.custom(identifier: smallId) { _ in
             return height
@@ -117,7 +122,6 @@ private extension GroceryViewController {
         if let sheet = adressVC.sheetPresentationController {
             sheet.detents = [ small ]
             sheet.preferredCornerRadius = 30
-            //TODO: - добавить затенение заднего фона (сделать его неактивным)
         }
         present(adressVC, animated: true)
     }
@@ -133,16 +137,36 @@ private extension GroceryViewController {
     }
     
     func showAdressButtonSheet() {
-        createAdressBottomSheet()
+        createAdressBottomSheet(multiply: 0.3)
     }
 }
 
 //MARK: - AdressViewDelegate
 extension GroceryViewController: AdressViewDelegate {
+    func userStartSearchAdress(with searchText: String) {
+        
+    }
+    
     func cancelButtonTapped() {
         dismiss(animated: true)
     }
 }
+
+
+//MARK: - UISearchBarDelegate
+extension GroceryViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+    }
+}
+
+//MARK: - UISearchResultsUpdating
+extension GroceryViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        
+    }
+}
+
 
 //MARK: - UITableViewDataSource
 extension GroceryViewController: UITableViewDataSource {
@@ -155,8 +179,7 @@ extension GroceryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        cell.textLabel?.text = dataText
-        cell.textLabel?.numberOfLines = 0
+        cell.textLabel?.text = "This is a №\(indexPath.row) cell."
         cell.backgroundColor = .clear
         cell.selectionStyle = .none
         return cell
