@@ -8,9 +8,20 @@
 import UIKit
 import SnapKit
 
+protocol AdressViewDelegate: AnyObject {
+    func cancelButtonTapped()
+}
+
 final class AdressViewController: UIViewController {
     
+    weak var delegate: AdressViewDelegate?
+    
     private lazy var textTilte = UILabel()
+    private lazy var cancelButton = UIButton(
+        systemImage: "xmark.circle.fill",
+        color: .systemOrange,
+        size: 35
+    )
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +32,8 @@ final class AdressViewController: UIViewController {
 private extension AdressViewController {
     func initialize() {
         view.backgroundColor = .black
-        createTitle(text: "Select Your actual adress")
+        createTitle(text: "New adress")
+        createCancelButton()
     }
     
     func createTitle(text: String) {
@@ -30,9 +42,25 @@ private extension AdressViewController {
         textTilte.font = .boldSystemFont(ofSize: 25)
         view.addSubview(textTilte)
         textTilte.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.top.equalToSuperview().inset(20)
+            make.top.left.equalToSuperview().inset(20)
         }
     }
     
+    func createCancelButton() {
+        view.addSubview(cancelButton)
+        cancelButton.snp.makeConstraints { make in
+            make.top.right.equalToSuperview().inset(20)
+        }
+        cancelButton.addTarget(
+            self,
+            action: #selector(cancelButtonAction),
+            for: .touchUpInside
+        )
+    }
+}
+
+private extension AdressViewController {
+    @objc func cancelButtonAction() {
+        delegate?.cancelButtonTapped()
+    }
 }

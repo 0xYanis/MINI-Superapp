@@ -78,13 +78,16 @@ private extension GroceryViewController {
     }
     
     func createAdressMenu(adress: String) -> UIMenu {
-        let adressImage = UIImage(systemName: "mappin.and.ellipse")
-        let adress = UIAction(
-            title: adress,
-            image: adressImage) { _ in
-                self.showAdressButtonSheet()
+        let adress = UIAction(title: adress) { _ in
+            //
+        }
+        let setNewImage = UIImage(systemName: "mappin.and.ellipse")
+        let setNew = UIAction(
+            title: "Set new Adress",
+            image: setNewImage) { [weak self] _ in
+                self?.showAdressButtonSheet()
             }
-        return UIMenu(children: [adress])
+        return UIMenu(children: [ setNew, adress ] )
     }
     
     func createTableView() {
@@ -104,15 +107,16 @@ private extension GroceryViewController {
     }
     
     func createAdressBottomSheet() {
+        adressVC.delegate = self
         let height = view.frame.height * 0.3
         let smallId = UISheetPresentationController.Detent.Identifier("smallId")
         let small = UISheetPresentationController.Detent.custom(identifier: smallId) { _ in
             return height
         }
+        adressVC.isModalInPresentation = true
         if let sheet = adressVC.sheetPresentationController {
             sheet.largestUndimmedDetentIdentifier = smallId
             sheet.detents = [ small ]
-            sheet.prefersGrabberVisible = true
             sheet.preferredCornerRadius = 30
             //TODO: - добавить затенение заднего фона (сделать его неактивным)
         }
@@ -131,6 +135,12 @@ private extension GroceryViewController {
     
     func showAdressButtonSheet() {
         createAdressBottomSheet()
+    }
+}
+
+extension GroceryViewController: AdressViewDelegate {
+    func cancelButtonTapped() {
+        navigationController?.dismiss(animated: true)
     }
 }
 

@@ -10,6 +10,8 @@ import Foundation
 protocol GroceryPresenterProtocol: AnyObject {
     func viewDidLoaded()
     func updateView()
+    
+    func userWantSetNewAdress()
 }
 
 final class GroceryPresenter {
@@ -37,4 +39,7 @@ extension GroceryPresenter: GroceryPresenterProtocol {
         
     }
     
+    func userWantSetNewAdress() {
+        
+    }
 }
