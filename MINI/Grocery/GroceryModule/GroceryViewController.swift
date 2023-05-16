@@ -105,14 +105,21 @@ private extension GroceryViewController {
     }
     
     func createAdressBottomSheet() {
-        adressVC.isModalInPresentation = true
+        let height = view.frame.height * 0.3
+        let smallId = UISheetPresentationController.Detent.Identifier("smallId")
+        let small = UISheetPresentationController.Detent.custom(identifier: smallId) { _ in
+            return height
+        }
         if let sheet = adressVC.sheetPresentationController {
-            sheet.detents = [.medium(), .large()]
+            sheet.largestUndimmedDetentIdentifier = smallId
+            sheet.detents = [small]
+            
             sheet.prefersGrabberVisible = true
-            sheet.largestUndimmedDetentIdentifier = .medium
             sheet.preferredCornerRadius = 30
         }
     }
+    
+    
 }
 
 //MARK: - Action private methods
@@ -150,10 +157,6 @@ extension GroceryViewController: UITableViewDataSource {
 
 //MARK: - UITableViewDelegate
 extension GroceryViewController: UITableViewDelegate {
-    
-    
-    
-    
     
 }
 
