@@ -20,10 +20,13 @@ final class GroceryViewController: UIViewController {
     //MARK: Public properties
     var presenter: GroceryPresenterProtocol?
     
+    
     //MARK: Private properties
     private lazy var tableView = UITableView()
     private lazy var refreshControl = UIRefreshControl()
     private lazy var searchController = GrocerySearchController()
+    private lazy var adressVC = AdressViewController()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +38,8 @@ final class GroceryViewController: UIViewController {
         super.viewWillAppear(animated)
         tabBarController?.showTabBar()
     }
+    
+    
 }
 
 //MARK: - GroceryViewProtocol
@@ -50,6 +55,7 @@ private extension GroceryViewController {
         createNavigationButtons(adress: "22 Washington st. NY")
         createTableView()
         createRefreshControl()
+        createAdressBottomSheet()
     }
     
     func createNavigation(title: String) {
@@ -97,21 +103,27 @@ private extension GroceryViewController {
         refreshControl.addTarget(self, action: #selector(refreshAction), for: .valueChanged)
         tableView.refreshControl = refreshControl
     }
+    
+    func createAdressBottomSheet() {
+        adressVC.isModalInPresentation = true
+        if let sheet = adressVC.sheetPresentationController {
+            sheet.detents = [.medium(), .large()]
+            sheet.prefersGrabberVisible = true
+            sheet.largestUndimmedDetentIdentifier = .medium
+            sheet.preferredCornerRadius = 30
+        }
+    }
 }
 
 //MARK: - Action private methods
 private extension GroceryViewController {
-    @objc func adressButtonAction() {
-        
-    }
-    
     @objc func refreshAction() {
         presenter?.updateView()
         refreshControl.endRefreshing()
     }
     
     func showAdressButtonSheet() {
-        
+        navigationController?.present(adressVC, animated: true)
     }
 }
 
