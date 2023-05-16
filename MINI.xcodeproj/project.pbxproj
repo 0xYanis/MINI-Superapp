@@ -64,6 +64,7 @@
 		099D4F8529F72B050002C24A /* NewTemplateBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099D4F8429F72B050002C24A /* NewTemplateBuilder.swift */; };
 		099D4F8729F72B0F0002C24A /* NewTemplateEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099D4F8629F72B0F0002C24A /* NewTemplateEntity.swift */; };
 		09A7496029F992940005A649 /* CardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A7495F29F992940005A649 /* CardDetailView.swift */; };
+		09ABE0062A142805009DB57B /* GroceryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ABE0052A142805009DB57B /* GroceryViewCell.swift */; };
 		09BBA70F2A0E76950020E3C9 /* cardsLogo.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09BBA70E2A0E76950020E3C9 /* cardsLogo.xcassets */; };
 		09D509CE29EF1E76009CC219 /* BankHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D509CD29EF1E76009CC219 /* BankHistoryViewController.swift */; };
 		09D509D629EF379A009CC219 /* BankTransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D509D529EF379A009CC219 /* BankTransactionCell.swift */; };
@@ -165,6 +166,7 @@
 		099D4F8429F72B050002C24A /* NewTemplateBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTemplateBuilder.swift; sourceTree = "<group>"; };
 		099D4F8629F72B0F0002C24A /* NewTemplateEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTemplateEntity.swift; sourceTree = "<group>"; };
 		09A7495F29F992940005A649 /* CardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailView.swift; sourceTree = "<group>"; };
+		09ABE0052A142805009DB57B /* GroceryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryViewCell.swift; sourceTree = "<group>"; };
 		09BBA70E2A0E76950020E3C9 /* cardsLogo.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = cardsLogo.xcassets; sourceTree = "<group>"; };
 		09D509CD29EF1E76009CC219 /* BankHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankHistoryViewController.swift; sourceTree = "<group>"; };
 		09D509D529EF379A009CC219 /* BankTransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTransactionCell.swift; sourceTree = "<group>"; };
@@ -413,6 +415,7 @@
 			isa = PBXGroup;
 			children = (
 				099089EF2A13C2C400EE00DA /* AdressViewController.swift */,
+				09ABE0052A142805009DB57B /* GroceryViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -668,6 +671,7 @@
 				099D4F7D29F72ADB0002C24A /* NewTemplateViewController.swift in Sources */,
 				098AC7D02A03D03400CD694B /* AviaResultsCell.swift in Sources */,
 				09D509CE29EF1E76009CC219 /* BankHistoryViewController.swift in Sources */,
+				09ABE0062A142805009DB57B /* GroceryViewCell.swift in Sources */,
 				090AE1E329FBAA200092515D /* TemplateBuilder.swift in Sources */,
 				090BAB8E2A0298F5006AE8F9 /* AviaViewController.swift in Sources */,
 				099D4F7B29F723090002C24A /* NewCardBuilder.swift in Sources */,
