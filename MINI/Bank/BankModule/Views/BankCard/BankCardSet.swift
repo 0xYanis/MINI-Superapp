@@ -124,7 +124,7 @@ extension BankCardSet: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = frame.width / 2.5
-        return .init(width: width, height: frame.height)
+        return .init(width: width, height: frame.height-40)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

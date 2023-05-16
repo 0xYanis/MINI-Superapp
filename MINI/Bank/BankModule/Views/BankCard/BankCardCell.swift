@@ -60,7 +60,7 @@ private extension BankCardCell {
         addSubview(cardView)
         cardView.snp.makeConstraints { make in
             make.left.right.equalToSuperview()
-            make.top.bottom.equalToSuperview().inset(20)
+            make.top.bottom.equalToSuperview()
         }
     }
     func createCardLogo() {
