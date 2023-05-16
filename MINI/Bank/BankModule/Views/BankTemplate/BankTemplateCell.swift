@@ -10,10 +10,10 @@ import SkeletonView
 
 final class BankTemplateCell: UICollectionViewCell {
     
-    private let templateView = UIView()
-    private let circleView = UIView()
-    private let imageView = UIImageView()
-    private let textLabel = UILabel(
+    private lazy var templateView = UIView()
+    private lazy var circleView = UIView()
+    private lazy var imageView = UIImageView()
+    private lazy var textLabel = UILabel(
         text: "Utility Payments",
         font: .systemFont(ofSize: 15),
         color: UIColor(named: "textColor")

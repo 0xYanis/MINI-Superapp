@@ -21,8 +21,8 @@ final class LoginViewController: UIViewController {
     }
     
     //MARK: private properties
-    private let animationView = LoginAnimationView()
-    private let loginView = LoginView()
+    private lazy var animationView = LoginAnimationView()
+    private lazy var loginView = LoginView()
 }
 
 //MARK: - LoginViewProtocol

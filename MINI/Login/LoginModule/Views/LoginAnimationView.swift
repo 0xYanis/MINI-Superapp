@@ -11,7 +11,7 @@ import Lottie
 
 class LoginAnimationView: UIView {
     
-    let animationView = LottieAnimationView(name: "hello")
+    lazy var animationView = LottieAnimationView(name: "hello")
     
     override init(frame: CGRect) {
         super.init(frame: frame)

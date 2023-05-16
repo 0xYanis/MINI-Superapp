@@ -9,7 +9,7 @@ import UIKit
 
 final class BankTemplateLabelCell: UITableViewCell {
     
-    private let titleLabel = UILabel(
+    private lazy var titleLabel = UILabel(
         text: "Templates",
         font: .boldSystemFont(ofSize: 24),
         color: UIColor(named: "textColor")

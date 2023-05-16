@@ -16,7 +16,7 @@ final class TransactionViewController: UIViewController {
     
     var presenter: TransactionPresenterProtocol?
     
-    private let tableView = UITableView(frame: .zero, style: .grouped)
+    private lazy var tableView = UITableView(frame: .zero, style: .grouped)
     
     override func viewDidLoad() {
         super.viewDidLoad()

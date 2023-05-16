@@ -10,9 +10,9 @@ import UIKit
 final class CardDetailView: UIView {
     
     //MARK: Private properties
-    private let cardView = UIView()
-    private let cardLogo = UIImageView(image: UIImage(systemName: "globe"))
-    private let cardNumber = UILabel(
+    private lazy var cardView = UIView()
+    private lazy var cardLogo = UIImageView(image: UIImage(systemName: "globe"))
+    private lazy var cardNumber = UILabel(
         text: "1234 5678 9123 4567", font: .systemFont(ofSize: 28), color: .white)
     
     static let cellId = "CardDetailViewCell"

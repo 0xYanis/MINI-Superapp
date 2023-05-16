@@ -13,8 +13,8 @@ protocol CardViewProtocol: AnyObject {
 
 final class CardViewController: UIViewController {
     
-    private let cardView = CardDetailView()
-    private let detailTableView = UITableView(frame: .zero, style: .plain)
+    private lazy var cardView = CardDetailView()
+    private lazy var detailTableView = UITableView(frame: .zero, style: .plain)
     
     var presenter: CardPresenterProtocol?
     

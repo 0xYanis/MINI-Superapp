@@ -12,14 +12,14 @@ import SkeletonView
 final class BankCardCell: UICollectionViewCell {
     
     //MARK: Private properties
-    private let cardView = UIView()
-    private let cardLogo = UIImageView()
-    private let cardAmount = UILabel(
+    private lazy var cardView = UIView()
+    private lazy var cardLogo = UIImageView()
+    private lazy var cardAmount = UILabel(
         text: "",
         font: .boldSystemFont(ofSize: 20),
         color: .white
     )
-    private let cardNumber = UILabel(
+    private lazy var cardNumber = UILabel(
         text: "",
         font: .systemFont(ofSize: 16),
         color: .white

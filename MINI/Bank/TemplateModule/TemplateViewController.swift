@@ -15,7 +15,7 @@ final class TemplateViewController: UIViewController {
     
     var presenter: TemplatePresenterProtocol?
     
-    private let tableView = UITableView(frame: .zero, style: .grouped)
+    private lazy var tableView = UITableView(frame: .zero, style: .grouped)
     
     override func viewDidLoad() {
         super.viewDidLoad()
