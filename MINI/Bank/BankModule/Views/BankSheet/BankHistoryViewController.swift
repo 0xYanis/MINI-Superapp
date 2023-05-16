@@ -60,6 +60,8 @@ private extension BankHistoryViewController {
     }
     
     func createTableView() {
+        tableView.rowHeight = 100
+        tableView.estimatedRowHeight = 100
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
@@ -145,13 +147,6 @@ extension BankHistoryViewController: UITableViewDelegate {
         _ tableView: UITableView,
         didSelectRowAt indexPath: IndexPath) {
             delegate?.handleTapOnTransactionCell(id: indexPath.row)
-        }
-    
-    
-    func tableView(
-        _ tableView: UITableView,
-        heightForRowAt indexPath: IndexPath) -> CGFloat {
-            return 100
         }
     
     
