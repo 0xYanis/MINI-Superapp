@@ -30,6 +30,7 @@ final class GroceryViewController: UIViewController {
         controller.obscuresBackgroundDuringPresentation = false
         controller.searchBar.placeholder = "Search for groceries"
         controller.searchBar.delegate = self
+        controller.searchBar.tintColor = .systemOrange
         return controller
     }()
     
@@ -204,19 +205,25 @@ extension GroceryViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GroceryViewCell.cellId, for: indexPath) as? GroceryViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: GroceryViewCell.cellId,
+            for: indexPath) as? GroceryViewCell else {
             return UICollectionViewCell()
         }
+        
         return cell
     }
     
     
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView,
+                        willDisplay cell: UICollectionViewCell,
+                        forItemAt indexPath: IndexPath) {
+        
         if let cell = cell as? GroceryViewCell {
             cell.largeContentTitle = "This is a #\(indexPath.row) cell"
             cell.roundCorners(radius: 10)
-            cell.backgroundColor = .wetAsphalt
         }
+        
     }
     
     
@@ -234,7 +241,8 @@ extension GroceryViewController: UICollectionViewDelegateFlowLayout {
     }
     
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView,
+                        didSelectItemAt indexPath: IndexPath) {
         
     }
 }
