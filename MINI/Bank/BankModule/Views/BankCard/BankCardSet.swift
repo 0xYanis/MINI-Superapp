@@ -61,7 +61,7 @@ private extension BankCardSet {
         }
         collectionView.isSkeletonable = true
         collectionView.showAnimatedSkeleton(
-            usingColor: .flatOrange,
+            usingColor: .asbestos,
             transition: .crossDissolve(0.25)
         )
     }

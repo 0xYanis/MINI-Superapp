@@ -52,7 +52,7 @@ private extension BankTemplateCell {
         addSubview(templateView)
         templateView.snp.makeConstraints { make in
             make.left.right.equalToSuperview()
-            make.top.bottom.equalToSuperview().inset(20)
+            make.top.bottom.equalToSuperview()
         }
     }
     func createCircleView() {

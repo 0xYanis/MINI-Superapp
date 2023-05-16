@@ -52,7 +52,7 @@ private extension BankTemplateSet {
         collectionView.contentInset = .init(top: 0, left: 16, bottom: 0, right: 16)
         collectionView.isSkeletonable = true
         collectionView.showAnimatedSkeleton(
-            usingColor: .flatOrange,
+            usingColor: .asbestos,
             transition: .crossDissolve(0.25)
         )
     }
@@ -122,7 +122,7 @@ extension BankTemplateSet: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = frame.width / 3
-        return .init(width: width, height: frame.height)
+        return .init(width: width, height: frame.height - 40)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
