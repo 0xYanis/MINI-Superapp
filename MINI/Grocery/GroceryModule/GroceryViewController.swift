@@ -119,7 +119,7 @@ private extension GroceryViewController {
             sheet.preferredCornerRadius = 30
             //TODO: - добавить затенение заднего фона (сделать его неактивным)
         }
-        navigationController?.present(adressVC, animated: true)
+        present(adressVC, animated: true)
     }
     
     
@@ -137,9 +137,10 @@ private extension GroceryViewController {
     }
 }
 
+//MARK: - AdressViewDelegate
 extension GroceryViewController: AdressViewDelegate {
     func cancelButtonTapped() {
-        navigationController?.dismiss(animated: true)
+        dismiss(animated: true)
     }
 }
 
