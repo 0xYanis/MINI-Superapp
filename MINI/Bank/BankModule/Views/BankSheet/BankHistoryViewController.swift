@@ -7,7 +7,6 @@
 
 import UIKit
 import SnapKit
-import SkeletonView
 
 final class BankHistoryViewController: UIViewController {
     
@@ -25,17 +24,11 @@ final class BankHistoryViewController: UIViewController {
     func reloadData() {
         tableView.reloadData()
     }
-    
-    func stopSkeleton() {
-        tableView.stopSkeletonAnimation()
-        view.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.25))
-    }
 }
 
 //MARK: - Private methods
 private extension BankHistoryViewController {
     func intialize() {
-        self.modalPresentationStyle = .overCurrentContext
         createSeeAllLabel()
         createTableView()
     }
@@ -76,11 +69,6 @@ private extension BankHistoryViewController {
             make.top.equalTo(labelView.snp.bottom)
             make.left.right.bottom.equalToSuperview()
         }
-        tableView.isSkeletonable = true
-        tableView.showAnimatedSkeleton(
-            usingColor: .asbestos,
-            transition: .crossDissolve(0.25)
-        )
     }
     
     func tableViewRegister() {
@@ -124,12 +112,7 @@ extension BankHistoryViewController: BankTransactionKeyboardDelegate {
 }
 
 //MARK: - UITableViewDataSource
-extension BankHistoryViewController: SkeletonTableViewDataSource {
-    func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
-        BankTransactionCell.cellId
-    }
-    
-    
+extension BankHistoryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (isSearching ? delegate?.getFilteredData().count : delegate?.getTransactionData().count) ?? 10
     }
@@ -150,7 +133,6 @@ extension BankHistoryViewController: SkeletonTableViewDataSource {
         
         if let cell = cell as? BankTransactionCell {
             cell.configure(with: data[indexPath.row])
-            self.stopSkeleton()
         }
     }
     
