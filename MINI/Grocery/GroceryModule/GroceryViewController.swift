@@ -55,7 +55,6 @@ private extension GroceryViewController {
         createNavigationButtons(adress: "22 Washington st. NY")
         createTableView()
         createRefreshControl()
-        createAdressBottomSheet()
     }
     
     func createNavigation(title: String) {
@@ -112,11 +111,12 @@ private extension GroceryViewController {
         }
         if let sheet = adressVC.sheetPresentationController {
             sheet.largestUndimmedDetentIdentifier = smallId
-            sheet.detents = [small]
-            
+            sheet.detents = [ small ]
             sheet.prefersGrabberVisible = true
             sheet.preferredCornerRadius = 30
+            //TODO: - добавить затенение заднего фона (сделать его неактивным)
         }
+        navigationController?.present(adressVC, animated: true)
     }
     
     
@@ -130,7 +130,7 @@ private extension GroceryViewController {
     }
     
     func showAdressButtonSheet() {
-        navigationController?.present(adressVC, animated: true)
+        createAdressBottomSheet()
     }
 }
 
