@@ -372,8 +372,7 @@
 		099089EC2A139A6000EE00DA /* GroceryModule */ = {
 			isa = PBXGroup;
 			children = (
-				099089ED2A13A6A800EE00DA /* GrocerySearchController.swift */,
-				099089EF2A13C2C400EE00DA /* AdressViewController.swift */,
+				099C6D572A13E2F80039AC41 /* Views */,
 				099089E22A139A2D00EE00DA /* GroceryViewController.swift */,
 				099089E42A139A3A00EE00DA /* GroceryPresenter.swift */,
 				099089E62A139A4600EE00DA /* GroceryInteractor.swift */,
@@ -410,6 +409,15 @@
 				09D509D929EF50AC009CC219 /* BankHistoryLabel.swift */,
 			);
 			path = BankSheet;
+			sourceTree = "<group>";
+		};
+		099C6D572A13E2F80039AC41 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				099089ED2A13A6A800EE00DA /* GrocerySearchController.swift */,
+				099089EF2A13C2C400EE00DA /* AdressViewController.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		09A7495E29F9926F0005A649 /* DetailCard */ = {
