@@ -115,7 +115,6 @@ private extension GroceryViewController {
         }
         adressVC.isModalInPresentation = true
         if let sheet = adressVC.sheetPresentationController {
-            sheet.largestUndimmedDetentIdentifier = smallId
             sheet.detents = [ small ]
             sheet.preferredCornerRadius = 30
             //TODO: - добавить затенение заднего фона (сделать его неактивным)
