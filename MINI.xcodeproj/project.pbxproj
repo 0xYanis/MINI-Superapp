@@ -39,6 +39,11 @@
 		097E03A129EC44A500CE2A6F /* BankRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097E03A029EC44A500CE2A6F /* BankRouter.swift */; };
 		097E03A329EC44BD00CE2A6F /* BankBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097E03A229EC44BD00CE2A6F /* BankBuilder.swift */; };
 		098AC7D02A03D03400CD694B /* AviaResultsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098AC7CF2A03D03400CD694B /* AviaResultsCell.swift */; };
+		099089E32A139A2D00EE00DA /* GroceryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099089E22A139A2D00EE00DA /* GroceryViewController.swift */; };
+		099089E52A139A3A00EE00DA /* GroceryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099089E42A139A3A00EE00DA /* GroceryPresenter.swift */; };
+		099089E72A139A4600EE00DA /* GroceryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099089E62A139A4600EE00DA /* GroceryInteractor.swift */; };
+		099089E92A139A5100EE00DA /* GroceryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099089E82A139A5100EE00DA /* GroceryRouter.swift */; };
+		099089EB2A139A5800EE00DA /* GroceryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099089EA2A139A5800EE00DA /* GroceryBuilder.swift */; };
 		099A79C029F16406004B95C7 /* BankCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099A79BF29F16406004B95C7 /* BankCardCell.swift */; };
 		099A79C229F16417004B95C7 /* BankTemplateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099A79C129F16417004B95C7 /* BankTemplateCell.swift */; };
 		099D4F6729F71A2C0002C24A /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099D4F6629F71A2C0002C24A /* CardViewController.swift */; };
@@ -134,6 +139,11 @@
 		097E03A029EC44A500CE2A6F /* BankRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankRouter.swift; sourceTree = "<group>"; };
 		097E03A229EC44BD00CE2A6F /* BankBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankBuilder.swift; sourceTree = "<group>"; };
 		098AC7CF2A03D03400CD694B /* AviaResultsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AviaResultsCell.swift; sourceTree = "<group>"; };
+		099089E22A139A2D00EE00DA /* GroceryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryViewController.swift; sourceTree = "<group>"; };
+		099089E42A139A3A00EE00DA /* GroceryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryPresenter.swift; sourceTree = "<group>"; };
+		099089E62A139A4600EE00DA /* GroceryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryInteractor.swift; sourceTree = "<group>"; };
+		099089E82A139A5100EE00DA /* GroceryRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryRouter.swift; sourceTree = "<group>"; };
+		099089EA2A139A5800EE00DA /* GroceryBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryBuilder.swift; sourceTree = "<group>"; };
 		099A79BF29F16406004B95C7 /* BankCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankCardCell.swift; sourceTree = "<group>"; };
 		099A79C129F16417004B95C7 /* BankTemplateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTemplateCell.swift; sourceTree = "<group>"; };
 		099D4F6629F71A2C0002C24A /* CardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
@@ -281,6 +291,7 @@
 				0910961129DB332600338D22 /* Application */,
 				090BAB8B2A029889006AE8F9 /* AviaTickets */,
 				09F86C5829F6FD1200307432 /* Bank */,
+				099089E12A1399F800EE00DA /* Grocery */,
 				09F86C5929F6FD1B00307432 /* Login */,
 				09E9E82829EB119D0084416B /* ServiceLayer */,
 				0921F35D29DF1FD100B3D4F7 /* Helpers */,
@@ -344,6 +355,26 @@
 				09F5BFDA2A1288A300BC3B7C /* BankTransactionService.swift */,
 			);
 			path = BankModule;
+			sourceTree = "<group>";
+		};
+		099089E12A1399F800EE00DA /* Grocery */ = {
+			isa = PBXGroup;
+			children = (
+				099089EC2A139A6000EE00DA /* GroceryModule */,
+			);
+			path = Grocery;
+			sourceTree = "<group>";
+		};
+		099089EC2A139A6000EE00DA /* GroceryModule */ = {
+			isa = PBXGroup;
+			children = (
+				099089E22A139A2D00EE00DA /* GroceryViewController.swift */,
+				099089E42A139A3A00EE00DA /* GroceryPresenter.swift */,
+				099089E62A139A4600EE00DA /* GroceryInteractor.swift */,
+				099089E82A139A5100EE00DA /* GroceryRouter.swift */,
+				099089EA2A139A5800EE00DA /* GroceryBuilder.swift */,
+			);
+			path = GroceryModule;
 			sourceTree = "<group>";
 		};
 		099A79C329F1641E004B95C7 /* BankCard */ = {
@@ -649,6 +680,7 @@
 				09FC394C29FAD3F400B2D97E /* TransactionRouter.swift in Sources */,
 				092E739429EBEB1F00165D37 /* LoginAnimationView.swift in Sources */,
 				09D509D829EF4EDE009CC219 /* UIImageView+Extension.swift in Sources */,
+				099089EB2A139A5800EE00DA /* GroceryBuilder.swift in Sources */,
 				09FC393D29FABF5200B2D97E /* AllTemplatesRouter.swift in Sources */,
 				09FC393729FABF2D00B2D97E /* AllTemplatesViewController.swift in Sources */,
 				09F5BFDB2A1288A300BC3B7C /* BankTransactionService.swift in Sources */,
@@ -656,8 +688,10 @@
 				099D4F6D29F71A530002C24A /* CardRouter.swift in Sources */,
 				09632FCC29ED8A7D00DB2641 /* BankCardSet.swift in Sources */,
 				09F5BFD72A1285F500BC3B7C /* BankCardService.swift in Sources */,
+				099089E32A139A2D00EE00DA /* GroceryViewController.swift in Sources */,
 				099D4F8129F72AF40002C24A /* NewTemplateInteractor.swift in Sources */,
 				099D4F7329F722DE0002C24A /* NewCardViewController.swift in Sources */,
+				099089E92A139A5100EE00DA /* GroceryRouter.swift in Sources */,
 				09F86C4C29F6E75600307432 /* AuthenticationManager.swift in Sources */,
 				099D4F6729F71A2C0002C24A /* CardViewController.swift in Sources */,
 				09E24C112A12239A00A91F74 /* BankCardEntity.swift in Sources */,
@@ -680,8 +714,10 @@
 				09E9E81F29EAE95D0084416B /* LoginRouter.swift in Sources */,
 				099D4F7729F722F50002C24A /* NewCardRouter.swift in Sources */,
 				09E9E81729EAE9360084416B /* LoginBuilder.swift in Sources */,
+				099089E52A139A3A00EE00DA /* GroceryPresenter.swift in Sources */,
 				09FC393F29FABF5B00B2D97E /* AllTemplatesBuilder.swift in Sources */,
 				09FC393B29FABF4A00B2D97E /* AllTemplatesInteractor.swift in Sources */,
+				099089E72A139A4600EE00DA /* GroceryInteractor.swift in Sources */,
 				097E03A129EC44A500CE2A6F /* BankRouter.swift in Sources */,
 				099D4F7F29F72AEA0002C24A /* NewTemplatePresenter.swift in Sources */,
 				091095FE29DB32F000338D22 /* AppDelegate.swift in Sources */,

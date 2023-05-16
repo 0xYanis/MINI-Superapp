@@ -33,7 +33,7 @@ private extension BaseTabBarController {
                 barTitle: "Tickets",
                 image: "airplane"),
             createVC(
-                UIViewController(),
+                GroceryBuilder.build(),
                 barTitle: "Grocery",
                 image: "basket.fill"),
             createVC(
