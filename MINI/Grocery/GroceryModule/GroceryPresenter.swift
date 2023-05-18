@@ -12,6 +12,7 @@ protocol GroceryPresenterProtocol: AnyObject {
     func updateView()
     
     func userWantSetNewAdress()
+    func userDidTapDetailCategory(id: Int)
 }
 
 final class GroceryPresenter {
@@ -41,5 +42,9 @@ extension GroceryPresenter: GroceryPresenterProtocol {
     
     func userWantSetNewAdress() {
         
+    }
+    
+    func userDidTapDetailCategory(id: Int) {
+        router.goToDetailCategory(with: id)
     }
 }

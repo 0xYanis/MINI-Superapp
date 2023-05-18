@@ -8,11 +8,15 @@
 import UIKit
 
 protocol GroceryRouterProtocol: AnyObject {
-    
+    func goToDetailCategory(with id: Int)
 }
 
 final class GroceryRouter: GroceryRouterProtocol {
     weak var view: UIViewController?
     
-    
+    func goToDetailCategory(with id: Int) {
+        let detailCategoryView = UIViewController()
+        detailCategoryView.view.backgroundColor = .wetAsphalt
+        view?.navigationController?.pushViewController(detailCategoryView, animated: true)
+    }
 }

@@ -284,4 +284,12 @@ extension GroceryViewController: UICollectionViewDelegateFlowLayout {
         let height = width * 1.3
         return CGSize(width: width, height: height)
     }
+    
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) {
+        presenter?.userDidTapDetailCategory(id: indexPath.item)
+    }
 }
