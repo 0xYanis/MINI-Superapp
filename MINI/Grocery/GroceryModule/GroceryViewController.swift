@@ -114,12 +114,12 @@ private extension GroceryViewController {
         }
     }
     
-    var flowLayout: UICollectionViewLayout {
+    var flowLayout: UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 16
-        layout.minimumInteritemSpacing = 16
-        layout.sectionInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+        layout.minimumInteritemSpacing = 0
+        layout.sectionInset = UIEdgeInsets(top: 5, left: 16, bottom: 20, right: 16)
         return layout
     }
     
@@ -128,8 +128,12 @@ private extension GroceryViewController {
             GroceryViewCell.self,
             forCellWithReuseIdentifier: GroceryViewCell.cellId
         )
+        collectionView.register(
+            GroceryHeaderCell.self,
+            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+            withReuseIdentifier: GroceryHeaderCell.cellId
+        )
     }
-    
     
     func createRefreshControl() {
         refreshControl.tintColor = .systemOrange
@@ -198,7 +202,7 @@ extension GroceryViewController: UISearchResultsUpdating {
     }
 }
 
-//MARK: - UISearchResultsUpdating
+//MARK: - UICollectionViewDataSource
 extension GroceryViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView
     ) -> Int {
@@ -222,13 +226,53 @@ extension GroceryViewController: UICollectionViewDataSource {
             for: indexPath) as? GroceryViewCell else {
             return UICollectionViewCell()
         }
-        
         return cell
     }
     
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        willDisplay cell: UICollectionViewCell,
+        forItemAt indexPath: IndexPath
+    ) {
+        if let cell = cell as? GroceryViewCell {
+            cell.roundCorners(radius: 12)
+            cell.configure()
+        }
+    }
 }
 
-//MARK: - UISearchResultsUpdating
+//MARK: - Header titles for sections
+extension GroceryViewController {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        viewForSupplementaryElementOfKind kind: String,
+        at indexPath: IndexPath
+    ) -> UICollectionReusableView {
+        
+        guard let view = collectionView.dequeueReusableSupplementaryView(
+            ofKind: kind,
+            withReuseIdentifier: GroceryHeaderCell.cellId,
+            for: indexPath
+        ) as? GroceryHeaderCell else {
+            return UICollectionReusableView()
+        }
+        view.configure(with: "Category")
+        return view
+    }
+    
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        referenceSizeForHeaderInSection section: Int
+    ) -> CGSize {
+        .init(width: view.frame.width, height: 35)
+    }
+}
+
+
+//MARK: - UICollectionViewDelegateFlowLayout
 extension GroceryViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(
         _ collectionView: UICollectionView, layout
@@ -238,6 +282,6 @@ extension GroceryViewController: UICollectionViewDelegateFlowLayout {
         let itemSpacing: CGFloat = 16
         let width = (collectionView.bounds.width - itemSpacing * 3) / 3
         let height = width * 1.3
-        return CGSize(width: width, height: width)
+        return CGSize(width: width, height: height)
     }
 }
