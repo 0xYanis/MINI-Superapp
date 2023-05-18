@@ -15,14 +15,14 @@ protocol GroceryViewProtocol: AnyObject {
 
 final class GroceryViewController: UIViewController {
     
-    let data: [[Int]] = [[1,2,3],[1,2,3,4,5,6],[1],[1,2],[1,2,3,4],[1,2,3,4,5],[1,2,3,4,5,6,7,8,9]]
+    let data: [[String]] = [["Apple"], ["Grapes", "Kiwi"], ["Orange", "Pineapple", "Strawberry","Orange"], ["Pear"]]
     
     //MARK: Public properties
     var presenter: GroceryPresenterProtocol?
     
     
     //MARK: Private properties
-    private lazy var tableView = UITableView()
+    private var collectionView: UICollectionView!
     private lazy var refreshControl = UIRefreshControl()
     private lazy var adressVC = AdressViewController()
     private lazy var searchController: UISearchController = {
@@ -61,9 +61,9 @@ private extension GroceryViewController {
         view.backgroundColor = UIColor(named: "backColor")
         createNavigation(title: "Grocery store")
         createNavigationButtons(adress: "22 Washington st. NY")
-        createTableView()
+        createCollectionView()
+        collectionViewRegistrate()
         createRefreshControl()
-        tableViewRegistrate()
     }
     
     func createNavigation(title: String) {
@@ -99,24 +99,34 @@ private extension GroceryViewController {
         return UIMenu(children: [ setNew, adress ] )
     }
     
-    
-    func createTableView() {
-//        tableView.rowHeight = UITableView.automaticDimension
-//        tableView.estimatedRowHeight = 100
-        tableView.separatorInset = .init(top: 20, left: 0, bottom: 20, right: 0)
-        tableView.backgroundColor = .clear
-        tableView.dataSource = self
-        tableView.delegate = self
-        view.addSubview(tableView)
-        tableView.snp.makeConstraints { make in
+    func createCollectionView() {
+        collectionView = UICollectionView(
+            frame: .zero,
+            collectionViewLayout: flowLayout
+        )
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.backgroundColor = .clear
+        collectionView.showsVerticalScrollIndicator = false
+        view.addSubview(collectionView)
+        collectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
     }
     
-    func tableViewRegistrate() {
-        tableView.register(
-            GroceryViewSet.self,
-            forCellReuseIdentifier: GroceryViewSet.cellId
+    var flowLayout: UICollectionViewLayout {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.minimumLineSpacing = 16
+        layout.minimumInteritemSpacing = 16
+        layout.sectionInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+        return layout
+    }
+    
+    func collectionViewRegistrate() {
+        collectionView.register(
+            GroceryViewCell.self,
+            forCellWithReuseIdentifier: GroceryViewCell.cellId
         )
     }
     
@@ -128,7 +138,7 @@ private extension GroceryViewController {
             action: #selector(refreshAction),
             for: .valueChanged
         )
-        tableView.refreshControl = refreshControl
+        collectionView.refreshControl = refreshControl
     }
     
     func createAdressBottomSheet(multiply: CGFloat) {
@@ -188,48 +198,46 @@ extension GroceryViewController: UISearchResultsUpdating {
     }
 }
 
-//MARK: - UITableViewDataSource
-extension GroceryViewController: UITableViewDataSource {
-    func tableView(
-        _ tableView: UITableView,
-        numberOfRowsInSection section: Int
+//MARK: - UISearchResultsUpdating
+extension GroceryViewController: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView
     ) -> Int {
         return data.count
     }
     
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+    ) -> Int {
+        return data[section].count
+    }
     
-    func tableView(
-        _ tableView: UITableView,
-        cellForRowAt indexPath: IndexPath
-    ) -> UITableViewCell {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: GroceryViewSet.cellId,
-            for: indexPath
-        ) as? GroceryViewSet else {
-            return UITableViewCell()
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: GroceryViewCell.cellId,
+            for: indexPath) as? GroceryViewCell else {
+            return UICollectionViewCell()
         }
+        
         return cell
     }
     
 }
 
-//MARK: - UITableViewDelegate
-extension GroceryViewController: UITableViewDelegate {
-    func tableView(
-        _ tableView: UITableView,
-        heightForRowAt indexPath: IndexPath
-    ) -> CGFloat {
-        let sectionData = data[indexPath.row]
-        switch sectionData.count {
-        case 1...3:
-            return 250
-        case 4...6:
-            return 500
-        case 7...9:
-            return 1000
-        default:
-            return 0
-        }
+//MARK: - UISearchResultsUpdating
+extension GroceryViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(
+        _ collectionView: UICollectionView, layout
+        collectionViewLayout: UICollectionViewLayout, sizeForItemAt
+        indexPath: IndexPath
+    ) -> CGSize {
+        let itemSpacing: CGFloat = 16
+        let width = (collectionView.bounds.width - itemSpacing * 3) / 3
+        let height = width * 1.3
+        return CGSize(width: width, height: width)
     }
 }

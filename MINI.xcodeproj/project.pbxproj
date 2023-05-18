@@ -29,7 +29,6 @@
 		092E739629EBEB3000165D37 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E739529EBEB3000165D37 /* LoginView.swift */; };
 		092E739A29EBFB8800165D37 /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E739929EBFB8800165D37 /* UIStackView+Extension.swift */; };
 		092E739C29EBFD9100165D37 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E739B29EBFD9100165D37 /* UITextField+Extension.swift */; };
-		093111D12A162C4F008A6329 /* GroceryViewSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093111D02A162C4F008A6329 /* GroceryViewSet.swift */; };
 		09503EB829F2D44000254F53 /* StackFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09503EB729F2D44000254F53 /* StackFlowLayout.swift */; };
 		09581B0E29EC769F000CC093 /* hello.json in Resources */ = {isa = PBXBuildFile; fileRef = 09581B0D29EC769F000CC093 /* hello.json */; };
 		09632FCC29ED8A7D00DB2641 /* BankCardSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09632FCB29ED8A7D00DB2641 /* BankCardSet.swift */; };
@@ -133,7 +132,6 @@
 		092E739529EBEB3000165D37 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		092E739929EBFB8800165D37 /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
 		092E739B29EBFD9100165D37 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
-		093111D02A162C4F008A6329 /* GroceryViewSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryViewSet.swift; sourceTree = "<group>"; };
 		09503EB729F2D44000254F53 /* StackFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackFlowLayout.swift; sourceTree = "<group>"; };
 		09581B0D29EC769F000CC093 /* hello.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = hello.json; sourceTree = "<group>"; };
 		09632FCB29ED8A7D00DB2641 /* BankCardSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankCardSet.swift; sourceTree = "<group>"; };
@@ -350,7 +348,6 @@
 		093111CD2A162C1B008A6329 /* GroceryCells */ = {
 			isa = PBXGroup;
 			children = (
-				093111D02A162C4F008A6329 /* GroceryViewSet.swift */,
 				09ABE0052A142805009DB57B /* GroceryViewCell.swift */,
 			);
 			path = GroceryCells;
@@ -664,7 +661,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				093111D12A162C4F008A6329 /* GroceryViewSet.swift in Sources */,
 				092E739C29EBFD9100165D37 /* UITextField+Extension.swift in Sources */,
 				09FC393929FABF4200B2D97E /* AllTemplatesPresenter.swift in Sources */,
 				099D4F8529F72B050002C24A /* NewTemplateBuilder.swift in Sources */,
