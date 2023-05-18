@@ -15,6 +15,8 @@ protocol GroceryViewProtocol: AnyObject {
 
 final class GroceryViewController: UIViewController {
     
+    let data: [[Int]] = [[1,2,3],[1,2,3,4,5,6],[1],[1,2],[1,2,3,4],[1,2,3,4,5],[1,2,3,4,5,6,7,8,9]]
+    
     //MARK: Public properties
     var presenter: GroceryPresenterProtocol?
     
@@ -99,11 +101,12 @@ private extension GroceryViewController {
     
     
     func createTableView() {
+//        tableView.rowHeight = UITableView.automaticDimension
+//        tableView.estimatedRowHeight = 100
+        tableView.separatorInset = .init(top: 20, left: 0, bottom: 20, right: 0)
         tableView.backgroundColor = .clear
-        tableView.delegate = self
         tableView.dataSource = self
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 300
+        tableView.delegate = self
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -120,7 +123,11 @@ private extension GroceryViewController {
     
     func createRefreshControl() {
         refreshControl.tintColor = .systemOrange
-        refreshControl.addTarget(self, action: #selector(refreshAction), for: .valueChanged)
+        refreshControl.addTarget(
+            self,
+            action: #selector(refreshAction),
+            for: .valueChanged
+        )
         tableView.refreshControl = refreshControl
     }
     
@@ -168,7 +175,8 @@ extension GroceryViewController: AdressViewDelegate {
 
 //MARK: - UISearchBarDelegate
 extension GroceryViewController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    func searchBar(_ searchBar: UISearchBar,
+                   textDidChange searchText: String) {
         
     }
 }
@@ -182,31 +190,46 @@ extension GroceryViewController: UISearchResultsUpdating {
 
 //MARK: - UITableViewDataSource
 extension GroceryViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView,
-                   numberOfRowsInSection section: Int) -> Int {
-        return 6
+    func tableView(
+        _ tableView: UITableView,
+        numberOfRowsInSection section: Int
+    ) -> Int {
+        return data.count
     }
     
     
-    func tableView(_ tableView: UITableView,
-                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: GroceryViewSet.cellId, for: indexPath) as? GroceryViewSet else {
+    func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath
+    ) -> UITableViewCell {
+        
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: GroceryViewSet.cellId,
+            for: indexPath
+        ) as? GroceryViewSet else {
             return UITableViewCell()
         }
         return cell
-    }
-    
-    
-    func tableView(_ tableView: UITableView,
-                   willDisplay cell: UITableViewCell,
-                   forRowAt indexPath: IndexPath) {
-        // configure
     }
     
 }
 
 //MARK: - UITableViewDelegate
 extension GroceryViewController: UITableViewDelegate {
-    
+    func tableView(
+        _ tableView: UITableView,
+        heightForRowAt indexPath: IndexPath
+    ) -> CGFloat {
+        let sectionData = data[indexPath.row]
+        switch sectionData.count {
+        case 1...3:
+            return 250
+        case 4...6:
+            return 500
+        case 7...9:
+            return 1000
+        default:
+            return 0
+        }
+    }
 }
-

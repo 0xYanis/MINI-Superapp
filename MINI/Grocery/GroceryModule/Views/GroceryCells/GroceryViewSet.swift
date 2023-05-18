@@ -9,8 +9,12 @@ import UIKit
 
 final class GroceryViewSet: UITableViewCell {
     
+    let data: [[Int]] = [[1,2,3],[1,2,3,4,5,6],[1],[1,2],[1,2,3,4],[1,2,3,4,5]]
+    
+    //MARK: Public properties
     static let cellId = "GroceryViewSet"
     
+    //MARK: Private properties
     private lazy var customView = UIView()
     private lazy var categoryLabel = UILabel()
     private var collectionView: UICollectionView!
@@ -25,6 +29,7 @@ final class GroceryViewSet: UITableViewCell {
     }
 }
 
+//MARK: Private methods
 private extension GroceryViewSet {
     func initialize() {
         backgroundColor = .clear
@@ -35,6 +40,7 @@ private extension GroceryViewSet {
     }
     
     func createCustomView() {
+        customView.backgroundColor = .clear
         addSubview(customView)
         customView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -54,14 +60,14 @@ private extension GroceryViewSet {
     
     func createCollectionView() {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        collectionView.backgroundColor = .clear
         collectionView.delegate = self
         collectionView.dataSource = self
         customView.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
-//            make.top.equalTo(categoryLabel.snp.bottom)
-//            make.left.right.equalToSuperview().inset(16)
-//            make.bottom.equalToSuperview()
-            make.edges.equalToSuperview()
+            make.top.equalTo(categoryLabel.snp.bottom)
+            make.left.right.equalToSuperview()
+            make.bottom.equalToSuperview()
         }
     }
     
@@ -70,7 +76,7 @@ private extension GroceryViewSet {
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 16
         layout.minimumInteritemSpacing = 0
-        layout.sectionInset = UIEdgeInsets(top: 30, left: 16, bottom: 30, right: 16)
+        layout.sectionInset = UIEdgeInsets(top: 15, left: 16, bottom: 30, right: 16)
         return layout
     }
     
@@ -87,9 +93,8 @@ private extension GroceryViewSet {
 extension GroceryViewSet: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return 6
+        return data[section].count
     }
-    
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -108,7 +113,7 @@ extension GroceryViewSet: UICollectionViewDataSource {
                         forItemAt indexPath: IndexPath) {
         
         if let cell = cell as? GroceryViewCell {
-            cell.largeContentTitle = "This is a #\(indexPath.row) cell"
+            cell.configure()
             cell.roundCorners(radius: 10)
         }
         

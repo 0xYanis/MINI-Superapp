@@ -10,13 +10,16 @@ import SnapKit
 
 final class GroceryViewCell: UICollectionViewCell {
     
+    //MARK: Public properties
     static let cellId = "GroceryViewCell"
     
+    //MARK: Private properties
     private lazy var textLabel    = UILabel()
     private lazy var imageView    = UIImageView()
     private lazy var discountView = UIView()
     private lazy var percentView  = UIImageView()
     
+    //MARK: Public methods
     func configure() {
         
     }
@@ -31,6 +34,7 @@ final class GroceryViewCell: UICollectionViewCell {
     }
 }
 
+//MARK: - Private methods
 private extension GroceryViewCell {
     func initialize() {
         backgroundColor = .black
