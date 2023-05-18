@@ -15,7 +15,7 @@ protocol GroceryViewProtocol: AnyObject {
 
 final class GroceryViewController: UIViewController {
     
-    let data: [[String]] = [["Apple"], ["Grapes", "Kiwi"], ["Orange", "Pineapple", "Strawberry","Orange"], ["Pear"]]
+    let data: [[String]] = [["Apple"], ["Grapes", "Kiwi"], ["Orange", "Pineapple", "Strawberry", "Orange"], ["Pear", "Banana", "Mango", "Watermelon", "Cherry"], ["Tomato", "Potato", "Carrot", "Cucumber", "Pepper", "Onion", "Garlic", "Broccoli"], ["Peach", "Plum", "Apricot", "Fig", "Grapefruit", "Lemon", "Lime", "Avocado", "Pomegranate"]]
     
     //MARK: Public properties
     var presenter: GroceryPresenterProtocol?
