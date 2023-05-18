@@ -10,7 +10,8 @@ import UIKit
 final class GroceryBuilder {
     static func build() -> UIViewController {
         let view = GroceryViewController()
-        let interactor = GroceryInteractor()
+        let groceryService = GroceryService()
+        let interactor = GroceryInteractor(groceryService: groceryService)
         let router = GroceryRouter()
         let presenter = GroceryPresenter(router: router, interactor: interactor)
         presenter.view = view

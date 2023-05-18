@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import SkeletonView
 
 final class GroceryViewCell: UICollectionViewCell {
     
@@ -20,8 +21,8 @@ final class GroceryViewCell: UICollectionViewCell {
     private lazy var percentView  = UIImageView()
     
     //MARK: Public methods
-    func configure() {
-        
+    func configure(with data: GroceryEntity) {
+        textLabel.text = data.productName
     }
     
     override init(frame: CGRect) {
@@ -37,6 +38,8 @@ final class GroceryViewCell: UICollectionViewCell {
 //MARK: - Private methods
 private extension GroceryViewCell {
     func initialize() {
+        isSkeletonable = true
+        skeletonCornerRadius = 10
         backgroundColor = .black
         createTextLabel()
         createImageView()

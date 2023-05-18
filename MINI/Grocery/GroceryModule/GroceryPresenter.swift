@@ -13,6 +13,9 @@ protocol GroceryPresenterProtocol: AnyObject {
     
     func userWantSetNewAdress()
     func userDidTapDetailCategory(id: Int)
+    
+    func getGroceryData() -> [[GroceryEntity]]
+    func loadingDataGetFailed(with: String)
 }
 
 final class GroceryPresenter {
@@ -46,5 +49,13 @@ extension GroceryPresenter: GroceryPresenterProtocol {
     
     func userDidTapDetailCategory(id: Int) {
         router.goToDetailCategory(with: id)
+    }
+    
+    func getGroceryData() -> [[GroceryEntity]] {
+        interactor.getGroceryData()
+    }
+    
+    func loadingDataGetFailed(with: String) {
+        
     }
 }

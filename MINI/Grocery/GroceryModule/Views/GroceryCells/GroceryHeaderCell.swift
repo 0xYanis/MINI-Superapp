@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import SkeletonView
 
 final class GroceryHeaderCell: UICollectionReusableView {
     
@@ -30,6 +31,7 @@ final class GroceryHeaderCell: UICollectionReusableView {
 
 private extension GroceryHeaderCell {
     func initialize() {
+        textLabel.isSkeletonable = true
         textLabel.text = "Category"
         textLabel.numberOfLines = 1
         textLabel.textColor = .white

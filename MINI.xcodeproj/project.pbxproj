@@ -76,6 +76,8 @@
 		09E24C132A1227C200A91F74 /* cardsColor.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09E24C122A1227C200A91F74 /* cardsColor.xcassets */; };
 		09E24C152A1228D000A91F74 /* BankTemplateEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E24C142A1228D000A91F74 /* BankTemplateEntity.swift */; };
 		09E24C172A122C2E00A91F74 /* BankTransactionEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E24C162A122C2E00A91F74 /* BankTransactionEntity.swift */; };
+		09E81C682A169CBA008B313B /* GroceryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E81C672A169CBA008B313B /* GroceryEntity.swift */; };
+		09E81C6A2A169D1D008B313B /* GroceryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E81C692A169D1D008B313B /* GroceryService.swift */; };
 		09E9E81229EAE6030084416B /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E9E81129EAE6030084416B /* UILabel+Extension.swift */; };
 		09E9E81729EAE9360084416B /* LoginBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E9E81629EAE9360084416B /* LoginBuilder.swift */; };
 		09E9E81929EAE9410084416B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E9E81829EAE9410084416B /* LoginViewController.swift */; };
@@ -180,6 +182,8 @@
 		09E24C122A1227C200A91F74 /* cardsColor.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = cardsColor.xcassets; sourceTree = "<group>"; };
 		09E24C142A1228D000A91F74 /* BankTemplateEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTemplateEntity.swift; sourceTree = "<group>"; };
 		09E24C162A122C2E00A91F74 /* BankTransactionEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTransactionEntity.swift; sourceTree = "<group>"; };
+		09E81C672A169CBA008B313B /* GroceryEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryEntity.swift; sourceTree = "<group>"; };
+		09E81C692A169D1D008B313B /* GroceryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryService.swift; sourceTree = "<group>"; };
 		09E9E81129EAE6030084416B /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		09E9E81629EAE9360084416B /* LoginBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBuilder.swift; sourceTree = "<group>"; };
 		09E9E81829EAE9410084416B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -392,6 +396,8 @@
 				099089E62A139A4600EE00DA /* GroceryInteractor.swift */,
 				099089E82A139A5100EE00DA /* GroceryRouter.swift */,
 				099089EA2A139A5800EE00DA /* GroceryBuilder.swift */,
+				09E81C672A169CBA008B313B /* GroceryEntity.swift */,
+				09E81C692A169D1D008B313B /* GroceryService.swift */,
 			);
 			path = GroceryModule;
 			sourceTree = "<group>";
@@ -717,6 +723,7 @@
 				09FC393729FABF2D00B2D97E /* AllTemplatesViewController.swift in Sources */,
 				09F5BFDB2A1288A300BC3B7C /* BankTransactionService.swift in Sources */,
 				09E9E82E29EB16E10084416B /* KeyChain.swift in Sources */,
+				09E81C6A2A169D1D008B313B /* GroceryService.swift in Sources */,
 				099D4F6D29F71A530002C24A /* CardRouter.swift in Sources */,
 				09632FCC29ED8A7D00DB2641 /* BankCardSet.swift in Sources */,
 				09F5BFD72A1285F500BC3B7C /* BankCardService.swift in Sources */,
@@ -742,6 +749,7 @@
 				090AE1DD29FBAA080092515D /* TemplatePresenter.swift in Sources */,
 				09FC395029FAD40500B2D97E /* TransactionEntity.swift in Sources */,
 				097E039F29EC449900CE2A6F /* BankInteractor.swift in Sources */,
+				09E81C682A169CBA008B313B /* GroceryEntity.swift in Sources */,
 				09FC394829FAD3E300B2D97E /* TransactionPresenter.swift in Sources */,
 				09E9E81F29EAE95D0084416B /* LoginRouter.swift in Sources */,
 				099D4F7729F722F50002C24A /* NewCardRouter.swift in Sources */,

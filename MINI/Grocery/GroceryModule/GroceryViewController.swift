@@ -15,8 +15,6 @@ protocol GroceryViewProtocol: AnyObject {
 
 final class GroceryViewController: UIViewController {
     
-    let data: [[String]] = [["Apple"], ["Grapes", "Kiwi"], ["Orange", "Pineapple", "Strawberry", "Orange"], ["Pear", "Banana", "Mango", "Watermelon", "Cherry"], ["Tomato", "Potato", "Carrot", "Cucumber", "Pepper", "Onion", "Garlic", "Broccoli"], ["Peach", "Plum", "Apricot", "Fig", "Grapefruit", "Lemon", "Lime", "Avocado", "Pomegranate"]]
-    
     //MARK: Public properties
     var presenter: GroceryPresenterProtocol?
     
@@ -38,8 +36,8 @@ final class GroceryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initialize()
         presenter?.viewDidLoaded()
+        initialize()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,6 +62,7 @@ private extension GroceryViewController {
         createCollectionView()
         collectionViewRegistrate()
         createRefreshControl()
+        collectionViewWithSkeleton()
     }
     
     func createNavigation(title: String) {
@@ -98,6 +97,7 @@ private extension GroceryViewController {
             }
         return UIMenu(children: [ setNew, adress ] )
     }
+    
     
     func createCollectionView() {
         collectionView = UICollectionView(
@@ -160,6 +160,21 @@ private extension GroceryViewController {
         present(adressVC, animated: true)
     }
     
+    func collectionViewWithSkeleton() {
+        collectionView.isSkeletonable = true
+        collectionView.showAnimatedSkeleton(
+            usingColor: .asbestos,
+            transition: .crossDissolve(0.25)
+        )
+    }
+    
+    func stopSkeleton() {
+        collectionView.stopSkeletonAnimation()
+        view.hideSkeleton(
+            reloadDataAfter: true,
+            transition: .crossDissolve(0.25)
+        )
+    }
     
 }
 
@@ -203,17 +218,24 @@ extension GroceryViewController: UISearchResultsUpdating {
 }
 
 //MARK: - UICollectionViewDataSource
-extension GroceryViewController: UICollectionViewDataSource {
+extension GroceryViewController: SkeletonCollectionViewDataSource {
+    func collectionSkeletonView(
+        _ skeletonView: UICollectionView,
+        cellIdentifierForItemAt indexPath: IndexPath
+    ) -> SkeletonView.ReusableCellIdentifier {
+        GroceryViewCell.cellId
+    }
+    
     func numberOfSections(in collectionView: UICollectionView
     ) -> Int {
-        return data.count
+        presenter?.getGroceryData().count ?? 3
     }
     
     func collectionView(
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        return data[section].count
+        presenter?.getGroceryData()[section].count ?? 4
     }
     
     func collectionView(
@@ -235,11 +257,17 @@ extension GroceryViewController: UICollectionViewDataSource {
         willDisplay cell: UICollectionViewCell,
         forItemAt indexPath: IndexPath
     ) {
+        guard let data = presenter?.getGroceryData()[indexPath.section],
+        indexPath.row < data.count else { return }
+                
         if let cell = cell as? GroceryViewCell {
             cell.roundCorners(radius: 12)
-            cell.configure()
+            cell.configure(with: data[indexPath.row])
         }
+        
+        self.stopSkeleton()
     }
+    
 }
 
 //MARK: - Header titles for sections
