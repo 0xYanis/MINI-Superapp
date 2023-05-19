@@ -11,6 +11,7 @@ import SkeletonView
 
 protocol GroceryViewProtocol: AnyObject {
     func updateView()
+    func showLoadingDataGetFailed(with message: String)
 }
 
 final class GroceryViewController: UIViewController {
@@ -52,6 +53,10 @@ final class GroceryViewController: UIViewController {
 extension GroceryViewController: GroceryViewProtocol {
     func updateView() {
         collectionView.reloadData()
+    }
+    
+    func showLoadingDataGetFailed(with message: String) {
+        
     }
 }
 

@@ -17,7 +17,7 @@ protocol GroceryPresenterProtocol: AnyObject {
     func searchBarTextDidChange(with searchText: String)
     
     func getGroceryData() -> [[GroceryEntity]]
-    func loadingDataGetFailed(with: String)
+    func loadingDataGetFailed(with message: String)
 }
 
 final class GroceryPresenter {
@@ -61,7 +61,7 @@ extension GroceryPresenter: GroceryPresenterProtocol {
         interactor.getGroceryData()
     }
     
-    func loadingDataGetFailed(with: String) {
-        
+    func loadingDataGetFailed(with message: String) {
+        view?.showLoadingDataGetFailed(with: message)
     }
 }
