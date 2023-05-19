@@ -14,16 +14,23 @@ protocol AviaViewProtocol: AnyObject {
 
 final class AviaViewController: UIViewController {
     
-    //MARK: - Private properties
+    //MARK: Public properties
+    var presenter: AviaPresenterProtocol?
+    
+    
+    //MARK: Private properties
     private let searchView = UIView()
     private let tableView = UITableView()
     
-    //MARK: - Public properties
-    var presenter: AviaPresenterProtocol?
-    
+    //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.showTabBar()
     }
 }
 
@@ -67,6 +74,7 @@ private extension AviaViewController {
     }
 }
 
+//MARK: - UITableViewDataSource
 extension AviaViewController: UITableViewDataSource {
     func tableView(
         _ tableView: UITableView,
@@ -98,6 +106,7 @@ extension AviaViewController: UITableViewDataSource {
     }
 }
 
+//MARK: - UITableViewDelegate
 extension AviaViewController: UITableViewDelegate {
     //TODO: - updateConstraints при скроллинге
 }
