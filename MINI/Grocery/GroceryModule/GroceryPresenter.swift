@@ -14,6 +14,8 @@ protocol GroceryPresenterProtocol: AnyObject {
     func userWantSetNewAdress()
     func userDidTapDetailCategory(id: Int)
     
+    func searchBarTextDidChange(with searchText: String)
+    
     func getGroceryData() -> [[GroceryEntity]]
     func loadingDataGetFailed(with: String)
 }
@@ -40,7 +42,7 @@ extension GroceryPresenter: GroceryPresenterProtocol {
     }
     
     func updateView() {
-        
+        view?.updateView()
     }
     
     func userWantSetNewAdress() {
@@ -49,6 +51,10 @@ extension GroceryPresenter: GroceryPresenterProtocol {
     
     func userDidTapDetailCategory(id: Int) {
         router.goToDetailCategory(with: id)
+    }
+    
+    func searchBarTextDidChange(with searchText: String) {
+        interactor.searchBarTextDidChange(with: searchText)
     }
     
     func getGroceryData() -> [[GroceryEntity]] {

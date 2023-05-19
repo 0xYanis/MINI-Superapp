@@ -10,6 +10,8 @@ import Foundation
 protocol GroceryInteractorProtocol: AnyObject {
     func viewDidLoaded()
     func getGroceryData() -> [[GroceryEntity]]
+    
+    func searchBarTextDidChange(with searchText: String)
 }
 
 final class GroceryInteractor: GroceryInteractorProtocol {
@@ -18,6 +20,7 @@ final class GroceryInteractor: GroceryInteractorProtocol {
     var groceryService: GroceryServiceProtocol
     
     private var groceryData: [[GroceryEntity]] = []
+    private var filteredData: [[GroceryEntity]] = []
     
     init(
         groceryService: GroceryServiceProtocol
@@ -32,6 +35,17 @@ final class GroceryInteractor: GroceryInteractorProtocol {
     
     func getGroceryData() -> [[GroceryEntity]] {
         return groceryData
+    }
+    
+    func searchBarTextDidChange(with searchText: String) {
+        if searchText.isEmpty {
+            filteredData.removeAll()
+        } else {
+//            filteredData = groceryData.filter {
+//                $0.productName.lowercased().contains(searchText.lowercased())
+//            }
+        }
+        presenter?.updateView()
     }
 }
 

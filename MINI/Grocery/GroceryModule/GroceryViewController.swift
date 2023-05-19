@@ -10,7 +10,7 @@ import SnapKit
 import SkeletonView
 
 protocol GroceryViewProtocol: AnyObject {
-    
+    func updateView()
 }
 
 final class GroceryViewController: UIViewController {
@@ -50,7 +50,9 @@ final class GroceryViewController: UIViewController {
 
 //MARK: - GroceryViewProtocol
 extension GroceryViewController: GroceryViewProtocol {
-    
+    func updateView() {
+        collectionView.reloadData()
+    }
 }
 
 //MARK: - Private methods
@@ -206,7 +208,7 @@ extension GroceryViewController: AdressViewDelegate {
 extension GroceryViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar,
                    textDidChange searchText: String) {
-        
+        presenter?.searchBarTextDidChange(with: searchText)
     }
 }
 
