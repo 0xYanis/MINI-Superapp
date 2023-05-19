@@ -60,6 +60,7 @@ private extension AllTemplatesViewController {
     
     func createNavigation() {
         navigationItem.title = "All Templates"
+        navigationItem.largeTitleDisplayMode = .never
     }
     
     func createCollectionView() {

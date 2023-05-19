@@ -42,6 +42,7 @@ private extension TransactionViewController {
     
     func createNavigation() {
         navigationItem.title = "Transaction"
+        navigationItem.largeTitleDisplayMode = .never
     }
     
     func createTableView(tableView: UITableView) {

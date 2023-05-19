@@ -32,5 +32,6 @@ extension NewCardViewController: NewCardViewProtocol {
 private extension NewCardViewController {
     func initialize() {
         view.backgroundColor = UIColor(named: "backColor")
+        navigationItem.largeTitleDisplayMode = .never
     }
 }

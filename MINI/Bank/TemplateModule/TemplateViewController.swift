@@ -41,6 +41,7 @@ private extension TemplateViewController {
     
     func createNavigation(title: String) {
         navigationItem.title = title
+        navigationItem.largeTitleDisplayMode = .never
     }
     
     func createTableView(tableView: UITableView) {

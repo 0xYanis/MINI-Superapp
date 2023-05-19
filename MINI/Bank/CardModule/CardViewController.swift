@@ -47,6 +47,7 @@ private extension CardViewController {
     
     func createNavigation(title: String) {
         navigationItem.title = title
+        navigationItem.largeTitleDisplayMode = .never
     }
     
     func createCardView(uiView: UIView) {
