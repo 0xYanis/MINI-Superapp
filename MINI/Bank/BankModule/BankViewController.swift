@@ -37,7 +37,7 @@ final class BankViewController: UIViewController {
     var presenter: BankPresenterProtocol?
     
     //MARK: Private properties
-    private lazy var bankTableView = UITableView()
+    private lazy var bankTableView  = UITableView()
     private lazy var historyTableVC = BankHistoryViewController()
     private lazy var refreshControl = UIRefreshControl()
     
