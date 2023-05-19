@@ -52,7 +52,7 @@ private extension LoginView {
         addSubview(nameField)
         nameField.keyboardType = .emailAddress
         nameField.setCustomAppearance(withBorderColor: .systemOrange, cornerRadius: 15, padding: 10)
-        nameField.placeholder = "Введите Имя"
+        nameField.placeholder = "Entry Your name"
         nameField.snp.makeConstraints { make in
             make.top.equalTo(helloLabel.snp.bottom).offset(15)
             make.left.right.equalToSuperview().inset(20)
@@ -62,7 +62,7 @@ private extension LoginView {
         addSubview(passField)
         passField.isSecureTextEntry = true
         passField.setCustomAppearance(withBorderColor: .systemOrange, cornerRadius: 15, padding: 10)
-        passField.placeholder = "Введите Пароль"
+        passField.placeholder = "Entry Your password"
         passField.snp.makeConstraints { make in
             make.top.equalTo(nameField.snp.bottom).offset(15)
             make.left.right.equalToSuperview().inset(20)

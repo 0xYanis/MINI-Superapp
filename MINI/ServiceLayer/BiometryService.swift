@@ -18,7 +18,7 @@ final class BiometryService: BiometryServiceProtocol {
     
     func authWithBiometry(completion: @escaping (Bool, Error?) -> Void) {
         
-        let reason = "Аутентификация с помощью Face ID"
+        let reason = "Authenticate with Face ID"
         var error: NSError?
         
         guard context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) else {

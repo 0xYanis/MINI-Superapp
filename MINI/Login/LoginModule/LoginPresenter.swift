@@ -40,7 +40,7 @@ extension LoginPresenter: LoginPresenterProtocol {
     }
     func loginIsNotCorrect() {
         DispatchQueue.main.async {
-            self.view?.showAlert("Ошибка", message: "Неверный логин")
+            self.view?.showAlert("Error", message: "Incorrect password")
         }
     }
 }

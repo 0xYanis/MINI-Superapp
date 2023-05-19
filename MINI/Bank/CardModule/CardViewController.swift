@@ -107,17 +107,17 @@ private extension CardViewController {
     
     @objc func leftButtonAction() {
         let alert = UIAlertController(
-            title: "Внимание",
-            message: "Вы уверены, что хотите удалить карту?",
+            title: "Caution!",
+            message: "Are You sure, You want to delete the card?",
             preferredStyle: .alert
         )
         
-        let deleteAction = UIAlertAction(title: "Удалить", style: .destructive) { (_) in
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
             self.presenter?.userWantToDeleteCard()
         }
         alert.addAction(deleteAction)
         
-        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         alert.addAction(cancelAction)
         
         present(alert, animated: true, completion: nil)
