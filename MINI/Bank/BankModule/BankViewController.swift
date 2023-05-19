@@ -39,10 +39,10 @@ final class BankViewController: UIViewController {
     private lazy var historyTableVC = BankHistoryViewController()
     private lazy var refreshControl = UIRefreshControl()
     
-    private lazy var height: CGFloat   = 0.3 * view.frame.height + view.safeAreaInsets.bottom
+    private lazy var height: CGFloat    = view.frame.height
     private lazy var minHeight: CGFloat = 0.3 * view.frame.height + view.safeAreaInsets.bottom
     private lazy var maxHeight: CGFloat = view.frame.height - view.safeAreaInsets.top
-
+    
     
     //MARK: Lifecycle
     override func viewDidLoad() {
@@ -86,42 +86,6 @@ extension BankViewController: BankViewCellDelegate {
     
     func handleTapOnTransactionCell(id: Int) {
         presenter?.userDidTapTransaction(id: id)
-    }
-    
-    func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
-        let translation = gesture.translation(in: view)
-        let yTranslation = translation.y
-        
-        switch gesture.state {
-        case .changed:
-            let newHeight = max(minHeight, min(maxHeight, height - yTranslation))
-            
-            historyTableVC.view.snp.remakeConstraints { make in
-                make.height.equalTo(newHeight)
-                make.left.right.bottom.equalToSuperview()
-            }
-            
-            UIView.animate(withDuration: 0.3) {
-                self.height = newHeight
-                self.view.layoutIfNeeded()
-            }
-            
-        case .ended:
-            let isFixed = height >= maxHeight
-            let destinationHeight = isFixed ? maxHeight : minHeight
-            
-            historyTableVC.view.snp.remakeConstraints { make in
-                make.height.equalTo(destinationHeight)
-                make.left.right.bottom.equalToSuperview()
-            }
-            
-            UIView.animate(withDuration: 0.3) {
-                self.height = destinationHeight
-                self.view.layoutIfNeeded()
-            }
-        default:
-            break
-        }
     }
     
     func setBigHeightOfHistory() {
@@ -252,6 +216,73 @@ private extension BankViewController {
     }
 }
 
+//MARK: - Animation methods
+extension BankViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizer(
+        _ gestureRecognizer: UIGestureRecognizer,
+        shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer
+    ) -> Bool {
+        true
+    }
+    
+    func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
+        let translation = gesture.translation(in: view)
+        let yTranslation = translation.y
+        
+        switch gesture.state {
+            
+        case .changed:
+            let newHeight = calculateNewHeight(
+                currentHeight: height,
+                yTranslation: yTranslation
+            )
+            updateHistoryTableHeight(newHeight: newHeight)
+            animateHeightChange(newHeight: newHeight)
+            
+        case .ended:
+            let destinationHeight = calculateDestinationHeight(
+                maxHeight: maxHeight,
+                minHeight: minHeight
+            )
+            updateHistoryTableHeight(newHeight: destinationHeight)
+            animateHeightChange(newHeight: destinationHeight)
+            
+        default:
+            break
+        }
+    }
+    
+    private func calculateNewHeight(
+        currentHeight: CGFloat,
+        yTranslation: CGFloat
+    ) -> CGFloat {
+        let newHeight = max(minHeight, min(maxHeight, currentHeight - yTranslation))
+        return newHeight
+    }
+    
+    private func updateHistoryTableHeight(newHeight: CGFloat) {
+        historyTableVC.view.snp.remakeConstraints { make in
+            make.height.equalTo(newHeight)
+            make.left.right.bottom.equalToSuperview()
+        }
+    }
+    
+    private func animateHeightChange(newHeight: CGFloat) {
+        UIView.animate(withDuration: 0.2) {
+            self.height = newHeight
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    private func calculateDestinationHeight(
+        maxHeight: CGFloat,
+        minHeight: CGFloat
+    ) -> CGFloat {
+        let isFixed = height >= maxHeight
+        return isFixed ? maxHeight : minHeight
+    }
+}
+
 //MARK: - UITableViewDataSource
 extension BankViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView,
@@ -308,13 +339,5 @@ extension BankViewController: UITableViewDelegate {
         default:
             return tableView.rowHeight
         }
-    }
-}
-extension BankViewController: UIGestureRecognizerDelegate {
-    func gestureRecognizer(
-        _ gestureRecognizer: UIGestureRecognizer,
-        shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer
-    ) -> Bool {
-        true
     }
 }
