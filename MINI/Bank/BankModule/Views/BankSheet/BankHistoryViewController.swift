@@ -44,21 +44,6 @@ private extension BankHistoryViewController {
         addGestureForLabel()
     }
     
-    func addGestureForLabel() {
-        let swipeUpGesture = UISwipeGestureRecognizer(
-            target: self,
-            action: #selector(setBigHeight)
-        )
-        swipeUpGesture.direction = .up
-        labelView.addGestureRecognizer(swipeUpGesture)
-        let swipeDownGesture = UISwipeGestureRecognizer(
-            target: self,
-            action: #selector(resetToOriginalState)
-        )
-        swipeDownGesture.direction = .down
-        labelView.addGestureRecognizer(swipeDownGesture)
-    }
-    
     func createTableView() {
         tableView.rowHeight = 100
         tableView.estimatedRowHeight = 100
@@ -80,13 +65,26 @@ private extension BankHistoryViewController {
         )
     }
     
+    func addGestureForLabel() {
+        let panGesture = UIPanGestureRecognizer(
+            target: self,
+            action: #selector(handlePanGesture(_:))
+        )
+        labelView.addGestureRecognizer(panGesture)
+    }
+    
+    @objc func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
+        delegate?.handlePanGesture(gesture)
+    }
+    
     @objc func resetToOriginalState() {
-        delegate?.resetBottomSheetSize()
+        //delegate?.resetBottomSheetSize()
     }
     
     @objc func setBigHeight() {
-        delegate?.setBigHeightOfHistory()
+        //delegate?.setBigHeightOfHistory()
     }
+    
 }
 
 //MARK: - BankTransactionKeyboardDelegate
