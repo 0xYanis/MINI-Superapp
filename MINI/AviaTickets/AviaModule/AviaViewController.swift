@@ -73,32 +73,40 @@ private extension AviaViewController {
     
     func tableViewRegistrate() {
         tableView.register(
-            AviaResultsCell.self, forCellReuseIdentifier: AviaResultsCell.cellId
+            AviaResultsCell.self,
+            forCellReuseIdentifier: AviaResultsCell.cellId
         )
     }
 }
 
 extension AviaViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView,
-                   numberOfRowsInSection section: Int) -> Int {
-        return 15
+    func tableView(
+        _ tableView: UITableView,
+        numberOfRowsInSection section: Int
+    ) -> Int {
+        15
     }
     
-    func tableView(_ tableView: UITableView,
-                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let defaultCell = UITableViewCell()
+    func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath
+    ) -> UITableViewCell {
         
-        switch indexPath.row {
-        case 0...15:
-            guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: AviaResultsCell.cellId,
-                for: indexPath
-            ) as? AviaResultsCell else { return defaultCell }
-            return cell
-            
-        default:
-            return defaultCell
-        }
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: AviaResultsCell.cellId,
+            for: indexPath
+        ) as? AviaResultsCell else { return UITableViewCell() }
+        
+        return cell
+    }
+    
+    
+    func tableView(
+        _ tableView: UITableView,
+        willDisplay cell: UITableViewCell,
+        forRowAt indexPath: IndexPath
+    ) {
+        
     }
 }
 
