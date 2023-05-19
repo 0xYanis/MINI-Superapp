@@ -76,15 +76,6 @@ private extension BankHistoryViewController {
     @objc func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
         delegate?.handlePanGesture(gesture)
     }
-    
-    @objc func resetToOriginalState() {
-        //delegate?.resetBottomSheetSize()
-    }
-    
-    @objc func setBigHeight() {
-        //delegate?.setBigHeightOfHistory()
-    }
-    
 }
 
 //MARK: - BankTransactionKeyboardDelegate
