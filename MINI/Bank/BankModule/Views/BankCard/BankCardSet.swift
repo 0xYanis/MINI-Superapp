@@ -9,8 +9,11 @@ import UIKit
 import SkeletonView
 
 final class BankCardSet: UITableViewCell {
+    
     //MARK: Public properties
     weak var delegate: BankViewCellDelegate?
+    weak var dataSource: BankViewCellDataSource?
+    
     static let cellId = "BankCardSet"
     
     //MARK: Private properties
@@ -82,7 +85,7 @@ extension BankCardSet: SkeletonCollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return delegate?.getCardData().count ?? 5
+        return dataSource?.getCardData().count ?? 5
     }
     
     
@@ -99,7 +102,7 @@ extension BankCardSet: SkeletonCollectionViewDataSource {
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
         
-        guard let cardData = delegate?.getCardData(), indexPath.row < cardData.count else { return }
+        guard let cardData = dataSource?.getCardData(), indexPath.row < cardData.count else { return }
         
         if let cell = cell as? BankCardCell {
             cell.configure(with: cardData[indexPath.row])

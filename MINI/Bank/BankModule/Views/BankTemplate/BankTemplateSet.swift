@@ -10,9 +10,13 @@ import SkeletonView
 
 final class BankTemplateSet: UITableViewCell {
     
+    //MARK: Public properties
     weak var delegate: BankViewCellDelegate?
+    weak var dataSource: BankViewCellDataSource?
+    
     static let cellId = "BankTemplateSet"
     
+    //MARK: Private properties
     private var collectionView: UICollectionView!
     private let snapLayout = StackFlowLayout()
     
@@ -25,6 +29,7 @@ final class BankTemplateSet: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: Public methods
     func reloadData() {
         collectionView.reloadData()
     }
@@ -80,7 +85,7 @@ extension BankTemplateSet: SkeletonCollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return delegate?.getTemplateData().count ?? 5
+        return dataSource?.getTemplateData().count ?? 5
     }
     
     
@@ -99,7 +104,7 @@ extension BankTemplateSet: SkeletonCollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
-        guard let templateData = delegate?.getTemplateData(), indexPath.row < templateData.count else { return }
+        guard let templateData = dataSource?.getTemplateData(), indexPath.row < templateData.count else { return }
         
         if let cell = cell as? BankTemplateCell {
             cell.configure(with: templateData[indexPath.row])

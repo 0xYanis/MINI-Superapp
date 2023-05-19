@@ -11,6 +11,7 @@ import SnapKit
 final class BankHistoryViewController: UIViewController {
     
     weak var delegate: BankViewCellDelegate?
+    weak var dataSource: BankViewCellDataSource?
     
     private lazy var labelView = BankHistoryLabel()
     private lazy var tableView = UITableView()
@@ -92,7 +93,7 @@ extension BankHistoryViewController: BankTransactionKeyboardDelegate {
     
     func searchBarTextDidChange(with searchText: String) {
         if !searchText.isEmpty {
-            delegate?.searchBarTextDidChange(with: searchText)
+            dataSource?.searchBarTextDidChange(with: searchText)
             isSearching = true
             tableView.reloadData()
         } else {
@@ -105,7 +106,7 @@ extension BankHistoryViewController: BankTransactionKeyboardDelegate {
 //MARK: - UITableViewDataSource
 extension BankHistoryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (isSearching ? delegate?.getFilteredData().count : delegate?.getTransactionData().count) ?? 10
+        return (isSearching ? dataSource?.getFilteredData().count : dataSource?.getTransactionData().count) ?? 10
     }
     
     
@@ -120,7 +121,7 @@ extension BankHistoryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView,
                    willDisplay cell: UITableViewCell,
                    forRowAt indexPath: IndexPath) {
-        guard let data = isSearching ? delegate?.getFilteredData() : delegate?.getTransactionData() else { return }
+        guard let data = isSearching ? dataSource?.getFilteredData() : dataSource?.getTransactionData() else { return }
         
         if let cell = cell as? BankTransactionCell {
             cell.configure(with: data[indexPath.row])

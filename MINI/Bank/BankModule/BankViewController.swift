@@ -20,7 +20,9 @@ protocol BankViewCellDelegate: AnyObject {
     func handlePanGesture(_ gesture: UIPanGestureRecognizer)
     func setBigHeightOfHistory()
     func resetBottomSheetSize()
-    
+}
+
+protocol BankViewCellDataSource: AnyObject {
     func getCardData() -> [BankCardEntity]
     func getTemplateData() -> [BankTemplateEntity]
     func getTransactionData() -> [BankTransactionEntity]
@@ -95,7 +97,10 @@ extension BankViewController: BankViewCellDelegate {
     func resetBottomSheetSize() {
         historyTableVC.view.resetToOriginalState(with: true)
     }
-    
+}
+
+//MARK: - BankViewCellDataSource
+extension BankViewController: BankViewCellDataSource {
     func getCardData() -> [BankCardEntity] {
         presenter?.getCardData() ?? []
     }
@@ -188,6 +193,7 @@ private extension BankViewController {
         view.addSubview(historyTableVC.view)
         historyTableVC.didMove(toParent: self)
         historyTableVC.delegate = self
+        historyTableVC.dataSource = self
         historyTableVC.view.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalToSuperview()
             make.height.equalToSuperview().multipliedBy(0.3)
@@ -300,6 +306,7 @@ extension BankViewController: UITableViewDataSource {
                 withIdentifier: BankCardSet.cellId,
                 for: indexPath) as? BankCardSet else { return defaultCell }
             cell.delegate = self
+            cell.dataSource = self
             cell.reloadData()
             return cell
             
@@ -315,6 +322,7 @@ extension BankViewController: UITableViewDataSource {
                 withIdentifier: BankTemplateSet.cellId,
                 for: indexPath) as? BankTemplateSet else { return defaultCell }
             cell.delegate = self
+            cell.dataSource = self
             cell.reloadData()
             return cell
             
