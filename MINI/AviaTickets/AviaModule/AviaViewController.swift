@@ -37,7 +37,6 @@ private extension AviaViewController {
     func initialize() {
         view.backgroundColor = UIColor(named: "backColor")
         createNavigation()
-        createSearchView()
         createtableView()
         tableViewRegistrate()
     }
@@ -45,16 +44,6 @@ private extension AviaViewController {
     func createNavigation() {
         navigationItem.title = "Tickets"
         navigationController?.navigationBar.prefersLargeTitles = true
-    }
-    
-    func createSearchView() {
-        searchView.roundCorners(radius: 30)
-        searchView.backgroundColor = .black
-        view.addSubview(searchView)
-        searchView.snp.makeConstraints { make in
-            make.top.left.right.equalToSuperview()
-            make.height.equalTo(view.frame.height / 3)
-        }
     }
     
     func createtableView() {
@@ -66,8 +55,7 @@ private extension AviaViewController {
         tableView.roundCorners(radius: 30)
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
-            make.left.right.bottom.equalToSuperview()
-            make.top.equalTo(searchView.snp.bottom).offset(15)
+            make.edges.equalToSuperview()
         }
     }
     
@@ -84,7 +72,7 @@ extension AviaViewController: UITableViewDataSource {
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     ) -> Int {
-        15
+        30
     }
     
     func tableView(
