@@ -64,7 +64,7 @@ extension GroceryViewController: GroceryViewProtocol {
 private extension GroceryViewController {
     func initialize() {
         view.backgroundColor = UIColor(named: "backColor")
-        createNavigation(title: "Grocery store")
+        createNavigation(title: "Grocery")
         createNavigationButtons(adress: "22 Washington st. NY")
         createCollectionView()
         collectionViewRegistrate()
