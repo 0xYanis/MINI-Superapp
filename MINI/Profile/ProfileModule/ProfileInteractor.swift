@@ -8,12 +8,18 @@
 import Foundation
 
 protocol ProfileInteractorProtocol: AnyObject {
-    
+    func viewDidLoaded()
 }
 
 final class ProfileInteractor: ProfileInteractorProtocol {
     
     weak var presenter: ProfilePresenterProtocol?
     
+    func viewDidLoaded() {
+        
+    }
+}
+
+private extension ProfileInteractor {
     
 }

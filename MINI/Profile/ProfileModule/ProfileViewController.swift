@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ProfileViewProtocol: AnyObject {
-    
+    func updateView()
 }
 
 final class ProfileViewController: UIViewController {
@@ -27,6 +27,10 @@ final class ProfileViewController: UIViewController {
 }
 
 extension ProfileViewController: ProfileViewProtocol {
+    func updateView() {
+        
+    }
+    
     
 }
 

@@ -8,7 +8,9 @@
 import Foundation
 
 protocol ProfilePresenterProtocol: AnyObject {
+    func viewDidLoaded()
     
+    func userSetNewProfileImage()
 }
 
 final class ProfilePresenter {
@@ -28,5 +30,11 @@ final class ProfilePresenter {
 }
 
 extension ProfilePresenter: ProfilePresenterProtocol {
+    func viewDidLoaded() {
+        
+    }
     
+    func userSetNewProfileImage() {
+        
+    }
 }
