@@ -37,7 +37,7 @@ private extension BaseTabBarController {
                 barTitle: "Grocery",
                 image: "basket.fill"),
             createVC(
-                UIViewController(),
+                ProfileBuilder.build(),
                 barTitle: "Profile",
                 image: "person.fill")
         ]

@@ -68,6 +68,11 @@
 		09ABE0082A143447009DB57B /* DefaultFood.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09ABE0072A143447009DB57B /* DefaultFood.xcassets */; };
 		09B1B4D02A1673D90090676E /* GroceryHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B1B4CF2A1673D90090676E /* GroceryHeaderCell.swift */; };
 		09BBA70F2A0E76950020E3C9 /* cardsLogo.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09BBA70E2A0E76950020E3C9 /* cardsLogo.xcassets */; };
+		09BFC93C2A1B4C7400C8505B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BFC93B2A1B4C7400C8505B /* ProfileViewController.swift */; };
+		09BFC93E2A1B4C8000C8505B /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BFC93D2A1B4C8000C8505B /* ProfilePresenter.swift */; };
+		09BFC9402A1B4C8900C8505B /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BFC93F2A1B4C8900C8505B /* ProfileRouter.swift */; };
+		09BFC9422A1B4C9600C8505B /* ProfileBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BFC9412A1B4C9600C8505B /* ProfileBuilder.swift */; };
+		09BFC9442A1B4CA800C8505B /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BFC9432A1B4CA800C8505B /* ProfileInteractor.swift */; };
 		09D509CE29EF1E76009CC219 /* BankHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D509CD29EF1E76009CC219 /* BankHistoryViewController.swift */; };
 		09D509D629EF379A009CC219 /* BankTransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D509D529EF379A009CC219 /* BankTransactionCell.swift */; };
 		09D509D829EF4EDE009CC219 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D509D729EF4EDE009CC219 /* UIImageView+Extension.swift */; };
@@ -174,6 +179,11 @@
 		09ABE0072A143447009DB57B /* DefaultFood.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DefaultFood.xcassets; sourceTree = "<group>"; };
 		09B1B4CF2A1673D90090676E /* GroceryHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryHeaderCell.swift; sourceTree = "<group>"; };
 		09BBA70E2A0E76950020E3C9 /* cardsLogo.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = cardsLogo.xcassets; sourceTree = "<group>"; };
+		09BFC93B2A1B4C7400C8505B /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		09BFC93D2A1B4C8000C8505B /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
+		09BFC93F2A1B4C8900C8505B /* ProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRouter.swift; sourceTree = "<group>"; };
+		09BFC9412A1B4C9600C8505B /* ProfileBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileBuilder.swift; sourceTree = "<group>"; };
+		09BFC9432A1B4CA800C8505B /* ProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
 		09D509CD29EF1E76009CC219 /* BankHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankHistoryViewController.swift; sourceTree = "<group>"; };
 		09D509D529EF379A009CC219 /* BankTransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTransactionCell.swift; sourceTree = "<group>"; };
 		09D509D729EF4EDE009CC219 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
@@ -304,6 +314,7 @@
 				090BAB8B2A029889006AE8F9 /* AviaTickets */,
 				09F86C5829F6FD1200307432 /* Bank */,
 				099089E12A1399F800EE00DA /* Grocery */,
+				09BFC9392A1B4C4F00C8505B /* Profile */,
 				09F86C5929F6FD1B00307432 /* Login */,
 				09E9E82829EB119D0084416B /* ServiceLayer */,
 				0921F35D29DF1FD100B3D4F7 /* Helpers */,
@@ -446,6 +457,26 @@
 				09A7495F29F992940005A649 /* CardDetailView.swift */,
 			);
 			path = DetailCard;
+			sourceTree = "<group>";
+		};
+		09BFC9392A1B4C4F00C8505B /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				09BFC93A2A1B4C5C00C8505B /* ProfileModule */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		09BFC93A2A1B4C5C00C8505B /* ProfileModule */ = {
+			isa = PBXGroup;
+			children = (
+				09BFC93B2A1B4C7400C8505B /* ProfileViewController.swift */,
+				09BFC93D2A1B4C8000C8505B /* ProfilePresenter.swift */,
+				09BFC93F2A1B4C8900C8505B /* ProfileRouter.swift */,
+				09BFC9432A1B4CA800C8505B /* ProfileInteractor.swift */,
+				09BFC9412A1B4C9600C8505B /* ProfileBuilder.swift */,
+			);
+			path = ProfileModule;
 			sourceTree = "<group>";
 		};
 		09D509D129EF3571009CC219 /* Views */ = {
@@ -676,6 +707,7 @@
 				09FC394129FABF6B00B2D97E /* AllTemplatesEntity.swift in Sources */,
 				099D4F8329F72AFD0002C24A /* NewTemplateRouter.swift in Sources */,
 				099D4F6B29F71A420002C24A /* CardInteractor.swift in Sources */,
+				09BFC93C2A1B4C7400C8505B /* ProfileViewController.swift in Sources */,
 				09B1B4D02A1673D90090676E /* GroceryHeaderCell.swift in Sources */,
 				09FC394329FAC53200B2D97E /* AllTemplatesViewCell.swift in Sources */,
 				09E9E82729EB0B3F0084416B /* BiometryService.swift in Sources */,
@@ -689,7 +721,9 @@
 				099A79C029F16406004B95C7 /* BankCardCell.swift in Sources */,
 				09E9E82329EAFC770084416B /* UIView+Extension.swift in Sources */,
 				09F5BFD92A12880000BC3B7C /* BankTemplateService.swift in Sources */,
+				09BFC9402A1B4C8900C8505B /* ProfileRouter.swift in Sources */,
 				099D4F6F29F71A610002C24A /* CardBuilder.swift in Sources */,
+				09BFC9442A1B4CA800C8505B /* ProfileInteractor.swift in Sources */,
 				099D4F7D29F72ADB0002C24A /* NewTemplateViewController.swift in Sources */,
 				098AC7D02A03D03400CD694B /* AviaResultsCell.swift in Sources */,
 				09D509CE29EF1E76009CC219 /* BankHistoryViewController.swift in Sources */,
@@ -726,9 +760,11 @@
 				09E81C6A2A169D1D008B313B /* GroceryService.swift in Sources */,
 				099D4F6D29F71A530002C24A /* CardRouter.swift in Sources */,
 				09632FCC29ED8A7D00DB2641 /* BankCardSet.swift in Sources */,
+				09BFC9422A1B4C9600C8505B /* ProfileBuilder.swift in Sources */,
 				09F5BFD72A1285F500BC3B7C /* BankCardService.swift in Sources */,
 				099089E32A139A2D00EE00DA /* GroceryViewController.swift in Sources */,
 				099D4F8129F72AF40002C24A /* NewTemplateInteractor.swift in Sources */,
+				09BFC93E2A1B4C8000C8505B /* ProfilePresenter.swift in Sources */,
 				099D4F7329F722DE0002C24A /* NewCardViewController.swift in Sources */,
 				099089E92A139A5100EE00DA /* GroceryRouter.swift in Sources */,
 				09F86C4C29F6E75600307432 /* AuthenticationManager.swift in Sources */,
