@@ -6,8 +6,22 @@
 //
 
 import Foundation
+import RealmSwift
 
 struct BankTemplateEntity: Codable, Equatable {
+    let id: Int
     let image: String
     let label: String
+}
+
+
+@objcMembers
+final class BankTemplateModel: Object {
+    dynamic var id    = ""
+    dynamic var image = ""
+    dynamic var label = ""
+    
+    override class func primaryKey() -> String? {
+        return "id"
+    }
 }

@@ -17,12 +17,8 @@ protocol RealmServiceProtocol: AnyObject {
 
 final class RealmService: RealmServiceProtocol {
     
-    private let realm: Realm
-    
-    init(realm: Realm) {
-        self.realm = realm
-    }
-    
+    private lazy var realm = try! Realm(configuration: .defaultConfiguration)
+        
     func add(object: Object) {
         do {
             try realm.write {

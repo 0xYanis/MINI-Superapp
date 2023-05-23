@@ -54,8 +54,8 @@ final class BankTransactionCell: UITableViewCell {
         //iconView.image = UIImage(named: transaction.icon)
         transactionLabel.text = transaction.name
         dateLabel.text = transaction.date
-        costLabel.text = transaction.cost
-        cardLabel.text = transaction.cardNumber
+        costLabel.text = "\(transaction.cost)"
+        cardLabel.text = "\(transaction.cardNumber)"
     }
 }
 

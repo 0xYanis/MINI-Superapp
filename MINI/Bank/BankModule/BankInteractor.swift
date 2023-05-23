@@ -22,6 +22,7 @@ protocol BankInteractorProtocol: AnyObject {
 final class BankInteractor: BankInteractorProtocol {
     
     weak var presenter: BankPresenterProtocol?
+    var realmService: RealmServiceProtocol
     var cardService: BankCardServiceProtocol
     var templateService: BankTemplateServiceProtocol
     var transactionService: BankTransactionServiceProtocol
@@ -33,10 +34,12 @@ final class BankInteractor: BankInteractorProtocol {
     
     
     init(
+        realmService: RealmServiceProtocol,
         cardService: BankCardServiceProtocol,
         templateService: BankTemplateServiceProtocol,
         transactionService: BankTransactionServiceProtocol
     ) {
+        self.realmService = realmService
         self.cardService = cardService
         self.templateService = templateService
         self.transactionService = transactionService
