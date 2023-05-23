@@ -25,6 +25,8 @@
 		0910960729DB32F400338D22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0910960629DB32F400338D22 /* Assets.xcassets */; };
 		091CD49029DDE9250041627F /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 091CD48F29DDE9250041627F /* Lottie */; };
 		0921F35F29DF1FE000B3D4F7 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0921F35E29DF1FE000B3D4F7 /* UIButton+Extension.swift */; };
+		0925D59B2A1CAED200B5E12B /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0925D59A2A1CAED200B5E12B /* RealmService.swift */; };
+		0925D59E2A1CAFD800B5E12B /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0925D59D2A1CAFD800B5E12B /* RealmSwift */; };
 		092E739429EBEB1F00165D37 /* LoginAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E739329EBEB1E00165D37 /* LoginAnimationView.swift */; };
 		092E739629EBEB3000165D37 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E739529EBEB3000165D37 /* LoginView.swift */; };
 		092E739A29EBFB8800165D37 /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E739929EBFB8800165D37 /* UIStackView+Extension.swift */; };
@@ -136,6 +138,7 @@
 		0910960629DB32F400338D22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0910960B29DB32F500338D22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0921F35E29DF1FE000B3D4F7 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		0925D59A2A1CAED200B5E12B /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
 		092E739329EBEB1E00165D37 /* LoginAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAnimationView.swift; sourceTree = "<group>"; };
 		092E739529EBEB3000165D37 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		092E739929EBFB8800165D37 /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
@@ -232,6 +235,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0925D59E2A1CAFD800B5E12B /* RealmSwift in Frameworks */,
 				09035D0929DDAE2F003D4B0B /* SnapKit in Frameworks */,
 				09F5BFE02A12B47800BC3B7C /* SkeletonView in Frameworks */,
 				091CD49029DDE9250041627F /* Lottie in Frameworks */,
@@ -519,6 +523,7 @@
 				09E9E82629EB0B3F0084416B /* BiometryService.swift */,
 				09E9E82929EB16210084416B /* KeyChainService.swift */,
 				09E9E82D29EB16E10084416B /* KeyChain.swift */,
+				0925D59A2A1CAED200B5E12B /* RealmService.swift */,
 			);
 			path = ServiceLayer;
 			sourceTree = "<group>";
@@ -638,6 +643,7 @@
 				09035D0829DDAE2F003D4B0B /* SnapKit */,
 				091CD48F29DDE9250041627F /* Lottie */,
 				09F5BFDF2A12B47800BC3B7C /* SkeletonView */,
+				0925D59D2A1CAFD800B5E12B /* RealmSwift */,
 			);
 			productName = MINI;
 			productReference = 091095FA29DB32F000338D22 /* MINI.app */;
@@ -671,6 +677,7 @@
 				09035D0729DDAE2F003D4B0B /* XCRemoteSwiftPackageReference "SnapKit" */,
 				091CD48E29DDE9250041627F /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				09F5BFDE2A12B47800BC3B7C /* XCRemoteSwiftPackageReference "SkeletonView" */,
+				0925D59C2A1CAFD800B5E12B /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 091095FB29DB32F000338D22 /* Products */;
 			projectDirPath = "";
@@ -749,6 +756,7 @@
 				09632FCE29ED8A8800DB2641 /* BankTemplateSet.swift in Sources */,
 				09E9E83029EB24840084416B /* UIAlertController+Extension.swift in Sources */,
 				09FC394C29FAD3F400B2D97E /* TransactionRouter.swift in Sources */,
+				0925D59B2A1CAED200B5E12B /* RealmService.swift in Sources */,
 				092E739429EBEB1F00165D37 /* LoginAnimationView.swift in Sources */,
 				09D509D829EF4EDE009CC219 /* UIImageView+Extension.swift in Sources */,
 				099089F02A13C2C400EE00DA /* AdressViewController.swift in Sources */,
@@ -1027,6 +1035,14 @@
 				minimumVersion = 4.0.0;
 			};
 		};
+		0925D59C2A1CAFD800B5E12B /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		09F5BFDE2A12B47800BC3B7C /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Juanpe/SkeletonView";
@@ -1047,6 +1063,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 091CD48E29DDE9250041627F /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
+		};
+		0925D59D2A1CAFD800B5E12B /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0925D59C2A1CAFD800B5E12B /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 		09F5BFDF2A12B47800BC3B7C /* SkeletonView */ = {
 			isa = XCSwiftPackageProductDependency;
