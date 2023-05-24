@@ -9,22 +9,19 @@ import Foundation
 import Alamofire
 
 protocol APIServiceProtocol: AnyObject {
-    
-    associatedtype DataType
-    
-    func getRequest(url: String, completion: @escaping (Result<DataType, Error>) -> Void)
-    func postRequest(url: String, parameters: [String : Any]?, completion: @escaping (Result<DataType, Error>) -> Void)
-    func putRequest(url: String, parameters: [String : Any]?, completion: @escaping (Result<DataType, Error>) -> Void)
-    func patchRequest(url: String, parameters: [String : Any]?, completion: @escaping (Result<DataType, Error>) -> Void)
-    func deleteRequest(url: String, completion: @escaping (Result<DataType, Error>) -> Void)
+    func getRequest<T: Codable>(url: String, completion: @escaping (Result<T, Error>) -> Void)
+    func postRequest<T: Codable>(url: String, parameters: [String : Any]?, completion: @escaping (Result<T, Error>) -> Void)
+    func putRequest<T: Codable>(url: String, parameters: [String : Any]?, completion: @escaping (Result<T, Error>) -> Void)
+    func patchRequest<T: Codable>(url: String, parameters: [String : Any]?, completion: @escaping (Result<T, Error>) -> Void)
+    func deleteRequest<T: Codable>(url: String, completion: @escaping (Result<T, Error>) -> Void)
 }
 
-final class APIService< T : Codable >: APIServiceProtocol {
+
+final class APIService: APIServiceProtocol {
     
-    typealias DataType = T
     typealias handler<T> = (Result<T, Error>) -> Void
     
-    func getRequest(
+    func getRequest<T: Codable>(
         url: String,
         completion: @escaping handler<T>
     ) {
@@ -35,7 +32,7 @@ final class APIService< T : Codable >: APIServiceProtocol {
         )
     }
     
-    func postRequest(
+    func postRequest<T: Codable>(
         url: String,
         parameters: [String : Any]?,
         completion: @escaping handler<T>
@@ -48,7 +45,7 @@ final class APIService< T : Codable >: APIServiceProtocol {
         )
     }
     
-    func putRequest(
+    func putRequest<T: Codable>(
         url: String,
         parameters: [String : Any]?,
         completion: @escaping handler<T>
@@ -61,7 +58,7 @@ final class APIService< T : Codable >: APIServiceProtocol {
         )
     }
     
-    func patchRequest(
+    func patchRequest<T: Codable>(
         url: String,
         parameters: [String : Any]?,
         completion: @escaping handler<T>
@@ -74,7 +71,7 @@ final class APIService< T : Codable >: APIServiceProtocol {
         )
     }
     
-    func deleteRequest(
+    func deleteRequest<T: Codable>(
         url: String,
         completion: @escaping handler<T>
     ) {
@@ -88,7 +85,7 @@ final class APIService< T : Codable >: APIServiceProtocol {
 }
 
 private extension APIService {
-    private func performRequest(
+    private func performRequest<T: Codable>(
         url: String,
         method: HTTPMethod,
         parameters: Parameters? = nil,
