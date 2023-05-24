@@ -14,7 +14,7 @@ protocol BankTemplateServiceProtocol: AnyObject {
 final class BankTemplateService: BankTemplateServiceProtocol {
     
     var apiService: APIServiceProtocol
-    private let cardUrl = "http://localhost:3001/templates"
+    private let cardUrl = "https://my-json-server.typicode.com/0xyanis/MINIapi/templates"
     
     init(
         apiService: APIServiceProtocol
