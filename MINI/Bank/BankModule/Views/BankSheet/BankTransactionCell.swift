@@ -53,7 +53,7 @@ final class BankTransactionCell: UITableViewCell {
     func configure(with transaction: BankTransactionEntity) {
         iconView.sd_setImage(with: URL(string: transaction.icon ?? ""))
         transactionLabel.text = transaction.name + ": " + transaction.notes
-        dateLabel.text = transaction.date
+        dateLabel.text = transaction.date.formattedDateString(dateFormat: "d MMM, yyyy")
         costLabel.text = "\(transaction.cost)"
         cardLabel.text = "\(transaction.cardNumber)"
     }
