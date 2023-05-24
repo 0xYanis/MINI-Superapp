@@ -49,10 +49,6 @@ final class BankInteractor: BankInteractorProtocol {
         getCards()
         getTemplates()
         getTransactions()
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            self.presenter?.updateView()
-        }
     }
     
     func getCardData() -> [BankCardEntity] {
@@ -86,10 +82,11 @@ private extension BankInteractor {
     func getCards() {
         cardService.getCardsData { [weak self] result in
             guard let self = self else { return }
-            DispatchQueue.main.async {
+            DispatchQueue.global().async {
                 switch result {
                 case .success(let cards):
                     self.cardsData = cards ?? []
+                    self.presenter?.updateView()
                 case .failure(let error):
                     self.presenter?.loadingDataGetFailed(with: error.localizedDescription)
                 }
@@ -100,10 +97,11 @@ private extension BankInteractor {
     func getTemplates() {
         templateService.getTemplatesData { [weak self] result in
             guard let self = self else { return }
-            DispatchQueue.main.async {
+            DispatchQueue.global().async {
                 switch result {
                 case .success(let templates):
                     self.templatesData = templates ?? []
+                    self.presenter?.updateView()
                 case .failure(let error):
                     self.presenter?.loadingDataGetFailed(with: error.localizedDescription)
                 }
@@ -114,10 +112,11 @@ private extension BankInteractor {
     func getTransactions() {
         transactionService.getTransactionsData { [weak self] result in
             guard let self = self else { return }
-            DispatchQueue.main.async {
+            DispatchQueue.global().async {
                 switch result {
                 case .success(let transactions):
                     self.transactionsData = transactions ?? []
+                    self.presenter?.updateView()
                 case .failure(let error):
                     self.presenter?.loadingDataGetFailed(with: error.localizedDescription)
                 }
