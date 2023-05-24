@@ -388,12 +388,12 @@
 				097E039E29EC449900CE2A6F /* BankInteractor.swift */,
 				097E03A029EC44A500CE2A6F /* BankRouter.swift */,
 				097E03A229EC44BD00CE2A6F /* BankBuilder.swift */,
-				09E24C102A12239A00A91F74 /* BankCardEntity.swift */,
-				09E24C142A1228D000A91F74 /* BankTemplateEntity.swift */,
-				09E24C162A122C2E00A91F74 /* BankTransactionEntity.swift */,
 				09F5BFD62A1285F500BC3B7C /* BankCardService.swift */,
 				09F5BFD82A12880000BC3B7C /* BankTemplateService.swift */,
 				09F5BFDA2A1288A300BC3B7C /* BankTransactionService.swift */,
+				09E24C102A12239A00A91F74 /* BankCardEntity.swift */,
+				09E24C142A1228D000A91F74 /* BankTemplateEntity.swift */,
+				09E24C162A122C2E00A91F74 /* BankTransactionEntity.swift */,
 			);
 			path = BankModule;
 			sourceTree = "<group>";
