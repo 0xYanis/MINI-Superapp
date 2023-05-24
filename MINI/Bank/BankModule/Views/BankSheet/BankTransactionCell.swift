@@ -14,8 +14,7 @@ final class BankTransactionCell: UITableViewCell {
     
     private lazy var iconView: UIImageView = {
         let view = UIImageView(cornerRadius: 15)
-        view.layer.borderColor = UIColor.systemOrange.cgColor
-        view.layer.borderWidth = 1
+        
         return view
     }()
     private lazy var transactionLabel = UILabel(
@@ -51,7 +50,7 @@ final class BankTransactionCell: UITableViewCell {
     
     // MARK: - Public method
     func configure(with transaction: BankTransactionEntity) {
-        //iconView.image = UIImage(named: transaction.icon)
+        //iconView.loadImage(fromURL: transaction.icon)
         transactionLabel.text = transaction.name
         dateLabel.text = transaction.date
         costLabel.text = "\(transaction.cost)"
@@ -69,7 +68,7 @@ extension BankTransactionCell {
         createCard()
     }
     func createIcon() {
-        iconView.contentMode = .scaleAspectFit
+        iconView.contentMode = .scaleAspectFill
         addSubview(iconView)
         iconView.snp.makeConstraints { make in
             make.left.equalToSuperview().inset(16)
@@ -86,7 +85,6 @@ extension BankTransactionCell {
         }
     }
     func createDate() {
-        //dateLabel.isSkeletonable = true
         addSubview(dateLabel)
         dateLabel.snp.makeConstraints { make in
             make.bottom.equalToSuperview().inset(20)
