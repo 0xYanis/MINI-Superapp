@@ -13,8 +13,24 @@ protocol BankTemplateServiceProtocol: AnyObject {
 
 final class BankTemplateService: BankTemplateServiceProtocol {
     
+    var apiService: APIServiceProtocol
+    private let cardUrl = "http://localhost:3001/templates"
+    
+    init(
+        apiService: APIServiceProtocol
+    ) {
+        self.apiService = apiService
+    }
+    
     func getTemplatesData(completion: @escaping(Result<[BankTemplateEntity]?, Error>) -> Void) {
-        
+        apiService.getRequest(url: cardUrl) { (result: Result<BankTemplateStruct, Error>) in
+            switch result {
+            case .success(let data):
+                completion(.success(data.templateList))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
     
     

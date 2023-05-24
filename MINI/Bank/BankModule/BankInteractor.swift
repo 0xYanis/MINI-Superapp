@@ -49,7 +49,10 @@ final class BankInteractor: BankInteractorProtocol {
         getCards()
         getTemplates()
         getTransactions()
-        presenter?.updateView()
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.presenter?.updateView()
+        }
     }
     
     func getCardData() -> [BankCardEntity] {

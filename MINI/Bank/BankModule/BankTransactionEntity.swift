@@ -8,9 +8,13 @@
 import Foundation
 import RealmSwift
 
+struct BankTransactionStruct: Codable, Equatable {
+    let transactionList: [BankTransactionEntity]
+}
+
 struct BankTransactionEntity: Codable, Equatable {
     let id: Int
-    let icon: Data?
+    let icon: String?
     let name: String
     let date: String
     let cost: Double

@@ -47,10 +47,8 @@ extension BankPresenter: BankPresenterProtocol {
     }
     
     func updateView() {
-        DispatchQueue.main.async {
-            self.view?.updateBankTable()
-            self.view?.updateHistory()
-        }
+        view?.updateBankTable()
+        view?.updateHistory()
     }
     
     func userDidTapNewCard() {

@@ -8,6 +8,10 @@
 import Foundation
 import RealmSwift
 
+struct BankTemplateStruct: Codable, Equatable {
+    let templateList: [BankTemplateEntity]
+}
+
 struct BankTemplateEntity: Codable, Equatable {
     let id: Int
     let image: String

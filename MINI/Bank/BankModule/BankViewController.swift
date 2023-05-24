@@ -217,6 +217,7 @@ private extension BankViewController {
     }
     
     @objc func refreshAction() {
+        presenter?.viewDidLoaded()
         presenter?.updateView()
         refreshControl.endRefreshing()
     }

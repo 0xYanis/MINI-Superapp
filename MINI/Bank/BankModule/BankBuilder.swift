@@ -12,8 +12,8 @@ final class BankBuilder {
         let apiService = APIService()
         let realmService = RealmService()
         let cardService = BankCardService(apiService: apiService)
-        let templateService = BankTemplateService()
-        let transactionService = BankTransactionService()
+        let templateService = BankTemplateService(apiService: apiService)
+        let transactionService = BankTransactionService(apiService: apiService)
         
         let viewController = BankViewController()
         let router = BankRouter()

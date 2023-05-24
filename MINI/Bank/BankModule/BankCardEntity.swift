@@ -8,6 +8,10 @@
 import Foundation
 import RealmSwift
 
+struct BankCardStruct: Codable, Equatable {
+    let cardList: [BankCardEntity]
+}
+
 struct BankCardEntity: Codable, Equatable {
     let id: Int
     let cardColor: String
