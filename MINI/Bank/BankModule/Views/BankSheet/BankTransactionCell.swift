@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import SDWebImage
 
 final class BankTransactionCell: UITableViewCell {
     
@@ -50,8 +51,8 @@ final class BankTransactionCell: UITableViewCell {
     
     // MARK: - Public method
     func configure(with transaction: BankTransactionEntity) {
-        //iconView.loadImage(fromURL: transaction.icon)
-        transactionLabel.text = transaction.name
+        iconView.sd_setImage(with: URL(string: transaction.icon ?? ""))
+        transactionLabel.text = transaction.name + ": " + transaction.notes
         dateLabel.text = transaction.date
         costLabel.text = "\(transaction.cost)"
         cardLabel.text = "\(transaction.cardNumber)"

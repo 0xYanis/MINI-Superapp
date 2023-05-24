@@ -77,6 +77,7 @@
 		09BFC9402A1B4C8900C8505B /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BFC93F2A1B4C8900C8505B /* ProfileRouter.swift */; };
 		09BFC9422A1B4C9600C8505B /* ProfileBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BFC9412A1B4C9600C8505B /* ProfileBuilder.swift */; };
 		09BFC9442A1B4CA800C8505B /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BFC9432A1B4CA800C8505B /* ProfileInteractor.swift */; };
+		09CFB4262A1E6A940007FF40 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 09CFB4252A1E6A940007FF40 /* SDWebImage */; };
 		09D509CE29EF1E76009CC219 /* BankHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D509CD29EF1E76009CC219 /* BankHistoryViewController.swift */; };
 		09D509D629EF379A009CC219 /* BankTransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D509D529EF379A009CC219 /* BankTransactionCell.swift */; };
 		09D509D829EF4EDE009CC219 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D509D729EF4EDE009CC219 /* UIImageView+Extension.swift */; };
@@ -238,6 +239,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09CFB4262A1E6A940007FF40 /* SDWebImage in Frameworks */,
 				096B4B2A2A1DEF3500E5C65E /* Alamofire in Frameworks */,
 				0925D59E2A1CAFD800B5E12B /* RealmSwift in Frameworks */,
 				09035D0929DDAE2F003D4B0B /* SnapKit in Frameworks */,
@@ -650,6 +652,7 @@
 				09F5BFDF2A12B47800BC3B7C /* SkeletonView */,
 				0925D59D2A1CAFD800B5E12B /* RealmSwift */,
 				096B4B292A1DEF3500E5C65E /* Alamofire */,
+				09CFB4252A1E6A940007FF40 /* SDWebImage */,
 			);
 			productName = MINI;
 			productReference = 091095FA29DB32F000338D22 /* MINI.app */;
@@ -685,6 +688,7 @@
 				09F5BFDE2A12B47800BC3B7C /* XCRemoteSwiftPackageReference "SkeletonView" */,
 				0925D59C2A1CAFD800B5E12B /* XCRemoteSwiftPackageReference "realm-swift" */,
 				096B4B282A1DEF3500E5C65E /* XCRemoteSwiftPackageReference "Alamofire" */,
+				09CFB4242A1E6A940007FF40 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = 091095FB29DB32F000338D22 /* Products */;
 			projectDirPath = "";
@@ -1059,6 +1063,14 @@
 				kind = branch;
 			};
 		};
+		09CFB4242A1E6A940007FF40 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		09F5BFDE2A12B47800BC3B7C /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Juanpe/SkeletonView";
@@ -1089,6 +1101,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 096B4B282A1DEF3500E5C65E /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		09CFB4252A1E6A940007FF40 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 09CFB4242A1E6A940007FF40 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
 		};
 		09F5BFDF2A12B47800BC3B7C /* SkeletonView */ = {
 			isa = XCSwiftPackageProductDependency;
