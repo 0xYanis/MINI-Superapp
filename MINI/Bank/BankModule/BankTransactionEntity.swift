@@ -10,7 +10,7 @@ import RealmSwift
 
 struct BankTransactionEntity: Codable, Equatable {
     let id: Int
-    let icon: String
+    let icon: Data?
     let name: String
     let date: String
     let cost: Double
@@ -27,7 +27,7 @@ struct BankTransactionEntity: Codable, Equatable {
 @objcMembers
 final class BankTransactionModel: Object {
     dynamic var id: Int = 0
-    dynamic var icon: String      = ""
+    dynamic var icon: Data?       = nil
     dynamic var name: String      = ""
     dynamic var date: String      = ""
     dynamic var cost: Double      = 0.0

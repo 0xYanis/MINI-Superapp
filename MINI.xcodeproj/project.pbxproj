@@ -35,6 +35,8 @@
 		09581B0E29EC769F000CC093 /* hello.json in Resources */ = {isa = PBXBuildFile; fileRef = 09581B0D29EC769F000CC093 /* hello.json */; };
 		09632FCC29ED8A7D00DB2641 /* BankCardSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09632FCB29ED8A7D00DB2641 /* BankCardSet.swift */; };
 		09632FCE29ED8A8800DB2641 /* BankTemplateSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09632FCD29ED8A8800DB2641 /* BankTemplateSet.swift */; };
+		096B4B272A1DEEC700E5C65E /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096B4B262A1DEEC700E5C65E /* APIService.swift */; };
+		096B4B2A2A1DEF3500E5C65E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 096B4B292A1DEF3500E5C65E /* Alamofire */; };
 		097E039B29EC447000CE2A6F /* BankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097E039A29EC447000CE2A6F /* BankViewController.swift */; };
 		097E039D29EC448F00CE2A6F /* BankPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097E039C29EC448F00CE2A6F /* BankPresenter.swift */; };
 		097E039F29EC449900CE2A6F /* BankInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097E039E29EC449900CE2A6F /* BankInteractor.swift */; };
@@ -147,6 +149,7 @@
 		09581B0D29EC769F000CC093 /* hello.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = hello.json; sourceTree = "<group>"; };
 		09632FCB29ED8A7D00DB2641 /* BankCardSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankCardSet.swift; sourceTree = "<group>"; };
 		09632FCD29ED8A8800DB2641 /* BankTemplateSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTemplateSet.swift; sourceTree = "<group>"; };
+		096B4B262A1DEEC700E5C65E /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		097E039A29EC447000CE2A6F /* BankViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankViewController.swift; sourceTree = "<group>"; };
 		097E039C29EC448F00CE2A6F /* BankPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankPresenter.swift; sourceTree = "<group>"; };
 		097E039E29EC449900CE2A6F /* BankInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankInteractor.swift; sourceTree = "<group>"; };
@@ -235,6 +238,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				096B4B2A2A1DEF3500E5C65E /* Alamofire in Frameworks */,
 				0925D59E2A1CAFD800B5E12B /* RealmSwift in Frameworks */,
 				09035D0929DDAE2F003D4B0B /* SnapKit in Frameworks */,
 				09F5BFE02A12B47800BC3B7C /* SkeletonView in Frameworks */,
@@ -520,6 +524,7 @@
 		09E9E82829EB119D0084416B /* ServiceLayer */ = {
 			isa = PBXGroup;
 			children = (
+				096B4B262A1DEEC700E5C65E /* APIService.swift */,
 				09E9E82629EB0B3F0084416B /* BiometryService.swift */,
 				09E9E82929EB16210084416B /* KeyChainService.swift */,
 				09E9E82D29EB16E10084416B /* KeyChain.swift */,
@@ -644,6 +649,7 @@
 				091CD48F29DDE9250041627F /* Lottie */,
 				09F5BFDF2A12B47800BC3B7C /* SkeletonView */,
 				0925D59D2A1CAFD800B5E12B /* RealmSwift */,
+				096B4B292A1DEF3500E5C65E /* Alamofire */,
 			);
 			productName = MINI;
 			productReference = 091095FA29DB32F000338D22 /* MINI.app */;
@@ -678,6 +684,7 @@
 				091CD48E29DDE9250041627F /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				09F5BFDE2A12B47800BC3B7C /* XCRemoteSwiftPackageReference "SkeletonView" */,
 				0925D59C2A1CAFD800B5E12B /* XCRemoteSwiftPackageReference "realm-swift" */,
+				096B4B282A1DEF3500E5C65E /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 091095FB29DB32F000338D22 /* Products */;
 			projectDirPath = "";
@@ -742,6 +749,7 @@
 				09E9E82129EAE9650084416B /* LoginEntity.swift in Sources */,
 				09503EB829F2D44000254F53 /* StackFlowLayout.swift in Sources */,
 				09E9E81929EAE9410084416B /* LoginViewController.swift in Sources */,
+				096B4B272A1DEEC700E5C65E /* APIService.swift in Sources */,
 				09FC394A29FAD3ED00B2D97E /* TransactionInteractor.swift in Sources */,
 				09E24C152A1228D000A91F74 /* BankTemplateEntity.swift in Sources */,
 				090AE1DB29FBAA020092515D /* TemplateViewController.swift in Sources */,
@@ -1043,6 +1051,14 @@
 				kind = branch;
 			};
 		};
+		096B4B282A1DEF3500E5C65E /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		09F5BFDE2A12B47800BC3B7C /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Juanpe/SkeletonView";
@@ -1068,6 +1084,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0925D59C2A1CAFD800B5E12B /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		096B4B292A1DEF3500E5C65E /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 096B4B282A1DEF3500E5C65E /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 		09F5BFDF2A12B47800BC3B7C /* SkeletonView */ = {
 			isa = XCSwiftPackageProductDependency;
