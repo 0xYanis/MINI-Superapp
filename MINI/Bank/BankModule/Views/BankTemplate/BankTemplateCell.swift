@@ -76,10 +76,12 @@ private extension BankTemplateCell {
         }
     }
     func createTextLabel() {
+        textLabel.numberOfLines = 1
+        textLabel.textAlignment = .center
         templateView.addSubview(textLabel)
         textLabel.snp.makeConstraints { make in
             make.top.equalTo(circleView.snp.bottom).offset(10)
-            make.centerX.equalToSuperview()
+            make.left.right.equalToSuperview().inset(10)
         }
     }
 }
