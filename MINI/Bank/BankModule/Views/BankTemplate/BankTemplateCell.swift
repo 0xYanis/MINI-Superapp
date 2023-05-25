@@ -48,7 +48,7 @@ private extension BankTemplateCell {
     }
     func createTemplateView() {
         templateView.backgroundColor = .systemGray6//UIColor(named: "whiteColor")
-        templateView.radiusAndShadow(radius: 10, shadowSize: 7)
+        templateView.roundCorners(radius: 10)
         addSubview(templateView)
         templateView.snp.makeConstraints { make in
             make.left.right.equalToSuperview()

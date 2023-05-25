@@ -105,6 +105,7 @@ extension BankCardSet: SkeletonCollectionViewDataSource {
         guard let cardData = dataSource?.getCardData(), indexPath.row < cardData.count else { return }
         
         if let cell = cell as? BankCardCell {
+            cell.shadow(color: .black, opacity: 0.5, radius: 10)
             cell.configure(with: cardData[indexPath.row])
             self.stopSkeleton()
         }
