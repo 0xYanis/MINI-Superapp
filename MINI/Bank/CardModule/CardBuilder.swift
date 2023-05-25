@@ -8,10 +8,10 @@
 import UIKit
 
 final class CardBuilder {
-    static func build(with data: Any) -> UIViewController {
+    static func build() -> UIViewController {
         let viewController = CardViewController()
         let router = CardRouter()
-        let interactor = CardInteractor(data: data)
+        let interactor = CardInteractor()
         let presenter = CardPresenter(router: router, interactor: interactor)
         
         viewController.presenter = presenter

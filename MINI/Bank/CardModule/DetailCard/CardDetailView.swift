@@ -26,7 +26,10 @@ final class CardDetailView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
+    func configure(with data: BankCardEntity) {
+        cardLogo.image = UIImage(named: data.logo)
+        cardNumber.text = data.number.formatAsCardNumber()
+    }
 }
 
 private extension CardDetailView {

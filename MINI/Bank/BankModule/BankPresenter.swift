@@ -64,7 +64,7 @@ extension BankPresenter: BankPresenterProtocol {
     
     func userDidTapCard(index: Int) {
         let data = interactor.userDidTapCard(index: index)
-        router.goToDetailCard(with: data)
+        router.goToDetailCard()
     }
     
     func userDidTapSeeAll() {

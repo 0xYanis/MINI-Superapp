@@ -33,4 +33,14 @@ extension String {
         }
     }
     
+    func formatAsCardNumber() -> String {
+        var formatted = ""
+        for (index, char) in self.enumerated() {
+            if index != 0 && index % 4 == 0 {
+                formatted.append(" ")
+            }
+            formatted.append(char)
+        }
+        return formatted
+    }
 }

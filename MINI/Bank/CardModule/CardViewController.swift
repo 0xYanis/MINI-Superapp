@@ -8,19 +8,20 @@
 import UIKit
 
 protocol CardViewProtocol: AnyObject {
-    
+    func updateView(with data: BankCardEntity)
 }
 
 final class CardViewController: UIViewController {
     
     private lazy var cardView = CardDetailView()
-    private lazy var detailTableView = UITableView(frame: .zero, style: .plain)
+    private lazy var tableView = UITableView(frame: .zero, style: .plain)
     
     var presenter: CardPresenterProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
+        presenter?.viewDidLoaded()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -30,16 +31,20 @@ final class CardViewController: UIViewController {
 }
 
 extension CardViewController: CardViewProtocol {
-    
+    func updateView(with data: BankCardEntity) {
+        cardView.configure(with: data)
+        tableView.reloadData()
+    }
 }
 
 // MARK: - private methods
 private extension CardViewController {
     func initialize() {
         view.backgroundColor = UIColor(named: "backColor")
+        
         createNavigation(title: "Visa Classic")
-        createCardView(uiView: cardView)
-        createTableView(tableView: detailTableView, cardView)
+        createCardView()
+        createTableView()
         
         addButtonsToNavBar()
         createViewRotation(uiView: cardView)
@@ -50,9 +55,9 @@ private extension CardViewController {
         navigationItem.largeTitleDisplayMode = .never
     }
     
-    func createCardView(uiView: UIView) {
-        view.addSubview(uiView)
-        uiView.snp.makeConstraints { make in
+    func createCardView() {
+        view.addSubview(cardView)
+        cardView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
             make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
@@ -60,14 +65,14 @@ private extension CardViewController {
         }
     }
     
-    func createTableView(tableView: UITableView,_ topView: UIView) {
+    func createTableView() {
         tableView.isScrollEnabled = false
         tableView.dataSource = self
         tableView.backgroundColor = .clear
         tableView.separatorColor = .black
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
-            make.top.equalTo(topView.snp.bottom).offset(40)
+            make.top.equalTo(cardView.snp.bottom).offset(40)
             make.left.right.bottom.equalToSuperview()
         }
     }
