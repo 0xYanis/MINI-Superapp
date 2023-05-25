@@ -54,8 +54,8 @@ final class BankTransactionCell: UITableViewCell {
         iconView.sd_setImage(with: URL(string: transaction.icon ?? ""))
         transactionLabel.text = transaction.name + ": " + transaction.notes
         dateLabel.text = transaction.date.formattedDateString(dateFormat: "d MMM, yyyy")
-        costLabel.text = "\(transaction.cost)"
-        cardLabel.text = "\(transaction.cardNumber)"
+        costLabel.text = "-\(transaction.cost)"
+        cardLabel.text = "*\(transaction.cardNumber)"
     }
 }
 

@@ -17,4 +17,20 @@ extension String {
         dateFormatter.dateFormat = dateFormat
         return dateFormatter.string(from: date)
     }
+    
+    func getCurrencySymbol() -> String {
+        switch self {
+        case "USD":
+            return "$"
+        case "EUR":
+            return "€"
+        case "GBP":
+            return "£"
+        case "RUB":
+            return "₽"
+        default:
+            return ""
+        }
+    }
+    
 }

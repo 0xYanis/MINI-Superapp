@@ -18,6 +18,7 @@ struct BankCardEntity: Codable, Equatable {
     let logo: String
     let cardType: String
     let amount: Double
+    let currency: String
     let number: String
     let bankName: String
     let holderName: String?
