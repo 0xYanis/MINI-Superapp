@@ -14,10 +14,10 @@ protocol CardInteractorProtocol: AnyObject {
 final class CardInteractor: CardInteractorProtocol {
     weak var presenter: CardPresenterProtocol?
     
-    var id: Int
+    var data: CardDetailEntity?
     
-    init(id: Int) {
-        self.id = id
+    init(data: Any) {
+        self.data = data as? CardDetailEntity
     }
     
     func viewDidLoaded() {

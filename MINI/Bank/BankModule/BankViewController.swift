@@ -79,7 +79,7 @@ extension BankViewController: BankViewProtocol {
 //MARK: - BankViewCellDelegate
 extension BankViewController: BankViewCellDelegate {
     func handleTapOnCardCell(id: Int) {
-        presenter?.userDidTapCard(id: id)
+        presenter?.userDidTapCard(index: id)
     }
     
     func handleTapOnTemplateCell(id: Int) {

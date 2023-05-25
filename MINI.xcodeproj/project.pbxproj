@@ -108,6 +108,7 @@
 		09F86C4F29F6E96C00307432 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F86C4E29F6E96C00307432 /* BaseTabBarController.swift */; };
 		09F86C5729F6F8A000307432 /* UITabBarController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F86C5629F6F8A000307432 /* UITabBarController+Extension.swift */; };
 		09F922692A1EA234009684F2 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F922682A1EA234009684F2 /* String+Extension.swift */; };
+		09FC29B42A1FD2D60012A1D7 /* CardDetailEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FC29B32A1FD2D60012A1D7 /* CardDetailEntity.swift */; };
 		09FC393729FABF2D00B2D97E /* AllTemplatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FC393629FABF2D00B2D97E /* AllTemplatesViewController.swift */; };
 		09FC393929FABF4200B2D97E /* AllTemplatesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FC393829FABF4200B2D97E /* AllTemplatesPresenter.swift */; };
 		09FC393B29FABF4A00B2D97E /* AllTemplatesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FC393A29FABF4A00B2D97E /* AllTemplatesInteractor.swift */; };
@@ -221,6 +222,7 @@
 		09F86C4E29F6E96C00307432 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		09F86C5629F6F8A000307432 /* UITabBarController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarController+Extension.swift"; sourceTree = "<group>"; };
 		09F922682A1EA234009684F2 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		09FC29B32A1FD2D60012A1D7 /* CardDetailEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailEntity.swift; sourceTree = "<group>"; };
 		09FC393629FABF2D00B2D97E /* AllTemplatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTemplatesViewController.swift; sourceTree = "<group>"; };
 		09FC393829FABF4200B2D97E /* AllTemplatesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTemplatesPresenter.swift; sourceTree = "<group>"; };
 		09FC393A29FABF4A00B2D97E /* AllTemplatesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTemplatesInteractor.swift; sourceTree = "<group>"; };
@@ -569,6 +571,7 @@
 				099D4F6A29F71A420002C24A /* CardInteractor.swift */,
 				099D4F6C29F71A530002C24A /* CardRouter.swift */,
 				099D4F6E29F71A610002C24A /* CardBuilder.swift */,
+				09FC29B32A1FD2D60012A1D7 /* CardDetailEntity.swift */,
 			);
 			path = CardModule;
 			sourceTree = "<group>";
@@ -797,6 +800,7 @@
 				090AE1E529FBAA2F0092515D /* TemplateEntity.swift in Sources */,
 				099D4F6929F71A380002C24A /* CardPresenter.swift in Sources */,
 				09E9E81B29EAE94B0084416B /* LoginPresenter.swift in Sources */,
+				09FC29B42A1FD2D60012A1D7 /* CardDetailEntity.swift in Sources */,
 				092E739629EBEB3000165D37 /* LoginView.swift in Sources */,
 				09D509D629EF379A009CC219 /* BankTransactionCell.swift in Sources */,
 				0921F35F29DF1FE000B3D4F7 /* UIButton+Extension.swift in Sources */,

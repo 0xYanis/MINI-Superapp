@@ -10,6 +10,8 @@ import Foundation
 protocol BankInteractorProtocol: AnyObject {
     func viewDidLoaded()
     
+    func userDidTapCard(index: Int) -> BankCardEntity
+    
     func getCardData() -> [BankCardEntity]
     func getTemplateData() -> [BankTemplateEntity]
     func getTransactionData() -> [BankTransactionEntity]
@@ -49,6 +51,10 @@ final class BankInteractor: BankInteractorProtocol {
         getCards()
         getTemplates()
         getTransactions()
+    }
+    
+    func userDidTapCard(index: Int) -> BankCardEntity {
+        return cardsData[index]
     }
     
     func getCardData() -> [BankCardEntity] {
