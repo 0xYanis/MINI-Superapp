@@ -169,12 +169,13 @@ private extension BankViewController {
     }
     
     func createTableView(_ tableView: UITableView) {
-        tableView.backgroundColor = .clear
-        tableView.separatorColor = .clear
+        tableView.separatorStyle = .none
+        tableView.separatorColor = .none
+        tableView.backgroundColor = .none
         tableView.dataSource = self
         tableView.delegate = self
         tableView.showsVerticalScrollIndicator = false
-        tableView.backgroundColor = UIColor(named: "backColor")
+        tableView.backgroundColor = .clear
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
             make.width.equalToSuperview()

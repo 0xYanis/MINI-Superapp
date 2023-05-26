@@ -37,6 +37,7 @@ final class BankCardSet: UITableViewCell {
 //MARK: - Private methods
 private extension BankCardSet {
     func initialize() {
+        backgroundColor = .clear
         createCollectionView()
         addConstraintsOfView()
     }
@@ -56,7 +57,7 @@ private extension BankCardSet {
     }
     
     func addConstraintsOfView() {
-        collectionView.backgroundColor = UIColor(named: "backColor")
+        collectionView.backgroundColor = .clear
         collectionView.contentInset = .init(top: 0, left: 16, bottom: 0, right: 16)
         contentView.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
