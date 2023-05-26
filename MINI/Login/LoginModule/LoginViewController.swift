@@ -13,16 +13,21 @@ protocol LoginViewProtocol: AnyObject {
 }
 
 final class LoginViewController: UIViewController {
+    
+    //MARK: Public properties
     var presenter: LoginPresenterProtocol?
+    
+    //MARK: Private properties
+    private lazy var animationView = LoginAnimationView()
+    private lazy var scrollView = UIScrollView(frame: .init(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
+    private lazy var loginView = LoginView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
     }
     
-    //MARK: private properties
-    private lazy var animationView = LoginAnimationView()
-    private lazy var loginView = LoginView()
+    
 }
 
 //MARK: - LoginViewProtocol
@@ -39,6 +44,7 @@ private extension LoginViewController {
         view.backgroundColor = UIColor(named: "backColor")
         createNavBarButtons()
         createAnimationView()
+        createScrollView()
         createLoginView()
     }
     func createNavBarButtons() {
@@ -52,18 +58,27 @@ private extension LoginViewController {
         view.insertSubview(animationView, at: 0)
         animationView.snp.makeConstraints { make in
             make.top.left.right.equalToSuperview()
-            make.height.equalTo(view.frame.height / 3)
+            make.height.equalTo(view.frame.height / 2.5)
         }
     }
+    func createScrollView() {
+        scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height)
+        view.insertSubview(scrollView, at: 1)
+        scrollView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+    }
+    
     func createLoginView() {
-        loginView.backgroundColor = .systemBackground
+        //loginView.backgroundColor = .systemBackground
+        loginView.backgroundColor = .black
         loginView.radiusAndShadow(radius: 30)
-        view.insertSubview(loginView, at: 1)
+        scrollView.addSubview(loginView)
         loginView.snp.makeConstraints { make in
-            make.top.equalTo(animationView.snp.bottom).inset(view.frame.height / 15)
-            make.centerX.equalToSuperview()
-            make.left.right.equalToSuperview().inset(20)
-            make.height.equalTo(view.frame.height / 3)
+            make.center.equalTo(scrollView.snp.center)
+            make.left.equalTo(scrollView.snp.left).inset(20)
+            make.right.equalTo(scrollView.snp.right).inset(20)
+            make.height.equalTo(scrollView.frame.height / 3)
         }
         loginView.faceIDButton.addTarget(self, action: #selector(userDidTapFaceID), for: .touchUpInside)
         loginView.loginButt.addTarget(self, action: #selector(userDidTapLogin), for: .touchUpInside)
