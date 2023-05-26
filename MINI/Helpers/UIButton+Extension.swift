@@ -28,15 +28,20 @@ extension UIButton {
     }
     
     func addPulseAnimation() {
-        addTarget(self, action: #selector(pulseButton), for: .touchUpInside)
+        addTarget(self, action: #selector(buttonPressed(_:)), for: .touchDown)
+        addTarget(self, action: #selector(buttonReleased(_:)), for: [.touchUpInside, .touchDragExit])
     }
     
-    @objc private func pulseButton() {
-        let pulse = CASpringAnimation(keyPath: "transform.scale")
-        pulse.duration = 0.13
-        pulse.fromValue = 0.9
-        pulse.toValue = 1.0
-        pulse.initialVelocity = 2.0
-        layer.add(pulse, forKey: "pulse")
+    @objc private func buttonPressed(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.1) {
+            sender.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+        }
     }
+
+    @objc private func buttonReleased(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.1) {
+            sender.transform = CGAffineTransform.identity
+        }
+    }
+
 }
