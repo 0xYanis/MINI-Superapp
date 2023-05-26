@@ -12,6 +12,8 @@ import Lottie
 protocol LoginViewProtocol: AnyObject {
     func setAnimation(lottie: LottieAnimation)
     func showAlert(_ title: String, message: String)
+    
+    func loginIsNotCorrect()
 }
 
 final class LoginViewController: UIViewController {
@@ -20,6 +22,7 @@ final class LoginViewController: UIViewController {
     var presenter: LoginPresenterProtocol?
     
     //MARK: Private properties
+    private lazy var generator = UINotificationFeedbackGenerator()
     private lazy var animationView = LoginAnimationView()
     private lazy var loginView = LoginView()
     private lazy var scrollView = UIScrollView(
@@ -51,11 +54,16 @@ extension LoginViewController: LoginViewProtocol {
         let alert = UIAlertController()
         alert.showAlert(title: title, message: message, from: self)
     }
+    
+    func loginIsNotCorrect() {
+        generator.notificationOccurred(.warning)
+    }
 }
 
 //MARK: - Private methods
 private extension LoginViewController {
     func initialize() {
+        generator.prepare()
         view.backgroundColor = UIColor(named: "backColor")
         createTapGesture()
         createNavBarButtons()
