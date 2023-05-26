@@ -11,6 +11,8 @@ protocol ProfilePresenterProtocol: AnyObject {
     func viewDidLoaded()
     
     func userSetNewProfileImage()
+    
+    func userWantToLogout()
 }
 
 final class ProfilePresenter {
@@ -36,5 +38,10 @@ extension ProfilePresenter: ProfilePresenterProtocol {
     
     func userSetNewProfileImage() {
         
+    }
+    
+    func userWantToLogout() {
+        //interactor.сохрани состояние
+        router.userWantToLogout()
     }
 }
