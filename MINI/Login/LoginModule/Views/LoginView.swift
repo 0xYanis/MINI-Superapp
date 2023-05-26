@@ -14,7 +14,7 @@ class LoginView: UIView {
     let faceIDButton = UIButton(systemImage: "faceid", color: .systemOrange, size: 26)
     let nameField = UITextField()
     let passField = UITextField()
-    let loginButt = UIButton(label: "Login!", color: .systemOrange)
+    let loginButt = UIButton(label: "Login", color: .systemOrange)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
