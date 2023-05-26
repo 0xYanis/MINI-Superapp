@@ -50,12 +50,12 @@ private extension LoginView {
     }
     func createNameField() {
         addSubview(nameField)
-        nameField.keyboardType = .emailAddress
         nameField.setCustomAppearance(withBorderColor: .systemOrange, cornerRadius: 15, padding: 10)
         nameField.placeholder = "Entry Your name"
         nameField.snp.makeConstraints { make in
             make.top.equalTo(helloLabel.snp.bottom).offset(15)
             make.left.right.equalToSuperview().inset(20)
+            make.height.equalToSuperview().multipliedBy(0.17)
         }
     }
     func createPassField() {
@@ -66,13 +66,15 @@ private extension LoginView {
         passField.snp.makeConstraints { make in
             make.top.equalTo(nameField.snp.bottom).offset(15)
             make.left.right.equalToSuperview().inset(20)
+            make.height.equalToSuperview().multipliedBy(0.17)
         }
     }
     func createLoginButton() {
         addSubview(loginButt)
         loginButt.snp.makeConstraints { make in
-            make.top.equalTo(passField.snp.bottom).offset(15)
+            make.bottom.equalToSuperview().inset(20)
             make.left.right.equalToSuperview().inset(20)
+            make.height.equalToSuperview().multipliedBy(0.17)
         }
         loginButt.addPulseAnimation()
     }

@@ -49,6 +49,7 @@ private extension LoginAnimationView {
         addSubview(animationView)
         animationView.snp.makeConstraints { make in
             make.center.equalToSuperview()
+            make.height.equalToSuperview().multipliedBy(0.6)
         }
     }
 }

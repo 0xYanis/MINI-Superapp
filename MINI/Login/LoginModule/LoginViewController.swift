@@ -19,8 +19,15 @@ final class LoginViewController: UIViewController {
     
     //MARK: Private properties
     private lazy var animationView = LoginAnimationView()
-    private lazy var scrollView = UIScrollView(frame: .init(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
     private lazy var loginView = LoginView()
+    private lazy var scrollView = UIScrollView(
+        frame: .init(
+            x: 0,
+            y: 0,
+            width: view.frame.width,
+            height: view.frame.height
+        )
+    )
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,17 +49,38 @@ extension LoginViewController: LoginViewProtocol {
 private extension LoginViewController {
     func initialize() {
         view.backgroundColor = UIColor(named: "backColor")
+        createTapGesture()
         createNavBarButtons()
         createAnimationView()
         createScrollView()
         createLoginView()
+        configureLoginView()
+        registerForKeyboardNotifications()
     }
+    
+    func createTapGesture() {
+        let tapGesture = UITapGestureRecognizer(
+            target: self,
+            action: #selector(handleTapOffTheField)
+        )
+        view.addGestureRecognizer(tapGesture)
+    }
+    
     func createNavBarButtons() {
-        let button = UIButton(systemImage: "link.icloud.fill", color: .white)
-        button.addTarget(self, action: #selector(goToWebsiteAction), for: .touchUpInside)
+        let button = UIButton(
+            systemImage: "link.icloud.fill",
+            color: .white
+        )
+        button.addTarget(
+            self,
+            action: #selector(goToWebsiteAction),
+            for: .touchUpInside
+        )
+        
         let barButton = UIBarButtonItem(customView: button)
         navigationItem.leftBarButtonItem = barButton
     }
+    
     func createAnimationView() {
         animationView.backgroundColor = UIColor(named: "frontColor")
         view.insertSubview(animationView, at: 0)
@@ -61,8 +89,8 @@ private extension LoginViewController {
             make.height.equalTo(view.frame.height / 2.5)
         }
     }
+    
     func createScrollView() {
-        scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height)
         view.insertSubview(scrollView, at: 1)
         scrollView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -70,48 +98,86 @@ private extension LoginViewController {
     }
     
     func createLoginView() {
-        //loginView.backgroundColor = .systemBackground
-        loginView.backgroundColor = .black
+        loginView.backgroundColor = .systemBackground
         loginView.radiusAndShadow(radius: 30)
         scrollView.addSubview(loginView)
         loginView.snp.makeConstraints { make in
-            make.center.equalTo(scrollView.snp.center)
-            make.left.equalTo(scrollView.snp.left).inset(20)
-            make.right.equalTo(scrollView.snp.right).inset(20)
-            make.height.equalTo(scrollView.frame.height / 3)
-        }
-        loginView.faceIDButton.addTarget(self, action: #selector(userDidTapFaceID), for: .touchUpInside)
-        loginView.loginButt.addTarget(self, action: #selector(userDidTapLogin), for: .touchUpInside)
-        loginView.nameField.delegate = self
-        loginView.passField.delegate = self
-        resizeViews()
-    }
-    func resizeViews() {
-        animationView.animationView.snp.makeConstraints { make in
-            make.height.equalTo(view.frame.height / 4)
-        }
-        loginView.nameField.snp.makeConstraints { make in
-            make.height.equalTo(view.frame.height / 17)
-        }
-        loginView.passField.snp.makeConstraints { make in
-            make.height.equalTo(view.frame.height / 17)
-        }
-        loginView.loginButt.snp.makeConstraints { make in
-            make.height.equalTo(view.frame.height / 17)
+            make.height.equalToSuperview().multipliedBy(0.33)
+            make.width.equalToSuperview().multipliedBy(0.9)
+            make.center.equalToSuperview()
         }
     }
     
-    //MARK: - functionality methods
+    func configureLoginView() {
+        loginView.faceIDButton.addTarget(
+            self,
+            action: #selector(userDidTapFaceID),
+            for: .touchUpInside
+        )
+        loginView.loginButt.addTarget(
+            self,
+            action: #selector(userDidTapLogin),
+            for: .touchUpInside
+        )
+        loginView.nameField.delegate = self
+        loginView.passField.delegate = self
+    }
+    
+    func registerForKeyboardNotifications() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillHide),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
+    }
+    
+}
+
+//MARK: - functionality methods
+private extension LoginViewController {
     @objc func goToWebsiteAction() {
         if let url = URL(string: "https://github.com/0xYanis") {
             UIApplication.shared.open(url)
         }
     }
+    
+    @objc func keyboardWillShow(notification: Notification) {
+        guard let userInfo = notification.userInfo else {
+            return
+        }
+        guard let keyboardSize = (userInfo[UIResponder.keyboardFrameEndUserInfoKey]
+                                  as? NSValue)?.cgRectValue.size else { return }
+        
+        scrollView.contentOffset = .init(
+            x: 0,
+            y: keyboardSize.height / 3
+        )
+    }
+    
+    @objc func keyboardWillHide(notification: Notification) {
+        scrollView.contentOffset = .zero
+    }
+    
+    
+    @objc func handleTapOffTheField() {
+        loginView.nameField.resignFirstResponder()
+        loginView.passField.resignFirstResponder()
+    }
+    
     @objc func userDidTapFaceID() {
         loginView.nameField.resignFirstResponder()
         loginView.passField.resignFirstResponder()
         presenter?.userDidTapBiometry()
     }
+    
     @objc func userDidTapLogin() {
         let name = loginView.nameField.text ?? ""
         let pass = loginView.passField.text ?? ""
@@ -127,6 +193,7 @@ extension LoginViewController: UITextFieldDelegate {
             loginView.passField.becomeFirstResponder()
         default:
             loginView.passField.resignFirstResponder()
+            userDidTapLogin()
         }
         return true
     }
