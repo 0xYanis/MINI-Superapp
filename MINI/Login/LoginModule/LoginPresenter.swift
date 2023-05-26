@@ -6,8 +6,11 @@
 //
 
 import Foundation
+import Lottie
 
 protocol LoginPresenterProtocol: AnyObject {
+    func viewDidLoaded()
+    func loadAnimation(_ data: LottieAnimation)
     func userDidTapLogin(name: String, password: String)
     func userDidTapBiometry()
     func loginIsCorrect()
@@ -27,6 +30,14 @@ final class LoginPresenter {
 }
 
 extension LoginPresenter: LoginPresenterProtocol {
+    func viewDidLoaded() {
+        interactor.viewDidLoaded()
+    }
+    
+    func loadAnimation(_ data: LottieAnimation) {
+        view?.setAnimation(lottie: data)
+    }
+    
     func userDidTapLogin(name: String, password: String) {
         interactor.userWantLogin(name, password)
     }

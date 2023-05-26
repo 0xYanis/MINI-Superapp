@@ -8,6 +8,7 @@
 import Foundation
 
 protocol LoginInteractorProtocol: AnyObject {
+    func viewDidLoaded()
     func userWantLogin(_ name: String,_ password: String)
     func userWantBiometry()
 }
@@ -17,6 +18,11 @@ final class LoginInteractor: LoginInteractorProtocol {
     weak var presenter: LoginPresenterProtocol?
     var entity: LoginEntity?
     var biometryService: BiometryServiceProtocol?
+    var lottieService: LoginLottieService?
+    
+    func viewDidLoaded() {
+        getLottieAnimation()
+    }
     
     func userWantLogin(_ name: String,_ password: String) {
         // TODO: Выполнить запрос на сервер для аутентификации и получить токен аутентификации
@@ -43,5 +49,20 @@ final class LoginInteractor: LoginInteractorProtocol {
     
     private func saveAuthToken(authToken: String) {
         UserDefaults.standard.set(authToken, forKey: "authToken")
+    }
+}
+
+private extension LoginInteractor {
+    func getLottieAnimation() {
+        lottieService?.loadAnimation(completion: { [weak self] animation in
+            switch animation {
+            case .success(let data):
+                self?.presenter?.loadAnimation(data)
+            case .failure:
+                return
+            case .none:
+                return
+            }
+        })
     }
 }

@@ -7,8 +7,10 @@
 
 import UIKit
 import SnapKit
+import Lottie
 
 protocol LoginViewProtocol: AnyObject {
+    func setAnimation(lottie: LottieAnimation)
     func showAlert(_ title: String, message: String)
 }
 
@@ -31,6 +33,7 @@ final class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter?.viewDidLoaded()
         initialize()
     }
     
@@ -39,6 +42,11 @@ final class LoginViewController: UIViewController {
 
 //MARK: - LoginViewProtocol
 extension LoginViewController: LoginViewProtocol {
+    func setAnimation(lottie: LottieAnimation) {
+        animationView.animationView = .init(animation: lottie)
+        animationView.animationView.play()
+    }
+    
     func showAlert(_ title: String, message: String) {
         let alert = UIAlertController()
         alert.showAlert(title: title, message: message, from: self)

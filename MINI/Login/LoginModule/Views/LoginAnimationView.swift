@@ -37,7 +37,6 @@ private extension LoginAnimationView {
     func initialize() {
         configureAnimation()
         createAnimationConstraints()
-        animationView.play()
     }
     
     func configureAnimation() {
