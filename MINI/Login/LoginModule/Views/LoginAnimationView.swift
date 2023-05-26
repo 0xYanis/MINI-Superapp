@@ -11,7 +11,7 @@ import Lottie
 
 class LoginAnimationView: UIView {
     
-    lazy var animationView = LottieAnimationView(name: "hello")
+    lazy var animationView = LottieAnimationView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -39,12 +39,14 @@ private extension LoginAnimationView {
         createAnimationConstraints()
         animationView.play()
     }
+    
     func configureAnimation() {
         animationView.frame = bounds
         animationView.contentMode = .scaleAspectFit
         animationView.loopMode = .loop
         animationView.animationSpeed = 0.5
     }
+    
     func createAnimationConstraints() {
         addSubview(animationView)
         animationView.snp.makeConstraints { make in
@@ -52,4 +54,5 @@ private extension LoginAnimationView {
             make.height.equalToSuperview().multipliedBy(0.6)
         }
     }
+    
 }
