@@ -17,6 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let _ = AuthenticationManager.auth(to: window)
         window.overrideUserInterfaceStyle = .dark 
         self.window = window
+        UIApplication.shared.shortcutItems = DeepLinkManager.buildShortCuts()
         window.makeKeyAndVisible()
     }
 
