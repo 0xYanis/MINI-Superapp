@@ -25,6 +25,7 @@ final class LoginViewController: UIViewController {
     private lazy var generator = UINotificationFeedbackGenerator()
     private lazy var animationView = LoginAnimationView()
     private lazy var loginView = LoginView()
+    private lazy var versionLabel = UILabel()
     private lazy var scrollView = UIScrollView(
         frame: .init(
             x: 0,
@@ -72,6 +73,7 @@ private extension LoginViewController {
         createLoginView()
         configureLoginView()
         registerForKeyboardNotifications()
+        createVersionLabel()
     }
     
     func createTapGesture() {
@@ -153,6 +155,25 @@ private extension LoginViewController {
             name: UIResponder.keyboardWillHideNotification,
             object: nil
         )
+    }
+    
+    func createVersionLabel() {
+        guard let version = Bundle.main.object(
+            forInfoDictionaryKey: "CFBundleShortVersionString"
+        ) as? String  else { return }
+        
+        versionLabel.textColor = .darkGray
+        versionLabel.text = "MINI. Version: \(version) Created by 0xYanis"
+        versionLabel.font = .systemFont(ofSize: 15)
+        versionLabel.textAlignment = .center
+        versionLabel.numberOfLines = 2
+        
+        view.addSubview(versionLabel)
+        versionLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().inset(50)
+            make.width.equalTo(140)
+        }
     }
     
 }
