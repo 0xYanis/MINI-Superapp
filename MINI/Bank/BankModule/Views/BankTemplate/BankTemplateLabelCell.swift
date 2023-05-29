@@ -11,7 +11,7 @@ final class BankTemplateLabelCell: UITableViewCell {
     
     private lazy var titleLabel = UILabel(
         text: "templates_label".localized,
-        font: .boldSystemFont(ofSize: 24),
+        font: .boldSystemFont(ofSize: 22),
         color: UIColor(named: "textColor")
     )
     let seeAllButt: UIButton = {

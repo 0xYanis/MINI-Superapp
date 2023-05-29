@@ -22,7 +22,7 @@ final class BankHistoryLabel: UIView {
     private lazy var graberView = UIView()
     private lazy var historyLabel = UILabel(
         text: "payment_history_label".localized,
-        font: .boldSystemFont(ofSize: 20),
+        font: .boldSystemFont(ofSize: 22),
         color: .none
     )
     private lazy var searchButton = UIButton(

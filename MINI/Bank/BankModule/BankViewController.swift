@@ -42,7 +42,7 @@ final class BankViewController: UIViewController {
     private lazy var refreshControl = UIRefreshControl()
     
     private lazy var height: CGFloat    = view.frame.height
-    private lazy var minHeight: CGFloat = 0.3 * view.frame.height + view.safeAreaInsets.bottom
+    private lazy var minHeight: CGFloat = 0.34 * view.frame.height + view.safeAreaInsets.bottom
     private lazy var maxHeight: CGFloat = view.frame.height - view.safeAreaInsets.top
     
     
@@ -58,11 +58,6 @@ final class BankViewController: UIViewController {
         tabBarController?.showTabBar()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.dismiss(animated: false)
-        historyTableVC.view.resetToOriginalState(with: false)
-    }
 }
 
 //MARK: - BankViewProtocol
@@ -197,7 +192,7 @@ private extension BankViewController {
         historyTableVC.dataSource = self
         historyTableVC.view.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalToSuperview()
-            make.height.equalToSuperview().multipliedBy(0.3)
+            make.height.equalToSuperview().multipliedBy(0.34)
                 .offset(tabBarController?.tabBar.frame.height ?? 0)
         }
         historyTableVC.view.layer.cornerRadius = 30
@@ -341,9 +336,9 @@ extension BankViewController: UITableViewDelegate {
         let height = view.frame.height
         switch indexPath.row {
         case 0:
-            return (height/4.7)
+            return (height/5)
         case 1:
-            return (height/18)
+            return (height/30)
         case 2:
             return (height/6.3)
         default:
