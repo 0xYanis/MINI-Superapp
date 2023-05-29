@@ -20,8 +20,6 @@ final class AviaViewController: UIViewController {
     
     //MARK: Private properties
     private lazy var searchController = UISearchController()
-    private let searchView = UIView()
-    private let tableView = UITableView()
     
     //MARK: Lifecycle
     override func viewDidLoad() {
@@ -45,8 +43,6 @@ private extension AviaViewController {
     func initialize() {
         view.backgroundColor = UIColor(named: "backColor")
         createNavigation()
-        createtableView()
-        tableViewRegistrate()
     }
     
     func createNavigation() {
@@ -54,61 +50,4 @@ private extension AviaViewController {
         navigationItem.title = "tickets_navbar".localized
         navigationController?.navigationBar.prefersLargeTitles = true
     }
-    
-    func createtableView() {
-        tableView.separatorInset = .zero
-        tableView.separatorColor = .black
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.backgroundColor = .clear
-        tableView.roundCorners(radius: 30)
-        view.addSubview(tableView)
-        tableView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-    }
-    
-    func tableViewRegistrate() {
-        tableView.register(
-            AviaResultsCell.self,
-            forCellReuseIdentifier: AviaResultsCell.cellId
-        )
-    }
-}
-
-//MARK: - UITableViewDataSource
-extension AviaViewController: UITableViewDataSource {
-    func tableView(
-        _ tableView: UITableView,
-        numberOfRowsInSection section: Int
-    ) -> Int {
-        30
-    }
-    
-    func tableView(
-        _ tableView: UITableView,
-        cellForRowAt indexPath: IndexPath
-    ) -> UITableViewCell {
-        
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: AviaResultsCell.cellId,
-            for: indexPath
-        ) as? AviaResultsCell else { return UITableViewCell() }
-        
-        return cell
-    }
-    
-    
-    func tableView(
-        _ tableView: UITableView,
-        willDisplay cell: UITableViewCell,
-        forRowAt indexPath: IndexPath
-    ) {
-        
-    }
-}
-
-//MARK: - UITableViewDelegate
-extension AviaViewController: UITableViewDelegate {
-    //TODO: - updateConstraints при скроллинге
 }
