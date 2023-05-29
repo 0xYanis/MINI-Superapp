@@ -77,14 +77,15 @@ private extension BankCardCell {
     func createCardNumber() {
         cardView.addSubview(cardNumber)
         cardNumber.snp.makeConstraints { make in
-            make.bottom.left.equalToSuperview().inset(18)
+            make.left.equalToSuperview().inset(18)
+            make.bottom.equalToSuperview().inset(10)
         }
     }
     func createCardAmount() {
         cardView.addSubview(cardAmount)
         cardAmount.snp.makeConstraints { make in
             make.left.equalToSuperview().inset(18)
-            make.centerY.equalToSuperview().offset(18)
+            make.centerY.equalToSuperview()
         }
     }
 }

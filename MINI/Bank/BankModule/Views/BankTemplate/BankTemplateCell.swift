@@ -80,7 +80,7 @@ private extension BankTemplateCell {
         textLabel.textAlignment = .center
         templateView.addSubview(textLabel)
         textLabel.snp.makeConstraints { make in
-            make.top.equalTo(circleView.snp.bottom).offset(10)
+            make.top.equalTo(circleView.snp.bottom).offset(5)
             make.left.right.equalToSuperview().inset(10)
         }
     }
