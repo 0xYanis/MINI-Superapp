@@ -1,0 +1,4 @@
+/* Bundle name */
+"CFBundleName" = "MINI";
+/* Privacy - Face ID Usage Description */
+"NSFaceIDUsageDescription" = "";
