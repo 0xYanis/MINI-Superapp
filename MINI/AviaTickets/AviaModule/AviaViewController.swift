@@ -19,6 +19,7 @@ final class AviaViewController: UIViewController {
     
     
     //MARK: Private properties
+    private lazy var searchController = UISearchController()
     private let searchView = UIView()
     private let tableView = UITableView()
     
@@ -49,6 +50,7 @@ private extension AviaViewController {
     }
     
     func createNavigation() {
+        navigationItem.searchController = searchController
         navigationItem.title = "tickets_navbar".localized
         navigationController?.navigationBar.prefersLargeTitles = true
     }
