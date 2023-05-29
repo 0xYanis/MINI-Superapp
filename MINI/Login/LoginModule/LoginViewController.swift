@@ -65,7 +65,6 @@ extension LoginViewController: LoginViewProtocol {
 private extension LoginViewController {
     func initialize() {
         generator.prepare()
-        view.backgroundColor = UIColor(named: "backColor")
         createTapGesture()
         createNavBarButtons()
         createAnimationView()

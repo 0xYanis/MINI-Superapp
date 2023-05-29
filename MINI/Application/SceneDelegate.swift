@@ -15,6 +15,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
         let _ = AuthenticationManager.auth(to: window)
+        window.tintColor = .systemOrange
+        window.backgroundColor = UIColor(named: "backColor")
         window.overrideUserInterfaceStyle = .dark 
         self.window = window
         UIApplication.shared.shortcutItems = DeepLinkManager.buildShortCuts()

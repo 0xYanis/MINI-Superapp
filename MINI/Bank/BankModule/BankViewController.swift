@@ -120,7 +120,6 @@ extension BankViewController: BankViewCellDataSource {
 //MARK: - Private methods
 private extension BankViewController {
     func initialize() {
-        view.backgroundColor = UIColor(named: "backColor")
         createNavigation(title: "bank_navbar".localized)
         createTableView(bankTableView)
         createTableViewRegisters(in: bankTableView)
@@ -135,16 +134,11 @@ private extension BankViewController {
     }
     
     var createRightBarButtonItem: UIBarButtonItem {
-        let editButton = UIBarButtonItem(
-            systemItem: .add,
+        return UIBarButtonItem(
+            systemItem: .compose,
             primaryAction: .none,
             menu: createRightMenu
         )
-        editButton.setTitleTextAttributes(
-            [NSAttributedString.Key.foregroundColor: UIColor.systemOrange],
-            for: .normal)
-        
-        return editButton
     }
     
     var createRightMenu: UIMenu {
@@ -200,7 +194,6 @@ private extension BankViewController {
     }
     
     func createRefreshControl(scrollView: UIScrollView) {
-        refreshControl.tintColor = .systemOrange
         refreshControl.addTarget(self, action: #selector(refreshAction), for: .valueChanged)
         scrollView.refreshControl = refreshControl
     }
