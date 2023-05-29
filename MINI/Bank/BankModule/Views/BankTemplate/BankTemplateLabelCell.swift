@@ -10,14 +10,14 @@ import UIKit
 final class BankTemplateLabelCell: UITableViewCell {
     
     private lazy var titleLabel = UILabel(
-        text: "Templates",
+        text: "templates_label".localized,
         font: .boldSystemFont(ofSize: 24),
         color: UIColor(named: "textColor")
     )
     let seeAllButt: UIButton = {
         let button = UIButton()
         button.addPulseAnimation()
-        button.setTitle("See All", for: .normal)
+        button.setTitle("see_all_button".localized, for: .normal)
         button.setTitleColor(.systemOrange, for: .normal)
         return button
     }()

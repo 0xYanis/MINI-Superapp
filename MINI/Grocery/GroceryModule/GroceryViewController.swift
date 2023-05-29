@@ -28,7 +28,7 @@ final class GroceryViewController: UIViewController {
         let controller = UISearchController(searchResultsController: UIViewController())
         controller.searchResultsUpdater = self
         controller.obscuresBackgroundDuringPresentation = false
-        controller.searchBar.placeholder = "Search for groceries"
+        controller.searchBar.placeholder = "grocery_search".localized
         controller.searchBar.delegate = self
         controller.searchBar.tintColor = .systemOrange
         return controller
@@ -64,7 +64,7 @@ extension GroceryViewController: GroceryViewProtocol {
 private extension GroceryViewController {
     func initialize() {
         view.backgroundColor = UIColor(named: "backColor")
-        createNavigation(title: "Grocery")
+        createNavigation(title: "grocery_navbar".localized)
         createNavigationButtons(adress: "22 Washington st. NY")
         createCollectionView()
         collectionViewRegistrate()
@@ -85,7 +85,7 @@ private extension GroceryViewController {
     
     func rightBarAdressButton(adress: String) -> UIBarButtonItem {
         let button = UIBarButtonItem(
-            title: "Adress",
+            title: "adress_button".localized,
             menu: createAdressMenu(adress: adress)
         )
         button.tintColor = .systemOrange
@@ -98,7 +98,7 @@ private extension GroceryViewController {
         }
         let setNewImage = UIImage(systemName: "mappin.and.ellipse")
         let setNew = UIAction(
-            title: "Set new Adress",
+            title: "set_new_adress".localized,
             image: setNewImage) { [weak self] _ in
                 self?.showAdressButtonSheet()
             }

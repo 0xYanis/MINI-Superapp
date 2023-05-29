@@ -49,7 +49,7 @@ private extension AviaViewController {
     }
     
     func createNavigation() {
-        navigationItem.title = "Tickets"
+        navigationItem.title = "tickets_navbar".localized
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     

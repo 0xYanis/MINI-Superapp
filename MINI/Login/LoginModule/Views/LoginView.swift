@@ -10,11 +10,11 @@ import SnapKit
 
 class LoginView: UIView {
     
-    private lazy var helloLabel = UILabel(text: "Welcome!", font: .boldSystemFont(ofSize: 26), color: .none)
+    private lazy var helloLabel = UILabel(text: "welcome_label".localized, font: .boldSystemFont(ofSize: 26), color: .none)
     let faceIDButton = UIButton(systemImage: "faceid", color: .systemOrange, size: 26)
     let nameField = UITextField()
     let passField = UITextField()
-    let loginButt = UIButton(label: "Login", color: .systemOrange)
+    let loginButt = UIButton(label: "login_button".localized, color: .systemOrange)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -51,7 +51,7 @@ private extension LoginView {
     func createNameField() {
         addSubview(nameField)
         nameField.setCustomAppearance(withBorderColor: .systemOrange, cornerRadius: 15, padding: 10)
-        nameField.placeholder = "Entry Your name"
+        nameField.placeholder = "name_placeholder".localized
         nameField.snp.makeConstraints { make in
             make.top.equalTo(helloLabel.snp.bottom).offset(15)
             make.left.right.equalToSuperview().inset(20)
@@ -62,7 +62,7 @@ private extension LoginView {
         addSubview(passField)
         passField.isSecureTextEntry = true
         passField.setCustomAppearance(withBorderColor: .systemOrange, cornerRadius: 15, padding: 10)
-        passField.placeholder = "Entry Your password"
+        passField.placeholder = "pass_placeholer".localized
         passField.snp.makeConstraints { make in
             make.top.equalTo(nameField.snp.bottom).offset(15)
             make.left.right.equalToSuperview().inset(20)

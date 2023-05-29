@@ -26,19 +26,19 @@ private extension BaseTabBarController {
         viewControllers = [
             createVC(
                 BankBuilder.build(),
-                barTitle: "Bank",
+                barTitle: "bank_tabbar".localized,
                 image: "house.fill"),
             createVC(
                 AviaBuilder.build(),
-                barTitle: "Tickets",
+                barTitle: "tickets_tabbar".localized,
                 image: "airplane"),
             createVC(
                 GroceryBuilder.build(),
-                barTitle: "Grocery",
+                barTitle: "grocery_tabbar".localized,
                 image: "basket.fill"),
             createVC(
                 ProfileBuilder.build(),
-                barTitle: "Profile",
+                barTitle: "profile_tabbar".localized,
                 image: "person.fill")
         ]
     }

@@ -1,0 +1,93 @@
+/* 
+  Localizable.strings
+  MINI
+
+  Created by Yan Rybkin on 28.05.2023.
+  
+*/
+
+//MARK: - Tabbar titles
+"bank_tabbar"    = "Банк";
+"tickets_tabbar" = "Билеты";
+"grocery_tabbar" = "Продукты";
+"profile_tabbar" = "Профиль";
+
+//MARK: - NavigationBar titles
+"bank_navbar"    = "Банк";
+"tickets_navbar" = "Билеты";
+"grocery_navbar" = "Продукты";
+"profile_navbar" = "Профиль";
+
+//MARK: - DeepLinkManager
+//Shortcuts
+"shortcut_transactions" = "История оплаты";
+
+
+
+//MARK: - Login
+
+//MARK: LoginModule
+"welcome_label"    = "Привет!";
+"login_button"     = "Войти";
+"name_placeholder" = "Введите Ваше имя";
+"pass_placeholer"  = "Введите Ваш пароль";
+
+"error_login_title"   = "Ошибка";
+"error_message_title" = "Некорректный ввод";
+"alert_cancel"        = "Закрыть";
+
+
+//MARK: - Bank
+
+//MARK: BankModule
+"templates_label"       = "Шаблоны";
+"see_all_button"        = "Все";
+
+"payment_history_label" = "История оплаты";
+"search_payments_place" = "Поиск транзакций..";
+"date_formatter_id"     = "ru_RU";
+
+"add_new_card"     = "Добавить карту";
+"add_new_template" = "Добавить шаблон";
+
+//MARK: CardModule
+"delete_card_alert_title"   = "Внимание!";
+"delete_card_alert_message" = "Вы уверены, что хотите удалить карту?";
+"delete_card_alert_delete"  = "Удалить";
+"delete_card_alert_cancel"  = "Отмена";
+
+//MARK: AllTemplatesModule
+"all_templates_navbar" = "Шаблоны";
+
+
+
+
+//MARK: - Tickets
+//MARK: TicketsModule
+
+
+
+
+
+
+//MARK: - Grocery
+
+//MARK: GroceryModule
+"new_adress_title"  = "Новый адресс";
+"new_adress_search" = "Поиск адреса";
+
+"adress_button"  = "Адрес";
+"set_new_adress" = "Добавить новый";
+"grocery_search" = "Поиск продуктов";
+
+
+
+
+//MARK: - Profile
+
+//MARK: ProfileModule
+"logout_button"        = "Выйти";
+"logout_alert_title"   = "Внимание!";
+"logout_alert_message" = "Вы уверены, что хотите выйти?";
+"logout_alert_logout"  = "Выйти";
+"logout_alert_cancel"  = "Отмена";

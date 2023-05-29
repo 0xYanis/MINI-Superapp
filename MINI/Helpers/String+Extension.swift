@@ -8,9 +8,17 @@
 import Foundation
 
 extension String {
+    
+    var localized: String {
+        NSLocalizedString(
+            self,
+            comment: "\(self) could not be found in Localizable.strings"
+        )
+    }
+    
     func formattedDateString(dateFormat: String) -> String? {
         let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.locale = Locale(identifier: "date_formatter_id".localized)
         dateFormatter.dateFormat = "yyyy-MM-dd"
         guard let date = dateFormatter.date(from: self) else { return nil }
         

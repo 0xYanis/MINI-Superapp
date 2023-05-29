@@ -37,7 +37,7 @@ extension ProfileViewController: ProfileViewProtocol {
 private extension ProfileViewController {
     func initialize() {
         view.backgroundColor = UIColor(named: "backColor")
-        createNavigation(title: "Profile")
+        createNavigation(title: "profile_navbar".localized)
     }
     
     func createNavigation(title: String) {
@@ -48,7 +48,7 @@ private extension ProfileViewController {
     
     var createLogoutButton: UIBarButtonItem {
         return UIBarButtonItem(
-            title: "Logout",
+            title: "logout_button".localized,
             style: .plain,
             target: self,
             action: #selector(logoutButtonAction)
@@ -59,15 +59,15 @@ private extension ProfileViewController {
 private extension ProfileViewController {
     @objc func logoutButtonAction() {
         let alert = UIAlertController(
-            title: "Caution!",
-            message: "Are You sure, You want to logout?",
+            title: "logout_alert_title".localized,
+            message: "logout_alert_message".localized,
             preferredStyle: .alert
         )
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        let cancelAction = UIAlertAction(title: "logout_alert_cancel".localized, style: .cancel)
         alert.addAction(cancelAction)
         
-        let logout = UIAlertAction(title: "Logout!", style: .destructive) { [weak self] _ in
+        let logout = UIAlertAction(title: "logout_alert_logout".localized, style: .destructive) { [weak self] _ in
             self?.presenter?.userWantToLogout()
         }
         alert.addAction(logout)

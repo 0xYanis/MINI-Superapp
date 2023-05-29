@@ -21,7 +21,7 @@ final class BankHistoryLabel: UIView {
     
     private lazy var graberView = UIView()
     private lazy var historyLabel = UILabel(
-        text: "Transaction History",
+        text: "payment_history_label".localized,
         font: .boldSystemFont(ofSize: 20),
         color: .none
     )
@@ -102,7 +102,7 @@ private extension BankHistoryLabel {
         searchBar.keyboardType = .webSearch
         searchBar.delegate = self
         searchBar.showsCancelButton = true
-        searchBar.placeholder = "Search transactions.."
+        searchBar.placeholder = "search_payments_place".localized
         addSubview(searchBar)
         searchBar.alpha = 0.0
         searchBar.snp.makeConstraints { make in

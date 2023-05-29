@@ -1,0 +1,90 @@
+/* 
+  Localizable.strings
+  MINI
+
+  Created by Yan Rybkin on 28.05.2023.
+  
+*/
+
+//MARK: - Tabbar titles
+"bank_tabbar"    = "Bank";
+"tickets_tabbar" = "Tickets";
+"grocery_tabbar" = "Grocery";
+"profile_tabbar" = "Profile";
+
+//MARK: - NavigationBar titles
+"bank_navbar"    = "Bank";
+"tickets_navbar" = "Tickets";
+"grocery_navbar" = "Grocery";
+"profile_navbar" = "Profile";
+
+//MARK: - DeepLinkManager
+//Shortcuts
+"shortcut_transactions" = "Payment history";
+
+
+
+//MARK: - Login
+
+//MARK: LoginModule
+"welcome_label"    = "Welcome!";
+"login_button"     = "Login";
+"name_placeholder" = "Entry Your name";
+"pass_placeholer"  = "Entry Your password";
+
+"error_login_title"   = "Error";
+"error_message_title" = "Incorrect input";
+"alert_cancel"        = "Cancel";
+
+
+//MARK: - Bank
+
+//MARK: BankModule
+"templates_label"       = "Templates";
+"see_all_button"        = "See all";
+
+"payment_history_label" = "Payment history";
+"search_payments_place" = "Search transactions..";
+"date_formatter_id"     = "en_US_POSIX";
+
+"add_new_card"     = "Add new card";
+"add_new_template" = "Add new template";
+
+//MARK: CardModule
+"delete_card_alert_title"   = "Caution!";
+"delete_card_alert_message" = "Are You sure, You want to delete the card?";
+"delete_card_alert_delete"  = "Delete";
+"delete_card_alert_cancel"  = "Cancel";
+
+//MARK: AllTemplatesModule
+"all_templates_navbar" = "Templates";
+
+
+
+//MARK: - Tickets
+//MARK: TicketsModule
+
+
+
+
+//MARK: - Grocery
+
+//MARK: GroceryModule
+"new_adress_title"  = "New adress";
+"new_adress_search" = "Search adress";
+
+"adress_button"  = "Adress";
+"set_new_adress" = "Set new adress";
+"grocery_search" = "Search for groceries";
+
+
+
+//MARK: - Profile
+
+//MARK: ProfileModule
+"logout_button"        = "Logout";
+"logout_alert_title"   = "Caution!";
+"logout_alert_message" = "Are You sure, You want to logout?";
+"logout_alert_logout"  = "Logout";
+"logout_alert_cancel"  = "Cancel";
+

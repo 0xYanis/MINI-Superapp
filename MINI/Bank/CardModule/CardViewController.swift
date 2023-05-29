@@ -112,17 +112,17 @@ private extension CardViewController {
     
     @objc func leftButtonAction() {
         let alert = UIAlertController(
-            title: "Caution!",
-            message: "Are You sure, You want to delete the card?",
+            title: "delete_card_alert_title".localized,
+            message: "delete_card_alert_message".localized,
             preferredStyle: .alert
         )
         
-        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
+        let deleteAction = UIAlertAction(title: "delete_card_alert_delete".localized, style: .destructive) { (_) in
             self.presenter?.userWantToDeleteCard()
         }
         alert.addAction(deleteAction)
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        let cancelAction = UIAlertAction(title: "delete_card_alert_cancel".localized, style: .cancel)
         alert.addAction(cancelAction)
         
         present(alert, animated: true, completion: nil)

@@ -126,7 +126,7 @@ extension BankViewController: BankViewCellDataSource {
 private extension BankViewController {
     func initialize() {
         view.backgroundColor = UIColor(named: "backColor")
-        createNavigation(title: "Home")
+        createNavigation(title: "bank_navbar".localized)
         createTableView(bankTableView)
         createTableViewRegisters(in: bankTableView)
         createBottomSheet()
@@ -141,7 +141,7 @@ private extension BankViewController {
     
     var createRightBarButtonItem: UIBarButtonItem {
         let editButton = UIBarButtonItem(
-            systemItem: .edit,
+            systemItem: .add,
             primaryAction: .none,
             menu: createRightMenu
         )
@@ -155,13 +155,13 @@ private extension BankViewController {
     var createRightMenu: UIMenu {
         let cardImage = UIImage(systemName: "creditcard.fill")
         let addCard = UIAction(
-            title: "Add new Card",
+            title: "add_new_card".localized,
             image: cardImage) { [weak self] _ in
                 self?.presenter?.userDidTapNewCard()
             }
         let templateImage = UIImage(systemName: "plus.rectangle.fill")
         let addTemplate = UIAction(
-            title: "Add new Template",
+            title: "add_new_template".localized,
             image: templateImage) { [weak self] _ in
                 self?.presenter?.userDidTapNewTemplate()
             }

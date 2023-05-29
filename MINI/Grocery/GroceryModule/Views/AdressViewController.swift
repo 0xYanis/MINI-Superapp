@@ -36,7 +36,7 @@ final class AdressViewController: UIViewController {
 private extension AdressViewController {
     func initialize() {
         view.backgroundColor = .black
-        createTitle(text: "New adress")
+        createTitle(text: "new_adress_title".localized)
         createSearchBar()
         createTableView()
         createCancelButton()
@@ -56,7 +56,7 @@ private extension AdressViewController {
         searchBar.tintColor = .systemOrange
         searchBar.delegate = self
         searchBar.barTintColor = .clear
-        searchBar.placeholder = "Search your adress.."
+        searchBar.placeholder = "new_adress_search".localized
         view.addSubview(searchBar)
         searchBar.snp.makeConstraints { make in
             make.top.equalTo(textTilte.snp.bottom)

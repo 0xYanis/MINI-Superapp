@@ -52,7 +52,7 @@ extension LoginPresenter: LoginPresenterProtocol {
     func loginIsNotCorrect() {
         view?.loginIsNotCorrect()
         DispatchQueue.main.async {
-            self.view?.showAlert("Error", message: "Incorrect password")
+            self.view?.showAlert("error_login_title".localized, message: "error_message_title".localized)
         }
     }
 }

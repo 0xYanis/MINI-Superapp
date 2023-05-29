@@ -12,7 +12,7 @@ final class DeepLinkManager: NSObject {
     static func buildShortCuts() -> [UIApplicationShortcutItem] {
         let searchTransactions = UIMutableApplicationShortcutItem(
             type: "searchTransactions",
-            localizedTitle: "Search transactions",
+            localizedTitle: "shortcut_transactions".localized,
             localizedSubtitle: "",
             icon: UIApplicationShortcutIcon(type: .search)
         )

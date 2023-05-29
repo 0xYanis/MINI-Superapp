@@ -59,7 +59,7 @@ private extension AllTemplatesViewController {
     }
     
     func createNavigation() {
-        navigationItem.title = "All Templates"
+        navigationItem.title = "all_templates_navbar".localized
         navigationItem.largeTitleDisplayMode = .never
     }
     
