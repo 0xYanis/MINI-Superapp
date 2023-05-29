@@ -25,6 +25,9 @@ final class ProfileRouter: ProfileRouterProtocol {
            let delegate = windowScene.delegate as? SceneDelegate {
             let window = UIWindow(windowScene: windowScene)
             window.rootViewController = loginScreen
+            window.overrideUserInterfaceStyle = .dark
+            window.backgroundColor = UIColor(named: "backColor")
+            window.tintColor = .systemOrange
             delegate.window = window
             window.makeKeyAndVisible()
         }

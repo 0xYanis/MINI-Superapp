@@ -21,6 +21,7 @@ final class LoginRouter: LoginRouterProtocol {
            let delegate = windowScene.delegate as? SceneDelegate {
             let window = UIWindow(windowScene: windowScene)
             window.rootViewController = nextView
+            window.overrideUserInterfaceStyle = .dark
             window.backgroundColor = UIColor(named: "backColor")
             window.tintColor = .systemOrange
             delegate.window = window
