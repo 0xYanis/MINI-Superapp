@@ -16,10 +16,15 @@ final class LoginRouter: LoginRouterProtocol {
     
     func userDidLogin() {
         let nextView = BaseTabBarController()
-        var controllers = view?.navigationController?.viewControllers
-        controllers?.removeLast()
-        controllers?.append(nextView)
-        view?.navigationController?.navigationBar.isHidden = true
-        view?.navigationController?.setViewControllers(controllers ?? [], animated: true)
+        
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let delegate = windowScene.delegate as? SceneDelegate {
+            let window = UIWindow(windowScene: windowScene)
+            window.rootViewController = nextView
+            window.backgroundColor = UIColor(named: "backColor")
+            window.tintColor = .systemOrange
+            delegate.window = window
+            window.makeKeyAndVisible()
+        }
     }
 }

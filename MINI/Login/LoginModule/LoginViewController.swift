@@ -64,6 +64,7 @@ extension LoginViewController: LoginViewProtocol {
 //MARK: - Private methods
 private extension LoginViewController {
     func initialize() {
+        view.backgroundColor = .quaternarySystemFill
         generator.prepare()
         createTapGesture()
         createNavBarButtons()

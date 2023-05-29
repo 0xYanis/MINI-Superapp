@@ -120,6 +120,7 @@ extension BankViewController: BankViewCellDataSource {
 //MARK: - Private methods
 private extension BankViewController {
     func initialize() {
+        view.backgroundColor = UIColor(named: "backColor")
         createNavigation(title: "bank_navbar".localized)
         createTableView(bankTableView)
         createTableViewRegisters(in: bankTableView)
