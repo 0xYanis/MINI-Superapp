@@ -282,7 +282,7 @@
 		090BAB8C2A0298C8006AE8F9 /* AviaModule */ = {
 			isa = PBXGroup;
 			children = (
-				09EF874F2A24C0D000EC9D7A /* AviaScrollView */,
+				09EF874F2A24C0D000EC9D7A /* Subviews */,
 				090BAB8D2A0298F5006AE8F9 /* AviaViewController.swift */,
 				090BAB8F2A029914006AE8F9 /* AviaPresenter.swift */,
 				090BAB912A02991D006AE8F9 /* AviaInteractor.swift */,
@@ -529,12 +529,12 @@
 			path = ServiceLayer;
 			sourceTree = "<group>";
 		};
-		09EF874F2A24C0D000EC9D7A /* AviaScrollView */ = {
+		09EF874F2A24C0D000EC9D7A /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
 				09EF87502A24C0E500EC9D7A /* AviaScrollView.swift */,
 			);
-			path = AviaScrollView;
+			path = Subviews;
 			sourceTree = "<group>";
 		};
 		09F86C5829F6FD1200307432 /* Bank */ = {

@@ -19,7 +19,10 @@ final class AviaViewController: UIViewController {
     
     
     //MARK: Private properties
+    private lazy var refreshControl   = UIRefreshControl()
+    private lazy var segmentedControl = UISegmentedControl(items: ["first","second"])
     private lazy var searchController = UISearchController()
+    private lazy var scrollView       = AviaScrollView()
     
     //MARK: Lifecycle
     override func viewDidLoad() {
@@ -43,6 +46,9 @@ private extension AviaViewController {
     func initialize() {
         view.backgroundColor = UIColor(named: "backColor")
         createNavigation()
+        createSearchController()
+        createScrollView()
+        createRefreshControl(scrollView: scrollView)
     }
     
     func createNavigation() {
@@ -50,4 +56,34 @@ private extension AviaViewController {
         navigationItem.title = "tickets_navbar".localized
         navigationController?.navigationBar.prefersLargeTitles = true
     }
+    
+    func createSearchController() {
+        
+    }
+    
+    func createRefreshControl(scrollView: UIScrollView) {
+        refreshControl.addTarget(
+            self,
+            action: #selector(refreshAction),
+            for: .valueChanged
+        )
+        scrollView.refreshControl = refreshControl
+    }
+    
+    func createScrollView() {
+        view.addSubview(scrollView)
+        scrollView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+    }
+    
+    
+}
+
+private extension AviaViewController {
+    @objc func refreshAction() {
+        refreshControl.endRefreshing()
+    }
+    
+    
 }
