@@ -12,7 +12,20 @@ protocol AviaInteractorProtocol: AnyObject {
 }
 
 final class AviaInteractor: AviaInteractorProtocol {
-    weak var presenter: AviaPresenterProtocol?
     
+    weak var presenter: AviaPresenterProtocol?
+    var aivaShowplaceService: AviaShowplaceServiceProtocol
+    
+    init(
+        aivaShowplaceService: AviaShowplaceServiceProtocol
+    ) {
+        self.aivaShowplaceService = aivaShowplaceService
+    }
+    
+    
+    
+}
+
+private extension AviaInteractor {
     
 }
