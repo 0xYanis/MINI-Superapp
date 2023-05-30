@@ -9,13 +9,13 @@ import UIKit
 
 final class AviaScrollView: UIScrollView {
     
-    private lazy var todayView      = UIView()
+    private lazy var showplaceView  = UIView()
     private lazy var hotTicketsView = UIView()
     private lazy var museumsView    = UIView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configure()
+        initialize()
     }
     
     required init?(coder: NSCoder) {
@@ -25,12 +25,12 @@ final class AviaScrollView: UIScrollView {
 }
 
 private extension AviaScrollView {
-    func configure() {
-        todayView.backgroundColor = .red
+    func initialize() {
+        showplaceView.backgroundColor = .red
         hotTicketsView.backgroundColor = .green
         museumsView.backgroundColor = .blue
-        addSubviews(to: todayView, multiply: 0.2, below: nil)
-        addSubviews(to: hotTicketsView, multiply: 0.3, below: todayView)
+        addSubviews(to: showplaceView, multiply: 0.2, below: nil)
+        addSubviews(to: hotTicketsView, multiply: 0.3, below: showplaceView)
         addSubviews(to: museumsView, multiply: 0.25, below: hotTicketsView)
         ConfigureContentSize(with: 1000)
     }

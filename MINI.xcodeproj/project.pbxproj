@@ -33,6 +33,8 @@
 		092E739C29EBFD9100165D37 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E739B29EBFD9100165D37 /* UITextField+Extension.swift */; };
 		093932442A25E4AC00F813A2 /* AviaShowplaceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093932432A25E4AC00F813A2 /* AviaShowplaceService.swift */; };
 		093932462A25E7E400F813A2 /* AviaShowplaceEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093932452A25E7E400F813A2 /* AviaShowplaceEntity.swift */; };
+		093932482A25E91400F813A2 /* ShowplaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093932472A25E91400F813A2 /* ShowplaceView.swift */; };
+		0939324A2A25ED4800F813A2 /* ShowplaceViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093932492A25ED4800F813A2 /* ShowplaceViewCell.swift */; };
 		09503EB829F2D44000254F53 /* StackFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09503EB729F2D44000254F53 /* StackFlowLayout.swift */; };
 		09632FCC29ED8A7D00DB2641 /* BankCardSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09632FCB29ED8A7D00DB2641 /* BankCardSet.swift */; };
 		09632FCE29ED8A8800DB2641 /* BankTemplateSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09632FCD29ED8A8800DB2641 /* BankTemplateSet.swift */; };
@@ -153,6 +155,8 @@
 		092E739B29EBFD9100165D37 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		093932432A25E4AC00F813A2 /* AviaShowplaceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AviaShowplaceService.swift; sourceTree = "<group>"; };
 		093932452A25E7E400F813A2 /* AviaShowplaceEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AviaShowplaceEntity.swift; sourceTree = "<group>"; };
+		093932472A25E91400F813A2 /* ShowplaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowplaceView.swift; sourceTree = "<group>"; };
+		093932492A25ED4800F813A2 /* ShowplaceViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowplaceViewCell.swift; sourceTree = "<group>"; };
 		09503EB729F2D44000254F53 /* StackFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackFlowLayout.swift; sourceTree = "<group>"; };
 		09632FCB29ED8A7D00DB2641 /* BankCardSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankCardSet.swift; sourceTree = "<group>"; };
 		09632FCD29ED8A8800DB2641 /* BankTemplateSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTemplateSet.swift; sourceTree = "<group>"; };
@@ -539,6 +543,8 @@
 			isa = PBXGroup;
 			children = (
 				09EF87502A24C0E500EC9D7A /* AviaScrollView.swift */,
+				093932472A25E91400F813A2 /* ShowplaceView.swift */,
+				093932492A25ED4800F813A2 /* ShowplaceViewCell.swift */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -762,6 +768,7 @@
 				09503EB829F2D44000254F53 /* StackFlowLayout.swift in Sources */,
 				09E9E81929EAE9410084416B /* LoginViewController.swift in Sources */,
 				096B4B272A1DEEC700E5C65E /* APIService.swift in Sources */,
+				093932482A25E91400F813A2 /* ShowplaceView.swift in Sources */,
 				09FC394A29FAD3ED00B2D97E /* TransactionInteractor.swift in Sources */,
 				09E24C152A1228D000A91F74 /* BankTemplateEntity.swift in Sources */,
 				09EF87512A24C0E500EC9D7A /* AviaScrollView.swift in Sources */,
@@ -816,6 +823,7 @@
 				09F86C5729F6F8A000307432 /* UITabBarController+Extension.swift in Sources */,
 				090AE1DD29FBAA080092515D /* TemplatePresenter.swift in Sources */,
 				09FC395029FAD40500B2D97E /* TransactionEntity.swift in Sources */,
+				0939324A2A25ED4800F813A2 /* ShowplaceViewCell.swift in Sources */,
 				09F922692A1EA234009684F2 /* String+Extension.swift in Sources */,
 				097E039F29EC449900CE2A6F /* BankInteractor.swift in Sources */,
 				09E81C682A169CBA008B313B /* GroceryEntity.swift in Sources */,
