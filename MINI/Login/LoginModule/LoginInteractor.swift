@@ -16,9 +16,8 @@ protocol LoginInteractorProtocol: AnyObject {
 final class LoginInteractor: LoginInteractorProtocol {
 
     weak var presenter: LoginPresenterProtocol?
-    var entity: LoginEntity?
     var biometryService: BiometryServiceProtocol?
-    var lottieService: LoginLottieService?
+    var lottieService: LoginLottieServiceProtocol?
     
     func viewDidLoaded() {
         getLottieAnimation()
