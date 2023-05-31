@@ -105,9 +105,6 @@ final class LoginModuleTests: XCTestCase {
         XCTAssertNil(view.lottieAnimation)
     }
     
-    func testRouterSuccessLogin() throws {
-        
-    }
     //    func testPerformanceExample() throws {
     //
     //        measure {
