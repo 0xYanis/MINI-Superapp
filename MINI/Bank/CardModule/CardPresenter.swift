@@ -9,7 +9,10 @@ import Foundation
 
 protocol CardPresenterProtocol: AnyObject {
     func viewDidLoaded()
-    func udpateView(with data: BankCardEntity) 
+    func udpateView(with data: BankCardEntity)
+    
+    func getCardData() -> BankCardEntity?
+    
     func userWantToEditCard()
     func userWantToDeleteCard()
 }
@@ -33,6 +36,10 @@ extension CardPresenter: CardPresenterProtocol {
     
     func udpateView(with data: BankCardEntity) {
         view?.updateView(with: data)
+    }
+    
+    func getCardData() -> BankCardEntity? {
+        interactor.getCardData()
     }
     
     func userWantToEditCard() {

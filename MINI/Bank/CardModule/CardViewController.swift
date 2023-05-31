@@ -14,7 +14,7 @@ protocol CardViewProtocol: AnyObject {
 final class CardViewController: UIViewController {
     
     private lazy var cardView = CardDetailView()
-    private lazy var tableView = UITableView(frame: .zero, style: .plain)
+    private lazy var tableView = UITableView(frame: .zero, style: .insetGrouped)
     
     var presenter: CardPresenterProtocol?
     
@@ -40,7 +40,7 @@ extension CardViewController: CardViewProtocol {
 // MARK: - private methods
 private extension CardViewController {
     func initialize() {
-        view.backgroundColor = UIColor(named: "backColor")
+        view.backgroundColor = .init(white: 0.05, alpha: 1)
         
         createNavigation(title: "Visa Classic")
         createCardView()
@@ -69,10 +69,9 @@ private extension CardViewController {
         tableView.isScrollEnabled = false
         tableView.dataSource = self
         tableView.backgroundColor = .clear
-        tableView.separatorColor = .black
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
-            make.top.equalTo(cardView.snp.bottom).offset(40)
+            make.top.equalTo(cardView.snp.bottom)
             make.left.right.bottom.equalToSuperview()
         }
     }
@@ -167,17 +166,40 @@ private extension CardViewController {
 // MARK: - UITableViewDataSource
 extension CardViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return 9
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let defaultCell = UITableViewCell()
-        defaultCell.selectionStyle = .none
-        defaultCell.backgroundColor = .clear
-        defaultCell.textLabel?.text = "Visa classic: \(indexPath.row)"
-        defaultCell.detailTextLabel?.text = "Some label"
-        defaultCell.imageView?.image = UIImage(systemName: "globe")
-        return defaultCell
+        let cell = UITableViewCell()
+        guard let card = presenter?.getCardData() else { return cell }
+        cell.selectionStyle = .none
+        cell.backgroundColor = UIColor(named: "backColor")
+        cell.imageView?.image = UIImage(systemName: "circle.fill")
+        switch indexPath.row {
+        case 0:
+            cell.textLabel?.text = "Card: \(card.logo)"
+        case 1:
+            cell.textLabel?.text = "Card Type: \(card.cardType)"
+        case 2:
+            cell.textLabel?.text = "Amount: \(card.amount)"
+        case 3:
+            cell.textLabel?.text = "Currency: \(card.currency)"
+        case 4:
+            cell.textLabel?.text = "Number: \(card.number.formatAsCardNumber())"
+        case 5:
+            cell.textLabel?.text = "Bank Name: \(card.bankName)"
+        case 6:
+            if let holderName = card.holderName {
+                cell.textLabel?.text = "Holder Name: \(holderName)"
+            }
+        case 7:
+            cell.textLabel?.text = "Expiration Date: \(card.expirationDate)"
+        case 8:
+            cell.textLabel?.text = "CVV: \(card.cvv)"
+        default:
+            break
+        }
+        return cell
     }
     
     

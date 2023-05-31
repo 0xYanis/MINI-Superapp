@@ -9,6 +9,8 @@ import Foundation
 
 protocol CardInteractorProtocol: AnyObject {
     func viewDidLoaded()
+    
+    func getCardData() -> BankCardEntity?
 }
 
 final class CardInteractor: CardInteractorProtocol {
@@ -23,5 +25,9 @@ final class CardInteractor: CardInteractorProtocol {
     func viewDidLoaded() {
         guard let cardData = cardData else { return }
         presenter?.udpateView(with: cardData)
+    }
+    
+    func getCardData() -> BankCardEntity? {
+        return cardData
     }
 }
