@@ -25,7 +25,7 @@ final class LoginInteractor: LoginInteractorProtocol {
     
     func userWantLogin(_ name: String,_ password: String) {
         // TODO: Выполнить запрос на сервер для аутентификации и получить токен аутентификации
-        if name == "123" && password == "123" {
+        if name == "admin" && password == "admin" {
             
             let authToken = "YourAuthToken" // Временный токен
             saveAuthToken(authToken: authToken)
