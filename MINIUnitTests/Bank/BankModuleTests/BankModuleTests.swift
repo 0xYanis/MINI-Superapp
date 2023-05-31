@@ -9,7 +9,7 @@ import XCTest
 @testable import MINI
 
 final class BankModuleTests: XCTestCase {
-
+    
     var view: MockBankView!
     var router: BankRouter!
     var presenter: BankPresenter!
@@ -41,28 +41,84 @@ final class BankModuleTests: XCTestCase {
         interactor.presenter = presenter
         
     }
-
+    
     override func tearDownWithError() throws {
+        realmService = nil
+        mockCardService = nil
+        mockTemplateService = nil
+        mockTransactionService = nil
+        
+        view = nil
+        router = nil
+        interactor = nil
+        presenter = nil
+    }
+    
+    func testLoadDataToViewSuccessful() throws {
+        // given
+        let card: [BankCardEntity] = []
+        let template: [BankTemplateEntity] = []
+        let transaction: [BankTransactionEntity] = []
+        mockCardService.result = .success(card)
+        mockTemplateService.result = .success(template)
+        mockTransactionService.result = .success(transaction)
+        let didTableUpdateExpectation = expectation(description: "didTableUpdate")
+        let didHistoryUpdateExpectation = expectation(description: "didHistoryUpdate")
+        
+        // when
+        view.viewDidLoad()
+        
+        // then
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            XCTAssertTrue(self.view.didTableUpdate)
+            didTableUpdateExpectation.fulfill()
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            XCTAssertTrue(self.view.didHistoryUpdate)
+            didHistoryUpdateExpectation.fulfill()
+        }
+        
+        wait(for: [didTableUpdateExpectation, didHistoryUpdateExpectation], timeout: 5)
+    }
+    
+    func testLoadDataToViewFailed() throws {
+        // given
+        let error = MockError.loadingGetFailed
+        mockCardService.result = .failure(error)
+        mockTemplateService.result = .failure(error)
+        mockTransactionService.result = .failure(error)
+        
+        // when
+        view.viewDidLoad()
+        
+        // then
+        XCTAssertFalse(view.didTableUpdate)
+        XCTAssertFalse(view.didHistoryUpdate)
+    }
+    
+    func testInteractorGetEmptyFilteredData() throws {
         
     }
-
-    func testExample() throws {
+    
+    func testInteractorGetFilteredData() throws {
         
     }
-
     
-    
-//    func testPerformanceExample() throws {
-//
-//        measure {
-//
-//        }
-//    }
+    //    func testPerformanceExample() throws {
+    //
+    //        measure {
+    //
+    //        }
+    //    }
 }
 
 final class MockBankView: BankViewProtocol {
     
     var presenter: BankPresenterProtocol?
+    
+    func viewDidLoad() {
+        presenter?.viewDidLoaded()
+    }
     
     var didTableUpdate = false
     var didHistoryUpdate = false
@@ -101,4 +157,8 @@ final class MockTransactionService: BankTransactionServiceProtocol {
     func getTransactionsData(completion: @escaping (Result<[BankTransactionEntity]?, Error>) -> Void) {
         completion(result)
     }
+}
+
+enum MockError: String, Error {
+    case loadingGetFailed = "loadingGetFailed"
 }
