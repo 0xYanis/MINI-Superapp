@@ -51,8 +51,8 @@ final class LoginModuleTests: XCTestCase {
     //MARK: - Tests
     //MARK: Login
     func testInteractorCorrectLogin() throws {
-        let name = "123"
-        let password = "123"
+        let name = "admin"
+        let password = "admin"
         
         interactor.userWantLogin(name, password)
         
