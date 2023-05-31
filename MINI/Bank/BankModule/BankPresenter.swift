@@ -68,7 +68,8 @@ extension BankPresenter: BankPresenterProtocol {
     }
     
     func userDidTapSeeAll() {
-        router.goToAllTemplates()
+        let data = interactor.userDidTapSeeAll()
+        router.goToAllTemplates(with: data)
     }
     
     func userDidTapTemplate(id: Int) {

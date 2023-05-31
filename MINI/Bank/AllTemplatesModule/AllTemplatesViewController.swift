@@ -52,7 +52,7 @@ extension AllTemplatesViewController: AllTemplatesViewProtocol {
 //MARK: - Private methods
 private extension AllTemplatesViewController {
     func initialize() {
-        view.backgroundColor = UIColor(named: "backColor")
+        view.backgroundColor = .init(white: 0.05, alpha: 1.0)
         createNavigation()
         createCollectionView()
         collectionViewRegistrate()
@@ -81,20 +81,25 @@ private extension AllTemplatesViewController {
     
     func collectionViewRegistrate() {
         templateCollectionView.register(
-            AllTemplatesViewCell.self, forCellWithReuseIdentifier: AllTemplatesViewCell.cellId
+            AllTemplatesViewCell.self,
+            forCellWithReuseIdentifier: AllTemplatesViewCell.cellId
         )
     }
 }
 
 // MARK: - UICollectionViewDataSource
 extension AllTemplatesViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection
-                        section: Int) -> Int {
-        return 12
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+    ) -> Int {
+        presenter?.getTemplatesData().count ?? 0
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt
-                        indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(
+        _ collectionView: UICollectionView, cellForItemAt
+        indexPath: IndexPath
+    ) -> UICollectionViewCell {
         let defaultCell = UICollectionViewCell()
         
         guard let cell = collectionView.dequeueReusableCell(
@@ -102,6 +107,18 @@ extension AllTemplatesViewController: UICollectionViewDataSource {
         ) as? AllTemplatesViewCell else { return defaultCell }
         
         return cell
+    }
+    
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        willDisplay cell: UICollectionViewCell,
+        forItemAt indexPath: IndexPath
+    ) {
+        guard let data = presenter?.getTemplatesData()[indexPath.item] else { return }
+        if let cell = cell as? AllTemplatesViewCell {
+            cell.configure(name: data.label, image: data.image)
+        }
     }
 }
 

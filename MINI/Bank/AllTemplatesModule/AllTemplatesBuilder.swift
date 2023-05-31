@@ -8,10 +8,10 @@
 import UIKit
 
 final class AllTemplatesBuilder {
-    static func build() -> UIViewController {
+    static func build(with data: [BankTemplateEntity]) -> UIViewController {
         let viewController = AllTemplatesViewController()
         let router = AllTemplatesRouter()
-        let interactor = AllTemplatesInteractor()
+        let interactor = AllTemplatesInteractor(templatesData: data)
         let presenter = AllTemplatesPresenter(router: router, interactor: interactor)
         
         viewController.presenter = presenter

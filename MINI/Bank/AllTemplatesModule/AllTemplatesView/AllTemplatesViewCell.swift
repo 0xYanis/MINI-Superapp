@@ -65,6 +65,7 @@ private extension AllTemplatesViewCell {
     }
     
     func createImageView() {
+        imageView.contentMode = .scaleAspectFit
         imageView.tintColor = .black
         circleView.addSubview(imageView)
         imageView.snp.makeConstraints { make in

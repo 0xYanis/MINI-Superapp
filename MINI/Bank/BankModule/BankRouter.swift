@@ -11,7 +11,7 @@ import UIKit
 protocol BankRouterProtocol: AnyObject {
     func goToDetailCard(with data: BankCardEntity)
     func goToDetailTemplate(id: Int)
-    func goToAllTemplates()
+    func goToAllTemplates(with data: [BankTemplateEntity])
     func goToDetailTransaction(id: Int)
     func goToAddNewCard()
     func goToAddNewTemplate()
@@ -31,8 +31,8 @@ final class BankRouter: BankRouterProtocol {
         view?.navigationController?.pushViewController(templateView, animated: true)
     }
     
-    func goToAllTemplates() {
-        let allTemplatesView = AllTemplatesBuilder.build()
+    func goToAllTemplates(with data: [BankTemplateEntity]) {
+        let allTemplatesView = AllTemplatesBuilder.build(with: data)
         view?.navigationController?.pushViewController(allTemplatesView, animated: true)
     }
     

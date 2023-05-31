@@ -8,6 +8,9 @@
 import Foundation
 
 protocol AllTemplatesPresenterProtocol: AnyObject {
+    
+    func getTemplatesData() -> [BankTemplateEntity]
+    
     func userDidTapTemplate(id: Int)
     func userWillDeleteTemplate(id: Int)
 }
@@ -24,6 +27,11 @@ final class AllTemplatesPresenter {
 }
 
 extension AllTemplatesPresenter: AllTemplatesPresenterProtocol {
+    
+    func getTemplatesData() -> [BankTemplateEntity] {
+        interactor.getTemplatesData()
+    }
+    
     func userDidTapTemplate(id: Int) {
         router.goToTemplate(id: id)
     }
