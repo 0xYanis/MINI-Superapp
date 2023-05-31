@@ -30,10 +30,10 @@ final class BankInteractor: BankInteractorProtocol {
     var templateService: BankTemplateServiceProtocol
     var transactionService: BankTransactionServiceProtocol
     
-    private var cardsData: [BankCardEntity]               = []
-    private var templatesData: [BankTemplateEntity]       = []
-    private var transactionsData: [BankTransactionEntity] = []
-    private var filteredData: [BankTransactionEntity]     = []
+    var cardsData: [BankCardEntity]               = []
+    var templatesData: [BankTemplateEntity]       = []
+    var transactionsData: [BankTransactionEntity] = []
+    var filteredData: [BankTransactionEntity]     = []
     
     
     init(
