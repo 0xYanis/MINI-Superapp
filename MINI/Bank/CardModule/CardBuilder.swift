@@ -8,10 +8,10 @@
 import UIKit
 
 final class CardBuilder {
-    static func build() -> UIViewController {
+    static func build(with data: BankCardEntity) -> UIViewController {
         let viewController = CardViewController()
         let router = CardRouter()
-        let interactor = CardInteractor()
+        let interactor = CardInteractor(cardData: data)
         let presenter = CardPresenter(router: router, interactor: interactor)
         
         viewController.presenter = presenter

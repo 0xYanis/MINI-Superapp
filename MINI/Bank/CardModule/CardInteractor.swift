@@ -16,6 +16,10 @@ final class CardInteractor: CardInteractorProtocol {
     
     var cardData: BankCardEntity?
     
+    init(cardData: BankCardEntity) {
+        self.cardData = cardData
+    }
+    
     func viewDidLoaded() {
         guard let cardData = cardData else { return }
         presenter?.udpateView(with: cardData)
