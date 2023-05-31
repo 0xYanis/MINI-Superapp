@@ -306,6 +306,7 @@
 			isa = PBXGroup;
 			children = (
 				091095FC29DB32F000338D22 /* MINI */,
+				098999052A276A650040B67D /* MINIUnitTests */,
 				091095FB29DB32F000338D22 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -402,6 +403,69 @@
 				09E24C162A122C2E00A91F74 /* BankTransactionEntity.swift */,
 			);
 			path = BankModule;
+			sourceTree = "<group>";
+		};
+		098999052A276A650040B67D /* MINIUnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				098999082A276AC20040B67D /* AviaTickets */,
+				098999062A276A9D0040B67D /* Bank */,
+				098999092A276ACC0040B67D /* Grocery */,
+				0989990C2A276B0B0040B67D /* Helpers */,
+				0989990B2A276ADF0040B67D /* ServiceLayer */,
+				0989990A2A276AD60040B67D /* Profile */,
+				098999072A276AA90040B67D /* Login */,
+			);
+			path = MINIUnitTests;
+			sourceTree = "<group>";
+		};
+		098999062A276A9D0040B67D /* Bank */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Bank;
+			sourceTree = "<group>";
+		};
+		098999072A276AA90040B67D /* Login */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		098999082A276AC20040B67D /* AviaTickets */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AviaTickets;
+			sourceTree = "<group>";
+		};
+		098999092A276ACC0040B67D /* Grocery */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Grocery;
+			sourceTree = "<group>";
+		};
+		0989990A2A276AD60040B67D /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		0989990B2A276ADF0040B67D /* ServiceLayer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ServiceLayer;
+			sourceTree = "<group>";
+		};
+		0989990C2A276B0B0040B67D /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		099089E12A1399F800EE00DA /* Grocery */ = {
