@@ -14,7 +14,7 @@ final class LoginModuleTests: XCTestCase {
     
     var view: MockLoginView!
     var interactor: LoginInteractor!
-    var router: MockLoginRouter!
+    var router: LoginRouter!
     var presenter: MockLoginPresenter!
     var lottieService: MockLoginLottieService!
     var biometryService: MockBiometryService!
@@ -22,7 +22,7 @@ final class LoginModuleTests: XCTestCase {
     //MARK: - Initial setup
     override func setUpWithError() throws {
         view = MockLoginView()
-        router = MockLoginRouter()
+        router = LoginRouter()
         presenter = MockLoginPresenter()
         lottieService = MockLoginLottieService()
         biometryService = MockBiometryService()
@@ -105,7 +105,9 @@ final class LoginModuleTests: XCTestCase {
         XCTAssertNil(view.lottieAnimation)
     }
     
-    
+    func testRouterSuccessLogin() throws {
+        
+    }
     //    func testPerformanceExample() throws {
     //
     //        measure {
@@ -130,11 +132,6 @@ final class MockLoginView: LoginViewProtocol {
         self.alertMessage = message
     }
     func loginIsNotCorrect() {}
-}
-
-//MARK: - MockLoginRouter
-final class MockLoginRouter: LoginRouterProtocol {
-    func userDidLogin() {}
 }
 
 //MARK: - MockLoginLottieService
@@ -186,6 +183,7 @@ final class MockLoginPresenter: LoginPresenterProtocol {
     
     func loginIsCorrect() {
         loginIsCorrectCalled = true
+        router?.userDidLogin()
     }
     
     func loginIsNotCorrect() {
