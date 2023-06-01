@@ -96,6 +96,21 @@ final class BankModuleTests: XCTestCase {
         XCTAssertFalse(view.didHistoryUpdate)
     }
     
+    func testLoadDataToViewHaveNil() throws {
+        // given
+        mockCardService.result = .success(nil)
+        mockTemplateService.result = .success(nil)
+        mockTransactionService.result = .success(nil)
+        
+        // when
+        view.viewDidLoad()
+        
+        // then
+        XCTAssertEqual([], interactor.cardsData)
+        XCTAssertEqual([], interactor.templatesData)
+        XCTAssertEqual([], interactor.transactionsData)
+    }
+    
     func testInteractorGetFilteredData() throws {
         // given
         let name = "Baz"
@@ -108,7 +123,7 @@ final class BankModuleTests: XCTestCase {
         let result = presenter.getFilteredData()
         
         // then
-        XCTAssertEqual(result, mockData)
+        XCTAssertEqual(mockData, result)
     }
     
     func testInteractorGetEmptyFilteredData() throws {
@@ -121,7 +136,7 @@ final class BankModuleTests: XCTestCase {
         let result = presenter.getFilteredData()
         
         // then
-        XCTAssertEqual(result, mockData)
+        XCTAssertEqual(mockData, result)
     }
     
     func testInteractorUserTapSeeAll() throws {
@@ -137,7 +152,7 @@ final class BankModuleTests: XCTestCase {
         let result = interactor.userDidTapSeeAll()
         
         // then
-        XCTAssertEqual(result, mockData)
+        XCTAssertEqual(mockData, result)
     }
     
     func testInteractorUserTapDetailCard() throws {
