@@ -11,6 +11,8 @@ import SnapKit
 protocol BankViewProtocol: AnyObject {
     func updateBankTable()
     func updateHistory()
+    
+    func loadingDataGetFailed(with error: String)
 }
 
 protocol BankViewCellDelegate: AnyObject {
@@ -68,6 +70,10 @@ extension BankViewController: BankViewProtocol {
     
     func updateHistory() {
         historyTableVC.reloadData()
+    }
+    
+    func loadingDataGetFailed(with error: String) {
+        
     }
 }
 
