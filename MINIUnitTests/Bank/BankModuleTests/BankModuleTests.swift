@@ -83,7 +83,8 @@ final class BankModuleTests: XCTestCase {
     
     func testLoadDataToViewFailed() throws {
         // given
-        let error = MockError.loadingGetFailed
+        let message = ""
+        let error = MockError.loadingGetFailed(message: message)
         mockCardService.result = .failure(error)
         mockTemplateService.result = .failure(error)
         mockTransactionService.result = .failure(error)
@@ -94,6 +95,8 @@ final class BankModuleTests: XCTestCase {
         // then
         XCTAssertFalse(view.didTableUpdate)
         XCTAssertFalse(view.didHistoryUpdate)
+        
+        XCTAssertEqual(message, view.error)
     }
     
     func testLoadDataToViewHaveNil() throws {
@@ -170,6 +173,25 @@ final class BankModuleTests: XCTestCase {
         XCTAssertEqual(mockData[0], result)
     }
     
+//    func testUserGoToDetailTemplate() throws {
+//        let mockData = [BankTemplateEntity(id: 0, image: "", label: "")]
+//        interactor.templatesData = mockData
+//
+//        presenter.userDidTapTemplate(id: 0)
+//        let result = interactor.userDidTapTemplate(index: 0)
+//
+//        XCTAssertEqual(mockData[0], result)
+//    }
+    
+//    func testUserGoToDetailTransaction() throws {
+//        let mockData = [BankTransactionEntity(id: 0, icon: "", name: "", date: "", cost: 0, cardNumber: 0, location: "", currency: "", status: "", category: "", notes: "", merchantID: 0, customerID: 0)]
+//        interactor.transactionsData = mockData
+//
+//        presenter.userDidTapTransaction(id: 0)
+//        let result = interactor.userDidTapTransaction(index: 0)
+//        XCTAssertEqual(mockData[0], result)
+//    }
+    
     //    func testPerformanceExample() throws {
     //
     //        measure {
@@ -188,6 +210,7 @@ final class MockBankView: BankViewProtocol {
     
     var didTableUpdate = false
     var didHistoryUpdate = false
+    var error: String = ""
     
     func updateBankTable() {
         didTableUpdate = true
@@ -195,6 +218,10 @@ final class MockBankView: BankViewProtocol {
     
     func updateHistory() {
         didHistoryUpdate = true
+    }
+    
+    func loadingDataGetFailed(with error: String) {
+        self.error = error
     }
 }
 
@@ -225,6 +252,15 @@ final class MockTransactionService: BankTransactionServiceProtocol {
     }
 }
 
-enum MockError: String, Error {
-    case loadingGetFailed = "loadingGetFailed"
+enum MockError: Error {
+    case loadingGetFailed(message: String)
+}
+
+extension MockError: LocalizedError {
+    var errorDescription: String? {
+        switch self {
+        case .loadingGetFailed(let message):
+            return message
+        }
+    }
 }

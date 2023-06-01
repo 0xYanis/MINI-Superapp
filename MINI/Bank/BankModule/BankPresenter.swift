@@ -109,6 +109,6 @@ extension BankPresenter: BankPresenterProtocol {
     }
     
     func loadingDataGetFailed(with error: String) {
-        
+        view?.loadingDataGetFailed(with: error)
     }
 }
