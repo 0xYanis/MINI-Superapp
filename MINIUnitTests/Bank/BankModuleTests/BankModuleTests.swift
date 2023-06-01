@@ -135,7 +135,7 @@ final class BankModuleTests: XCTestCase {
         let mockData: [BankTransactionEntity] = []
         
         // when
-        presenter.searchBarTextDidChange(with: "")
+        presenter.searchBarTextDidChange(with: searchText)
         let result = presenter.getFilteredData()
         
         // then
