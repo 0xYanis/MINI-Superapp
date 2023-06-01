@@ -96,12 +96,63 @@ final class BankModuleTests: XCTestCase {
         XCTAssertFalse(view.didHistoryUpdate)
     }
     
-    func testInteractorGetEmptyFilteredData() throws {
+    func testInteractorGetFilteredData() throws {
+        // given
+        let name = "Baz"
+        let mockData = [BankTransactionEntity(id: 0, icon: "", name: name, date: "", cost: 0, cardNumber: 0, location: "", currency: "", status: "", category: "", notes: "", merchantID: 0, customerID: 0)]
+        interactor.transactionsData = mockData
+        let searchText = "Baz"
         
+        // when
+        presenter.searchBarTextDidChange(with: searchText)
+        let result = presenter.getFilteredData()
+        
+        // then
+        XCTAssertEqual(result, mockData)
     }
     
-    func testInteractorGetFilteredData() throws {
+    func testInteractorGetEmptyFilteredData() throws {
+        // given
+        let searchText = ""
+        let mockData: [BankTransactionEntity] = []
         
+        // when
+        presenter.searchBarTextDidChange(with: "")
+        let result = presenter.getFilteredData()
+        
+        // then
+        XCTAssertEqual(result, mockData)
+    }
+    
+    func testInteractorUserTapSeeAll() throws {
+        // given
+        let mockData = [
+            BankTemplateEntity(id: 0, image: "", label: ""),
+            BankTemplateEntity(id: 1, image: "", label: "")
+        ]
+        interactor.templatesData = mockData
+        
+        // when
+        presenter.userDidTapSeeAll()
+        let result = interactor.userDidTapSeeAll()
+        
+        // then
+        XCTAssertEqual(result, mockData)
+    }
+    
+    func testInteractorUserTapDetailCard() throws {
+        // given
+        let mockData = [
+        BankCardEntity(id: 0, cardColor: "", logo: "", cardType: "", amount: 0, currency: "", number: "", bankName: "", holderName: "", expirationDate: "", cvv: "")
+        ]
+        interactor.cardsData = mockData
+        
+        // when
+        presenter.userDidTapCard(index: 0)
+        let result = interactor.userDidTapCard(index: 0)
+        
+        // then
+        XCTAssertEqual(mockData[0], result)
     }
     
     //    func testPerformanceExample() throws {
