@@ -8,20 +8,20 @@
 import Foundation
 
 protocol BankInteractorProtocol: AnyObject {
+    var cardsData: [BankCardEntity] { get }
+    var templatesData: [BankTemplateEntity] { get }
+    var transactionsData: [BankTransactionEntity] { get }
+    var filteredData: [BankTransactionEntity] { get }
+    
     func viewDidLoaded()
     
     func userDidTapCard(index: Int) -> BankCardEntity
     func userDidTapSeeAll() -> [BankTemplateEntity]
     
-    func getCardData() -> [BankCardEntity]
-    func getTemplateData() -> [BankTemplateEntity]
-    func getTransactionData() -> [BankTransactionEntity]
-    
     func userWantToDeleteCard(at id: Int)
     func userWantToDeleteTransaction(at id: Int)
     
     func searchBarTextDidChange(with searchText: String)
-    func getFilteredData() -> [BankTransactionEntity]
 }
 
 
@@ -65,16 +65,6 @@ final class BankInteractor: BankInteractorProtocol {
         return templatesData
     }
     
-    func getCardData() -> [BankCardEntity] {
-        return cardsData
-    }
-    func getTemplateData() -> [BankTemplateEntity] {
-        return templatesData
-    }
-    func getTransactionData() -> [BankTransactionEntity] {
-        return transactionsData
-    }
-    
     func userWantToDeleteCard(at id: Int) {
         cardsData.remove(at: id)
     }
@@ -92,10 +82,6 @@ final class BankInteractor: BankInteractorProtocol {
             }
         }
         presenter?.updateView()
-    }
-    
-    func getFilteredData() -> [BankTransactionEntity] {
-        return filteredData
     }
 }
 

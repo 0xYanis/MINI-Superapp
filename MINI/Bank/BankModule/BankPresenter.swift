@@ -92,15 +92,15 @@ extension BankPresenter: BankPresenterProtocol {
     }
     
     func getCardData() -> [BankCardEntity] {
-        interactor.getCardData()
+        interactor.cardsData
     }
     
     func getTemplateData() -> [BankTemplateEntity] {
-        interactor.getTemplateData()
+        interactor.templatesData
     }
     
     func getTransactionData() -> [BankTransactionEntity] {
-        interactor.getTransactionData()
+        interactor.transactionsData
     }
     
     func userWantToDeleteCard(at id: Int) {
@@ -116,7 +116,7 @@ extension BankPresenter: BankPresenterProtocol {
     }
     
     func getFilteredData() -> [BankTransactionEntity] {
-        interactor.getFilteredData()
+        interactor.filteredData
     }
     
     func loadingDataGetFailed(with error: String) {
