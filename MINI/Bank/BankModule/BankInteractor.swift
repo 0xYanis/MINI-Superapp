@@ -17,6 +17,8 @@ protocol BankInteractorProtocol: AnyObject {
     func getTemplateData() -> [BankTemplateEntity]
     func getTransactionData() -> [BankTransactionEntity]
     
+    func userWantToDeleteCard(at id: Int)
+    
     func searchBarTextDidChange(with searchText: String)
     func getFilteredData() -> [BankTransactionEntity]
 }
@@ -70,6 +72,10 @@ final class BankInteractor: BankInteractorProtocol {
     }
     func getTransactionData() -> [BankTransactionEntity] {
         return transactionsData
+    }
+    
+    func userWantToDeleteCard(at id: Int) {
+        cardsData.remove(at: id)
     }
     
     func searchBarTextDidChange(with searchText: String) {

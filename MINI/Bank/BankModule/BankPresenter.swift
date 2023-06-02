@@ -23,6 +23,8 @@ protocol BankPresenterProtocol: AnyObject {
     func getTemplateData() -> [BankTemplateEntity]
     func getTransactionData() -> [BankTransactionEntity]
     
+    func userWantToDeleteCard(at id: Int)
+    
     func searchBarTextDidChange(with searchText: String)
     func getFilteredData() -> [BankTransactionEntity]
     
@@ -98,6 +100,10 @@ extension BankPresenter: BankPresenterProtocol {
     
     func getTransactionData() -> [BankTransactionEntity] {
         interactor.getTransactionData()
+    }
+    
+    func userWantToDeleteCard(at id: Int) {
+        interactor.userWantToDeleteCard(at: id)
     }
     
     func searchBarTextDidChange(with searchText: String) {

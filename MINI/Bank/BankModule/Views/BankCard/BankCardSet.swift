@@ -13,6 +13,7 @@ final class BankCardSet: UITableViewCell {
     //MARK: Public properties
     weak var delegate: BankViewCellDelegate?
     weak var dataSource: BankViewCellDataSource?
+    weak var presenter: BankPresenterProtocol?
     
     static let cellId = "BankCardSet"
     
@@ -163,7 +164,8 @@ extension BankCardSet: SkeletonCollectionViewDataSource {
             title: "Удалить",
             image: UIImage(systemName: "trash"),
             attributes: .destructive
-        ) { _ in
+        ) { [weak self] _ in
+            self?.presenter?.userWantToDeleteCard(at: indexPath.item)
             collectionView.performBatchUpdates({
                 collectionView.deleteItems(at: [indexPath])
             })

@@ -302,6 +302,7 @@ extension BankViewController: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: BankCardSet.cellId,
                 for: indexPath) as? BankCardSet else { return defaultCell }
+            cell.presenter = presenter
             cell.delegate = self
             cell.dataSource = self
             cell.reloadData()
