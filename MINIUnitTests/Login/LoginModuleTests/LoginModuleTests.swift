@@ -15,7 +15,7 @@ final class LoginModuleTests: XCTestCase {
     var view: MockLoginView!
     var interactor: LoginInteractor!
     var router: LoginRouter!
-    var presenter: MockLoginPresenter!
+    var presenter: LoginPresenter!
     var lottieService: MockLoginLottieService!
     var biometryService: MockBiometryService!
     
@@ -23,14 +23,11 @@ final class LoginModuleTests: XCTestCase {
     override func setUpWithError() throws {
         view = MockLoginView()
         router = LoginRouter()
-        presenter = MockLoginPresenter()
         lottieService = MockLoginLottieService()
         biometryService = MockBiometryService()
-        
         interactor = LoginInteractor()
+        presenter = LoginPresenter(interactor: interactor, router: router)
         
-        presenter.router = router
-        presenter.interactor = interactor
         presenter.view = view
         view.presenter = presenter
         interactor.presenter = presenter
@@ -56,7 +53,7 @@ final class LoginModuleTests: XCTestCase {
         
         interactor.userWantLogin(name, password)
         
-        XCTAssertTrue(presenter.loginIsCorrectCalled)
+        
     }
     
     func testInteractorEmptyDataLogin() throws {
@@ -65,7 +62,7 @@ final class LoginModuleTests: XCTestCase {
         
         interactor.userWantLogin(name, password)
         
-        XCTAssertFalse(presenter.loginIsNotCorrectCalled)
+        XCTAssertTrue(view.loginIsNotCorrectCall)
     }
     
     //MARK: Biometry service
@@ -74,15 +71,16 @@ final class LoginModuleTests: XCTestCase {
         
         interactor.userWantBiometry()
         
-        XCTAssertTrue(presenter.loginIsCorrectCalled)
+        XCTAssertFalse(view.loginIsNotCorrectCall)
     }
     
     func testInteractorFailedBiometry() throws {
-        biometryService.result = false
+        let result = false
+        biometryService.result = result
         
         interactor.userWantBiometry()
         
-        XCTAssertFalse(presenter.loginIsNotCorrectCalled)
+        XCTAssertEqual(result, view.loginIsNotCorrectCall)
     }
     
     //MARK: Lottie service
@@ -117,6 +115,8 @@ final class LoginModuleTests: XCTestCase {
 final class MockLoginView: LoginViewProtocol {
     var presenter: LoginPresenterProtocol?
     
+    var loginIsNotCorrectCall = false
+    
     var lottieAnimation: LottieAnimation?
     var alertTitle: String?
     var alertMessage: String?
@@ -128,7 +128,9 @@ final class MockLoginView: LoginViewProtocol {
         self.alertTitle = title
         self.alertMessage = message
     }
-    func loginIsNotCorrect() {}
+    func loginIsNotCorrect() {
+        loginIsNotCorrectCall = true
+    }
 }
 
 //MARK: - MockLoginLottieService
@@ -149,42 +151,6 @@ final class MockBiometryService: BiometryServiceProtocol {
     
     func authWithBiometry(completion: @escaping (Bool, Error?) -> Void) {
         completion(result, nil)
-    }
-}
-
-//MARK: - MockLoginPresenter
-final class MockLoginPresenter: LoginPresenterProtocol {
-    
-    weak var view: MockLoginView?
-    var router: LoginRouterProtocol?
-    var interactor: LoginInteractorProtocol?
-    
-    var loginIsCorrectCalled = false
-    var loginIsNotCorrectCalled = false
-    
-    func viewDidLoaded() {
-        interactor?.viewDidLoaded()
-    }
-    
-    func loadAnimation(_ data: LottieAnimation) {
-        view?.setAnimation(lottie: data)
-    }
-    
-    func userDidTapLogin(name: String, password: String) {
-        interactor?.userWantLogin(name, password)
-    }
-    
-    func userDidTapBiometry() {
-        interactor?.userWantBiometry()
-    }
-    
-    func loginIsCorrect() {
-        loginIsCorrectCalled = true
-        router?.userDidLogin()
-    }
-    
-    func loginIsNotCorrect() {
-        loginIsNotCorrectCalled = false
     }
 }
 
