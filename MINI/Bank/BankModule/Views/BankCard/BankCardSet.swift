@@ -79,60 +79,124 @@ private extension BankCardSet {
 
 // MARK: - SkeletonCollectionViewDataSource
 extension BankCardSet: SkeletonCollectionViewDataSource {
-    func collectionSkeletonView(_ skeletonView: UICollectionView,
-                                cellIdentifierForItemAt indexPath: IndexPath) -> SkeletonView.ReusableCellIdentifier {
+    func collectionSkeletonView(
+        _ skeletonView: UICollectionView,
+        cellIdentifierForItemAt indexPath: IndexPath
+    ) -> SkeletonView.ReusableCellIdentifier {
         return BankCardCell.cellId
     }
     
-    func collectionView(_ collectionView: UICollectionView,
-                        numberOfItemsInSection section: Int) -> Int {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+    ) -> Int {
         return dataSource?.getCardData().count ?? 5
     }
     
     
-    func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BankCardCell.cellId, for: indexPath) as? BankCardCell else {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: BankCardCell.cellId,
+            for: indexPath) as? BankCardCell else {
             return UICollectionViewCell()
         }
         return cell
     }
     
     
-    func collectionView(_ collectionView: UICollectionView,
-                        willDisplay cell: UICollectionViewCell,
-                        forItemAt indexPath: IndexPath) {
-        
-        guard let cardData = dataSource?.getCardData(), indexPath.row < cardData.count else { return }
-        
-        if let cell = cell as? BankCardCell {
-            cell.shadow(color: .black, opacity: 0.5, radius: 10)
-            cell.configure(with: cardData[indexPath.row])
-            self.stopSkeleton()
+    func collectionView(
+        _ collectionView: UICollectionView,
+        willDisplay cell: UICollectionViewCell,
+        forItemAt indexPath: IndexPath) {
+            
+            guard let cardData = dataSource?.getCardData(), indexPath.row < cardData.count else { return }
+            
+            if let cell = cell as? BankCardCell {
+                cell.shadow(color: .black, opacity: 0.5, radius: 10)
+                cell.configure(with: cardData[indexPath.row])
+                self.stopSkeleton()
+            }
+            
         }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        contextMenuConfigurationForItemsAt indexPaths: [IndexPath],
+        point: CGPoint
+    ) -> UIContextMenuConfiguration? {
         
+        guard indexPaths.count == 1,
+              let indexPath = indexPaths.first else { return nil }
+        
+        let editAction   = editCellsAction(collectionView, indexPath: indexPath)
+        let deleteAction = deleteCellsAction(collectionView, indexPath: indexPath)
+        
+        
+        return UIContextMenuConfiguration(
+            identifier: nil,
+            previewProvider: nil
+        ) { _ in
+            UIMenu(
+                title: "",
+                children: [editAction, deleteAction]
+            )
+        }
     }
     
+    func editCellsAction(_ collectionView: UICollectionView, indexPath: IndexPath) -> UIAction {
+        let editAction = UIAction(
+            title: "Изменить",
+            image: UIImage(systemName: "square.and.pencil"),
+            attributes: []
+        ) { [weak self] _ in
+            self?.delegate?.handleTapOnCardCell(id: indexPath.item)
+        }
+        
+        return editAction
+    }
     
+    func deleteCellsAction(_ collectionView: UICollectionView, indexPath: IndexPath) -> UIAction {
+        let deleteAction = UIAction(
+            title: "Удалить",
+            image: UIImage(systemName: "trash"),
+            attributes: .destructive
+        ) { _ in
+            collectionView.performBatchUpdates({
+                collectionView.deleteItems(at: [indexPath])
+            })
+        }
+        
+        return deleteAction
+    }
 }
 
 
 // MARK: - UICollectionViewDelegateFlowLayout
 extension BankCardSet: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        minimumLineSpacingForSectionAt section: Int
+    ) -> CGFloat {
         return 16
     }
     
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
         let width = frame.width / 2.5
         return .init(width: width, height: frame.height-40)
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) {
         delegate?.handleTapOnCardCell(id: indexPath.item)
     }
 }
