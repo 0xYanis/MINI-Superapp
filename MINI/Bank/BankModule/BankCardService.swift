@@ -8,7 +8,7 @@
 import Foundation
 
 protocol BankCardServiceProtocol: AnyObject {
-    func getCardsData(completion: @escaping(Result<[BankCardEntity]?, Error>) -> Void)
+    func getCardsData(completion: @escaping(Result<[BankCardModel]?, Error>) -> Void)
 }
 
 final class BankCardService: BankCardServiceProtocol {
@@ -22,7 +22,7 @@ final class BankCardService: BankCardServiceProtocol {
         self.apiService = apiService
     }
     
-    func getCardsData(completion: @escaping(Result<[BankCardEntity]?, Error>) -> Void) {
+    func getCardsData(completion: @escaping(Result<[BankCardModel]?, Error>) -> Void) {
         apiService.getRequest(url: cardUrl) { (result: Result<BankCardStruct, Error>) in
             switch result {
             case .success(let data):

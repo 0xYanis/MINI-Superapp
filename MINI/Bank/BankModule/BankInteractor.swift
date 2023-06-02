@@ -8,14 +8,14 @@
 import Foundation
 
 protocol BankInteractorProtocol: AnyObject {
-    var cardsData: [BankCardEntity] { get }
+    var cardsData: [BankCardModel] { get }
     var templatesData: [BankTemplateEntity] { get }
     var transactionsData: [BankTransactionEntity] { get }
     var filteredData: [BankTransactionEntity] { get }
     
     func viewDidLoaded()
     
-    func userDidTapCard(index: Int) -> BankCardEntity
+    func userDidTapCard(index: Int) -> BankCardModel
     func userDidTapSeeAll() -> [BankTemplateEntity]
     
     func userWantToDeleteCard(at id: Int)
@@ -33,7 +33,7 @@ final class BankInteractor: BankInteractorProtocol {
     var templateService: BankTemplateServiceProtocol
     var transactionService: BankTransactionServiceProtocol
     
-    var cardsData: [BankCardEntity]               = []
+    var cardsData: [BankCardModel]               = []
     var templatesData: [BankTemplateEntity]       = []
     var transactionsData: [BankTransactionEntity] = []
     var filteredData: [BankTransactionEntity]     = []
@@ -56,7 +56,7 @@ final class BankInteractor: BankInteractorProtocol {
         getTransactions()
     }
     
-    func userDidTapCard(index: Int) -> BankCardEntity {
+    func userDidTapCard(index: Int) -> BankCardModel {
         return cardsData[index]
     }
     
@@ -87,22 +87,15 @@ final class BankInteractor: BankInteractorProtocol {
 //MARK: - Private methods
 private extension BankInteractor {
     func getCards() {
-        let model = cardsData.map { $0.toModel() }
-        if let storedCards = realmService.fetch(BankCardModel.self) {
-            cardsData = storedCards.map { cardModel in
-                BankCardEntity(from: cardModel)
-            }
-        } else {
-            cardService.getCardsData { [weak self] result in
-                guard let self = self else { return }
-                DispatchQueue.global().async {
-                    switch result {
-                    case .success(let cards):
-                        self.cardsData = cards ?? []
-                        self.presenter?.updateView()
-                    case .failure(let error):
-                        self.presenter?.loadingDataGetFailed(with: error.localizedDescription)
-                    }
+        cardService.getCardsData { [weak self] result in
+            guard let self = self else { return }
+            DispatchQueue.global().async {
+                switch result {
+                case .success(let cards):
+                    self.cardsData = cards ?? []
+                    self.presenter?.updateView()
+                case .failure(let error):
+                    self.presenter?.loadingDataGetFailed(with: error.localizedDescription)
                 }
             }
         }
@@ -136,10 +129,5 @@ private extension BankInteractor {
                 }
             }
         }
-    }
-    
-    func saveObjectToRealm(_ data: [BankCardEntity]) {
-        let object = data.map { $0.toModel() }
-        
     }
 }

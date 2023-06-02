@@ -8,7 +8,7 @@
 import Foundation
 
 protocol AviaShowplaceServiceProtocol: AnyObject {
-    func getShowplaceData(completion: @escaping(Result<[BankCardEntity]?, Error>) -> Void)
+    func getShowplaceData(completion: @escaping(Result<[BankCardModel]?, Error>) -> Void)
 }
 
 final class AviaShowplaceService: AviaShowplaceServiceProtocol {
@@ -23,7 +23,7 @@ final class AviaShowplaceService: AviaShowplaceServiceProtocol {
         self.apiService = apiService
     }
     
-    func getShowplaceData(completion: @escaping (Result<[BankCardEntity]?, Error>) -> Void) {
+    func getShowplaceData(completion: @escaping (Result<[BankCardModel]?, Error>) -> Void) {
         
     }
     

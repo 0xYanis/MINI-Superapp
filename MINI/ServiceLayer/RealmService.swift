@@ -17,7 +17,7 @@ protocol RealmServiceProtocol: AnyObject {
 
 extension RealmServiceProtocol {
     func fetch<T: Object>(_ objectType: T.Type) -> [T]? {
-        var realm = try! Realm(configuration: .defaultConfiguration)
+        let realm = try! Realm(configuration: .defaultConfiguration)
         return realm.objects(objectType).map { return $0 }
     }
 }

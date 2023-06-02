@@ -25,7 +25,7 @@ protocol BankViewCellDelegate: AnyObject {
 }
 
 protocol BankViewCellDataSource: AnyObject {
-    func getCardData() -> [BankCardEntity]
+    func getCardData() -> [BankCardModel]
     func getTemplateData() -> [BankTemplateEntity]
     func getTransactionData() -> [BankTransactionEntity]
     
@@ -102,7 +102,7 @@ extension BankViewController: BankViewCellDelegate {
 
 //MARK: - BankViewCellDataSource
 extension BankViewController: BankViewCellDataSource {
-    func getCardData() -> [BankCardEntity] {
+    func getCardData() -> [BankCardModel] {
         presenter?.getCardData() ?? []
     }
     

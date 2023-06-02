@@ -10,15 +10,15 @@ import Foundation
 protocol CardInteractorProtocol: AnyObject {
     func viewDidLoaded()
     
-    func getCardData() -> BankCardEntity?
+    func getCardData() -> BankCardModel?
 }
 
 final class CardInteractor: CardInteractorProtocol {
     weak var presenter: CardPresenterProtocol?
     
-    var cardData: BankCardEntity?
+    var cardData: BankCardModel?
     
-    init(cardData: BankCardEntity) {
+    init(cardData: BankCardModel) {
         self.cardData = cardData
     }
     
@@ -27,7 +27,7 @@ final class CardInteractor: CardInteractorProtocol {
         presenter?.udpateView(with: cardData)
     }
     
-    func getCardData() -> BankCardEntity? {
+    func getCardData() -> BankCardModel? {
         return cardData
     }
 }

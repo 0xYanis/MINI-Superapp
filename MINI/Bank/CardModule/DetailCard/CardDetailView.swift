@@ -45,7 +45,7 @@ final class CardDetailView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with data: BankCardEntity) {
+    func configure(with data: BankCardModel) {
         cardView.backgroundColor = UIColor(named: data.cardColor)
         cardLogo.image = UIImage(named: data.logo)
         bankLabel.text = data.bankName

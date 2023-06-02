@@ -19,7 +19,7 @@ protocol BankPresenterProtocol: AnyObject {
     func setNewCard()
     func setNewTransaction()
     
-    func getCardData() -> [BankCardEntity]
+    func getCardData() -> [BankCardModel]
     func getTemplateData() -> [BankTemplateEntity]
     func getTransactionData() -> [BankTransactionEntity]
     
@@ -91,7 +91,7 @@ extension BankPresenter: BankPresenterProtocol {
         view?.updateHistory()
     }
     
-    func getCardData() -> [BankCardEntity] {
+    func getCardData() -> [BankCardModel] {
         interactor.cardsData
     }
     
