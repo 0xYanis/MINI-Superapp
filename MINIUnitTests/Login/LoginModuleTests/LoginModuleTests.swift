@@ -53,7 +53,7 @@ final class LoginModuleTests: XCTestCase {
         
         interactor.userWantLogin(name, password)
         
-        
+        XCTAssertFalse(view.loginIsNotCorrectCall)
     }
     
     func testInteractorEmptyDataLogin() throws {
@@ -84,6 +84,22 @@ final class LoginModuleTests: XCTestCase {
     }
     
     //MARK: Lottie service
+    func testInteractorSuccessfulLoadLottie() throws {
+        let apiService = APIService()
+        let realLottieService = LoginLottieService(apiService: apiService)
+        interactor.lottieService = nil
+        interactor.lottieService = realLottieService
+        let didLoadLottieExpectaion = expectation(description: "didLoadLottie")
+        
+        self.presenter.viewDidLoaded()
+        DispatchQueue.global().async {
+            XCTAssertNotNil(self.view.lottieAnimation)
+            didLoadLottieExpectaion.fulfill()
+        }
+        
+        wait(for: [didLoadLottieExpectaion], timeout: 5)
+    }
+    
     func testInteractorFailedLoadLottie() throws {
         let error = MockError.loadingGetFailed
         lottieService.result = .failure(error)
