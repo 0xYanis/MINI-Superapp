@@ -129,6 +129,49 @@ final class BankModuleTests: XCTestCase {
         XCTAssertEqual(mockData, result)
     }
     
+    func testInteractorRemoveCard() throws {
+        let index = 0
+        let mockData = [
+        BankCardEntity(id: 0, cardColor: "", logo: "", cardType: "", amount: 0, currency: "", number: "", bankName: "", holderName: "", expirationDate: "", cvv: "")
+        ]
+        let result: [BankCardEntity] = []
+        interactor.cardsData = mockData
+        
+        presenter.userWantToDeleteCard(at: index)
+        
+        XCTAssertEqual(result, interactor.cardsData)
+    }
+    
+    func testInteractorRemoveNoCards() throws {
+        let index = 0
+        let result: [BankCardEntity] = []
+        
+        presenter.userWantToDeleteCard(at: index)
+        
+        
+        XCTAssertEqual(result, interactor.cardsData)
+    }
+    
+    func testInteractorRemoveTransaction() throws {
+        let index = 0
+        let mockData = [BankTransactionEntity(id: 0, icon: "", name: name, date: "", cost: 0, cardNumber: 0, location: "", currency: "", status: "", category: "", notes: "", merchantID: 0, customerID: 0)]
+        let result: [BankTransactionEntity] = []
+        interactor.transactionsData = mockData
+        
+        presenter.userWantToDeleteTransaction(at: index)
+        
+        XCTAssertEqual(result, interactor.transactionsData)
+    }
+    
+    func testInteractorRemoveNoTransactions() throws {
+        let index = 0
+        let result: [BankTransactionEntity] = []
+        
+        presenter.userWantToDeleteTransaction(at: index)
+        
+        XCTAssertEqual(result, interactor.transactionsData)
+    }
+    
     func testInteractorGetEmptyFilteredData() throws {
         // given
         let searchText = ""
