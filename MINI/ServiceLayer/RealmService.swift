@@ -15,6 +15,13 @@ protocol RealmServiceProtocol: AnyObject {
     func fetch<T: Object>(_ objectType: T.Type, predicate: NSPredicate?, sortedByKeyPath keyPath: String?, ascending: Bool) -> Results<T>
 }
 
+extension RealmServiceProtocol {
+    func fetch<T: Object>(_ objectType: T.Type) -> [T]? {
+        var realm = try! Realm(configuration: .defaultConfiguration)
+        return realm.objects(objectType).map { return $0 }
+    }
+}
+
 final class RealmService: RealmServiceProtocol {
     
     private lazy var realm = try! Realm(configuration: .defaultConfiguration)

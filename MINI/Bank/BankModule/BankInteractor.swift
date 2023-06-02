@@ -38,7 +38,6 @@ final class BankInteractor: BankInteractorProtocol {
     var transactionsData: [BankTransactionEntity] = []
     var filteredData: [BankTransactionEntity]     = []
     
-    
     init(
         realmService: RealmServiceProtocol,
         cardService: BankCardServiceProtocol,
@@ -88,15 +87,22 @@ final class BankInteractor: BankInteractorProtocol {
 //MARK: - Private methods
 private extension BankInteractor {
     func getCards() {
-        cardService.getCardsData { [weak self] result in
-            guard let self = self else { return }
-            DispatchQueue.global().async {
-                switch result {
-                case .success(let cards):
-                    self.cardsData = cards ?? []
-                    self.presenter?.updateView()
-                case .failure(let error):
-                    self.presenter?.loadingDataGetFailed(with: error.localizedDescription)
+        let model = cardsData.map { $0.toModel() }
+        if let storedCards = realmService.fetch(BankCardModel.self) {
+            cardsData = storedCards.map { cardModel in
+                BankCardEntity(from: cardModel)
+            }
+        } else {
+            cardService.getCardsData { [weak self] result in
+                guard let self = self else { return }
+                DispatchQueue.global().async {
+                    switch result {
+                    case .success(let cards):
+                        self.cardsData = cards ?? []
+                        self.presenter?.updateView()
+                    case .failure(let error):
+                        self.presenter?.loadingDataGetFailed(with: error.localizedDescription)
+                    }
                 }
             }
         }
@@ -130,5 +136,10 @@ private extension BankInteractor {
                 }
             }
         }
+    }
+    
+    func saveObjectToRealm(_ data: [BankCardEntity]) {
+        let object = data.map { $0.toModel() }
+        
     }
 }
