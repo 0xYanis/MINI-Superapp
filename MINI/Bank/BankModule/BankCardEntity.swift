@@ -33,6 +33,7 @@ final class BankCardModel: Object {
     dynamic var logo      = ""
     dynamic var cardType  = ""
     dynamic var amount    = 0.0
+    dynamic var currency  = ""
     dynamic var number    = ""
     dynamic var bankName  = ""
     dynamic var holderName: String? = nil
