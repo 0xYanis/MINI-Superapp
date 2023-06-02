@@ -106,7 +106,7 @@ private extension CardViewController {
     }
     
     @objc func rightButtonAction() {
-        
+        tableView.setEditing(!tableView.isEditing, animated: true)
     }
     
     @objc func leftButtonAction() {
