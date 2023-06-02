@@ -12,6 +12,7 @@ final class BankHistoryViewController: UIViewController {
     
     weak var delegate: BankViewCellDelegate?
     weak var dataSource: BankViewCellDataSource?
+    weak var presenter: BankPresenterProtocol?
     
     private lazy var labelView = BankHistoryLabel()
     private lazy var tableView = UITableView()
@@ -128,7 +129,39 @@ extension BankHistoryViewController: UITableViewDataSource {
         }
     }
     
+    func tableView(
+        _ tableView: UITableView,
+        contextMenuConfigurationForRowAt indexPath: IndexPath,
+        point: CGPoint
+    ) -> UIContextMenuConfiguration? {
+        
+        let deleteAction = deleteCellsAction(tableView, indexPath: indexPath)
+        
+        return UIContextMenuConfiguration(
+            identifier: nil,
+            previewProvider: nil
+        ) { _ in
+            UIMenu(
+                title: "",
+                children: [deleteAction]
+            )
+        }
+    }
     
+    func deleteCellsAction(_ tableView: UITableView, indexPath: IndexPath) -> UIAction {
+        let deleteAction = UIAction(
+            title: "Удалить",
+            image: UIImage(systemName: "trash"),
+            attributes: .destructive
+        ) { [weak self] _ in
+            self?.presenter?.userWantToDeleteTransaction(at: indexPath.row)
+            tableView.performBatchUpdates({
+                tableView.deleteRows(at: [indexPath], with: .middle)
+            })
+        }
+        
+        return deleteAction
+    }
 }
 
 //MARK: - UITableViewDelegate

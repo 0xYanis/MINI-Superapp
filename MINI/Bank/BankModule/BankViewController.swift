@@ -189,6 +189,7 @@ private extension BankViewController {
         addChild(historyTableVC)
         view.addSubview(historyTableVC.view)
         historyTableVC.didMove(toParent: self)
+        historyTableVC.presenter = presenter
         historyTableVC.delegate = self
         historyTableVC.dataSource = self
         historyTableVC.view.snp.makeConstraints { make in
