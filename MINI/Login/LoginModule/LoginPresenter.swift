@@ -11,6 +11,9 @@ import Lottie
 protocol LoginPresenterProtocol: AnyObject {
     func viewDidLoaded()
     func loadAnimation(_ data: LottieAnimation)
+    
+    func userWantRegister()
+    
     func userDidTapLogin(name: String, password: String)
     func userDidTapBiometry()
     func loginIsCorrect()
@@ -36,6 +39,10 @@ extension LoginPresenter: LoginPresenterProtocol {
     
     func loadAnimation(_ data: LottieAnimation) {
         view?.setAnimation(lottie: data)
+    }
+    
+    func userWantRegister() {
+        router.goToRegisterView()
     }
     
     func userDidTapLogin(name: String, password: String) {

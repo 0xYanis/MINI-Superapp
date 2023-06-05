@@ -85,18 +85,32 @@ private extension LoginViewController {
     }
     
     func createNavBarButtons() {
-        let button = UIButton(
+        navigationItem.leftBarButtonItem = githubButton
+        navigationItem.rightBarButtonItem = registerButton
+    }
+    
+    var githubButton: UIBarButtonItem {
+        let leftButton = UIButton(
             systemImage: "link.icloud.fill",
-            color: .white
+            color: .systemOrange
         )
-        button.addTarget(
+        leftButton.addTarget(
             self,
             action: #selector(goToWebsiteAction),
             for: .touchUpInside
         )
-        
-        let barButton = UIBarButtonItem(customView: button)
-        navigationItem.leftBarButtonItem = barButton
+        return UIBarButtonItem(customView: leftButton)
+    }
+    
+    var registerButton: UIBarButtonItem {
+        let button = UIButton()
+        button.setTitle("Регистрация", for: .normal)
+        button.addTarget(
+            self,
+            action: #selector(registerButtonAction),
+            for: .touchUpInside
+        )
+        return UIBarButtonItem(customView: button)
     }
     
     func createAnimationView() {
@@ -184,6 +198,10 @@ private extension LoginViewController {
         if let url = URL(string: "https://github.com/0xYanis") {
             UIApplication.shared.open(url)
         }
+    }
+    
+    @objc func registerButtonAction() {
+        presenter?.userWantRegister()
     }
     
     @objc func keyboardWillShow(notification: Notification) {
