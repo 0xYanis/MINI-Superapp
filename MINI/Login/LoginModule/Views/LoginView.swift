@@ -10,11 +10,14 @@ import SnapKit
 
 class LoginView: UIView {
     
+    weak var presenter: LoginPresenterProtocol?
+    
     private lazy var helloLabel = UILabel(text: "welcome_label".localized, font: .boldSystemFont(ofSize: 26), color: .none)
     let faceIDButton = UIButton(systemImage: "faceid", color: .systemOrange, size: 26)
-    let nameField = UITextField()
-    let passField = UITextField()
-    let loginButt = UIButton(label: "login_button".localized, color: .systemOrange)
+    let nameField    = UITextField()
+    let passField    = UITextField()
+    let registerButt = UIButton()
+    let loginButt    = UIButton(label: "login_button".localized, color: .systemOrange)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -33,14 +36,17 @@ private extension LoginView {
         createFaceIDButton()
         createNameField()
         createPassField()
+        createRegisterButton()
         createLoginButton()
     }
+    
     func createHelloLabel() {
         addSubview(helloLabel)
         helloLabel.snp.makeConstraints { make in
             make.top.left.equalToSuperview().inset(20)
         }
     }
+    
     func createFaceIDButton() {
         addSubview(faceIDButton)
         faceIDButton.addPulseAnimation()
@@ -48,27 +54,54 @@ private extension LoginView {
             make.top.right.equalToSuperview().inset(20)
         }
     }
+    
     func createNameField() {
-        addSubview(nameField)
         nameField.setCustomAppearance(withBorderColor: .systemOrange, cornerRadius: 15, padding: 10)
         nameField.placeholder = "name_placeholder".localized
+        
+        addSubview(nameField)
         nameField.snp.makeConstraints { make in
             make.top.equalTo(helloLabel.snp.bottom).offset(15)
             make.left.right.equalToSuperview().inset(20)
             make.height.equalToSuperview().multipliedBy(0.17)
         }
     }
+    
     func createPassField() {
-        addSubview(passField)
         passField.isSecureTextEntry = true
         passField.setCustomAppearance(withBorderColor: .systemOrange, cornerRadius: 15, padding: 10)
         passField.placeholder = "pass_placeholer".localized
+        
+        addSubview(passField)
         passField.snp.makeConstraints { make in
             make.top.equalTo(nameField.snp.bottom).offset(15)
             make.left.right.equalToSuperview().inset(20)
             make.height.equalToSuperview().multipliedBy(0.17)
         }
     }
+    
+    func createRegisterButton() {
+        registerButt.addTarget(
+            self,
+            action: #selector(registerButtonAction),
+            for: .touchUpInside
+        )
+        registerButt.setTitle("Нет аккаунта?", for: .normal)
+        registerButt.setTitleColor(.systemOrange, for: .normal)
+        registerButt.addPulseAnimation()
+        
+        addSubview(registerButt)
+        registerButt.snp.makeConstraints { make in
+            make.top.equalTo(passField.snp.bottom).offset(15)
+            make.left.right.equalToSuperview().inset(20)
+        }
+        
+    }
+    
+    @objc func registerButtonAction() {
+        presenter?.userWantRegister()
+    }
+    
     func createLoginButton() {
         addSubview(loginButt)
         loginButt.snp.makeConstraints { make in
@@ -78,4 +111,6 @@ private extension LoginView {
         }
         loginButt.addPulseAnimation()
     }
+    
+    
 }
