@@ -16,6 +16,7 @@ protocol LoginInteractorProtocol: AnyObject {
 final class LoginInteractor: LoginInteractorProtocol {
 
     weak var presenter: LoginPresenterProtocol?
+    var keychainService: KeyChainServiceProtocol?
     var biometryService: BiometryServiceProtocol?
     var lottieService: LoginLottieServiceProtocol?
     
@@ -24,9 +25,7 @@ final class LoginInteractor: LoginInteractorProtocol {
     }
     
     func userWantLogin(_ name: String,_ password: String) {
-        // TODO: Выполнить запрос на сервер для аутентификации и получить токен аутентификации
-        if name == "admin" && password == "admin" {
-            
+        if keychainService?.getValue(forKey: name) == password {
             let authToken = "YourAuthToken" // Временный токен
             saveAuthToken(authToken: authToken)
             
@@ -37,21 +36,24 @@ final class LoginInteractor: LoginInteractorProtocol {
     }
 
     func userWantBiometry() {
-        biometryService?.authWithBiometry(completion: { [weak self] result, _ in
-            if result {
-                let authToken = "YourAuthToken" // Временный токен
-                self?.saveAuthToken(authToken: authToken)
-                self?.presenter?.loginIsCorrect()
-            }
-        })
-    }
-    
-    private func saveAuthToken(authToken: String) {
-        UserDefaults.standard.set(authToken, forKey: "authToken")
+//        biometryService?.authWithBiometry(completion: { [weak self] result, _ in
+//            if result {
+//                let authToken = "YourAuthToken" // Временный токен
+//                self?.saveAuthToken(authToken: authToken)
+//                self?.presenter?.loginIsCorrect()
+//            }
+//        })
     }
 }
 
 private extension LoginInteractor {
+    private func saveAuthToken(authToken: String) {
+        UserDefaults.standard.set(
+            authToken,
+            forKey: "authToken"
+        )
+    }
+    
     func getLottieAnimation() {
         lottieService?.loadAnimation(completion: { [weak self] animation in
             switch animation {
