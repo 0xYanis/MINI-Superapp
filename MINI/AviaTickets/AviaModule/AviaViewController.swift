@@ -20,9 +20,7 @@ final class AviaViewController: UIViewController {
     
     //MARK: Private properties
     private lazy var refreshControl   = UIRefreshControl()
-    private lazy var segmentedControl = UISegmentedControl(items: ["first","second"])
     private lazy var searchController = UISearchController()
-    private lazy var scrollView       = AviaScrollView()
     
     //MARK: Lifecycle
     override func viewDidLoad() {
@@ -47,8 +45,8 @@ private extension AviaViewController {
         view.backgroundColor = UIColor(named: "backColor")
         createNavigation()
         createSearchController()
-        createScrollView()
-        createRefreshControl(scrollView: scrollView)
+        
+        
     }
     
     func createNavigation() {
@@ -69,15 +67,6 @@ private extension AviaViewController {
         )
         scrollView.refreshControl = refreshControl
     }
-    
-    func createScrollView() {
-        view.addSubview(scrollView)
-        scrollView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-    }
-    
-    
 }
 
 private extension AviaViewController {
