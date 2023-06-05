@@ -16,6 +16,10 @@ extension String {
         )
     }
     
+    var isAlphanumeric: Bool {
+        return !isEmpty && range(of: "[^a-zA-Z0-9]", options: .regularExpression) == nil
+    }
+    
     func formattedDateString(dateFormat: String) -> String? {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "date_formatter_id".localized)
