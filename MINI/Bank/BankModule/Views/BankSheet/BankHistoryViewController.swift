@@ -11,7 +11,6 @@ import SnapKit
 final class BankHistoryViewController: UIViewController {
     
     weak var delegate: BankViewCellDelegate?
-    weak var dataSource: BankViewCellDataSource?
     weak var presenter: BankPresenterProtocol?
     
     private lazy var labelView = BankHistoryLabel()
@@ -94,7 +93,7 @@ extension BankHistoryViewController: BankTransactionKeyboardDelegate {
     
     func searchBarTextDidChange(with searchText: String) {
         if !searchText.isEmpty {
-            dataSource?.searchBarTextDidChange(with: searchText)
+            presenter?.searchBarTextDidChange(with: searchText)
             isSearching = true
             tableView.reloadData()
         } else {
@@ -107,7 +106,7 @@ extension BankHistoryViewController: BankTransactionKeyboardDelegate {
 //MARK: - UITableViewDataSource
 extension BankHistoryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (isSearching ? dataSource?.getFilteredData().count : dataSource?.getTransactionData().count) ?? 10
+        return (isSearching ? presenter?.getFilteredData().count : presenter?.getTransactionData().count) ?? 10
     }
     
     
@@ -122,7 +121,7 @@ extension BankHistoryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView,
                    willDisplay cell: UITableViewCell,
                    forRowAt indexPath: IndexPath) {
-        guard let data = isSearching ? dataSource?.getFilteredData() : dataSource?.getTransactionData() else { return }
+        guard let data = isSearching ? presenter?.getFilteredData() : presenter?.getTransactionData() else { return }
         
         if let cell = cell as? BankTransactionCell {
             cell.configure(with: data[indexPath.row])
@@ -169,7 +168,7 @@ extension BankHistoryViewController: UITableViewDelegate {
     func tableView(
         _ tableView: UITableView,
         didSelectRowAt indexPath: IndexPath) {
-            delegate?.handleTapOnTransactionCell(id: indexPath.row)
+            presenter?.userDidTapTransaction(id: indexPath.row)
         }
     
     

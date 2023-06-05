@@ -12,7 +12,7 @@ final class BankTemplateSet: UITableViewCell {
     
     //MARK: Public properties
     weak var delegate: BankViewCellDelegate?
-    weak var dataSource: BankViewCellDataSource?
+    weak var presenter: BankPresenterProtocol?
     
     static let cellId = "BankTemplateSet"
     
@@ -51,7 +51,8 @@ private extension BankTemplateSet {
         collectionView.delegate = self
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.register(
-            BankTemplateCell.self, forCellWithReuseIdentifier: BankTemplateCell.cellId
+            BankTemplateCell.self,
+            forCellWithReuseIdentifier: BankTemplateCell.cellId
         )
         collectionView.backgroundColor = UIColor(named: "backColor")
         collectionView.contentInset = .init(top: 0, left: 16, bottom: 0, right: 16)
@@ -85,7 +86,7 @@ extension BankTemplateSet: SkeletonCollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return dataSource?.getTemplateData().count ?? 5
+        return presenter?.getTemplateData().count ?? 5
     }
     
     
@@ -104,7 +105,7 @@ extension BankTemplateSet: SkeletonCollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
-        guard let templateData = dataSource?.getTemplateData(), indexPath.row < templateData.count else { return }
+        guard let templateData = presenter?.getTemplateData(), indexPath.row < templateData.count else { return }
         
         if let cell = cell as? BankTemplateCell {
             cell.configure(with: templateData[indexPath.row])
@@ -131,6 +132,6 @@ extension BankTemplateSet: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.handleTapOnTemplateCell(id: indexPath.item)
+        presenter?.userDidTapTemplate(id: indexPath.item)
     }
 }

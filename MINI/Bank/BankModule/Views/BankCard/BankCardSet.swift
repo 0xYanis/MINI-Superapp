@@ -12,7 +12,6 @@ final class BankCardSet: UITableViewCell {
     
     //MARK: Public properties
     weak var delegate: BankViewCellDelegate?
-    weak var dataSource: BankViewCellDataSource?
     weak var presenter: BankPresenterProtocol?
     
     static let cellId = "BankCardSet"
@@ -91,7 +90,7 @@ extension BankCardSet: SkeletonCollectionViewDataSource {
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        return dataSource?.getCardData().count ?? 5
+        return presenter?.getCardData().count ?? 5
     }
     
     
@@ -113,7 +112,7 @@ extension BankCardSet: SkeletonCollectionViewDataSource {
         willDisplay cell: UICollectionViewCell,
         forItemAt indexPath: IndexPath) {
             
-            guard let cardData = dataSource?.getCardData(), indexPath.row < cardData.count else { return }
+            guard let cardData = presenter?.getCardData(), indexPath.row < cardData.count else { return }
             
             if let cell = cell as? BankCardCell {
                 cell.shadow(color: .black, opacity: 0.5, radius: 10)
@@ -153,7 +152,7 @@ extension BankCardSet: SkeletonCollectionViewDataSource {
             image: UIImage(systemName: "square.and.pencil"),
             attributes: []
         ) { [weak self] _ in
-            self?.delegate?.handleTapOnCardCell(id: indexPath.item)
+            self?.presenter?.userDidTapCard(index: indexPath.item)
         }
         
         return editAction
@@ -199,6 +198,6 @@ extension BankCardSet: UICollectionViewDelegateFlowLayout {
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath
     ) {
-        delegate?.handleTapOnCardCell(id: indexPath.item)
+        presenter?.userDidTapCard(index: indexPath.item)
     }
 }

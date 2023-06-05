@@ -16,21 +16,9 @@ protocol BankViewProtocol: AnyObject {
 }
 
 protocol BankViewCellDelegate: AnyObject {
-    func handleTapOnCardCell(id: Int)
-    func handleTapOnTemplateCell(id: Int)
-    func handleTapOnTransactionCell(id: Int)
     func handlePanGesture(_ gesture: UIPanGestureRecognizer)
     func setBigHeightOfHistory()
     func resetBottomSheetSize()
-}
-
-protocol BankViewCellDataSource: AnyObject {
-    func getCardData() -> [BankCardEntity]
-    func getTemplateData() -> [BankTemplateEntity]
-    func getTransactionData() -> [BankTransactionEntity]
-    
-    func searchBarTextDidChange(with searchText: String)
-    func getFilteredData() -> [BankTransactionEntity]
 }
 
 final class BankViewController: UIViewController {
@@ -97,29 +85,6 @@ extension BankViewController: BankViewCellDelegate {
     
     func resetBottomSheetSize() {
         historyTableVC.view.resetToOriginalState(with: true)
-    }
-}
-
-//MARK: - BankViewCellDataSource
-extension BankViewController: BankViewCellDataSource {
-    func getCardData() -> [BankCardEntity] {
-        presenter?.getCardData() ?? []
-    }
-    
-    func getTemplateData() -> [BankTemplateEntity] {
-        presenter?.getTemplateData() ?? []
-    }
-    
-    func getTransactionData() -> [BankTransactionEntity] {
-        presenter?.getTransactionData() ?? []
-    }
-    
-    func searchBarTextDidChange(with searchText: String) {
-        presenter?.searchBarTextDidChange(with: searchText)
-    }
-    
-    func getFilteredData() -> [BankTransactionEntity] {
-        presenter?.getFilteredData() ?? []
     }
 }
 
@@ -191,7 +156,6 @@ private extension BankViewController {
         historyTableVC.didMove(toParent: self)
         historyTableVC.presenter = presenter
         historyTableVC.delegate = self
-        historyTableVC.dataSource = self
         historyTableVC.view.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalToSuperview()
             make.height.equalToSuperview().multipliedBy(0.34)
@@ -305,7 +269,6 @@ extension BankViewController: UITableViewDataSource {
                 for: indexPath) as? BankCardSet else { return defaultCell }
             cell.presenter = presenter
             cell.delegate = self
-            cell.dataSource = self
             cell.reloadData()
             return cell
             
@@ -320,8 +283,8 @@ extension BankViewController: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: BankTemplateSet.cellId,
                 for: indexPath) as? BankTemplateSet else { return defaultCell }
+            cell.presenter = presenter
             cell.delegate = self
-            cell.dataSource = self
             cell.reloadData()
             return cell
             
