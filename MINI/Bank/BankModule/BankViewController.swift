@@ -67,18 +67,6 @@ extension BankViewController: BankViewProtocol {
 
 //MARK: - BankViewCellDelegate
 extension BankViewController: BankViewCellDelegate {
-    func handleTapOnCardCell(id: Int) {
-        presenter?.userDidTapCard(index: id)
-    }
-    
-    func handleTapOnTemplateCell(id: Int) {
-        presenter?.userDidTapTemplate(id: id)
-    }
-    
-    func handleTapOnTransactionCell(id: Int) {
-        presenter?.userDidTapTransaction(id: id)
-    }
-    
     func setBigHeightOfHistory() {
         historyTableVC.view.animateToSuperviewSize()
     }
