@@ -11,7 +11,6 @@ import SkeletonView
 final class BankTemplateSet: UITableViewCell {
     
     //MARK: Public properties
-    weak var delegate: BankViewCellDelegate?
     weak var presenter: BankPresenterProtocol?
     
     static let cellId = "BankTemplateSet"

@@ -27,7 +27,7 @@ final class BankViewController: UIViewController {
     var presenter: BankPresenterProtocol?
     
     //MARK: Private properties
-    private lazy var bankTableView  = UITableView()
+    private lazy var bankTableView  = BankTableView()
     private lazy var historyTableVC = BankHistoryViewController()
     private lazy var refreshControl = UIRefreshControl()
     
@@ -81,8 +81,7 @@ private extension BankViewController {
     func initialize() {
         view.backgroundColor = UIColor(named: "backColor")
         createNavigation(title: "bank_navbar".localized)
-        createTableView(bankTableView)
-        createTableViewRegisters(in: bankTableView)
+        createTableView()
         createBottomSheet()
         createRefreshControl(scrollView: bankTableView)
     }
@@ -117,25 +116,14 @@ private extension BankViewController {
         return UIMenu(children: [addCard, addTemplate])
     }
     
-    func createTableView(_ tableView: UITableView) {
-        tableView.separatorStyle = .none
-        tableView.separatorColor = .none
-        tableView.backgroundColor = .none
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.showsVerticalScrollIndicator = false
-        tableView.backgroundColor = .clear
-        view.addSubview(tableView)
-        tableView.snp.makeConstraints { make in
+    func createTableView() {
+        bankTableView.presenter = presenter
+        bankTableView.delegate = self
+        view.addSubview(bankTableView)
+        bankTableView.snp.makeConstraints { make in
             make.width.equalToSuperview()
             make.height.equalToSuperview().multipliedBy(0.7)
         }
-    }
-    
-    func createTableViewRegisters(in tableView: UITableView) {
-        tableView.register(BankCardSet.self, forCellReuseIdentifier: BankCardSet.cellId)
-        tableView.register(BankTemplateLabelCell.self, forCellReuseIdentifier: BankTemplateLabelCell.cellId)
-        tableView.register(BankTemplateSet.self, forCellReuseIdentifier: BankTemplateSet.cellId)
     }
     
     func createBottomSheet() {
@@ -161,10 +149,6 @@ private extension BankViewController {
 
 //MARK: - Action private methods
 private extension BankViewController {
-    @objc func didTapSeeAllButt() {
-        presenter?.userDidTapSeeAll()
-    }
-    
     @objc func refreshAction() {
         presenter?.viewDidLoaded()
         presenter?.updateView()
@@ -239,49 +223,6 @@ extension BankViewController: UIGestureRecognizerDelegate {
     }
 }
 
-//MARK: - UITableViewDataSource
-extension BankViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView,
-                   numberOfRowsInSection section: Int) -> Int {
-        return 3
-    }
-    
-    func tableView(_ tableView: UITableView,
-                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let defaultCell = UITableViewCell()
-        
-        switch indexPath.row {
-        case 0:
-            guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: BankCardSet.cellId,
-                for: indexPath) as? BankCardSet else { return defaultCell }
-            cell.presenter = presenter
-            cell.delegate = self
-            cell.reloadData()
-            return cell
-            
-        case 1:
-            guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: BankTemplateLabelCell.cellId,
-                for: indexPath) as? BankTemplateLabelCell else { return defaultCell }
-            cell.seeAllButt.addTarget(self, action: #selector(didTapSeeAllButt), for: .touchUpInside)
-            return cell
-            
-        case 2:
-            guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: BankTemplateSet.cellId,
-                for: indexPath) as? BankTemplateSet else { return defaultCell }
-            cell.presenter = presenter
-            cell.delegate = self
-            cell.reloadData()
-            return cell
-            
-        default:
-            return defaultCell
-        }
-    }
-}
-
 //MARK: - UITableViewDelegate
 extension BankViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView,
@@ -295,7 +236,7 @@ extension BankViewController: UITableViewDelegate {
         case 2:
             return (height/6.3)
         default:
-            return tableView.rowHeight
+            return UITableView.automaticDimension
         }
     }
 }

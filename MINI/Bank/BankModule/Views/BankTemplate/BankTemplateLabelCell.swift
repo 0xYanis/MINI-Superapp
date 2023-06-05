@@ -9,12 +9,17 @@ import UIKit
 
 final class BankTemplateLabelCell: UITableViewCell {
     
+    static let cellId = "BankTemplateLabelCell"
+    weak var presenter: BankPresenterProtocol?
+    
+    
     private lazy var titleLabel = UILabel(
         text: "templates_label".localized,
         font: .boldSystemFont(ofSize: 22),
         color: UIColor(named: "textColor")
     )
-    let seeAllButt: UIButton = {
+    
+    private lazy var seeAllButt: UIButton = {
         let button = UIButton()
         button.addPulseAnimation()
         button.setTitle("see_all_button".localized, for: .normal)
@@ -22,7 +27,6 @@ final class BankTemplateLabelCell: UITableViewCell {
         return button
     }()
     
-    static let cellId = "BankTemplateLabelCell"
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -32,6 +36,8 @@ final class BankTemplateLabelCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    
 }
 
 private extension BankTemplateLabelCell {
@@ -43,10 +49,23 @@ private extension BankTemplateLabelCell {
             make.centerY.equalToSuperview()
             make.left.equalToSuperview().inset(16)
         }
+        
         contentView.addSubview(seeAllButt)
+        seeAllButt.addPulseAnimation()
+        seeAllButt.addTarget(
+            self,
+            action: #selector(didTapSeeAllButt),
+            for: .touchUpInside
+        )
         seeAllButt.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.right.equalToSuperview().inset(16)
         }
+        
+        
+    }
+    
+    @objc func didTapSeeAllButt() {
+        presenter?.userDidTapSeeAll()
     }
 }
