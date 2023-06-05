@@ -67,6 +67,10 @@ extension BankViewController: BankViewProtocol {
 
 //MARK: - BankViewCellDelegate
 extension BankViewController: BankViewCellDelegate {
+    func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
+        ///
+    }
+    
     func setBigHeightOfHistory() {
         historyTableVC.view.animateToSuperviewSize()
     }
@@ -153,73 +157,6 @@ private extension BankViewController {
         presenter?.viewDidLoaded()
         presenter?.updateView()
         refreshControl.endRefreshing()
-    }
-}
-
-//MARK: - Animation methods
-extension BankViewController: UIGestureRecognizerDelegate {
-    func gestureRecognizer(
-        _ gestureRecognizer: UIGestureRecognizer,
-        shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer
-    ) -> Bool {
-        true
-    }
-    
-    func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
-        let translation = gesture.translation(in: view)
-        let yTranslation = translation.y
-        
-        switch gesture.state {
-            
-        case .changed:
-            let newHeight = calculateNewHeight(
-                currentHeight: height,
-                yTranslation: yTranslation
-            )
-            updateHistoryTableHeight(newHeight: newHeight)
-            animateHeightChange(newHeight: newHeight)
-            
-        case .ended:
-            let destinationHeight = calculateDestinationHeight(
-                maxHeight: maxHeight,
-                minHeight: minHeight
-            )
-            updateHistoryTableHeight(newHeight: destinationHeight)
-            animateHeightChange(newHeight: destinationHeight)
-            
-        default:
-            break
-        }
-    }
-    
-    private func calculateNewHeight(
-        currentHeight: CGFloat,
-        yTranslation: CGFloat
-    ) -> CGFloat {
-        let newHeight = max(minHeight, min(maxHeight, currentHeight - yTranslation))
-        return newHeight
-    }
-    
-    private func updateHistoryTableHeight(newHeight: CGFloat) {
-        historyTableVC.view.snp.remakeConstraints { make in
-            make.height.equalTo(newHeight)
-            make.left.right.bottom.equalToSuperview()
-        }
-    }
-    
-    private func animateHeightChange(newHeight: CGFloat) {
-        UIView.animate(withDuration: 0.2) {
-            self.height = newHeight
-            self.view.layoutIfNeeded()
-        }
-    }
-    
-    private func calculateDestinationHeight(
-        maxHeight: CGFloat,
-        minHeight: CGFloat
-    ) -> CGFloat {
-        let isFixed = height >= maxHeight
-        return isFixed ? maxHeight : minHeight
     }
 }
 

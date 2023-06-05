@@ -105,22 +105,33 @@ extension BankHistoryViewController: BankTransactionKeyboardDelegate {
 
 //MARK: - UITableViewDataSource
 extension BankHistoryViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(
+        _ tableView: UITableView,
+        numberOfRowsInSection section: Int
+    ) -> Int {
         return (isSearching ? presenter?.getFilteredData().count : presenter?.getTransactionData().count) ?? 10
     }
     
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: BankTransactionCell.cellId, for: indexPath) as? BankTransactionCell else {
+    func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath
+    ) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: BankTransactionCell.cellId,
+            for: indexPath
+        ) as? BankTransactionCell else {
             return UITableViewCell()
         }
         return cell
     }
     
     
-    func tableView(_ tableView: UITableView,
-                   willDisplay cell: UITableViewCell,
-                   forRowAt indexPath: IndexPath) {
+    func tableView(
+        _ tableView: UITableView,
+        willDisplay cell: UITableViewCell,
+        forRowAt indexPath: IndexPath
+    ) {
         guard let data = isSearching ? presenter?.getFilteredData() : presenter?.getTransactionData() else { return }
         
         if let cell = cell as? BankTransactionCell {
@@ -147,7 +158,10 @@ extension BankHistoryViewController: UITableViewDataSource {
         }
     }
     
-    func deleteCellsAction(_ tableView: UITableView, indexPath: IndexPath) -> UIAction {
+    func deleteCellsAction(
+        _ tableView: UITableView,
+        indexPath: IndexPath
+    ) -> UIAction {
         let deleteAction = UIAction(
             title: "Удалить",
             image: UIImage(systemName: "trash"),
@@ -167,9 +181,8 @@ extension BankHistoryViewController: UITableViewDataSource {
 extension BankHistoryViewController: UITableViewDelegate {
     func tableView(
         _ tableView: UITableView,
-        didSelectRowAt indexPath: IndexPath) {
-            presenter?.userDidTapTransaction(id: indexPath.row)
-        }
-    
-    
+        didSelectRowAt indexPath: IndexPath
+    ) {
+        presenter?.userDidTapTransaction(id: indexPath.row)
+    }
 }
