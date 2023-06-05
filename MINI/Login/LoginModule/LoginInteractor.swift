@@ -14,7 +14,7 @@ protocol LoginInteractorProtocol: AnyObject {
 }
 
 final class LoginInteractor: LoginInteractorProtocol {
-
+    
     weak var presenter: LoginPresenterProtocol?
     var keychainService: KeyChainServiceProtocol?
     var biometryService: BiometryServiceProtocol?
@@ -24,25 +24,31 @@ final class LoginInteractor: LoginInteractorProtocol {
         getLottieAnimation()
     }
     
-    func userWantLogin(_ name: String,_ password: String) {
-        if keychainService?.getValue(forKey: name) == password {
-            let authToken = "YourAuthToken" // Временный токен
-            saveAuthToken(authToken: authToken)
-            
-            presenter?.loginIsCorrect()
-        } else {
+    func userWantLogin(_ name: String, _ password: String) {
+        guard isValidString(name), isValidString(password) else {
             presenter?.loginIsNotCorrect()
+            return
         }
+        
+        guard let storedPassword = keychainService?.getValue(forKey: name),
+                storedPassword == password else {
+            presenter?.loginIsNotCorrect()
+            return
+        }
+        
+        saveAuthToken(authToken: "YourAuthToken")
+        presenter?.loginIsCorrect()
     }
-
+    
+    //MARK: - Для дебага вход по faceID
     func userWantBiometry() {
-//        biometryService?.authWithBiometry(completion: { [weak self] result, _ in
-//            if result {
-//                let authToken = "YourAuthToken" // Временный токен
-//                self?.saveAuthToken(authToken: authToken)
-//                self?.presenter?.loginIsCorrect()
-//            }
-//        })
+        biometryService?.authWithBiometry(completion: { [weak self] result, _ in
+            if result {
+                let authToken = "YourAuthToken" // Временный токен
+                self?.saveAuthToken(authToken: authToken)
+                self?.presenter?.loginIsCorrect()
+            }
+        })
     }
 }
 
@@ -65,5 +71,16 @@ private extension LoginInteractor {
                 return
             }
         })
+    }
+    
+    func isValidString(_ string: String) -> Bool {
+        let stringLengthRange = 8...25
+        guard !string.isEmpty,
+              stringLengthRange.contains(string.count),
+              !string.contains(" "),
+              string.isAlphanumeric else {
+            return false
+        }
+        return true
     }
 }
