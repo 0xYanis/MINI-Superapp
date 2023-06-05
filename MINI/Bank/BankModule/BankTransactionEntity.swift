@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-struct BankTransactionStruct: Codable, Equatable {
+final class BankTransactionObject: Codable {
     let transactionList: [BankTransactionEntity]
 }
 

@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-struct BankTemplateStruct: Codable, Equatable {
+final class BankTemplateObject: Codable {
     let templateList: [BankTemplateEntity]
 }
 

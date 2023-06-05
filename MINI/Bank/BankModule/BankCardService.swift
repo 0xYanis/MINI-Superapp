@@ -15,6 +15,7 @@ final class BankCardService: BankCardServiceProtocol {
     
     var apiService: APIServiceProtocol
     private let cardUrl = "https://my-json-server.typicode.com/0xyanis/MINIapi/cards"
+    private let cache = NSCache<NSString, BankCardObject>()
     
     init(
         apiService: APIServiceProtocol
@@ -23,15 +24,18 @@ final class BankCardService: BankCardServiceProtocol {
     }
     
     func getCardsData(completion: @escaping(Result<[BankCardEntity]?, Error>) -> Void) {
-        apiService.getRequest(url: cardUrl) { (result: Result<BankCardStruct, Error>) in
-            switch result {
-            case .success(let data):
-                completion(.success(data.cardList))
-            case .failure(let error):
-                completion(.failure(error))
+        if let cacheData = cache.object(forKey: "BankCardObject") {
+            completion(.success(cacheData.cardList))
+        } else {
+            apiService.getRequest(url: cardUrl) { (result: Result<BankCardObject, Error>) in
+                switch result {
+                case .success(let data):
+                    self.cache.setObject(data, forKey: "BankCardObject")
+                    completion(.success(data.cardList))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
             }
         }
     }
-    
-    
 }
