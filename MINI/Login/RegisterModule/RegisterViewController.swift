@@ -33,6 +33,6 @@ extension RegisterViewController: RegisterViewProtocol {
 
 private extension RegisterViewController {
     func initialize() {
-        
+        view.backgroundColor = .quaternarySystemFill
     }
 }

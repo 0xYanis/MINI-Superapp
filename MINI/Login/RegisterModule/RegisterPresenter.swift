@@ -9,7 +9,6 @@ import Foundation
 
 protocol RegisterPresenterProtocol: AnyObject {
     func userWantToLogin(login: String, password: String, repeatPassword: String)
-    func userHaveAccountToLogin()
     
     func registerIsCorrect()
     func registerIsNotCorrect(with message: String)
@@ -33,10 +32,6 @@ final class RegisterPresenter {
 extension RegisterPresenter: RegisterPresenterProtocol {
     func userWantToLogin(login: String, password: String, repeatPassword: String) {
         interactor.userWantToLogin(login: login, password: password, repeatPassword: repeatPassword)
-    }
-    
-    func userHaveAccountToLogin() {
-        router.goToLoginView()
     }
     
     func registerIsCorrect() {

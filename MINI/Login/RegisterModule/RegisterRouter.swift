@@ -9,8 +9,6 @@ import UIKit
 
 protocol RegisterRouterProtocol: AnyObject {
     func userDidRegister()
-    func goToLoginView()
-    
 }
 
 final class RegisterRouter: RegisterRouterProtocol {
@@ -30,10 +28,5 @@ final class RegisterRouter: RegisterRouterProtocol {
             delegate.window = window
             window.makeKeyAndVisible()
         }
-    }
-    
-    func goToLoginView() {
-        let loginView = LoginBuilder.build()
-        view?.navigationController?.pushViewController(loginView, animated: true)
     }
 }
