@@ -34,6 +34,7 @@
 		093932442A25E4AC00F813A2 /* AviaShowplaceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093932432A25E4AC00F813A2 /* AviaShowplaceService.swift */; };
 		093932462A25E7E400F813A2 /* AviaShowplaceEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093932452A25E7E400F813A2 /* AviaShowplaceEntity.swift */; };
 		09503EB829F2D44000254F53 /* StackFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09503EB729F2D44000254F53 /* StackFlowLayout.swift */; };
+		09565EE02A2F13B3007A2DAC /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09565EDF2A2F13B3007A2DAC /* RegisterView.swift */; };
 		09632FCC29ED8A7D00DB2641 /* BankCardSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09632FCB29ED8A7D00DB2641 /* BankCardSet.swift */; };
 		09632FCE29ED8A8800DB2641 /* BankTemplateSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09632FCD29ED8A8800DB2641 /* BankTemplateSet.swift */; };
 		096B4B272A1DEEC700E5C65E /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096B4B262A1DEEC700E5C65E /* APIService.swift */; };
@@ -184,6 +185,7 @@
 		093932432A25E4AC00F813A2 /* AviaShowplaceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AviaShowplaceService.swift; sourceTree = "<group>"; };
 		093932452A25E7E400F813A2 /* AviaShowplaceEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AviaShowplaceEntity.swift; sourceTree = "<group>"; };
 		09503EB729F2D44000254F53 /* StackFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackFlowLayout.swift; sourceTree = "<group>"; };
+		09565EDF2A2F13B3007A2DAC /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		09632FCB29ED8A7D00DB2641 /* BankCardSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankCardSet.swift; sourceTree = "<group>"; };
 		09632FCD29ED8A8800DB2641 /* BankTemplateSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTemplateSet.swift; sourceTree = "<group>"; };
 		096B4B262A1DEEC700E5C65E /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
@@ -444,9 +446,18 @@
 			path = GroceryCells;
 			sourceTree = "<group>";
 		};
+		09565EDE2A2F1399007A2DAC /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				09565EDF2A2F13B3007A2DAC /* RegisterView.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
 		097ACF1E2A2E1E220023106A /* RegisterModule */ = {
 			isa = PBXGroup;
 			children = (
+				09565EDE2A2F1399007A2DAC /* Subviews */,
 				097ACF1F2A2E1E3D0023106A /* RegisterViewController.swift */,
 				097ACF212A2E1E470023106A /* RegisterPresenter.swift */,
 				097ACF232A2E1E500023106A /* RegisterInteractor.swift */,
@@ -1017,6 +1028,7 @@
 				0925D59B2A1CAED200B5E12B /* RealmService.swift in Sources */,
 				092E739429EBEB1F00165D37 /* LoginAnimationView.swift in Sources */,
 				09D509D829EF4EDE009CC219 /* UIImageView+Extension.swift in Sources */,
+				09565EE02A2F13B3007A2DAC /* RegisterView.swift in Sources */,
 				099089F02A13C2C400EE00DA /* AdressViewController.swift in Sources */,
 				099089EB2A139A5800EE00DA /* GroceryBuilder.swift in Sources */,
 				09FC393D29FABF5200B2D97E /* AllTemplatesRouter.swift in Sources */,

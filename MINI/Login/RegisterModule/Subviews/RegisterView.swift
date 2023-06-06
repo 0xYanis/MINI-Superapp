@@ -1,57 +1,56 @@
 //
-//  LoginView.swift
+//  RegisterView.swift
 //  MINI
 //
-//  Created by Yan Rybkin on 16.04.2023.
+//  Created by Yan Rybkin on 06.06.2023.
 //
 
 import UIKit
 import SnapKit
 
-class LoginView: UIView {
+final class RegisterView: UIView {
     
-    weak var presenter: LoginPresenterProtocol?
+    let nameField       = UITextField()
+    let passField       = UITextField()
+    let secondPassField = UITextField()
     
-    private lazy var helloLabel = UILabel(text: "welcome_label".localized, font: .boldSystemFont(ofSize: 26), color: .none)
-    let faceIDButton = UIButton(systemImage: "faceid", color: .systemOrange, size: 26)
-    let nameField    = UITextField()
-    let passField    = UITextField()
-    let registerButt = UIButton()
-    let loginButt    = UIButton(label: "login_button".localized, color: .systemOrange)
+    private lazy var helloLabel = UILabel(
+        text: "Регистрация",
+        font: .boldSystemFont(ofSize: 26),
+        color: .systemOrange
+    )
+    let regButton  = UIButton(
+        label: "login_button".localized,
+        color: .systemOrange
+    )
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         initialize()
     }
     
-    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    
 }
 
-private extension LoginView {
+private extension RegisterView {
     func initialize() {
+        backgroundColor = .clear
+        roundCorners(radius: 30)
         createHelloLabel()
-        createFaceIDButton()
         createNameField()
         createPassField()
-        createRegisterButton()
-        createLoginButton()
+        createSecondPassField()
+        createRegButton()
     }
     
     func createHelloLabel() {
         addSubview(helloLabel)
         helloLabel.snp.makeConstraints { make in
             make.top.left.equalToSuperview().inset(20)
-        }
-    }
-    
-    func createFaceIDButton() {
-        addSubview(faceIDButton)
-        faceIDButton.addPulseAnimation()
-        faceIDButton.snp.makeConstraints { make in
-            make.top.right.equalToSuperview().inset(20)
         }
     }
     
@@ -80,36 +79,28 @@ private extension LoginView {
         }
     }
     
-    func createRegisterButton() {
-        registerButt.addTarget(
-            self,
-            action: #selector(registerButtonAction),
-            for: .touchUpInside
-        )
-        registerButt.setTitle("Нет аккаунта?", for: .normal)
-        registerButt.setTitleColor(.systemOrange, for: .normal)
-        registerButt.addPulseAnimation()
+    func createSecondPassField() {
+        secondPassField.isSecureTextEntry = true
+        secondPassField.setCustomAppearance(withBorderColor: .systemOrange, cornerRadius: 15, padding: 10)
+        secondPassField.placeholder = "Повторите Ваш пароль"
         
-        addSubview(registerButt)
-        registerButt.snp.makeConstraints { make in
+        addSubview(secondPassField)
+        secondPassField.snp.makeConstraints { make in
             make.top.equalTo(passField.snp.bottom).offset(15)
             make.left.right.equalToSuperview().inset(20)
+            make.height.equalToSuperview().multipliedBy(0.12)
         }
+    }
+    
+    func createRegButton() {
+        regButton.addPulseAnimation()
         
-    }
-    
-    @objc func registerButtonAction() {
-        presenter?.userWantRegister()
-    }
-    
-    func createLoginButton() {
-        addSubview(loginButt)
-        loginButt.snp.makeConstraints { make in
+        addSubview(regButton)
+        regButton.snp.makeConstraints { make in
             make.bottom.equalToSuperview().inset(20)
             make.left.right.equalToSuperview().inset(20)
             make.height.equalToSuperview().multipliedBy(0.12)
         }
-        loginButt.addPulseAnimation()
     }
     
     
