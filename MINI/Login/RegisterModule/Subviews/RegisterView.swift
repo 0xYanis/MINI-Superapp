@@ -15,7 +15,7 @@ final class RegisterView: UIView {
     let secondPassField = UITextField()
     
     private lazy var helloLabel = UILabel(
-        text: "Регистрация",
+        text: "welcomeReg_label".localized,
         font: .boldSystemFont(ofSize: 26),
         color: .systemOrange
     )
@@ -82,7 +82,7 @@ private extension RegisterView {
     func createSecondPassField() {
         secondPassField.isSecureTextEntry = true
         secondPassField.setCustomAppearance(withBorderColor: .systemOrange, cornerRadius: 15, padding: 10)
-        secondPassField.placeholder = "Повторите Ваш пароль"
+        secondPassField.placeholder = "secondPass_placeholer".localized
         
         addSubview(secondPassField)
         secondPassField.snp.makeConstraints { make in

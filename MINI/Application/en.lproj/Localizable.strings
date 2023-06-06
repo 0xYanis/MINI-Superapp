@@ -36,6 +36,11 @@
 "error_message_title" = "Incorrect input";
 "alert_cancel"        = "Cancel";
 
+//MARK: RegisterModule
+"welcomeReg_label"    = "Registration";
+"secondPass_placeholer" = "Repeat Your password";
+
+
 
 //MARK: - Bank
 

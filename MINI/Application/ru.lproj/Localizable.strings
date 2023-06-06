@@ -36,6 +36,12 @@
 "error_message_title" = "Некорректный ввод";
 "alert_cancel"        = "Закрыть";
 
+//MARK: RegisterModule
+"welcomeReg_label"    = "Регистрация";
+"secondPass_placeholer" = "Повторите Ваш пароль";
+
+
+
 
 //MARK: - Bank
 

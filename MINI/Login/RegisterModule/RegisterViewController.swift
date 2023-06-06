@@ -29,7 +29,7 @@ final class RegisterViewController: UIViewController {
 
 extension RegisterViewController: RegisterViewProtocol {
     func registerIsNotCorrect(with message: String) {
-        let title = "Ошибка"
+        let title = "error_login_title".localized
         let alert = UIAlertController()
         alert.showAlert(title: title, message: message, from: self)
     }
