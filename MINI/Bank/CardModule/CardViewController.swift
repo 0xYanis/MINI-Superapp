@@ -15,7 +15,7 @@ final class CardViewController: UIViewController {
     
     private lazy var cardView   = UIView()
     private lazy var frontView  = CardDetailView()
-    private lazy var backView   = UIView()
+    private lazy var backView   = CardBackDetailView()
     private lazy var tableView  = UITableView(frame: .zero, style: .insetGrouped)
     private var isFlipped: Bool = false
     
@@ -37,6 +37,7 @@ extension CardViewController: CardViewProtocol {
     func updateView(with data: BankCardEntity) {
         createNavigation(title: data.bankName)
         frontView.configure(with: data)
+        backView.configure(with: data)
         tableView.reloadData()
     }
 }
@@ -81,7 +82,6 @@ private extension CardViewController {
     
     func createBackView() {
         backView.isHidden = true
-        backView.backgroundColor = .red
         
         cardView.addSubview(backView)
         backView.snp.makeConstraints { make in
