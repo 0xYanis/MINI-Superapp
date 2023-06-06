@@ -63,7 +63,7 @@ private extension LoginView {
         nameField.snp.makeConstraints { make in
             make.top.equalTo(helloLabel.snp.bottom).offset(15)
             make.left.right.equalToSuperview().inset(20)
-            make.height.equalToSuperview().multipliedBy(0.12)
+            make.height.equalToSuperview().multipliedBy(0.13)
         }
     }
     
@@ -76,7 +76,7 @@ private extension LoginView {
         passField.snp.makeConstraints { make in
             make.top.equalTo(nameField.snp.bottom).offset(15)
             make.left.right.equalToSuperview().inset(20)
-            make.height.equalToSuperview().multipliedBy(0.12)
+            make.height.equalToSuperview().multipliedBy(0.13)
         }
     }
     
@@ -92,14 +92,10 @@ private extension LoginView {
         
         addSubview(registerButt)
         registerButt.snp.makeConstraints { make in
-            make.top.equalTo(passField.snp.bottom).offset(15)
+            make.top.equalTo(passField.snp.bottom).offset(35)
             make.left.right.equalToSuperview().inset(20)
         }
         
-    }
-    
-    @objc func registerButtonAction() {
-        presenter?.userWantRegister()
     }
     
     func createLoginButton() {
@@ -107,10 +103,12 @@ private extension LoginView {
         loginButt.snp.makeConstraints { make in
             make.bottom.equalToSuperview().inset(20)
             make.left.right.equalToSuperview().inset(20)
-            make.height.equalToSuperview().multipliedBy(0.12)
+            make.height.equalToSuperview().multipliedBy(0.13)
         }
         loginButt.addPulseAnimation()
     }
     
-    
+    @objc func registerButtonAction() {
+        presenter?.userWantRegister()
+    }
 }

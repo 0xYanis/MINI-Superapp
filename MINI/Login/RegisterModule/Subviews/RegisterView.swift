@@ -62,7 +62,7 @@ private extension RegisterView {
         nameField.snp.makeConstraints { make in
             make.top.equalTo(helloLabel.snp.bottom).offset(15)
             make.left.right.equalToSuperview().inset(20)
-            make.height.equalToSuperview().multipliedBy(0.12)
+            make.height.equalToSuperview().multipliedBy(0.13)
         }
     }
     
@@ -75,7 +75,7 @@ private extension RegisterView {
         passField.snp.makeConstraints { make in
             make.top.equalTo(nameField.snp.bottom).offset(15)
             make.left.right.equalToSuperview().inset(20)
-            make.height.equalToSuperview().multipliedBy(0.12)
+            make.height.equalToSuperview().multipliedBy(0.13)
         }
     }
     
@@ -88,7 +88,7 @@ private extension RegisterView {
         secondPassField.snp.makeConstraints { make in
             make.top.equalTo(passField.snp.bottom).offset(15)
             make.left.right.equalToSuperview().inset(20)
-            make.height.equalToSuperview().multipliedBy(0.12)
+            make.height.equalToSuperview().multipliedBy(0.13)
         }
     }
     
@@ -99,7 +99,7 @@ private extension RegisterView {
         regButton.snp.makeConstraints { make in
             make.bottom.equalToSuperview().inset(20)
             make.left.right.equalToSuperview().inset(20)
-            make.height.equalToSuperview().multipliedBy(0.12)
+            make.height.equalToSuperview().multipliedBy(0.13)
         }
     }
     
