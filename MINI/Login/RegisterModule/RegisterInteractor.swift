@@ -47,6 +47,7 @@ final class RegisterInteractor: RegisterInteractorProtocol {
         }
         
         keychainService?.setValue(password, forKey: login)
+        saveAuthToken(with: login)
         presenter?.registerIsCorrect()
     }
     
@@ -58,6 +59,13 @@ private extension RegisterInteractor {
         case weakPassword = "Слабый пароль"
         case passwordsDoNotMatch = "Пароли не совпадают"
         case loginAlreadyRegistered = "Аккаунт уже зарегистрирован"
+    }
+    
+    func saveAuthToken(with name: String) {
+        UserDefaults.standard.set(
+            name,
+            forKey: "authToken"
+        )
     }
     
     func isValidString(_ string: String) -> Bool {

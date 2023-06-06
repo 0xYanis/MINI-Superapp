@@ -31,7 +31,7 @@ final class LoginInteractor: LoginInteractorProtocol {
             return
         }
         
-        saveAuthToken(authToken: "YourAuthToken")
+        saveAuthToken(with: name)
         presenter?.loginIsCorrect()
     }
     
@@ -40,7 +40,7 @@ final class LoginInteractor: LoginInteractorProtocol {
         biometryService?.authWithBiometry(completion: { [weak self] result, _ in
             if result {
                 let authToken = "YourAuthToken" // Временный токен
-                self?.saveAuthToken(authToken: authToken)
+                self?.saveAuthToken(with: authToken)
                 self?.presenter?.loginIsCorrect()
             }
         })
@@ -48,9 +48,9 @@ final class LoginInteractor: LoginInteractorProtocol {
 }
 
 private extension LoginInteractor {
-    private func saveAuthToken(authToken: String) {
+    func saveAuthToken(with name: String) {
         UserDefaults.standard.set(
-            authToken,
+            name,
             forKey: "authToken"
         )
     }
