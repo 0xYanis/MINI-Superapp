@@ -13,17 +13,15 @@ final class CardBackDetailView: UIView {
     private lazy var cardView    = UIView()
     private lazy var lineView    = UIView()
     private lazy var cvvLineView = UIView()
-    private lazy var cvvLabel    = UILabel(
-        text: "CVV: 123",
-        font: .systemFont(ofSize: 18),
-        numberOfLines: 1,
-        color: .black
-    )
+    private lazy var cvvButton   = UIButton()
     private lazy var bankLabel   = UILabel(
         text: "BANK",
         font: .boldSystemFont(ofSize: 28),
         color: .silver
     )
+    
+    private var isTappedCvv: Bool = false
+    private var cvvNumber: String = ""
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -36,7 +34,7 @@ final class CardBackDetailView: UIView {
     
     func configure(with data: BankCardEntity) {
         cardView.backgroundColor = UIColor(named: data.cardColor)
-        cvvLabel.text = data.cvv
+        cvvNumber = data.cvv
         bankLabel.text = data.bankName
     }
 }
@@ -46,7 +44,7 @@ private extension CardBackDetailView {
         createCardView()
         createLineView()
         createCvvlineView()
-        createCvvLabel()
+        createCvvButton()
         createBankLabel()
     }
     
@@ -82,9 +80,18 @@ private extension CardBackDetailView {
         }
     }
     
-    func createCvvLabel() {
-        cvvLineView.addSubview(cvvLabel)
-        cvvLabel.snp.makeConstraints { make in
+    func createCvvButton() {
+        cvvButton.setTitle("***", for: .normal)
+        cvvButton.tintColor = .black
+        cvvButton.titleLabel?.font = .systemFont(ofSize: 18)
+        cvvButton.addTarget(
+            self,
+            action: #selector(cvvAction),
+            for: .touchUpInside
+        )
+        
+        cvvLineView.addSubview(cvvButton)
+        cvvButton.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.right.equalToSuperview().inset(10)
         }
@@ -97,4 +104,24 @@ private extension CardBackDetailView {
             make.right.equalToSuperview().inset(20)
         }
     }
+    
+    @objc func cvvAction() {
+        isTappedCvv.toggle()
+        isTappedCvv ? cvvButton.setTitle(cvvNumber, for: .normal) : cvvButton.setTitle("***", for: .normal)
+        cvvButtonAnimation(cvvButton)
+    }
+    
+    func cvvButtonAnimation(_ button: UIButton) {
+        button.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+        UIView.animate(
+            withDuration: 0.6,
+            delay: 0,
+            usingSpringWithDamping: 0.2,
+            initialSpringVelocity: 6.0,
+            options: .allowUserInteraction,
+            animations: {
+            button.transform = .identity
+        })
+    }
 }
+
