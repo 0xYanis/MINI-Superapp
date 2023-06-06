@@ -61,11 +61,10 @@ private extension RegisterInteractor {
     }
     
     func isValidString(_ string: String) -> Bool {
-        let stringLengthRange = 8...25
+        let stringLengthRange = 5...25
         guard !string.isEmpty,
               stringLengthRange.contains(string.count),
-              !string.contains(" "),
-              string.isAlphanumeric else {
+              !string.contains(" ") else {
             return false
         }
         return true

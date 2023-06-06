@@ -25,11 +25,6 @@ final class LoginInteractor: LoginInteractorProtocol {
     }
     
     func userWantLogin(_ name: String, _ password: String) {
-        guard isValidString(name), isValidString(password) else {
-            presenter?.loginIsNotCorrect()
-            return
-        }
-        
         guard let storedPassword = keychainService?.getValue(forKey: name),
                 storedPassword == password else {
             presenter?.loginIsNotCorrect()
@@ -71,16 +66,5 @@ private extension LoginInteractor {
                 return
             }
         })
-    }
-    
-    func isValidString(_ string: String) -> Bool {
-        let stringLengthRange = 8...25
-        guard !string.isEmpty,
-              stringLengthRange.contains(string.count),
-              !string.contains(" "),
-              string.isAlphanumeric else {
-            return false
-        }
-        return true
     }
 }
