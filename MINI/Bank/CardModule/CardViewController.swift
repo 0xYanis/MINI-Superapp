@@ -13,8 +13,11 @@ protocol CardViewProtocol: AnyObject {
 
 final class CardViewController: UIViewController {
     
-    private lazy var cardView = CardDetailView()
-    private lazy var tableView = UITableView(frame: .zero, style: .insetGrouped)
+    private lazy var cardView   = UIView()
+    private lazy var frontView  = CardDetailView()
+    private lazy var backView   = UIView()
+    private lazy var tableView  = UITableView(frame: .zero, style: .insetGrouped)
+    private var isFlipped: Bool = false
     
     var presenter: CardPresenterProtocol?
     
@@ -32,7 +35,8 @@ final class CardViewController: UIViewController {
 
 extension CardViewController: CardViewProtocol {
     func updateView(with data: BankCardEntity) {
-        cardView.configure(with: data)
+        createNavigation(title: data.bankName)
+        frontView.configure(with: data)
         tableView.reloadData()
     }
 }
@@ -42,8 +46,9 @@ private extension CardViewController {
     func initialize() {
         view.backgroundColor = .init(white: 0.05, alpha: 1)
         
-        createNavigation(title: "Visa Classic")
         createCardView()
+        createFrontView()
+        createBackView()
         createTableView()
         
         addButtonsToNavBar()
@@ -56,12 +61,31 @@ private extension CardViewController {
     }
     
     func createCardView() {
+        cardView.backgroundColor = .clear
+        
         view.addSubview(cardView)
         cardView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
             make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
             make.height.equalToSuperview().multipliedBy(0.25)
+        }
+    }
+    
+    func createFrontView() {
+        cardView.addSubview(frontView)
+        frontView.snp.makeConstraints { make in
+            make.edges.equalTo(cardView)
+        }
+    }
+    
+    func createBackView() {
+        backView.isHidden = true
+        backView.backgroundColor = .red
+        
+        cardView.addSubview(backView)
+        backView.snp.makeConstraints { make in
+            make.edges.equalTo(cardView)
         }
     }
     
@@ -145,22 +169,36 @@ private extension CardViewController {
     @objc func handleSwipe(gestureRecognizer: UISwipeGestureRecognizer) {
         switch gestureRecognizer.direction {
         case .right:
-            rotateView(uiView: cardView, duration: 0.4)
+            rotateView(options: [
+                .curveEaseOut,
+                .transitionFlipFromLeft,
+                .showHideTransitionViews
+            ])
         case .left:
-            rotateView(uiView: cardView, duration: 0.4)
+            rotateView(options: [
+                .curveEaseOut,
+                .transitionFlipFromRight,
+                .showHideTransitionViews
+            ])
         default:
             break
         }
     }
     
-    func rotateView(uiView: UIView, duration: Double = 1.0) {
-        let rotationTransform = CABasicAnimation(keyPath: "transform.rotation.y")
-        rotationTransform.fromValue = 0.0
-        rotationTransform.toValue = CGFloat(.pi * 1.0)
-        rotationTransform.duration = duration
-        rotationTransform.repeatCount = .zero
-        uiView.layer.add(rotationTransform, forKey: nil)
+    func rotateView(options: UIView.AnimationOptions) {
+        isFlipped.toggle()
+        let fromView = isFlipped ? frontView : backView
+        let toView = isFlipped ? backView : frontView
+        
+        UIView.transition(
+            from: fromView,
+            to: toView,
+            duration: 0.4,
+            options: options
+        )
     }
+    
+    
 }
 
 // MARK: - UITableViewDataSource
