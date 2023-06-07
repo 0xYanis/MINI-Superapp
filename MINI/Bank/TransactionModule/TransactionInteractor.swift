@@ -23,9 +23,8 @@ final class TransactionInteractor: TransactionInteractorProtocol {
     }
     
     func viewDidLoaded() {
-        guard let data = transactionData {
-            presenter?.updateView(with: data)
-        }
+        guard let data = transactionData else { return }
+        presenter?.updateView(with: data)
     }
     
     func userWillRemoveTransaction(id: Int) {
