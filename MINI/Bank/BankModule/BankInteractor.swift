@@ -70,7 +70,12 @@ final class BankInteractor: BankInteractorProtocol {
     }
     
     func userWantToDeleteTransaction(at id: Int) {
-        transactionsData.remove(at: id)
+        if !filteredData.isEmpty {
+            filteredData.remove(at: id)
+        }
+        if !transactionsData.isEmpty {
+            transactionsData.remove(at: id)
+        }
     }
     
     func searchBarTextDidChange(with searchText: String) {
