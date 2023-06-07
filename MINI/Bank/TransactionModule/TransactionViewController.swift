@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 protocol TransactionViewProtocol: AnyObject {
-    
+    func updateView(with data: BankTransactionEntity)
 }
 
 final class TransactionViewController: UIViewController {
@@ -30,7 +30,9 @@ final class TransactionViewController: UIViewController {
 }
 
 extension TransactionViewController: TransactionViewProtocol {
-    
+    func updateView(with data: BankTransactionEntity) {
+        
+    }
 }
 
 private extension TransactionViewController {

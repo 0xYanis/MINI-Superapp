@@ -80,7 +80,8 @@ extension BankPresenter: BankPresenterProtocol {
     }
     
     func userDidTapTransaction(id: Int) {
-        router.goToDetailTransaction(id: id)
+        let data = interactor.userDidTapTransaction(index: id)
+        router.goToDetailTransaction(with: data)
     }
     
     func setNewCard() {

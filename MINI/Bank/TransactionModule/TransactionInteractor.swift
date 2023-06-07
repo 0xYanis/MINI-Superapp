@@ -16,8 +16,16 @@ protocol TransactionInteractorProtocol: AnyObject {
 final class TransactionInteractor: TransactionInteractorProtocol {
     weak var presenter: TransactionPresenterProtocol?
     
+    var transactionData: BankTransactionEntity?
+    
+    init(data: BankTransactionEntity) {
+        self.transactionData = data
+    }
+    
     func viewDidLoaded() {
-        ///
+        guard let data = transactionData {
+            presenter?.updateView(with: data)
+        }
     }
     
     func userWillRemoveTransaction(id: Int) {

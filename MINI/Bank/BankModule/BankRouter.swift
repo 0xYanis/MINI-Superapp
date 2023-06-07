@@ -12,7 +12,7 @@ protocol BankRouterProtocol: AnyObject {
     func goToDetailCard(with data: BankCardEntity)
     func goToDetailTemplate(id: Int)
     func goToAllTemplates(with data: [BankTemplateEntity])
-    func goToDetailTransaction(id: Int)
+    func goToDetailTransaction(with data: BankTransactionEntity)
     func goToAddNewCard()
     func goToAddNewTemplate()
 }
@@ -36,8 +36,8 @@ final class BankRouter: BankRouterProtocol {
         view?.navigationController?.pushViewController(allTemplatesView, animated: true)
     }
     
-    func goToDetailTransaction(id: Int) {
-        let transactionView = TransactionBuilder.build()
+    func goToDetailTransaction(with data: BankTransactionEntity) {
+        let transactionView = TransactionBuilder.build(with: data)
         view?.navigationController?.pushViewController(transactionView, animated: true)
     }
     

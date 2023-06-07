@@ -8,10 +8,10 @@
 import UIKit
 
 final class TransactionBuilder {
-    static func build() -> UIViewController {
+    static func build(with data: BankTransactionEntity) -> UIViewController {
         let viewController = TransactionViewController()
         let router = TransactionRouter()
-        let interactor = TransactionInteractor()
+        let interactor = TransactionInteractor(data: data)
         let presenter = TransactionPresenter(router: router, interactor: interactor)
         
         viewController.presenter = presenter

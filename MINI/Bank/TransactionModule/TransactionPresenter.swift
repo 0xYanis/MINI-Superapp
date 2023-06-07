@@ -10,6 +10,8 @@ import Foundation
 protocol TransactionPresenterProtocol: AnyObject {
     func viewDidLoaded()
     func userWantRemoveTransaction(id: Int)
+    
+    func updateView(with data: BankTransactionEntity)
 }
 
 final class TransactionPresenter {
@@ -30,5 +32,9 @@ extension TransactionPresenter: TransactionPresenterProtocol {
     
     func userWantRemoveTransaction(id: Int) {
         interactor.userWillRemoveTransaction(id: id)
+    }
+    
+    func updateView(with data: BankTransactionEntity) {
+        view?.updateView(with: data)
     }
 }

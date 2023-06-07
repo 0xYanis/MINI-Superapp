@@ -17,6 +17,7 @@ protocol BankInteractorProtocol: AnyObject {
     
     func userDidTapCard(index: Int) -> BankCardEntity
     func userDidTapSeeAll() -> [BankTemplateEntity]
+    func userDidTapTransaction(index: Int) -> BankTransactionEntity
     
     func userWantToDeleteCard(at id: Int)
     func userWantToDeleteTransaction(at id: Int)
@@ -59,6 +60,10 @@ final class BankInteractor: BankInteractorProtocol {
     
     func userDidTapCard(index: Int) -> BankCardEntity {
         return cardsData[index]
+    }
+    
+    func userDidTapTransaction(index: Int) -> BankTransactionEntity {
+        filteredData.isEmpty ? transactionsData[index] : filteredData[index]
     }
     
     func userDidTapSeeAll() -> [BankTemplateEntity] {
