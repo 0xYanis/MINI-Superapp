@@ -40,11 +40,11 @@
 		09632FCE29ED8A8800DB2641 /* BankTemplateSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09632FCD29ED8A8800DB2641 /* BankTemplateSet.swift */; };
 		096B4B272A1DEEC700E5C65E /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096B4B262A1DEEC700E5C65E /* APIService.swift */; };
 		096B4B2A2A1DEF3500E5C65E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 096B4B292A1DEF3500E5C65E /* Alamofire */; };
-		097A80652A337E0400B5CF3A /* FoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097A80642A337E0400B5CF3A /* FoodViewController.swift */; };
-		097A80672A337E1600B5CF3A /* FoodPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097A80662A337E1600B5CF3A /* FoodPresenter.swift */; };
-		097A80692A337E2000B5CF3A /* FoodInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097A80682A337E2000B5CF3A /* FoodInteractor.swift */; };
-		097A806B2A337E2800B5CF3A /* FoodRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097A806A2A337E2800B5CF3A /* FoodRouter.swift */; };
-		097A806D2A337E3600B5CF3A /* FoodBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097A806C2A337E3600B5CF3A /* FoodBuilder.swift */; };
+		097A80652A337E0400B5CF3A /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097A80642A337E0400B5CF3A /* CategoryViewController.swift */; };
+		097A80672A337E1600B5CF3A /* CategoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097A80662A337E1600B5CF3A /* CategoryPresenter.swift */; };
+		097A80692A337E2000B5CF3A /* CategoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097A80682A337E2000B5CF3A /* CategoryInteractor.swift */; };
+		097A806B2A337E2800B5CF3A /* CategoryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097A806A2A337E2800B5CF3A /* CategoryRouter.swift */; };
+		097A806D2A337E3600B5CF3A /* CategoryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097A806C2A337E3600B5CF3A /* CategoryBuilder.swift */; };
 		097ACF202A2E1E3D0023106A /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097ACF1F2A2E1E3D0023106A /* RegisterViewController.swift */; };
 		097ACF222A2E1E470023106A /* RegisterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097ACF212A2E1E470023106A /* RegisterPresenter.swift */; };
 		097ACF242A2E1E500023106A /* RegisterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097ACF232A2E1E500023106A /* RegisterInteractor.swift */; };
@@ -196,11 +196,11 @@
 		09632FCB29ED8A7D00DB2641 /* BankCardSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankCardSet.swift; sourceTree = "<group>"; };
 		09632FCD29ED8A8800DB2641 /* BankTemplateSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTemplateSet.swift; sourceTree = "<group>"; };
 		096B4B262A1DEEC700E5C65E /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
-		097A80642A337E0400B5CF3A /* FoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodViewController.swift; sourceTree = "<group>"; };
-		097A80662A337E1600B5CF3A /* FoodPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodPresenter.swift; sourceTree = "<group>"; };
-		097A80682A337E2000B5CF3A /* FoodInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodInteractor.swift; sourceTree = "<group>"; };
-		097A806A2A337E2800B5CF3A /* FoodRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodRouter.swift; sourceTree = "<group>"; };
-		097A806C2A337E3600B5CF3A /* FoodBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodBuilder.swift; sourceTree = "<group>"; };
+		097A80642A337E0400B5CF3A /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		097A80662A337E1600B5CF3A /* CategoryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPresenter.swift; sourceTree = "<group>"; };
+		097A80682A337E2000B5CF3A /* CategoryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryInteractor.swift; sourceTree = "<group>"; };
+		097A806A2A337E2800B5CF3A /* CategoryRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRouter.swift; sourceTree = "<group>"; };
+		097A806C2A337E3600B5CF3A /* CategoryBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryBuilder.swift; sourceTree = "<group>"; };
 		097ACF1F2A2E1E3D0023106A /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		097ACF212A2E1E470023106A /* RegisterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPresenter.swift; sourceTree = "<group>"; };
 		097ACF232A2E1E500023106A /* RegisterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInteractor.swift; sourceTree = "<group>"; };
@@ -469,11 +469,11 @@
 		097A80632A337DF500B5CF3A /* FoodModule */ = {
 			isa = PBXGroup;
 			children = (
-				097A80642A337E0400B5CF3A /* FoodViewController.swift */,
-				097A80662A337E1600B5CF3A /* FoodPresenter.swift */,
-				097A80682A337E2000B5CF3A /* FoodInteractor.swift */,
-				097A806A2A337E2800B5CF3A /* FoodRouter.swift */,
-				097A806C2A337E3600B5CF3A /* FoodBuilder.swift */,
+				097A80642A337E0400B5CF3A /* CategoryViewController.swift */,
+				097A80662A337E1600B5CF3A /* CategoryPresenter.swift */,
+				097A80682A337E2000B5CF3A /* CategoryInteractor.swift */,
+				097A806A2A337E2800B5CF3A /* CategoryRouter.swift */,
+				097A806C2A337E3600B5CF3A /* CategoryBuilder.swift */,
 			);
 			path = FoodModule;
 			sourceTree = "<group>";
@@ -1028,12 +1028,12 @@
 				090AE1E329FBAA200092515D /* TemplateBuilder.swift in Sources */,
 				097ACF202A2E1E3D0023106A /* RegisterViewController.swift in Sources */,
 				090BAB8E2A0298F5006AE8F9 /* AviaViewController.swift in Sources */,
-				097A806D2A337E3600B5CF3A /* FoodBuilder.swift in Sources */,
+				097A806D2A337E3600B5CF3A /* CategoryBuilder.swift in Sources */,
 				099D4F7B29F723090002C24A /* NewCardBuilder.swift in Sources */,
 				093932462A25E7E400F813A2 /* AviaShowplaceEntity.swift in Sources */,
 				09E24C172A122C2E00A91F74 /* BankTransactionEntity.swift in Sources */,
 				09E9E82129EAE9650084416B /* LoginEntity.swift in Sources */,
-				097A80672A337E1600B5CF3A /* FoodPresenter.swift in Sources */,
+				097A80672A337E1600B5CF3A /* CategoryPresenter.swift in Sources */,
 				09503EB829F2D44000254F53 /* StackFlowLayout.swift in Sources */,
 				09E9E81929EAE9410084416B /* LoginViewController.swift in Sources */,
 				097ACF222A2E1E470023106A /* RegisterPresenter.swift in Sources */,
@@ -1041,7 +1041,7 @@
 				09FC394A29FAD3ED00B2D97E /* TransactionInteractor.swift in Sources */,
 				09E24C152A1228D000A91F74 /* BankTemplateEntity.swift in Sources */,
 				090AE1DB29FBAA020092515D /* TemplateViewController.swift in Sources */,
-				097A806B2A337E2800B5CF3A /* FoodRouter.swift in Sources */,
+				097A806B2A337E2800B5CF3A /* CategoryRouter.swift in Sources */,
 				099D4F7929F723010002C24A /* NewCardInteractor.swift in Sources */,
 				097ACF242A2E1E500023106A /* RegisterInteractor.swift in Sources */,
 				09FC394629FAD3DA00B2D97E /* TransactionViewController.swift in Sources */,
@@ -1107,7 +1107,7 @@
 				09FC393F29FABF5B00B2D97E /* AllTemplatesBuilder.swift in Sources */,
 				09C3CB412A2DF340001731D1 /* BankTableView.swift in Sources */,
 				09FC393B29FABF4A00B2D97E /* AllTemplatesInteractor.swift in Sources */,
-				097A80652A337E0400B5CF3A /* FoodViewController.swift in Sources */,
+				097A80652A337E0400B5CF3A /* CategoryViewController.swift in Sources */,
 				099089E72A139A4600EE00DA /* GroceryInteractor.swift in Sources */,
 				097E03A129EC44A500CE2A6F /* BankRouter.swift in Sources */,
 				099D4F7F29F72AEA0002C24A /* NewTemplatePresenter.swift in Sources */,
@@ -1116,7 +1116,7 @@
 				097E039B29EC447000CE2A6F /* BankViewController.swift in Sources */,
 				0910960029DB32F000338D22 /* SceneDelegate.swift in Sources */,
 				099D4F8729F72B0F0002C24A /* NewTemplateEntity.swift in Sources */,
-				097A80692A337E2000B5CF3A /* FoodInteractor.swift in Sources */,
+				097A80692A337E2000B5CF3A /* CategoryInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

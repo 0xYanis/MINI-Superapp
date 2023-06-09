@@ -1,5 +1,5 @@
 //
-//  FoodPresenter.swift
+//  CategoryPresenter.swift
 //  MINI
 //
 //  Created by Yan Rybkin on 09.06.2023.
@@ -7,27 +7,27 @@
 
 import Foundation
 
-protocol FoodPresenterProtocol: AnyObject {
+protocol CategoryPresenterProtocol: AnyObject {
     func updateView()
     func userDidTapProduct(index: Int)
 }
 
-final class FoodPresenter {
+final class CategoryPresenter {
     
-    weak var view: FoodViewProtocol?
-    var router: FoodRouterProtocol
-    var interactor: FoodInteractorProtocol
+    weak var view: CategoryViewProtocol?
+    var router: CategoryRouterProtocol
+    var interactor: CategoryInteractorProtocol
     
     init(
-        router: FoodRouterProtocol,
-        interactor: FoodInteractorProtocol
+        router: CategoryRouterProtocol,
+        interactor: CategoryInteractorProtocol
     ) {
         self.router = router
         self.interactor = interactor
     }
 }
 
-extension FoodPresenter: FoodPresenterProtocol {
+extension CategoryPresenter: CategoryPresenterProtocol {
     func updateView() {
         view?.udateView()
     }

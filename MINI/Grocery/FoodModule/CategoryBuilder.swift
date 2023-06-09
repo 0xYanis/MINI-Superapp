@@ -1,5 +1,5 @@
 //
-//  FoodBuilder.swift
+//  CategoryBuilder.swift
 //  MINI
 //
 //  Created by Yan Rybkin on 09.06.2023.
@@ -7,12 +7,12 @@
 
 import UIKit
 
-final class FoodBuilder {
+final class CategoryBuilder {
     static func build() -> UIViewController {
-        let view = FoodViewController()
-        let router = FoodRouter()
-        let interactor = FoodInteractor()
-        let presenter = FoodPresenter(router: router, interactor: interactor)
+        let view = CategoryViewController()
+        let router = CategoryRouter()
+        let interactor = CategoryInteractor()
+        let presenter = CategoryPresenter(router: router, interactor: interactor)
         
         view.presenter = presenter
         presenter.view = view

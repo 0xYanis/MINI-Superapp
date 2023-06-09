@@ -15,7 +15,7 @@ final class GroceryRouter: GroceryRouterProtocol {
     weak var view: UIViewController?
     
     func goToDetailCategory(with id: Int) {
-        let foodView = FoodBuilder.build()
-        view?.navigationController?.pushViewController(foodView, animated: true)
+        let categoryView = CategoryBuilder.build()
+        view?.navigationController?.pushViewController(categoryView, animated: true)
     }
 }
