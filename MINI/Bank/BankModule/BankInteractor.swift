@@ -71,15 +71,19 @@ final class BankInteractor: BankInteractorProtocol {
     }
     
     func userWantToDeleteCard(at id: Int) {
-        cardsData.remove(at: id)
+        if !cardsData.isEmpty {
+            cardsData.remove(at: id)
+        }
     }
     
     func userWantToDeleteTransaction(at id: Int) {
         if !filteredData.isEmpty {
             filteredData.remove(at: id)
+            return
         }
         if !transactionsData.isEmpty {
             transactionsData.remove(at: id)
+            return
         }
     }
     
