@@ -8,7 +8,7 @@
 import UIKit
 
 final class FoodBuilder {
-    func build() -> UIViewController {
+    static func build() -> UIViewController {
         let view = FoodViewController()
         let router = FoodRouter()
         let interactor = FoodInteractor()

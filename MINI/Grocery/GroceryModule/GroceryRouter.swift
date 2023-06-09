@@ -15,8 +15,7 @@ final class GroceryRouter: GroceryRouterProtocol {
     weak var view: UIViewController?
     
     func goToDetailCategory(with id: Int) {
-        let detailCategoryView = UIViewController()
-        detailCategoryView.view.backgroundColor = .wetAsphalt
-        view?.navigationController?.pushViewController(detailCategoryView, animated: true)
+        let foodView = FoodBuilder.build()
+        view?.navigationController?.pushViewController(foodView, animated: true)
     }
 }
