@@ -9,8 +9,7 @@ import UIKit
 import SnapKit
 
 final class CategoryCartView: UIView {
-    
-    
+
     private lazy var labelView = UIView()
     private lazy var cartLabel = UILabel()
     
@@ -30,12 +29,14 @@ final class CategoryCartView: UIView {
 private extension CategoryCartView {
     func initialize() {
         backgroundColor = .gray
+        roundCorners(radius: 30)
         createCartLabel()
         createCartImage()
     }
     
     func createCartLabel() {
         labelView.backgroundColor = .lightGray
+        labelView.roundCorners(radius: 20)
         addSubview(labelView)
         labelView.snp.makeConstraints { make in
             make.left.top.bottom.equalToSuperview().inset(7)
@@ -54,6 +55,7 @@ private extension CategoryCartView {
     
     func createCartImage() {
         imageView.backgroundColor = .lightGray
+        imageView.roundCorners(radius: 20)
         addSubview(imageView)
         imageView.snp.makeConstraints { make in
             make.top.right.bottom.equalToSuperview().inset(7)
@@ -61,11 +63,11 @@ private extension CategoryCartView {
         }
         
         cartImage.image = UIImage(systemName: "cart.fill")
-        
+        cartImage.contentMode = .scaleAspectFit
         imageView.addSubview(cartImage)
         cartImage.snp.makeConstraints { make in
             make.center.equalToSuperview()
-            make.width.height.equalToSuperview().multipliedBy(0.7)
+            make.width.height.equalToSuperview().multipliedBy(0.6)
         }
     }
 }

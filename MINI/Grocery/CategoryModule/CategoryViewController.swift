@@ -19,6 +19,7 @@ final class CategoryViewController: UIViewController {
     
     //MARK: Private properties
     private var collectionView: UICollectionView!
+    private lazy var cartView = CategoryCartView()
     
     //MARK: Lifecycle
     override func viewDidLoad() {
@@ -44,12 +45,23 @@ extension CategoryViewController: CategoryViewProtocol {
 private extension CategoryViewController {
     func initialize() {
         view.backgroundColor = UIColor(named: "backColor")
+        createCartView()
         createCollectionView()
     }
     
     func createNavigation(with title: String) {
         navigationItem.title = title
         navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    func createCartView() {
+        view.insertSubview(cartView, at: 1)
+        cartView.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().inset(30)
+            make.centerX.equalToSuperview()
+            make.left.right.equalToSuperview().inset(20)
+            make.height.equalToSuperview().multipliedBy(0.075)
+        }
     }
     
     func createCollectionView() {
@@ -79,7 +91,7 @@ private extension CategoryViewController {
     }
     
     func createConstraints() {
-        view.addSubview(collectionView)
+        view.insertSubview(collectionView, at: 0)
         collectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
