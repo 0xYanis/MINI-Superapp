@@ -14,8 +14,16 @@ final class CategoryCell: UICollectionViewCell {
     static let cellId = "CategoryCell"
     
     //MARK: Private properties
+    private lazy var view         = UIView()
     private lazy var textLabel    = UILabel()
     private lazy var imageView    = UIImageView()
+    
+    lazy var priceButton = UIButton(
+        label: "$59.9",
+        color: .gray,
+        cornerRadius: 15
+    )
+    
     private lazy var discountView = UIView()
     private lazy var percentView  = UIImageView()
     
@@ -37,42 +45,64 @@ final class CategoryCell: UICollectionViewCell {
 //MARK: - Private methods
 private extension CategoryCell {
     func initialize() {
-        roundCorners(radius: 10)
-        backgroundColor = .black
+        createView()
         createTextLabel()
         createImageView()
+        createPriceButton()
         
         createDiscountView()
+    }
+    
+    func createView() {
+        view.roundCorners(radius: 15)
+        view.backgroundColor = .black
+        addSubview(view)
+        view.snp.makeConstraints { make in
+            make.width.equalToSuperview()
+            make.height.equalToSuperview().multipliedBy(0.66)
+        }
     }
     
     func createTextLabel() {
         textLabel.text = "Double Big mac with extra cheese"
         textLabel.textColor = .white
         textLabel.font = .boldSystemFont(ofSize: 12)
-        textLabel.numberOfLines = 3
-        insertSubview(textLabel, at: 1)
+        textLabel.numberOfLines = 2
+        addSubview(textLabel)
         textLabel.snp.makeConstraints { make in
-            make.right.left.top.equalToSuperview().inset(7)
+            make.top.equalTo(view.snp.bottom).offset(7)
+            make.right.left.equalToSuperview()
+        }
+    }
+    
+    func createPriceButton() {
+        priceButton.titleLabel?.font = .systemFont(ofSize: 15)
+        priceButton.addPulseAnimation()
+        
+        addSubview(priceButton)
+        priceButton.snp.makeConstraints { make in
+            make.top.equalTo(textLabel.snp.bottom).offset(7)
+            make.left.equalToSuperview()
+            make.width.equalToSuperview().multipliedBy(0.4)
         }
     }
     
     func createImageView() {
         imageView.contentMode = .scaleAspectFit
         imageView.image = UIImage(named: "burger")
-        insertSubview(imageView, at: 0)
+        view.addSubview(imageView)
         imageView.snp.makeConstraints { make in
             make.size.equalToSuperview().multipliedBy(0.7)
-            make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview()
+            make.center.equalToSuperview()
         }
     }
     
     func createDiscountView() {
         discountView.roundCorners(radius: 10)
         discountView.backgroundColor = .systemOrange
-        insertSubview(discountView, at: 1)
+        view.insertSubview(discountView, at: 1)
         discountView.snp.makeConstraints { make in
-            make.right.bottom.equalToSuperview().inset(7)
+            make.right.bottom.equalToSuperview().inset(10)
             make.height.width.equalTo(20)
         }
         

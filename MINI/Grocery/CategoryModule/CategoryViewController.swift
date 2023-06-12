@@ -73,7 +73,7 @@ private extension CategoryViewController {
         layout.minimumInteritemSpacing = 0
         layout.sectionInset = UIEdgeInsets(
             top: 5, left: 16,
-            bottom: 20, right: 16
+            bottom: 50, right: 16
         )
         return layout
     }
@@ -95,6 +95,17 @@ private extension CategoryViewController {
             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
             withReuseIdentifier: CategoryHeader.cellId
         )
+    }
+}
+
+
+private extension CategoryViewController {
+    @objc func priceButtonAction(_ sender: UIButton) {
+        if let cell = sender.superview as? CategoryCell,
+           let index = collectionView.indexPath(for: cell) {
+            
+            print("Секция\(index.section), ячейка №\(index.item)")
+        }
     }
 }
 
@@ -121,6 +132,13 @@ extension CategoryViewController: UICollectionViewDataSource {
             for: indexPath) as? CategoryCell else {
             return UICollectionViewCell()
         }
+        cell.priceButton.tag = indexPath.item
+        cell.priceButton.addTarget(
+            self,
+            action: #selector(priceButtonAction),
+            for: .touchUpInside
+        )
+        
         return cell
     }
     
@@ -130,9 +148,7 @@ extension CategoryViewController: UICollectionViewDataSource {
         willDisplay cell: UICollectionViewCell,
         forItemAt indexPath: IndexPath
     ) {
-        if let cell = cell as? CategoryCell {
-            cell.roundCorners(radius: 12)
-        }
+        
     }
     
 }
@@ -175,8 +191,8 @@ extension CategoryViewController: UICollectionViewDelegateFlowLayout {
         indexPath: IndexPath
     ) -> CGSize {
         let itemSpacing: CGFloat = 16
-        let width = (collectionView.bounds.width - itemSpacing * 3) / 3
-        let height = width * 1.3
+        let width = (collectionView.bounds.width - itemSpacing * 3) / 2
+        let height = width * 1.5
         return CGSize(width: width, height: height)
     }
     
