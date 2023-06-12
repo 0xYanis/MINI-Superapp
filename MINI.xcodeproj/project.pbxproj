@@ -140,6 +140,7 @@
 		09FB82502A37286000CEF8C1 /* ProductInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FB824F2A37286000CEF8C1 /* ProductInteractor.swift */; };
 		09FB82522A37286800CEF8C1 /* ProductBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FB82512A37286800CEF8C1 /* ProductBuilder.swift */; };
 		09FB82542A37287100CEF8C1 /* ProductEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FB82532A37287100CEF8C1 /* ProductEntity.swift */; };
+		09FB82582A3737AA00CEF8C1 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FB82572A3737AA00CEF8C1 /* LocationService.swift */; };
 		09FC393729FABF2D00B2D97E /* AllTemplatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FC393629FABF2D00B2D97E /* AllTemplatesViewController.swift */; };
 		09FC393929FABF4200B2D97E /* AllTemplatesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FC393829FABF4200B2D97E /* AllTemplatesPresenter.swift */; };
 		09FC393B29FABF4A00B2D97E /* AllTemplatesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FC393A29FABF4A00B2D97E /* AllTemplatesInteractor.swift */; };
@@ -299,6 +300,7 @@
 		09FB824F2A37286000CEF8C1 /* ProductInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInteractor.swift; sourceTree = "<group>"; };
 		09FB82512A37286800CEF8C1 /* ProductBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductBuilder.swift; sourceTree = "<group>"; };
 		09FB82532A37287100CEF8C1 /* ProductEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductEntity.swift; sourceTree = "<group>"; };
+		09FB82572A3737AA00CEF8C1 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		09FC393629FABF2D00B2D97E /* AllTemplatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTemplatesViewController.swift; sourceTree = "<group>"; };
 		09FC393829FABF4200B2D97E /* AllTemplatesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTemplatesPresenter.swift; sourceTree = "<group>"; };
 		09FC393A29FABF4A00B2D97E /* AllTemplatesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTemplatesInteractor.swift; sourceTree = "<group>"; };
@@ -750,6 +752,7 @@
 				09E9E82929EB16210084416B /* KeyChainService.swift */,
 				09E9E82D29EB16E10084416B /* KeyChain.swift */,
 				0925D59A2A1CAED200B5E12B /* RealmService.swift */,
+				09FB82572A3737AA00CEF8C1 /* LocationService.swift */,
 			);
 			path = ServiceLayer;
 			sourceTree = "<group>";
@@ -1160,6 +1163,7 @@
 				097E03A129EC44A500CE2A6F /* BankRouter.swift in Sources */,
 				099D4F7F29F72AEA0002C24A /* NewTemplatePresenter.swift in Sources */,
 				091095FE29DB32F000338D22 /* AppDelegate.swift in Sources */,
+				09FB82582A3737AA00CEF8C1 /* LocationService.swift in Sources */,
 				0909D1C329F192E50078EEB5 /* BankTemplateLabelCell.swift in Sources */,
 				097E039B29EC447000CE2A6F /* BankViewController.swift in Sources */,
 				0910960029DB32F000338D22 /* SceneDelegate.swift in Sources */,
