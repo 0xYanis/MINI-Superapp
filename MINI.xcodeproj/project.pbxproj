@@ -134,6 +134,12 @@
 		09F92CF52A23476300440ACC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 09F92CF72A23476300440ACC /* Localizable.strings */; };
 		09FB82452A3714B800CEF8C1 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FB82442A3714B800CEF8C1 /* CategoryCell.swift */; };
 		09FB82472A3714C300CEF8C1 /* CategoryHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FB82462A3714C300CEF8C1 /* CategoryHeader.swift */; };
+		09FB824A2A3724F900CEF8C1 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FB82492A3724F900CEF8C1 /* ProductViewController.swift */; };
+		09FB824C2A3727E200CEF8C1 /* ProductPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FB824B2A3727E200CEF8C1 /* ProductPresenter.swift */; };
+		09FB824E2A37285800CEF8C1 /* ProductRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FB824D2A37285800CEF8C1 /* ProductRouter.swift */; };
+		09FB82502A37286000CEF8C1 /* ProductInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FB824F2A37286000CEF8C1 /* ProductInteractor.swift */; };
+		09FB82522A37286800CEF8C1 /* ProductBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FB82512A37286800CEF8C1 /* ProductBuilder.swift */; };
+		09FB82542A37287100CEF8C1 /* ProductEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FB82532A37287100CEF8C1 /* ProductEntity.swift */; };
 		09FC393729FABF2D00B2D97E /* AllTemplatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FC393629FABF2D00B2D97E /* AllTemplatesViewController.swift */; };
 		09FC393929FABF4200B2D97E /* AllTemplatesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FC393829FABF4200B2D97E /* AllTemplatesPresenter.swift */; };
 		09FC393B29FABF4A00B2D97E /* AllTemplatesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FC393A29FABF4A00B2D97E /* AllTemplatesInteractor.swift */; };
@@ -287,6 +293,12 @@
 		09F92CF82A23476700440ACC /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		09FB82442A3714B800CEF8C1 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		09FB82462A3714C300CEF8C1 /* CategoryHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHeader.swift; sourceTree = "<group>"; };
+		09FB82492A3724F900CEF8C1 /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
+		09FB824B2A3727E200CEF8C1 /* ProductPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductPresenter.swift; sourceTree = "<group>"; };
+		09FB824D2A37285800CEF8C1 /* ProductRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRouter.swift; sourceTree = "<group>"; };
+		09FB824F2A37286000CEF8C1 /* ProductInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInteractor.swift; sourceTree = "<group>"; };
+		09FB82512A37286800CEF8C1 /* ProductBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductBuilder.swift; sourceTree = "<group>"; };
+		09FB82532A37287100CEF8C1 /* ProductEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductEntity.swift; sourceTree = "<group>"; };
 		09FC393629FABF2D00B2D97E /* AllTemplatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTemplatesViewController.swift; sourceTree = "<group>"; };
 		09FC393829FABF4200B2D97E /* AllTemplatesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTemplatesPresenter.swift; sourceTree = "<group>"; };
 		09FC393A29FABF4A00B2D97E /* AllTemplatesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTemplatesInteractor.swift; sourceTree = "<group>"; };
@@ -608,6 +620,7 @@
 			children = (
 				099089EC2A139A6000EE00DA /* GroceryModule */,
 				097A80632A337DF500B5CF3A /* CategoryModule */,
+				09FB82482A3724DB00CEF8C1 /* ProductModule */,
 			);
 			path = Grocery;
 			sourceTree = "<group>";
@@ -845,6 +858,19 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		09FB82482A3724DB00CEF8C1 /* ProductModule */ = {
+			isa = PBXGroup;
+			children = (
+				09FB82492A3724F900CEF8C1 /* ProductViewController.swift */,
+				09FB824B2A3727E200CEF8C1 /* ProductPresenter.swift */,
+				09FB824D2A37285800CEF8C1 /* ProductRouter.swift */,
+				09FB824F2A37286000CEF8C1 /* ProductInteractor.swift */,
+				09FB82512A37286800CEF8C1 /* ProductBuilder.swift */,
+				09FB82532A37287100CEF8C1 /* ProductEntity.swift */,
+			);
+			path = ProductModule;
+			sourceTree = "<group>";
+		};
 		09FC394429FAD27200B2D97E /* AllTemplatesView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1031,7 +1057,9 @@
 				097E039D29EC448F00CE2A6F /* BankPresenter.swift in Sources */,
 				099A79C029F16406004B95C7 /* BankCardCell.swift in Sources */,
 				09E9E82329EAFC770084416B /* UIView+Extension.swift in Sources */,
+				09FB82522A37286800CEF8C1 /* ProductBuilder.swift in Sources */,
 				09F5BFD92A12880000BC3B7C /* BankTemplateService.swift in Sources */,
+				09FB82542A37287100CEF8C1 /* ProductEntity.swift in Sources */,
 				09BFC9402A1B4C8900C8505B /* ProfileRouter.swift in Sources */,
 				099D4F6F29F71A610002C24A /* CardBuilder.swift in Sources */,
 				09BFC9442A1B4CA800C8505B /* ProfileInteractor.swift in Sources */,
@@ -1046,6 +1074,7 @@
 				099D4F7B29F723090002C24A /* NewCardBuilder.swift in Sources */,
 				093932462A25E7E400F813A2 /* AviaShowplaceEntity.swift in Sources */,
 				09E24C172A122C2E00A91F74 /* BankTransactionEntity.swift in Sources */,
+				09FB824A2A3724F900CEF8C1 /* ProductViewController.swift in Sources */,
 				09E9E82129EAE9650084416B /* LoginEntity.swift in Sources */,
 				097A80672A337E1600B5CF3A /* CategoryPresenter.swift in Sources */,
 				09503EB829F2D44000254F53 /* StackFlowLayout.swift in Sources */,
@@ -1061,6 +1090,7 @@
 				09FC394629FAD3DA00B2D97E /* TransactionViewController.swift in Sources */,
 				099A79C229F16417004B95C7 /* BankTemplateCell.swift in Sources */,
 				097ACF282A2E1E690023106A /* RegisterBuilder.swift in Sources */,
+				09FB824C2A3727E200CEF8C1 /* ProductPresenter.swift in Sources */,
 				097E03A329EC44BD00CE2A6F /* BankBuilder.swift in Sources */,
 				090BAB902A029914006AE8F9 /* AviaPresenter.swift in Sources */,
 				092E739A29EBFB8800165D37 /* UIStackView+Extension.swift in Sources */,
@@ -1070,6 +1100,7 @@
 				09E9E83029EB24840084416B /* UIAlertController+Extension.swift in Sources */,
 				09FC394C29FAD3F400B2D97E /* TransactionRouter.swift in Sources */,
 				0925D59B2A1CAED200B5E12B /* RealmService.swift in Sources */,
+				09FB824E2A37285800CEF8C1 /* ProductRouter.swift in Sources */,
 				092E739429EBEB1F00165D37 /* LoginAnimationView.swift in Sources */,
 				09FB82452A3714B800CEF8C1 /* CategoryCell.swift in Sources */,
 				09D509D829EF4EDE009CC219 /* UIImageView+Extension.swift in Sources */,
@@ -1085,6 +1116,7 @@
 				09632FCC29ED8A7D00DB2641 /* BankCardSet.swift in Sources */,
 				09BFC9422A1B4C9600C8505B /* ProfileBuilder.swift in Sources */,
 				09F5BFD72A1285F500BC3B7C /* BankCardService.swift in Sources */,
+				09FB82502A37286000CEF8C1 /* ProductInteractor.swift in Sources */,
 				099089E32A139A2D00EE00DA /* GroceryViewController.swift in Sources */,
 				099D4F8129F72AF40002C24A /* NewTemplateInteractor.swift in Sources */,
 				09BFC93E2A1B4C8000C8505B /* ProfilePresenter.swift in Sources */,
