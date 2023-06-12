@@ -8,6 +8,7 @@
 import Foundation
 
 protocol CategoryPresenterProtocol: AnyObject {
+    func viewDidLoaded()
     func updateView()
     func userDidTapProduct(index: Int)
 }
@@ -28,6 +29,10 @@ final class CategoryPresenter {
 }
 
 extension CategoryPresenter: CategoryPresenterProtocol {
+    func viewDidLoaded() {
+        interactor.viewDidLoaded()
+    }
+    
     func updateView() {
         view?.udateView()
     }
