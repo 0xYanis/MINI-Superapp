@@ -11,6 +11,8 @@ protocol CategoryPresenterProtocol: AnyObject {
     func viewDidLoaded()
     func updateView()
     func userDidTapProduct(index: Int)
+    
+    func userDidTapCart()
 }
 
 final class CategoryPresenter {
@@ -41,5 +43,7 @@ extension CategoryPresenter: CategoryPresenterProtocol {
         router.goToDetailProduct(index: index)
     }
     
-    
+    func userDidTapCart() {
+        router.goToCart()
+    }
 }

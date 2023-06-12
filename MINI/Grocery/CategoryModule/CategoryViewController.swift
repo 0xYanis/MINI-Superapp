@@ -63,6 +63,8 @@ private extension CategoryViewController {
             make.left.right.equalToSuperview().inset(20)
             make.height.equalToSuperview().multipliedBy(0.075)
         }
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapCart))
+        cartView.addGestureRecognizer(tapGesture)
     }
     
     func createCollectionView() {
@@ -119,6 +121,10 @@ private extension CategoryViewController {
             
             print("Секция\(index.section), ячейка №\(index.item)")
         }
+    }
+    
+    @objc func didTapCart() {
+        presenter?.userDidTapCart()
     }
     
     func cartViewScrollAppearance(_ scrollView: UIScrollView, inset: CGFloat, alpha: CGFloat) {
