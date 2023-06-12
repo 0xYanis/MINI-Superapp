@@ -863,8 +863,8 @@
 			children = (
 				09FB82492A3724F900CEF8C1 /* ProductViewController.swift */,
 				09FB824B2A3727E200CEF8C1 /* ProductPresenter.swift */,
-				09FB824D2A37285800CEF8C1 /* ProductRouter.swift */,
 				09FB824F2A37286000CEF8C1 /* ProductInteractor.swift */,
+				09FB824D2A37285800CEF8C1 /* ProductRouter.swift */,
 				09FB82512A37286800CEF8C1 /* ProductBuilder.swift */,
 				09FB82532A37287100CEF8C1 /* ProductEntity.swift */,
 			);

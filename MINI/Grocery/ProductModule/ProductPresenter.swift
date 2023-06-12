@@ -8,7 +8,8 @@
 import Foundation
 
 protocol ProductPresenterProtocol: AnyObject {
-    
+    func viewDidLoaded()
+    func updateView()
 }
 
 final class ProductPresenter {
@@ -27,5 +28,11 @@ final class ProductPresenter {
 }
 
 extension ProductPresenter: ProductPresenterProtocol {
+    func viewDidLoaded() {
+        interactor.viewDidLoaded()
+    }
     
+    func updateView() {
+        view?.updateView()
+    }
 }

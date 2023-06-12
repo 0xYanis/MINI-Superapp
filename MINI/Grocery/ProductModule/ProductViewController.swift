@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 protocol ProductViewProtocol: AnyObject {
-    
+    func updateView()
 }
 
 final class ProductViewController: UIViewController {
@@ -18,18 +18,24 @@ final class ProductViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        presenter?.viewDidLoaded()
         initialize()
     }
     
 }
 
 extension ProductViewController: ProductViewProtocol {
-    
+    func updateView() {
+        createNavigaion(with: "Product")
+    }
 }
 
 private extension ProductViewController {
     func initialize() {
         view.backgroundColor = .black
+    }
+    
+    func createNavigaion(with title: String) {
+        navigationItem.title = title
     }
 }

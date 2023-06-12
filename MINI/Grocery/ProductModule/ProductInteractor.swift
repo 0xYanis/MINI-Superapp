@@ -8,11 +8,15 @@
 import Foundation
 
 protocol ProductInteractorProtocol: AnyObject {
-    
+    func viewDidLoaded()
 }
 
 final class ProductInteractor: ProductInteractorProtocol {
     
     weak var presenter: ProductPresenterProtocol?
     
+    func viewDidLoaded() {
+        
+        presenter?.updateView()
+    }
 }
