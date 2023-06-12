@@ -28,14 +28,13 @@ final class CategoryCartView: UIView {
 
 private extension CategoryCartView {
     func initialize() {
-        backgroundColor = .gray
-        roundCorners(radius: 30)
+        backgroundColor = .systemGray3
         createCartLabel()
         createCartImage()
     }
     
     func createCartLabel() {
-        labelView.backgroundColor = .lightGray
+        labelView.backgroundColor = .systemGray5
         labelView.roundCorners(radius: 20)
         addSubview(labelView)
         labelView.snp.makeConstraints { make in
@@ -45,7 +44,7 @@ private extension CategoryCartView {
         
         cartLabel.font = .boldSystemFont(ofSize: 20)
         cartLabel.text = "Всего: $289.49"
-        cartLabel.textColor = .white
+        cartLabel.textColor = .systemOrange
         
         labelView.addSubview(cartLabel)
         cartLabel.snp.makeConstraints { make in
@@ -54,7 +53,7 @@ private extension CategoryCartView {
     }
     
     func createCartImage() {
-        imageView.backgroundColor = .lightGray
+        imageView.backgroundColor = .systemGray5
         imageView.roundCorners(radius: 20)
         addSubview(imageView)
         imageView.snp.makeConstraints { make in
@@ -63,6 +62,12 @@ private extension CategoryCartView {
         }
         
         cartImage.image = UIImage(systemName: "cart.fill")
+        cartImage.layer.shadowColor = UIColor.black.cgColor
+        cartImage.layer.shadowOpacity = 0.5
+        cartImage.layer.shadowOffset = CGSize(width: 0, height: 0)
+        cartImage.layer.shadowRadius = 5.0
+        cartImage.clipsToBounds = false
+        
         cartImage.contentMode = .scaleAspectFit
         imageView.addSubview(cartImage)
         cartImage.snp.makeConstraints { make in

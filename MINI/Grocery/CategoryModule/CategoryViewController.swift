@@ -55,6 +55,7 @@ private extension CategoryViewController {
     }
     
     func createCartView() {
+        cartView.radiusAndShadow(radius: 30, opacity: 1.0, shadowSize: 30)
         view.insertSubview(cartView, at: 1)
         cartView.snp.makeConstraints { make in
             make.bottom.equalToSuperview().inset(30)
