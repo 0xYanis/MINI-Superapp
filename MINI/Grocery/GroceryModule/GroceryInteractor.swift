@@ -8,33 +8,36 @@
 import Foundation
 
 protocol GroceryInteractorProtocol: AnyObject {
-    func viewDidLoaded()
-    func getGroceryData() -> [[GroceryEntity]]
+    var groceryData: [[GroceryEntity]] { get }
+    var filteredData: [[GroceryEntity]] { get }
+    var adressesData: [String] { get }
     
+    func viewDidLoaded()
     func searchBarTextDidChange(with searchText: String)
+    func userStartSearchAdress(with searchText: String)
 }
 
 final class GroceryInteractor: GroceryInteractorProtocol {
     
     weak var presenter: GroceryPresenterProtocol?
     var groceryService: GroceryServiceProtocol
+    var locationService: LocationServiceProtocol
     
-    private var groceryData: [[GroceryEntity]] = []
-    private var filteredData: [[GroceryEntity]] = []
+    var groceryData: [[GroceryEntity]] = []
+    var filteredData: [[GroceryEntity]] = []
+    var adressesData: [String] = []
     
     init(
-        groceryService: GroceryServiceProtocol
+        groceryService: GroceryServiceProtocol,
+        locationService: LocationServiceProtocol = LocationService()
     ) {
         self.groceryService = groceryService
+        self.locationService = locationService
     }
     
     
     func viewDidLoaded() {
         getGroceries()
-    }
-    
-    func getGroceryData() -> [[GroceryEntity]] {
-        return groceryData
     }
     
     func searchBarTextDidChange(with searchText: String) {
@@ -46,6 +49,15 @@ final class GroceryInteractor: GroceryInteractorProtocol {
 //            }
         }
         presenter?.updateView()
+    }
+    
+    func userStartSearchAdress(with searchText: String) {
+        adressesData.removeAll()
+        DispatchQueue.global().async {
+            self.getPlacemarks(with: searchText) { [weak self] addresses in
+                self?.adressesData = addresses
+            }
+        }
     }
 }
 
@@ -59,6 +71,14 @@ private extension GroceryInteractor {
             case .failure(let error):
                 self.presenter?.loadingDataGetFailed(with: error.localizedDescription)
             }
+        }
+    }
+    
+    func getPlacemarks(with address: String, completion: @escaping ([String]) -> Void) {
+        let city = UserDefaults.standard.string(forKey: "city") ?? "Moscow"
+        locationService.getPlacemarksByAddress(address, city: city) { adresses in
+            guard let adresses = adresses else { return }
+            completion(adresses)
         }
     }
 }

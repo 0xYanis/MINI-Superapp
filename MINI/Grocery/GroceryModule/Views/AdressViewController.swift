@@ -15,6 +15,7 @@ protocol AdressViewDelegate: AnyObject {
 
 final class AdressViewController: UIViewController {
     
+    weak var presenter: GroceryPresenterProtocol?
     weak var delegate: AdressViewDelegate?
     
     private lazy var textTilte    = UILabel()
@@ -111,15 +112,17 @@ extension AdressViewController: UISearchBarDelegate {
 extension AdressViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
-        return 3
+        guard let data = presenter?.getSearchAdressesResults() else { return 0 }
+        return ( !data.isEmpty ? data.count : 0 )
     }
     
     
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
+        guard let data = presenter?.getSearchAdressesResults() else { return cell }
         cell.backgroundColor = .clear
-        cell.textLabel?.text = "This is a \(indexPath.row) cell"
+        cell.textLabel?.text = data[indexPath.row]
         return cell
     }
 }

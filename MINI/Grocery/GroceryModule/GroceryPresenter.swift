@@ -12,6 +12,8 @@ protocol GroceryPresenterProtocol: AnyObject {
     func updateView()
     
     func userWantSetNewAdress()
+    func userStartSearchAdress(with searchText: String)
+    func getSearchAdressesResults() -> [String]
     func userDidTapDetailCategory(id: Int)
     
     func searchBarTextDidChange(with searchText: String)
@@ -49,6 +51,14 @@ extension GroceryPresenter: GroceryPresenterProtocol {
         
     }
     
+    func userStartSearchAdress(with searchText: String) {
+        interactor.userStartSearchAdress(with: searchText)
+    }
+    
+    func getSearchAdressesResults() -> [String] {
+        interactor.adressesData
+    }
+    
     func userDidTapDetailCategory(id: Int) {
         router.goToDetailCategory(with: id)
     }
@@ -58,7 +68,7 @@ extension GroceryPresenter: GroceryPresenterProtocol {
     }
     
     func getGroceryData() -> [[GroceryEntity]] {
-        interactor.getGroceryData()
+        interactor.groceryData
     }
     
     func loadingDataGetFailed(with message: String) {

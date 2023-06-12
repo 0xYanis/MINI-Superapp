@@ -153,6 +153,7 @@ private extension GroceryViewController {
     }
     
     func createAdressBottomSheet(multiply: CGFloat) {
+        adressVC.presenter = presenter
         adressVC.delegate = self
         let height = view.frame.height * multiply
         let smallId = UISheetPresentationController.Detent.Identifier("smallId")
@@ -200,7 +201,7 @@ private extension GroceryViewController {
 //MARK: - AdressViewDelegate
 extension GroceryViewController: AdressViewDelegate {
     func userStartSearchAdress(with searchText: String) {
-        
+        presenter?.userStartSearchAdress(with: searchText)
     }
     
     func cancelButtonTapped() {

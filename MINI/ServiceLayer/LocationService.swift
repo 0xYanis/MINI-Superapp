@@ -9,7 +9,7 @@ import CoreLocation
 
 protocol LocationServiceProtocol: AnyObject {
     func getCurrentCity(completion: @escaping (String?) -> Void)
-    func getPlacemarksByAddress(_ address: String, city: String, completion: @escaping ([String]) -> Void)
+    func getPlacemarksByAddress(_ address: String, city: String, completion: @escaping ([String]?) -> Void)
 }
 
 final class LocationService: NSObject, LocationServiceProtocol {
@@ -48,7 +48,7 @@ final class LocationService: NSObject, LocationServiceProtocol {
         }
     }
     
-    func getPlacemarksByAddress(_ address: String, city: String, completion: @escaping ([String]) -> Void) {
+    func getPlacemarksByAddress(_ address: String, city: String, completion: @escaping ([String]?) -> Void) {
         geocoder.geocodeAddressString("\(address), \(city)") { placemarks, error in
             guard error == nil else {
                 print("Geocoding failed: \(error!.localizedDescription)")
