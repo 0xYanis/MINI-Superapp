@@ -119,6 +119,22 @@ private extension CategoryViewController {
             print("Секция\(index.section), ячейка №\(index.item)")
         }
     }
+    
+    func cartViewScrollAppearance(_ scrollView: UIScrollView, inset: CGFloat, alpha: CGFloat) {
+        if scrollView == collectionView {
+            cartView.snp.remakeConstraints { make in
+                make.bottom.equalToSuperview().inset(inset)
+                make.centerX.equalToSuperview()
+                make.left.right.equalToSuperview().inset(20)
+                make.height.equalToSuperview().multipliedBy(0.075)
+            }
+            
+            UIView.animate(withDuration: 0.2) {
+                self.view.layoutIfNeeded()
+                self.cartView.alpha = alpha
+            }
+        }
+    }
 }
 
 extension CategoryViewController: UICollectionViewDataSource {
@@ -216,3 +232,30 @@ extension CategoryViewController: UICollectionViewDelegateFlowLayout {
         presenter?.userDidTapProduct(index: indexPath.item)
     }
 }
+
+extension CategoryViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        cartViewScrollAppearance(
+            scrollView,
+            inset: -100,
+            alpha: 0.0
+        )
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        cartViewScrollAppearance(
+            scrollView,
+            inset: 30,
+            alpha: 1.0
+        )
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        cartViewScrollAppearance(
+            scrollView,
+            inset: 30,
+            alpha: 1.0
+        )
+    }
+}
+
