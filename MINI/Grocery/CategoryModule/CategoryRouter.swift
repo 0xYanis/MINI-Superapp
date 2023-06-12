@@ -8,14 +8,15 @@
 import UIKit
 
 protocol CategoryRouterProtocol: AnyObject {
-    func goToDetailProduct()
+    func goToDetailProduct(index: Int)
 }
 
 final class CategoryRouter: CategoryRouterProtocol {
     
     weak var view: UIViewController?
     
-    func goToDetailProduct() {
-        
+    func goToDetailProduct(index: Int) {
+        let productView = ProductBuilder.build()
+        view?.navigationController?.pushViewController(productView, animated: true)
     }
 }

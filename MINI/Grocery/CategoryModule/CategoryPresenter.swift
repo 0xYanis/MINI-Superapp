@@ -38,7 +38,7 @@ extension CategoryPresenter: CategoryPresenterProtocol {
     }
     
     func userDidTapProduct(index: Int) {
-        router.goToDetailProduct()
+        router.goToDetailProduct(index: Int)
     }
     
     
