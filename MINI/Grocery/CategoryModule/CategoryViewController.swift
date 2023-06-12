@@ -32,6 +32,11 @@ final class CategoryViewController: UIViewController {
         super.viewWillAppear(animated)
         tabBarController?.hideTabBar()
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        cartViewScrollAppearance(collectionView, inset: -100, alpha: 0.0)
+    }
 }
 
 //MARK: - CategoryViewProtocol
