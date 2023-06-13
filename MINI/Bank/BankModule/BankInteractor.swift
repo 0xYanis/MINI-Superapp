@@ -110,7 +110,9 @@ private extension BankInteractor {
                     self.cardsData = cards ?? []
                     self.presenter?.updateView()
                 case .failure(let error):
-                    self.presenter?.loadingDataGetFailed(with: error.localizedDescription)
+                    self.presenter?.loadingDataGetFailed(
+                        with: error.localizedDescription
+                    )
                 }
             }
         }
@@ -125,7 +127,9 @@ private extension BankInteractor {
                     self.templatesData = templates ?? []
                     self.presenter?.updateView()
                 case .failure(let error):
-                    self.presenter?.loadingDataGetFailed(with: error.localizedDescription)
+                    self.presenter?.loadingDataGetFailed(
+                        with: error.localizedDescription
+                    )
                 }
             }
         }
@@ -140,7 +144,9 @@ private extension BankInteractor {
                     self.transactionsData = transactions ?? []
                     self.presenter?.updateView()
                 case .failure(let error):
-                    self.presenter?.loadingDataGetFailed(with: error.localizedDescription)
+                    self.presenter?.loadingDataGetFailed(
+                        with: error.localizedDescription
+                    )
                 }
             }
         }
