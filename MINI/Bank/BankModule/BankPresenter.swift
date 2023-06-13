@@ -10,24 +10,25 @@ import Foundation
 protocol BankPresenterProtocol: AnyObject {
     func viewDidLoaded()
     func updateView()
+    func setNewCard()
+    func setNewTransaction()
+    
     func userDidTapNewCard()
     func userDidTapNewTemplate()
     func userDidTapCard(index: Int)
     func userDidTapSeeAll()
     func userDidTapTemplate(id: Int)
     func userDidTapTransaction(id: Int)
-    func setNewCard()
-    func setNewTransaction()
     
     func getCardData() -> [BankCardEntity]
     func getTemplateData() -> [BankTemplateEntity]
     func getTransactionData() -> [BankTransactionEntity]
+    func getFilteredData() -> [BankTransactionEntity]
     
     func userWantToDeleteCard(at id: Int)
     func userWantToDeleteTransaction(at id: Int)
     
     func searchBarTextDidChange(with searchText: String)
-    func getFilteredData() -> [BankTransactionEntity]
     
     func loadingDataGetFailed(with error: String)
 }
@@ -44,6 +45,7 @@ final class BankPresenter {
     }
 }
 
+// MARK: - BankPresenterProtocol
 extension BankPresenter: BankPresenterProtocol {
     func viewDidLoaded() {
         interactor.viewDidLoaded()
@@ -57,6 +59,17 @@ extension BankPresenter: BankPresenterProtocol {
         }
     }
     
+    func setNewCard() {
+        view?.updateBankTable()
+    }
+    
+    func setNewTransaction() {
+        view?.updateHistory()
+    }
+}
+
+// MARK: - Routing
+extension BankPresenter {
     func userDidTapNewCard() {
         router.goToAddNewCard()
     }
@@ -83,15 +96,10 @@ extension BankPresenter: BankPresenterProtocol {
         let data = interactor.userDidTapTransaction(index: id)
         router.goToDetailTransaction(with: data)
     }
-    
-    func setNewCard() {
-        view?.updateBankTable()
-    }
-    
-    func setNewTransaction() {
-        view?.updateHistory()
-    }
-    
+}
+
+// MARK: - GET data
+extension BankPresenter {
     func getCardData() -> [BankCardEntity] {
         interactor.cardsData
     }
@@ -104,6 +112,12 @@ extension BankPresenter: BankPresenterProtocol {
         interactor.transactionsData
     }
     
+    func getFilteredData() -> [BankTransactionEntity] {
+        interactor.filteredData
+    }
+}
+
+extension BankPresenter {
     func userWantToDeleteCard(at id: Int) {
         interactor.userWantToDeleteCard(at: id)
     }
@@ -114,10 +128,6 @@ extension BankPresenter: BankPresenterProtocol {
     
     func searchBarTextDidChange(with searchText: String) {
         interactor.searchBarTextDidChange(with: searchText)
-    }
-    
-    func getFilteredData() -> [BankTransactionEntity] {
-        interactor.filteredData
     }
     
     func loadingDataGetFailed(with error: String) {
