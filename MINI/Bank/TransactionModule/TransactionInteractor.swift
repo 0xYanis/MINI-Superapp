@@ -8,6 +8,7 @@
 import Foundation
 
 protocol TransactionInteractorProtocol: AnyObject {
+    var transactionData: BankTransactionEntity? { get }
     func viewDidLoaded()
     func userWillRemoveTransaction(id: Int)
     

@@ -29,7 +29,7 @@ final class AllTemplatesPresenter {
 extension AllTemplatesPresenter: AllTemplatesPresenterProtocol {
     
     func getTemplatesData() -> [BankTemplateEntity] {
-        interactor.getTemplatesData()
+        interactor.tempaltesData
     }
     
     func userDidTapTemplate(id: Int) {

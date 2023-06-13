@@ -8,8 +8,8 @@
 import Foundation
 
 protocol AllTemplatesInteractorProtocol: AnyObject {
+    var tempaltesData: [BankTemplateEntity] { get }
     func getTemplatesData() -> [BankTemplateEntity]
-    
     func userWillDeleteTemplate(id: Int)
 }
 
@@ -20,10 +20,6 @@ final class AllTemplatesInteractor: AllTemplatesInteractorProtocol {
     
     init(templatesData: [BankTemplateEntity]) {
         self.tempaltesData = templatesData
-    }
-    
-    func getTemplatesData() -> [BankTemplateEntity] {
-        return tempaltesData
     }
     
     func userWillDeleteTemplate(id: Int) {

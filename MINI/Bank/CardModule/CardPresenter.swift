@@ -39,7 +39,7 @@ extension CardPresenter: CardPresenterProtocol {
     }
     
     func getCardData() -> BankCardEntity? {
-        interactor.getCardData()
+        interactor.cardData
     }
     
     func userWantToEditCard() {
