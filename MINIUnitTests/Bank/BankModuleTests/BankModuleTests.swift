@@ -15,13 +15,11 @@ final class BankModuleTests: XCTestCase {
     var presenter: BankPresenter!
     var interactor: BankInteractor!
     
-    var realmService: RealmService!
     var mockCardService: MockCardService!
     var mockTemplateService: MockTemplateService!
     var mockTransactionService: MockTransactionService!
     
     override func setUpWithError() throws {
-        realmService = RealmService()
         mockCardService = MockCardService()
         mockTemplateService = MockTemplateService()
         mockTransactionService = MockTransactionService()
@@ -29,7 +27,6 @@ final class BankModuleTests: XCTestCase {
         view = MockBankView()
         router = BankRouter()
         interactor = BankInteractor(
-            realmService: realmService,
             cardService: mockCardService,
             templateService: mockTemplateService,
             transactionService: mockTransactionService
@@ -43,7 +40,6 @@ final class BankModuleTests: XCTestCase {
     }
     
     override func tearDownWithError() throws {
-        realmService = nil
         mockCardService = nil
         mockTemplateService = nil
         mockTransactionService = nil
