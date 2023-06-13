@@ -18,7 +18,7 @@ final class BankTemplateService: BankTemplateServiceProtocol {
     private let cache = NSCache<NSString, BankTemplateObject>()
     
     init(
-        apiService: APIServiceProtocol
+        apiService: APIServiceProtocol = APIService()
     ) {
         self.apiService = apiService
     }

@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import RealmSwift
 
 final class BankTransactionObject: Codable {
     let transactionList: [BankTransactionEntity]
@@ -27,25 +26,3 @@ struct BankTransactionEntity: Codable, Equatable {
     let merchantID: Int
     let customerID: Int
 }
-
-@objcMembers
-final class BankTransactionModel: Object {
-    dynamic var id: Int = 0
-    dynamic var icon: Data?       = nil
-    dynamic var name: String      = ""
-    dynamic var date: String      = ""
-    dynamic var cost: Double      = 0.0
-    dynamic var cardNumber: Int   = 0
-    dynamic var location: String? = nil
-    dynamic var currency: String  = ""
-    dynamic var status: String    = ""
-    dynamic var category: String? = nil
-    dynamic var notes: String     = ""
-    dynamic var merchantID: Int   = 0
-    dynamic var customerID: Int   = 0
-
-    override class func primaryKey() -> String? {
-        return "id"
-    }
-}
-

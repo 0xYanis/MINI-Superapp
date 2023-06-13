@@ -9,7 +9,6 @@ import Foundation
 
 protocol AllTemplatesInteractorProtocol: AnyObject {
     var tempaltesData: [BankTemplateEntity] { get }
-    func getTemplatesData() -> [BankTemplateEntity]
     func userWillDeleteTemplate(id: Int)
 }
 

@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import RealmSwift
 
 final class BankTemplateObject: Codable {
     let templateList: [BankTemplateEntity]
@@ -18,14 +17,3 @@ struct BankTemplateEntity: Codable, Equatable {
     let label: String
 }
 
-
-@objcMembers
-final class BankTemplateModel: Object {
-    dynamic var id    = ""
-    dynamic var image = ""
-    dynamic var label = ""
-    
-    override class func primaryKey() -> String? {
-        return "id"
-    }
-}
