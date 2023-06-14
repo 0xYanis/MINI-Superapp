@@ -33,6 +33,7 @@ private extension NewTemplateViewController {
     func initialize() {
         view.backgroundColor = UIColor(named: "backColor")
         navigationItem.largeTitleDisplayMode = .never
+        navigationItem.title = "add_new_template_title".localized
     }
 }
 

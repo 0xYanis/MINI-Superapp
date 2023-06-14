@@ -64,6 +64,11 @@
 //MARK: AllTemplatesModule
 "all_templates_navbar" = "Templates";
 
+//MARK: NewCardModule
+"add_new_card_title" = "Card";
+
+//MARK: NewTemplateModule
+"add_new_template_title" = "Template";
 
 
 //MARK: - Tickets

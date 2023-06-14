@@ -65,6 +65,14 @@
 //MARK: AllTemplatesModule
 "all_templates_navbar" = "Шаблоны";
 
+//MARK: NewCardModule
+"add_new_card_title" = "Карта";
+
+
+//MARK: NewTemplateModule
+"add_new_template_title" = "Шаблон";
+
+
 
 
 

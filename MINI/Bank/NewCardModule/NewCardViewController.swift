@@ -33,5 +33,6 @@ private extension NewCardViewController {
     func initialize() {
         view.backgroundColor = UIColor(named: "backColor")
         navigationItem.largeTitleDisplayMode = .never
+        navigationItem.title = "add_new_card_title".localized
     }
 }
