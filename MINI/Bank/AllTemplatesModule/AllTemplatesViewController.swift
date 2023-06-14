@@ -88,7 +88,7 @@ private extension AllTemplatesViewController {
     }
     
     @objc func addAction() {
-        
+        presenter?.userDidTapAddNew()
     }
     
     
