@@ -10,7 +10,7 @@ import Foundation
 protocol AllTemplatesInteractorProtocol: AnyObject {
     var tempaltesData: [BankTemplateEntity] { get }
     func userWillDeleteTemplate(id: Int)
-    func userWillMoveTemplate(at: Int, to: Int)
+    func userWillMoveTemplate(from: Int, to: Int)
 }
 
 final class AllTemplatesInteractor: AllTemplatesInteractorProtocol {
@@ -26,7 +26,7 @@ final class AllTemplatesInteractor: AllTemplatesInteractorProtocol {
         tempaltesData.remove(at: id)
     }
     
-    func userWillMoveTemplate(at: Int, to: Int) {
-        tempaltesData.swapAt(at, to)
+    func userWillMoveTemplate(from: Int, to: Int) {
+        tempaltesData.swapAt(from, to)
     }
 }

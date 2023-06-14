@@ -61,18 +61,54 @@ private extension AllTemplatesViewController {
     func createNavigation() {
         navigationItem.title = "all_templates_navbar".localized
         navigationItem.largeTitleDisplayMode = .never
+        navigationItem.rightBarButtonItems = [editButon, AddBtton]
     }
     
-    func createCollectionView() {
+    var editButon: UIBarButtonItem {
+        return UIBarButtonItem(
+            title: "Add",
+            style: .plain,
+            target: self,
+            action: #selector(editAction)
+        )
+    }
+    
+    var AddBtton: UIBarButtonItem {
+        return UIBarButtonItem(
+            image: UIImage(systemName: "plus"),
+            style: .plain,
+            target: self,
+            action: #selector(addAction)
+        )
+    }
+    
+    @objc func editAction() {
+        
+    }
+    
+    @objc func addAction() {
+        
+    }
+    
+    
+    var layout: UICollectionViewFlowLayout {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
         flowLayout.minimumLineSpacing = 16
         flowLayout.minimumInteritemSpacing = 16
         flowLayout.sectionInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
-        templateCollectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        return flowLayout
+    }
+    
+    func createCollectionView() {
+        templateCollectionView = UICollectionView(
+            frame: .zero,
+            collectionViewLayout: layout
+        )
         templateCollectionView.delegate = self
         templateCollectionView.dataSource = self
         templateCollectionView.backgroundColor = .clear
+        
         view.addSubview(templateCollectionView)
         templateCollectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -109,7 +145,6 @@ extension AllTemplatesViewController: UICollectionViewDataSource {
         return cell
     }
     
-    
     func collectionView(
         _ collectionView: UICollectionView,
         willDisplay cell: UICollectionViewCell,
@@ -121,6 +156,8 @@ extension AllTemplatesViewController: UICollectionViewDataSource {
         }
     }
     
+    
+    // Context Menu
     func collectionView(
         _ collectionView: UICollectionView,
         contextMenuConfigurationForItemsAt indexPaths: [IndexPath],
@@ -158,6 +195,24 @@ extension AllTemplatesViewController: UICollectionViewDataSource {
         }
         
         return deleteAction
+    }
+    
+    // Move Item
+    func collectionView(
+        _ collectionView: UICollectionView,
+        canMoveItemAt indexPath: IndexPath
+    ) -> Bool {
+        true
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        moveItemAt sourceIndexPath: IndexPath,
+        to destinationIndexPath: IndexPath
+    ) {
+        let from = sourceIndexPath.item
+        let to = destinationIndexPath.item
+        presenter?.userWillMoveTemplate(from: from, to: to)
     }
 }
 
