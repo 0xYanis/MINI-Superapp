@@ -35,7 +35,7 @@ private extension LaunchController {
         }
         
         emojiLabel.text = "🏦"
-        emojiLabel.font = .systemFont(ofSize: 100)
+        emojiLabel.font = .systemFont(ofSize: 75)
         view.insertSubview(emojiLabel, at: 1)
         emojiLabel.snp.makeConstraints { make in
             make.center.equalToSuperview()
@@ -43,26 +43,42 @@ private extension LaunchController {
     }
     
     func startAnimations() {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.emojiLabel.transform = CGAffineTransform(scaleX: 1.33, y: 1.33)
+        }) {_ in
+            self.changeEmojisAndPulseAnimations()
+        }
+    }
+    
+    func changeEmojisAndPulseAnimations() {
         var currentIndex: Int = 0
         
         Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [self] timer in
             guard currentIndex < emojis.count else {
-                transitionToMainView()
+                startTransition()
                 timer.invalidate()
                 return
             }
-            
-            emojiLabel.text = emojis[currentIndex]
-            currentIndex += 1
             
             UIView.animate(withDuration: 0.25, animations: {
                 self.emojiLabel.transform = CGAffineTransform(scaleX: 1.4, y: 1.4)
             }) { _ in
                 UIView.animate(withDuration: 0.25) {
                     self.emojiLabel.transform = CGAffineTransform.identity
+                    self.emojiLabel.text = self.emojis[currentIndex]
+                    currentIndex += 1
                 }
             }
         }
+    }
+    
+    func startTransition() {
+        UIView.animate(withDuration: 0.3) {
+            self.view.alpha = 0.0
+        } completion: { _ in
+            self.transitionToMainView()
+        }
+
     }
     
     func transitionToMainView() {
