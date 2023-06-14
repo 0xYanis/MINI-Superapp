@@ -27,6 +27,7 @@ final class BankViewController: UIViewController {
     var presenter: BankPresenterProtocol?
     
     //MARK: Private properties
+    private lazy var backgroundView = UIView()
     private lazy var bankTableView  = BankTableView()
     private lazy var historyTableVC = BankHistoryViewController()
     private lazy var refreshControl = UIRefreshControl()
@@ -85,6 +86,7 @@ private extension BankViewController {
     func initialize() {
         view.backgroundColor = UIColor(named: "backColor")
         createNavigation(title: "bank_navbar".localized)
+        createBackgroundView()
         createTableView()
         createBottomSheet()
         createRefreshControl(scrollView: bankTableView)
@@ -118,6 +120,22 @@ private extension BankViewController {
                 self?.presenter?.userDidTapNewTemplate()
             }
         return UIMenu(children: [addCard, addTemplate])
+    }
+    
+    func createBackgroundView() {
+        backgroundView.backgroundColor = .systemGray4
+        backgroundView.radiusAndShadow(
+            radius: 30,
+            color: .black,
+            opacity: 0.5,
+            shadowSize: 30
+        )
+        
+        view.insertSubview(backgroundView, at: 0)
+        backgroundView.snp.makeConstraints { make in
+            make.height.equalToSuperview().multipliedBy(0.5)
+            make.center.width.equalToSuperview()
+        }
     }
     
     func createTableView() {

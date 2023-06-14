@@ -37,6 +37,7 @@ final class BankTemplateSet: UITableViewCell {
 //MARK: - Private methods
 private extension BankTemplateSet {
     func initialize() {
+        backgroundColor = .clear
         createCollectionView()
         addConstraintsOfView()
     }
@@ -53,7 +54,7 @@ private extension BankTemplateSet {
             BankTemplateCell.self,
             forCellWithReuseIdentifier: BankTemplateCell.cellId
         )
-        collectionView.backgroundColor = UIColor(named: "backColor")
+        collectionView.backgroundColor = .clear
         collectionView.contentInset = .init(top: 0, left: 16, bottom: 0, right: 16)
         collectionView.isSkeletonable = true
         collectionView.showAnimatedSkeleton(
