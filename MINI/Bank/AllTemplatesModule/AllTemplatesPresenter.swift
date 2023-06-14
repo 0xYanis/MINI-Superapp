@@ -12,6 +12,8 @@ protocol AllTemplatesPresenterProtocol: AnyObject {
     func getTemplatesData() -> [BankTemplateEntity]
     
     func userDidTapTemplate(id: Int)
+    
+    func userWillMoveTemplate(at: Int, to: Int)
     func userWillDeleteTemplate(id: Int)
 }
 
@@ -38,5 +40,9 @@ extension AllTemplatesPresenter: AllTemplatesPresenterProtocol {
     
     func userWillDeleteTemplate(id: Int) {
         interactor.userWillDeleteTemplate(id: id)
+    }
+    
+    func userWillMoveTemplate(at: Int, to: Int) {
+        interactor.userWillMoveTemplate(at: at, to: to)
     }
 }

@@ -120,6 +120,45 @@ extension AllTemplatesViewController: UICollectionViewDataSource {
             cell.configure(name: data.label, image: data.image)
         }
     }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        contextMenuConfigurationForItemsAt indexPaths: [IndexPath],
+        point: CGPoint
+    ) -> UIContextMenuConfiguration? {
+        guard indexPaths.count == 1,
+              let indexPath = indexPaths.first else { return nil }
+        
+        let deleteAction = deleteCellsAction(collectionView, indexPath: indexPath)
+        
+        return UIContextMenuConfiguration(
+            identifier: nil,
+            previewProvider: nil
+        ) { _ in
+            UIMenu(
+                title: "",
+                children: [deleteAction]
+            )
+        }
+    }
+    
+    func deleteCellsAction(
+        _ collectionView: UICollectionView,
+        indexPath: IndexPath
+    ) -> UIAction {
+        let deleteAction = UIAction(
+            title: "Удалить",
+            image: UIImage(systemName: "trash"),
+            attributes: .destructive
+        ) { [weak self] _ in
+            self?.presenter?.userWillDeleteTemplate(id: indexPath.item)
+            collectionView.performBatchUpdates {
+                collectionView.deleteItems(at: [indexPath])
+            }
+        }
+        
+        return deleteAction
+    }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
