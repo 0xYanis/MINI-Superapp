@@ -36,6 +36,7 @@
 		09503EB829F2D44000254F53 /* StackFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09503EB729F2D44000254F53 /* StackFlowLayout.swift */; };
 		09565EE02A2F13B3007A2DAC /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09565EDF2A2F13B3007A2DAC /* RegisterView.swift */; };
 		09565EE42A2F69E6007A2DAC /* CardBackDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09565EE32A2F69E6007A2DAC /* CardBackDetailView.swift */; };
+		095B1C6D2A39BD1A00EF6828 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 095B1C6C2A39BD1A00EF6828 /* LaunchScreen.storyboard */; };
 		09632FCC29ED8A7D00DB2641 /* BankCardSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09632FCB29ED8A7D00DB2641 /* BankCardSet.swift */; };
 		09632FCE29ED8A8800DB2641 /* BankTemplateSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09632FCD29ED8A8800DB2641 /* BankTemplateSet.swift */; };
 		096B4B272A1DEEC700E5C65E /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096B4B262A1DEEC700E5C65E /* APIService.swift */; };
@@ -105,6 +106,7 @@
 		09D509D629EF379A009CC219 /* BankTransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D509D529EF379A009CC219 /* BankTransactionCell.swift */; };
 		09D509D829EF4EDE009CC219 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D509D729EF4EDE009CC219 /* UIImageView+Extension.swift */; };
 		09D509DA29EF50AC009CC219 /* BankHistoryLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D509D929EF50AC009CC219 /* BankHistoryLabel.swift */; };
+		09DF83792A38BB8F00ECAEB6 /* LaunchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DF83782A38BB8F00ECAEB6 /* LaunchController.swift */; };
 		09E24C112A12239A00A91F74 /* BankCardEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E24C102A12239A00A91F74 /* BankCardEntity.swift */; };
 		09E24C132A1227C200A91F74 /* cardsColor.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09E24C122A1227C200A91F74 /* cardsColor.xcassets */; };
 		09E24C152A1228D000A91F74 /* BankTemplateEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E24C142A1228D000A91F74 /* BankTemplateEntity.swift */; };
@@ -203,6 +205,7 @@
 		09503EB729F2D44000254F53 /* StackFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackFlowLayout.swift; sourceTree = "<group>"; };
 		09565EDF2A2F13B3007A2DAC /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		09565EE32A2F69E6007A2DAC /* CardBackDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBackDetailView.swift; sourceTree = "<group>"; };
+		095B1C6C2A39BD1A00EF6828 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		09632FCB29ED8A7D00DB2641 /* BankCardSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankCardSet.swift; sourceTree = "<group>"; };
 		09632FCD29ED8A8800DB2641 /* BankTemplateSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTemplateSet.swift; sourceTree = "<group>"; };
 		096B4B262A1DEEC700E5C65E /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
@@ -266,6 +269,7 @@
 		09D509D529EF379A009CC219 /* BankTransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTransactionCell.swift; sourceTree = "<group>"; };
 		09D509D729EF4EDE009CC219 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		09D509D929EF50AC009CC219 /* BankHistoryLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankHistoryLabel.swift; sourceTree = "<group>"; };
+		09DF83782A38BB8F00ECAEB6 /* LaunchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchController.swift; sourceTree = "<group>"; };
 		09E24C102A12239A00A91F74 /* BankCardEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankCardEntity.swift; sourceTree = "<group>"; };
 		09E24C122A1227C200A91F74 /* cardsColor.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = cardsColor.xcassets; sourceTree = "<group>"; };
 		09E24C142A1228D000A91F74 /* BankTemplateEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTemplateEntity.swift; sourceTree = "<group>"; };
@@ -422,6 +426,7 @@
 				09F86C5929F6FD1B00307432 /* Login */,
 				09E9E82829EB119D0084416B /* ServiceLayer */,
 				0921F35D29DF1FD100B3D4F7 /* Helpers */,
+				09DF836D2A3887CD00ECAEB6 /* LaunchScreen */,
 				0910961229DB333400338D22 /* Resources */,
 			);
 			path = MINI;
@@ -731,6 +736,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		09DF836D2A3887CD00ECAEB6 /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				09DF83782A38BB8F00ECAEB6 /* LaunchController.swift */,
+				095B1C6C2A39BD1A00EF6828 /* LaunchScreen.storyboard */,
+			);
+			path = LaunchScreen;
+			sourceTree = "<group>";
+		};
 		09E9E81529EAE8F50084416B /* LoginModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -1018,6 +1032,7 @@
 				09F92CF52A23476300440ACC /* Localizable.strings in Resources */,
 				09BBA70F2A0E76950020E3C9 /* cardsLogo.xcassets in Resources */,
 				0910960729DB32F400338D22 /* Assets.xcassets in Resources */,
+				095B1C6D2A39BD1A00EF6828 /* LaunchScreen.storyboard in Resources */,
 				09E24C132A1227C200A91F74 /* cardsColor.xcassets in Resources */,
 				09ABE0082A143447009DB57B /* DefaultFood.xcassets in Resources */,
 			);
@@ -1150,6 +1165,7 @@
 				09F86C5729F6F8A000307432 /* UITabBarController+Extension.swift in Sources */,
 				090AE1DD29FBAA080092515D /* TemplatePresenter.swift in Sources */,
 				09FC395029FAD40500B2D97E /* TransactionEntity.swift in Sources */,
+				09DF83792A38BB8F00ECAEB6 /* LaunchController.swift in Sources */,
 				09F922692A1EA234009684F2 /* String+Extension.swift in Sources */,
 				09FB825B2A3766A600CEF8C1 /* CategoryCartView.swift in Sources */,
 				097E039F29EC449900CE2A6F /* BankInteractor.swift in Sources */,

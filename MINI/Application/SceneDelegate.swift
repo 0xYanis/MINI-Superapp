@@ -14,7 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
-        let _ = AuthenticationManager.auth(to: window)
+        window.rootViewController = LaunchController()
         window.tintColor = .systemOrange
         window.backgroundColor = UIColor(named: "backColor")
         window.overrideUserInterfaceStyle = .dark 
