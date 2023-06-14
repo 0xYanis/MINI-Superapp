@@ -61,16 +61,7 @@ private extension AllTemplatesViewController {
     func createNavigation() {
         navigationItem.title = "all_templates_navbar".localized
         navigationItem.largeTitleDisplayMode = .never
-        navigationItem.rightBarButtonItems = [editButon, AddBtton]
-    }
-    
-    var editButon: UIBarButtonItem {
-        return UIBarButtonItem(
-            title: "Add",
-            style: .plain,
-            target: self,
-            action: #selector(editAction)
-        )
+        navigationItem.rightBarButtonItems = [AddBtton]
     }
     
     var AddBtton: UIBarButtonItem {
@@ -82,8 +73,18 @@ private extension AllTemplatesViewController {
         )
     }
     
-    @objc func editAction() {
-        
+    @objc func editAction(_ gesture: UILongPressGestureRecognizer) {
+        switch gesture.state {
+        case .began:
+            guard let selectedIndexPath = templateCollectionView.indexPathForItem(at: gesture.location(in: templateCollectionView)) else { return }
+            templateCollectionView.beginInteractiveMovementForItem(at: selectedIndexPath)
+        case .changed:
+            templateCollectionView.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view))
+        case .ended:
+            templateCollectionView.endInteractiveMovement()
+        default:
+            templateCollectionView.cancelInteractiveMovement()
+        }
     }
     
     @objc func addAction() {
@@ -108,6 +109,7 @@ private extension AllTemplatesViewController {
         templateCollectionView.delegate = self
         templateCollectionView.dataSource = self
         templateCollectionView.backgroundColor = .clear
+        createLongPressGesture()
         
         view.addSubview(templateCollectionView)
         templateCollectionView.snp.makeConstraints { make in
@@ -120,6 +122,14 @@ private extension AllTemplatesViewController {
             AllTemplatesViewCell.self,
             forCellWithReuseIdentifier: AllTemplatesViewCell.cellId
         )
+    }
+    
+    func createLongPressGesture() {
+        let longPress = UILongPressGestureRecognizer(
+            target: self,
+            action: #selector(editAction)
+        )
+        templateCollectionView.addGestureRecognizer(longPress)
     }
 }
 
@@ -154,47 +164,6 @@ extension AllTemplatesViewController: UICollectionViewDataSource {
         if let cell = cell as? AllTemplatesViewCell {
             cell.configure(name: data.label, image: data.image)
         }
-    }
-    
-    
-    // Context Menu
-    func collectionView(
-        _ collectionView: UICollectionView,
-        contextMenuConfigurationForItemsAt indexPaths: [IndexPath],
-        point: CGPoint
-    ) -> UIContextMenuConfiguration? {
-        guard indexPaths.count == 1,
-              let indexPath = indexPaths.first else { return nil }
-        
-        let deleteAction = deleteCellsAction(collectionView, indexPath: indexPath)
-        
-        return UIContextMenuConfiguration(
-            identifier: nil,
-            previewProvider: nil
-        ) { _ in
-            UIMenu(
-                title: "",
-                children: [deleteAction]
-            )
-        }
-    }
-    
-    func deleteCellsAction(
-        _ collectionView: UICollectionView,
-        indexPath: IndexPath
-    ) -> UIAction {
-        let deleteAction = UIAction(
-            title: "Удалить",
-            image: UIImage(systemName: "trash"),
-            attributes: .destructive
-        ) { [weak self] _ in
-            self?.presenter?.userWillDeleteTemplate(id: indexPath.item)
-            collectionView.performBatchUpdates {
-                collectionView.deleteItems(at: [indexPath])
-            }
-        }
-        
-        return deleteAction
     }
     
     // Move Item
