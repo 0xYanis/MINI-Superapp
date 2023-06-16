@@ -75,9 +75,9 @@ final class ProfileTableCell: UITableViewCell {
     }
     
     func configure(with data: ProfileOption) {
+        iconContainer.backgroundColor = UIColor(hex: data.iconBackground)
         iconImageView.image = UIImage(systemName: data.icon ?? "")
         label.text = data.title
-        iconContainer.backgroundColor = UIColor(named: data.iconBackground)
     }
 }
 

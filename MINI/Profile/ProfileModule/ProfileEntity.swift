@@ -13,16 +13,16 @@ struct ProfileSection {
     
     static let data: [ProfileSection] = [
         ProfileSection(title: "Общее", options: [
-            ProfileOption(title: "Мой профиль", icon: "house", iconBackground: "systemOrange"),
-            ProfileOption(title: "Мои билеты", icon: "airplane", iconBackground: "blue"),
-            ProfileOption(title: "FaceID", icon: "faceid", iconBackground: "green"),
-            ProfileOption(title: "Настройки", icon: "gear", iconBackground: "yellow"),
+            ProfileOption(title: "Мой профиль", icon: "house", iconBackground: "#FFA500"),
+            ProfileOption(title: "Мои билеты", icon: "airplane", iconBackground: "#0000FF"),
+            ProfileOption(title: "FaceID", icon: "faceid", iconBackground: "#008000"),
+            ProfileOption(title: "Настройки", icon: "gear", iconBackground: "#FFFF00"),
         ]),
         ProfileSection(title: "Настройки", options: [
-            ProfileOption(title: "Уведомления", icon: "bell", iconBackground: "purple"),
-            ProfileOption(title: "Язык", icon: "globe", iconBackground: "red"),
-            ProfileOption(title: "Пароль", icon: "lock", iconBackground: "gray"),
-            ProfileOption(title: "Поддержка", icon: "info.circle", iconBackground: "systemGray"),
+            ProfileOption(title: "Уведомления", icon: "bell", iconBackground: "#800080"),
+            ProfileOption(title: "Язык", icon: "globe", iconBackground: "#FF0000"),
+            ProfileOption(title: "Пароль", icon: "lock", iconBackground: "#808080"),
+            ProfileOption(title: "Поддержка", icon: "info.circle", iconBackground: "#A0A0A0"),
         ])
     ]
     
