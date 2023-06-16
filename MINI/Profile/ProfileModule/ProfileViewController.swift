@@ -63,15 +63,27 @@ private extension ProfileViewController {
             message: "logout_alert_message".localized,
             preferredStyle: .alert
         )
-        
-        let cancelAction = UIAlertAction(title: "logout_alert_cancel".localized, style: .cancel)
         alert.addAction(cancelAction)
-        
-        let logout = UIAlertAction(title: "logout_alert_logout".localized, style: .destructive) { [weak self] _ in
-            self?.presenter?.userWantToLogout()
-        }
-        alert.addAction(logout)
+        alert.addAction(logoutAction)
         
         present(alert, animated: true, completion: nil)
     }
+    
+    var cancelAction: UIAlertAction {
+        return UIAlertAction(
+            title: "logout_alert_cancel".localized,
+            style: .cancel
+        )
+    }
+    
+    var logoutAction: UIAlertAction {
+        return UIAlertAction(
+            title: "logout_alert_logout".localized,
+            style: .destructive
+        ) { [weak self] _ in
+            self?.presenter?.userWantToLogout()
+        }
+    }
+    
+    
 }
