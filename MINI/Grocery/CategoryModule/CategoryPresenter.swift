@@ -12,6 +12,9 @@ protocol CategoryPresenterProtocol: AnyObject {
     func updateView()
     func userDidTapProduct(index: Int)
     
+    func userAddProductToCart(section: Int, index: Int)
+    func updateCart(with totalCost: Double)
+    
     func userDidTapCart()
 }
 
@@ -41,6 +44,14 @@ extension CategoryPresenter: CategoryPresenterProtocol {
     
     func userDidTapProduct(index: Int) {
         router.goToDetailProduct(index: index)
+    }
+    
+    func userAddProductToCart(section: Int, index: Int) {
+        interactor.userAddProductToCart(section, index)
+    }
+    
+    func updateCart(with totalCost: Double) {
+        view?.updateCart(with: totalCost)
     }
     
     func userDidTapCart() {

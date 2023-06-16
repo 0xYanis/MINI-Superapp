@@ -10,6 +10,7 @@ import SnapKit
 
 protocol CategoryViewProtocol: AnyObject {
     func udateView()
+    func updateCart(with totalCost: Double)
 }
 
 final class CategoryViewController: UIViewController {
@@ -44,6 +45,15 @@ extension CategoryViewController: CategoryViewProtocol {
     func udateView() {
         createNavigation(with: "Food")
     }
+    
+    func updateCart(with totalCost: Double) {
+        if totalCost == 0.0 {
+            cartView.isHidden = true
+        } else {
+            cartView.isHidden = false
+            cartView.configure(with: "\(totalCost)")
+        }
+    }
 }
 
 //MARK: - Private methods
@@ -73,6 +83,7 @@ private extension CategoryViewController {
             action: #selector(didTapCart)
         )
         cartView.addGestureRecognizer(tapGesture)
+        cartView.isHidden = true
     }
     
     func createCollectionView() {
@@ -129,8 +140,13 @@ private extension CategoryViewController {
             cell.isAddedToCart.toggle()
             cell.updateButton()
             print("Секция\(index.section), ячейка №\(index.item)")
+            presenter?.userAddProductToCart(
+                section: index.section,
+                index: index.item
+            )
         }
     }
+    
     
     @objc func didTapCart() {
         presenter?.userDidTapCart()

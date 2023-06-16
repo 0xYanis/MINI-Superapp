@@ -94,13 +94,27 @@ private extension CategoryCell {
     
     func createPriceButton() {
         priceButton.titleLabel?.font = .systemFont(ofSize: 15)
-        priceButton.addPulseAnimation()
+        priceButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         
         addSubview(priceButton)
         priceButton.snp.makeConstraints { make in
             make.top.equalTo(textLabel.snp.bottom).offset(7)
             make.left.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(0.4)
+        }
+    }
+    
+    @objc func buttonPressed(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.1, animations: {
+            sender.transform = CGAffineTransform(scaleX: 1.33, y: 1.33)
+        }) {_ in
+            self.buttonReleased(sender)
+        }
+    }
+
+    func buttonReleased(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.1) {
+            sender.transform = CGAffineTransform.identity
         }
     }
     
