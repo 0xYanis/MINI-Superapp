@@ -164,7 +164,11 @@ private extension BankViewController {
     }
     
     func createRefreshControl(scrollView: UIScrollView) {
-        refreshControl.addTarget(self, action: #selector(refreshAction), for: .valueChanged)
+        refreshControl.addTarget(
+            self,
+            action: #selector(refreshAction),
+            for: .valueChanged
+        )
         scrollView.refreshControl = refreshControl
     }
 }
