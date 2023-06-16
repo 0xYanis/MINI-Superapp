@@ -18,7 +18,12 @@ final class CategoryRouter: CategoryRouterProtocol {
     
     func goToDetailProduct(index: Int) {
         let productView = ProductBuilder.build()
-        view?.navigationController?.pushViewController(productView, animated: true)
+        productView.isModalInPresentation = true
+        if let sheet = productView.sheetPresentationController {
+            sheet.detents = [.medium()]
+            sheet.preferredCornerRadius = 30
+        }
+        view?.present(productView, animated: true)
     }
     
     func goToCart() {
