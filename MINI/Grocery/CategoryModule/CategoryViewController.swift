@@ -56,7 +56,7 @@ private extension CategoryViewController {
     
     func createNavigation(with title: String) {
         navigationItem.title = title
-        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.prefersLargeTitles = false
     }
     
     func createCartView() {
@@ -68,7 +68,10 @@ private extension CategoryViewController {
             make.left.right.equalToSuperview().inset(20)
             make.height.equalToSuperview().multipliedBy(0.075)
         }
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapCart))
+        let tapGesture = UITapGestureRecognizer(
+            target: self,
+            action: #selector(didTapCart)
+        )
         cartView.addGestureRecognizer(tapGesture)
     }
     
@@ -123,7 +126,8 @@ private extension CategoryViewController {
     @objc func priceButtonAction(_ sender: UIButton) {
         if let cell = sender.superview as? CategoryCell,
            let index = collectionView.indexPath(for: cell) {
-            
+            cell.isAddedToCart.toggle()
+            cell.updateButton()
             print("Секция\(index.section), ячейка №\(index.item)")
         }
     }

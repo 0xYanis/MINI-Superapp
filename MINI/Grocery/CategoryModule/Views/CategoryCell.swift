@@ -14,6 +14,7 @@ final class CategoryCell: UICollectionViewCell {
     static let cellId = "CategoryCell"
     
     //MARK: Private properties
+    var isAddedToCart: Bool       = false
     private lazy var view         = UIView()
     private lazy var textLabel    = UILabel()
     private lazy var imageView    = UIImageView()
@@ -39,6 +40,22 @@ final class CategoryCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+    }
+    
+    func updateButton() {
+        isAddedToCart ? priceButton.setTitle(
+            "Added",
+            for: .normal
+        ) : priceButton.setTitle(
+            "$59.9",
+            for: .normal
+        )
+        
+        priceButton.backgroundColor = isAddedToCart ? .systemOrange : .gray
     }
 }
 

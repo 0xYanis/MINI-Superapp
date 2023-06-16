@@ -24,6 +24,10 @@ final class CategoryCartView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func configure(with price: String) {
+        cartLabel.text = "Всего: $\(price)"
+    }
 }
 
 private extension CategoryCartView {
@@ -43,7 +47,6 @@ private extension CategoryCartView {
         }
         
         cartLabel.font = .boldSystemFont(ofSize: 20)
-        cartLabel.text = "Всего: $289.49"
         cartLabel.textColor = .systemOrange
         
         labelView.addSubview(cartLabel)
