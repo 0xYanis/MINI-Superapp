@@ -8,8 +8,6 @@
 import UIKit
 import SnapKit
 
-
-
 final class ProfileTableView: UITableView {
     
     weak var presenter: ProfilePresenterProtocol?
@@ -26,6 +24,8 @@ final class ProfileTableView: UITableView {
 
 private extension ProfileTableView {
     func initialize() {
+        dataSource = self
+        backgroundColor = .clear
         register(
             ProfileTableCell.self,
             forCellReuseIdentifier: ProfileTableCell.cellId
@@ -34,27 +34,31 @@ private extension ProfileTableView {
 }
 
 extension ProfileTableView: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        presenter?.getProfileData().count ?? 0
+    }
+    
     func tableView(
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     ) -> Int {
-        return 10
+        presenter?.getProfileData()[section].options.count ?? 0
     }
     
     func tableView(
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
-        let defaultCell = UITableViewCell()
         
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: ProfileTableCell.cellId,
             for: indexPath
-        ) as? ProfileTableCell else {
-            return defaultCell
+        ) as? ProfileTableCell,
+              let data = presenter?.getProfileData()[indexPath.section].options[indexPath.row] else {
+            return UITableViewCell()
         }
         
-        
+        cell.configure(with: data)
         return cell
     }
 }

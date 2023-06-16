@@ -15,7 +15,15 @@ final class ProfileInteractor: ProfileInteractorProtocol {
     
     weak var presenter: ProfilePresenterProtocol?
     
+    var profileData: [ProfileSection] = []
+    
+    init() {
+        self.profileData = ProfileSection.data
+    }
+    
     func viewDidLoaded() {
+        // обновление состояния
+        
         
     }
 }

@@ -9,6 +9,7 @@ import Foundation
 
 protocol ProfilePresenterProtocol: AnyObject {
     func viewDidLoaded()
+    func getProfileData() -> [ProfileSection]
     
     func userSetNewProfileImage()
     
@@ -33,7 +34,11 @@ final class ProfilePresenter {
 
 extension ProfilePresenter: ProfilePresenterProtocol {
     func viewDidLoaded() {
-        
+        interactor.viewDidLoaded()
+    }
+    
+    func getProfileData() -> [ProfileSection] {
+        interactor.profileData
     }
     
     func userSetNewProfileImage() {
