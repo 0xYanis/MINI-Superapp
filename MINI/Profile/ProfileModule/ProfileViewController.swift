@@ -15,6 +15,8 @@ final class ProfileViewController: UIViewController {
     
     var presenter: ProfilePresenterProtocol?
     
+    private lazy var tableView = ProfileTableView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
@@ -53,6 +55,14 @@ private extension ProfileViewController {
             target: self,
             action: #selector(logoutButtonAction)
         )
+    }
+    
+    func createTableView() {
+        tableView.presenter = presenter
+        view.addSubview(tableView)
+        tableView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
 }
 

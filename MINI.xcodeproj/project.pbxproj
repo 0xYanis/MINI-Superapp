@@ -31,6 +31,8 @@
 		092E739629EBEB3000165D37 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E739529EBEB3000165D37 /* LoginView.swift */; };
 		092E739A29EBFB8800165D37 /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E739929EBFB8800165D37 /* UIStackView+Extension.swift */; };
 		092E739C29EBFD9100165D37 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E739B29EBFD9100165D37 /* UITextField+Extension.swift */; };
+		092F67A92A3CCE1B00E0F2B9 /* ProfileTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092F67A82A3CCE1B00E0F2B9 /* ProfileTableView.swift */; };
+		092F67AB2A3CCED200E0F2B9 /* ProfileTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092F67AA2A3CCED200E0F2B9 /* ProfileTableCell.swift */; };
 		093932442A25E4AC00F813A2 /* AviaShowplaceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093932432A25E4AC00F813A2 /* AviaShowplaceService.swift */; };
 		093932462A25E7E400F813A2 /* AviaShowplaceEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093932452A25E7E400F813A2 /* AviaShowplaceEntity.swift */; };
 		09503EB829F2D44000254F53 /* StackFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09503EB729F2D44000254F53 /* StackFlowLayout.swift */; };
@@ -200,6 +202,8 @@
 		092E739529EBEB3000165D37 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		092E739929EBFB8800165D37 /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
 		092E739B29EBFD9100165D37 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		092F67A82A3CCE1B00E0F2B9 /* ProfileTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableView.swift; sourceTree = "<group>"; };
+		092F67AA2A3CCED200E0F2B9 /* ProfileTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableCell.swift; sourceTree = "<group>"; };
 		093932432A25E4AC00F813A2 /* AviaShowplaceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AviaShowplaceService.swift; sourceTree = "<group>"; };
 		093932452A25E7E400F813A2 /* AviaShowplaceEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AviaShowplaceEntity.swift; sourceTree = "<group>"; };
 		09503EB729F2D44000254F53 /* StackFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackFlowLayout.swift; sourceTree = "<group>"; };
@@ -474,6 +478,15 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		092F67A72A3CCE0D00E0F2B9 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				092F67A82A3CCE1B00E0F2B9 /* ProfileTableView.swift */,
+				092F67AA2A3CCED200E0F2B9 /* ProfileTableCell.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
 		093111CD2A162C1B008A6329 /* GroceryCells */ = {
 			isa = PBXGroup;
 			children = (
@@ -707,6 +720,7 @@
 		09BFC93A2A1B4C5C00C8505B /* ProfileModule */ = {
 			isa = PBXGroup;
 			children = (
+				092F67A72A3CCE0D00E0F2B9 /* Subviews */,
 				09BFC93B2A1B4C7400C8505B /* ProfileViewController.swift */,
 				09BFC93D2A1B4C8000C8505B /* ProfilePresenter.swift */,
 				09BFC93F2A1B4C8900C8505B /* ProfileRouter.swift */,
@@ -1081,6 +1095,7 @@
 				09FB82522A37286800CEF8C1 /* ProductBuilder.swift in Sources */,
 				09F5BFD92A12880000BC3B7C /* BankTemplateService.swift in Sources */,
 				09FB82542A37287100CEF8C1 /* ProductEntity.swift in Sources */,
+				092F67AB2A3CCED200E0F2B9 /* ProfileTableCell.swift in Sources */,
 				09BFC9402A1B4C8900C8505B /* ProfileRouter.swift in Sources */,
 				099D4F6F29F71A610002C24A /* CardBuilder.swift in Sources */,
 				09BFC9442A1B4CA800C8505B /* ProfileInteractor.swift in Sources */,
@@ -1148,6 +1163,7 @@
 				09E24C112A12239A00A91F74 /* BankCardEntity.swift in Sources */,
 				099D4F7529F722EC0002C24A /* NewCardPresenter.swift in Sources */,
 				090AE1E529FBAA2F0092515D /* TemplateEntity.swift in Sources */,
+				092F67A92A3CCE1B00E0F2B9 /* ProfileTableView.swift in Sources */,
 				099D4F6929F71A380002C24A /* CardPresenter.swift in Sources */,
 				09E9E81B29EAE94B0084416B /* LoginPresenter.swift in Sources */,
 				092E739629EBEB3000165D37 /* LoginView.swift in Sources */,
