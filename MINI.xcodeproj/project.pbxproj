@@ -34,6 +34,7 @@
 		092F67A92A3CCE1B00E0F2B9 /* ProfileTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092F67A82A3CCE1B00E0F2B9 /* ProfileTableView.swift */; };
 		092F67AB2A3CCED200E0F2B9 /* ProfileTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092F67AA2A3CCED200E0F2B9 /* ProfileTableCell.swift */; };
 		092F67AD2A3CDFE100E0F2B9 /* ProfileEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092F67AC2A3CDFE100E0F2B9 /* ProfileEntity.swift */; };
+		092F67AF2A3CE87500E0F2B9 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092F67AE2A3CE87500E0F2B9 /* UIColor+Extensions.swift */; };
 		093932442A25E4AC00F813A2 /* AviaShowplaceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093932432A25E4AC00F813A2 /* AviaShowplaceService.swift */; };
 		093932462A25E7E400F813A2 /* AviaShowplaceEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093932452A25E7E400F813A2 /* AviaShowplaceEntity.swift */; };
 		09503EB829F2D44000254F53 /* StackFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09503EB729F2D44000254F53 /* StackFlowLayout.swift */; };
@@ -206,6 +207,7 @@
 		092F67A82A3CCE1B00E0F2B9 /* ProfileTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableView.swift; sourceTree = "<group>"; };
 		092F67AA2A3CCED200E0F2B9 /* ProfileTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableCell.swift; sourceTree = "<group>"; };
 		092F67AC2A3CDFE100E0F2B9 /* ProfileEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEntity.swift; sourceTree = "<group>"; };
+		092F67AE2A3CE87500E0F2B9 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		093932432A25E4AC00F813A2 /* AviaShowplaceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AviaShowplaceService.swift; sourceTree = "<group>"; };
 		093932452A25E7E400F813A2 /* AviaShowplaceEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AviaShowplaceEntity.swift; sourceTree = "<group>"; };
 		09503EB729F2D44000254F53 /* StackFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackFlowLayout.swift; sourceTree = "<group>"; };
@@ -476,6 +478,7 @@
 				09503EB729F2D44000254F53 /* StackFlowLayout.swift */,
 				09F86C5629F6F8A000307432 /* UITabBarController+Extension.swift */,
 				09F922682A1EA234009684F2 /* String+Extension.swift */,
+				092F67AE2A3CE87500E0F2B9 /* UIColor+Extensions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1117,6 +1120,7 @@
 				09FB824A2A3724F900CEF8C1 /* ProductViewController.swift in Sources */,
 				09E9E82129EAE9650084416B /* LoginEntity.swift in Sources */,
 				097A80672A337E1600B5CF3A /* CategoryPresenter.swift in Sources */,
+				092F67AF2A3CE87500E0F2B9 /* UIColor+Extensions.swift in Sources */,
 				09503EB829F2D44000254F53 /* StackFlowLayout.swift in Sources */,
 				09E9E81929EAE9410084416B /* LoginViewController.swift in Sources */,
 				097ACF222A2E1E470023106A /* RegisterPresenter.swift in Sources */,
