@@ -37,7 +37,7 @@ extension RegisterViewController: RegisterViewProtocol {
 
 private extension RegisterViewController {
     func initialize() {
-        view.backgroundColor = .black
+        view.backgroundColor = .back2MINI
         createScrollView()
         createRegisterView()
         configureRegisterView()
