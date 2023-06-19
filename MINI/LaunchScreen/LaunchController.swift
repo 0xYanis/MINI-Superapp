@@ -88,9 +88,8 @@ private extension LaunchController {
             let mainView = AuthenticationManager.auth(to: window)
             
             window.rootViewController = mainView
-            window.overrideUserInterfaceStyle = .dark
-            window.backgroundColor = UIColor(named: "backColor")
-            window.tintColor = .systemOrange
+            window.backgroundColor = .backMINI
+            window.tintColor = .tintMINI
             delegate.window = window
             window.makeKeyAndVisible()
         }

@@ -14,11 +14,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
+        
         window.rootViewController = LaunchController()
-        window.tintColor = .systemOrange
-        window.backgroundColor = UIColor(named: "backColor")
-        window.overrideUserInterfaceStyle = .dark 
+        window.tintColor = .tintMINI
+        window.backgroundColor = .backMINI
         self.window = window
+        
         UIApplication.shared.shortcutItems = DeepLinkManager.buildShortCuts()
         window.makeKeyAndVisible()
     }
