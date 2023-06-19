@@ -13,11 +13,11 @@ class LoginView: UIView {
     weak var presenter: LoginPresenterProtocol?
     
     private lazy var helloLabel = UILabel(text: "welcome_label".localized, font: .boldSystemFont(ofSize: 26), color: .none)
-    let faceIDButton = UIButton(systemImage: "faceid", color: .systemOrange, size: 26)
+    let faceIDButton = UIButton(systemImage: "faceid", color: .tintMINI, size: 26)
     let nameField    = UITextField()
     let passField    = UITextField()
     let registerButt = UIButton()
-    let loginButt    = UIButton(label: "login_button".localized, color: .systemOrange)
+    let loginButt    = UIButton(label: "login_button".localized, color: .tintMINI)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -56,7 +56,7 @@ private extension LoginView {
     }
     
     func createNameField() {
-        nameField.setCustomAppearance(withBorderColor: .systemOrange, cornerRadius: 15, padding: 10)
+        nameField.setCustomAppearance(withBorderColor: .tintMINI, cornerRadius: 15, padding: 10)
         nameField.placeholder = "name_placeholder".localized
         
         addSubview(nameField)
@@ -69,7 +69,7 @@ private extension LoginView {
     
     func createPassField() {
         passField.isSecureTextEntry = true
-        passField.setCustomAppearance(withBorderColor: .systemOrange, cornerRadius: 15, padding: 10)
+        passField.setCustomAppearance(withBorderColor: .tintMINI, cornerRadius: 15, padding: 10)
         passField.placeholder = "pass_placeholer".localized
         
         addSubview(passField)
@@ -87,8 +87,7 @@ private extension LoginView {
             for: .touchUpInside
         )
         registerButt.setTitle("Нет аккаунта?", for: .normal)
-        registerButt.setTitleColor(.systemOrange, for: .normal)
-        registerButt.addPulseAnimation()
+        registerButt.setTitleColor(.tintMINI, for: .normal)
         
         addSubview(registerButt)
         registerButt.snp.makeConstraints { make in

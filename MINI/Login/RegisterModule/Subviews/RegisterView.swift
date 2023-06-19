@@ -17,11 +17,11 @@ final class RegisterView: UIView {
     private lazy var helloLabel = UILabel(
         text: "welcomeReg_label".localized,
         font: .boldSystemFont(ofSize: 26),
-        color: .systemOrange
+        color: .tintMINI
     )
     let regButton  = UIButton(
         label: "login_button".localized,
-        color: .systemOrange
+        color: .tintMINI
     )
     
     override init(frame: CGRect) {
@@ -55,7 +55,7 @@ private extension RegisterView {
     }
     
     func createNameField() {
-        nameField.setCustomAppearance(withBorderColor: .systemOrange, cornerRadius: 15, padding: 10)
+        nameField.setCustomAppearance(withBorderColor: .tintMINI, cornerRadius: 15, padding: 10)
         nameField.placeholder = "name_placeholder".localized
         
         addSubview(nameField)
@@ -68,7 +68,7 @@ private extension RegisterView {
     
     func createPassField() {
         passField.isSecureTextEntry = true
-        passField.setCustomAppearance(withBorderColor: .systemOrange, cornerRadius: 15, padding: 10)
+        passField.setCustomAppearance(withBorderColor: .tintMINI, cornerRadius: 15, padding: 10)
         passField.placeholder = "pass_placeholer".localized
         
         addSubview(passField)
@@ -81,7 +81,7 @@ private extension RegisterView {
     
     func createSecondPassField() {
         secondPassField.isSecureTextEntry = true
-        secondPassField.setCustomAppearance(withBorderColor: .systemOrange, cornerRadius: 15, padding: 10)
+        secondPassField.setCustomAppearance(withBorderColor: .tintMINI, cornerRadius: 15, padding: 10)
         secondPassField.placeholder = "secondPass_placeholer".localized
         
         addSubview(secondPassField)

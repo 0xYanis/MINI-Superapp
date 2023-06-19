@@ -64,7 +64,7 @@ extension LoginViewController: LoginViewProtocol {
 //MARK: - Private methods
 private extension LoginViewController {
     func initialize() {
-        view.backgroundColor = .quaternarySystemFill
+        view.backgroundColor = .back2MINI
         generator.prepare()
         createTapGesture()
         createNavBarButtons()
@@ -91,7 +91,7 @@ private extension LoginViewController {
     var githubButton: UIBarButtonItem {
         let leftButton = UIButton(
             systemImage: "link.icloud.fill",
-            color: .systemOrange
+            color: .tintMINI
         )
         leftButton.addTarget(
             self,
@@ -119,7 +119,7 @@ private extension LoginViewController {
     
     func createLoginView() {
         loginView.presenter = presenter
-        loginView.backgroundColor = .systemBackground
+        loginView.backgroundColor = .backMINI
         loginView.radiusAndShadow(radius: 30)
         scrollView.addSubview(loginView)
         loginView.snp.makeConstraints { make in
