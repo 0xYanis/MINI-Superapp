@@ -23,6 +23,7 @@
 		091095FE29DB32F000338D22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091095FD29DB32F000338D22 /* AppDelegate.swift */; };
 		0910960029DB32F000338D22 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091095FF29DB32F000338D22 /* SceneDelegate.swift */; };
 		0910960729DB32F400338D22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0910960629DB32F400338D22 /* Assets.xcassets */; };
+		091335D42A405CC1005DDAEA /* MINIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091335D32A405CC1005DDAEA /* MINIColorExtension.swift */; };
 		091CD49029DDE9250041627F /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 091CD48F29DDE9250041627F /* Lottie */; };
 		0921F35F29DF1FE000B3D4F7 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0921F35E29DF1FE000B3D4F7 /* UIButton+Extension.swift */; };
 		0925D59B2A1CAED200B5E12B /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0925D59A2A1CAED200B5E12B /* RealmService.swift */; };
@@ -198,6 +199,7 @@
 		091095FF29DB32F000338D22 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		0910960629DB32F400338D22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0910960B29DB32F500338D22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		091335D32A405CC1005DDAEA /* MINIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MINIColorExtension.swift; sourceTree = "<group>"; };
 		0921F35E29DF1FE000B3D4F7 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		0925D59A2A1CAED200B5E12B /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
 		092E739329EBEB1E00165D37 /* LoginAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAnimationView.swift; sourceTree = "<group>"; };
@@ -461,6 +463,7 @@
 				09BBA70E2A0E76950020E3C9 /* cardsLogo.xcassets */,
 				09E24C122A1227C200A91F74 /* cardsColor.xcassets */,
 				09ABE0072A143447009DB57B /* DefaultFood.xcassets */,
+				091335D32A405CC1005DDAEA /* MINIColorExtension.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1210,6 +1213,7 @@
 				09FB82582A3737AA00CEF8C1 /* LocationService.swift in Sources */,
 				0909D1C329F192E50078EEB5 /* BankTemplateLabelCell.swift in Sources */,
 				097E039B29EC447000CE2A6F /* BankViewController.swift in Sources */,
+				091335D42A405CC1005DDAEA /* MINIColorExtension.swift in Sources */,
 				0910960029DB32F000338D22 /* SceneDelegate.swift in Sources */,
 				099D4F8729F72B0F0002C24A /* NewTemplateEntity.swift in Sources */,
 				097A80692A337E2000B5CF3A /* CategoryInteractor.swift in Sources */,
