@@ -30,13 +30,14 @@ final class BankHistoryViewController: UIViewController {
 //MARK: - Private methods
 private extension BankHistoryViewController {
     func intialize() {
+        view.backgroundColor = .backMINI
         createSeeAllLabel()
         createTableView()
     }
     
     func createSeeAllLabel() {
         labelView.delegate = self
-        labelView.backgroundColor = .black
+        labelView.backgroundColor = .backMINI
         view.addSubview(labelView)
         labelView.snp.makeConstraints { make in
             make.left.top.right.equalToSuperview()
@@ -46,6 +47,7 @@ private extension BankHistoryViewController {
     }
     
     func createTableView() {
+        tableView.backgroundColor = .backMINI
         tableView.rowHeight = 100
         tableView.estimatedRowHeight = 100
         tableView.delegate = self

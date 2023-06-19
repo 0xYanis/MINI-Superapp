@@ -27,7 +27,7 @@ final class BankHistoryLabel: UIView {
     )
     private lazy var searchButton = UIButton(
         systemImage: "magnifyingglass.circle.fill",
-        color: .systemOrange,
+        color: .tintMINI,
         size: 35
     )
     private lazy var searchBar = UISearchBar()
@@ -64,12 +64,12 @@ private extension BankHistoryLabel {
     }
     
     func createGraberView() {
-        graberView.backgroundColor = .init(white: 0.4, alpha: 0.7)
+        graberView.backgroundColor = .init(white: 0.6, alpha: 0.7)
         graberView.roundCorners(radius: 3)
         addSubview(graberView)
         graberView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalToSuperview().inset(4)
+            make.top.equalToSuperview().inset(6)
             make.width.equalTo(45)
             make.height.equalTo(6)
         }
@@ -98,7 +98,7 @@ private extension BankHistoryLabel {
     }
     
     func createSearchBar() {
-        searchBar.tintColor = .systemOrange
+        searchBar.tintColor = .tintMINI
         searchBar.keyboardType = .webSearch
         searchBar.delegate = self
         searchBar.showsCancelButton = true

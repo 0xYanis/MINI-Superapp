@@ -61,6 +61,7 @@ final class BankTransactionCell: UITableViewCell {
 
 extension BankTransactionCell {
     func initialize() {
+        backgroundColor = .backMINI
         selectionStyle = .none
         createIcon()
         createTransaction()

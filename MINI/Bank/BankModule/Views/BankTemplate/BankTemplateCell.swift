@@ -47,7 +47,7 @@ private extension BankTemplateCell {
         createTextLabel()
     }
     func createTemplateView() {
-        templateView.backgroundColor = .systemGray6//UIColor(named: "whiteColor")
+        templateView.backgroundColor = .frontMINI
         templateView.roundCorners(radius: 10)
         addSubview(templateView)
         templateView.snp.makeConstraints { make in
@@ -56,7 +56,7 @@ private extension BankTemplateCell {
         }
     }
     func createCircleView() {
-        circleView.backgroundColor = .systemGray2
+        circleView.backgroundColor = .backMINI
         templateView.addSubview(circleView)
         circleView.roundCorners(radius: 20)
         circleView.snp.makeConstraints { make in
@@ -68,7 +68,7 @@ private extension BankTemplateCell {
     func createImageView() {
         imageView.image = UIImage(systemName: "gear")
         imageView.contentMode = .scaleAspectFit
-        imageView.tintColor = .black
+        imageView.tintColor = .front2MINI
         circleView.addSubview(imageView)
         imageView.snp.makeConstraints { make in
             make.center.equalToSuperview()

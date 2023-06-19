@@ -84,9 +84,9 @@ extension BankViewController: BankViewCellDelegate {
 //MARK: - Private methods
 private extension BankViewController {
     func initialize() {
-        view.backgroundColor = UIColor(named: "backColor")
+        view.backgroundColor = .back2MINI
         createNavigation(title: "bank_navbar".localized)
-        createBackgroundView()
+        //createBackgroundView()
         createTableView()
         createBottomSheet()
         createRefreshControl(scrollView: bankTableView)
@@ -159,8 +159,7 @@ private extension BankViewController {
             make.height.equalToSuperview().multipliedBy(0.34)
                 .offset(tabBarController?.tabBar.frame.height ?? 0)
         }
-        historyTableVC.view.layer.cornerRadius = 30
-        historyTableVC.view.clipsToBounds = true
+        historyTableVC.view.roundCorners(radius: 30)
     }
     
     func createRefreshControl(scrollView: UIScrollView) {
