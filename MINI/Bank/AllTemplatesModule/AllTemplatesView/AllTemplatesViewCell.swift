@@ -11,10 +11,15 @@ final class AllTemplatesViewCell: UICollectionViewCell {
     
     static let cellId = "AllTemplatesViewCell"
     
-    func configure(name: String, image: String) {
-        textLabel.text = name
-        imageView.image = UIImage(systemName: image)
-    }
+    //MARK: - Private properties
+    private let templateView = UIView()
+    private let circleView   = UIView()
+    private let imageView    = UIImageView(image: UIImage(systemName: "gear"))
+    private let textLabel    = UILabel(
+        text: "Utility Payments",
+        font: .systemFont(ofSize: 15),
+        color: .black
+    )
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -25,13 +30,10 @@ final class AllTemplatesViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: - Private properties
-    private let templateView = UIView()
-    private let circleView   = UIView()
-    private let imageView    = UIImageView(image: UIImage(systemName: "gear"))
-    private let textLabel    = UILabel(text: "Utility Payments",
-                                       font: .systemFont(ofSize: 15),
-                                       color: UIColor(named: "textColor"))
+    func configure(name: String, image: String) {
+        textLabel.text = name
+        imageView.image = UIImage(systemName: image)
+    }
 }
 
 private extension AllTemplatesViewCell {
@@ -46,7 +48,7 @@ private extension AllTemplatesViewCell {
     }
     
     func createTemplateView() {
-        templateView.backgroundColor = .systemGray6
+        templateView.backgroundColor = .frontMINI
         addSubview(templateView)
         templateView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -54,7 +56,7 @@ private extension AllTemplatesViewCell {
     }
     
     func createCircleView() {
-        circleView.backgroundColor = .systemGray2
+        circleView.backgroundColor = .backMINI
         templateView.addSubview(circleView)
         circleView.roundCorners(radius: 30)
         circleView.snp.makeConstraints { make in
@@ -66,7 +68,7 @@ private extension AllTemplatesViewCell {
     
     func createImageView() {
         imageView.contentMode = .scaleAspectFit
-        imageView.tintColor = .black
+        imageView.tintColor = .front2MINI
         circleView.addSubview(imageView)
         imageView.snp.makeConstraints { make in
             make.center.equalToSuperview()

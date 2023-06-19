@@ -23,7 +23,7 @@ final class AdressViewController: UIViewController {
     private lazy var tableView    = UITableView()
     private lazy var cancelButton = UIButton(
         systemImage: "xmark.circle.fill",
-        color: .systemOrange,
+        color: .tintMINI,
         size: 35
     )
     
@@ -36,7 +36,7 @@ final class AdressViewController: UIViewController {
 //MARK: - Private methods
 private extension AdressViewController {
     func initialize() {
-        view.backgroundColor = .black
+        view.backgroundColor = .backMINI
         createTitle(text: "new_adress_title".localized)
         createSearchBar()
         createTableView()
@@ -45,7 +45,7 @@ private extension AdressViewController {
     
     func createTitle(text: String) {
         textTilte.text = text
-        textTilte.tintColor = .white
+        textTilte.tintColor = .tintMINI
         textTilte.font = .boldSystemFont(ofSize: 25)
         view.addSubview(textTilte)
         textTilte.snp.makeConstraints { make in
@@ -54,7 +54,8 @@ private extension AdressViewController {
     }
     
     func createSearchBar() {
-        searchBar.tintColor = .systemOrange
+        searchBar.backgroundColor = .clear
+        searchBar.tintColor = .tintMINI
         searchBar.delegate = self
         searchBar.barTintColor = .clear
         searchBar.placeholder = "new_adress_search".localized

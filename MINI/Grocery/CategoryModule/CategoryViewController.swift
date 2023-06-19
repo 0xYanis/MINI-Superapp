@@ -59,7 +59,7 @@ extension CategoryViewController: CategoryViewProtocol {
 //MARK: - Private methods
 private extension CategoryViewController {
     func initialize() {
-        view.backgroundColor = UIColor(named: "backColor")
+        view.backgroundColor = .back2MINI
         createCartView()
         createCollectionView()
     }

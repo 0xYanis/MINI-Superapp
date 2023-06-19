@@ -34,7 +34,7 @@ private extension GroceryHeaderCell {
         textLabel.isSkeletonable = true
         textLabel.text = "Category"
         textLabel.numberOfLines = 1
-        textLabel.textColor = .white
+        textLabel.textColor = .front2MINI
         textLabel.font = .boldSystemFont(ofSize: 18)
         addSubview(textLabel)
         textLabel.snp.makeConstraints { make in

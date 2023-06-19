@@ -42,7 +42,7 @@ extension AviaViewController: AviaViewProtocol {
 //MARK: - Private methods
 private extension AviaViewController {
     func initialize() {
-        view.backgroundColor = UIColor(named: "backColor")
+        view.backgroundColor = .back2MINI
         createNavigation()
         createSearchController()
         

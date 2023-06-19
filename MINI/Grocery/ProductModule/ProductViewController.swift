@@ -54,7 +54,7 @@ extension ProductViewController: ProductViewProtocol {
 
 private extension ProductViewController {
     func initialize() {
-        view.backgroundColor = .systemGray2
+        view.backgroundColor = .back2MINI
         createBackView()
         createPriceView()
     }
@@ -64,7 +64,7 @@ private extension ProductViewController {
     }
     
     func createBackView() {
-        backView.backgroundColor = .black
+        backView.backgroundColor = .backMINI
         backView.roundCorners(radius: 25)
         view.addSubview(backView)
         backView.snp.makeConstraints { make in
@@ -92,7 +92,7 @@ private extension ProductViewController {
     func createProductLabel() {
         productLabel.font = .boldSystemFont(ofSize: 20)
         productLabel.numberOfLines = 2
-        productLabel.textColor = .white
+        productLabel.textColor = .front2MINI
         productLabel.text = "Double big-mac with extra deep cheese"
         
         backView.addSubview(productLabel)
@@ -116,7 +116,7 @@ private extension ProductViewController {
     }
     
     func createPriceView() {
-        priceView.backgroundColor = .systemOrange
+        priceView.backgroundColor = .tintMINI
         priceView.roundCorners(radius: 25)
         
         view.addSubview(priceView)

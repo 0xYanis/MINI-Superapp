@@ -71,8 +71,8 @@ private extension CategoryCell {
     }
     
     func createView() {
-        view.roundCorners(radius: 15)
-        view.backgroundColor = .black
+        view.radiusAndShadow(radius: 30)
+        view.backgroundColor = .backMINI
         addSubview(view)
         view.snp.makeConstraints { make in
             make.width.equalToSuperview()
@@ -82,7 +82,7 @@ private extension CategoryCell {
     
     func createTextLabel() {
         textLabel.text = "Double Big mac with extra cheese"
-        textLabel.textColor = .white
+        textLabel.textColor = .tintMINI
         textLabel.font = .boldSystemFont(ofSize: 12)
         textLabel.numberOfLines = 2
         addSubview(textLabel)
@@ -130,7 +130,7 @@ private extension CategoryCell {
     
     func createDiscountView() {
         discountView.roundCorners(radius: 10)
-        discountView.backgroundColor = .systemOrange
+        discountView.backgroundColor = .tintMINI
         view.insertSubview(discountView, at: 1)
         discountView.snp.makeConstraints { make in
             make.right.bottom.equalToSuperview().inset(10)

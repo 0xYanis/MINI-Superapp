@@ -38,7 +38,7 @@ extension ProfileViewController: ProfileViewProtocol {
 
 private extension ProfileViewController {
     func initialize() {
-        view.backgroundColor = UIColor(named: "backColor")
+        view.backgroundColor = .back2MINI
         createNavigation(title: "profile_navbar".localized)
         createTableView()
     }

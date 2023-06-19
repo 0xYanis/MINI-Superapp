@@ -48,7 +48,7 @@ extension TransactionViewController: TransactionViewProtocol {
 
 private extension TransactionViewController {
     func initialize() {
-        view.backgroundColor = UIColor(named: "backColor")
+        view.backgroundColor = .back2MINI
         createNavigation()
         createScrollView()
         createImageView()

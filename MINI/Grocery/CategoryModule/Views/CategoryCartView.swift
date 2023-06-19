@@ -32,7 +32,7 @@ final class CategoryCartView: UIView {
 
 private extension CategoryCartView {
     func initialize() {
-        backgroundColor = .systemGray3
+        backgroundColor = .backMINI
         createCartLabel()
         createCartImage()
     }

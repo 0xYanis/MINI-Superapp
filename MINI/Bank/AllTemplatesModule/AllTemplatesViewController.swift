@@ -52,7 +52,7 @@ extension AllTemplatesViewController: AllTemplatesViewProtocol {
 //MARK: - Private methods
 private extension AllTemplatesViewController {
     func initialize() {
-        view.backgroundColor = .init(white: 0.05, alpha: 1.0)
+        view.backgroundColor = .back2MINI
         createNavigation()
         createCollectionView()
         collectionViewRegistrate()

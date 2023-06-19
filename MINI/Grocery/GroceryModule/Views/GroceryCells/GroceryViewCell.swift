@@ -40,7 +40,7 @@ private extension GroceryViewCell {
     func initialize() {
         isSkeletonable = true
         skeletonCornerRadius = 10
-        backgroundColor = .black
+        backgroundColor = .backMINI
         createTextLabel()
         createImageView()
         
@@ -49,7 +49,7 @@ private extension GroceryViewCell {
     
     func createTextLabel() {
         textLabel.text = "Double Big mac with extra cheese"
-        textLabel.textColor = .white
+        textLabel.textColor = .tintMINI
         textLabel.font = .boldSystemFont(ofSize: 12)
         textLabel.numberOfLines = 3
         insertSubview(textLabel, at: 1)
@@ -71,7 +71,7 @@ private extension GroceryViewCell {
     
     func createDiscountView() {
         discountView.roundCorners(radius: 10)
-        discountView.backgroundColor = .systemOrange
+        discountView.backgroundColor = .tintMINI
         insertSubview(discountView, at: 1)
         discountView.snp.makeConstraints { make in
             make.right.bottom.equalToSuperview().inset(7)
@@ -83,7 +83,7 @@ private extension GroceryViewCell {
     
     func createPercentView() {
         percentView.image = UIImage(systemName: "percent")
-        percentView.tintColor = .black
+        percentView.tintColor = .backMINI
         discountView.addSubview(percentView)
         percentView.snp.makeConstraints { make in
             make.edges.equalToSuperview().inset(2)

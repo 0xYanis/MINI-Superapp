@@ -31,7 +31,7 @@ extension NewTemplateViewController: NewTemplateViewProtocol {
 
 private extension NewTemplateViewController {
     func initialize() {
-        view.backgroundColor = UIColor(named: "backColor")
+        view.backgroundColor = .back2MINI
         navigationItem.largeTitleDisplayMode = .never
         navigationItem.title = "add_new_template_title".localized
     }

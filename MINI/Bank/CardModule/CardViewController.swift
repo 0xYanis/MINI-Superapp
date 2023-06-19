@@ -45,7 +45,7 @@ extension CardViewController: CardViewProtocol {
 // MARK: - private methods
 private extension CardViewController {
     func initialize() {
-        view.backgroundColor = .init(white: 0.05, alpha: 1)
+        view.backgroundColor = .back2MINI
         
         createCardView()
         createFrontView()
@@ -211,7 +211,7 @@ extension CardViewController: UITableViewDataSource {
         let cell = UITableViewCell()
         guard let card = presenter?.getCardData() else { return cell }
         cell.selectionStyle = .none
-        cell.backgroundColor = UIColor(named: "backColor")
+        cell.backgroundColor = .backMINI
         cell.imageView?.image = UIImage(systemName: "circle.fill")
         switch indexPath.row {
         case 0:

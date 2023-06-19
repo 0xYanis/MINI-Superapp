@@ -34,7 +34,7 @@ extension TemplateViewController: TemplateViewProtocol {
 
 private extension TemplateViewController {
     func initialize() {
-        view.backgroundColor = UIColor(named: "backColor")
+        view.backgroundColor = .back2MINI
         createNavigation(title: "Template")
         createTableView(tableView: tableView)
     }
