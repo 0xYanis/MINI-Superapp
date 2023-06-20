@@ -26,8 +26,6 @@
 		091335D42A405CC1005DDAEA /* MINIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091335D32A405CC1005DDAEA /* MINIColorExtension.swift */; };
 		091CD49029DDE9250041627F /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 091CD48F29DDE9250041627F /* Lottie */; };
 		0921F35F29DF1FE000B3D4F7 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0921F35E29DF1FE000B3D4F7 /* UIButton+Extension.swift */; };
-		0925D59B2A1CAED200B5E12B /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0925D59A2A1CAED200B5E12B /* RealmService.swift */; };
-		0925D59E2A1CAFD800B5E12B /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0925D59D2A1CAFD800B5E12B /* RealmSwift */; };
 		092E739429EBEB1F00165D37 /* LoginAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E739329EBEB1E00165D37 /* LoginAnimationView.swift */; };
 		092E739629EBEB3000165D37 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E739529EBEB3000165D37 /* LoginView.swift */; };
 		092E739A29EBFB8800165D37 /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E739929EBFB8800165D37 /* UIStackView+Extension.swift */; };
@@ -62,12 +60,8 @@
 		097E03A129EC44A500CE2A6F /* BankRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097E03A029EC44A500CE2A6F /* BankRouter.swift */; };
 		097E03A329EC44BD00CE2A6F /* BankBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097E03A229EC44BD00CE2A6F /* BankBuilder.swift */; };
 		098999262A2772890040B67D /* LoginModuleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098999252A2772890040B67D /* LoginModuleTests.swift */; };
-		098999322A2777DF0040B67D /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 098999312A2777DF0040B67D /* RealmSwift */; };
-		098999342A2777E40040B67D /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 098999332A2777E40040B67D /* Realm */; };
 		098999362A27781F0040B67D /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 098999352A27781F0040B67D /* SDWebImage */; };
 		0989993E2A27A0470040B67D /* BankModuleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0989993D2A27A0470040B67D /* BankModuleTests.swift */; };
-		098999452A27A0870040B67D /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 098999442A27A0870040B67D /* Realm */; };
-		098999472A27A0880040B67D /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 098999462A27A0880040B67D /* RealmSwift */; };
 		098999492A27A08D0040B67D /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 098999482A27A08D0040B67D /* SDWebImage */; };
 		099089E32A139A2D00EE00DA /* GroceryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099089E22A139A2D00EE00DA /* GroceryViewController.swift */; };
 		099089E52A139A3A00EE00DA /* GroceryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099089E42A139A3A00EE00DA /* GroceryPresenter.swift */; };
@@ -201,7 +195,6 @@
 		0910960B29DB32F500338D22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		091335D32A405CC1005DDAEA /* MINIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MINIColorExtension.swift; sourceTree = "<group>"; };
 		0921F35E29DF1FE000B3D4F7 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
-		0925D59A2A1CAED200B5E12B /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
 		092E739329EBEB1E00165D37 /* LoginAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAnimationView.swift; sourceTree = "<group>"; };
 		092E739529EBEB3000165D37 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		092E739929EBFB8800165D37 /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
@@ -339,7 +332,6 @@
 			files = (
 				09CFB4262A1E6A940007FF40 /* SDWebImage in Frameworks */,
 				096B4B2A2A1DEF3500E5C65E /* Alamofire in Frameworks */,
-				0925D59E2A1CAFD800B5E12B /* RealmSwift in Frameworks */,
 				09035D0929DDAE2F003D4B0B /* SnapKit in Frameworks */,
 				09F5BFE02A12B47800BC3B7C /* SkeletonView in Frameworks */,
 				091CD49029DDE9250041627F /* Lottie in Frameworks */,
@@ -351,8 +343,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				098999362A27781F0040B67D /* SDWebImage in Frameworks */,
-				098999342A2777E40040B67D /* Realm in Frameworks */,
-				098999322A2777DF0040B67D /* RealmSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,8 +351,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				098999492A27A08D0040B67D /* SDWebImage in Frameworks */,
-				098999472A27A0880040B67D /* RealmSwift in Frameworks */,
-				098999452A27A0870040B67D /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -790,7 +778,6 @@
 				09E9E82629EB0B3F0084416B /* BiometryService.swift */,
 				09E9E82929EB16210084416B /* KeyChainService.swift */,
 				09E9E82D29EB16E10084416B /* KeyChain.swift */,
-				0925D59A2A1CAED200B5E12B /* RealmService.swift */,
 				09FB82572A3737AA00CEF8C1 /* LocationService.swift */,
 			);
 			path = ServiceLayer;
@@ -942,7 +929,6 @@
 				09035D0829DDAE2F003D4B0B /* SnapKit */,
 				091CD48F29DDE9250041627F /* Lottie */,
 				09F5BFDF2A12B47800BC3B7C /* SkeletonView */,
-				0925D59D2A1CAFD800B5E12B /* RealmSwift */,
 				096B4B292A1DEF3500E5C65E /* Alamofire */,
 				09CFB4252A1E6A940007FF40 /* SDWebImage */,
 			);
@@ -965,8 +951,6 @@
 			);
 			name = LoginModuleTests;
 			packageProductDependencies = (
-				098999312A2777DF0040B67D /* RealmSwift */,
-				098999332A2777E40040B67D /* Realm */,
 				098999352A27781F0040B67D /* SDWebImage */,
 			);
 			productName = LoginModuleTests;
@@ -988,8 +972,6 @@
 			);
 			name = BankModuleTests;
 			packageProductDependencies = (
-				098999442A27A0870040B67D /* Realm */,
-				098999462A27A0880040B67D /* RealmSwift */,
 				098999482A27A08D0040B67D /* SDWebImage */,
 			);
 			productName = BankModuleTests;
@@ -1032,7 +1014,6 @@
 				09035D0729DDAE2F003D4B0B /* XCRemoteSwiftPackageReference "SnapKit" */,
 				091CD48E29DDE9250041627F /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				09F5BFDE2A12B47800BC3B7C /* XCRemoteSwiftPackageReference "SkeletonView" */,
-				0925D59C2A1CAFD800B5E12B /* XCRemoteSwiftPackageReference "realm-swift" */,
 				096B4B282A1DEF3500E5C65E /* XCRemoteSwiftPackageReference "Alamofire" */,
 				09CFB4242A1E6A940007FF40 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
@@ -1146,7 +1127,6 @@
 				09632FCE29ED8A8800DB2641 /* BankTemplateSet.swift in Sources */,
 				09E9E83029EB24840084416B /* UIAlertController+Extension.swift in Sources */,
 				09FC394C29FAD3F400B2D97E /* TransactionRouter.swift in Sources */,
-				0925D59B2A1CAED200B5E12B /* RealmService.swift in Sources */,
 				09FB824E2A37285800CEF8C1 /* ProductRouter.swift in Sources */,
 				092E739429EBEB1F00165D37 /* LoginAnimationView.swift in Sources */,
 				09FB82452A3714B800CEF8C1 /* CategoryCell.swift in Sources */,
@@ -1580,14 +1560,6 @@
 				minimumVersion = 4.0.0;
 			};
 		};
-		0925D59C2A1CAFD800B5E12B /* XCRemoteSwiftPackageReference "realm-swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/realm/realm-swift";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 		096B4B282A1DEF3500E5C65E /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
@@ -1625,40 +1597,15 @@
 			package = 091CD48E29DDE9250041627F /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
 		};
-		0925D59D2A1CAFD800B5E12B /* RealmSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0925D59C2A1CAFD800B5E12B /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = RealmSwift;
-		};
 		096B4B292A1DEF3500E5C65E /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 096B4B282A1DEF3500E5C65E /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
-		098999312A2777DF0040B67D /* RealmSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0925D59C2A1CAFD800B5E12B /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = RealmSwift;
-		};
-		098999332A2777E40040B67D /* Realm */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0925D59C2A1CAFD800B5E12B /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = Realm;
-		};
 		098999352A27781F0040B67D /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 09CFB4242A1E6A940007FF40 /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImage;
-		};
-		098999442A27A0870040B67D /* Realm */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0925D59C2A1CAFD800B5E12B /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = Realm;
-		};
-		098999462A27A0880040B67D /* RealmSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0925D59C2A1CAFD800B5E12B /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = RealmSwift;
 		};
 		098999482A27A08D0040B67D /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;
