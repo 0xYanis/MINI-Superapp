@@ -100,6 +100,7 @@
 		09BFC9402A1B4C8900C8505B /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BFC93F2A1B4C8900C8505B /* ProfileRouter.swift */; };
 		09BFC9422A1B4C9600C8505B /* ProfileBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BFC9412A1B4C9600C8505B /* ProfileBuilder.swift */; };
 		09BFC9442A1B4CA800C8505B /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BFC9432A1B4CA800C8505B /* ProfileInteractor.swift */; };
+		09C19EC22A4330BE00D3307E /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C19EC12A4330BE00D3307E /* StorageManager.swift */; };
 		09C3CB412A2DF340001731D1 /* BankTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C3CB402A2DF33F001731D1 /* BankTableView.swift */; };
 		09CFB4262A1E6A940007FF40 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 09CFB4252A1E6A940007FF40 /* SDWebImage */; };
 		09D509CE29EF1E76009CC219 /* BankHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D509CD29EF1E76009CC219 /* BankHistoryViewController.swift */; };
@@ -269,6 +270,7 @@
 		09BFC93F2A1B4C8900C8505B /* ProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRouter.swift; sourceTree = "<group>"; };
 		09BFC9412A1B4C9600C8505B /* ProfileBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileBuilder.swift; sourceTree = "<group>"; };
 		09BFC9432A1B4CA800C8505B /* ProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
+		09C19EC12A4330BE00D3307E /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		09C3CB402A2DF33F001731D1 /* BankTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTableView.swift; sourceTree = "<group>"; };
 		09D509CD29EF1E76009CC219 /* BankHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankHistoryViewController.swift; sourceTree = "<group>"; };
 		09D509D529EF379A009CC219 /* BankTransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTransactionCell.swift; sourceTree = "<group>"; };
@@ -664,6 +666,7 @@
 			isa = PBXGroup;
 			children = (
 				09996A492A41CC6B001BD90E /* DataService.swift */,
+				09C19EC12A4330BE00D3307E /* StorageManager.swift */,
 			);
 			path = DataService;
 			sourceTree = "<group>";
@@ -1193,6 +1196,7 @@
 				09E9E81F29EAE95D0084416B /* LoginRouter.swift in Sources */,
 				099D4F7729F722F50002C24A /* NewCardRouter.swift in Sources */,
 				09E9E81729EAE9360084416B /* LoginBuilder.swift in Sources */,
+				09C19EC22A4330BE00D3307E /* StorageManager.swift in Sources */,
 				099089E52A139A3A00EE00DA /* GroceryPresenter.swift in Sources */,
 				09FC393F29FABF5B00B2D97E /* AllTemplatesBuilder.swift in Sources */,
 				09C3CB412A2DF340001731D1 /* BankTableView.swift in Sources */,
