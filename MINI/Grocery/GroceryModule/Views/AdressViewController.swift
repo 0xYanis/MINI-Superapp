@@ -57,7 +57,7 @@ private extension AdressViewController {
         searchBar.backgroundColor = .clear
         searchBar.tintColor = .tintMINI
         searchBar.delegate = self
-        searchBar.barTintColor = .clear
+        searchBar.barTintColor = .backMINI
         searchBar.placeholder = "new_adress_search".localized
         view.addSubview(searchBar)
         searchBar.snp.makeConstraints { make in
