@@ -72,7 +72,6 @@
 		0994B93C2A20D22100F4A783 /* LoginLottieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0994B93B2A20D22100F4A783 /* LoginLottieService.swift */; };
 		0994B9402A20F66D00F4A783 /* DeepLinkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0994B93F2A20F66D00F4A783 /* DeepLinkManager.swift */; };
 		09996A4A2A41CC6B001BD90E /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09996A492A41CC6B001BD90E /* DataService.swift */; };
-		09996A4D2A41CDC1001BD90E /* MINImodel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 09996A4B2A41CDC1001BD90E /* MINImodel.xcdatamodeld */; };
 		099A79C029F16406004B95C7 /* BankCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099A79BF29F16406004B95C7 /* BankCardCell.swift */; };
 		099A79C229F16417004B95C7 /* BankTemplateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099A79C129F16417004B95C7 /* BankTemplateCell.swift */; };
 		099D4F6729F71A2C0002C24A /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099D4F6629F71A2C0002C24A /* CardViewController.swift */; };
@@ -242,7 +241,6 @@
 		0994B93B2A20D22100F4A783 /* LoginLottieService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginLottieService.swift; sourceTree = "<group>"; };
 		0994B93F2A20F66D00F4A783 /* DeepLinkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkManager.swift; sourceTree = "<group>"; };
 		09996A492A41CC6B001BD90E /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
-		09996A4C2A41CDC1001BD90E /* MINImodel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MINImodel.xcdatamodel; sourceTree = "<group>"; };
 		099A79BF29F16406004B95C7 /* BankCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankCardCell.swift; sourceTree = "<group>"; };
 		099A79C129F16417004B95C7 /* BankTemplateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTemplateCell.swift; sourceTree = "<group>"; };
 		099D4F6629F71A2C0002C24A /* CardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
@@ -666,7 +664,6 @@
 			isa = PBXGroup;
 			children = (
 				09996A492A41CC6B001BD90E /* DataService.swift */,
-				09996A4B2A41CDC1001BD90E /* MINImodel.xcdatamodeld */,
 			);
 			path = DataService;
 			sourceTree = "<group>";
@@ -1097,7 +1094,6 @@
 				097E039D29EC448F00CE2A6F /* BankPresenter.swift in Sources */,
 				099A79C029F16406004B95C7 /* BankCardCell.swift in Sources */,
 				09E9E82329EAFC770084416B /* UIView+Extension.swift in Sources */,
-				09996A4D2A41CDC1001BD90E /* MINImodel.xcdatamodeld in Sources */,
 				092F67AD2A3CDFE100E0F2B9 /* ProfileEntity.swift in Sources */,
 				09FB82522A37286800CEF8C1 /* ProductBuilder.swift in Sources */,
 				09F5BFD92A12880000BC3B7C /* BankTemplateService.swift in Sources */,
@@ -1639,19 +1635,6 @@
 			productName = SkeletonView;
 		};
 /* End XCSwiftPackageProductDependency section */
-
-/* Begin XCVersionGroup section */
-		09996A4B2A41CDC1001BD90E /* MINImodel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				09996A4C2A41CDC1001BD90E /* MINImodel.xcdatamodel */,
-			);
-			currentVersion = 09996A4C2A41CDC1001BD90E /* MINImodel.xcdatamodel */;
-			path = MINImodel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 091095F229DB32F000338D22 /* Project object */;
 }
