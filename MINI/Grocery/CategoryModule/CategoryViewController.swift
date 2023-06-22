@@ -21,12 +21,16 @@ final class CategoryViewController: UIViewController {
     //MARK: Private properties
     private var collectionView: UICollectionView!
     private lazy var cartView = CategoryCartView()
-    private lazy var searchController: UISearchController = {
-        let controller = UISearchController(searchResultsController: nil)
-        controller.searchBar.placeholder = "grocery_search".localized
-        controller.searchBar.delegate = self
-        controller.searchBar.tintColor = .systemOrange
-        return controller
+    private lazy var searchButton: UIButton = {
+        let button = UIButton()
+        button.setImage(.init(systemName: "magnifyingglass"), for: .normal)
+        button.tintColor = .tintMINI
+        button.addTarget(
+            self,
+            action: #selector(searchButtonTapped),
+            for: .touchUpInside
+        )
+        return button
     }()
     
     //MARK: Lifecycle
@@ -73,9 +77,10 @@ private extension CategoryViewController {
     
     func createNavigation(with title: String) {
         navigationItem.title = title
-        navigationController?.navigationBar.prefersLargeTitles = false
-        navigationItem.searchController = searchController
-        navigationItem.hidesSearchBarWhenScrolling = false
+        navigationItem.largeTitleDisplayMode = .never
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            customView: searchButton
+        )
     }
     
     func createCartView() {
@@ -143,6 +148,10 @@ private extension CategoryViewController {
 
 
 private extension CategoryViewController {
+    @objc func searchButtonTapped() {
+        presenter?.userDidTapSearchProduct()
+    }
+    
     @objc func priceButtonAction(_ sender: UIButton) {
         if let cell = sender.superview as? CategoryCell,
            let index = collectionView.indexPath(for: cell) {
@@ -175,13 +184,6 @@ private extension CategoryViewController {
                 self.cartView.alpha = alpha
             }
         }
-    }
-}
-
-//MARK: - UISearchBarDelegate
-extension CategoryViewController: UISearchBarDelegate {
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        presenter?.userDidTapSearchProduct()
     }
 }
 
