@@ -10,7 +10,9 @@ import Foundation
 protocol CategoryPresenterProtocol: AnyObject {
     func viewDidLoaded()
     func updateView()
+    
     func userDidTapProduct(index: Int)
+    func userDidTapSearchProduct()
     
     func userAddProductToCart(section: Int, index: Int)
     func updateCart(with totalCost: Double)
@@ -44,6 +46,10 @@ extension CategoryPresenter: CategoryPresenterProtocol {
     
     func userDidTapProduct(index: Int) {
         router.goToDetailProduct(index: index)
+    }
+    
+    func userDidTapSearchProduct() {
+        router.goToSearchView()
     }
     
     func userAddProductToCart(section: Int, index: Int) {

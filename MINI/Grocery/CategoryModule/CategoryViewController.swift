@@ -21,6 +21,13 @@ final class CategoryViewController: UIViewController {
     //MARK: Private properties
     private var collectionView: UICollectionView!
     private lazy var cartView = CategoryCartView()
+    private lazy var searchController: UISearchController = {
+        let controller = UISearchController(searchResultsController: nil)
+        controller.searchBar.placeholder = "grocery_search".localized
+        controller.searchBar.delegate = self
+        controller.searchBar.tintColor = .systemOrange
+        return controller
+    }()
     
     //MARK: Lifecycle
     override func viewDidLoad() {
@@ -67,6 +74,8 @@ private extension CategoryViewController {
     func createNavigation(with title: String) {
         navigationItem.title = title
         navigationController?.navigationBar.prefersLargeTitles = false
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
     }
     
     func createCartView() {
@@ -166,6 +175,13 @@ private extension CategoryViewController {
                 self.cartView.alpha = alpha
             }
         }
+    }
+}
+
+//MARK: - UISearchBarDelegate
+extension CategoryViewController: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        presenter?.userDidTapSearchProduct()
     }
 }
 

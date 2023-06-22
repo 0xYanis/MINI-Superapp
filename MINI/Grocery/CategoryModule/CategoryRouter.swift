@@ -10,6 +10,8 @@ import UIKit
 protocol CategoryRouterProtocol: AnyObject {
     func goToDetailProduct(index: Int)
     func goToCart()
+    
+    func goToSearchView()
 }
 
 final class CategoryRouter: CategoryRouterProtocol {
@@ -31,5 +33,11 @@ final class CategoryRouter: CategoryRouterProtocol {
         cartView.view.backgroundColor = .black
         cartView.navigationItem.title = "Cart"
         view?.navigationController?.pushViewController(cartView, animated: true)
+    }
+    
+    func goToSearchView() {
+        let searchView = UIViewController()
+        searchView.view.backgroundColor = .back2MINI
+        view?.navigationController?.pushViewController(searchView, animated: true)
     }
 }
