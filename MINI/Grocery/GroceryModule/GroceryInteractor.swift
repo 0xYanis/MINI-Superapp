@@ -13,7 +13,6 @@ protocol GroceryInteractorProtocol: AnyObject {
     var adressesData: [String] { get }
     
     func viewDidLoaded()
-    func searchBarTextDidChange(with searchText: String)
     func userStartSearchAdress(with searchText: String)
 }
 
@@ -38,17 +37,6 @@ final class GroceryInteractor: GroceryInteractorProtocol {
     
     func viewDidLoaded() {
         getGroceries()
-    }
-    
-    func searchBarTextDidChange(with searchText: String) {
-        if searchText.isEmpty {
-            filteredData.removeAll()
-        } else {
-//            filteredData = groceryData.filter {
-//                $0.productName.lowercased().contains(searchText.lowercased())
-//            }
-        }
-        presenter?.updateView()
     }
     
     func userStartSearchAdress(with searchText: String) {

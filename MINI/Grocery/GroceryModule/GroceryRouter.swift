@@ -9,6 +9,7 @@ import UIKit
 
 protocol GroceryRouterProtocol: AnyObject {
     func goToDetailCategory(with id: Int)
+    func goToSearchView()
 }
 
 final class GroceryRouter: GroceryRouterProtocol {
@@ -17,5 +18,11 @@ final class GroceryRouter: GroceryRouterProtocol {
     func goToDetailCategory(with id: Int) {
         let categoryView = CategoryBuilder.build()
         view?.navigationController?.pushViewController(categoryView, animated: true)
+    }
+    
+    func goToSearchView() {
+        let searchView = UIViewController()
+        searchView.view.backgroundColor = .back2MINI
+        view?.navigationController?.pushViewController(searchView, animated: true)
     }
 }

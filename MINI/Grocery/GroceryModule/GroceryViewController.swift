@@ -25,9 +25,7 @@ final class GroceryViewController: UIViewController {
     private lazy var refreshControl = UIRefreshControl()
     private lazy var adressVC = AdressViewController()
     private lazy var searchController: UISearchController = {
-        let controller = UISearchController(searchResultsController: UIViewController())
-        controller.searchResultsUpdater = self
-        controller.obscuresBackgroundDuringPresentation = false
+        let controller = UISearchController(searchResultsController: nil)
         controller.searchBar.placeholder = "grocery_search".localized
         controller.searchBar.delegate = self
         controller.searchBar.tintColor = .systemOrange
@@ -212,9 +210,8 @@ extension GroceryViewController: AdressViewDelegate {
 
 //MARK: - UISearchBarDelegate
 extension GroceryViewController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar,
-                   textDidChange searchText: String) {
-        presenter?.searchBarTextDidChange(with: searchText)
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        presenter?.userDidTapSearchProduct()
     }
 }
 
