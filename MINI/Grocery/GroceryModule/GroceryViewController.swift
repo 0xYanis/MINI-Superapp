@@ -30,9 +30,7 @@ final class GroceryViewController: UIViewController {
         return controller
     }()
     private lazy var cartButton: UIButton = {
-        let butt = UIButton()
-        butt.setImage(.init(systemName: "cart.fill"), for: .normal)
-        butt.tintColor = .tintMINI
+        let butt = UIButton(systemImage: "cart.fill", color: .tintMINI, size: 50)
         butt.addTarget(
             self,
             action: #selector(cartButtonAction),

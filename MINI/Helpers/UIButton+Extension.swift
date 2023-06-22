@@ -20,6 +20,7 @@ extension UIButton {
         self.init(frame: .zero)
         let image = UIImage(systemName: systemImage)
         self.setImage(image, for: .normal)
+        self.imageView?.contentMode = .scaleAspectFill
         self.tintColor = color
         if size != 0 {
             let scale = size / (image?.size.width ?? 1)

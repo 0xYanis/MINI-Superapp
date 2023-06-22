@@ -22,9 +22,7 @@ final class CategoryViewController: UIViewController {
     private var collectionView: UICollectionView!
     private lazy var cartView = CategoryCartView()
     private lazy var searchButton: UIButton = {
-        let button = UIButton()
-        button.setImage(.init(systemName: "magnifyingglass"), for: .normal)
-        button.tintColor = .tintMINI
+        let button = UIButton(systemImage: "magnifyingglass", color: .tintMINI, size: 50)
         button.addTarget(
             self,
             action: #selector(searchButtonTapped),
