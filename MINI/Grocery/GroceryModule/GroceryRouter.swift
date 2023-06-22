@@ -17,12 +17,17 @@ final class GroceryRouter: GroceryRouterProtocol {
     
     func goToDetailCategory(with id: Int) {
         let categoryView = CategoryBuilder.build()
-        view?.navigationController?.pushViewController(categoryView, animated: true)
+        view?.navigationController?.pushViewController(
+            categoryView,
+            animated: true
+        )
     }
     
     func goToSearchView() {
-        let searchView = UIViewController()
-        searchView.view.backgroundColor = .back2MINI
-        view?.navigationController?.pushViewController(searchView, animated: true)
+        let searchView = GSearchBuilder.build()
+        view?.navigationController?.pushViewController(
+            searchView,
+            animated: true
+        )
     }
 }

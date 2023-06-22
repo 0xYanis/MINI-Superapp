@@ -36,8 +36,7 @@ final class CategoryRouter: CategoryRouterProtocol {
     }
     
     func goToSearchView() {
-        let searchView = UIViewController()
-        searchView.view.backgroundColor = .back2MINI
+        let searchView = GSearchBuilder.build()
         view?.navigationController?.pushViewController(searchView, animated: true)
     }
 }
