@@ -19,9 +19,8 @@ final class GroceryViewController: UIViewController {
     //MARK: Public properties
     var presenter: GroceryPresenterProtocol?
     
-    
     //MARK: Private properties
-    private var collectionView: UICollectionView!
+    private var collectionView: GroceryCollectionView!
     private lazy var refreshControl = UIRefreshControl()
     private lazy var adressVC = AdressViewController()
     private lazy var searchController: UISearchController = {
@@ -71,9 +70,7 @@ private extension GroceryViewController {
         createNavigation(title: "grocery_navbar".localized)
         createNavigationButtons(adress: "22 Washington st. NY")
         createCollectionView()
-        collectionViewRegistrate()
         createRefreshControl()
-        collectionViewWithSkeleton()
     }
     
     func createNavigation(title: String) {
@@ -112,14 +109,12 @@ private extension GroceryViewController {
     
     
     func createCollectionView() {
-        collectionView = UICollectionView(
+        collectionView = GroceryCollectionView(
             frame: .zero,
             collectionViewLayout: flowLayout
         )
         collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.backgroundColor = .clear
-        collectionView.showsVerticalScrollIndicator = false
+        collectionView.presenter = presenter
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -131,20 +126,11 @@ private extension GroceryViewController {
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 16
         layout.minimumInteritemSpacing = 0
-        layout.sectionInset = UIEdgeInsets(top: 5, left: 16, bottom: 20, right: 16)
+        layout.sectionInset = UIEdgeInsets(
+            top: 5, left: 16,
+            bottom: 20, right: 16
+        )
         return layout
-    }
-    
-    func collectionViewRegistrate() {
-        collectionView.register(
-            GroceryViewCell.self,
-            forCellWithReuseIdentifier: GroceryViewCell.cellId
-        )
-        collectionView.register(
-            GroceryHeaderCell.self,
-            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-            withReuseIdentifier: GroceryHeaderCell.cellId
-        )
     }
     
     func createRefreshControl() {
@@ -172,23 +158,6 @@ private extension GroceryViewController {
         }
         present(adressVC, animated: true)
     }
-    
-    func collectionViewWithSkeleton() {
-        collectionView.isSkeletonable = true
-        collectionView.showAnimatedSkeleton(
-            usingColor: .asbestos,
-            transition: .crossDissolve(0.25)
-        )
-    }
-    
-    func stopSkeleton() {
-        collectionView.stopSkeletonAnimation()
-        view.hideSkeleton(
-            reloadDataAfter: true,
-            transition: .crossDissolve(0.25)
-        )
-    }
-    
 }
 
 //MARK: - Action private methods
@@ -218,88 +187,6 @@ extension GroceryViewController: AdressViewDelegate {
     }
 }
 
-//MARK: - UICollectionViewDataSource
-extension GroceryViewController: SkeletonCollectionViewDataSource {
-    func collectionSkeletonView(
-        _ skeletonView: UICollectionView,
-        cellIdentifierForItemAt indexPath: IndexPath
-    ) -> SkeletonView.ReusableCellIdentifier {
-        GroceryViewCell.cellId
-    }
-    
-    func numberOfSections(in collectionView: UICollectionView
-    ) -> Int {
-        presenter?.getGroceryData().count ?? 3
-    }
-    
-    func collectionView(
-        _ collectionView: UICollectionView,
-        numberOfItemsInSection section: Int
-    ) -> Int {
-        presenter?.getGroceryData()[section].count ?? 4
-    }
-    
-    func collectionView(
-        _ collectionView: UICollectionView,
-        cellForItemAt indexPath: IndexPath
-    ) -> UICollectionViewCell {
-        
-        guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: GroceryViewCell.cellId,
-            for: indexPath) as? GroceryViewCell else {
-            return UICollectionViewCell()
-        }
-        return cell
-    }
-    
-    
-    func collectionView(
-        _ collectionView: UICollectionView,
-        willDisplay cell: UICollectionViewCell,
-        forItemAt indexPath: IndexPath
-    ) {
-        guard let data = presenter?.getGroceryData()[indexPath.section],
-        indexPath.row < data.count else { return }
-                
-        if let cell = cell as? GroceryViewCell {
-            cell.radiusAndShadow(radius: 12, color: .black, opacity: 0.15, shadowSize: 8)
-            cell.configure(with: data[indexPath.row])
-        }
-        
-        self.stopSkeleton()
-    }
-    
-}
-
-//MARK: - Header titles for sections
-extension GroceryViewController {
-    func collectionView(
-        _ collectionView: UICollectionView,
-        viewForSupplementaryElementOfKind kind: String,
-        at indexPath: IndexPath
-    ) -> UICollectionReusableView {
-        
-        guard let view = collectionView.dequeueReusableSupplementaryView(
-            ofKind: kind,
-            withReuseIdentifier: GroceryHeaderCell.cellId,
-            for: indexPath
-        ) as? GroceryHeaderCell else {
-            return UICollectionReusableView()
-        }
-        view.configure(with: "Category")
-        return view
-    }
-    
-    
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        referenceSizeForHeaderInSection section: Int
-    ) -> CGSize {
-        .init(width: view.frame.width, height: 35)
-    }
-}
-
 
 //MARK: - UICollectionViewDelegateFlowLayout
 extension GroceryViewController: UICollectionViewDelegateFlowLayout {
@@ -314,6 +201,13 @@ extension GroceryViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: width, height: height)
     }
     
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        referenceSizeForHeaderInSection section: Int
+    ) -> CGSize {
+        .init(width: view.frame.width, height: 35)
+    }
     
     func collectionView(
         _ collectionView: UICollectionView,
@@ -322,3 +216,4 @@ extension GroceryViewController: UICollectionViewDelegateFlowLayout {
         presenter?.userDidTapDetailCategory(id: indexPath.item)
     }
 }
+
