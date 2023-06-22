@@ -27,11 +27,19 @@ final class GroceryViewController: UIViewController {
     private lazy var searchController: UISearchController = {
         let controller = UISearchController(searchResultsController: nil)
         controller.searchBar.placeholder = "grocery_search".localized
-        controller.searchBar.tintColor = .systemOrange
-        controller.delegate = self
         return controller
     }()
-    
+    private lazy var cartButton: UIButton = {
+        let butt = UIButton()
+        butt.setImage(.init(systemName: "cart.fill"), for: .normal)
+        butt.tintColor = .tintMINI
+        butt.addTarget(
+            self,
+            action: #selector(cartButtonAction),
+            for: .touchUpInside
+        )
+        return butt
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,6 +81,7 @@ private extension GroceryViewController {
     func createNavigation(title: String) {
         navigationItem.title = title
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: cartButton)
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
     }
@@ -194,6 +203,10 @@ private extension GroceryViewController {
     func showAdressButtonSheet() {
         createAdressBottomSheet(multiply: 0.3)
     }
+    
+    @objc func cartButtonAction() {
+        
+    }
 }
 
 //MARK: - AdressViewDelegate
@@ -205,15 +218,6 @@ extension GroceryViewController: AdressViewDelegate {
     func cancelButtonTapped() {
         dismiss(animated: true)
     }
-}
-
-
-//MARK: - UISearchBarDelegate
-extension GroceryViewController: UISearchControllerDelegate {
-    func willPresentSearchController(_ searchController: UISearchController) {
-        presenter?.userDidTapSearchProduct()
-    }
-    //presenter?.userDidTapSearchProduct()
 }
 
 //MARK: - UICollectionViewDataSource
