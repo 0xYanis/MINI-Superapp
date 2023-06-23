@@ -5,9 +5,9 @@
 //  Created by Yan Rybkin on 15.05.2023.
 //
 
-import RealmSwift
+import Foundation
 
-final class BankTemplateObject: Object, Codable {
+final class BankTemplateObject: Codable {
     let templateList: [BankTemplateEntity]
 }
 

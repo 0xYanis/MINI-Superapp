@@ -104,7 +104,8 @@ private extension BankInteractor {
             DispatchQueue.global().async {
                 switch result {
                 case .success(let cards):
-                    self.cardsData = cards ?? []
+                    guard let cards else { return }
+                    self.cardsData = cards
                     self.presenter?.updateView()
                 case .failure(let error):
                     self.presenter?.loadingDataGetFailed(
@@ -121,7 +122,8 @@ private extension BankInteractor {
             DispatchQueue.global().async {
                 switch result {
                 case .success(let templates):
-                    self.templatesData = templates ?? []
+                    guard let templates else { return }
+                    self.templatesData = templates
                     self.presenter?.updateView()
                 case .failure(let error):
                     self.presenter?.loadingDataGetFailed(
@@ -138,7 +140,8 @@ private extension BankInteractor {
             DispatchQueue.global().async {
                 switch result {
                 case .success(let transactions):
-                    self.transactionsData = transactions ?? []
+                    guard let transactions else { return }
+                    self.transactionsData = transactions
                     self.presenter?.updateView()
                 case .failure(let error):
                     self.presenter?.loadingDataGetFailed(
