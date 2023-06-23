@@ -5,9 +5,9 @@
 //  Created by Yan Rybkin on 15.05.2023.
 //
 
-import Foundation
+import RealmSwift
 
-final class BankTransactionObject: Codable {
+final class BankTransactionObject: Object, Codable {
     let transactionList: [BankTransactionEntity]
 }
 

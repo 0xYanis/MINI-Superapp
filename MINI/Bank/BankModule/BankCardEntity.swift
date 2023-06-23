@@ -5,9 +5,9 @@
 //  Created by Yan Rybkin on 15.05.2023.
 //
 
-import Foundation
+import RealmSwift
 
-final class BankCardObject: Codable {
+final class BankCardObject: Object, Codable {
     let cardList: [BankCardEntity]
 }
 
