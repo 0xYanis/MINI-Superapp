@@ -5,13 +5,13 @@
 //  Created by Yan Rybkin on 15.05.2023.
 //
 
-import Foundation
+import RealmSwift
 
-final class BankTemplateObject: Codable {
+final class BankTemplateObject: Object, Codable {
     let templateList: [BankTemplateEntity]
 }
 
-struct BankTemplateEntity: Codable, Equatable {
+final class BankTemplateEntity: Object, Codable {
     let id: Int
     let image: String
     let label: String
