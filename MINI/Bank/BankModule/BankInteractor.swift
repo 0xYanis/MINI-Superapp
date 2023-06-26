@@ -38,12 +38,15 @@ final class BankInteractor: BankInteractorProtocol {
     var transactionsData: [BankTransactionEntity] = []
     var filteredData: [BankTransactionEntity]     = []
     
+    private var realmService: RealmServiceProtocol?
     
     init(
+        realmService: RealmServiceProtocol = RealmService(),
         cardService: BankCardServiceProtocol,
         templateService: BankTemplateServiceProtocol,
         transactionService: BankTransactionServiceProtocol
     ) {
+        self.realmService = realmService
         self.cardService = cardService
         self.templateService = templateService
         self.transactionService = transactionService
@@ -101,17 +104,24 @@ private extension BankInteractor {
     func getCards() {
         cardService.getCardsData { [weak self] result in
             guard let self = self else { return }
+            
             DispatchQueue.global().async {
                 switch result {
                 case .success(let cards):
                     guard let cards else { return }
+                    
                     self.cardsData = cards
                     self.presenter?.updateView()
+                    self.realmService?.checkAndSaveToStorage(
+                        entity: BankCardEntity.self,
+                        array: cards
+                    )
                 case .failure(let error):
                     self.presenter?.loadingDataGetFailed(
                         with: error.localizedDescription
                     )
                 }
+                
             }
         }
     }
@@ -119,17 +129,24 @@ private extension BankInteractor {
     func getTemplates() {
         templateService.getTemplatesData { [weak self] result in
             guard let self = self else { return }
+            
             DispatchQueue.global().async {
                 switch result {
                 case .success(let templates):
                     guard let templates else { return }
+                    
                     self.templatesData = templates
                     self.presenter?.updateView()
+                    self.realmService?.checkAndSaveToStorage(
+                        entity: BankTemplateEntity.self,
+                        array: templates
+                    )
                 case .failure(let error):
                     self.presenter?.loadingDataGetFailed(
                         with: error.localizedDescription
                     )
                 }
+                
             }
         }
     }
@@ -137,18 +154,27 @@ private extension BankInteractor {
     func getTransactions() {
         transactionService.getTransactionsData { [weak self] result in
             guard let self = self else { return }
+            
             DispatchQueue.global().async {
                 switch result {
                 case .success(let transactions):
                     guard let transactions else { return }
+                    
                     self.transactionsData = transactions
                     self.presenter?.updateView()
+                    self.realmService?.checkAndSaveToStorage(
+                        entity: BankTransactionEntity.self,
+                        array: transactions
+                    )
                 case .failure(let error):
                     self.presenter?.loadingDataGetFailed(
                         with: error.localizedDescription
                     )
                 }
             }
+            
         }
     }
+    
+    
 }
