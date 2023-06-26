@@ -7,13 +7,15 @@
 
 import RealmSwift
 
+@objcMembers
 final class BankTemplateObject: Object, Codable {
-    let templateList: [BankTemplateEntity]
+    dynamic var templateList: [BankTemplateEntity]
 }
 
+@objcMembers
 final class BankTemplateEntity: Object, Codable {
-    let id: Int
-    let image: String
-    let label: String
+    dynamic var id: Int = 0
+    dynamic var image: String = ""
+    dynamic var label: String = ""
 }
 
