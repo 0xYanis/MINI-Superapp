@@ -32,11 +32,6 @@ final class BankViewController: UIViewController {
     private lazy var historyTableVC = BankHistoryViewController()
     private lazy var refreshControl = UIRefreshControl()
     
-    private lazy var height: CGFloat    = view.frame.height
-    private lazy var minHeight: CGFloat = 0.34 * view.frame.height + view.safeAreaInsets.bottom
-    private lazy var maxHeight: CGFloat = view.frame.height - view.safeAreaInsets.top
-    
-    
     //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -194,7 +189,7 @@ extension BankViewController: UITableViewDelegate {
         case 2:
             return (height/6.3)
         default:
-            return UITableView.automaticDimension
+            return 0
         }
     }
 }
