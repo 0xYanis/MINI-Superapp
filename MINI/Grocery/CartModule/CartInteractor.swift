@@ -8,13 +8,18 @@
 import Foundation
 
 protocol CartInteractorProtocol: AnyObject {
-    
+    func viewDidLoaded()
 }
 
 final class CartInteractor: CartInteractorProtocol {
     weak var presenter: CartPresenterProtocol?
     
-    
+    func viewDidLoaded() {
+        // logic
+        
+        let hidden = false
+        presenter?.hideCart(hidden)
+    }
 }
 
 private extension CartInteractor {
