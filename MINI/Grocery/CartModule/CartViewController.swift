@@ -15,8 +15,8 @@ protocol CartViewProtocol: AnyObject {
 final class CartViewController: UIViewController {
     var presenter: CartPresenterProtocol?
     
-    private lazy var emptyView = UIView()
-    private lazy var cartView = UIView()
+    private lazy var emptyView = CartEmptyView()
+    private lazy var cartView = CartView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,10 +46,20 @@ private extension CartViewController {
     func initialize() {
         view.backgroundColor = .back2MINI
         createNavigation(with: "Корзина")
+        
+        addView(emptyView)
+        addView(cartView)
     }
     
     func createNavigation(with title: String) {
         navigationItem.title = title
         navigationItem.largeTitleDisplayMode = .never
+    }
+    
+    func addView(_ subview: UIView) {
+        view.addSubview(subview)
+        subview.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
 }
