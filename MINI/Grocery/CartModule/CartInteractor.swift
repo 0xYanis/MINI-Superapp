@@ -17,8 +17,8 @@ final class CartInteractor: CartInteractorProtocol {
     func viewDidLoaded() {
         // logic
         
-        let hidden = false
-        presenter?.hideCart(hidden)
+        let isEmpty = true
+        presenter?.hideCart(cart: isEmpty)
     }
 }
 

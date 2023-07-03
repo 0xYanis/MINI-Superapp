@@ -9,7 +9,7 @@ import Foundation
 
 protocol CartPresenterProtocol: AnyObject {
     func viewDidLoaded()
-    func hideCart(_ isHidden: Bool)
+    func hideCart(cart isHidden: Bool)
 }
 
 final class CartPresenter {
@@ -31,7 +31,7 @@ extension CartPresenter: CartPresenterProtocol {
         interactor.viewDidLoaded()
     }
     
-    func hideCart(_ isHidden: Bool) {
+    func hideCart(cart isHidden: Bool) {
         view?.cartIsEmpty = isHidden
     }
 }

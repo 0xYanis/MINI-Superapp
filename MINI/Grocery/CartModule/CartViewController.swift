@@ -45,15 +45,8 @@ extension CartViewController: CartViewProtocol {
 private extension CartViewController {
     func initialize() {
         view.backgroundColor = .back2MINI
-        createNavigation(with: "Корзина")
-        
         addView(emptyView)
         addView(cartView)
-    }
-    
-    func createNavigation(with title: String) {
-        navigationItem.title = title
-        navigationItem.largeTitleDisplayMode = .never
     }
     
     func addView(_ subview: UIView) {
