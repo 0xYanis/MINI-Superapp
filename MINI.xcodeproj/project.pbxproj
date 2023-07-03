@@ -141,6 +141,7 @@
 		09F2AE7C2A52FD5F00E02404 /* CartEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F2AE7B2A52FD5F00E02404 /* CartEntity.swift */; };
 		09F2AE7F2A532F5000E02404 /* CartEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F2AE7E2A532F5000E02404 /* CartEmptyView.swift */; };
 		09F2AE812A532F5900E02404 /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F2AE802A532F5900E02404 /* CartView.swift */; };
+		09F2AE832A5338E000E02404 /* emptyCart.json in Resources */ = {isa = PBXBuildFile; fileRef = 09F2AE822A5338E000E02404 /* emptyCart.json */; };
 		09F5BFD72A1285F500BC3B7C /* BankCardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F5BFD62A1285F500BC3B7C /* BankCardService.swift */; };
 		09F5BFD92A12880000BC3B7C /* BankTemplateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F5BFD82A12880000BC3B7C /* BankTemplateService.swift */; };
 		09F5BFDB2A1288A300BC3B7C /* BankTransactionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F5BFDA2A1288A300BC3B7C /* BankTransactionService.swift */; };
@@ -324,6 +325,7 @@
 		09F2AE7B2A52FD5F00E02404 /* CartEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartEntity.swift; sourceTree = "<group>"; };
 		09F2AE7E2A532F5000E02404 /* CartEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartEmptyView.swift; sourceTree = "<group>"; };
 		09F2AE802A532F5900E02404 /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
+		09F2AE822A5338E000E02404 /* emptyCart.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = emptyCart.json; path = ../../../../../../../Downloads/emptyCart.json; sourceTree = "<group>"; };
 		09F5BFD62A1285F500BC3B7C /* BankCardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankCardService.swift; sourceTree = "<group>"; };
 		09F5BFD82A12880000BC3B7C /* BankTemplateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTemplateService.swift; sourceTree = "<group>"; };
 		09F5BFDA2A1288A300BC3B7C /* BankTransactionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTransactionService.swift; sourceTree = "<group>"; };
@@ -860,6 +862,7 @@
 			children = (
 				09F2AE7E2A532F5000E02404 /* CartEmptyView.swift */,
 				09F2AE802A532F5900E02404 /* CartView.swift */,
+				09F2AE822A5338E000E02404 /* emptyCart.json */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -1112,6 +1115,7 @@
 				09F92CF52A23476300440ACC /* Localizable.strings in Resources */,
 				09BBA70F2A0E76950020E3C9 /* cardsLogo.xcassets in Resources */,
 				0910960729DB32F400338D22 /* Assets.xcassets in Resources */,
+				09F2AE832A5338E000E02404 /* emptyCart.json in Resources */,
 				095B1C6D2A39BD1A00EF6828 /* LaunchScreen.storyboard in Resources */,
 				09E24C132A1227C200A91F74 /* cardsColor.xcassets in Resources */,
 				09ABE0082A143447009DB57B /* DefaultFood.xcassets in Resources */,

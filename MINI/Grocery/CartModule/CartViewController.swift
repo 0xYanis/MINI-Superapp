@@ -44,9 +44,15 @@ extension CartViewController: CartViewProtocol {
 
 private extension CartViewController {
     func initialize() {
+        navigationItem.setHidesBackButton(
+            true,
+            animated: true
+        )
         view.backgroundColor = .back2MINI
         addView(emptyView)
         addView(cartView)
+        
+        emptyView.delegate = self
     }
     
     func addView(_ subview: UIView) {
@@ -54,5 +60,11 @@ private extension CartViewController {
         subview.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+    }
+}
+
+extension CartViewController: CartViewDelegate {
+    func popCartView() {
+        navigationController?.popViewController(animated: false)
     }
 }
