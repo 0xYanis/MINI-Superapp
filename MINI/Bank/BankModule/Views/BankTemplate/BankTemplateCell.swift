@@ -47,7 +47,7 @@ private extension BankTemplateCell {
         createTextLabel()
     }
     func createTemplateView() {
-        templateView.backgroundColor = .frontMINI
+        templateView.backgroundColor = .backMINI
         templateView.roundCorners(radius: 10)
         addSubview(templateView)
         templateView.snp.makeConstraints { make in

@@ -98,6 +98,8 @@ extension BankTemplateSet: SkeletonCollectionViewDataSource {
             for: indexPath) as? BankTemplateCell else {
             return UICollectionViewCell()
         }
+        cell.radiusAndShadow(radius: 10, shadowSize: 10)
+        
         return cell
     }
     
