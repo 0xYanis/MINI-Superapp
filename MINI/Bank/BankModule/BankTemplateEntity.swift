@@ -7,9 +7,8 @@
 
 import RealmSwift
 
-@objcMembers
-final class BankTemplateObject: Object, Codable {
-    dynamic var templateList: [BankTemplateEntity]
+final class BankTemplateObject: Codable {
+    var templateList: [BankTemplateEntity]
 }
 
 @objcMembers

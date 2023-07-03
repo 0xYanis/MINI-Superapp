@@ -7,9 +7,8 @@
 
 import RealmSwift
 
-@objcMembers
-final class BankCardObject: Object, Codable {
-    dynamic var cardList: [BankCardEntity]
+final class BankCardObject: Codable {
+    var cardList: [BankCardEntity]
 }
 
 @objcMembers

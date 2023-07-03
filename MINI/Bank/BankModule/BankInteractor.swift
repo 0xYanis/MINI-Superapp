@@ -112,10 +112,6 @@ private extension BankInteractor {
                     
                     self.cardsData = cards
                     self.presenter?.updateView()
-                    self.realmService?.checkAndSaveToStorage(
-                        entity: BankCardEntity.self,
-                        array: cards
-                    )
                 case .failure(let error):
                     self.presenter?.loadingDataGetFailed(
                         with: error.localizedDescription
@@ -137,10 +133,6 @@ private extension BankInteractor {
                     
                     self.templatesData = templates
                     self.presenter?.updateView()
-                    self.realmService?.checkAndSaveToStorage(
-                        entity: BankTemplateEntity.self,
-                        array: templates
-                    )
                 case .failure(let error):
                     self.presenter?.loadingDataGetFailed(
                         with: error.localizedDescription
@@ -162,10 +154,6 @@ private extension BankInteractor {
                     
                     self.transactionsData = transactions
                     self.presenter?.updateView()
-                    self.realmService?.checkAndSaveToStorage(
-                        entity: BankTransactionEntity.self,
-                        array: transactions
-                    )
                 case .failure(let error):
                     self.presenter?.loadingDataGetFailed(
                         with: error.localizedDescription
