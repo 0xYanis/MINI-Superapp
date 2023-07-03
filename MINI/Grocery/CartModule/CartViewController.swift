@@ -23,6 +23,11 @@ final class CartViewController: UIViewController {
         initialize()
         presenter?.viewDidLoaded()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.hideTabBar()
+    }
 }
 
 extension CartViewController: CartViewProtocol {
@@ -40,5 +45,11 @@ extension CartViewController: CartViewProtocol {
 private extension CartViewController {
     func initialize() {
         view.backgroundColor = .back2MINI
+        createNavigation(with: "Корзина")
+    }
+    
+    func createNavigation(with title: String) {
+        navigationItem.title = title
+        navigationItem.largeTitleDisplayMode = .never
     }
 }

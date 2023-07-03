@@ -172,7 +172,7 @@ private extension GroceryViewController {
     }
     
     @objc func cartButtonAction() {
-        
+        presenter?.userDidTapCart()
     }
 }
 

@@ -16,6 +16,7 @@ protocol GroceryPresenterProtocol: AnyObject {
     func getSearchAdressesResults() -> [String]
     func userDidTapDetailCategory(id: Int)
     
+    func userDidTapCart()
     func userDidTapSearchProduct()
     
     func getGroceryData() -> [[GroceryEntity]]
@@ -61,6 +62,10 @@ extension GroceryPresenter: GroceryPresenterProtocol {
     
     func userDidTapDetailCategory(id: Int) {
         router.goToDetailCategory(with: id)
+    }
+    
+    func userDidTapCart() {
+        router.goToCartView()
     }
     
     func userDidTapSearchProduct() {
