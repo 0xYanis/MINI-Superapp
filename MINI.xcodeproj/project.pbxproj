@@ -546,7 +546,7 @@
 		097A80632A337DF500B5CF3A /* CategoryModule */ = {
 			isa = PBXGroup;
 			children = (
-				09FB82432A3714A700CEF8C1 /* Views */,
+				09FB82432A3714A700CEF8C1 /* Subviews */,
 				097A80642A337E0400B5CF3A /* CategoryViewController.swift */,
 				097A80662A337E1600B5CF3A /* CategoryPresenter.swift */,
 				097A80682A337E2000B5CF3A /* CategoryInteractor.swift */,
@@ -572,7 +572,7 @@
 		097E039929EC444400CE2A6F /* BankModule */ = {
 			isa = PBXGroup;
 			children = (
-				09D509D129EF3571009CC219 /* Views */,
+				09D509D129EF3571009CC219 /* Subviews */,
 				097E039A29EC447000CE2A6F /* BankViewController.swift */,
 				097E039C29EC448F00CE2A6F /* BankPresenter.swift */,
 				097E039E29EC449900CE2A6F /* BankInteractor.swift */,
@@ -691,7 +691,7 @@
 		099089EC2A139A6000EE00DA /* GroceryModule */ = {
 			isa = PBXGroup;
 			children = (
-				099C6D572A13E2F80039AC41 /* Views */,
+				099C6D572A13E2F80039AC41 /* Subviews */,
 				099089E22A139A2D00EE00DA /* GroceryViewController.swift */,
 				099089E42A139A3A00EE00DA /* GroceryPresenter.swift */,
 				099089E62A139A4600EE00DA /* GroceryInteractor.swift */,
@@ -732,23 +732,23 @@
 			path = BankSheet;
 			sourceTree = "<group>";
 		};
-		099C6D572A13E2F80039AC41 /* Views */ = {
+		099C6D572A13E2F80039AC41 /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
 				099089EF2A13C2C400EE00DA /* AdressViewController.swift */,
 				093111CD2A162C1B008A6329 /* GroceryCells */,
 				09044FB42A448A3400432A3C /* GroceryCollectionView.swift */,
 			);
-			path = Views;
+			path = Subviews;
 			sourceTree = "<group>";
 		};
-		09A7495E29F9926F0005A649 /* DetailCard */ = {
+		09A7495E29F9926F0005A649 /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
 				09A7495F29F992940005A649 /* CardDetailView.swift */,
 				09565EE32A2F69E6007A2DAC /* CardBackDetailView.swift */,
 			);
-			path = DetailCard;
+			path = Subviews;
 			sourceTree = "<group>";
 		};
 		09BFC9392A1B4C4F00C8505B /* Profile */ = {
@@ -773,7 +773,7 @@
 			path = ProfileModule;
 			sourceTree = "<group>";
 		};
-		09D509D129EF3571009CC219 /* Views */ = {
+		09D509D129EF3571009CC219 /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
 				09C3CB402A2DF33F001731D1 /* BankTableView.swift */,
@@ -781,16 +781,16 @@
 				099A79C429F16427004B95C7 /* BankTemplate */,
 				099A79C529F16441004B95C7 /* BankSheet */,
 			);
-			path = Views;
+			path = Subviews;
 			sourceTree = "<group>";
 		};
-		09D509D229EF35F7009CC219 /* Views */ = {
+		09D509D229EF35F7009CC219 /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
 				092E739329EBEB1E00165D37 /* LoginAnimationView.swift */,
 				092E739529EBEB3000165D37 /* LoginView.swift */,
 			);
-			path = Views;
+			path = Subviews;
 			sourceTree = "<group>";
 		};
 		09DF836D2A3887CD00ECAEB6 /* LaunchScreen */ = {
@@ -805,7 +805,7 @@
 		09E9E81529EAE8F50084416B /* LoginModule */ = {
 			isa = PBXGroup;
 			children = (
-				09D509D229EF35F7009CC219 /* Views */,
+				09D509D229EF35F7009CC219 /* Subviews */,
 				09E9E81829EAE9410084416B /* LoginViewController.swift */,
 				09E9E81A29EAE94B0084416B /* LoginPresenter.swift */,
 				09E9E81C29EAE9540084416B /* LoginInteractor.swift */,
@@ -840,6 +840,7 @@
 		09F2AE702A52FD0D00E02404 /* CartModule */ = {
 			isa = PBXGroup;
 			children = (
+				09F2AE7D2A532EDF00E02404 /* Subviews */,
 				09F2AE712A52FD2100E02404 /* CartViewController.swift */,
 				09F2AE732A52FD2E00E02404 /* CartPresenter.swift */,
 				09F2AE752A52FD3400E02404 /* CartRouter.swift */,
@@ -848,6 +849,13 @@
 				09F2AE7B2A52FD5F00E02404 /* CartEntity.swift */,
 			);
 			path = CartModule;
+			sourceTree = "<group>";
+		};
+		09F2AE7D2A532EDF00E02404 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Subviews;
 			sourceTree = "<group>";
 		};
 		09F86C5829F6FD1200307432 /* Bank */ = {
@@ -876,7 +884,7 @@
 		09F86C5A29F6FD4200307432 /* CardModule */ = {
 			isa = PBXGroup;
 			children = (
-				09A7495E29F9926F0005A649 /* DetailCard */,
+				09A7495E29F9926F0005A649 /* Subviews */,
 				099D4F6629F71A2C0002C24A /* CardViewController.swift */,
 				099D4F6829F71A380002C24A /* CardPresenter.swift */,
 				099D4F6A29F71A420002C24A /* CardInteractor.swift */,
@@ -927,7 +935,7 @@
 		09F86C5F29F6FDEE00307432 /* AllTemplatesModule */ = {
 			isa = PBXGroup;
 			children = (
-				09FC394429FAD27200B2D97E /* AllTemplatesView */,
+				09FC394429FAD27200B2D97E /* Subviews */,
 				09FC393629FABF2D00B2D97E /* AllTemplatesViewController.swift */,
 				09FC393829FABF4200B2D97E /* AllTemplatesPresenter.swift */,
 				09FC393A29FABF4A00B2D97E /* AllTemplatesInteractor.swift */,
@@ -938,14 +946,14 @@
 			path = AllTemplatesModule;
 			sourceTree = "<group>";
 		};
-		09FB82432A3714A700CEF8C1 /* Views */ = {
+		09FB82432A3714A700CEF8C1 /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
 				09FB82442A3714B800CEF8C1 /* CategoryCell.swift */,
 				09FB82462A3714C300CEF8C1 /* CategoryHeader.swift */,
 				09FB825A2A3766A600CEF8C1 /* CategoryCartView.swift */,
 			);
-			path = Views;
+			path = Subviews;
 			sourceTree = "<group>";
 		};
 		09FB82482A3724DB00CEF8C1 /* ProductModule */ = {
@@ -961,12 +969,12 @@
 			path = ProductModule;
 			sourceTree = "<group>";
 		};
-		09FC394429FAD27200B2D97E /* AllTemplatesView */ = {
+		09FC394429FAD27200B2D97E /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
 				09FC394229FAC53200B2D97E /* AllTemplatesViewCell.swift */,
 			);
-			path = AllTemplatesView;
+			path = Subviews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
