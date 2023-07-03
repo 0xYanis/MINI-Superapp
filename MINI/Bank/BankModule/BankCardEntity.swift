@@ -7,7 +7,7 @@
 
 import RealmSwift
 
-final class BankCardObject: Codable {
+struct BankCardObject: Codable {
     var cardList: [BankCardEntity]
 }
 

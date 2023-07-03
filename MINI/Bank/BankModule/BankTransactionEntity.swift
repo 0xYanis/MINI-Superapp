@@ -7,7 +7,7 @@
 
 import RealmSwift
 
-final class BankTransactionObject: Codable {
+struct BankTransactionObject: Codable {
     var transactionList: [BankTransactionEntity]
 }
 

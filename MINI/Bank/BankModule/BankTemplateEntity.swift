@@ -7,7 +7,7 @@
 
 import RealmSwift
 
-final class BankTemplateObject: Codable {
+struct BankTemplateObject: Codable {
     var templateList: [BankTemplateEntity]
 }
 
