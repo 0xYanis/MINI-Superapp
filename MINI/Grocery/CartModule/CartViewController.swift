@@ -15,6 +15,12 @@ protocol CartViewProtocol: AnyObject {
 final class CartViewController: UIViewController {
     var presenter: CartPresenterProtocol?
     
+    private lazy var backButton = UIButton(
+        systemImage: "xmark.circle.fill",
+        color: .tintMINI,
+        size: 35
+    )
+    
     private lazy var emptyView = CartEmptyView()
     private lazy var cartView = CartView()
     
@@ -52,7 +58,10 @@ private extension CartViewController {
         addView(emptyView)
         addView(cartView)
         
+        cartView.delegate = self
         emptyView.delegate = self
+        
+        createBackButton()
     }
     
     func addView(_ subview: UIView) {
@@ -60,6 +69,23 @@ private extension CartViewController {
         subview.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+    }
+    
+    func createBackButton() {
+        view.insertSubview(backButton, at: 1)
+        backButton.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(additionalSafeAreaInsets.top)
+            make.right.equalToSuperview().inset(25)
+        }
+        backButton.addTarget(
+            self,
+            action: #selector(backButtonAction),
+            for: .touchUpInside
+        )
+    }
+    
+    @objc func backButtonAction() {
+        navigationController?.popViewController(animated: false)
     }
 }
 
