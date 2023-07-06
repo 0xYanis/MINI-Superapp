@@ -43,7 +43,7 @@ extension CardPresenter: CardPresenterProtocol {
     }
     
     func userWantToEditCard() {
-        
+        router.userWantToEditCard()
     }
     
     func userWantToDeleteCard() {

@@ -9,6 +9,7 @@ import UIKit
 
 protocol CardRouterProtocol: AnyObject {
     func goBackToBankView()
+    func userWantToEditCard()
 }
 
 final class CardRouter: CardRouterProtocol {
@@ -17,5 +18,10 @@ final class CardRouter: CardRouterProtocol {
     
     func goBackToBankView() {
         view?.navigationController?.popViewController(animated: true)
+    }
+    
+    func userWantToEditCard() {
+        let editView = NewCardBuilder.build()
+        view?.navigationController?.pushViewController(editView, animated: true)
     }
 }

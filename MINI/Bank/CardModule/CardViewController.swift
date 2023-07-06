@@ -130,7 +130,7 @@ private extension CardViewController {
     }
     
     @objc func rightButtonAction() {
-        tableView.setEditing(!tableView.isEditing, animated: true)
+        presenter?.userWantToEditCard()
     }
     
     @objc func leftButtonAction() {
@@ -204,7 +204,7 @@ private extension CardViewController {
 // MARK: - UITableViewDataSource
 extension CardViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 9
+        return 8
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -232,8 +232,6 @@ extension CardViewController: UITableViewDataSource {
             }
         case 7:
             cell.textLabel?.text = "Expiration Date: \(card.expirationDate)"
-        case 8:
-            cell.textLabel?.text = "CVV: \(card.cvv)"
         default:
             break
         }
