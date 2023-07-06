@@ -134,6 +134,6 @@ extension BankTemplateSet: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        presenter?.userDidTapTemplate(id: indexPath.item)
+        presenter?.userWantToDetails(of: .template, with: indexPath.item)
     }
 }

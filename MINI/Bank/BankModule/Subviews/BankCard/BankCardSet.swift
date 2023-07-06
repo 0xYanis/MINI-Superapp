@@ -151,7 +151,7 @@ extension BankCardSet: SkeletonCollectionViewDataSource {
             image: UIImage(systemName: "square.and.pencil"),
             attributes: []
         ) { [weak self] _ in
-            self?.presenter?.userDidTapCard(index: indexPath.item)
+            self?.presenter?.userWantToDetails(of: .card, with: indexPath.item)
         }
         
         return editAction
@@ -197,6 +197,6 @@ extension BankCardSet: UICollectionViewDelegateFlowLayout {
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath
     ) {
-        presenter?.userDidTapCard(index: indexPath.item)
+        presenter?.userWantToDetails(of: .card, with: indexPath.item)
     }
 }

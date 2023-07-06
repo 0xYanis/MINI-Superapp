@@ -13,12 +13,7 @@ protocol BankPresenterProtocol: AnyObject {
     func setNewCard()
     func setNewTransaction()
     
-    func userDidTapNewCard()
-    func userDidTapNewTemplate()
-    func userDidTapCard(index: Int)
-    func userDidTapSeeAll()
-    func userDidTapTemplate(id: Int)
-    func userDidTapTransaction(id: Int)
+    func userWantToDetails(of type: BankViewDetails, with index: Int)
     
     func getCardData() -> [BankCardEntity]
     func getTemplateData() -> [BankTemplateEntity]
@@ -70,31 +65,24 @@ extension BankPresenter: BankPresenterProtocol {
 
 // MARK: - Routing
 extension BankPresenter {
-    func userDidTapNewCard() {
-        router.goToAddNewCard()
-    }
-    
-    func userDidTapNewTemplate() {
-        router.goToAddNewTemplate()
-    }
-    
-    func userDidTapCard(index: Int) {
-        let data = interactor.userDidTapCard(index: index)
-        router.goToDetailCard(with: data)
-    }
-    
-    func userDidTapSeeAll() {
-        let data = interactor.userDidTapSeeAll()
-        router.goToAllTemplates(with: data)
-    }
-    
-    func userDidTapTemplate(id: Int) {
-        router.goToDetailTemplate(id: id)
-    }
-    
-    func userDidTapTransaction(id: Int) {
-        let data = interactor.userDidTapTransaction(index: id)
-        router.goToDetailTransaction(with: data)
+    func userWantToDetails(of type: BankViewDetails, with index: Int = 0) {
+        switch type {
+        case .card:
+            let data = interactor.userDidTapCard(index: index)
+            router.goToDetailCard(with: data)
+        case .template:
+            router.goToDetailTemplate(id: index)
+        case .transaction:
+            let data = interactor.userDidTapTransaction(index: index)
+            router.goToDetailTransaction(with: data)
+        case .allTransactions:
+            let data = interactor.userDidTapSeeAll()
+            router.goToAllTemplates(with: data)
+        case .newCard:
+            router.goToAddNewCard()
+        case .newTemplate:
+            router.goToAddNewTemplate()
+        }
     }
 }
 

@@ -185,6 +185,7 @@ extension BankHistoryViewController: UITableViewDelegate {
         _ tableView: UITableView,
         didSelectRowAt indexPath: IndexPath
     ) {
-        presenter?.userDidTapTransaction(id: indexPath.row)
+        let index = indexPath.row
+        presenter?.userWantToDetails(of: .transaction, with: index)
     }
 }

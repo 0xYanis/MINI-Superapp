@@ -106,13 +106,13 @@ private extension BankViewController {
         let addCard = UIAction(
             title: "add_new_card".localized,
             image: cardImage) { [weak self] _ in
-                self?.presenter?.userDidTapNewCard()
+                self?.presenter?.userWantToDetails(of: .newCard, with: 0)
             }
         let templateImage = UIImage(systemName: "plus.rectangle.fill")
         let addTemplate = UIAction(
             title: "add_new_template".localized,
             image: templateImage) { [weak self] _ in
-                self?.presenter?.userDidTapNewTemplate()
+                self?.presenter?.userWantToDetails(of: .newTemplate, with: 0)
             }
         return UIMenu(children: [addCard, addTemplate])
     }
