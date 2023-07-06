@@ -9,6 +9,7 @@ import UIKit
 
 protocol ProfileRouterProtocol: AnyObject {
     func userWantToLogout()
+    func userWantToDetailView(of type: ProfileDetails)
 }
 
 final class ProfileRouter: ProfileRouterProtocol {
@@ -33,4 +34,34 @@ final class ProfileRouter: ProfileRouterProtocol {
         }
         
     }
+    
+    func userWantToDetailView(of type: ProfileDetails) {
+        let defView = UIViewController()
+        defView.view.backgroundColor = .back2MINI
+        
+        switch type {
+        case .favorites:
+            goToDetailView(to: defView)
+        case .tickets:
+            goToDetailView(to: defView)
+        case .orders:
+            goToDetailView(to: defView)
+        case .transactions:
+            goToDetailView(to: defView)
+            
+        case .password:
+            goToDetailView(to: defView)
+        case .support:
+            goToDetailView(to: defView)
+        default: return
+        }
+    }
+    
+    private func goToDetailView(to module: UIViewController) {
+        view?.navigationController?.pushViewController(
+            module,
+            animated: true
+        )
+    }
+    
 }

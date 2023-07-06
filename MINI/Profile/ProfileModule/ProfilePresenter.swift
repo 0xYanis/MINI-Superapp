@@ -12,6 +12,7 @@ protocol ProfilePresenterProtocol: AnyObject {
     func getProfileData() -> [ProfileSection]
     
     func userSetNewProfileImage()
+    func userWantToDetailView(of type: ProfileDetails)
     
     func userWantToLogout()
 }
@@ -43,6 +44,10 @@ extension ProfilePresenter: ProfilePresenterProtocol {
     
     func userSetNewProfileImage() {
         
+    }
+    
+    func userWantToDetailView(of type: ProfileDetails) {
+        router.userWantToDetailView(of: type)
     }
     
     func userWantToLogout() {

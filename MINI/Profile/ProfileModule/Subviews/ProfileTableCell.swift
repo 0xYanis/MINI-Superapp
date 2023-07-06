@@ -28,7 +28,7 @@ final class ProfileTableCell: UITableViewCell {
         label.numberOfLines = 1
         return label
     }()
-    
+    private lazy var switcher = UISwitch()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -42,29 +42,30 @@ final class ProfileTableCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         let size: CGFloat = contentView.frame.height - 12
-        
-        iconContainer.frame = .init(
-            x: 15,
-            y: 6,
-            width: size,
-            height: size
-        )
-        
         let imageSize: CGFloat = size/1.5
         
-        iconImageView.frame = .init(
-            x: (size - imageSize)/2,
-            y: (size - imageSize)/2,
-            width: imageSize,
-            height: imageSize
-        )
+        iconContainer.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.left.equalToSuperview().inset(15)
+            make.width.equalTo(size)
+            make.height.equalTo(size)
+        }
         
-        label.frame = .init(
-            x: 25 + iconContainer.frame.width,
-            y: 0,
-            width: contentView.frame.width - 15 - iconContainer.frame.width,
-            height: contentView.frame.height
-        )
+        iconImageView.snp.makeConstraints { make in
+            make.center.equalTo(iconContainer)
+            make.width.equalTo(imageSize)
+            make.height.equalTo(imageSize)
+        }
+        
+        label.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.left.equalTo(iconContainer.snp.right).offset(15)
+        }
+        
+        switcher.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.right.equalToSuperview().inset(15)
+        }
     }
     
     override func prepareForReuse() {
@@ -78,6 +79,11 @@ final class ProfileTableCell: UITableViewCell {
         iconContainer.backgroundColor = UIColor(hex: data.iconBackground)
         iconImageView.image = UIImage(systemName: data.icon ?? "")
         label.text = data.title
+        if data.isToggling {
+            switcher.isHidden = false
+            accessoryType = .none
+            selectionStyle = .none
+        }
     }
 }
 
@@ -85,7 +91,10 @@ private extension ProfileTableCell {
     func initialize() {
         contentView.addSubview(label)
         contentView.addSubview(iconContainer)
+        contentView.addSubview(switcher)
         iconContainer.addSubview(iconImageView)
+        
+        switcher.isHidden = true
         contentView.clipsToBounds = true
         accessoryType = .disclosureIndicator
     }
