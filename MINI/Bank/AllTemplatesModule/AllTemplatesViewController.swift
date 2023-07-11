@@ -16,7 +16,13 @@ protocol AllTemplatesViewProtocol: AnyObject {
 final class AllTemplatesViewController: UIViewController {
     
     //MARK: - Private properties
-    private var templateCollectionView: UICollectionView!
+    private var templateCollectionView: UICollectionView! {
+        didSet {
+            templateCollectionView.delegate = self
+            templateCollectionView.dataSource = self
+            templateCollectionView.backgroundColor = .clear
+        }
+    }
     
     //MARK: - Public properties
     var presenter: AllTemplatesPresenterProtocol?
@@ -106,9 +112,6 @@ private extension AllTemplatesViewController {
             frame: .zero,
             collectionViewLayout: layout
         )
-        templateCollectionView.delegate = self
-        templateCollectionView.dataSource = self
-        templateCollectionView.backgroundColor = .clear
         createLongPressGesture()
         
         view.addSubview(templateCollectionView)

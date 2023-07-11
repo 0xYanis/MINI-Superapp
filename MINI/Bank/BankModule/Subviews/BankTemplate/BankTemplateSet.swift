@@ -16,7 +16,20 @@ final class BankTemplateSet: UITableViewCell {
     static let cellId = "BankTemplateSet"
     
     //MARK: Private properties
-    private var collectionView: UICollectionView!
+    private var collectionView: UICollectionView! {
+        didSet {
+            collectionView.decelerationRate = .fast
+            collectionView.dataSource = self
+            collectionView.delegate = self
+            collectionView.showsHorizontalScrollIndicator = false
+            collectionView.register(
+                BankTemplateCell.self,
+                forCellWithReuseIdentifier: BankTemplateCell.cellId
+            )
+            collectionView.backgroundColor = .clear
+            collectionView.contentInset = .init(top: 0, left: 16, bottom: 0, right: 16)
+        }
+    }
     private let snapLayout = StackFlowLayout()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -46,16 +59,6 @@ private extension BankTemplateSet {
         collectionView = UICollectionView(
             frame: .zero, collectionViewLayout: snapLayout
         )
-        collectionView.decelerationRate = .fast
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.register(
-            BankTemplateCell.self,
-            forCellWithReuseIdentifier: BankTemplateCell.cellId
-        )
-        collectionView.backgroundColor = .clear
-        collectionView.contentInset = .init(top: 0, left: 16, bottom: 0, right: 16)
         collectionView.isSkeletonable = true
         collectionView.showAnimatedSkeleton(
             usingColor: .asbestos,

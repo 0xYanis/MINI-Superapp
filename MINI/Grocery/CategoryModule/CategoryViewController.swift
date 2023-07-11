@@ -19,7 +19,23 @@ final class CategoryViewController: UIViewController {
     var presenter: CategoryPresenterProtocol?
     
     //MARK: Private properties
-    private var collectionView: UICollectionView!
+    private var collectionView: UICollectionView! {
+        didSet {
+            collectionView.backgroundColor = .clear
+            collectionView.showsVerticalScrollIndicator = false
+            collectionView.delegate = self
+            collectionView.dataSource = self
+            collectionView.register(
+                CategoryCell.self,
+                forCellWithReuseIdentifier: CategoryCell.cellId
+            )
+            collectionView.register(
+                CategoryHeader.self,
+                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                withReuseIdentifier: CategoryHeader.cellId
+            )
+        }
+    }
     private lazy var cartView = CategoryCartView()
     private lazy var searchButton: UIButton = {
         let button = UIButton(systemImage: "magnifyingglass", color: .tintMINI, size: 50)
@@ -103,13 +119,8 @@ private extension CategoryViewController {
             frame: .zero,
             collectionViewLayout: flowLayout
         )
-        collectionView.backgroundColor = .clear
-        collectionView.showsVerticalScrollIndicator = false
-        collectionView.delegate = self
-        collectionView.dataSource = self
         
         createConstraints()
-        collectionViewRegistrate()
     }
     
     var flowLayout: UICollectionViewFlowLayout {
@@ -131,17 +142,6 @@ private extension CategoryViewController {
         }
     }
     
-    func collectionViewRegistrate() {
-        collectionView.register(
-            CategoryCell.self,
-            forCellWithReuseIdentifier: CategoryCell.cellId
-        )
-        collectionView.register(
-            CategoryHeader.self,
-            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-            withReuseIdentifier: CategoryHeader.cellId
-        )
-    }
 }
 
 

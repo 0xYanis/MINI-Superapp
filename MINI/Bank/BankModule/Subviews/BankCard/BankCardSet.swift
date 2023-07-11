@@ -16,7 +16,20 @@ final class BankCardSet: UITableViewCell {
     static let cellId = "BankCardSet"
     
     //MARK: Private properties
-    private var collectionView: UICollectionView!
+    private var collectionView: UICollectionView! {
+        didSet {
+            collectionView.decelerationRate = .fast
+            collectionView.dataSource = self
+            collectionView.delegate = self
+            collectionView.showsHorizontalScrollIndicator = false
+            collectionView.backgroundColor = .clear
+            collectionView.contentInset = .init(top: 0, left: 16, bottom: 0, right: 16)
+            collectionView.register(
+                BankCardCell.self,
+                forCellWithReuseIdentifier: BankCardCell.cellId
+            )
+        }
+    }
     private let snapLayout = StackFlowLayout()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -45,19 +58,9 @@ private extension BankCardSet {
         collectionView = UICollectionView(
             frame: .zero,
             collectionViewLayout: snapLayout)
-        collectionView.decelerationRate = .fast
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.register(
-            BankCardCell.self,
-            forCellWithReuseIdentifier: BankCardCell.cellId
-        )
     }
     
     func addConstraintsOfView() {
-        collectionView.backgroundColor = .clear
-        collectionView.contentInset = .init(top: 0, left: 16, bottom: 0, right: 16)
         contentView.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
