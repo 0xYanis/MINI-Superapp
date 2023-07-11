@@ -11,19 +11,18 @@ struct BankTransactionObject: Codable {
     var transactionList: [BankTransactionEntity]
 }
 
-@objcMembers
 final class BankTransactionEntity: Object, Codable {
-    dynamic var id: Int = 0
-    dynamic var icon: String? = ""
-    dynamic var name: String = ""
-    dynamic var date: String = ""
-    dynamic var cost: Double = 0.0
-    dynamic var cardNumber: Int = 0
-    dynamic var location: String? = ""
-    dynamic var currency: String = ""
-    dynamic var status: String = ""
-    dynamic var category: String? = ""
-    dynamic var notes: String = ""
-    dynamic var merchantID: Int = 0
-    dynamic var customerID: Int = 0
+    @Persisted var id: Int
+    @Persisted var icon: String?
+    @Persisted var name: String
+    @Persisted var date: String
+    @Persisted var cost: Double
+    @Persisted var cardNumber: Int
+    @Persisted var location: String?
+    @Persisted var currency: String
+    @Persisted var status: String
+    @Persisted var category: String?
+    @Persisted var notes: String
+    @Persisted var merchantID: Int
+    @Persisted var customerID: Int
 }

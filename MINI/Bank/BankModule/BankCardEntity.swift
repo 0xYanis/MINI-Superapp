@@ -11,17 +11,17 @@ struct BankCardObject: Codable {
     var cardList: [BankCardEntity]
 }
 
-@objcMembers
+
 final class BankCardEntity: Object, Codable {
-    dynamic var id: Int = 0
-    dynamic var cardColor: String = ""
-    dynamic var logo: String = ""
-    dynamic var cardType: String = ""
-    dynamic var amount: Double = 0.0
-    dynamic var currency: String  = ""
-    dynamic var number: String = ""
-    dynamic var bankName: String = ""
-    dynamic var holderName: String? = ""
-    dynamic var expirationDate: String = ""
-    dynamic var cvv: String = ""
+    @Persisted var id: Int
+    @Persisted var cardColor: String
+    @Persisted var logo: String
+    @Persisted var cardType: String
+    @Persisted var amount: Double
+    @Persisted var currency: String
+    @Persisted var number: String
+    @Persisted var bankName: String
+    @Persisted var holderName: String?
+    @Persisted var expirationDate: String
+    @Persisted var cvv: String
 }
