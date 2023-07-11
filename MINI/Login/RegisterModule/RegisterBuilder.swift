@@ -23,4 +23,5 @@ final class RegisterBuilder {
         
         return view
     }
+    
 }

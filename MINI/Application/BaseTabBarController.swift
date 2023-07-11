@@ -13,6 +13,7 @@ final class BaseTabBarController: UITabBarController {
         super.viewDidLoad()
         initialize()
     }
+    
 }
 
 private extension BaseTabBarController {
@@ -72,4 +73,5 @@ private extension BaseTabBarController {
         
         tabBar.insertSubview(blurView, at: 0)
     }
+    
 }

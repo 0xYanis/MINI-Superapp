@@ -79,4 +79,5 @@ extension GroceryPresenter: GroceryPresenterProtocol {
     func loadingDataGetFailed(with message: String) {
         view?.showLoadingDataGetFailed(with: message)
     }
+    
 }

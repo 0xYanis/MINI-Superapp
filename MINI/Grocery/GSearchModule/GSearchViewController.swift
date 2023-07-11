@@ -26,6 +26,7 @@ final class GSearchViewController: UIViewController {
         super.viewWillAppear(animated)
         tabBarController?.hideTabBar()
     }
+    
 }
 
 extension GSearchViewController: GSearchViewProtocol {
@@ -36,10 +37,12 @@ extension GSearchViewController: GSearchViewProtocol {
     func updateViewGetFailed(with message: String) {
         
     }
+    
 }
 
 private extension GSearchViewController {
     func initialize() {
         view.backgroundColor = .back2MINI
     }
+    
 }

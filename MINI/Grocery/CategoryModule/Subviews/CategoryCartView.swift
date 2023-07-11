@@ -28,6 +28,7 @@ final class CategoryCartView: UIView {
     func configure(with price: String) {
         cartLabel.text = "Всего: $\(price)"
     }
+    
 }
 
 private extension CategoryCartView {
@@ -78,4 +79,5 @@ private extension CategoryCartView {
             make.width.height.equalToSuperview().multipliedBy(0.6)
         }
     }
+    
 }

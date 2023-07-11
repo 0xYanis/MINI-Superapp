@@ -34,6 +34,7 @@ final class CartViewController: UIViewController {
         super.viewWillAppear(animated)
         tabBarController?.hideTabBar()
     }
+    
 }
 
 extension CartViewController: CartViewProtocol {
@@ -46,6 +47,7 @@ extension CartViewController: CartViewProtocol {
             cartView.isHidden = newValue
         }
     }
+    
 }
 
 private extension CartViewController {
@@ -87,10 +89,12 @@ private extension CartViewController {
     @objc func backButtonAction() {
         navigationController?.popViewController(animated: false)
     }
+    
 }
 
 extension CartViewController: CartViewDelegate {
     func popCartView() {
         navigationController?.popViewController(animated: false)
     }
+    
 }

@@ -70,6 +70,7 @@ final class LocationService: NSObject, LocationServiceProtocol {
             completion(addresses)
         }
     }
+    
 }
 
 extension LocationService: CLLocationManagerDelegate {
@@ -80,5 +81,6 @@ extension LocationService: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Location manager failed: \(error.localizedDescription)")
     }
+    
 }
 

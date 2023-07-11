@@ -26,6 +26,7 @@ final class ProfileInteractor: ProfileInteractorProtocol {
         
         
     }
+    
 }
 
 private extension ProfileInteractor {

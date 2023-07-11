@@ -17,4 +17,5 @@ final class NewTemplateInteractor: NewTemplateInteractorProtocol {
     func viewDidLoaded() {
         
     }
+    
 }

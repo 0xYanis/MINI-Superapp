@@ -24,6 +24,7 @@ final class CartPresenter {
         self.router = router
         self.interactor = interactor
     }
+    
 }
 
 extension CartPresenter: CartPresenterProtocol {
@@ -34,4 +35,5 @@ extension CartPresenter: CartPresenterProtocol {
     func hideCart(cart isHidden: Bool) {
         view?.cartIsEmpty = isHidden
     }
+    
 }

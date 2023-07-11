@@ -61,6 +61,7 @@ extension GroceryViewController: GroceryViewProtocol {
     func showLoadingDataGetFailed(with message: String) {
         
     }
+    
 }
 
 //MARK: - Private methods
@@ -158,6 +159,7 @@ private extension GroceryViewController {
         }
         present(adressVC, animated: true)
     }
+    
 }
 
 //MARK: - Action private methods
@@ -174,6 +176,7 @@ private extension GroceryViewController {
     @objc func cartButtonAction() {
         presenter?.userDidTapCart()
     }
+    
 }
 
 //MARK: - AdressViewDelegate
@@ -185,6 +188,7 @@ extension GroceryViewController: AdressViewDelegate {
     func cancelButtonTapped() {
         dismiss(animated: true)
     }
+    
 }
 
 
@@ -215,5 +219,6 @@ extension GroceryViewController: UICollectionViewDelegateFlowLayout {
     ) {
         presenter?.userDidTapDetailCategory(id: indexPath.item)
     }
+    
 }
 

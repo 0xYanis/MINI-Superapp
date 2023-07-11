@@ -42,6 +42,7 @@ final class AllTemplatesViewController: UIViewController {
         super.viewWillAppear(animated)
         tabBarController?.hideTabBar()
     }
+    
 }
 
 //MARK: - AllTemplatesViewProtocol
@@ -53,6 +54,7 @@ extension AllTemplatesViewController: AllTemplatesViewProtocol {
     func userWantToDeleteTemplate(id: Int) {
         presenter?.userWillDeleteTemplate(id: id)
     }
+    
 }
 
 //MARK: - Private methods
@@ -134,6 +136,7 @@ private extension AllTemplatesViewController {
         )
         templateCollectionView.addGestureRecognizer(longPress)
     }
+    
 }
 
 // MARK: - UICollectionViewDataSource
@@ -186,6 +189,7 @@ extension AllTemplatesViewController: UICollectionViewDataSource {
         let to = destinationIndexPath.item
         presenter?.userWillMoveTemplate(from: from, to: to)
     }
+    
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
@@ -201,4 +205,5 @@ extension AllTemplatesViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         presenter?.userDidTapTemplate(id: indexPath.item)
     }
+    
 }

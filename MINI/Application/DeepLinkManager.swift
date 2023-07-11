@@ -18,4 +18,5 @@ final class DeepLinkManager: NSObject {
         )
         return [searchTransactions]
     }
+    
 }

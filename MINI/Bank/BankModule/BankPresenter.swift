@@ -38,6 +38,7 @@ final class BankPresenter {
         self.router = router
         self.interactor = interactor
     }
+    
 }
 
 // MARK: - BankPresenterProtocol
@@ -61,6 +62,7 @@ extension BankPresenter: BankPresenterProtocol {
     func setNewTransaction() {
         view?.updateHistory()
     }
+    
 }
 
 // MARK: - Routing
@@ -84,6 +86,7 @@ extension BankPresenter {
             router.goToAddNewTemplate()
         }
     }
+    
 }
 
 // MARK: - GET data
@@ -103,6 +106,7 @@ extension BankPresenter {
     func getFilteredData() -> [BankTransactionEntity] {
         interactor.filteredData
     }
+    
 }
 
 extension BankPresenter {
@@ -121,4 +125,5 @@ extension BankPresenter {
     func loadingDataGetFailed(with error: String) {
         view?.loadingDataGetFailed(with: error)
     }
+    
 }

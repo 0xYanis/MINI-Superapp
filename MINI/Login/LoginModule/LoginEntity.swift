@@ -15,4 +15,5 @@ final class LoginEntity {
         self.email = email
         self.password = password
     }
+    
 }

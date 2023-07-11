@@ -97,6 +97,7 @@ final class BankInteractor: BankInteractorProtocol {
         }
         presenter?.updateView()
     }
+    
 }
 
 //MARK: - Private methods

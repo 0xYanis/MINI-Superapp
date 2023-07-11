@@ -27,6 +27,7 @@ final class AllTemplatesPresenter {
         self.router = router
         self.interactor = interactor
     }
+    
 }
 
 extension AllTemplatesPresenter: AllTemplatesPresenterProtocol {
@@ -50,4 +51,5 @@ extension AllTemplatesPresenter: AllTemplatesPresenterProtocol {
     func userWillMoveTemplate(from: Int, to: Int) {
         interactor.userWillMoveTemplate(from: from, to: to)
     }
+    
 }

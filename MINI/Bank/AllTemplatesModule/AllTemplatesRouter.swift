@@ -25,4 +25,5 @@ final class AllTemplatesRouter: AllTemplatesRouterProtocol {
         let templateView = TemplateBuilder.build()
         view?.navigationController?.pushViewController(templateView, animated: true)
     }
+    
 }

@@ -30,4 +30,5 @@ final class CategoryInteractor: CategoryInteractorProtocol {
         
         presenter?.updateCart(with: totalCost)
     }
+    
 }

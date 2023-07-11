@@ -27,6 +27,7 @@ final class RegisterPresenter {
         self.router = router
         self.interactor = interactor
     }
+    
 }
 
 extension RegisterPresenter: RegisterPresenterProtocol {

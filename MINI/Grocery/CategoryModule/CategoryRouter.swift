@@ -39,4 +39,5 @@ final class CategoryRouter: CategoryRouterProtocol {
         let searchView = GSearchBuilder.build()
         view?.navigationController?.pushViewController(searchView, animated: true)
     }
+    
 }

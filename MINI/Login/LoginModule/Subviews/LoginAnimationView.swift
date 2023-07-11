@@ -31,6 +31,7 @@ class LoginAnimationView: UIView {
     deinit {
         animationView.stop()
     }
+    
 }
 
 private extension LoginAnimationView {

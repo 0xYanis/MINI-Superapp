@@ -29,4 +29,5 @@ final class AllTemplatesInteractor: AllTemplatesInteractorProtocol {
     func userWillMoveTemplate(from: Int, to: Int) {
         tempaltesData.swapAt(from, to)
     }
+    
 }

@@ -30,6 +30,7 @@ final class LoginPresenter {
         self.interactor = interactor
         self.router = router
     }
+    
 }
 
 extension LoginPresenter: LoginPresenterProtocol {
@@ -62,4 +63,5 @@ extension LoginPresenter: LoginPresenterProtocol {
             self.view?.showAlert("error_login_title".localized, message: "error_message_title".localized)
         }
     }
+    
 }

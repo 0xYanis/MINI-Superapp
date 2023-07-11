@@ -34,6 +34,7 @@ final class TransactionViewController: UIViewController {
         super.viewWillAppear(animated)
         tabBarController?.hideTabBar()
     }
+    
 }
 
 extension TransactionViewController: TransactionViewProtocol {
@@ -44,6 +45,7 @@ extension TransactionViewController: TransactionViewProtocol {
         ) else { return }
         imageView.image = image
     }
+    
 }
 
 private extension TransactionViewController {
@@ -89,6 +91,7 @@ private extension TransactionViewController {
             make.bottom.equalToSuperview()
         }
     }
+    
 }
 
 //MARK: - UITableViewDataSource
@@ -111,4 +114,5 @@ extension TransactionViewController: UITableViewDataSource {
         cell.imageView?.image = UIImage(systemName: "note.text")
         return cell
     }
+    
 }

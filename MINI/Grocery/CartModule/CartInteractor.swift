@@ -20,6 +20,7 @@ final class CartInteractor: CartInteractorProtocol {
         let isEmpty = false
         presenter?.hideCart(cart: isEmpty)
     }
+    
 }
 
 private extension CartInteractor {

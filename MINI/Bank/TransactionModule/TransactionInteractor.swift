@@ -31,4 +31,5 @@ final class TransactionInteractor: TransactionInteractorProtocol {
     func userWillRemoveTransaction(id: Int) {
         ///
     }
+    
 }

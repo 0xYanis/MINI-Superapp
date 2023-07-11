@@ -32,6 +32,7 @@ final class AviaViewController: UIViewController {
         super.viewWillAppear(animated)
         tabBarController?.showTabBar()
     }
+    
 }
 
 //MARK: - AviaViewProtocol
@@ -67,6 +68,7 @@ private extension AviaViewController {
         )
         scrollView.refreshControl = refreshControl
     }
+    
 }
 
 private extension AviaViewController {

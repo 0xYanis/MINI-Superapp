@@ -165,6 +165,7 @@ private extension BankViewController {
         )
         scrollView.refreshControl = refreshControl
     }
+    
 }
 
 //MARK: - Action private methods
@@ -174,6 +175,7 @@ private extension BankViewController {
         presenter?.updateView()
         refreshControl.endRefreshing()
     }
+    
 }
 
 //MARK: - UITableViewDelegate
@@ -192,4 +194,5 @@ extension BankViewController: UITableViewDelegate {
             return 0
         }
     }
+    
 }

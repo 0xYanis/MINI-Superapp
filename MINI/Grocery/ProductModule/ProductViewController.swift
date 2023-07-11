@@ -50,6 +50,7 @@ extension ProductViewController: ProductViewProtocol {
     func updateView() {
         createNavigaion(with: "Product")
     }
+    
 }
 
 private extension ProductViewController {
@@ -171,6 +172,7 @@ private extension ProductViewController {
             make.right.equalToSuperview().inset(30)
         }
     }
+    
 }
 
 //MARK: - Private action methods
@@ -190,4 +192,5 @@ private extension ProductViewController {
     @objc func moreButtonAction() {
         
     }
+    
 }

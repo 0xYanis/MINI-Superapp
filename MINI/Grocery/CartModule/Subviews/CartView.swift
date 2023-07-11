@@ -37,6 +37,7 @@ final class CartView: UIView {
             make.bottom.equalToSuperview()
         }
     }
+    
 }
 
 private extension CartView {
@@ -55,4 +56,5 @@ private extension CartView {
         totalView.backgroundColor = .red
         insertSubview(totalView, at: 1)
     }
+    
 }

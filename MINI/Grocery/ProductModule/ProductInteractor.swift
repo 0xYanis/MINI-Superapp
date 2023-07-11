@@ -19,4 +19,5 @@ final class ProductInteractor: ProductInteractorProtocol {
         
         presenter?.updateView()
     }
+    
 }

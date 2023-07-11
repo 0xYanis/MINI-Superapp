@@ -85,6 +85,7 @@ final class ProfileTableCell: UITableViewCell {
             selectionStyle = .none
         }
     }
+    
 }
 
 private extension ProfileTableCell {
@@ -98,4 +99,5 @@ private extension ProfileTableCell {
         contentView.clipsToBounds = true
         accessoryType = .disclosureIndicator
     }
+    
 }

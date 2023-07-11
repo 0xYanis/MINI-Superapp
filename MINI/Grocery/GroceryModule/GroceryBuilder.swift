@@ -14,10 +14,13 @@ final class GroceryBuilder {
         let interactor = GroceryInteractor(groceryService: groceryService)
         let router = GroceryRouter()
         let presenter = GroceryPresenter(router: router, interactor: interactor)
+        
         presenter.view = view
         view.presenter = presenter
         router.view = view
         interactor.presenter = presenter
+        
         return view
     }
+    
 }

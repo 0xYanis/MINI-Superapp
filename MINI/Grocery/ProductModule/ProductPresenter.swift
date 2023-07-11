@@ -25,6 +25,7 @@ final class ProductPresenter {
         self.router = router
         self.interactor = interactor
     }
+    
 }
 
 extension ProductPresenter: ProductPresenterProtocol {
@@ -35,4 +36,5 @@ extension ProductPresenter: ProductPresenterProtocol {
     func updateView() {
         view?.updateView()
     }
+    
 }

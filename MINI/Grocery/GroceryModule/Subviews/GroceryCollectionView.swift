@@ -20,6 +20,7 @@ final class GroceryCollectionView: UICollectionView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
 }
 
 private extension GroceryCollectionView {
@@ -41,6 +42,7 @@ private extension GroceryCollectionView {
             withReuseIdentifier: GroceryHeaderCell.cellId
         )
     }
+    
 }
 
 //MARK: - UICollectionViewDataSource
@@ -73,6 +75,7 @@ extension GroceryCollectionView: UICollectionViewDataSource {
         cell.configure(with: data[indexPath.row])
         return cell
     }
+    
 }
 
 //MARK: - Header titles for sections
@@ -93,4 +96,5 @@ extension GroceryCollectionView {
         view.configure(with: "Category")
         return view
     }
+    
 }

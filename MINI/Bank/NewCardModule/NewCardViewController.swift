@@ -23,6 +23,7 @@ final class NewCardViewController: UIViewController {
         super.viewWillAppear(animated)
         tabBarController?.hideTabBar()
     }
+    
 }
 
 extension NewCardViewController: NewCardViewProtocol {
@@ -35,4 +36,5 @@ private extension NewCardViewController {
         navigationItem.largeTitleDisplayMode = .never
         navigationItem.title = "add_new_card_title".localized
     }
+    
 }

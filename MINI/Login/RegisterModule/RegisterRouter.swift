@@ -29,4 +29,5 @@ final class RegisterRouter: RegisterRouterProtocol {
             window.makeKeyAndVisible()
         }
     }
+    
 }

@@ -20,6 +20,7 @@ final class ProfileTableView: UITableView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
 }
 
 private extension ProfileTableView {
@@ -32,6 +33,7 @@ private extension ProfileTableView {
             forCellReuseIdentifier: ProfileTableCell.cellId
         )
     }
+    
 }
 
 extension ProfileTableView: UITableViewDataSource {
@@ -78,6 +80,7 @@ extension ProfileTableView: UITableViewDataSource {
             .getProfileData()[section]
             .title
     }
+    
 }
 
 extension ProfileTableView: UITableViewDelegate {
@@ -91,4 +94,5 @@ extension ProfileTableView: UITableViewDelegate {
             .type else { return }
         presenter?.userWantToDetailView(of: type)
     }
+    
 }

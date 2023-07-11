@@ -20,6 +20,8 @@ final class LaunchController: UIViewController {
         initialize()
         startAnimations()
     }
+    
+    
 }
 
 private extension LaunchController {
@@ -93,4 +95,5 @@ private extension LaunchController {
             window.makeKeyAndVisible()
         }
     }
+    
 }

@@ -31,6 +31,7 @@ final class AdressViewController: UIViewController {
         super.viewDidLoad()
         initialize()
     }
+    
 }
 
 //MARK: - Private methods
@@ -92,6 +93,7 @@ private extension AdressViewController {
             for: .touchUpInside
         )
     }
+    
 }
 
 //MARK: - Private action methods
@@ -99,6 +101,7 @@ private extension AdressViewController {
     @objc func cancelButtonAction() {
         delegate?.cancelButtonTapped()
     }
+    
 }
 
 //MARK: - UISearchBarDelegate
@@ -106,6 +109,7 @@ extension AdressViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         delegate?.userStartSearchAdress(with: searchText)
     }
+    
 }
 
 
@@ -126,6 +130,7 @@ extension AdressViewController: UITableViewDataSource {
         cell.textLabel?.text = data[indexPath.row]
         return cell
     }
+    
 }
 
 //MARK: - UITableViewDelegate
@@ -134,4 +139,5 @@ extension AdressViewController: UITableViewDelegate {
                    didSelectRowAt indexPath: IndexPath) {
         
     }
+    
 }

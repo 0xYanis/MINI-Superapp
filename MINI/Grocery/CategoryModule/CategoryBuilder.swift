@@ -21,4 +21,5 @@ final class CategoryBuilder {
         
         return view
     }
+    
 }

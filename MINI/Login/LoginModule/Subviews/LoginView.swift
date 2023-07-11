@@ -12,12 +12,16 @@ class LoginView: UIView {
     
     weak var presenter: LoginPresenterProtocol?
     
-    private lazy var helloLabel = UILabel(text: "welcome_label".localized, font: .boldSystemFont(ofSize: 26), color: .none)
+    private lazy var helloLabel = UILabel(
+        text: "welcome_label".localized,
+        font: .boldSystemFont(ofSize: 26),
+        color: .none
+    )
     let faceIDButton = UIButton(systemImage: "faceid", color: .tintMINI, size: 26)
+    let loginButt    = UIButton(label: "login_button".localized, color: .tintMINI)
+    let registerButt = UIButton()
     let nameField    = UITextField()
     let passField    = UITextField()
-    let registerButt = UIButton()
-    let loginButt    = UIButton(label: "login_button".localized, color: .tintMINI)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,6 +32,7 @@ class LoginView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
 }
 
 private extension LoginView {
@@ -110,4 +115,6 @@ private extension LoginView {
     @objc func registerButtonAction() {
         presenter?.userWantRegister()
     }
+    
+    
 }

@@ -23,6 +23,7 @@ final class NewTemplateViewController: UIViewController {
         super.viewWillAppear(animated)
         tabBarController?.hideTabBar()
     }
+    
 }
 
 extension NewTemplateViewController: NewTemplateViewProtocol {
@@ -35,5 +36,6 @@ private extension NewTemplateViewController {
         navigationItem.largeTitleDisplayMode = .never
         navigationItem.title = "add_new_template_title".localized
     }
+    
 }
 

@@ -26,6 +26,7 @@ final class TemplateViewController: UIViewController {
         super.viewWillAppear(animated)
         tabBarController?.hideTabBar()
     }
+    
 }
 
 extension TemplateViewController: TemplateViewProtocol {
@@ -53,6 +54,7 @@ private extension TemplateViewController {
             make.edges.equalToSuperview()
         }
     }
+    
 }
 
 //MARK: - UITableViewDataSource
@@ -69,4 +71,5 @@ extension TemplateViewController: UITableViewDataSource {
         cell.imageView?.image = UIImage(systemName: "note.text")
         return cell
     }
+    
 }

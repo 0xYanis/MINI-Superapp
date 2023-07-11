@@ -13,6 +13,7 @@ protocol AviaRouterProtocol: AnyObject {
 }
 
 final class AviaRouter: AviaRouterProtocol {
+    
     weak var view: UIViewController?
     
     func goDetailResult(id: Int) {
@@ -20,4 +21,5 @@ final class AviaRouter: AviaRouterProtocol {
         resultView.view.backgroundColor = .white
         view?.navigationController?.pushViewController(resultView, animated: true)
     }
+    
 }

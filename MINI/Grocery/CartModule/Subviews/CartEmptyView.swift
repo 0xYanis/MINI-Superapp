@@ -34,6 +34,7 @@ final class CartEmptyView: UIView {
         lottie?.stop()
         lottie = nil
     }
+    
 }
 
 private extension CartEmptyView {

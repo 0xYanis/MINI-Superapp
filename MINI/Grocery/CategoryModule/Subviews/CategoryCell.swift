@@ -57,6 +57,7 @@ final class CategoryCell: UICollectionViewCell {
         
         priceButton.backgroundColor = isAddedToCart ? .systemOrange : .gray
     }
+    
 }
 
 //MARK: - Private methods
@@ -148,4 +149,5 @@ private extension CategoryCell {
             make.edges.equalToSuperview().inset(2)
         }
     }
+    
 }

@@ -47,6 +47,7 @@ final class GroceryInteractor: GroceryInteractorProtocol {
             }
         }
     }
+    
 }
 
 private extension GroceryInteractor {
@@ -69,4 +70,5 @@ private extension GroceryInteractor {
             completion(adresses)
         }
     }
+    
 }

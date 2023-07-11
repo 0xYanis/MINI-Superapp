@@ -33,6 +33,7 @@ final class CategoryPresenter {
         self.router = router
         self.interactor = interactor
     }
+    
 }
 
 extension CategoryPresenter: CategoryPresenterProtocol {
@@ -63,4 +64,5 @@ extension CategoryPresenter: CategoryPresenterProtocol {
     func userDidTapCart() {
         router.goToCart()
     }
+    
 }

@@ -21,6 +21,7 @@ final class AviaPresenter {
         self.router = router
         self.interactor = interactor
     }
+    
 }
 
 extension AviaPresenter: AviaPresenterProtocol {

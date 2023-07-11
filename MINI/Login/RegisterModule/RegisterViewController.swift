@@ -33,6 +33,7 @@ extension RegisterViewController: RegisterViewProtocol {
         let alert = UIAlertController()
         alert.showAlert(title: title, message: message, from: self)
     }
+    
 }
 
 private extension RegisterViewController {
@@ -160,4 +161,6 @@ extension RegisterViewController: UITextFieldDelegate {
         }
         return true
     }
+    
+    
 }

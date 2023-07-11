@@ -26,6 +26,7 @@ final class ProfileViewController: UIViewController {
         super.viewWillAppear(animated)
         tabBarController?.showTabBar()
     }
+    
 }
 
 extension ProfileViewController: ProfileViewProtocol {
@@ -65,6 +66,7 @@ private extension ProfileViewController {
             make.edges.equalToSuperview()
         }
     }
+    
 }
 
 private extension ProfileViewController {

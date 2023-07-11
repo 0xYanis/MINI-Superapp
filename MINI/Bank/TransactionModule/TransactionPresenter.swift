@@ -23,6 +23,7 @@ final class TransactionPresenter {
         self.router = router
         self.interactor = interactor
     }
+    
 }
 
 extension TransactionPresenter: TransactionPresenterProtocol {
@@ -37,4 +38,5 @@ extension TransactionPresenter: TransactionPresenterProtocol {
     func updateView(with data: BankTransactionEntity) {
         view?.updateView(with: data)
     }
+    
 }

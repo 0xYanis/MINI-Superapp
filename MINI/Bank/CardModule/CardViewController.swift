@@ -31,6 +31,7 @@ final class CardViewController: UIViewController {
         super.viewWillAppear(animated)
         tabBarController?.hideTabBar()
     }
+    
 }
 
 extension CardViewController: CardViewProtocol {
@@ -40,6 +41,7 @@ extension CardViewController: CardViewProtocol {
         backView.configure(with: data)
         tableView.reloadData()
     }
+    
 }
 
 // MARK: - private methods
@@ -99,6 +101,7 @@ private extension CardViewController {
             make.left.right.bottom.equalToSuperview()
         }
     }
+    
 }
 
 // MARK: - Navigation Bar buttons

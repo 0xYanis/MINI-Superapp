@@ -59,6 +59,7 @@ extension LoginViewController: LoginViewProtocol {
     func loginIsNotCorrect() {
         generator.notificationOccurred(.warning)
     }
+    
 }
 
 //MARK: - Private methods
@@ -223,6 +224,7 @@ private extension LoginViewController {
         let pass = loginView.passField.text ?? ""
         presenter?.userDidTapLogin(name: name, password: pass)
     }
+    
 }
 
 //MARK: - protocol UITextFieldDelegate
@@ -237,4 +239,5 @@ extension LoginViewController: UITextFieldDelegate {
         }
         return true
     }
+    
 }

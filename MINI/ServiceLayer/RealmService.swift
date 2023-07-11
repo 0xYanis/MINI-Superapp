@@ -52,5 +52,6 @@ final class RealmService: RealmServiceProtocol {
         let objects = realm.objects(objectType)
         return objects.count > 0 ? objects : nil
     }
+    
 }
 

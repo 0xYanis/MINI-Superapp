@@ -17,4 +17,5 @@ final class NewCardInteractor: NewCardInteractorProtocol {
     func viewDidLoaded() {
         
     }
+    
 }

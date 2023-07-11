@@ -25,4 +25,5 @@ final class CardInteractor: CardInteractorProtocol {
         guard let cardData = cardData else { return }
         presenter?.udpateView(with: cardData)
     }
+    
 }

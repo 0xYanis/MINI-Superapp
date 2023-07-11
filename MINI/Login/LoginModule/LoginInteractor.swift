@@ -45,6 +45,7 @@ final class LoginInteractor: LoginInteractorProtocol {
             }
         })
     }
+    
 }
 
 private extension LoginInteractor {
@@ -67,4 +68,5 @@ private extension LoginInteractor {
             }
         })
     }
+    
 }

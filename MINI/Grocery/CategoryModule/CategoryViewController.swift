@@ -63,6 +63,7 @@ final class CategoryViewController: UIViewController {
         super.viewWillDisappear(animated)
         cartViewScrollAppearance(collectionView, inset: -100, alpha: 0.0)
     }
+    
 }
 
 //MARK: - CategoryViewProtocol
@@ -79,6 +80,7 @@ extension CategoryViewController: CategoryViewProtocol {
             cartView.configure(with: "\(totalCost)")
         }
     }
+    
 }
 
 //MARK: - Private methods
@@ -183,6 +185,7 @@ private extension CategoryViewController {
             }
         }
     }
+    
 }
 
 extension CategoryViewController: UICollectionViewDataSource {
@@ -256,6 +259,7 @@ extension CategoryViewController {
     ) -> CGSize {
         .init(width: view.frame.width, height: 35)
     }
+    
 }
 
 
@@ -279,6 +283,7 @@ extension CategoryViewController: UICollectionViewDelegateFlowLayout {
     ) {
         presenter?.userDidTapProduct(index: indexPath.item)
     }
+    
 }
 
 extension CategoryViewController: UIScrollViewDelegate {
@@ -305,5 +310,6 @@ extension CategoryViewController: UIScrollViewDelegate {
             alpha: 1.0
         )
     }
+    
 }
 

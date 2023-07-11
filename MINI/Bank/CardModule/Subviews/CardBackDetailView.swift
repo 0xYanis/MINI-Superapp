@@ -37,6 +37,7 @@ final class CardBackDetailView: UIView {
         cvvNumber = data.cvv
         bankLabel.text = data.bankName
     }
+    
 }
 
 private extension CardBackDetailView {
@@ -123,5 +124,6 @@ private extension CardBackDetailView {
             button.transform = .identity
         })
     }
+    
 }
 

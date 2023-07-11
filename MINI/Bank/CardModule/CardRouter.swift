@@ -24,4 +24,5 @@ final class CardRouter: CardRouterProtocol {
         let editView = NewCardBuilder.build()
         view?.navigationController?.pushViewController(editView, animated: true)
     }
+    
 }

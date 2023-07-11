@@ -53,6 +53,7 @@ final class CardDetailView: UIView {
         expirationDate.text = data.expirationDate
         cardNumber.text = data.number.formatAsCardNumber()
     }
+    
 }
 
 private extension CardDetailView {
@@ -117,4 +118,5 @@ private extension CardDetailView {
             make.bottom.equalToSuperview().inset(50)
         }
     }
+    
 }

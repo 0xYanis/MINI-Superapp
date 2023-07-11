@@ -34,4 +34,5 @@ final class LoginRouter: LoginRouterProtocol {
         let registerView = RegisterBuilder.build()
         view?.navigationController?.pushViewController(registerView, animated: true)
     }
+    
 }
