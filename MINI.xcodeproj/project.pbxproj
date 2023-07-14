@@ -79,7 +79,6 @@
 		099089E92A139A5100EE00DA /* GroceryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099089E82A139A5100EE00DA /* GroceryRouter.swift */; };
 		099089EB2A139A5800EE00DA /* GroceryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099089EA2A139A5800EE00DA /* GroceryBuilder.swift */; };
 		099089F02A13C2C400EE00DA /* AdressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099089EF2A13C2C400EE00DA /* AdressViewController.swift */; };
-		0994B93C2A20D22100F4A783 /* LoginLottieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0994B93B2A20D22100F4A783 /* LoginLottieService.swift */; };
 		0994B9402A20F66D00F4A783 /* DeepLinkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0994B93F2A20F66D00F4A783 /* DeepLinkManager.swift */; };
 		099A79C029F16406004B95C7 /* BankCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099A79BF29F16406004B95C7 /* BankCardCell.swift */; };
 		099A79C229F16417004B95C7 /* BankTemplateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099A79C129F16417004B95C7 /* BankTemplateCell.swift */; };
@@ -102,6 +101,7 @@
 		09A7496029F992940005A649 /* CardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A7495F29F992940005A649 /* CardDetailView.swift */; };
 		09ABE0062A142805009DB57B /* GroceryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ABE0052A142805009DB57B /* GroceryViewCell.swift */; };
 		09ABE0082A143447009DB57B /* DefaultFood.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09ABE0072A143447009DB57B /* DefaultFood.xcassets */; };
+		09ACB2812A614C4200A7F139 /* rocket.json in Resources */ = {isa = PBXBuildFile; fileRef = 09ACB2802A614C4200A7F139 /* rocket.json */; };
 		09B0C1892A545C8200E0CDEF /* UITagPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B0C1882A545C8200E0CDEF /* UITagPickerView.swift */; };
 		09B1B4D02A1673D90090676E /* GroceryHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B1B4CF2A1673D90090676E /* GroceryHeaderCell.swift */; };
 		09BBA70F2A0E76950020E3C9 /* cardsLogo.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09BBA70E2A0E76950020E3C9 /* cardsLogo.xcassets */; };
@@ -266,7 +266,6 @@
 		099089E82A139A5100EE00DA /* GroceryRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryRouter.swift; sourceTree = "<group>"; };
 		099089EA2A139A5800EE00DA /* GroceryBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryBuilder.swift; sourceTree = "<group>"; };
 		099089EF2A13C2C400EE00DA /* AdressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdressViewController.swift; sourceTree = "<group>"; };
-		0994B93B2A20D22100F4A783 /* LoginLottieService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginLottieService.swift; sourceTree = "<group>"; };
 		0994B93F2A20F66D00F4A783 /* DeepLinkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkManager.swift; sourceTree = "<group>"; };
 		099A79BF29F16406004B95C7 /* BankCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankCardCell.swift; sourceTree = "<group>"; };
 		099A79C129F16417004B95C7 /* BankTemplateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTemplateCell.swift; sourceTree = "<group>"; };
@@ -289,6 +288,7 @@
 		09A7495F29F992940005A649 /* CardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailView.swift; sourceTree = "<group>"; };
 		09ABE0052A142805009DB57B /* GroceryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryViewCell.swift; sourceTree = "<group>"; };
 		09ABE0072A143447009DB57B /* DefaultFood.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DefaultFood.xcassets; sourceTree = "<group>"; };
+		09ACB2802A614C4200A7F139 /* rocket.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = rocket.json; sourceTree = "<group>"; };
 		09B0C1882A545C8200E0CDEF /* UITagPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITagPickerView.swift; sourceTree = "<group>"; };
 		09B1B4CF2A1673D90090676E /* GroceryHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryHeaderCell.swift; sourceTree = "<group>"; };
 		09BBA70E2A0E76950020E3C9 /* cardsLogo.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = cardsLogo.xcassets; sourceTree = "<group>"; };
@@ -807,6 +807,7 @@
 		09D509D229EF35F7009CC219 /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
+				09ACB2802A614C4200A7F139 /* rocket.json */,
 				092E739329EBEB1E00165D37 /* LoginAnimationView.swift */,
 				092E739529EBEB3000165D37 /* LoginView.swift */,
 			);
@@ -832,7 +833,6 @@
 				09E9E81E29EAE95D0084416B /* LoginRouter.swift */,
 				09E9E82029EAE9650084416B /* LoginEntity.swift */,
 				09E9E81629EAE9360084416B /* LoginBuilder.swift */,
-				0994B93B2A20D22100F4A783 /* LoginLottieService.swift */,
 			);
 			path = LoginModule;
 			sourceTree = "<group>";
@@ -1129,6 +1129,7 @@
 				09F92CF52A23476300440ACC /* Localizable.strings in Resources */,
 				09BBA70F2A0E76950020E3C9 /* cardsLogo.xcassets in Resources */,
 				0910960729DB32F400338D22 /* Assets.xcassets in Resources */,
+				09ACB2812A614C4200A7F139 /* rocket.json in Resources */,
 				095B1C6D2A39BD1A00EF6828 /* LaunchScreen.storyboard in Resources */,
 				09F2AE852A53470C00E02404 /* emptyCart.json in Resources */,
 				09E24C132A1227C200A91F74 /* cardsColor.xcassets in Resources */,
@@ -1267,7 +1268,6 @@
 				09D509D629EF379A009CC219 /* BankTransactionCell.swift in Sources */,
 				0921F35F29DF1FE000B3D4F7 /* UIButton+Extension.swift in Sources */,
 				090B63EC2A45C09500C7D6CD /* RealmService.swift in Sources */,
-				0994B93C2A20D22100F4A783 /* LoginLottieService.swift in Sources */,
 				090BAB962A02992A006AE8F9 /* AviaBuilder.swift in Sources */,
 				090AE1E129FBAA190092515D /* TemplateRouter.swift in Sources */,
 				0994B9402A20F66D00F4A783 /* DeepLinkManager.swift in Sources */,

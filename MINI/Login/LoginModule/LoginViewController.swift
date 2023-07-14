@@ -10,7 +10,6 @@ import SnapKit
 import Lottie
 
 protocol LoginViewProtocol: AnyObject {
-    func setAnimation(lottie: LottieAnimation)
     func showAlert(_ title: String, message: String)
     
     func loginIsNotCorrect()
@@ -46,11 +45,6 @@ final class LoginViewController: UIViewController {
 
 //MARK: - LoginViewProtocol
 extension LoginViewController: LoginViewProtocol {
-    func setAnimation(lottie: LottieAnimation) {
-        animationView.animationView = .init(animation: lottie)
-        animationView.animationView.play()
-    }
-    
     func showAlert(_ title: String, message: String) {
         let alert = UIAlertController()
         alert.showAlert(title: title, message: message, from: self)

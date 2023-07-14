@@ -10,8 +10,6 @@ import Lottie
 
 protocol LoginPresenterProtocol: AnyObject {
     func viewDidLoaded()
-    func loadAnimation(_ data: LottieAnimation)
-    
     func userWantRegister()
     
     func userDidTapLogin(name: String, password: String)
@@ -38,10 +36,6 @@ extension LoginPresenter: LoginPresenterProtocol {
         interactor.viewDidLoaded()
     }
     
-    func loadAnimation(_ data: LottieAnimation) {
-        view?.setAnimation(lottie: data)
-    }
-    
     func userWantRegister() {
         router.goToRegisterView()
     }
@@ -60,7 +54,10 @@ extension LoginPresenter: LoginPresenterProtocol {
     func loginIsNotCorrect() {
         view?.loginIsNotCorrect()
         DispatchQueue.main.async {
-            self.view?.showAlert("error_login_title".localized, message: "error_message_title".localized)
+            self.view?.showAlert(
+                "error_login_title".localized,
+                message: "error_message_title".localized
+            )
         }
     }
     

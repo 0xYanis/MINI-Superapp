@@ -16,14 +16,12 @@ final class LoginBuilder {
         let biometryService = BiometryService()
         let keychainService = KeyChainService()
         let apiService = APIService()
-        let lottieService = LoginLottieService(apiService: apiService)
         
         viewController.presenter = presenter
         presenter.view = viewController
         interactor.presenter = presenter
         interactor.keychainService = keychainService
         interactor.biometryService = biometryService
-        interactor.lottieService = lottieService
         router.view = viewController
         
         return viewController

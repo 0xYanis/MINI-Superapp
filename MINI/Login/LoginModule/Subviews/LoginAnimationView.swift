@@ -11,11 +11,12 @@ import Lottie
 
 class LoginAnimationView: UIView {
     
-    lazy var animationView = LottieAnimationView()
+    private var animationView: LottieAnimationView?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         initialize()
+        animationView?.play()
     }
     
     @available(*, unavailable)
@@ -29,7 +30,8 @@ class LoginAnimationView: UIView {
     }
     
     deinit {
-        animationView.stop()
+        animationView?.stop()
+        animationView = nil
     }
     
 }
@@ -41,13 +43,15 @@ private extension LoginAnimationView {
     }
     
     func configureAnimation() {
-        animationView.frame = bounds
-        animationView.contentMode = .scaleAspectFit
-        animationView.loopMode = .loop
-        animationView.animationSpeed = 0.5
+        animationView = .init(name: "rocket")
+        animationView?.frame = bounds
+        animationView?.contentMode = .scaleAspectFit
+        animationView?.loopMode = .loop
+        animationView?.animationSpeed = 0.7
     }
     
     func createAnimationConstraints() {
+        guard let animationView else { return }
         addSubview(animationView)
         animationView.snp.makeConstraints { make in
             make.center.equalToSuperview()

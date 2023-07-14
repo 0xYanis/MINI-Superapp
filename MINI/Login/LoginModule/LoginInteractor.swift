@@ -18,10 +18,9 @@ final class LoginInteractor: LoginInteractorProtocol {
     weak var presenter: LoginPresenterProtocol?
     var keychainService: KeyChainServiceProtocol?
     var biometryService: BiometryServiceProtocol?
-    var lottieService: LoginLottieServiceProtocol?
     
     func viewDidLoaded() {
-        getLottieAnimation()
+        
     }
     
     func userWantLogin(_ name: String, _ password: String) {
@@ -55,18 +54,4 @@ private extension LoginInteractor {
             forKey: "authToken"
         )
     }
-    
-    func getLottieAnimation() {
-        lottieService?.loadAnimation(completion: { [weak self] animation in
-            switch animation {
-            case .success(let data):
-                self?.presenter?.loadAnimation(data)
-            case .failure:
-                return
-            case .none:
-                return
-            }
-        })
-    }
-    
 }
