@@ -114,7 +114,8 @@ extension BankCardSet: SkeletonCollectionViewDataSource {
         willDisplay cell: UICollectionViewCell,
         forItemAt indexPath: IndexPath) {
             
-            guard let cardData = presenter?.getCardData(), indexPath.row < cardData.count else { return }
+            guard let cardData = presenter?.getCardData(),
+                  indexPath.row < cardData.count else { return }
             
             if let cell = cell as? BankCardCell {
                 cell.shadow(color: .black, opacity: 0.5, radius: 10)

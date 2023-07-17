@@ -24,6 +24,7 @@ final class BankTableView: UITableView {
     override func layoutSubviews() {
         super.layoutSubviews()
     }
+    
 }
 
 private extension BankTableView {
@@ -84,4 +85,5 @@ extension BankTableView: UITableViewDataSource {
             return defaultCell
         }
     }
+    
 }
