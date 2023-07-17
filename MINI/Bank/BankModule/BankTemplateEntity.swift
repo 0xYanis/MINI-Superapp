@@ -5,15 +5,15 @@
 //  Created by Yan Rybkin on 15.05.2023.
 //
 
-import RealmSwift
+import Foundation
 
-struct BankTemplateObject: Codable {
+struct BankTemplateList: Codable {
     var templateList: [BankTemplateEntity]
 }
 
-final class BankTemplateEntity: Object, Codable {
-    @Persisted var id: Int
-    @Persisted var image: String
-    @Persisted var label: String
+struct BankTemplateEntity: Codable {
+    var id: Int
+    var image: String
+    var label: String
 }
 

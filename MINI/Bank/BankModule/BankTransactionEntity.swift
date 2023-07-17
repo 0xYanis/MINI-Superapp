@@ -5,24 +5,24 @@
 //  Created by Yan Rybkin on 15.05.2023.
 //
 
-import RealmSwift
+import Foundation
 
-struct BankTransactionObject: Codable {
+struct BankTransactionList: Codable {
     var transactionList: [BankTransactionEntity]
 }
 
-final class BankTransactionEntity: Object, Codable {
-    @Persisted var id: Int
-    @Persisted var icon: String?
-    @Persisted var name: String
-    @Persisted var date: String
-    @Persisted var cost: Double
-    @Persisted var cardNumber: Int
-    @Persisted var location: String?
-    @Persisted var currency: String
-    @Persisted var status: String
-    @Persisted var category: String?
-    @Persisted var notes: String
-    @Persisted var merchantID: Int
-    @Persisted var customerID: Int
+struct BankTransactionEntity: Codable {
+    var id: Int
+    var icon: String?
+    var name: String
+    var date: String
+    var cost: Double
+    var cardNumber: Int
+    var location: String?
+    var currency: String
+    var status: String
+    var category: String?
+    var notes: String
+    var merchantID: Int
+    var customerID: Int
 }

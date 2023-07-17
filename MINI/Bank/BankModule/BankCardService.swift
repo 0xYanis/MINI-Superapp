@@ -23,7 +23,7 @@ final class BankCardService: BankCardServiceProtocol {
     }
     
     func getCardsData(completion: @escaping(Result<[BankCardEntity]?, Error>) -> Void) {
-        apiService.getRequest(url: cardUrl) { (result: Result<BankCardObject, Error>) in
+        apiService.getRequest(url: cardUrl) { (result: Result<BankCardList, Error>) in
             switch result {
             case .success(let data):
                 completion(.success(data.cardList))

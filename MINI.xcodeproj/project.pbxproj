@@ -99,6 +99,10 @@
 		099D4F8529F72B050002C24A /* NewTemplateBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099D4F8429F72B050002C24A /* NewTemplateBuilder.swift */; };
 		099D4F8729F72B0F0002C24A /* NewTemplateEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099D4F8629F72B0F0002C24A /* NewTemplateEntity.swift */; };
 		09A7496029F992940005A649 /* CardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A7495F29F992940005A649 /* CardDetailView.swift */; };
+		09ABD8232A652BA0003E0B39 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 09ABD8222A652BA0003E0B39 /* Realm */; };
+		09ABD8252A652BA0003E0B39 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 09ABD8242A652BA0003E0B39 /* RealmSwift */; };
+		09ABD8272A65315E003E0B39 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 09ABD8262A65315E003E0B39 /* Realm */; };
+		09ABD8292A65315E003E0B39 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 09ABD8282A65315E003E0B39 /* RealmSwift */; };
 		09ABE0062A142805009DB57B /* GroceryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ABE0052A142805009DB57B /* GroceryViewCell.swift */; };
 		09ABE0082A143447009DB57B /* DefaultFood.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09ABE0072A143447009DB57B /* DefaultFood.xcassets */; };
 		09ACB2812A614C4200A7F139 /* rocket.json in Resources */ = {isa = PBXBuildFile; fileRef = 09ACB2802A614C4200A7F139 /* rocket.json */; };
@@ -382,6 +386,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09ABD8292A65315E003E0B39 /* RealmSwift in Frameworks */,
+				09ABD8272A65315E003E0B39 /* Realm in Frameworks */,
 				098999362A27781F0040B67D /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -390,6 +396,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09ABD8252A652BA0003E0B39 /* RealmSwift in Frameworks */,
+				09ABD8232A652BA0003E0B39 /* Realm in Frameworks */,
 				098999492A27A08D0040B67D /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1044,6 +1052,8 @@
 			name = LoginModuleTests;
 			packageProductDependencies = (
 				098999352A27781F0040B67D /* SDWebImage */,
+				09ABD8262A65315E003E0B39 /* Realm */,
+				09ABD8282A65315E003E0B39 /* RealmSwift */,
 			);
 			productName = LoginModuleTests;
 			productReference = 098999232A2772890040B67D /* LoginModuleTests.xctest */;
@@ -1065,6 +1075,8 @@
 			name = BankModuleTests;
 			packageProductDependencies = (
 				098999482A27A08D0040B67D /* SDWebImage */,
+				09ABD8222A652BA0003E0B39 /* Realm */,
+				09ABD8242A652BA0003E0B39 /* RealmSwift */,
 			);
 			productName = BankModuleTests;
 			productReference = 0989993B2A27A0470040B67D /* BankModuleTests.xctest */;
@@ -1736,6 +1748,26 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 09CFB4242A1E6A940007FF40 /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImage;
+		};
+		09ABD8222A652BA0003E0B39 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 090B63ED2A45C16700C7D6CD /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		09ABD8242A652BA0003E0B39 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 090B63ED2A45C16700C7D6CD /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+		09ABD8262A65315E003E0B39 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 090B63ED2A45C16700C7D6CD /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		09ABD8282A65315E003E0B39 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 090B63ED2A45C16700C7D6CD /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 		09CFB4252A1E6A940007FF40 /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;

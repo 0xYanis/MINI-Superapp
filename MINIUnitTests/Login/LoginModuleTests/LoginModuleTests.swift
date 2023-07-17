@@ -16,14 +16,12 @@ final class LoginModuleTests: XCTestCase {
     var interactor: LoginInteractor!
     var router: LoginRouter!
     var presenter: LoginPresenter!
-    var lottieService: MockLoginLottieService!
     var biometryService: MockBiometryService!
     
     //MARK: - Initial setup
     override func setUpWithError() throws {
         view = MockLoginView()
         router = LoginRouter()
-        lottieService = MockLoginLottieService()
         biometryService = MockBiometryService()
         interactor = LoginInteractor()
         presenter = LoginPresenter(interactor: interactor, router: router)
@@ -33,7 +31,6 @@ final class LoginModuleTests: XCTestCase {
         interactor.presenter = presenter
         
         interactor.biometryService = biometryService
-        interactor.lottieService = lottieService
     }
     
     override func tearDownWithError() throws {
@@ -41,7 +38,6 @@ final class LoginModuleTests: XCTestCase {
         interactor = nil
         router = nil
         presenter = nil
-        lottieService = nil
         biometryService = nil
     }
     
@@ -83,42 +79,6 @@ final class LoginModuleTests: XCTestCase {
         XCTAssertEqual(result, view.loginIsNotCorrectCall)
     }
     
-    //MARK: Lottie service
-    func testInteractorSuccessfulLoadLottie() throws {
-        let apiService = APIService()
-        let realLottieService = LoginLottieService(apiService: apiService)
-        interactor.lottieService = nil
-        interactor.lottieService = realLottieService
-        let didLoadLottieExpectaion = expectation(description: "didLoadLottie")
-        
-        self.presenter.viewDidLoaded()
-        DispatchQueue.global().async {
-            XCTAssertNotNil(self.view.lottieAnimation)
-            didLoadLottieExpectaion.fulfill()
-        }
-        
-        wait(for: [didLoadLottieExpectaion], timeout: 5)
-    }
-    
-    func testInteractorFailedLoadLottie() throws {
-        let error = MockError.loadingGetFailed
-        lottieService.result = .failure(error)
-        
-        presenter.viewDidLoaded()
-        // -> interactor.viewDidLoaded() -> lottieService.getAnimation
-        
-        XCTAssertNil(view.lottieAnimation)
-    }
-    
-    func testInteractorNoneLoadLottie() throws {
-        lottieService.result = .none
-        
-        presenter.viewDidLoaded()
-        // -> interactor.viewDidLoaded() -> lottieService.getAnimation
-        
-        XCTAssertNil(view.lottieAnimation)
-    }
-    
     //    func testPerformanceExample() throws {
     //
     //        measure {
@@ -146,17 +106,6 @@ final class MockLoginView: LoginViewProtocol {
     }
     func loginIsNotCorrect() {
         loginIsNotCorrectCall = true
-    }
-}
-
-//MARK: - MockLoginLottieService
-final class MockLoginLottieService: LoginLottieServiceProtocol {
-    typealias handler = (_ animation: Result<LottieAnimation, Error>?) -> Void
-    
-    var result: Result<LottieAnimation, Error>?
-    
-    func loadAnimation(completion: @escaping handler) {
-        completion(result)
     }
 }
 

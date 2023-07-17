@@ -23,7 +23,7 @@ final class BankTemplateService: BankTemplateServiceProtocol {
     }
     
     func getTemplatesData(completion: @escaping(Result<[BankTemplateEntity]?, Error>) -> Void) {
-        apiService.getRequest(url: cardUrl) { (result: Result<BankTemplateObject, Error>) in
+        apiService.getRequest(url: cardUrl) { (result: Result<BankTemplateList, Error>) in
             switch result {
             case .success(let data):
                 completion(.success(data.templateList))
