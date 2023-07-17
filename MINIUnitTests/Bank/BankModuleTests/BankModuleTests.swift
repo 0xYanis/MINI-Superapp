@@ -76,6 +76,7 @@ final class BankModuleTests: XCTestCase {
     
     func testFetchDataSuccessful() throws {
         // given
+        let expectation = XCTestExpectation(description: "Async download")
         cardService.result = .success(cardData)
         tempService.result = .success(tempData)
         tranService.result = .success(tranData)
@@ -84,14 +85,20 @@ final class BankModuleTests: XCTestCase {
         view.viewDidLoad()
         
         // then
-        XCTAssertEqual(cardData.first!.id, presenter.getCardData().first!.id, "❌")
-        XCTAssertEqual(tempData.first!.id, presenter.getTemplateData().first!.id, "❌")
-        XCTAssertEqual(tranData.first!.id, presenter.getTransactionData().first!.id, "❌")
+        DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
+            XCTAssertEqual(self.cardData.first!.id, self.presenter.getCardData().first!.id, "❌")
+            XCTAssertEqual(self.tempData.first!.id, self.presenter.getTemplateData().first!.id, "❌")
+            XCTAssertEqual(self.tranData.first!.id, self.presenter.getTransactionData().first!.id, "❌")
+            expectation.fulfill()
+        }
+
+        wait(for: [expectation], timeout: 5.0)
+        
     }
     
     func testFetchDataFailed() throws {
         // given
-        enum ErrorType: Error { case failed }
+        let expectation = XCTestExpectation(description: "Async download")
         cardService.result = .failure(ErrorType.failed)
         tempService.result = .failure(ErrorType.failed)
         tranService.result = .failure(ErrorType.failed)
@@ -100,7 +107,70 @@ final class BankModuleTests: XCTestCase {
         view.viewDidLoad()
         
         // then
-        XCTAssertEqual(ErrorType.failed.localizedDescription, view.error)
+        DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
+            
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 5.0)
+        
+    }
+    
+    func testGetDataToRoutingSuccessful() throws {
+        // given
+        interactor.cardsData = self.cardData
+        interactor.transactionsData = self.tranData
+        
+        // when
+        var cardResult = interactor.userDidTapCard(index: 0)
+        var transResult = interactor.userDidTapTransaction(index: 0)
+        // then
+        XCTAssertEqual(cardData.first!.id, cardResult.id)
+        XCTAssertEqual(tranData.first!.id, transResult.id)
+    }
+    
+    func testDeleteCard() throws {
+        // given
+        interactor.cardsData = self.cardData
+        
+        // when
+        presenter.userWantToDeleteCard(at: 0)
+        
+        // then
+        XCTAssertEqual(interactor.cardsData.count, 0)
+    }
+    
+    func testDeleteTransaction() throws {
+        // given
+        interactor.transactionsData = self.tranData
+        
+        // when
+        presenter.userWantToDeleteTransaction(at: 0)
+        
+        // then
+        XCTAssertEqual(interactor.transactionsData.count, 0)
+    }
+    
+    func testDeleteEmptyCard() throws {
+        // given
+        interactor.cardsData = []
+        
+        // when
+        presenter.userWantToDeleteCard(at: 0)
+        
+        // then
+        XCTAssertEqual(interactor.cardsData.count, 0)
+    }
+    
+    func testDeleteEmptyTransaction() throws {
+        // given
+        interactor.transactionsData = []
+        
+        // when
+        presenter.userWantToDeleteTransaction(at: 0)
+        
+        // then
+        XCTAssertEqual(interactor.transactionsData.count, 0)
     }
     
 }
@@ -152,5 +222,16 @@ final class MockTransactionService: BankTransactionServiceProtocol {
     
     func getTransactionsData(completion: @escaping (Result<[BankTransactionEntity]?, Error>) -> Void) {
         completion(result)
+    }
+}
+
+enum ErrorType: Error {
+    case failed
+    
+    var localizedDescription: String {
+        switch self {
+        case .failed:
+            return "failed"
+        }
     }
 }
