@@ -16,6 +16,7 @@ final class BankTemplateSet: UITableViewCell {
     static let cellId = "BankTemplateSet"
     
     //MARK: Private properties
+    private let snapLayout = StackFlowLayout()
     private var collectionView: UICollectionView! {
         didSet {
             collectionView.decelerationRate = .fast
@@ -30,7 +31,6 @@ final class BankTemplateSet: UITableViewCell {
             collectionView.contentInset = .init(top: 0, left: 16, bottom: 0, right: 16)
         }
     }
-    private let snapLayout = StackFlowLayout()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -45,6 +45,7 @@ final class BankTemplateSet: UITableViewCell {
     func reloadData() {
         collectionView.reloadData()
     }
+    
 }
 
 //MARK: - Private methods
@@ -77,6 +78,7 @@ private extension BankTemplateSet {
         collectionView.stopSkeletonAnimation()
         hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.25))
     }
+    
 }
 
 // MARK: - UICollectionViewDataSource
@@ -139,4 +141,5 @@ extension BankTemplateSet: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         presenter?.userWantToDetails(of: .template, with: indexPath.item)
     }
+    
 }

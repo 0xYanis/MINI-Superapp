@@ -25,6 +25,7 @@ final class BankHistoryViewController: UIViewController {
     func reloadData() {
         tableView.reloadData()
     }
+    
 }
 
 //MARK: - Private methods
@@ -79,6 +80,7 @@ private extension BankHistoryViewController {
     @objc func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
         delegate?.handlePanGesture(gesture)
     }
+    
 }
 
 //MARK: - BankTransactionKeyboardDelegate
@@ -103,6 +105,7 @@ extension BankHistoryViewController: BankTransactionKeyboardDelegate {
             tableView.reloadData()
         }
     }
+    
 }
 
 //MARK: - UITableViewDataSource
@@ -177,6 +180,7 @@ extension BankHistoryViewController: UITableViewDataSource {
         
         return deleteAction
     }
+    
 }
 
 //MARK: - UITableViewDelegate
@@ -188,4 +192,5 @@ extension BankHistoryViewController: UITableViewDelegate {
         let index = indexPath.row
         presenter?.userWantToDetails(of: .transaction, with: index)
     }
+    
 }

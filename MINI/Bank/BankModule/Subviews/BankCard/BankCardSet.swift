@@ -16,6 +16,7 @@ final class BankCardSet: UITableViewCell {
     static let cellId = "BankCardSet"
     
     //MARK: Private properties
+    private let snapLayout = StackFlowLayout()
     private var collectionView: UICollectionView! {
         didSet {
             collectionView.decelerationRate = .fast
@@ -30,7 +31,6 @@ final class BankCardSet: UITableViewCell {
             )
         }
     }
-    private let snapLayout = StackFlowLayout()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -44,6 +44,7 @@ final class BankCardSet: UITableViewCell {
     func reloadData() {
         collectionView.reloadData()
     }
+    
 }
 
 //MARK: - Private methods
@@ -74,8 +75,12 @@ private extension BankCardSet {
     
     func stopSkeleton() {
         collectionView.stopSkeletonAnimation()
-        hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.25))
+        hideSkeleton(
+            reloadDataAfter: true,
+            transition: .crossDissolve(0.25)
+        )
     }
+    
 }
 
 
@@ -175,6 +180,7 @@ extension BankCardSet: SkeletonCollectionViewDataSource {
         
         return deleteAction
     }
+    
 }
 
 
@@ -203,4 +209,5 @@ extension BankCardSet: UICollectionViewDelegateFlowLayout {
     ) {
         presenter?.userWantToDetails(of: .card, with: indexPath.item)
     }
+    
 }

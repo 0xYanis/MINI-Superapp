@@ -34,6 +34,7 @@ final class BankTemplateCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
 }
 
 private extension BankTemplateCell {
@@ -84,4 +85,5 @@ private extension BankTemplateCell {
             make.left.right.equalToSuperview().inset(10)
         }
     }
+    
 }

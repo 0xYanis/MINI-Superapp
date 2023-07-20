@@ -40,10 +40,20 @@ private extension BankTableView {
     }
     
     func tableViewRegisters() {
-        register(BankCardSet.self, forCellReuseIdentifier: BankCardSet.cellId)
-        register(BankTemplateLabelCell.self, forCellReuseIdentifier: BankTemplateLabelCell.cellId)
-        register(BankTemplateSet.self, forCellReuseIdentifier: BankTemplateSet.cellId)
+        register(
+            BankCardSet.self,
+            forCellReuseIdentifier: BankCardSet.cellId
+        )
+        register(
+            BankTemplateLabelCell.self,
+            forCellReuseIdentifier: BankTemplateLabelCell.cellId
+        )
+        register(
+            BankTemplateSet.self,
+            forCellReuseIdentifier: BankTemplateSet.cellId
+        )
     }
+    
 }
 
 //MARK: - UITableViewDataSource

@@ -68,4 +68,5 @@ private extension BankTemplateLabelCell {
     @objc func didTapSeeAllButt() {
         presenter?.userWantToDetails(of: .allTransactions, with: 0)
     }
+    
 }
