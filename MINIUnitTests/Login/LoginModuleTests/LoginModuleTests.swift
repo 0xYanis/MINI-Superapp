@@ -79,12 +79,6 @@ final class LoginModuleTests: XCTestCase {
         XCTAssertEqual(result, view.loginIsNotCorrectCall)
     }
     
-    //    func testPerformanceExample() throws {
-    //
-    //        measure {
-    //
-    //        }
-    //    }
 }
 //MARK: Mock objects
 //MARK: - MockLoginView
@@ -121,4 +115,11 @@ final class MockBiometryService: BiometryServiceProtocol {
 
 enum MockError: Error {
     case loadingGetFailed
+    
+    var localizedDescription: String {
+        switch self {
+        case .loadingGetFailed:
+            return "loadingGetFailed"
+        }
+    }
 }
