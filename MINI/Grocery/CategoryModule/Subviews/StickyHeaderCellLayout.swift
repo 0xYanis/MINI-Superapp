@@ -1,5 +1,5 @@
 //
-//  SteakyHeaderCellLayout.swift
+//  StickyHeaderCellLayout.swift
 //  MINI
 //
 //  Created by Yan Rybkin on 27.07.2023.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class SteakyHeaderCellLayout: UICollectionViewFlowLayout {
+final class StickyHeaderCellLayout: UICollectionViewFlowLayout {
     
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         let layoutAttributes = super.layoutAttributesForElements(in: rect)
