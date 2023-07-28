@@ -8,7 +8,7 @@
 import UIKit
 import SkeletonView
 
-final class BankTemplateCell: UICollectionViewCell {
+final class BankTemplateCell: UICollectionViewCell, CellConfProtocol {
     
     private lazy var templateView = UIView()
     private lazy var circleView = UIView()

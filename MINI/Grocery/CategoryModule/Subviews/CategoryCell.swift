@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-final class CategoryCell: UICollectionViewCell {
+final class CategoryCell: UICollectionViewCell, CellConfProtocol {
     
     //MARK: Public properties
     static let cellId = "CategoryCell"

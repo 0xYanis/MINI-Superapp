@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import SkeletonView
 
-final class BankCardCell: UICollectionViewCell {
+final class BankCardCell: UICollectionViewCell, CellConfProtocol {
     
     //MARK: Private properties
     private lazy var cardView = UIView()

@@ -94,20 +94,25 @@ extension BankTemplateSet: SkeletonCollectionViewDataSource {
         return presenter?.getTemplateData().count ?? 5
     }
     
-    
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: BankTemplateCell.cellId,
-            for: indexPath) as? BankTemplateCell else {
-            return UICollectionViewCell()
-        }
+        let cell = dequeueCell(BankTemplateCell.self, indexPath: indexPath)
         cell.radiusAndShadow(radius: 10, shadowSize: 10)
         
         return cell
     }
     
+    func dequeueCell<C: CellConfProtocol>(
+        _ cell: C.Type,
+        indexPath: IndexPath
+    ) -> C {
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: C.cellId,
+            for: indexPath
+        ) as? C else { fatalError("Error \(cell)") }
+        return cell
+    }
     
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,

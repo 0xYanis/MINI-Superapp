@@ -100,17 +100,22 @@ extension BankCardSet: SkeletonCollectionViewDataSource {
         return presenter?.getCardData().count ?? 5
     }
     
+    func dequeueCell<C: CellConfProtocol>(
+        _ cell: C.Type,
+        indexPath: IndexPath
+    ) -> C {
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: C.cellId,
+            for: indexPath
+        ) as? C else { fatalError("Error \(cell)") }
+        return cell
+    }
     
     func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: BankCardCell.cellId,
-            for: indexPath) as? BankCardCell else {
-            return UICollectionViewCell()
-        }
-        return cell
+        return dequeueCell(BankCardCell.self, indexPath: indexPath)
     }
     
     

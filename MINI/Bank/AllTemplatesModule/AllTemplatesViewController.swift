@@ -152,12 +152,17 @@ extension AllTemplatesViewController: UICollectionViewDataSource {
         _ collectionView: UICollectionView, cellForItemAt
         indexPath: IndexPath
     ) -> UICollectionViewCell {
-        let defaultCell = UICollectionViewCell()
-        
-        guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: AllTemplatesViewCell.cellId, for: indexPath
-        ) as? AllTemplatesViewCell else { return defaultCell }
-        
+        return dequeueCell(AllTemplatesViewCell.self, indexPath: indexPath)
+    }
+    
+    func dequeueCell<C: CellConfProtocol>(
+        _ cell: C.Type,
+        indexPath: IndexPath
+    ) -> C {
+        guard let cell = templateCollectionView.dequeueReusableCell(
+            withReuseIdentifier: C.cellId,
+            for: indexPath
+        ) as? C else { fatalError("Error \(cell)") }
         return cell
     }
     

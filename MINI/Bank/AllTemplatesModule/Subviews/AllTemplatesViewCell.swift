@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class AllTemplatesViewCell: UICollectionViewCell {
+final class AllTemplatesViewCell: UICollectionViewCell, CellConfProtocol {
     
     static let cellId = "AllTemplatesViewCell"
     
