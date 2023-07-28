@@ -44,11 +44,20 @@ private extension BaseTabBarController {
         ]
     }
     
-    func createVC(_ vc: UIViewController, barTitle: String, image: String) -> UIViewController {
+    func createVC(
+        _ vc: UIViewController,
+        barTitle: String,
+        image: String
+    ) -> UIViewController {
         let navController = UINavigationController(rootViewController: vc)
         navController.navigationBar.prefersLargeTitles = true
         navController.tabBarItem.title = barTitle
-        navController.tabBarItem.image = UIImage(systemName: image)
+        
+        let symbolConf = UIImage.SymbolConfiguration(weight: .medium)
+        navController.tabBarItem.image = UIImage(
+            systemName: image,
+            withConfiguration: symbolConf
+        )
         return navController
     }
     

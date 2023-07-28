@@ -108,7 +108,6 @@
 		09ACB2812A614C4200A7F139 /* rocket.json in Resources */ = {isa = PBXBuildFile; fileRef = 09ACB2802A614C4200A7F139 /* rocket.json */; };
 		09B0C1892A545C8200E0CDEF /* UITagPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B0C1882A545C8200E0CDEF /* UITagPickerView.swift */; };
 		09B1B4D02A1673D90090676E /* GroceryHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B1B4CF2A1673D90090676E /* GroceryHeaderCell.swift */; };
-		09B797E32A728E160080169A /* StickyHeaderCellLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B797E22A728E160080169A /* StickyHeaderCellLayout.swift */; };
 		09BBA70F2A0E76950020E3C9 /* cardsLogo.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09BBA70E2A0E76950020E3C9 /* cardsLogo.xcassets */; };
 		09BFC93C2A1B4C7400C8505B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BFC93B2A1B4C7400C8505B /* ProfileViewController.swift */; };
 		09BFC93E2A1B4C8000C8505B /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BFC93D2A1B4C8000C8505B /* ProfilePresenter.swift */; };
@@ -296,7 +295,6 @@
 		09ACB2802A614C4200A7F139 /* rocket.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = rocket.json; sourceTree = "<group>"; };
 		09B0C1882A545C8200E0CDEF /* UITagPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITagPickerView.swift; sourceTree = "<group>"; };
 		09B1B4CF2A1673D90090676E /* GroceryHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryHeaderCell.swift; sourceTree = "<group>"; };
-		09B797E22A728E160080169A /* StickyHeaderCellLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickyHeaderCellLayout.swift; sourceTree = "<group>"; };
 		09BBA70E2A0E76950020E3C9 /* cardsLogo.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = cardsLogo.xcassets; sourceTree = "<group>"; };
 		09BFC93B2A1B4C7400C8505B /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		09BFC93D2A1B4C8000C8505B /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
@@ -985,7 +983,6 @@
 				09FB82442A3714B800CEF8C1 /* CategoryCell.swift */,
 				09FB82462A3714C300CEF8C1 /* CategoryHeader.swift */,
 				09FB825A2A3766A600CEF8C1 /* CategoryCartView.swift */,
-				09B797E22A728E160080169A /* StickyHeaderCellLayout.swift */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -1308,7 +1305,6 @@
 				09E9E81729EAE9360084416B /* LoginBuilder.swift in Sources */,
 				099089E52A139A3A00EE00DA /* GroceryPresenter.swift in Sources */,
 				09F2AE742A52FD2E00E02404 /* CartPresenter.swift in Sources */,
-				09B797E32A728E160080169A /* StickyHeaderCellLayout.swift in Sources */,
 				09FC393F29FABF5B00B2D97E /* AllTemplatesBuilder.swift in Sources */,
 				09C3CB412A2DF340001731D1 /* BankTableView.swift in Sources */,
 				09FC393B29FABF4A00B2D97E /* AllTemplatesInteractor.swift in Sources */,
