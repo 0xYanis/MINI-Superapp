@@ -8,6 +8,12 @@
 import UIKit
 import SnapKit
 
+protocol BankTableCellConf: AnyObject {
+    static var cellId: String { get }
+    var presenter: BankPresenterProtocol? { get set }
+    func reloadData()
+}
+
 final class BankTableView: UITableView {
     
     weak var presenter: BankPresenterProtocol?
@@ -69,31 +75,24 @@ extension BankTableView: UITableViewDataSource {
         
         switch indexPath.row {
         case 0:
-            guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: BankCardSet.cellId,
-                for: indexPath) as? BankCardSet else { return defaultCell }
-            cell.presenter = presenter
-            cell.reloadData()
-            return cell
-            
+            return configureCell(BankCardSet.self, indexPath: indexPath)
         case 1:
-            guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: BankTemplateLabelCell.cellId,
-                for: indexPath) as? BankTemplateLabelCell else { return defaultCell }
-            cell.presenter = presenter
-            return cell
-            
+            return configureCell(BankTemplateLabelCell.self, indexPath: indexPath)
         case 2:
-            guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: BankTemplateSet.cellId,
-                for: indexPath) as? BankTemplateSet else { return defaultCell }
-            cell.presenter = presenter
-            cell.reloadData()
-            return cell
-            
+            return configureCell(BankTemplateSet.self, indexPath: indexPath)
         default:
             return defaultCell
         }
+    }
+    
+    func configureCell<C: BankTableCellConf>(_ cell: C.Type, indexPath: IndexPath) -> C {
+        guard let cell = self.dequeueReusableCell(
+            withIdentifier: C.cellId,
+            for: indexPath
+        ) as? C else { fatalError("") }
+        cell.presenter = presenter
+        cell.reloadData()
+        return cell
     }
     
 }

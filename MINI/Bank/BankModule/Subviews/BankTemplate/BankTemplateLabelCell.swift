@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class BankTemplateLabelCell: UITableViewCell {
+final class BankTemplateLabelCell: UITableViewCell, BankTableCellConf {
     
     static let cellId = "BankTemplateLabelCell"
     weak var presenter: BankPresenterProtocol?
@@ -37,6 +37,9 @@ final class BankTemplateLabelCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func reloadData() {
+        
+    }
     
 }
 

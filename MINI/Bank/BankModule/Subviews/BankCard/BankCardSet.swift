@@ -8,7 +8,7 @@
 import UIKit
 import SkeletonView
 
-final class BankCardSet: UITableViewCell {
+final class BankCardSet: UITableViewCell, BankTableCellConf {
     
     //MARK: Public properties
     weak var presenter: BankPresenterProtocol?
