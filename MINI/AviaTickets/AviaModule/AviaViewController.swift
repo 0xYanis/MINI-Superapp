@@ -129,7 +129,14 @@ extension AviaViewController: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        return 3
+        switch section {
+        case 0: return 1
+        case 1: return 4
+        case 2: return 1
+        case 3: return 8
+        case 5: return 1
+        default: return 0
+        }
     }
     
     func collectionView(
