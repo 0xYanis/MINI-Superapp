@@ -23,6 +23,17 @@ final class AviaViewController: UIViewController {
     
     private lazy var refreshControl   = UIRefreshControl()
     private lazy var searchController = UISearchController()
+    private lazy var layout = UICollectionViewFlowLayout()
+    private var collectionView: UICollectionView! {
+        didSet {
+            collectionView.backgroundColor = .clear
+            collectionView.dataSource = self
+            collectionView.register(
+                UICollectionViewCell.self,
+                forCellWithReuseIdentifier: "cell"
+            )
+        }
+    }
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -59,6 +70,8 @@ private extension AviaViewController {
         view.backgroundColor = .back2MINI
         createNavigation()
         createSearchController()
+        createCollectionView()
+        createRefreshControl(scrollView: collectionView)
     }
     
     func createNavigation() {
@@ -69,6 +82,16 @@ private extension AviaViewController {
     
     func createSearchController() {
         
+    }
+    
+    func createCollectionView() {
+        collectionView = UICollectionView(
+            frame: .zero,
+            collectionViewLayout: layout)
+        view.addSubview(collectionView)
+        collectionView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
     
     func createRefreshControl(scrollView: UIScrollView) {
@@ -88,6 +111,37 @@ private extension AviaViewController {
     
     @objc func refreshAction() {
         refreshControl.endRefreshing()
+    }
+    
+}
+
+// MARK: - UICollectionViewDataSource
+
+extension AviaViewController: UICollectionViewDataSource {
+    
+    func numberOfSections(
+        in collectionView: UICollectionView
+    ) -> Int {
+        return 5
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+    ) -> Int {
+        return 3
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: "cell",
+            for: indexPath
+        )
+        cell.backgroundColor = .red
+        return cell
     }
     
 }
