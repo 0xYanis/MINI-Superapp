@@ -9,20 +9,22 @@ import UIKit
 import SnapKit
 
 protocol AviaViewProtocol: AnyObject {
-    
+    func updateView()
+    func loadingDataGetFailed(with error: String)
 }
 
 final class AviaViewController: UIViewController {
     
-    //MARK: Public properties
+    //MARK: - Public properties
+    
     var presenter: AviaPresenterProtocol?
     
+    //MARK: - Private properties
     
-    //MARK: Private properties
     private lazy var refreshControl   = UIRefreshControl()
     private lazy var searchController = UISearchController()
     
-    //MARK: Lifecycle
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
@@ -36,18 +38,27 @@ final class AviaViewController: UIViewController {
 }
 
 //MARK: - AviaViewProtocol
+
 extension AviaViewController: AviaViewProtocol {
+    
+    func updateView() {
+        
+    }
+    
+    func loadingDataGetFailed(with error: String) {
+        
+    }
     
 }
 
 //MARK: - Private methods
+
 private extension AviaViewController {
+    
     func initialize() {
         view.backgroundColor = .back2MINI
         createNavigation()
         createSearchController()
-        
-        
     }
     
     func createNavigation() {
@@ -71,10 +82,12 @@ private extension AviaViewController {
     
 }
 
+// MARK: - Action methods
+
 private extension AviaViewController {
+    
     @objc func refreshAction() {
         refreshControl.endRefreshing()
     }
-    
     
 }
