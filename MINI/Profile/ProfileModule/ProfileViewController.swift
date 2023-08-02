@@ -16,6 +16,11 @@ final class ProfileViewController: UIViewController {
     var presenter: ProfilePresenterProtocol?
     
     private lazy var tableView = ProfileTableView()
+    private lazy var alert = UIAlertController(
+        title: "logout_alert_title".localized,
+        message: "logout_alert_message".localized,
+        preferredStyle: .alert
+    )
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +35,7 @@ final class ProfileViewController: UIViewController {
 }
 
 extension ProfileViewController: ProfileViewProtocol {
+    
     func updateView() {
         
     }
@@ -38,6 +44,7 @@ extension ProfileViewController: ProfileViewProtocol {
 }
 
 private extension ProfileViewController {
+    
     func initialize() {
         view.backgroundColor = .back2MINI
         createNavigation(title: "profile_navbar".localized)
@@ -71,15 +78,10 @@ private extension ProfileViewController {
 
 private extension ProfileViewController {
     @objc func logoutButtonAction() {
-        let alert = UIAlertController(
-            title: "logout_alert_title".localized,
-            message: "logout_alert_message".localized,
-            preferredStyle: .alert
-        )
         alert.addAction(cancelAction)
         alert.addAction(logoutAction)
         
-        present(alert, animated: true, completion: nil)
+        present(alert, animated: true)
     }
     
     var cancelAction: UIAlertAction {
