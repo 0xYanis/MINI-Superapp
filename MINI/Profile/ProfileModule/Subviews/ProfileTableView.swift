@@ -60,13 +60,11 @@ extension ProfileTableView: UITableViewDataSource {
         
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: ProfileTableCell.cellId,
-            for: indexPath
-        ) as? ProfileTableCell,
+            for: indexPath) as? ProfileTableCell,
               let data = presenter?
             .getProfileData()[indexPath.section]
-            .options[indexPath.row] else {
-            return UITableViewCell()
-        }
+            .options[indexPath.row]
+        else { return UITableViewCell() }
         
         cell.configure(with: data)
         return cell
