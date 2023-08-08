@@ -11,7 +11,6 @@ import Lottie
 
 protocol LoginViewProtocol: AnyObject {
     func showAlert(_ title: String, message: String)
-    
     func loginIsNotCorrect()
 }
 
@@ -40,11 +39,11 @@ final class LoginViewController: UIViewController {
         initialize()
     }
     
-    
 }
 
 //MARK: - LoginViewProtocol
 extension LoginViewController: LoginViewProtocol {
+    
     func showAlert(_ title: String, message: String) {
         let alert = UIAlertController()
         alert.showAlert(title: title, message: message, from: self)
@@ -58,6 +57,7 @@ extension LoginViewController: LoginViewProtocol {
 
 //MARK: - Private methods
 private extension LoginViewController {
+    
     func initialize() {
         view.backgroundColor = .back2MINI
         generator.prepare()
@@ -140,19 +140,10 @@ private extension LoginViewController {
     }
     
     func registerForKeyboardNotifications() {
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(keyboardWillShow),
-            name: UIResponder.keyboardWillShowNotification,
-            object: nil
-        )
-        
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(keyboardWillHide),
-            name: UIResponder.keyboardWillHideNotification,
-            object: nil
-        )
+        addNotification(UIResponder.keyboardWillShowNotification,
+                        selector: #selector(keyboardWillShow))
+        addNotification(UIResponder.keyboardWillHideNotification,
+                        selector: #selector(keyboardWillHide))
     }
     
     func createVersionLabel() {
@@ -178,6 +169,7 @@ private extension LoginViewController {
 
 //MARK: - functionality methods
 private extension LoginViewController {
+    
     @objc func goToWebsiteAction() {
         if let url = URL(string: "https://github.com/0xYanis") {
             UIApplication.shared.open(url)
@@ -185,11 +177,9 @@ private extension LoginViewController {
     }
     
     @objc func keyboardWillShow(notification: Notification) {
-        guard let userInfo = notification.userInfo else {
-            return
-        }
-        guard let keyboardSize = (userInfo[UIResponder.keyboardFrameEndUserInfoKey]
-                                  as? NSValue)?.cgRectValue.size else { return }
+        guard let userInfo = notification.userInfo,
+              let keyboardSize = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.size
+        else { return }
         
         scrollView.contentOffset = .init(
             x: 0,
@@ -223,6 +213,7 @@ private extension LoginViewController {
 
 //MARK: - protocol UITextFieldDelegate
 extension LoginViewController: UITextFieldDelegate {
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
         case loginView.nameField:

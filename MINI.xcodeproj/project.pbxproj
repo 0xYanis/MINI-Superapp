@@ -15,6 +15,7 @@
 		09044FB12A444AE500432A3C /* GSearchBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09044FB02A444AE500432A3C /* GSearchBuilder.swift */; };
 		09044FB32A444AF000432A3C /* GSearchEnity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09044FB22A444AF000432A3C /* GSearchEnity.swift */; };
 		09044FB52A448A3400432A3C /* GroceryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09044FB42A448A3400432A3C /* GroceryCollectionView.swift */; };
+		09091CDC2A82AD620043A9A1 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09091CDB2A82AD610043A9A1 /* UIViewController+Extension.swift */; };
 		0909D1C329F192E50078EEB5 /* BankTemplateLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0909D1C229F192E50078EEB5 /* BankTemplateLabelCell.swift */; };
 		090AE1DB29FBAA020092515D /* TemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090AE1DA29FBAA020092515D /* TemplateViewController.swift */; };
 		090AE1DD29FBAA080092515D /* TemplatePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090AE1DC29FBAA080092515D /* TemplatePresenter.swift */; };
@@ -209,6 +210,7 @@
 		09044FB02A444AE500432A3C /* GSearchBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSearchBuilder.swift; sourceTree = "<group>"; };
 		09044FB22A444AF000432A3C /* GSearchEnity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSearchEnity.swift; sourceTree = "<group>"; };
 		09044FB42A448A3400432A3C /* GroceryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryCollectionView.swift; sourceTree = "<group>"; };
+		09091CDB2A82AD610043A9A1 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		0909D1C229F192E50078EEB5 /* BankTemplateLabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTemplateLabelCell.swift; sourceTree = "<group>"; };
 		090AE1DA29FBAA020092515D /* TemplateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateViewController.swift; sourceTree = "<group>"; };
 		090AE1DC29FBAA080092515D /* TemplatePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplatePresenter.swift; sourceTree = "<group>"; };
@@ -535,6 +537,7 @@
 				09F86C5629F6F8A000307432 /* UITabBarController+Extension.swift */,
 				09F922682A1EA234009684F2 /* String+Extension.swift */,
 				092F67AE2A3CE87500E0F2B9 /* UIColor+Extensions.swift */,
+				09091CDB2A82AD610043A9A1 /* UIViewController+Extension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1320,6 +1323,7 @@
 				099089E72A139A4600EE00DA /* GroceryInteractor.swift in Sources */,
 				097E03A129EC44A500CE2A6F /* BankRouter.swift in Sources */,
 				099D4F7F29F72AEA0002C24A /* NewTemplatePresenter.swift in Sources */,
+				09091CDC2A82AD620043A9A1 /* UIViewController+Extension.swift in Sources */,
 				091095FE29DB32F000338D22 /* AppDelegate.swift in Sources */,
 				09FB82582A3737AA00CEF8C1 /* LocationService.swift in Sources */,
 				0909D1C329F192E50078EEB5 /* BankTemplateLabelCell.swift in Sources */,

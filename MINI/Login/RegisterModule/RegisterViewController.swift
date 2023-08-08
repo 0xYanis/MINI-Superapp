@@ -87,26 +87,17 @@ private extension RegisterViewController {
     }
     
     func registerForKeyboardNotifications() {
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(keyboardWillShow),
-            name: UIResponder.keyboardWillShowNotification,
-            object: nil
-        )
-        
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(keyboardWillHide),
-            name: UIResponder.keyboardWillHideNotification,
-            object: nil
-        )
+        addNotification(UIResponder.keyboardWillShowNotification,
+                        selector: #selector(keyboardWillShow))
+        addNotification(UIResponder.keyboardWillHideNotification,
+                        selector: #selector(keyboardWillHide))
     }
-    
     
 }
 
 //MARK: - functionality methods
 private extension RegisterViewController {
+    
     @objc func keyboardWillShow(notification: Notification) {
         guard let userInfo = notification.userInfo else {
             return
@@ -147,6 +138,7 @@ private extension RegisterViewController {
 
 //MARK: - UITextFieldDelegate
 extension RegisterViewController: UITextFieldDelegate {
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
         case registerView.nameField:
