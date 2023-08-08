@@ -12,7 +12,7 @@ final class CartView: UIView {
     
     weak var delegate: CartViewDelegate?
     
-    private lazy var tableView  = UITableView()
+    private lazy var tableView  = MiTableView()
     private lazy var totalView  = UIView()
     
     override init(frame: CGRect) {

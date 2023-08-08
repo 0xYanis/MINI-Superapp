@@ -8,12 +8,12 @@
 import UIKit
 import SnapKit
 
-final class ProfileTableView: UITableView {
+final class ProfileTableView: MiTableView {
     
     weak var presenter: ProfilePresenterProtocol?
     
-    override init(frame: CGRect, style: UITableView.Style) {
-        super.init(frame: frame, style: .insetGrouped)
+    override init(frame: CGRect = .zero, style: UITableView.Style) {
+        super.init(style: style)
         initialize()
     }
     
@@ -30,7 +30,7 @@ private extension ProfileTableView {
         backgroundColor = .clear
         register(
             ProfileTableCell.self,
-            forCellReuseIdentifier: ProfileTableCell.cellId
+            cellId: ProfileTableCell.cellId
         )
     }
     

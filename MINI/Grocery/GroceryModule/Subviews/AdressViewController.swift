@@ -20,7 +20,7 @@ final class AdressViewController: UIViewController {
     
     private lazy var textTilte    = UILabel()
     private lazy var searchBar    = UISearchBar()
-    private lazy var tableView    = UITableView()
+    private lazy var tableView    = MiTableView()
     private lazy var cancelButton = UIButton(
         systemImage: "xmark.circle.fill",
         color: .tintMINI,

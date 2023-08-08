@@ -16,7 +16,7 @@ final class CardViewController: UIViewController {
     private lazy var cardView   = UIView()
     private lazy var frontView  = CardDetailView()
     private lazy var backView   = CardBackDetailView()
-    private lazy var tableView  = UITableView(frame: .zero, style: .insetGrouped)
+    private lazy var tableView  = MiTableView(style: .insetGrouped)
     private var isFlipped: Bool = false
     
     var presenter: CardPresenterProtocol?
@@ -143,12 +143,18 @@ private extension CardViewController {
             preferredStyle: .alert
         )
         
-        let deleteAction = UIAlertAction(title: "delete_card_alert_delete".localized, style: .destructive) { (_) in
+        let deleteAction = UIAlertAction(
+            title: "delete_card_alert_delete".localized,
+            style: .destructive
+        ) { (_) in
             self.presenter?.userWantToDeleteCard()
         }
         alert.addAction(deleteAction)
         
-        let cancelAction = UIAlertAction(title: "delete_card_alert_cancel".localized, style: .cancel)
+        let cancelAction = UIAlertAction(
+            title: "delete_card_alert_cancel".localized,
+            style: .cancel
+        )
         alert.addAction(cancelAction)
         
         present(alert, animated: true, completion: nil)
@@ -160,17 +166,23 @@ private extension CardViewController {
 // MARK: - Rotation animation CardView
 private extension CardViewController {
     func createViewRotation(uiView: UIView) {
-        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe))
+        let swipeRight = UISwipeGestureRecognizer(
+            target: self,
+            action: #selector(handleSwipe)
+        )
         swipeRight.direction = .right
         uiView.addGestureRecognizer(swipeRight)
         
-        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe))
+        let swipeLeft = UISwipeGestureRecognizer(
+            target: self,
+            action: #selector(handleSwipe)
+        )
         swipeLeft.direction = .left
         uiView.addGestureRecognizer(swipeLeft)
     }
     
-    @objc func handleSwipe(gestureRecognizer: UISwipeGestureRecognizer) {
-        switch gestureRecognizer.direction {
+    @objc func handleSwipe(geture: UISwipeGestureRecognizer) {
+        switch geture.direction {
         case .right:
             rotateView(options: [
                 .curveEaseOut,

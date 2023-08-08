@@ -19,10 +19,7 @@ final class TransactionViewController: UIViewController {
     
     private lazy var scrollView = UIScrollView()
     private lazy var imageView  = UIImageView()
-    private lazy var tableView  = UITableView(
-        frame: .zero,
-        style: .grouped
-    )
+    private lazy var tableView  = MiTableView(style: .grouped)
     
     override func viewDidLoad() {
         super.viewDidLoad()

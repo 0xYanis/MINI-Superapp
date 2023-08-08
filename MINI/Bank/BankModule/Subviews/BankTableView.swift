@@ -14,7 +14,7 @@ protocol BankTableCellConf: AnyObject {
     func reloadData()
 }
 
-final class BankTableView: UITableView {
+final class BankTableView: MiTableView {
     
     weak var presenter: BankPresenterProtocol?
     
@@ -46,18 +46,12 @@ private extension BankTableView {
     }
     
     func tableViewRegisters() {
-        register(
-            BankCardSet.self,
-            forCellReuseIdentifier: BankCardSet.cellId
-        )
-        register(
-            BankTemplateLabelCell.self,
-            forCellReuseIdentifier: BankTemplateLabelCell.cellId
-        )
-        register(
-            BankTemplateSet.self,
-            forCellReuseIdentifier: BankTemplateSet.cellId
-        )
+        register(BankCardSet.self,
+                 cellId: BankCardSet.cellId)
+        register(BankTemplateLabelCell.self,
+                 cellId: BankTemplateLabelCell.cellId)
+        register(BankTemplateSet.self,
+                 cellId: BankTemplateSet.cellId)
     }
     
 }

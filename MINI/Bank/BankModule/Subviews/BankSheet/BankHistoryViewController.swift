@@ -14,7 +14,7 @@ final class BankHistoryViewController: UIViewController {
     weak var presenter: BankPresenterProtocol?
     
     private lazy var labelView = BankHistoryLabel()
-    private lazy var tableView = UITableView()
+    private lazy var tableView = MiTableView()
     private var isSearching = false
     
     override func viewDidLoad() {
@@ -65,7 +65,7 @@ private extension BankHistoryViewController {
     func tableViewRegister() {
         tableView.register(
             BankTransactionCell.self,
-            forCellReuseIdentifier: BankTransactionCell.cellId
+            cellId: BankTransactionCell.cellId
         )
     }
     
