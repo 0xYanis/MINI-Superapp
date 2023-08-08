@@ -50,7 +50,7 @@ final class ProfileRouter: ProfileRouterProtocol {
             goToDetailView(to: defView)
             
         case .password:
-            goToDetailView(to: defView)
+            goToDetailView(to: PasswordBuilder.build())
         case .support:
             goToDetailView(to: defView)
         default: return
