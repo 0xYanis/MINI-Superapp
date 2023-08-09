@@ -49,6 +49,8 @@ final class ProfileRouter: ProfileRouterProtocol {
         case .transactions:
             goToDetailView(to: defView)
             
+        case .language:
+            goToDetailView(to: defView)
         case .password:
             goToDetailView(to: PasswordBuilder.build())
         case .support:
