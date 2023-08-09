@@ -24,7 +24,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.backgroundColor = .backMINI
         self.window = window
         
-        UIApplication.shared.shortcutItems = DeepLinkManager.buildShortCuts()
+        let deeplinks = DeepLinkManager()
+        UIApplication.shared.shortcutItems = deeplinks.buildShortCuts()
+        
         window.makeKeyAndVisible()
     }
     

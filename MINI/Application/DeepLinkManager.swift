@@ -8,15 +8,23 @@
 import Foundation
 import UIKit
 
-final class DeepLinkManager: NSObject {
-    static func buildShortCuts() -> [UIApplicationShortcutItem] {
-        let searchTransactions = UIMutableApplicationShortcutItem(
-            type: "searchTransactions",
-            localizedTitle: "shortcut_transactions".localized,
-            localizedSubtitle: "",
-            icon: UIApplicationShortcutIcon(type: .search)
-        )
-        return [searchTransactions]
+final class DeepLinkManager {
+    
+    private var shortcuts: [UIApplicationShortcutItem] = []
+    
+    private lazy var searchTransactions = UIMutableApplicationShortcutItem(
+        type: "searchTransactions",
+        localizedTitle: "shortcut_transactions".localized,
+        localizedSubtitle: "",
+        icon: UIApplicationShortcutIcon(type: .search)
+    )
+    
+    init() {
+        self.shortcuts.append(searchTransactions)
+    }
+    
+    func buildShortCuts() -> [UIApplicationShortcutItem] {
+        return shortcuts
     }
     
 }
