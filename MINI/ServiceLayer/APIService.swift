@@ -9,11 +9,15 @@ import Foundation
 import Alamofire
 
 protocol APIServiceProtocol: AnyObject {
-    func getRequest<T: Codable>(url: String, completion: @escaping (Result<T, Error>) -> Void)
-    func postRequest<T: Codable>(url: String, parameters: [String : Any]?, completion: @escaping (Result<T, Error>) -> Void)
-    func putRequest<T: Codable>(url: String, parameters: [String : Any]?, completion: @escaping (Result<T, Error>) -> Void)
-    func patchRequest<T: Codable>(url: String, parameters: [String : Any]?, completion: @escaping (Result<T, Error>) -> Void)
-    func deleteRequest<T: Codable>(url: String, completion: @escaping (Result<T, Error>) -> Void)
+    
+    typealias handler<T> = (Result<T, Error>) -> Void
+    typealias parameters = [String : Any]?
+    
+    func getRequest<T: Codable>(url: String, completion: @escaping handler<T>)
+    func postRequest<T: Codable>(url: String, parameters: parameters, completion: @escaping handler<T>)
+    func putRequest<T: Codable>(url: String, parameters: parameters, completion: @escaping handler<T>)
+    func patchRequest<T: Codable>(url: String, parameters: parameters, completion: @escaping handler<T>)
+    func deleteRequest<T: Codable>(url: String, completion: @escaping handler<T>)
 }
 
 
@@ -85,6 +89,7 @@ final class APIService: APIServiceProtocol {
 }
 
 private extension APIService {
+    
     private func performRequest<T: Codable>(
         url: String,
         method: HTTPMethod,

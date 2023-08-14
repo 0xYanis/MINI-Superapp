@@ -14,6 +14,7 @@ protocol KeyChainProtocol {
 }
 
 final class KeyChain: KeyChainProtocol {
+    
     func getValue(forKey key: String) -> String? {
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
@@ -21,10 +22,12 @@ final class KeyChain: KeyChainProtocol {
             kSecReturnData as String: kCFBooleanTrue!,
             kSecMatchLimit as String: kSecMatchLimitOne
         ]
+        
         var dataTypeRef: AnyObject?
         let status = withUnsafeMutablePointer(to: &dataTypeRef) {
             SecItemCopyMatching(query as CFDictionary, UnsafeMutablePointer($0))
         }
+        
         if status == errSecSuccess, let data = dataTypeRef as? Data {
             return String(data: data, encoding: .utf8)
         } else {
@@ -33,7 +36,7 @@ final class KeyChain: KeyChainProtocol {
     }
     
     func setValue(_ value: String, forKey key: String) {
-        let data = value.data(using: .utf8)!
+        guard let data = value.data(using: .utf8) else { return }
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrAccount as String: key,

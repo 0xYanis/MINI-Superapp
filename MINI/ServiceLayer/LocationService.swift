@@ -34,7 +34,6 @@ final class LocationService: NSObject, LocationServiceProtocol {
         
         geocoder.reverseGeocodeLocation(location) { placemarks, error in
             guard error == nil else {
-                print("Reverse geocoding failed: \(error!.localizedDescription)")
                 completion(nil)
                 return
             }
@@ -51,7 +50,6 @@ final class LocationService: NSObject, LocationServiceProtocol {
     func getPlacemarksByAddress(_ address: String, city: String, completion: @escaping ([String]?) -> Void) {
         geocoder.geocodeAddressString("\(address), \(city)") { placemarks, error in
             guard error == nil else {
-                print("Geocoding failed: \(error!.localizedDescription)")
                 completion([])
                 return
             }
@@ -74,12 +72,19 @@ final class LocationService: NSObject, LocationServiceProtocol {
 }
 
 extension LocationService: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    
+    func locationManager(
+        _ manager: CLLocationManager,
+        didUpdateLocations locations: [CLLocation]
+    ) {
         manager.stopUpdatingLocation()
     }
     
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Location manager failed: \(error.localizedDescription)")
+    func locationManager(
+        _ manager: CLLocationManager,
+        didFailWithError error: Error
+    ) {
+        print("Location manager did fail with error: ", error.localizedDescription)
     }
     
 }
