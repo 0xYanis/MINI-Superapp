@@ -75,6 +75,7 @@ private extension ProfileViewController {
 }
 
 private extension ProfileViewController {
+    
     @objc func logoutButtonAction() {
         alert.addAction(cancelAction)
         alert.addAction(logoutAction)

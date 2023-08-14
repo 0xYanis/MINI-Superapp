@@ -24,6 +24,7 @@ final class ProfileTableView: MiTableView {
 }
 
 private extension ProfileTableView {
+    
     func initialize() {
         dataSource = self
         delegate = self
@@ -37,6 +38,7 @@ private extension ProfileTableView {
 }
 
 extension ProfileTableView: UITableViewDataSource {
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         presenter?
             .getProfileData()
@@ -79,12 +81,11 @@ extension ProfileTableView: UITableViewDataSource {
             .title
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 0 {
-            let view = ProfileHeader()
-            return view
-        }
-        return nil
+    func tableView(
+        _ tableView: UITableView,
+        viewForHeaderInSection section: Int
+    ) -> UIView? {
+        section == 0 ? ProfileHeader() : nil
     }
     
 }
@@ -102,7 +103,10 @@ extension ProfileTableView: UITableViewDelegate {
         presenter?.userWantToDetailView(of: type)
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(
+        _ tableView: UITableView,
+        heightForHeaderInSection section: Int
+    ) -> CGFloat {
         section == 0 ? 160 : tableView.sectionHeaderHeight
     }
     
