@@ -8,6 +8,7 @@
 import Foundation
 
 final class LoginEntity {
+    
     var email: String
     var password: String
     

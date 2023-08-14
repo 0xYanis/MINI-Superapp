@@ -16,7 +16,6 @@ final class RegisterInteractor: RegisterInteractorProtocol {
     weak var presenter: RegisterPresenterProtocol?
     var keychainService: KeyChainServiceProtocol?
     
-    
     func userWantToLogin(login: String, password: String, repeatPassword: String) {
         if password != repeatPassword {
             presenter?.registerIsNotCorrect(
@@ -25,14 +24,14 @@ final class RegisterInteractor: RegisterInteractorProtocol {
             return
         }
         
-        if !isValidString(login) {
+        if isNotValid(login) {
             presenter?.registerIsNotCorrect(
                 with: ErrorMessages.invalidLogin.rawValue
             )
             return
         }
         
-        if !isValidString(password) {
+        if isNotValid(password) {
             presenter?.registerIsNotCorrect(
                 with: ErrorMessages.weakPassword.rawValue
             )
@@ -54,6 +53,7 @@ final class RegisterInteractor: RegisterInteractorProtocol {
 }
 
 private extension RegisterInteractor {
+    
     enum ErrorMessages: String {
         case invalidLogin = "Неверный формат ввода"
         case weakPassword = "Слабый пароль"
@@ -68,14 +68,14 @@ private extension RegisterInteractor {
         )
     }
     
-    func isValidString(_ string: String) -> Bool {
+    func isNotValid(_ string: String) -> Bool {
         let stringLengthRange = 5...25
         guard !string.isEmpty,
               stringLengthRange.contains(string.count),
               !string.contains(" ") else {
-            return false
+            return true
         }
-        return true
+        return false
     }
     
     

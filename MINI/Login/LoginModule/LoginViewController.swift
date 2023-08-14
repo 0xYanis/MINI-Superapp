@@ -26,8 +26,7 @@ final class LoginViewController: UIViewController {
     private lazy var versionLabel = UILabel()
     private lazy var scrollView = UIScrollView(
         frame: .init(
-            x: 0,
-            y: 0,
+            x: 0, y: 0,
             width: view.frame.width,
             height: view.frame.height
         )
@@ -84,16 +83,16 @@ private extension LoginViewController {
     }
     
     var githubButton: UIBarButtonItem {
-        let leftButton = UIButton(
+        let button = UIButton(
             systemImage: "link.icloud.fill",
             color: .tintMINI
         )
-        leftButton.addTarget(
+        button.addTarget(
             self,
             action: #selector(goToWebsiteAction),
             for: .touchUpInside
         )
-        return UIBarButtonItem(customView: leftButton)
+        return UIBarButtonItem(customView: button)
     }
     
     func createAnimationView() {
@@ -177,8 +176,8 @@ private extension LoginViewController {
     }
     
     @objc func keyboardWillShow(notification: Notification) {
-        guard let userInfo = notification.userInfo,
-              let keyboardSize = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.size
+        guard let userInfo = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey],
+              let keyboardSize = (userInfo as? NSValue)?.cgRectValue.size
         else { return }
         
         scrollView.contentOffset = .init(

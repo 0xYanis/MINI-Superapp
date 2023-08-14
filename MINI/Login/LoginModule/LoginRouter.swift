@@ -13,6 +13,7 @@ protocol LoginRouterProtocol: AnyObject {
 }
 
 final class LoginRouter: LoginRouterProtocol {
+    
     weak var view: UIViewController?
     
     func userDidLogin() {
@@ -32,7 +33,10 @@ final class LoginRouter: LoginRouterProtocol {
     
     func goToRegisterView() {
         let registerView = RegisterBuilder.build()
-        view?.navigationController?.pushViewController(registerView, animated: true)
+        view?.navigationController?.pushViewController(
+            registerView,
+            animated: true
+        )
     }
     
 }

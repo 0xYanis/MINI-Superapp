@@ -25,10 +25,8 @@ final class LoginInteractor: LoginInteractorProtocol {
     
     func userWantLogin(_ name: String, _ password: String) {
         guard let storedPassword = keychainService?.getValue(forKey: name),
-                storedPassword == password else {
-            presenter?.loginIsNotCorrect()
-            return
-        }
+                storedPassword == password
+        else { presenter?.loginIsNotCorrect(); return }
         
         saveAuthToken(with: name)
         presenter?.loginIsCorrect()
@@ -48,10 +46,12 @@ final class LoginInteractor: LoginInteractorProtocol {
 }
 
 private extension LoginInteractor {
+    
     func saveAuthToken(with name: String) {
         UserDefaults.standard.set(
             name,
             forKey: "authToken"
         )
     }
+    
 }

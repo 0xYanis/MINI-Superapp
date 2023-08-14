@@ -24,7 +24,10 @@ final class LoginPresenter {
     var interactor: LoginInteractorProtocol
     var router: LoginRouterProtocol
     
-    init(interactor: LoginInteractorProtocol, router: LoginRouterProtocol) {
+    init(
+        interactor: LoginInteractorProtocol,
+        router: LoginRouterProtocol
+    ) {
         self.interactor = interactor
         self.router = router
     }
@@ -32,6 +35,7 @@ final class LoginPresenter {
 }
 
 extension LoginPresenter: LoginPresenterProtocol {
+    
     func viewDidLoaded() {
         interactor.viewDidLoaded()
     }
@@ -43,14 +47,17 @@ extension LoginPresenter: LoginPresenterProtocol {
     func userDidTapLogin(name: String, password: String) {
         interactor.userWantLogin(name, password)
     }
+    
     func userDidTapBiometry() {
         interactor.userWantBiometry()
     }
+    
     func loginIsCorrect() {
         DispatchQueue.main.async {
             self.router.userDidLogin()
         }
     }
+    
     func loginIsNotCorrect() {
         view?.loginIsNotCorrect()
         DispatchQueue.main.async {

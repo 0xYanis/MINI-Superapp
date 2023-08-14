@@ -31,8 +31,13 @@ final class RegisterPresenter {
 }
 
 extension RegisterPresenter: RegisterPresenterProtocol {
+    
     func userWantToLogin(login: String, password: String, repeatPassword: String) {
-        interactor.userWantToLogin(login: login, password: password, repeatPassword: repeatPassword)
+        interactor.userWantToLogin(
+            login: login,
+            password: password,
+            repeatPassword: repeatPassword
+        )
     }
     
     func registerIsCorrect() {
@@ -42,6 +47,5 @@ extension RegisterPresenter: RegisterPresenterProtocol {
     func registerIsNotCorrect(with message: String) {
         view?.registerIsNotCorrect(with: message)
     }
-    
     
 }

@@ -28,6 +28,7 @@ final class RegisterViewController: UIViewController {
 }
 
 extension RegisterViewController: RegisterViewProtocol {
+    
     func registerIsNotCorrect(with message: String) {
         let title = "error_login_title".localized
         let alert = UIAlertController()
@@ -37,6 +38,7 @@ extension RegisterViewController: RegisterViewProtocol {
 }
 
 private extension RegisterViewController {
+    
     func initialize() {
         view.backgroundColor = .back2MINI
         createScrollView()
@@ -105,10 +107,7 @@ private extension RegisterViewController {
         guard let keyboardSize = (userInfo[UIResponder.keyboardFrameEndUserInfoKey]
                                   as? NSValue)?.cgRectValue.size else { return }
         
-        scrollView.contentOffset = .init(
-            x: 0,
-            y: keyboardSize.height / 3
-        )
+        scrollView.contentOffset = .init(x: 0, y: keyboardSize.height / 3)
     }
     
     @objc func keyboardWillHide(notification: Notification) {
@@ -153,6 +152,5 @@ extension RegisterViewController: UITextFieldDelegate {
         }
         return true
     }
-    
     
 }
