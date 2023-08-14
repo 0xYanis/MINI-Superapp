@@ -79,9 +79,18 @@ extension ProfileTableView: UITableViewDataSource {
             .title
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 0 {
+            let view = ProfileHeader()
+            return view
+        }
+        return nil
+    }
+    
 }
 
 extension ProfileTableView: UITableViewDelegate {
+    
     func tableView(
         _ tableView: UITableView,
         didSelectRowAt indexPath: IndexPath
@@ -91,6 +100,10 @@ extension ProfileTableView: UITableViewDelegate {
             .options[indexPath.row]
             .type else { return }
         presenter?.userWantToDetailView(of: type)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        section == 0 ? 160 : tableView.sectionHeaderHeight
     }
     
 }

@@ -12,6 +12,7 @@ struct ProfileSection {
     let options: [ProfileOption]
     
     static let data: [ProfileSection] = [
+        ProfileSection(title: "", options: []),
         ProfileSection(title: "Общее", options: [
             ProfileOption(title: "Избранное", icon: "bookmark.fill", iconBackground: "#FFA500", type: .favorites),
             ProfileOption(title: "Мои билеты", icon: "airplane", iconBackground: "#0000FF", type: .tickets),

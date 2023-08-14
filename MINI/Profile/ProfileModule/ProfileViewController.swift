@@ -69,9 +69,7 @@ private extension ProfileViewController {
     func createTableView() {
         tableView.presenter = presenter
         view.addSubview(tableView)
-        tableView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
+        tableView.frame = view.bounds
     }
     
 }
