@@ -15,4 +15,11 @@ extension UILabel {
         self.textColor = color
         self.numberOfLines = numberOfLines
     }
+    
+    func setCustomAppearance() {
+        self.font = .boldSystemFont(ofSize: 17)
+        self.numberOfLines = 1
+        self.textColor = .front2MINI
+    }
+    
 }
