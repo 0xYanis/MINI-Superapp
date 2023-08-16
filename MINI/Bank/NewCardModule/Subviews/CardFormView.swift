@@ -12,6 +12,8 @@ final class CardFormView: UIView {
     
     weak var presenter: NewCardPresenterProtocol?
     
+    private let stackView = UIStackView()
+    
     private lazy var bankTextView: FormTextView = {
         let view = FormTextView()
         view.addText(
@@ -83,7 +85,19 @@ final class CardFormView: UIView {
 private extension CardFormView {
     
     func initialize() {
+        stackView.axis = .vertical
+        stackView.addArrangedSubview(cvvTextField)
+        stackView.addArrangedSubview(cvvTextView)
+        stackView.addArrangedSubview(numberTextField)
+        stackView.addArrangedSubview(numberTextView)
+        stackView.addArrangedSubview(bankTextField)
+        stackView.addArrangedSubview(bankTextView)
+        stackView.spacing = 14
         
+        addSubview(stackView)
+        stackView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
     
 }
