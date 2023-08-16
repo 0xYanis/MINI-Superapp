@@ -38,6 +38,7 @@ final class BankTemplateCell: UICollectionViewCell, CellConfProtocol {
 }
 
 private extension BankTemplateCell {
+    
     func initialize() {
         isSkeletonable = true
         skeletonCornerRadius = 10
@@ -47,6 +48,7 @@ private extension BankTemplateCell {
         createImageView()
         createTextLabel()
     }
+    
     func createTemplateView() {
         templateView.backgroundColor = .backMINI
         templateView.roundCorners(radius: 10)
@@ -56,6 +58,7 @@ private extension BankTemplateCell {
             make.top.bottom.equalToSuperview()
         }
     }
+    
     func createCircleView() {
         circleView.backgroundColor = .backMINI
         templateView.addSubview(circleView)
@@ -66,6 +69,7 @@ private extension BankTemplateCell {
             make.width.height.equalTo(40)
         }
     }
+    
     func createImageView() {
         imageView.image = UIImage(systemName: "gear")
         imageView.contentMode = .scaleAspectFit
@@ -76,6 +80,7 @@ private extension BankTemplateCell {
             make.width.height.equalToSuperview().inset(7)
         }
     }
+    
     func createTextLabel() {
         textLabel.numberOfLines = 1
         textLabel.textAlignment = .center

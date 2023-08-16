@@ -12,7 +12,6 @@ final class BankTemplateLabelCell: UITableViewCell, BankTableCellConf {
     static let cellId = "BankTemplateLabelCell"
     weak var presenter: BankPresenterProtocol?
     
-    
     private lazy var titleLabel = UILabel(
         text: "templates_label".localized,
         font: .boldSystemFont(ofSize: 22),
@@ -26,7 +25,6 @@ final class BankTemplateLabelCell: UITableViewCell, BankTableCellConf {
         button.setTitleColor(.systemOrange, for: .normal)
         return button
     }()
-    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -44,6 +42,7 @@ final class BankTemplateLabelCell: UITableViewCell, BankTableCellConf {
 }
 
 private extension BankTemplateLabelCell {
+    
     func initialize() {
         selectionStyle = .none
         backgroundColor = .clear
@@ -64,7 +63,6 @@ private extension BankTemplateLabelCell {
             make.centerY.equalToSuperview()
             make.right.equalToSuperview().inset(16)
         }
-        
         
     }
     

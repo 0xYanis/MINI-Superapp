@@ -48,6 +48,7 @@ final class BankViewController: UIViewController {
 
 //MARK: - BankViewProtocol
 extension BankViewController: BankViewProtocol {
+    
     func updateBankTable() {
         bankTableView.reloadData()
     }
@@ -59,10 +60,12 @@ extension BankViewController: BankViewProtocol {
     func loadingDataGetFailed(with error: String) {
         
     }
+    
 }
 
 //MARK: - BankViewCellDelegate
 extension BankViewController: BankViewCellDelegate {
+    
     func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
         ///
     }
@@ -74,10 +77,12 @@ extension BankViewController: BankViewCellDelegate {
     func resetBottomSheetSize() {
         historyTableVC.view.resetToOriginalState(with: true)
     }
+    
 }
 
 //MARK: - Private methods
 private extension BankViewController {
+    
     func initialize() {
         view.backgroundColor = .back2MINI
         createNavigation(title: "bank_navbar".localized)
@@ -170,6 +175,7 @@ private extension BankViewController {
 
 //MARK: - Action private methods
 private extension BankViewController {
+    
     @objc func refreshAction() {
         presenter?.viewDidLoaded()
         presenter?.updateView()
@@ -180,6 +186,7 @@ private extension BankViewController {
 
 //MARK: - UITableViewDelegate
 extension BankViewController: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView,
                    heightForRowAt indexPath: IndexPath) -> CGFloat {
         let height = view.frame.height

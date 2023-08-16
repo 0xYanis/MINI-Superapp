@@ -25,11 +25,13 @@ final class BankHistoryLabel: UIView {
         font: .boldSystemFont(ofSize: 22),
         color: .none
     )
+    
     private lazy var searchButton = UIButton(
         systemImage: "magnifyingglass.circle.fill",
         color: .tintMINI,
         size: 35
     )
+    
     private lazy var searchBar = UISearchBar()
     private var isSearchBarShown = false
     
@@ -41,9 +43,11 @@ final class BankHistoryLabel: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
 }
 
 extension BankHistoryLabel {
+    
     @objc func searchButtonTapped() {
         historyLabel.alpha = isSearchBarShown ? 1.0 : 0.0
         animateSearchBar(visible: !isSearchBarShown)
@@ -53,9 +57,11 @@ extension BankHistoryLabel {
         }
         isSearchBarShown.toggle()
     }
+    
 }
 
 private extension BankHistoryLabel {
+    
     func initialize() {
         createGraberView()
         createLabel(label: historyLabel)
@@ -117,10 +123,12 @@ private extension BankHistoryLabel {
             self.searchBar.alpha = visible ? 1.0 : 0.0
         }
     }
+    
 }
 
 //MARK: - UISearchBarDelegate
 extension BankHistoryLabel: UISearchBarDelegate {
+    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchButtonTapped()
         searchBar.resignFirstResponder()
@@ -134,4 +142,5 @@ extension BankHistoryLabel: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         delegate?.searchBarTextDidChange(with: searchText)
     }
+    
 }

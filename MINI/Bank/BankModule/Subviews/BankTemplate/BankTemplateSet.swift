@@ -50,6 +50,7 @@ final class BankTemplateSet: UITableViewCell, BankTableCellConf {
 
 //MARK: - Private methods
 private extension BankTemplateSet {
+    
     func initialize() {
         backgroundColor = .clear
         createCollectionView()
@@ -83,20 +84,26 @@ private extension BankTemplateSet {
 
 // MARK: - UICollectionViewDataSource
 extension BankTemplateSet: SkeletonCollectionViewDataSource {
-    func collectionSkeletonView(_ skeletonView: UICollectionView,
-                                cellIdentifierForItemAt indexPath: IndexPath) -> SkeletonView.ReusableCellIdentifier {
+    
+    func collectionSkeletonView(
+        _ skeletonView: UICollectionView,
+        cellIdentifierForItemAt indexPath: IndexPath
+    ) -> SkeletonView.ReusableCellIdentifier {
         return BankTemplateCell.cellId
     }
     
     
-    func collectionView(_ collectionView: UICollectionView,
-                        numberOfItemsInSection section: Int) -> Int {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+    ) -> Int {
         return presenter?.getTemplateData().count ?? 5
     }
     
-    func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
         let cell = dequeueCell(BankTemplateCell.self, indexPath: indexPath)
         cell.radiusAndShadow(radius: 10, shadowSize: 10)
         
@@ -114,10 +121,14 @@ extension BankTemplateSet: SkeletonCollectionViewDataSource {
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView,
-                        willDisplay cell: UICollectionViewCell,
-                        forItemAt indexPath: IndexPath) {
-        guard let templateData = presenter?.getTemplateData(), indexPath.row < templateData.count else { return }
+    func collectionView(
+        _ collectionView: UICollectionView,
+        willDisplay cell: UICollectionViewCell,
+        forItemAt indexPath: IndexPath
+    ) {
+        guard let templateData = presenter?.getTemplateData(),
+                indexPath.row < templateData.count
+        else { return }
         
         if let cell = cell as? BankTemplateCell {
             cell.configure(with: templateData[indexPath.row])
@@ -130,20 +141,28 @@ extension BankTemplateSet: SkeletonCollectionViewDataSource {
 
 // MARK: - UICollectionViewDelegateFlowLayout
 extension BankTemplateSet: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        minimumLineSpacingForSectionAt section: Int
+    ) -> CGFloat {
         return 8
     }
     
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
         let width = frame.width / 3
         return .init(width: width, height: frame.height - 40)
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) {
         presenter?.userWantToDetails(of: .template, with: indexPath.item)
     }
     

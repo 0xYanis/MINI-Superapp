@@ -30,6 +30,7 @@ final class BankHistoryViewController: UIViewController {
 
 //MARK: - Private methods
 private extension BankHistoryViewController {
+    
     func intialize() {
         view.backgroundColor = .backMINI
         createSeeAllLabel()
@@ -85,6 +86,7 @@ private extension BankHistoryViewController {
 
 //MARK: - BankTransactionKeyboardDelegate
 extension BankHistoryViewController: BankTransactionKeyboardDelegate {
+    
     func userDidBeginUseKeyboard() {
         delegate?.setBigHeightOfHistory()
     }
@@ -110,11 +112,14 @@ extension BankHistoryViewController: BankTransactionKeyboardDelegate {
 
 //MARK: - UITableViewDataSource
 extension BankHistoryViewController: UITableViewDataSource {
+    
     func tableView(
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     ) -> Int {
-        return (isSearching ? presenter?.getFilteredData().count : presenter?.getTransactionData().count) ?? 10
+        let filteredCounter = presenter?.getFilteredData().count
+        let transanctionCounter = presenter?.getTransactionData().count
+        return (isSearching ? filteredCounter : transanctionCounter) ?? 10
     }
     
     
@@ -185,6 +190,7 @@ extension BankHistoryViewController: UITableViewDataSource {
 
 //MARK: - UITableViewDelegate
 extension BankHistoryViewController: UITableViewDelegate {
+    
     func tableView(
         _ tableView: UITableView,
         didSelectRowAt indexPath: IndexPath

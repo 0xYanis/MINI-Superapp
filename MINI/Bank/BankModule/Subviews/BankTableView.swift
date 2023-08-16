@@ -34,6 +34,7 @@ final class BankTableView: MiTableView {
 }
 
 private extension BankTableView {
+    
     func initialize() {
         separatorStyle = .none
         separatorColor = .none
@@ -58,6 +59,7 @@ private extension BankTableView {
 
 //MARK: - UITableViewDataSource
 extension BankTableView: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
         return 3

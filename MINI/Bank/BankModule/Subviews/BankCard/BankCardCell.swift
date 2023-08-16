@@ -48,6 +48,7 @@ final class BankCardCell: UICollectionViewCell, CellConfProtocol {
 }
 
 private extension BankCardCell {
+    
     func initialize() {
         isSkeletonable = true
         skeletonCornerRadius = 10
@@ -56,6 +57,7 @@ private extension BankCardCell {
         createCardNumber()
         createCardAmount()
     }
+    
     func createCardView() {
         cardView.roundCorners(radius: 10)
         addSubview(cardView)
@@ -64,6 +66,7 @@ private extension BankCardCell {
             make.top.bottom.equalToSuperview()
         }
     }
+    
     func createCardLogo() {
         let image = UIImage()
         cardLogo.image = image
@@ -75,6 +78,7 @@ private extension BankCardCell {
             make.width.height.equalTo(40)
         }
     }
+    
     func createCardNumber() {
         cardView.addSubview(cardNumber)
         cardNumber.snp.makeConstraints { make in
@@ -82,6 +86,7 @@ private extension BankCardCell {
             make.bottom.equalToSuperview().inset(10)
         }
     }
+    
     func createCardAmount() {
         cardView.addSubview(cardAmount)
         cardAmount.snp.makeConstraints { make in

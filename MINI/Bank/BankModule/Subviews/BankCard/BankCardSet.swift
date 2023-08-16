@@ -58,7 +58,8 @@ private extension BankCardSet {
     func createCollectionView() {
         collectionView = UICollectionView(
             frame: .zero,
-            collectionViewLayout: snapLayout)
+            collectionViewLayout: snapLayout
+        )
     }
     
     func addConstraintsOfView() {
@@ -82,7 +83,6 @@ private extension BankCardSet {
     }
     
 }
-
 
 // MARK: - SkeletonCollectionViewDataSource
 extension BankCardSet: SkeletonCollectionViewDataSource {
@@ -122,18 +122,18 @@ extension BankCardSet: SkeletonCollectionViewDataSource {
     func collectionView(
         _ collectionView: UICollectionView,
         willDisplay cell: UICollectionViewCell,
-        forItemAt indexPath: IndexPath) {
-            
-            guard let cardData = presenter?.getCardData(),
-                  indexPath.row < cardData.count else { return }
-            
-            if let cell = cell as? BankCardCell {
-                cell.shadow(color: .black, opacity: 0.5, radius: 10)
-                cell.configure(with: cardData[indexPath.row])
-                self.stopSkeleton()
-            }
-            
+        forItemAt indexPath: IndexPath
+    ) {
+        guard let cardData = presenter?.getCardData(),
+              indexPath.row < cardData.count else { return }
+        
+        if let cell = cell as? BankCardCell {
+            cell.shadow(color: .black, opacity: 0.5, radius: 10)
+            cell.configure(with: cardData[indexPath.row])
+            self.stopSkeleton()
         }
+        
+    }
     
     func collectionView(
         _ collectionView: UICollectionView,
