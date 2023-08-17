@@ -12,6 +12,10 @@ final class ProfileTableView: MiTableView {
     
     weak var presenter: ProfilePresenterProtocol?
     
+    weak var profileHeader: ProfileHeader?
+    
+    private var multiplier: CGFloat = 0
+    
     override init(frame: CGRect = .zero, style: UITableView.Style) {
         super.init(style: style)
         initialize()
@@ -85,7 +89,13 @@ extension ProfileTableView: UITableViewDataSource {
         _ tableView: UITableView,
         viewForHeaderInSection section: Int
     ) -> UIView? {
-        section == 0 ? ProfileHeader() : nil
+        let header = ProfileHeader()
+        self.profileHeader = header
+        if section == 0 {
+            return header
+        } else {
+            return nil
+        }
     }
     
 }
@@ -107,7 +117,18 @@ extension ProfileTableView: UITableViewDelegate {
         _ tableView: UITableView,
         heightForHeaderInSection section: Int
     ) -> CGFloat {
-        section == 0 ? 160 : tableView.sectionHeaderHeight
+        section == 0 ? 130 : tableView.sectionHeaderHeight
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let value = scrollView.contentOffset.y + 149
+        // 149 - привидение к нулю
+        self.multiplier = 1 - (value / 261)
+        // 261 - макс. значение
+        if value > 0 {
+            profileHeader?.updateScale(multiplier)
+            profileHeader?.layer.opacity = Float(multiplier)
+        }
     }
     
 }
