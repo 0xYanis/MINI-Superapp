@@ -71,7 +71,8 @@ private extension NewCardViewController {
         
         view.addSubview(cardFormView)
         cardFormView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.equalToSuperview().inset(150)
+            make.left.bottom.right.equalToSuperview()
         }
     }
     
@@ -81,8 +82,8 @@ private extension NewCardViewController {
         
         view.addSubview(saveButton)
         saveButton.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().inset(50)
-            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().inset(70)
+            make.right.equalToSuperview().inset(25)
         }
     }
     
