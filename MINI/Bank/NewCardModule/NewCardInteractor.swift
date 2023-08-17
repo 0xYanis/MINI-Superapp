@@ -40,6 +40,15 @@ final class NewCardInteractor: NewCardInteractorProtocol {
         guard validateTextForDigits(text) else { return }
         guard text.count == 3 else { return }
         self.cvvNumber = text
+        userCanSaveCard()
+    }
+    
+    private func userCanSaveCard() {
+        if bankName.isEmpty,
+           cardNumber.isEmpty,
+           cvvNumber.isEmpty
+        { return }
+        presenter?.userSetValidCard()
     }
     
     private func validateTextForDigits(_ text: String) -> Bool {

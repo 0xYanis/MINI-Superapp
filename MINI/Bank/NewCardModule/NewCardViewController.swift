@@ -18,6 +18,11 @@ final class NewCardViewController: UIViewController {
     var presenter: NewCardPresenterProtocol?
     
     private lazy var cardFormView = CardFormView()
+    private lazy var saveButton = UIButton(
+        label: "  Create  ",
+        color: .tintMINI,
+        cornerRadius: 15
+    )
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +40,11 @@ final class NewCardViewController: UIViewController {
 extension NewCardViewController: NewCardViewProtocol {
     
     func userCanSaveNewCard() {
-        
+        saveButton.addTarget(
+            self,
+            action: #selector(handleTapOnSaveButton),
+            for: .touchUpInside)
+        saveButton.layer.opacity = 1.0
     }
     
     func cardIsInvalid(_ message: String) {
@@ -53,6 +62,7 @@ private extension NewCardViewController {
         navigationItem.title = "add_new_card_title".localized
         createCardFormView()
         createTapGesture()
+        createSaveButton()
     }
     
     func createCardFormView() {
@@ -62,6 +72,17 @@ private extension NewCardViewController {
         view.addSubview(cardFormView)
         cardFormView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
+        }
+    }
+    
+    func createSaveButton() {
+        saveButton.layer.opacity = 0.6
+        saveButton.addPulseAnimation()
+        
+        view.addSubview(saveButton)
+        saveButton.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().inset(50)
+            make.centerX.equalToSuperview()
         }
     }
     
@@ -75,6 +96,10 @@ private extension NewCardViewController {
     
     @objc func handleTapOffTheField() {
         cardFormView.handleTapOffTheField()
+    }
+    
+    @objc func handleTapOnSaveButton() {
+        presenter?.goToRootView()
     }
     
 }

@@ -15,6 +15,7 @@ protocol NewCardPresenterProtocol: AnyObject {
     
     func userSetInvalidCard(with message: String)
     func userSetValidCard()
+    func goToRootView()
 }
 
 final class NewCardPresenter {
@@ -55,6 +56,10 @@ extension NewCardPresenter: NewCardPresenterProtocol {
     }
     
     func userSetValidCard() {
+        view?.userCanSaveNewCard()
+    }
+    
+    func goToRootView() {
         router.popToRoot()
     }
     
