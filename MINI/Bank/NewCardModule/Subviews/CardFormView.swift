@@ -75,6 +75,7 @@ final class CardFormView: UIView {
             cornerRadius: 15, padding: 10
         )
         field.delegate = self
+        field.keyboardType = .numberPad
         field.placeholder = "1111 2222 3333 4444"
         return field
     }()
@@ -95,6 +96,7 @@ final class CardFormView: UIView {
             cornerRadius: 15, padding: 10
         )
         field.delegate = self
+        field.keyboardType = .numberPad
         field.placeholder = "***"
         field.isSecureTextEntry = true
         return field
@@ -127,6 +129,12 @@ final class CardFormView: UIView {
         }
     }
     
+    func handleTapOffTheField() {
+        bankTextField.resignFirstResponder()
+        numberTextField.resignFirstResponder()
+        cvvTextField.resignFirstResponder()
+    }
+    
 }
 
 private extension CardFormView {
@@ -140,6 +148,26 @@ private extension CardFormView {
         
         cvvStackView.addArrangedSubview(cvvTextView)
         cvvStackView.addArrangedSubview(cvvTextField)
+        
+        addDoneButtonOnNumpad(textField: numberTextField)
+        addDoneButtonOnNumpad(textField: cvvTextField)
+    }
+    
+    func addDoneButtonOnNumpad(textField: UITextField) {
+        let keypadToolbar: UIToolbar = UIToolbar()
+        keypadToolbar.items=[
+            UIBarButtonItem(
+                barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace,
+                target: self,
+                action: nil),
+            UIBarButtonItem(
+                title: "Done",
+                style: UIBarButtonItem.Style.done,
+                target: textField,
+                action: #selector(UITextField.resignFirstResponder))
+        ]
+        keypadToolbar.sizeToFit()
+        textField.inputAccessoryView = keypadToolbar
     }
     
 }
@@ -154,6 +182,18 @@ extension CardFormView: UITextFieldDelegate {
         default: self.resignFirstResponder()
         }
         return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        switch textField {
+        case bankTextField:
+            presenter?.userSetBank(bankTextField.text)
+        case numberTextField:
+            presenter?.userSetNumber(numberTextField.text)
+        case cvvTextField:
+            presenter?.userSetCVV(cvvTextField.text)
+        default: return
+        }
     }
     
 }

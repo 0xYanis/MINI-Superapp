@@ -9,7 +9,8 @@ import UIKit
 import SnapKit
 
 protocol NewCardViewProtocol: AnyObject {
-    
+    func userCanSaveNewCard()
+    func cardIsInvalid(_ message: String)
 }
 
 final class NewCardViewController: UIViewController {
@@ -30,10 +31,20 @@ final class NewCardViewController: UIViewController {
     
 }
 
+// MARK: - NewCardViewProtocol
 extension NewCardViewController: NewCardViewProtocol {
+    
+    func userCanSaveNewCard() {
+        
+    }
+    
+    func cardIsInvalid(_ message: String) {
+        
+    }
     
 }
 
+// MARK: - Private extension
 private extension NewCardViewController {
     
     func initialize() {
@@ -41,6 +52,7 @@ private extension NewCardViewController {
         navigationItem.largeTitleDisplayMode = .never
         navigationItem.title = "add_new_card_title".localized
         createCardFormView()
+        createTapGesture()
     }
     
     func createCardFormView() {
@@ -51,6 +63,18 @@ private extension NewCardViewController {
         cardFormView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+    }
+    
+    func createTapGesture() {
+        let tapGesture = UITapGestureRecognizer(
+            target: self,
+            action: #selector(handleTapOffTheField)
+        )
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func handleTapOffTheField() {
+        cardFormView.handleTapOffTheField()
     }
     
 }

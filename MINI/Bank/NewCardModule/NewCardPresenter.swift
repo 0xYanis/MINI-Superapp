@@ -9,6 +9,9 @@ import Foundation
 
 protocol NewCardPresenterProtocol: AnyObject {
     func viewDidLoaded()
+    func userSetBank(_ text: String?)
+    func userSetNumber(_ text: String?)
+    func userSetCVV(_ text: String?)
 }
 
 final class NewCardPresenter {
@@ -24,8 +27,24 @@ final class NewCardPresenter {
 }
 
 extension NewCardPresenter: NewCardPresenterProtocol {
+    
     func viewDidLoaded() {
         interactor.viewDidLoaded()
+    }
+    
+    func userSetBank(_ text: String?) {
+        guard let text = text else { return }
+        interactor.userSetBank(text)
+    }
+    
+    func userSetNumber(_ text: String?) {
+        guard let text = text else { return }
+        interactor.userSetNumber(text)
+    }
+    
+    func userSetCVV(_ text: String?) {
+        guard let text = text else { return }
+        interactor.userSetCVV(text)
     }
     
 }
