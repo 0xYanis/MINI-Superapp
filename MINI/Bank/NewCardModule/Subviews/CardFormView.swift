@@ -14,7 +14,7 @@ fileprivate enum TextForm: String {
     case number = "Введите номер карты"
     case numberDesc = "Это 16 - 20 цифр на лицовой стороне Вашей карты."
     case cvv = "Введите CVV карты"
-    case cvvDesc = "Это 3 секретные цифры на обратной стороне Вашей карты."
+    case cvvDesc = "Это 3 цифры на обратной стороне Вашей карты."
 }
 
 final class CardFormView: UIView {
@@ -54,6 +54,7 @@ final class CardFormView: UIView {
             withBorderColor: .tintMINI,
             cornerRadius: 15, padding: 10
         )
+        field.delegate = self
         field.placeholder = "Bank Name"
         return field
     }()
@@ -73,6 +74,7 @@ final class CardFormView: UIView {
             withBorderColor: .tintMINI,
             cornerRadius: 15, padding: 10
         )
+        field.delegate = self
         field.placeholder = "1111 2222 3333 4444"
         return field
     }()
@@ -92,6 +94,7 @@ final class CardFormView: UIView {
             withBorderColor: .tintMINI,
             cornerRadius: 15, padding: 10
         )
+        field.delegate = self
         field.placeholder = "***"
         field.isSecureTextEntry = true
         return field
@@ -144,7 +147,13 @@ private extension CardFormView {
 extension CardFormView: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        return false
+        switch textField {
+        case bankTextField: numberTextField.becomeFirstResponder()
+        case numberTextField: cvvTextField.becomeFirstResponder()
+        case cvvTextField: cvvTextField.resignFirstResponder()
+        default: self.resignFirstResponder()
+        }
+        return true
     }
     
 }

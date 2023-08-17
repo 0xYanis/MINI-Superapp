@@ -20,7 +20,7 @@ final class FormTextView: UIView {
         let label = UILabel()
         label.textColor = .gray
         label.font = .systemFont(ofSize: 12)
-        label.numberOfLines = 2
+        label.numberOfLines = 0
         return label
     }()
     
