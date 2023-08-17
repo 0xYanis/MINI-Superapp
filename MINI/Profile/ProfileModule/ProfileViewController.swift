@@ -11,7 +11,7 @@ protocol ProfileViewProtocol: AnyObject {
     func updateView()
 }
 
-final class ProfileViewController: UIViewController {
+final class ProfileViewController: UIViewController, UINavigationControllerDelegate {
     
     var presenter: ProfilePresenterProtocol?
     
@@ -21,6 +21,8 @@ final class ProfileViewController: UIViewController {
         message: "logout_alert_message".localized,
         preferredStyle: .alert
     )
+    
+    private lazy var photoPicker = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,12 +42,12 @@ extension ProfileViewController: ProfileViewProtocol {
         
     }
     
-    
 }
 
 private extension ProfileViewController {
     
     func initialize() {
+        photoPicker.delegate = self
         view.backgroundColor = .back2MINI
         createNavigation(title: "profile_navbar".localized)
         createTableView()
@@ -54,15 +56,25 @@ private extension ProfileViewController {
     func createNavigation(title: String) {
         navigationItem.title = title
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.leftBarButtonItem = createLogoutButton
+        navigationItem.leftBarButtonItem = logoutButton
+        navigationItem.rightBarButtonItem = changeButton
     }
     
-    var createLogoutButton: UIBarButtonItem {
+    var logoutButton: UIBarButtonItem {
         return UIBarButtonItem(
             title: "logout_button".localized,
             style: .plain,
             target: self,
             action: #selector(logoutButtonAction)
+        )
+    }
+    
+    var changeButton: UIBarButtonItem {
+        return UIBarButtonItem(
+            title: "Изм.",
+            style: .plain,
+            target: self,
+            action: #selector(changeButtonAction)
         )
     }
     
@@ -99,5 +111,25 @@ private extension ProfileViewController {
         }
     }
     
+    @objc func changeButtonAction() {
+        guard let sheet = photoPicker.sheetPresentationController else { return }
+        photoPicker.isModalInPresentation = true
+        sheet.detents = [.medium(), .large()]
+        sheet.preferredCornerRadius = 30
+        present(photoPicker, animated: true)
+    }
     
+}
+
+extension ProfileViewController: UIImagePickerControllerDelegate {
+    
+    func imagePickerController(
+        _ picker: UIImagePickerController,
+        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]
+    ) {
+        let originalImage = UIImagePickerController.InfoKey.originalImage
+        guard let newImage = info[originalImage] as? UIImage else { return }
+        tableView.profileHeader?.setAvatar(newImage)
+        
+    }
 }

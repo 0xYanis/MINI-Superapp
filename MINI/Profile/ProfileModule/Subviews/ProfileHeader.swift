@@ -33,7 +33,11 @@ final class ProfileHeader: UIView {
         imageView.clipsToBounds = true
     }
     
-    func updateScale(_ multiplier: CGFloat) {
+    public func setAvatar(_ image: UIImage) {
+        imageView.image = image
+    }
+    
+    public func updateScale(_ multiplier: CGFloat) {
         UIView.animate(withDuration: 0.3) {
             self.updateView(view: self.imageView, multiplier)
             if multiplier < 0.95 {

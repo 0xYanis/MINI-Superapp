@@ -11,8 +11,7 @@ import SnapKit
 final class ProfileTableView: MiTableView {
     
     weak var presenter: ProfilePresenterProtocol?
-    
-    weak var profileHeader: ProfileHeader?
+    var profileHeader: ProfileHeader?
     
     private var multiplier: CGFloat = 0
     
