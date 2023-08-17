@@ -34,7 +34,7 @@ final class FormTextView: UIView {
         addSubview(descriptionLabel)
         descriptionLabel.snp.makeConstraints { make in
             make.left.right.bottom.equalToSuperview()
-            make.top.equalToSuperview().multipliedBy(0.5)
+            make.top.equalTo(textLabel.snp.bottom).offset(5)
         }
     }
     

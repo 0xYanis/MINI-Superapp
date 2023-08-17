@@ -21,7 +21,23 @@ final class CardFormView: UIView {
     
     weak var presenter: NewCardPresenterProtocol?
     
-    private let stackView = UIStackView()
+    private let bankStackView: UIStackView = {
+        let view = UIStackView()
+        view.setCustomAppearance(spacing: 15)
+        return view
+    }()
+    
+    private let numberStackView: UIStackView = {
+        let view = UIStackView()
+        view.setCustomAppearance(spacing: 15)
+        return view
+    }()
+    
+    private let cvvStackView: UIStackView = {
+        let view = UIStackView()
+        view.setCustomAppearance(spacing: 15)
+        return view
+    }()
     
     private lazy var bankTextView: FormTextView = {
         let view = FormTextView()
@@ -90,30 +106,45 @@ final class CardFormView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func safeAreaInsetsDidChange() {
+        let stackView = UIStackView(arrangedSubviews: [
+            bankStackView, numberStackView, cvvStackView
+        ])
+        
+        stackView.setCustomAppearance(
+            spacing: 40,
+            distribution: .fillEqually
+        )
+        
+        addSubview(stackView)
+        stackView.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(safeAreaInsets.top)
+            make.left.right.equalToSuperview().inset(30)
+            make.height.equalToSuperview().multipliedBy(0.45)
+        }
+    }
+    
 }
 
 private extension CardFormView {
     
     func initialize() {
-        stackView.addArrangedSubview(bankTextView)
-        stackView.addArrangedSubview(bankTextField)
+        bankStackView.addArrangedSubview(bankTextView)
+        bankStackView.addArrangedSubview(bankTextField)
         
-        stackView.addArrangedSubview(numberTextView)
-        stackView.addArrangedSubview(numberTextField)
+        numberStackView.addArrangedSubview(numberTextView)
+        numberStackView.addArrangedSubview(numberTextField)
         
-        stackView.addArrangedSubview(cvvTextView)
-        stackView.addArrangedSubview(cvvTextField)
-        
-        stackView.spacing = 14
-        stackView.axis = .vertical
-        stackView.distribution = .fillEqually
-        
-        addSubview(stackView)
-        stackView.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-            make.width.equalToSuperview().inset(20)
-            make.height.equalToSuperview().multipliedBy(0.4)
-        }
+        cvvStackView.addArrangedSubview(cvvTextView)
+        cvvStackView.addArrangedSubview(cvvTextField)
+    }
+    
+}
+
+extension CardFormView: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return false
     }
     
 }
