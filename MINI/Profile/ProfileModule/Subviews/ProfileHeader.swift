@@ -35,6 +35,12 @@ final class ProfileHeader: UIView {
     
     public func setAvatar(_ image: UIImage) {
         imageView.image = image
+        saveToUD()
+    }
+    
+    private func saveToUD() {
+        let localImage = imageView.image?.pngData()
+        UserDefaults.standard.setValue(localImage, forKey: "userPhoto")
     }
     
     public func updateScale(_ multiplier: CGFloat) {
@@ -64,7 +70,9 @@ private extension ProfileHeader {
     func initialize() {
         backgroundColor = .back2MINI
         
-        imageView.image = UIImage(named: "AppIcon")
+        let ud = UserDefaults.standard
+        guard let avatar = ud.value(forKey: "userPhoto") as? Data else { return }
+        imageView.image = UIImage(data: avatar) ?? UIImage(named: "AppIcon")
         imageView.contentMode = .scaleAspectFill
         
         nameLabel.font = .boldSystemFont(ofSize: 24)
