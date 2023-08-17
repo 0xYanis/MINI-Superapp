@@ -19,6 +19,8 @@ final class FormTextView: UIView {
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.textColor = .gray
+        label.font = .systemFont(ofSize: 12)
+        label.numberOfLines = 2
         return label
     }()
     
@@ -30,7 +32,7 @@ final class FormTextView: UIView {
             make.bottom.equalToSuperview().multipliedBy(0.5)
         }
         addSubview(descriptionLabel)
-        textLabel.snp.makeConstraints { make in
+        descriptionLabel.snp.makeConstraints { make in
             make.left.right.bottom.equalToSuperview()
             make.top.equalToSuperview().multipliedBy(0.5)
         }

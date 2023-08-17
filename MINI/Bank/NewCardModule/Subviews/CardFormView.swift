@@ -8,6 +8,15 @@
 import UIKit
 import SnapKit
 
+fileprivate enum TextForm: String {
+    case bank = "Введите название Банка"
+    case bankDesc = "Банк, в котором была оформлена Ваша карта."
+    case number = "Введите номер карты"
+    case numberDesc = "Это 16 - 20 цифр на лицовой стороне Вашей карты."
+    case cvv = "Введите CVV карты"
+    case cvvDesc = "Это 3 секретные цифры на обратной стороне Вашей карты."
+}
+
 final class CardFormView: UIView {
     
     weak var presenter: NewCardPresenterProtocol?
@@ -17,8 +26,8 @@ final class CardFormView: UIView {
     private lazy var bankTextView: FormTextView = {
         let view = FormTextView()
         view.addText(
-            text: "Введите название Банка",
-            description: "Банк, в котором была оформлена Ваша карта"
+            text: TextForm.bank.rawValue,
+            description: TextForm.bankDesc.rawValue
         )
         return view
     }()
@@ -36,8 +45,8 @@ final class CardFormView: UIView {
     private lazy var numberTextView: FormTextView = {
         let view = FormTextView()
         view.addText(
-            text: "Введите номер карты",
-            description: "Это 16 - 20 цифр на лицовой стороне Вашей карты"
+            text: TextForm.number.rawValue,
+            description: TextForm.numberDesc.rawValue
         )
         return view
     }()
@@ -55,8 +64,8 @@ final class CardFormView: UIView {
     private lazy var cvvTextView: FormTextView = {
         let view = FormTextView()
         view.addText(
-            text: "Введите CVV карты",
-            description: "Это 3 цифры на обороте Вашей карты"
+            text: TextForm.cvv.rawValue,
+            description: TextForm.cvvDesc.rawValue
         )
         return view
     }()
@@ -67,7 +76,8 @@ final class CardFormView: UIView {
             withBorderColor: .tintMINI,
             cornerRadius: 15, padding: 10
         )
-        field.placeholder = "1111 2222 3333 4444"
+        field.placeholder = "***"
+        field.isSecureTextEntry = true
         return field
     }()
     
@@ -85,18 +95,24 @@ final class CardFormView: UIView {
 private extension CardFormView {
     
     func initialize() {
-        stackView.axis = .vertical
-        stackView.addArrangedSubview(cvvTextField)
-        stackView.addArrangedSubview(cvvTextView)
-        stackView.addArrangedSubview(numberTextField)
-        stackView.addArrangedSubview(numberTextView)
-        stackView.addArrangedSubview(bankTextField)
         stackView.addArrangedSubview(bankTextView)
+        stackView.addArrangedSubview(bankTextField)
+        
+        stackView.addArrangedSubview(numberTextView)
+        stackView.addArrangedSubview(numberTextField)
+        
+        stackView.addArrangedSubview(cvvTextView)
+        stackView.addArrangedSubview(cvvTextField)
+        
         stackView.spacing = 14
+        stackView.axis = .vertical
+        stackView.distribution = .fillEqually
         
         addSubview(stackView)
         stackView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.center.equalToSuperview()
+            make.width.equalToSuperview().inset(20)
+            make.height.equalToSuperview().multipliedBy(0.4)
         }
     }
     

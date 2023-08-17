@@ -17,7 +17,7 @@ extension UILabel {
     }
     
     func setCustomAppearance() {
-        self.font = .boldSystemFont(ofSize: 17)
+        self.font = .boldSystemFont(ofSize: 20)
         self.numberOfLines = 1
         self.textColor = .front2MINI
     }
