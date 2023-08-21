@@ -11,6 +11,8 @@ final class PayoutsView: UIView {
     
     private lazy var tableView = MiTableView()
     
+    var presenter: PayoutsPresenterProtocol?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         initialize()
@@ -53,7 +55,7 @@ extension PayoutsView: UITableViewDataSource {
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     ) -> Int {
-        return 15
+        return presenter?.getData().count ?? 0
     }
     
     func tableView(
@@ -62,9 +64,12 @@ extension PayoutsView: UITableViewDataSource {
     ) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: PayoutsCell.cellId,
-            for: indexPath) as? PayoutsCell
+            for: indexPath) as? PayoutsCell,
+              
+              let data = presenter?.getData()[indexPath.row]
         else { return UITableViewCell() }
-        cell.configure(with: .init(image: "", title: "", description: ""))
+        
+        cell.configure(with: data)
         return cell
     }
     

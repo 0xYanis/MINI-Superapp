@@ -20,7 +20,6 @@ final class PayoutsViewController: UIViewController {
     private lazy var emptyView   = EmptyPayoutsView()
     private lazy var payoutsView = PayoutsView()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
@@ -80,6 +79,7 @@ private extension PayoutsViewController {
     }
     
     func createPayoutsView() {
+        payoutsView.presenter = presenter
         payoutsView.isHidden = false
         view.addSubview(payoutsView)
         payoutsView.snp.makeConstraints { make in
