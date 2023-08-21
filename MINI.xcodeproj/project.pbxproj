@@ -121,6 +121,8 @@
 		09B02C802A8ED29300F474E9 /* EmptyPayoutsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B02C7F2A8ED29300F474E9 /* EmptyPayoutsView.swift */; };
 		09B0C1892A545C8200E0CDEF /* UITagPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B0C1882A545C8200E0CDEF /* UITagPickerView.swift */; };
 		09B1B4D02A1673D90090676E /* GroceryHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B1B4CF2A1673D90090676E /* GroceryHeaderCell.swift */; };
+		09B566272A936E3700AFF98E /* empty.json in Resources */ = {isa = PBXBuildFile; fileRef = 09B566262A936E3700AFF98E /* empty.json */; };
+		09B566292A936FA500AFF98E /* PayoutsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B566282A936FA500AFF98E /* PayoutsModel.swift */; };
 		09B7980D2A73C2EB0080169A /* CellConfProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7980C2A73C2EB0080169A /* CellConfProtocol.swift */; };
 		09BBA70F2A0E76950020E3C9 /* cardsLogo.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09BBA70E2A0E76950020E3C9 /* cardsLogo.xcassets */; };
 		09BFC93C2A1B4C7400C8505B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BFC93B2A1B4C7400C8505B /* ProfileViewController.swift */; };
@@ -324,6 +326,8 @@
 		09B02C7F2A8ED29300F474E9 /* EmptyPayoutsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyPayoutsView.swift; sourceTree = "<group>"; };
 		09B0C1882A545C8200E0CDEF /* UITagPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITagPickerView.swift; sourceTree = "<group>"; };
 		09B1B4CF2A1673D90090676E /* GroceryHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryHeaderCell.swift; sourceTree = "<group>"; };
+		09B566262A936E3700AFF98E /* empty.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = empty.json; sourceTree = "<group>"; };
+		09B566282A936FA500AFF98E /* PayoutsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayoutsModel.swift; sourceTree = "<group>"; };
 		09B7980C2A73C2EB0080169A /* CellConfProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellConfProtocol.swift; sourceTree = "<group>"; };
 		09BBA70E2A0E76950020E3C9 /* cardsLogo.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = cardsLogo.xcassets; sourceTree = "<group>"; };
 		09BFC93B2A1B4C7400C8505B /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -831,6 +835,7 @@
 				09B02C7C2A8EC8C300F474E9 /* PayoutsInteractor.swift */,
 				09B02C7A2A8EC84B00F474E9 /* PayoutsRouter.swift */,
 				09B02C782A8EC7E800F474E9 /* PayoutsBuilder.swift */,
+				09B566282A936FA500AFF98E /* PayoutsModel.swift */,
 			);
 			path = PayoutsModule;
 			sourceTree = "<group>";
@@ -838,6 +843,7 @@
 		09B02C7E2A8ED26600F474E9 /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
+				09B566262A936E3700AFF98E /* empty.json */,
 				09B02C7F2A8ED29300F474E9 /* EmptyPayoutsView.swift */,
 			);
 			path = Subviews;
@@ -1218,6 +1224,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09B566272A936E3700AFF98E /* empty.json in Resources */,
 				09F92CF52A23476300440ACC /* Localizable.strings in Resources */,
 				09BBA70F2A0E76950020E3C9 /* cardsLogo.xcassets in Resources */,
 				0910960729DB32F400338D22 /* Assets.xcassets in Resources */,
@@ -1378,6 +1385,7 @@
 				09D509DA29EF50AC009CC219 /* BankHistoryLabel.swift in Sources */,
 				09E9E81D29EAE9540084416B /* LoginInteractor.swift in Sources */,
 				09044FB52A448A3400432A3C /* GroceryCollectionView.swift in Sources */,
+				09B566292A936FA500AFF98E /* PayoutsModel.swift in Sources */,
 				09FB82472A3714C300CEF8C1 /* CategoryHeader.swift in Sources */,
 				09F86C5729F6F8A000307432 /* UITabBarController+Extension.swift in Sources */,
 				090AE1DD29FBAA080092515D /* TemplatePresenter.swift in Sources */,

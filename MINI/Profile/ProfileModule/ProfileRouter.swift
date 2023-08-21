@@ -41,13 +41,13 @@ final class ProfileRouter: ProfileRouterProtocol {
         
         switch type {
         case .favorites:
-            goToDetailView(to: defView)
+            goToDetailView(to: PayoutsBuilder.build(.favorites))
         case .tickets:
-            goToDetailView(to: defView)
+            goToDetailView(to: PayoutsBuilder.build(.favorites))
         case .orders:
-            goToDetailView(to: defView)
+            goToDetailView(to: PayoutsBuilder.build(.orders))
         case .transactions:
-            goToDetailView(to: defView)
+            goToDetailView(to: PayoutsBuilder.build(.transactions))
             
         case .language:
             goToDetailView(to: defView)

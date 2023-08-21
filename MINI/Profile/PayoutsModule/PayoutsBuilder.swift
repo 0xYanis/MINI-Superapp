@@ -9,7 +9,7 @@ import UIKit
 
 final class PayoutsBuilder {
     
-    static func build() -> UIViewController {
+    static func build(_ type: PayoutsType) -> UIViewController {
         let view = PayoutsViewController()
         let router = PayoutsRouter()
         let interactor = PayoutsInteractor()

@@ -13,11 +13,12 @@ final class EmptyPayoutsView: UIView {
     private lazy var stackView        = UIStackView()
     private lazy var messageLabel     = UILabel()
     private lazy var descriptionLabel = UILabel()
-    private lazy var lottieView       = LottieAnimationView()
+    private var animationView: LottieAnimationView?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         initialize()
+        animationView?.play()
     }
     
     required init?(coder: NSCoder) {
@@ -29,27 +30,47 @@ final class EmptyPayoutsView: UIView {
         self.descriptionLabel.text = description
     }
     
+    deinit {
+        animationView?.stop()
+        animationView = nil
+    }
+    
+    override func safeAreaInsetsDidChange() {
+        stackView.snp.makeConstraints { make in
+            make.width.equalToSuperview()
+            make.height.equalToSuperview().multipliedBy(0.5)
+        }
+    }
+    
 }
 
 private extension EmptyPayoutsView {
     
     func initialize() {
+        configureLottie()
         createStackView()
         configureMessage()
         configureDescription()
-        configureLottie()
+    }
+    
+    func configureLottie() {
+        animationView = .init(name: "empty")
+        animationView?.contentMode = .scaleAspectFit
+        animationView?.loopMode = .loop
+        animationView?.animationSpeed = 0.7
     }
     
     func createStackView() {
+        guard let animationView else { return }
+        
         addSubview(stackView)
         
+        stackView.addArrangedSubview(animationView)
         stackView.addArrangedSubview(messageLabel)
         stackView.addArrangedSubview(descriptionLabel)
-        stackView.addArrangedSubview(lottieView)
         
-        stackView.spacing = 30
         stackView.axis = .vertical
-        stackView.distribution = .fillEqually
+        stackView.distribution = .fill
     }
     
     func configureMessage() {
@@ -60,11 +81,6 @@ private extension EmptyPayoutsView {
     func configureDescription() {
         descriptionLabel.font = .boldSystemFont(ofSize: 17)
         descriptionLabel.textAlignment = .center
-    }
-    
-    func configureLottie() {
-        lottieView.loopMode = .loop
-        lottieView.play()
     }
     
 }
