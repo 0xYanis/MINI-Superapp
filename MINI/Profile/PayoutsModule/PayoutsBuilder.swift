@@ -17,6 +17,7 @@ final class PayoutsBuilder {
         
         view.presenter = presenter
         presenter.view = view
+        presenter.type = type
         router.view = view
         interactor.presenter = presenter
         

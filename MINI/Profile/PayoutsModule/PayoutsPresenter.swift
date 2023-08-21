@@ -9,6 +9,7 @@ import Foundation
 
 protocol PayoutsPresenterProtocol: AnyObject {
     func viewDidLoaded()
+    func setTitle(_ title: String)
 }
 
 final class PayoutsPresenter: PayoutsPresenterProtocol {
@@ -16,6 +17,17 @@ final class PayoutsPresenter: PayoutsPresenterProtocol {
     weak var view: PayoutsViewProtocol?
     var router: PayoutsRouterProtocol
     var interactor: PayoutsInteractorProtocol
+    var type: PayoutsType? {
+        didSet {
+            switch type {
+            case .tickets: view?.setTitle("Билеты")
+            case .favorites: view?.setTitle("Избранное")
+            case .orders: view?.setTitle("Заказы")
+            case .transactions: view?.setTitle("Покупки")
+            default: view?.setTitle("")
+            }
+        }
+    }
     
     init(
         router: PayoutsRouterProtocol,
@@ -27,6 +39,10 @@ final class PayoutsPresenter: PayoutsPresenterProtocol {
     
     func viewDidLoaded() {
         interactor.viewDidLoaded()
+    }
+    
+    func setTitle(_ title: String) {
+        view?.setTitle(title)
     }
     
 }

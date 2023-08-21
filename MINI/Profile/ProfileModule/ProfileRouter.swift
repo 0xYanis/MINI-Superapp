@@ -43,7 +43,7 @@ final class ProfileRouter: ProfileRouterProtocol {
         case .favorites:
             goToDetailView(to: PayoutsBuilder.build(.favorites))
         case .tickets:
-            goToDetailView(to: PayoutsBuilder.build(.favorites))
+            goToDetailView(to: PayoutsBuilder.build(.tickets))
         case .orders:
             goToDetailView(to: PayoutsBuilder.build(.orders))
         case .transactions:
