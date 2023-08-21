@@ -17,8 +17,8 @@ final class PayoutsViewController: UIViewController {
     
     var presenter: PayoutsPresenterProtocol?
     
-    private var emptyView = EmptyPayoutsView()
-    private lazy var payoutsView = UIView()
+    private lazy var emptyView   = EmptyPayoutsView()
+    private lazy var payoutsView = PayoutsView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +42,9 @@ extension PayoutsViewController: PayoutsViewProtocol {
     
     func setView(with data: [PayoutsModel]) {
         if data.isEmpty {
-            emptyView.isHidden = false
+            createEmptyView()
+        } else {
+            createPayoutsView()
         }
     }
     
@@ -52,21 +54,25 @@ private extension PayoutsViewController {
     
     func initialize() {
         view.backgroundColor = .back2MINI
-        createEmptyView()
     }
     
     func createEmptyView() {
+        emptyView.configure(
+            message: "Упс!",
+            "Похоже, здесь ничего нет..")
         view.addSubview(emptyView)
         emptyView.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(100)
             make.left.right.equalToSuperview()
             make.bottom.equalToSuperview()
         }
-        emptyView.isHidden = true
-        emptyView.configure(
-            message: "Упс!",
-            "Похоже, здесь ничего нет.."
-        )
+    }
+    
+    func createPayoutsView() {
+        view.addSubview(payoutsView)
+        payoutsView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
     
 }

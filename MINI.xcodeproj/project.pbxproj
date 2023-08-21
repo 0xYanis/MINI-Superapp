@@ -123,6 +123,8 @@
 		09B1B4D02A1673D90090676E /* GroceryHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B1B4CF2A1673D90090676E /* GroceryHeaderCell.swift */; };
 		09B566272A936E3700AFF98E /* empty.json in Resources */ = {isa = PBXBuildFile; fileRef = 09B566262A936E3700AFF98E /* empty.json */; };
 		09B566292A936FA500AFF98E /* PayoutsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B566282A936FA500AFF98E /* PayoutsModel.swift */; };
+		09B5662B2A937D3100AFF98E /* PayoutsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B5662A2A937D3000AFF98E /* PayoutsView.swift */; };
+		09B5662D2A937EE700AFF98E /* PayoutsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B5662C2A937EE700AFF98E /* PayoutsCell.swift */; };
 		09B7980D2A73C2EB0080169A /* CellConfProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7980C2A73C2EB0080169A /* CellConfProtocol.swift */; };
 		09BBA70F2A0E76950020E3C9 /* cardsLogo.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09BBA70E2A0E76950020E3C9 /* cardsLogo.xcassets */; };
 		09BFC93C2A1B4C7400C8505B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BFC93B2A1B4C7400C8505B /* ProfileViewController.swift */; };
@@ -328,6 +330,8 @@
 		09B1B4CF2A1673D90090676E /* GroceryHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryHeaderCell.swift; sourceTree = "<group>"; };
 		09B566262A936E3700AFF98E /* empty.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = empty.json; sourceTree = "<group>"; };
 		09B566282A936FA500AFF98E /* PayoutsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayoutsModel.swift; sourceTree = "<group>"; };
+		09B5662A2A937D3000AFF98E /* PayoutsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayoutsView.swift; sourceTree = "<group>"; };
+		09B5662C2A937EE700AFF98E /* PayoutsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayoutsCell.swift; sourceTree = "<group>"; };
 		09B7980C2A73C2EB0080169A /* CellConfProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellConfProtocol.swift; sourceTree = "<group>"; };
 		09BBA70E2A0E76950020E3C9 /* cardsLogo.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = cardsLogo.xcassets; sourceTree = "<group>"; };
 		09BFC93B2A1B4C7400C8505B /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -845,6 +849,8 @@
 			children = (
 				09B566262A936E3700AFF98E /* empty.json */,
 				09B02C7F2A8ED29300F474E9 /* EmptyPayoutsView.swift */,
+				09B5662A2A937D3000AFF98E /* PayoutsView.swift */,
+				09B5662C2A937EE700AFF98E /* PayoutsCell.swift */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -1264,6 +1270,7 @@
 				099D4F8329F72AFD0002C24A /* NewTemplateRouter.swift in Sources */,
 				099D4F6B29F71A420002C24A /* CardInteractor.swift in Sources */,
 				09BFC93C2A1B4C7400C8505B /* ProfileViewController.swift in Sources */,
+				09B5662D2A937EE700AFF98E /* PayoutsCell.swift in Sources */,
 				09091CDE2A82B49B0043A9A1 /* MiTableView.swift in Sources */,
 				09B1B4D02A1673D90090676E /* GroceryHeaderCell.swift in Sources */,
 				09044FA92A444AC900432A3C /* GSearchViewController.swift in Sources */,
@@ -1423,6 +1430,7 @@
 				091335D42A405CC1005DDAEA /* MINIColorExtension.swift in Sources */,
 				0910960029DB32F000338D22 /* SceneDelegate.swift in Sources */,
 				094388EB2A56F0A200027D59 /* BankViewDetails.swift in Sources */,
+				09B5662B2A937D3100AFF98E /* PayoutsView.swift in Sources */,
 				099D4F8729F72B0F0002C24A /* NewTemplateEntity.swift in Sources */,
 				097A80692A337E2000B5CF3A /* CategoryInteractor.swift in Sources */,
 			);
