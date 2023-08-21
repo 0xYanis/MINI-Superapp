@@ -8,9 +8,8 @@
 import Foundation
 
 protocol PayoutsPresenterProtocol: AnyObject {
-    func viewDidLoaded()
     func setTitle(_ title: String)
-    func setData(with data: [PayoutsModel])
+    func getData() -> [PayoutsModel]
 }
 
 final class PayoutsPresenter: PayoutsPresenterProtocol {
@@ -38,16 +37,12 @@ final class PayoutsPresenter: PayoutsPresenterProtocol {
         self.interactor = interactor
     }
     
-    func viewDidLoaded() {
-        interactor.viewDidLoaded()
-    }
-    
     func setTitle(_ title: String) {
         view?.setTitle(title)
     }
     
-    func setData(with data: [PayoutsModel]) {
-        view?.setView(with: data)
+    func getData() -> [PayoutsModel] {
+        interactor.getData()
     }
     
 }

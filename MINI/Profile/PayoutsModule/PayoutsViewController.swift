@@ -9,8 +9,8 @@ import UIKit
 import SnapKit
 
 protocol PayoutsViewProtocol: AnyObject {
+    func updateView()
     func setTitle(_ title: String)
-    func setView(with data: [PayoutsModel])
 }
 
 final class PayoutsViewController: UIViewController {
@@ -20,10 +20,10 @@ final class PayoutsViewController: UIViewController {
     private lazy var emptyView   = EmptyPayoutsView()
     private lazy var payoutsView = PayoutsView()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
-        presenter?.viewDidLoaded()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,12 +40,9 @@ extension PayoutsViewController: PayoutsViewProtocol {
         navigationItem.largeTitleDisplayMode = .never
     }
     
-    func setView(with data: [PayoutsModel]) {
-        if data.isEmpty {
-            createEmptyView()
-        } else {
-            createPayoutsView()
-        }
+    func updateView() {
+        checkForEmptyData()
+        payoutsView.updateView()
     }
     
 }
@@ -54,6 +51,19 @@ private extension PayoutsViewController {
     
     func initialize() {
         view.backgroundColor = .back2MINI
+        checkForEmptyData()
+        createEmptyView()
+        createPayoutsView()
+    }
+    
+    func checkForEmptyData() {
+        if let _ = presenter?.getData().isEmpty {
+            emptyView.isHidden = false
+            payoutsView.isHidden = true
+        } else {
+            emptyView.isHidden = true
+            payoutsView.isHidden = false
+        }
     }
     
     func createEmptyView() {
@@ -66,9 +76,11 @@ private extension PayoutsViewController {
             make.left.right.equalToSuperview()
             make.bottom.equalToSuperview()
         }
+        emptyView.isHidden = false
     }
     
     func createPayoutsView() {
+        payoutsView.isHidden = false
         view.addSubview(payoutsView)
         payoutsView.snp.makeConstraints { make in
             make.edges.equalToSuperview()

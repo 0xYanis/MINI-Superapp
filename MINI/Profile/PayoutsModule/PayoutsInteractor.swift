@@ -8,7 +8,7 @@
 import Foundation
 
 protocol PayoutsInteractorProtocol: AnyObject {
-    func viewDidLoaded()
+    func getData() -> [PayoutsModel]
 }
 
 final class PayoutsInteractor: PayoutsInteractorProtocol {
@@ -17,8 +17,6 @@ final class PayoutsInteractor: PayoutsInteractorProtocol {
     
     private var payoutsData: [PayoutsModel] = []
     
-    func viewDidLoaded() {
-        presenter?.setData(with: payoutsData)
-    }
+    func getData() -> [PayoutsModel]
     
 }
