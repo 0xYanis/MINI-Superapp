@@ -6,11 +6,9 @@
 //
 
 import Foundation
-import UIKit
 
 struct PayoutsModel {
-    var type: PayoutsType
-    var image: UIImage
+    var image: String
     var title: String
     var description: String
 }

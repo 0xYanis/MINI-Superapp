@@ -15,8 +15,10 @@ final class PayoutsInteractor: PayoutsInteractorProtocol {
     
     weak var presenter: PayoutsPresenterProtocol?
     
+    private var payoutsData: [PayoutsModel] = []
+    
     func viewDidLoaded() {
-        
+        presenter?.setData(with: payoutsData)
     }
     
 }

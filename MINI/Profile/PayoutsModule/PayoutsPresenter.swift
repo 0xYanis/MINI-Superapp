@@ -10,6 +10,7 @@ import Foundation
 protocol PayoutsPresenterProtocol: AnyObject {
     func viewDidLoaded()
     func setTitle(_ title: String)
+    func setData(with data: [PayoutsModel])
 }
 
 final class PayoutsPresenter: PayoutsPresenterProtocol {
@@ -43,6 +44,10 @@ final class PayoutsPresenter: PayoutsPresenterProtocol {
     
     func setTitle(_ title: String) {
         view?.setTitle(title)
+    }
+    
+    func setData(with data: [PayoutsModel]) {
+        view?.setView(with: data)
     }
     
 }
