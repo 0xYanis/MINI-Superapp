@@ -9,9 +9,9 @@ import UIKit
 
 final class PayoutsView: UIView {
     
-    private lazy var tableView = MiTableView()
-    
     var presenter: PayoutsPresenterProtocol?
+    
+    private lazy var tableView = MiTableView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)

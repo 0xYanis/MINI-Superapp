@@ -16,8 +16,13 @@ final class PayoutsCell: UITableViewCell {
     private lazy var titleLabel = UILabel()
     private lazy var descriptionLabel = UILabel()
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier:  reuseIdentifier)
+    override init(
+        style: UITableViewCell.CellStyle,
+        reuseIdentifier: String?
+    ) {
+        super.init(
+            style: style,
+            reuseIdentifier:  reuseIdentifier)
         initialize()
     }
     
@@ -36,6 +41,11 @@ final class PayoutsCell: UITableViewCell {
 private extension PayoutsCell {
     
     func initialize() {
+        createImage()
+        createLabels()
+    }
+    
+    func createImage() {
         image.contentMode = .scaleAspectFit
         
         addSubview(image)
@@ -45,7 +55,9 @@ private extension PayoutsCell {
             make.left.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(0.3)
         }
-        
+    }
+    
+    func createLabels() {
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview()
@@ -58,7 +70,6 @@ private extension PayoutsCell {
             make.bottom.equalToSuperview()
             make.left.equalTo(image.snp.right)
         }
-        
     }
     
 }
