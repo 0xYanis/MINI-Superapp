@@ -91,4 +91,11 @@ extension PayoutsView: UITableViewDelegate {
         return UITableView.automaticDimension
     }
     
+    func tableView(
+        _ tableView: UITableView,
+        didDeselectRowAt indexPath: IndexPath
+    ) {
+        presenter?.didTapToPush(with: indexPath.row)
+    }
+    
 }

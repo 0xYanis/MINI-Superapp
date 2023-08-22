@@ -10,6 +10,7 @@ import Foundation
 protocol PayoutsPresenterProtocol: AnyObject {
     func setTitle(_ title: String)
     func getData() -> [PayoutsModel]
+    func didTapToPush(with index: Int)
 }
 
 final class PayoutsPresenter: PayoutsPresenterProtocol {
@@ -43,6 +44,11 @@ final class PayoutsPresenter: PayoutsPresenterProtocol {
     
     func getData() -> [PayoutsModel] {
         interactor.getData()
+    }
+    
+    func didTapToPush(with index: Int) {
+        guard let type = type else { return }
+        router.goTo(type, with: index)
     }
     
 }
