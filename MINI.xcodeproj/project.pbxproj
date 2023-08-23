@@ -159,6 +159,10 @@
 		09E9E82A29EB16210084416B /* KeyChainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E9E82929EB16210084416B /* KeyChainService.swift */; };
 		09E9E82E29EB16E10084416B /* KeyChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E9E82D29EB16E10084416B /* KeyChain.swift */; };
 		09E9E83029EB24840084416B /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E9E82F29EB24840084416B /* UIAlertController+Extension.swift */; };
+		09EA1CAD2A962DB500A18B41 /* SupportViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EA1CAC2A962DB500A18B41 /* SupportViewContoller.swift */; };
+		09EA1CAF2A962DBE00A18B41 /* SupportPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EA1CAE2A962DBE00A18B41 /* SupportPresenter.swift */; };
+		09EA1CB12A962DD000A18B41 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EA1CB02A962DD000A18B41 /* Message.swift */; };
+		09EA1CB32A96309C00A18B41 /* SupportBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EA1CB22A96309C00A18B41 /* SupportBuilder.swift */; };
 		09F2AE722A52FD2100E02404 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F2AE712A52FD2100E02404 /* CartViewController.swift */; };
 		09F2AE742A52FD2E00E02404 /* CartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F2AE732A52FD2E00E02404 /* CartPresenter.swift */; };
 		09F2AE762A52FD3400E02404 /* CartRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F2AE752A52FD3400E02404 /* CartRouter.swift */; };
@@ -365,6 +369,10 @@
 		09E9E82929EB16210084416B /* KeyChainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainService.swift; sourceTree = "<group>"; };
 		09E9E82D29EB16E10084416B /* KeyChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChain.swift; sourceTree = "<group>"; };
 		09E9E82F29EB24840084416B /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
+		09EA1CAC2A962DB500A18B41 /* SupportViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportViewContoller.swift; sourceTree = "<group>"; };
+		09EA1CAE2A962DBE00A18B41 /* SupportPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportPresenter.swift; sourceTree = "<group>"; };
+		09EA1CB02A962DD000A18B41 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		09EA1CB22A96309C00A18B41 /* SupportBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportBuilder.swift; sourceTree = "<group>"; };
 		09F2AE712A52FD2100E02404 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		09F2AE732A52FD2E00E02404 /* CartPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartPresenter.swift; sourceTree = "<group>"; };
 		09F2AE752A52FD3400E02404 /* CartRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartRouter.swift; sourceTree = "<group>"; };
@@ -870,6 +878,7 @@
 		09BFC9392A1B4C4F00C8505B /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				09EA1CAB2A962D9D00A18B41 /* SupportModule */,
 				09B02C732A8EC79B00F474E9 /* PayoutsModule */,
 				096453442A82CE3900709821 /* PasswordModule */,
 				09BFC93A2A1B4C5C00C8505B /* ProfileModule */,
@@ -946,6 +955,17 @@
 				090B63EB2A45C09500C7D6CD /* RealmService.swift */,
 			);
 			path = ServiceLayer;
+			sourceTree = "<group>";
+		};
+		09EA1CAB2A962D9D00A18B41 /* SupportModule */ = {
+			isa = PBXGroup;
+			children = (
+				09EA1CAC2A962DB500A18B41 /* SupportViewContoller.swift */,
+				09EA1CAE2A962DBE00A18B41 /* SupportPresenter.swift */,
+				09EA1CB02A962DD000A18B41 /* Message.swift */,
+				09EA1CB22A96309C00A18B41 /* SupportBuilder.swift */,
+			);
+			path = SupportModule;
 			sourceTree = "<group>";
 		};
 		09EF874F2A24C0D000EC9D7A /* Subviews */ = {
@@ -1277,6 +1297,7 @@
 				09FC394329FAC53200B2D97E /* AllTemplatesViewCell.swift in Sources */,
 				09E9E82729EB0B3F0084416B /* BiometryService.swift in Sources */,
 				09F86C4F29F6E96C00307432 /* BaseTabBarController.swift in Sources */,
+				09EA1CAD2A962DB500A18B41 /* SupportViewContoller.swift in Sources */,
 				09E9E82A29EB16210084416B /* KeyChainService.swift in Sources */,
 				09A7496029F992940005A649 /* CardDetailView.swift in Sources */,
 				09FC394E29FAD3FB00B2D97E /* TransactionBuilder.swift in Sources */,
@@ -1350,6 +1371,7 @@
 				096453482A82CF2700709821 /* PasswordPresenter.swift in Sources */,
 				099089F02A13C2C400EE00DA /* AdressViewController.swift in Sources */,
 				099089EB2A139A5800EE00DA /* GroceryBuilder.swift in Sources */,
+				09EA1CB12A962DD000A18B41 /* Message.swift in Sources */,
 				09FC393D29FABF5200B2D97E /* AllTemplatesRouter.swift in Sources */,
 				09FC393729FABF2D00B2D97E /* AllTemplatesViewController.swift in Sources */,
 				09F5BFDB2A1288A300BC3B7C /* BankTransactionService.swift in Sources */,
@@ -1364,6 +1386,7 @@
 				09F2AE722A52FD2100E02404 /* CartViewController.swift in Sources */,
 				09F5BFD72A1285F500BC3B7C /* BankCardService.swift in Sources */,
 				09F2AE7A2A52FD4600E02404 /* CartBuilder.swift in Sources */,
+				09EA1CAF2A962DBE00A18B41 /* SupportPresenter.swift in Sources */,
 				09FB82502A37286000CEF8C1 /* ProductInteractor.swift in Sources */,
 				099089E32A139A2D00EE00DA /* GroceryViewController.swift in Sources */,
 				099D4F8129F72AF40002C24A /* NewTemplateInteractor.swift in Sources */,
@@ -1422,6 +1445,7 @@
 				097E03A129EC44A500CE2A6F /* BankRouter.swift in Sources */,
 				099D4F7F29F72AEA0002C24A /* NewTemplatePresenter.swift in Sources */,
 				09091CDC2A82AD620043A9A1 /* UIViewController+Extension.swift in Sources */,
+				09EA1CB32A96309C00A18B41 /* SupportBuilder.swift in Sources */,
 				091095FE29DB32F000338D22 /* AppDelegate.swift in Sources */,
 				09FB82582A3737AA00CEF8C1 /* LocationService.swift in Sources */,
 				0909D1C329F192E50078EEB5 /* BankTemplateLabelCell.swift in Sources */,
