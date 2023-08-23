@@ -29,9 +29,10 @@ final class SupportPresenter: SupportPresenterProtocol {
     }
     
     func createMessage(text: String) {
+        let date = Date()
         let message = Message(
             message: text,
-            time: .now,
+            time: date.currentTime(),
             isMine: true)
         messages.append(message)
     }
@@ -42,7 +43,8 @@ final class SupportPresenter: SupportPresenterProtocol {
     
     private func firstMessage() {
         let text = "Добрый день! Вам чем-то помочь?"
-        let message = Message(message: text, time: .now, isMine: false)
+        let date = Date()
+        let message = Message(message: text, time: date.currentTime(), isMine: false)
         messages.append(message)
     }
     

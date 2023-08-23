@@ -9,6 +9,6 @@ import Foundation
 
 struct Message {
     var message: String
-    var time: Date
+    var time: String
     var isMine: Bool
 }
