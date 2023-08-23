@@ -35,6 +35,9 @@
 		0910960029DB32F000338D22 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091095FF29DB32F000338D22 /* SceneDelegate.swift */; };
 		0910960729DB32F400338D22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0910960629DB32F400338D22 /* Assets.xcassets */; };
 		091335D42A405CC1005DDAEA /* MINIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091335D32A405CC1005DDAEA /* MINIColorExtension.swift */; };
+		0913C7E22A9687FC005C887D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0913C7E12A9687FB005C887D /* GoogleService-Info.plist */; };
+		0913C7E52A968A5F005C887D /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 0913C7E42A968A5F005C887D /* FirebaseAnalytics */; };
+		0913C7E72A968A5F005C887D /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 0913C7E62A968A5F005C887D /* FirebaseAuth */; };
 		091CD49029DDE9250041627F /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 091CD48F29DDE9250041627F /* Lottie */; };
 		0921F35F29DF1FE000B3D4F7 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0921F35E29DF1FE000B3D4F7 /* UIButton+Extension.swift */; };
 		092E739429EBEB1F00165D37 /* LoginAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E739329EBEB1E00165D37 /* LoginAnimationView.swift */; };
@@ -253,6 +256,7 @@
 		0910960629DB32F400338D22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0910960B29DB32F500338D22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		091335D32A405CC1005DDAEA /* MINIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MINIColorExtension.swift; sourceTree = "<group>"; };
+		0913C7E12A9687FB005C887D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0921F35E29DF1FE000B3D4F7 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		092E739329EBEB1E00165D37 /* LoginAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAnimationView.swift; sourceTree = "<group>"; };
 		092E739529EBEB3000165D37 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -423,12 +427,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0913C7E52A968A5F005C887D /* FirebaseAnalytics in Frameworks */,
 				090B63EF2A45C16700C7D6CD /* RealmSwift in Frameworks */,
 				09CFB4262A1E6A940007FF40 /* SDWebImage in Frameworks */,
 				096B4B2A2A1DEF3500E5C65E /* Alamofire in Frameworks */,
 				09035D0929DDAE2F003D4B0B /* SnapKit in Frameworks */,
 				09F5BFE02A12B47800BC3B7C /* SkeletonView in Frameworks */,
 				091CD49029DDE9250041627F /* Lottie in Frameworks */,
+				0913C7E72A968A5F005C887D /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -550,6 +556,7 @@
 				09F86C4B29F6E75600307432 /* AuthenticationManager.swift */,
 				09F86C4E29F6E96C00307432 /* BaseTabBarController.swift */,
 				0994B93F2A20F66D00F4A783 /* DeepLinkManager.swift */,
+				0913C7E12A9687FB005C887D /* GoogleService-Info.plist */,
 				09F92CF72A23476300440ACC /* Localizable.strings */,
 			);
 			path = Application;
@@ -1146,6 +1153,8 @@
 				096B4B292A1DEF3500E5C65E /* Alamofire */,
 				09CFB4252A1E6A940007FF40 /* SDWebImage */,
 				090B63EE2A45C16700C7D6CD /* RealmSwift */,
+				0913C7E42A968A5F005C887D /* FirebaseAnalytics */,
+				0913C7E62A968A5F005C887D /* FirebaseAuth */,
 			);
 			productName = MINI;
 			productReference = 091095FA29DB32F000338D22 /* MINI.app */;
@@ -1236,6 +1245,7 @@
 				096B4B282A1DEF3500E5C65E /* XCRemoteSwiftPackageReference "Alamofire" */,
 				09CFB4242A1E6A940007FF40 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 				090B63ED2A45C16700C7D6CD /* XCRemoteSwiftPackageReference "realm-swift" */,
+				0913C7E32A968A5F005C887D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 091095FB29DB32F000338D22 /* Products */;
 			projectDirPath = "";
@@ -1260,6 +1270,7 @@
 				09ACB2812A614C4200A7F139 /* rocket.json in Resources */,
 				095B1C6D2A39BD1A00EF6828 /* LaunchScreen.storyboard in Resources */,
 				09F2AE852A53470C00E02404 /* emptyCart.json in Resources */,
+				0913C7E22A9687FC005C887D /* GoogleService-Info.plist in Resources */,
 				09E24C132A1227C200A91F74 /* cardsColor.xcassets in Resources */,
 				09ABE0082A143447009DB57B /* DefaultFood.xcassets in Resources */,
 			);
@@ -1824,6 +1835,14 @@
 				kind = branch;
 			};
 		};
+		0913C7E32A968A5F005C887D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 		091CD48E29DDE9250041627F /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios";
@@ -1868,6 +1887,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 090B63ED2A45C16700C7D6CD /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		0913C7E42A968A5F005C887D /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0913C7E32A968A5F005C887D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		0913C7E62A968A5F005C887D /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0913C7E32A968A5F005C887D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
 		};
 		091CD48F29DDE9250041627F /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
