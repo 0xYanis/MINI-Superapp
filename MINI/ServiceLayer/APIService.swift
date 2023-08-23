@@ -98,20 +98,22 @@ private extension APIService {
         headers: HTTPHeaders? = nil,
         completion: @escaping (Result<T, Error>) -> Void
     ) {
-        AF.request(
-            url,
-            method: method,
-            parameters: parameters,
-            encoding: encoding,
-            headers: headers
-        )
-        .validate(statusCode: 200..<300)
-        .responseDecodable(of: T.self) { response in
-            switch response.result {
-            case .success(let result):
-                completion(.success(result))
-            case .failure(let error):
-                completion(.failure(error))
+        DispatchQueue.global().async {
+            AF.request(
+                url,
+                method: method,
+                parameters: parameters,
+                encoding: encoding,
+                headers: headers
+            )
+            .validate(statusCode: 200..<300)
+            .responseDecodable(of: T.self) { response in
+                switch response.result {
+                case .success(let result):
+                    completion(.success(result))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
             }
         }
     }

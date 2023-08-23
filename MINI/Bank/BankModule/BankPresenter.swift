@@ -48,11 +48,8 @@ extension BankPresenter: BankPresenterProtocol {
     }
     
     func updateView() {
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            self.view?.updateBankTable()
-            self.view?.updateHistory()
-        }
+        view?.updateBankTable()
+        view?.updateHistory()
     }
     
     func setNewCard() {

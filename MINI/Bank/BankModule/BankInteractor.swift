@@ -105,12 +105,10 @@ private extension BankInteractor {
     func getCards() {
         cardService.getCardsData { [weak self] result in
             guard let self = self else { return }
-            
-            DispatchQueue.global().async {
+            DispatchQueue.main.async {
                 switch result {
                 case .success(let cards):
                     guard let cards else { return }
-                    
                     self.cardsData = cards
                     self.presenter?.updateView()
                 case .failure(let error):
@@ -126,12 +124,10 @@ private extension BankInteractor {
     func getTemplates() {
         templateService.getTemplatesData { [weak self] result in
             guard let self = self else { return }
-            
-            DispatchQueue.global().async {
+            DispatchQueue.main.async {
                 switch result {
                 case .success(let templates):
                     guard let templates else { return }
-                    
                     self.templatesData = templates
                     self.presenter?.updateView()
                 case .failure(let error):
@@ -147,12 +143,10 @@ private extension BankInteractor {
     func getTransactions() {
         transactionService.getTransactionsData { [weak self] result in
             guard let self = self else { return }
-            
-            DispatchQueue.global().async {
+            DispatchQueue.main.async {
                 switch result {
                 case .success(let transactions):
                     guard let transactions else { return }
-                    
                     self.transactionsData = transactions
                     self.presenter?.updateView()
                 case .failure(let error):
@@ -164,6 +158,5 @@ private extension BankInteractor {
             
         }
     }
-    
     
 }
