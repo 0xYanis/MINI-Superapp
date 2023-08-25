@@ -9,10 +9,12 @@ MINI Superapp - универсальное приложение для упра�
 <html>
  <body>
   <p>
+    <img src="Screenshot/0.png" width="200">
     <img src="Screenshot/1.png" width="200">
     <img src="Screenshot/2.png" width="200">
     <img src="Screenshot/3.png" width="200">
     <img src="Screenshot/4.png" width="200">
+    <img src="Screenshot/5.png" width="200">
   </p>
  </body>
 </html>
