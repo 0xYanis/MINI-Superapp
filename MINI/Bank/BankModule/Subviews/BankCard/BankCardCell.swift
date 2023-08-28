@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import SkeletonView
 
-final class BankCardCell: UICollectionViewCell, CellConfProtocol {
+final class BankCardCell: UICollectionViewCell {
     
     //MARK: Private properties
     private lazy var cardView = UIView()
@@ -24,9 +24,6 @@ final class BankCardCell: UICollectionViewCell, CellConfProtocol {
         font: .systemFont(ofSize: 16),
         color: .white
     )
-    
-    //MARK: Public properties
-    static let cellId = "BankCardCell"
     
     // MARK: - Public methods
     func configure(with card: BankCardEntity) {

@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import SkeletonView
 
-final class GroceryViewCell: UICollectionViewCell, CellConfProtocol {
+final class GroceryViewCell: UICollectionViewCell {
     
     //MARK: Public properties
     static let cellId = "GroceryViewCell"

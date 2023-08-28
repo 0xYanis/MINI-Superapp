@@ -8,7 +8,7 @@
 import UIKit
 import SkeletonView
 
-final class BankTemplateCell: UICollectionViewCell, CellConfProtocol {
+final class BankTemplateCell: UICollectionViewCell {
     
     private lazy var templateView = UIView()
     private lazy var circleView = UIView()
@@ -18,8 +18,6 @@ final class BankTemplateCell: UICollectionViewCell, CellConfProtocol {
         font: .systemFont(ofSize: 15),
         color: UIColor(named: "textColor")
     )
-    
-    static let cellId = "BankTemplateCell"
     
     func configure(with template: BankTemplateEntity) {
         imageView.image = UIImage(systemName: template.image)

@@ -25,7 +25,7 @@ final class BankTemplateSet: UITableViewCell, BankTableCellConf {
             collectionView.showsHorizontalScrollIndicator = false
             collectionView.register(
                 BankTemplateCell.self,
-                forCellWithReuseIdentifier: BankTemplateCell.cellId
+                forCellWithReuseIdentifier: String(describing: BankTemplateCell.self)
             )
             collectionView.backgroundColor = .clear
             collectionView.contentInset = .init(top: 0, left: 16, bottom: 0, right: 16)
@@ -89,7 +89,7 @@ extension BankTemplateSet: SkeletonCollectionViewDataSource {
         _ skeletonView: UICollectionView,
         cellIdentifierForItemAt indexPath: IndexPath
     ) -> SkeletonView.ReusableCellIdentifier {
-        return BankTemplateCell.cellId
+        return String(describing: BankTemplateCell.self)
     }
     
     
@@ -104,20 +104,9 @@ extension BankTemplateSet: SkeletonCollectionViewDataSource {
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
-        let cell = dequeueCell(BankTemplateCell.self, indexPath: indexPath)
+        let cell = collectionView.addCell(BankTemplateCell.self, at: indexPath)
         cell.radiusAndShadow(radius: 10, shadowSize: 10)
         
-        return cell
-    }
-    
-    func dequeueCell<C: CellConfProtocol>(
-        _ cell: C.Type,
-        indexPath: IndexPath
-    ) -> C {
-        guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: C.cellId,
-            for: indexPath
-        ) as? C else { fatalError("Error \(cell)") }
         return cell
     }
     

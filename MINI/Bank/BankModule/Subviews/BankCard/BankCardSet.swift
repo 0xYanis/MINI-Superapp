@@ -27,7 +27,7 @@ final class BankCardSet: UITableViewCell, BankTableCellConf {
             collectionView.contentInset = .init(top: 0, left: 16, bottom: 0, right: 16)
             collectionView.register(
                 BankCardCell.self,
-                forCellWithReuseIdentifier: BankCardCell.cellId
+                forCellWithReuseIdentifier: String(describing: BankCardCell.self)
             )
         }
     }
@@ -90,7 +90,7 @@ extension BankCardSet: SkeletonCollectionViewDataSource {
         _ skeletonView: UICollectionView,
         cellIdentifierForItemAt indexPath: IndexPath
     ) -> SkeletonView.ReusableCellIdentifier {
-        return BankCardCell.cellId
+        return String(describing: BankCardCell.self)
     }
     
     func collectionView(
@@ -100,22 +100,11 @@ extension BankCardSet: SkeletonCollectionViewDataSource {
         return presenter?.getCardData().count ?? 5
     }
     
-    func dequeueCell<C: CellConfProtocol>(
-        _ cell: C.Type,
-        indexPath: IndexPath
-    ) -> C {
-        guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: C.cellId,
-            for: indexPath
-        ) as? C else { fatalError("Error \(cell)") }
-        return cell
-    }
-    
     func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
-        return dequeueCell(BankCardCell.self, indexPath: indexPath)
+        return collectionView.addCell(BankCardCell.self, at: indexPath)
     }
     
     
