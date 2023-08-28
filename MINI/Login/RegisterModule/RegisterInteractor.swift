@@ -42,20 +42,12 @@ final class RegisterInteractor: RegisterInteractorProtocol {
             return
         }
         
-        guard keychainService?.getValue(forKey: "userUID") == nil else {
-            presenter?.registerIsNotCorrect(
-                with: ErrorMessages.loginAlreadyRegistered.rawValue
-            )
-            return
-        }
-        
         fbAuthManager?.signUp(email: login, password: password) { [weak self] user, error in
             guard let self = self else { return }
             if let error = error {
                 self.presenter?.registerIsNotCorrect(with: error.localizedDescription)
             }
-            guard let user = user else { return }
-            self.saveUID(user.uid)
+            guard let _ = user else { return }
             self.presenter?.registerIsCorrect()
         }
     }
@@ -63,11 +55,6 @@ final class RegisterInteractor: RegisterInteractorProtocol {
 }
 
 private extension RegisterInteractor {
-    
-    func saveUID(_ uid: String?) {
-        guard let uid = uid else { return }
-        keychainService?.setValue(uid, forKey: "userUID")
-    }
     
     enum ErrorMessages: String {
         case invalidLogin = "Неверный формат ввода"

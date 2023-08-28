@@ -87,9 +87,9 @@ private extension LaunchController {
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
            let delegate = windowScene.delegate as? SceneDelegate {
             let window = UIWindow(windowScene: windowScene)
+            let manager = AuthenticationManager()
             
-            AuthenticationManager.auth(to: window)
-            
+            manager.auth(window)
             window.backgroundColor = .backMINI
             window.tintColor = .tintMINI
             delegate.window = window

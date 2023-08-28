@@ -9,21 +9,28 @@ import Foundation
 
 protocol ProfileInteractorProtocol: AnyObject {
     func viewDidLoaded()
+    func logout() throws
 }
 
 final class ProfileInteractor: ProfileInteractorProtocol {
     
     weak var presenter: ProfilePresenterProtocol?
+    private var fbAuthManager: FBAuthProtocol?
     
     var profileData: [ProfileSection] = []
     
     init() {
         self.profileData = ProfileSection.data
+        self.fbAuthManager = FBAuthManager()
     }
     
     func viewDidLoaded() {
         // обновление состояния
         
+        
+    }
+    
+    func logout() {
         
     }
     

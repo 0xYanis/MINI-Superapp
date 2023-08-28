@@ -17,8 +17,6 @@ final class ProfileRouter: ProfileRouterProtocol {
     weak var view: UIViewController?
     
     func userWantToLogout() {
-        UserDefaults.standard.removeObject(forKey: "authToken")
-        
         let loginView = LoginBuilder.build()
         let loginScreen = UINavigationController(rootViewController: loginView)
         

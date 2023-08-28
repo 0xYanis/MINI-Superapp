@@ -38,22 +38,11 @@ final class LoginInteractor: LoginInteractorProtocol {
         }
     }
     
-    //MARK: - Для дебага вход по faceID
     func userWantBiometry() {
         biometryService?.authWithBiometry { [weak self] result, _ in
-            guard let self = self else { return }
-            guard let uid = self.getUID() else { return }
+            //guard let self = self else { return }
             
-            if uid == self.fbAuthManager.userUID() {
-                self.presenter?.loginIsCorrect()
-            }
         }
-    }
-    
-    private func getUID() -> String? {
-        guard let uid = keychainService?.getValue(forKey: "userUID")
-        else { return nil }
-        return uid
     }
     
 }
