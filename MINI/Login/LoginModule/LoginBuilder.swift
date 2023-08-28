@@ -15,12 +15,14 @@ final class LoginBuilder {
         let presenter = LoginPresenter(interactor: interactor, router: router)
         let biometryService = BiometryService()
         let keychainService = KeyChainService()
+        let fbAuthManager = FBAuthManager()
         
         viewController.presenter = presenter
         presenter.view = viewController
         interactor.presenter = presenter
         interactor.keychainService = keychainService
         interactor.biometryService = biometryService
+        interactor.fbAuthManager = fbAuthManager
         router.view = viewController
         
         return viewController

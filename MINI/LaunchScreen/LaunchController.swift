@@ -13,6 +13,7 @@ final class LaunchController: UIViewController {
     private lazy var emojiLabel = UILabel()
     private lazy var imageView  = UIImageView()
     
+    private let authManager = AuthenticationManager()
     private let emojis : [String]  = ["🏦", "🛩", "🛒", "🚀"]
     
     override func viewDidLoad() {
@@ -87,9 +88,9 @@ private extension LaunchController {
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
            let delegate = windowScene.delegate as? SceneDelegate {
             let window = UIWindow(windowScene: windowScene)
-            let manager = AuthenticationManager()
             
-            manager.auth(window)
+            self.authManager.auth(window)
+            
             window.backgroundColor = .backMINI
             window.tintColor = .tintMINI
             delegate.window = window

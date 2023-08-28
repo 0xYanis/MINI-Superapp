@@ -10,15 +10,11 @@ import UIKit
 final class AuthenticationManager {
     
     private var fbAuthManager: FBAuthProtocol?
-    private var keyChain: KeyChainServiceProtocol?
     
-    init() {
-        self.fbAuthManager = FBAuthManager()
-        self.keyChain = KeyChainService()
-    }
+    init() { self.fbAuthManager = FBAuthManager() }
     
     func auth(_ window: UIWindow?) {
-        if let _ = userUID {
+        if let _ = fbAuthManager?.currentUser {
             let tabbarController = BaseTabBarController()
             window?.rootViewController = tabbarController
         } else {
@@ -26,10 +22,6 @@ final class AuthenticationManager {
             let root = UINavigationController(rootViewController: login)
             window?.rootViewController = root
         }
-    }
-    
-    private var userUID: String? {
-        return keyChain?.getValue(forKey: "uid")
     }
     
 }

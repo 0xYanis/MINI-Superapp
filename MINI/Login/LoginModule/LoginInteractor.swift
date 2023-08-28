@@ -18,15 +18,14 @@ final class LoginInteractor: LoginInteractorProtocol {
     weak var presenter: LoginPresenterProtocol?
     var keychainService: KeyChainServiceProtocol?
     var biometryService: BiometryServiceProtocol?
-    
-    private var fbAuthManager: FBAuthProtocol!
+    var fbAuthManager: FBAuthProtocol?
     
     func viewDidLoaded() {
-        fbAuthManager = FBAuthManager()
+        
     }
     
     func userWantLogin(_ name: String, _ password: String) {
-        fbAuthManager.signIn(email: name, password: password) { [weak self] user, error in
+        fbAuthManager?.signIn(email: name, password: password) { [weak self] user, error in
             guard let self = self else { return }
             if let _ = error {
                 self.presenter?.loginIsNotCorrect()
@@ -40,8 +39,9 @@ final class LoginInteractor: LoginInteractorProtocol {
     
     func userWantBiometry() {
         biometryService?.authWithBiometry { [weak self] result, _ in
-            //guard let self = self else { return }
-            
+            guard let self = self else { return }
+            guard let _ = self.fbAuthManager?.currentUser else { return }
+            if result == true { self.presenter?.loginIsCorrect() }
         }
     }
     

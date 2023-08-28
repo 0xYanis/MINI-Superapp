@@ -15,10 +15,7 @@ final class RegisterInteractor: RegisterInteractorProtocol {
     
     weak var presenter: RegisterPresenterProtocol?
     var keychainService: KeyChainServiceProtocol?
-    
-    private var fbAuthManager: FBAuthProtocol?
-    
-    init() { self.fbAuthManager = FBAuthManager() }
+    var fbAuthManager: FBAuthProtocol?
     
     func userWantToLogin(login: String, password: String, repeatPassword: String) {
         if password != repeatPassword {
