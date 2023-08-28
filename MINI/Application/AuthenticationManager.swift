@@ -8,15 +8,13 @@
 import UIKit
 
 final class AuthenticationManager {
-    static func auth(to window: UIWindow?) -> UIViewController {
+    static func auth(to window: UIWindow?) {
         if let _ = UserDefaults.standard.string(forKey: "authToken") {
             let tabbarController = BaseTabBarController()
             window?.rootViewController = tabbarController
-            return tabbarController
         } else {
             let loginViewController = LoginBuilder.build()
             window?.rootViewController = UINavigationController(rootViewController: loginViewController)
-            return loginViewController
         }
     }
     
