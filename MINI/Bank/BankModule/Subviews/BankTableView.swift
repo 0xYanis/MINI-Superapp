@@ -9,7 +9,6 @@ import UIKit
 import SnapKit
 
 protocol BankTableCellConf: AnyObject {
-    static var cellId: String { get }
     var presenter: BankPresenterProtocol? { get set }
     func reloadData()
 }
@@ -47,12 +46,15 @@ private extension BankTableView {
     }
     
     func tableViewRegisters() {
-        register(BankCardSet.self,
-                 cellId: BankCardSet.cellId)
-        register(BankTemplateLabelCell.self,
-                 cellId: BankTemplateLabelCell.cellId)
-        register(BankTemplateSet.self,
-                 cellId: BankTemplateSet.cellId)
+        register(
+            BankCardSet.self,
+            cellId: String(describing: BankCardSet.self))
+        register(
+            BankTemplateLabelCell.self,
+            cellId: String(describing: BankTemplateLabelCell.self))
+        register(
+            BankTemplateSet.self,
+            cellId: String(describing: BankTemplateSet.self))
     }
     
 }
@@ -83,7 +85,7 @@ extension BankTableView: UITableViewDataSource {
     
     func configureCell<C: BankTableCellConf>(_ cell: C.Type, indexPath: IndexPath) -> C {
         guard let cell = self.dequeueReusableCell(
-            withIdentifier: C.cellId,
+            withIdentifier: String(describing: cell),
             for: indexPath
         ) as? C else { fatalError("") }
         cell.presenter = presenter

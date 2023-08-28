@@ -66,7 +66,7 @@ private extension BankHistoryViewController {
     func tableViewRegister() {
         tableView.register(
             BankTransactionCell.self,
-            cellId: BankTransactionCell.cellId
+            cellId: String(describing: BankTransactionCell.self)
         )
     }
     
@@ -128,7 +128,7 @@ extension BankHistoryViewController: UITableViewDataSource {
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: BankTransactionCell.cellId,
+            withIdentifier: String(describing: BankTransactionCell.self),
             for: indexPath
         ) as? BankTransactionCell else {
             return UITableViewCell()

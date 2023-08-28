@@ -11,8 +11,6 @@ import SDWebImage
 
 final class BankTransactionCell: UITableViewCell {
     
-    static let cellId = "BankTransactionCell"
-    
     private lazy var iconView: UIImageView = {
         let view = UIImageView(cornerRadius: 15)
         

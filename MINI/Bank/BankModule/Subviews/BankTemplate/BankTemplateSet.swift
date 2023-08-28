@@ -13,8 +13,6 @@ final class BankTemplateSet: UITableViewCell, BankTableCellConf {
     //MARK: Public properties
     weak var presenter: BankPresenterProtocol?
     
-    static let cellId = "BankTemplateSet"
-    
     //MARK: Private properties
     private let snapLayout = StackFlowLayout()
     private var collectionView: UICollectionView! {
