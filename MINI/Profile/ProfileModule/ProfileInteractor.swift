@@ -31,7 +31,11 @@ final class ProfileInteractor: ProfileInteractorProtocol {
     }
     
     func logout() {
-        
+        do {
+            try fbAuthManager?.signOut()
+        } catch {
+            
+        }
     }
     
 }
