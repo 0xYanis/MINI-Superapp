@@ -16,6 +16,10 @@ final class RegisterInteractor: RegisterInteractorProtocol {
     weak var presenter: RegisterPresenterProtocol?
     var keychainService: KeyChainServiceProtocol?
     
+    private var fbAuthManager: FBAuthProtocol?
+    
+    init() { self.fbAuthManager = FBAuthManager() }
+    
     func userWantToLogin(login: String, password: String, repeatPassword: String) {
         if password != repeatPassword {
             presenter?.registerIsNotCorrect(
@@ -38,34 +42,38 @@ final class RegisterInteractor: RegisterInteractorProtocol {
             return
         }
         
-        guard keychainService?.getValue(forKey: login) == nil else {
+        guard keychainService?.getValue(forKey: "userUID") == nil else {
             presenter?.registerIsNotCorrect(
                 with: ErrorMessages.loginAlreadyRegistered.rawValue
             )
             return
         }
         
-        keychainService?.setValue(password, forKey: login)
-        saveAuthToken(with: login)
-        presenter?.registerIsCorrect()
+        fbAuthManager?.signUp(email: login, password: password) { [weak self] user, error in
+            guard let self = self else { return }
+            if let error = error {
+                self.presenter?.registerIsNotCorrect(with: error.localizedDescription)
+            }
+            guard let user = user else { return }
+            self.saveUID(user.uid)
+            self.presenter?.registerIsCorrect()
+        }
     }
     
 }
 
 private extension RegisterInteractor {
     
+    func saveUID(_ uid: String?) {
+        guard let uid = uid else { return }
+        keychainService?.setValue(uid, forKey: "userUID")
+    }
+    
     enum ErrorMessages: String {
         case invalidLogin = "Неверный формат ввода"
         case weakPassword = "Слабый пароль"
         case passwordsDoNotMatch = "Пароли не совпадают"
         case loginAlreadyRegistered = "Аккаунт уже зарегистрирован"
-    }
-    
-    func saveAuthToken(with name: String) {
-        UserDefaults.standard.set(
-            name,
-            forKey: "authToken"
-        )
     }
     
     func isNotValid(_ string: String) -> Bool {

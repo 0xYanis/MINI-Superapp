@@ -15,7 +15,6 @@ final class LoginBuilder {
         let presenter = LoginPresenter(interactor: interactor, router: router)
         let biometryService = BiometryService()
         let keychainService = KeyChainService()
-        let apiService = APIService()
         
         viewController.presenter = presenter
         presenter.view = viewController

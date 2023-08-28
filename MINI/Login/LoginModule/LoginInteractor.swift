@@ -19,39 +19,41 @@ final class LoginInteractor: LoginInteractorProtocol {
     var keychainService: KeyChainServiceProtocol?
     var biometryService: BiometryServiceProtocol?
     
+    private var fbAuthManager: FBAuthProtocol!
+    
     func viewDidLoaded() {
-        
+        fbAuthManager = FBAuthManager()
     }
     
     func userWantLogin(_ name: String, _ password: String) {
-        guard let storedPassword = keychainService?.getValue(forKey: name),
-                storedPassword == password
-        else { presenter?.loginIsNotCorrect(); return }
-        
-        saveAuthToken(with: name)
-        presenter?.loginIsCorrect()
+        fbAuthManager.signIn(email: name, password: password) { [weak self] user, error in
+            guard let self = self else { return }
+            if let _ = error {
+                self.presenter?.loginIsNotCorrect()
+                return
+            }
+            if let _ = user {
+                self.presenter?.loginIsCorrect()
+            }
+        }
     }
     
     //MARK: - Для дебага вход по faceID
     func userWantBiometry() {
-        biometryService?.authWithBiometry(completion: { [weak self] result, _ in
-            if result {
-                let authToken = "YourAuthToken" // Временный токен
-                self?.saveAuthToken(with: authToken)
-                self?.presenter?.loginIsCorrect()
+        biometryService?.authWithBiometry { [weak self] result, _ in
+            guard let self = self else { return }
+            guard let uid = self.getUID() else { return }
+            
+            if uid == self.fbAuthManager.userUID() {
+                self.presenter?.loginIsCorrect()
             }
-        })
+        }
     }
     
-}
-
-private extension LoginInteractor {
-    
-    func saveAuthToken(with name: String) {
-        UserDefaults.standard.set(
-            name,
-            forKey: "authToken"
-        )
+    private func getUID() -> String? {
+        guard let uid = keychainService?.getValue(forKey: "userUID")
+        else { return nil }
+        return uid
     }
     
 }
