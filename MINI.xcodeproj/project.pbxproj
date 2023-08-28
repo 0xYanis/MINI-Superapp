@@ -33,6 +33,7 @@
 		090BAB962A02992A006AE8F9 /* AviaBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090BAB952A02992A006AE8F9 /* AviaBuilder.swift */; };
 		090C1E622A9C969800E75464 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C1E612A9C969800E75464 /* UICollectionView+Extension.swift */; };
 		090C1E662A9CA42E00E75464 /* FBAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C1E652A9CA42E00E75464 /* FBAuthManager.swift */; };
+		090C1E6A2A9D281E00E75464 /* OTPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C1E692A9D281E00E75464 /* OTPTextField.swift */; };
 		091095FE29DB32F000338D22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091095FD29DB32F000338D22 /* AppDelegate.swift */; };
 		0910960029DB32F000338D22 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091095FF29DB32F000338D22 /* SceneDelegate.swift */; };
 		0910960729DB32F400338D22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0910960629DB32F400338D22 /* Assets.xcassets */; };
@@ -253,6 +254,7 @@
 		090BAB952A02992A006AE8F9 /* AviaBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AviaBuilder.swift; sourceTree = "<group>"; };
 		090C1E612A9C969800E75464 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		090C1E652A9CA42E00E75464 /* FBAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBAuthManager.swift; sourceTree = "<group>"; };
+		090C1E692A9D281E00E75464 /* OTPTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPTextField.swift; sourceTree = "<group>"; };
 		091095FA29DB32F000338D22 /* MINI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MINI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		091095FD29DB32F000338D22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		091095FF29DB32F000338D22 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -891,6 +893,7 @@
 				09B0C1882A545C8200E0CDEF /* UITagPickerView.swift */,
 				09091CDD2A82B49B0043A9A1 /* MiTableView.swift */,
 				09A4F5A22A8D6FC3006FA62F /* FormTextView.swift */,
+				090C1E692A9D281E00E75464 /* OTPTextField.swift */,
 			);
 			path = UIMiniElements;
 			sourceTree = "<group>";
@@ -1376,6 +1379,7 @@
 				09FC394629FAD3DA00B2D97E /* TransactionViewController.swift in Sources */,
 				099A79C229F16417004B95C7 /* BankTemplateCell.swift in Sources */,
 				09B0C1892A545C8200E0CDEF /* UITagPickerView.swift in Sources */,
+				090C1E6A2A9D281E00E75464 /* OTPTextField.swift in Sources */,
 				097ACF282A2E1E690023106A /* RegisterBuilder.swift in Sources */,
 				09FB824C2A3727E200CEF8C1 /* ProductPresenter.swift in Sources */,
 				097E03A329EC44BD00CE2A6F /* BankBuilder.swift in Sources */,
