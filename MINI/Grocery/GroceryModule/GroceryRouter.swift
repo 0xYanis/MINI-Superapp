@@ -10,34 +10,47 @@ import UIKit
 protocol GroceryRouterProtocol: AnyObject {
     func goToDetailCategory(with id: Int)
     func goToSearchView()
+    func goToMapView()
     func goToCartView()
 }
 
 final class GroceryRouter: GroceryRouterProtocol {
+    
     weak var view: UIViewController?
     
     func goToDetailCategory(with id: Int) {
         let categoryView = CategoryBuilder.build()
-        view?.navigationController?.pushViewController(
-            categoryView,
-            animated: true
-        )
+        open(categoryView, state: .push)
     }
     
     func goToSearchView() {
         let searchView = GSearchBuilder.build()
-        view?.navigationController?.pushViewController(
-            searchView,
-            animated: true
-        )
+        open(searchView, state: .push)
+    }
+    
+    func goToMapView() {
+        let mapView = UIViewController()
+        mapView.view.backgroundColor = .white
+        open(mapView, state: .present)
     }
     
     func goToCartView() {
         let cartView = CartBuilder.build()
-        view?.navigationController?.pushViewController(
-            cartView,
-            animated: true
-        )
+        open(cartView, state: .push)
+    }
+    
+    private func open(_ module: UIViewController, state: NavigationState) {
+        switch state {
+        case .push:
+            view?.navigationController?.pushViewController(module, animated: true)
+        case .present:
+            view?.present(module, animated: true)
+        }
+    }
+    
+    private enum NavigationState {
+        case push
+        case present
     }
     
 }

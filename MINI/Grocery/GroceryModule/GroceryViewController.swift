@@ -105,7 +105,13 @@ private extension GroceryViewController {
             image: setNewImage) { [weak self] _ in
                 self?.showAdressButtonSheet()
             }
-        return UIMenu(children: [ setNew, adress ] )
+        let getMapImage = UIImage(systemName: "map")
+        let getMap = UIAction(
+            title: "На карте",
+            image: getMapImage) { [weak self] _ in
+                self?.presenter?.userWantUseMapView()
+            }
+        return UIMenu(children: [ setNew, adress, getMap ] )
     }
     
     

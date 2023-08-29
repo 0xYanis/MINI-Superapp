@@ -11,9 +11,11 @@ protocol GroceryPresenterProtocol: AnyObject {
     func viewDidLoaded()
     func updateView()
     
+    func userWantUseMapView()
     func userWantSetNewAdress()
     func userStartSearchAdress(with searchText: String)
     func getSearchAdressesResults() -> [String]
+    
     func userDidTapDetailCategory(id: Int)
     
     func userDidTapCart()
@@ -46,6 +48,10 @@ extension GroceryPresenter: GroceryPresenterProtocol {
     
     func updateView() {
         view?.updateView()
+    }
+    
+    func userWantUseMapView() {
+        router.goToMapView()
     }
     
     func userWantSetNewAdress() {
