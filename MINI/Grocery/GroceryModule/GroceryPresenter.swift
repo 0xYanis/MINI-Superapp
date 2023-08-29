@@ -14,7 +14,8 @@ protocol GroceryPresenterProtocol: AnyObject {
     func userWantUseMapView()
     func userWantSetNewAdress()
     func userStartSearchAdress(with searchText: String)
-    func getSearchAdressesResults() -> [String]
+    func getLocationResults() -> [Location]
+    func userDidTapLocation(at index: Int)
     
     func userDidTapDetailCategory(id: Int)
     
@@ -62,8 +63,12 @@ extension GroceryPresenter: GroceryPresenterProtocol {
         interactor.userStartSearchAdress(with: searchText)
     }
     
-    func getSearchAdressesResults() -> [String] {
-        interactor.adressesData
+    func getLocationResults() -> [Location] {
+        interactor.locations
+    }
+    
+    func userDidTapLocation(at index: Int) {
+        interactor.userDidTapLocation(at: index)
     }
     
     func userDidTapDetailCategory(id: Int) {

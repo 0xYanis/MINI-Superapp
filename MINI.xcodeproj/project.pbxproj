@@ -54,6 +54,7 @@
 		092F67AF2A3CE87500E0F2B9 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092F67AE2A3CE87500E0F2B9 /* UIColor+Extensions.swift */; };
 		093932442A25E4AC00F813A2 /* AviaShowplaceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093932432A25E4AC00F813A2 /* AviaShowplaceService.swift */; };
 		093932462A25E7E400F813A2 /* AviaShowplaceEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093932452A25E7E400F813A2 /* AviaShowplaceEntity.swift */; };
+		094202C72A9E1E91008DDE2A /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = 094202C62A9E1E91008DDE2A /* FloatingPanel */; };
 		094388EB2A56F0A200027D59 /* BankViewDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094388EA2A56F0A200027D59 /* BankViewDetails.swift */; };
 		09503EB829F2D44000254F53 /* StackFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09503EB729F2D44000254F53 /* StackFlowLayout.swift */; };
 		09565EE02A2F13B3007A2DAC /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09565EDF2A2F13B3007A2DAC /* RegisterView.swift */; };
@@ -433,6 +434,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				094202C72A9E1E91008DDE2A /* FloatingPanel in Frameworks */,
 				0913C7E52A968A5F005C887D /* FirebaseAnalytics in Frameworks */,
 				090B63EF2A45C16700C7D6CD /* RealmSwift in Frameworks */,
 				09CFB4262A1E6A940007FF40 /* SDWebImage in Frameworks */,
@@ -1180,6 +1182,7 @@
 				090B63EE2A45C16700C7D6CD /* RealmSwift */,
 				0913C7E42A968A5F005C887D /* FirebaseAnalytics */,
 				0913C7E62A968A5F005C887D /* FirebaseAuth */,
+				094202C62A9E1E91008DDE2A /* FloatingPanel */,
 			);
 			productName = MINI;
 			productReference = 091095FA29DB32F000338D22 /* MINI.app */;
@@ -1271,6 +1274,7 @@
 				09CFB4242A1E6A940007FF40 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 				090B63ED2A45C16700C7D6CD /* XCRemoteSwiftPackageReference "realm-swift" */,
 				0913C7E32A968A5F005C887D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				094202C52A9E1E91008DDE2A /* XCRemoteSwiftPackageReference "FloatingPanel" */,
 			);
 			productRefGroup = 091095FB29DB32F000338D22 /* Products */;
 			projectDirPath = "";
@@ -1881,6 +1885,14 @@
 				minimumVersion = 4.0.0;
 			};
 		};
+		094202C52A9E1E91008DDE2A /* XCRemoteSwiftPackageReference "FloatingPanel" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scenee/FloatingPanel";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		096B4B282A1DEF3500E5C65E /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
@@ -1932,6 +1944,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 091CD48E29DDE9250041627F /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
+		};
+		094202C62A9E1E91008DDE2A /* FloatingPanel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 094202C52A9E1E91008DDE2A /* XCRemoteSwiftPackageReference "FloatingPanel" */;
+			productName = FloatingPanel;
 		};
 		096B4B292A1DEF3500E5C65E /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;

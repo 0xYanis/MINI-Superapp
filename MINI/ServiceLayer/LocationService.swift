@@ -8,84 +8,49 @@
 import CoreLocation
 
 protocol LocationServiceProtocol: AnyObject {
-    func getCurrentCity(completion: @escaping (String?) -> Void)
-    func getPlacemarksByAddress(_ address: String, city: String, completion: @escaping ([String]?) -> Void)
+    typealias closure = ([Location]) -> Void
+    func findLocations(with query: String, completion: @escaping closure)
+}
+
+struct Location {
+    var title: String
+    var coordinate: CLLocationCoordinate2D?
 }
 
 final class LocationService: NSObject, LocationServiceProtocol {
     
+    typealias closure = ([Location]) -> Void
+    
+    private let manager  = CLLocationManager()
     private let geocoder = CLGeocoder()
-    private var locationManager: CLLocationManager?
     
-    func getCurrentCity(completion: @escaping (String?) -> Void) {
-        locationManager = CLLocationManager()
-        locationManager?.requestWhenInUseAuthorization()
-        
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager?.delegate = self
-            locationManager?.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        }
-        locationManager?.startUpdatingLocation()
-        
-        guard let location = locationManager?.location else {
-            completion(nil)
-            return
-        }
-        
-        geocoder.reverseGeocodeLocation(location) { placemarks, error in
-            guard error == nil else {
-                completion(nil)
-                return
-            }
-            
-            guard let placemark = placemarks?.first else {
-                completion(nil)
-                return
-            }
-            
-            completion(placemark.locality)
-        }
-    }
-    
-    func getPlacemarksByAddress(_ address: String, city: String, completion: @escaping ([String]?) -> Void) {
-        geocoder.geocodeAddressString("\(address), \(city)") { placemarks, error in
-            guard error == nil else {
-                completion([])
-                return
-            }
-            
-            guard let placemarks = placemarks else {
-                completion([])
-                return
-            }
-            
-            var addresses: [String] = []
-            for placemark in placemarks {
-                if let address = placemark.name {
-                    addresses.append(address)
+    public func findLocations(with query: String, completion: @escaping closure) {
+        geocoder.geocodeAddressString(query) { placemarks, error in
+            guard let placemarks = placemarks,
+                    error == nil
+            else { return completion([]) }
+            let models: [Location] = placemarks
+                .compactMap { place in
+                    var name = ""
+                    if let locationName = place.name {
+                        name += locationName
+                    }
+                    if let adminRegion = place.administrativeArea {
+                        name += ", \(adminRegion)"
+                    }
+                    if let locality = place.locality {
+                        name += ", \(locality)"
+                    }
+                    if let country = place.country {
+                        name += ", \(country)"
+                    }
+                    let result = Location(
+                        title: name,
+                        coordinate: place.location?.coordinate)
+                    return result
                 }
-            }
-            completion(addresses)
+            completion(models)
         }
     }
     
 }
-
-extension LocationService: CLLocationManagerDelegate {
-    
-    func locationManager(
-        _ manager: CLLocationManager,
-        didUpdateLocations locations: [CLLocation]
-    ) {
-        manager.stopUpdatingLocation()
-    }
-    
-    func locationManager(
-        _ manager: CLLocationManager,
-        didFailWithError error: Error
-    ) {
-        print("Location manager did fail with error: ", error.localizedDescription)
-    }
-    
-}
-

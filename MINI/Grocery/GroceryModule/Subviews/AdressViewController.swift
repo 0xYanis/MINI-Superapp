@@ -9,135 +9,127 @@ import UIKit
 import SnapKit
 
 protocol AdressViewDelegate: AnyObject {
-    func userStartSearchAdress(with searchText: String)
-    func cancelButtonTapped()
+    func searchResults() -> [Location]
+    func searchAdress(with text: String)
+    func didTapResult(with index: Int)
 }
 
 final class AdressViewController: UIViewController {
     
-    weak var presenter: GroceryPresenterProtocol?
     weak var delegate: AdressViewDelegate?
     
-    private lazy var textTilte    = UILabel()
-    private lazy var searchBar    = UISearchBar()
-    private lazy var tableView    = MiTableView()
-    private lazy var cancelButton = UIButton(
-        systemImage: "xmark.circle.fill",
-        color: .tintMINI,
-        size: 35
-    )
+    private lazy var label: UILabel = {
+        let label = UILabel()
+        label.text = "Введите адрес"
+        label.font = .systemFont(ofSize: 24, weight: .semibold)
+        return label
+    }()
+    
+    private lazy var textField: UITextField = {
+        let field = UITextField()
+        field.placeholder = "Enter destination"
+        field.layer.cornerRadius = 10
+        field.backgroundColor = .tertiarySystemBackground
+        field.leftView = UIView(frame: .init(x: 0, y: 0, width: 10, height: 50))
+        field.leftViewMode = .always
+        field.delegate = self
+        return field
+    }()
+    
+    private lazy var tableView: MiTableView = {
+        let table = MiTableView()
+        table.register(
+            UITableViewCell.self,
+            cellId: String(describing: UITableViewCell.self)
+        )
+        table.dataSource = self
+        table.delegate = self
+        table.backgroundColor = .clear
+        return table
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initialize()
-    }
-    
-}
-
-//MARK: - Private methods
-private extension AdressViewController {
-    func initialize() {
-        view.backgroundColor = .backMINI
-        createTitle(text: "new_adress_title".localized)
-        createSearchBar()
-        createTableView()
-        createCancelButton()
-    }
-    
-    func createTitle(text: String) {
-        textTilte.text = text
-        textTilte.tintColor = .tintMINI
-        textTilte.font = .boldSystemFont(ofSize: 25)
-        view.addSubview(textTilte)
-        textTilte.snp.makeConstraints { make in
-            make.top.left.equalToSuperview().inset(20)
-        }
-    }
-    
-    func createSearchBar() {
-        searchBar.backgroundColor = .clear
-        searchBar.tintColor = .tintMINI
-        searchBar.delegate = self
-        searchBar.barTintColor = .backMINI
-        searchBar.placeholder = "new_adress_search".localized
-        view.addSubview(searchBar)
-        searchBar.snp.makeConstraints { make in
-            make.top.equalTo(textTilte.snp.bottom)
-            make.left.right.equalToSuperview().inset(10)
-        }
-    }
-    
-    func createTableView() {
-        tableView.backgroundColor = .clear
-        tableView.rowHeight = 44
-        tableView.estimatedRowHeight = 44
-        tableView.dataSource = self
-        tableView.delegate = self
+        view.backgroundColor = .secondarySystemBackground
+        view.addSubview(label)
+        view.addSubview(textField)
         view.addSubview(tableView)
-        tableView.snp.makeConstraints { make in
-            make.top.equalTo(searchBar.snp.bottom)
-            make.left.right.equalToSuperview().inset(20)
-            make.bottom.equalToSuperview()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        label.sizeToFit()
+        label.frame = CGRect(
+            x: 16, y: 15,
+            width: label.frame.size.width,
+            height: label.frame.size.height)
+        textField.frame = CGRect(
+            x: 16, y: 20+label.frame.size.height,
+            width: view.frame.size.width - 35,
+            height: 36)
+        let tableY: CGFloat = textField.frame.origin.y + textField.frame.size.height + 20
+        tableView.frame = .init(
+            x: 0, y: tableY,
+            width: view.frame.size.width,
+            height: view.frame.size.height - tableY)
+    }
+    
+    public func configure(label: String, placeholder: String) {
+        self.label.text = label
+        self.textField.placeholder = placeholder
+    }
+    
+}
+
+extension AdressViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        if let text = textField.text, !text.isEmpty {
+            delegate?.searchAdress(with: text)
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
-    }
-    
-    func createCancelButton() {
-        view.addSubview(cancelButton)
-        cancelButton.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(20)
-            make.right.equalToSuperview().inset(25)
-        }
-        cancelButton.addTarget(
-            self,
-            action: #selector(cancelButtonAction),
-            for: .touchUpInside
-        )
+        return true
     }
     
 }
 
-//MARK: - Private action methods
-private extension AdressViewController {
-    @objc func cancelButtonAction() {
-        delegate?.cancelButtonTapped()
-    }
-    
-}
-
-//MARK: - UISearchBarDelegate
-extension AdressViewController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        delegate?.userStartSearchAdress(with: searchText)
-    }
-    
-}
-
-
-//MARK: - UITableViewDataSource
 extension AdressViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView,
-                   numberOfRowsInSection section: Int) -> Int {
-        guard let data = presenter?.getSearchAdressesResults() else { return 0 }
-        return ( !data.isEmpty ? data.count : 0 )
+    
+    func tableView(
+        _ tableView: UITableView,
+        numberOfRowsInSection section: Int
+    ) -> Int {
+        return delegate?.searchResults().count ?? 0
     }
-    
-    
-    func tableView(_ tableView: UITableView,
-                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        guard let data = presenter?.getSearchAdressesResults() else { return cell }
+    func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath
+    ) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: String(describing: UITableViewCell.self),
+            for: indexPath
+        )
+        let title = delegate?.searchResults()[indexPath.row].title
+        cell.textLabel?.text = title
+        cell.textLabel?.numberOfLines = 0
         cell.backgroundColor = .clear
-        cell.textLabel?.text = data[indexPath.row]
+        cell.contentView.backgroundColor = .clear
         return cell
     }
     
 }
 
-//MARK: - UITableViewDelegate
 extension AdressViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView,
-                   didSelectRowAt indexPath: IndexPath) {
-        
+    
+    func tableView(
+        _ tableView: UITableView,
+        didSelectRowAt indexPath: IndexPath
+    ) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        delegate?.didTapResult(with: indexPath.row)
     }
     
 }

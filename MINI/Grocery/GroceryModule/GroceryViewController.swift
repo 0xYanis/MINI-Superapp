@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import SkeletonView
+import FloatingPanel
 
 protocol GroceryViewProtocol: AnyObject {
     func updateView()
@@ -21,6 +22,7 @@ final class GroceryViewController: UIViewController {
     
     //MARK: Private properties
     private var collectionView: GroceryCollectionView!
+    private lazy var panel = FloatingPanelController()
     private lazy var refreshControl = UIRefreshControl()
     private lazy var adressVC = AdressViewController()
     private lazy var searchController: UISearchController = {
@@ -54,6 +56,7 @@ final class GroceryViewController: UIViewController {
 
 //MARK: - GroceryViewProtocol
 extension GroceryViewController: GroceryViewProtocol {
+    
     func updateView() {
         collectionView.reloadData()
     }
@@ -66,6 +69,7 @@ extension GroceryViewController: GroceryViewProtocol {
 
 //MARK: - Private methods
 private extension GroceryViewController {
+    
     func initialize() {
         view.backgroundColor = .back2MINI
         createNavigation(title: "grocery_navbar".localized)
@@ -103,7 +107,7 @@ private extension GroceryViewController {
         let setNew = UIAction(
             title: "set_new_adress".localized,
             image: setNewImage) { [weak self] _ in
-                self?.showAdressButtonSheet()
+                self?.showFloatingPanel()
             }
         let getMapImage = UIImage(systemName: "map")
         let getMap = UIAction(
@@ -114,6 +118,20 @@ private extension GroceryViewController {
         return UIMenu(children: [ setNew, adress, getMap ] )
     }
     
+    func showFloatingPanel() {
+        let address = AdressViewController()
+        address.delegate = self
+        panel.set(contentViewController: address)
+        panel.surfaceView.appearance.cornerRadius = 12
+        panel.addPanel(toParent: self)
+    }
+    
+    func hideFloatingPanel() {
+        panel.hide(animated: true) {
+            self.panel.view.removeFromSuperview()
+            self.panel.removeFromParent()
+        }
+    }
     
     func createCollectionView() {
         collectionView = GroceryCollectionView(
@@ -150,22 +168,6 @@ private extension GroceryViewController {
         collectionView.refreshControl = refreshControl
     }
     
-    func createAdressBottomSheet(multiply: CGFloat) {
-        adressVC.presenter = presenter
-        adressVC.delegate = self
-        let height = view.frame.height * multiply
-        let smallId = UISheetPresentationController.Detent.Identifier("smallId")
-        let small = UISheetPresentationController.Detent.custom(identifier: smallId) { _ in
-            return height
-        }
-        adressVC.isModalInPresentation = true
-        if let sheet = adressVC.sheetPresentationController {
-            sheet.detents = [ small ]
-            sheet.preferredCornerRadius = 30
-        }
-        present(adressVC, animated: true)
-    }
-    
 }
 
 //MARK: - Action private methods
@@ -175,28 +177,29 @@ private extension GroceryViewController {
         refreshControl.endRefreshing()
     }
     
-    func showAdressButtonSheet() {
-        createAdressBottomSheet(multiply: 0.3)
-    }
-    
     @objc func cartButtonAction() {
         presenter?.userDidTapCart()
     }
     
 }
 
-//MARK: - AdressViewDelegate
 extension GroceryViewController: AdressViewDelegate {
-    func userStartSearchAdress(with searchText: String) {
-        presenter?.userStartSearchAdress(with: searchText)
+    
+    func searchResults() -> [Location] {
+        guard let locations = presenter?.getLocationResults()
+        else { return [] }
+        return locations
     }
     
-    func cancelButtonTapped() {
-        dismiss(animated: true)
+    func searchAdress(with text: String) {
+        presenter?.userStartSearchAdress(with: text)
+    }
+    
+    func didTapResult(with index: Int) {
+        presenter?.userDidTapLocation(at: index)
     }
     
 }
-
 
 //MARK: - UICollectionViewDelegateFlowLayout
 extension GroceryViewController: UICollectionViewDelegateFlowLayout {
@@ -224,6 +227,19 @@ extension GroceryViewController: UICollectionViewDelegateFlowLayout {
         didSelectItemAt indexPath: IndexPath
     ) {
         presenter?.userDidTapDetailCategory(id: indexPath.item)
+    }
+    
+    func scrollViewDidEndDecelerating(
+        _ scrollView: UIScrollView
+    ) {
+        hideFloatingPanel()
+    }
+    
+    func scrollViewDidEndDragging(
+        _ scrollView: UIScrollView,
+        willDecelerate decelerate: Bool
+    ) {
+        hideFloatingPanel()
     }
     
 }
