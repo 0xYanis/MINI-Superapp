@@ -29,9 +29,8 @@ final class GroceryRouter: GroceryRouterProtocol {
     }
     
     func goToMapView() {
-        let mapView = UIViewController()
-        mapView.view.backgroundColor = .white
-        open(mapView, state: .present)
+        let mapView = MapViewController()
+        open(mapView, state: .push)
     }
     
     func goToCartView() {

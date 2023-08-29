@@ -34,6 +34,7 @@
 		090C1E622A9C969800E75464 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C1E612A9C969800E75464 /* UICollectionView+Extension.swift */; };
 		090C1E662A9CA42E00E75464 /* FBAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C1E652A9CA42E00E75464 /* FBAuthManager.swift */; };
 		090C1E6A2A9D281E00E75464 /* OTPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C1E692A9D281E00E75464 /* OTPTextField.swift */; };
+		090C1E712A9DF75E00E75464 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C1E702A9DF75E00E75464 /* MapViewController.swift */; };
 		091095FE29DB32F000338D22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091095FD29DB32F000338D22 /* AppDelegate.swift */; };
 		0910960029DB32F000338D22 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091095FF29DB32F000338D22 /* SceneDelegate.swift */; };
 		0910960729DB32F400338D22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0910960629DB32F400338D22 /* Assets.xcassets */; };
@@ -255,6 +256,7 @@
 		090C1E612A9C969800E75464 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		090C1E652A9CA42E00E75464 /* FBAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBAuthManager.swift; sourceTree = "<group>"; };
 		090C1E692A9D281E00E75464 /* OTPTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPTextField.swift; sourceTree = "<group>"; };
+		090C1E702A9DF75E00E75464 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		091095FA29DB32F000338D22 /* MINI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MINI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		091095FD29DB32F000338D22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		091095FF29DB32F000338D22 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -522,6 +524,14 @@
 			path = Firebase;
 			sourceTree = "<group>";
 		};
+		090C1E6D2A9DF68000E75464 /* MapModule */ = {
+			isa = PBXGroup;
+			children = (
+				090C1E702A9DF75E00E75464 /* MapViewController.swift */,
+			);
+			path = MapModule;
+			sourceTree = "<group>";
+		};
 		091095F129DB32F000338D22 = {
 			isa = PBXGroup;
 			children = (
@@ -781,6 +791,7 @@
 		099089E12A1399F800EE00DA /* Grocery */ = {
 			isa = PBXGroup;
 			children = (
+				090C1E6D2A9DF68000E75464 /* MapModule */,
 				09F2AE702A52FD0D00E02404 /* CartModule */,
 				09044FA72A444AB500432A3C /* GSearchModule */,
 				099089EC2A139A6000EE00DA /* GroceryModule */,
@@ -1395,6 +1406,7 @@
 				09044FAB2A444AD000432A3C /* GSearchPresenter.swift in Sources */,
 				09FB824E2A37285800CEF8C1 /* ProductRouter.swift in Sources */,
 				09A4F5A32A8D6FC3006FA62F /* FormTextView.swift in Sources */,
+				090C1E712A9DF75E00E75464 /* MapViewController.swift in Sources */,
 				092E739429EBEB1F00165D37 /* LoginAnimationView.swift in Sources */,
 				09FB82452A3714B800CEF8C1 /* CategoryCell.swift in Sources */,
 				09D509D829EF4EDE009CC219 /* UIImageView+Extension.swift in Sources */,
@@ -1661,6 +1673,7 @@
 				INFOPLIST_FILE = MINI/Resources/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please allow to see current location.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -1694,6 +1707,7 @@
 				INFOPLIST_FILE = MINI/Resources/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please allow to see current location.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
