@@ -48,6 +48,8 @@ final class ProfileRouter: ProfileRouterProtocol {
             goToDetailView(to: PayoutsBuilder.build(.transactions))
             
         case .language:
+            languageSheet()
+        case .email:
             goToDetailView(to: defView)
         case .password:
             goToDetailView(to: PasswordBuilder.build())
@@ -62,6 +64,20 @@ final class ProfileRouter: ProfileRouterProtocol {
             module,
             animated: true
         )
+    }
+    
+    private func languageSheet() {
+        let controller = UIAlertController(
+            title: "Сменить язык",
+            message: "Выберите предпочитаемый язык",
+            preferredStyle: .actionSheet
+        )
+        
+        controller.addAction(UIAlertAction(title: "Русский", style: .default))
+        controller.addAction(UIAlertAction(title: "English", style: .default))
+        controller.addAction(UIAlertAction(title: "Отмена", style: .cancel))
+        
+        view?.present(controller, animated: true)
     }
     
 }
