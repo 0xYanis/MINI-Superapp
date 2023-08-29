@@ -29,7 +29,7 @@ final class GroceryRouter: GroceryRouterProtocol {
     }
     
     func goToMapView() {
-        let mapView = MapViewController()
+        let mapView = MapBuilder.build()
         open(mapView, state: .push)
     }
     

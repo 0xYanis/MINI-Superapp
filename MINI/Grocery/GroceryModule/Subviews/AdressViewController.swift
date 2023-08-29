@@ -79,6 +79,10 @@ final class AdressViewController: UIViewController {
         self.textField.placeholder = placeholder
     }
     
+    public func updateView() {
+        tableView.reloadData()
+    }
+    
 }
 
 extension AdressViewController: UITextFieldDelegate {

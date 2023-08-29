@@ -11,15 +11,21 @@ import MapKit
 import FloatingPanel
 
 protocol MapViewProtocol: AnyObject {
-    
+    func updateView()
+    func setPin(with coordinate: CLLocationCoordinate2D?)
 }
 
 final class MapViewController: UIViewController {
     
+    // MARK: - Public properties
+    
+    var presenter: MapPresenterProtocol?
+    
     // MARK: - Private properties
     
-    private lazy var mapView = MKMapView()
-    private lazy var panel = FloatingPanelController()
+    private lazy var mapView     = MKMapView()
+    private lazy var panelView   = FloatingPanelController()
+    private lazy var addressView = AdressViewController()
     
     // MARK: - Lifecycle
     
@@ -54,6 +60,30 @@ final class MapViewController: UIViewController {
 
 extension MapViewController: MapViewProtocol {
     
+    func updateView() {
+        addressView.updateView()
+    }
+    
+    func setPin(with coordinate: CLLocationCoordinate2D?) {
+        guard let coordinate = coordinate else { return }
+        
+        panelView.move(to: .tip, animated: true)
+        
+        mapView.removeAnnotations(mapView.annotations)
+        let pin = MKPointAnnotation()
+        pin.coordinate = coordinate
+        mapView.addAnnotation(pin)
+        
+        let region = MKCoordinateRegion(
+            center: coordinate,
+            span: MKCoordinateSpan(
+                latitudeDelta: 0.7,
+                longitudeDelta: 0.7)
+        )
+        
+        mapView.setRegion(region, animated: true)
+    }
+    
 }
 
 // MARK: - Private methods
@@ -68,22 +98,21 @@ private extension MapViewController {
     }
     
     func createMapView() {
-        mapView.delegate = self
+        mapView.showsUserLocation = true
         view.addSubview(mapView)
     }
     
     func showFloatingPanel() {
-        let address = AdressViewController()
-        address.delegate = self
-        panel.set(contentViewController: address)
-        panel.surfaceView.appearance.cornerRadius = 12
-        panel.addPanel(toParent: self)
+        addressView.delegate = self
+        panelView.set(contentViewController: addressView)
+        panelView.surfaceView.appearance.cornerRadius = 12
+        panelView.addPanel(toParent: self)
     }
     
     func hideFloatingPanel() {
-        panel.hide(animated: true) {
-            self.panel.view.removeFromSuperview()
-            self.panel.removeFromParent()
+        panelView.hide(animated: true) {
+            self.panelView.view.removeFromSuperview()
+            self.panelView.removeFromParent()
         }
     }
     
@@ -92,22 +121,17 @@ private extension MapViewController {
 extension MapViewController: AdressViewDelegate {
     
     func searchResults() -> [Location] {
-        return []
+        presenter?.searchResults ?? []
     }
     
     func searchAdress(with text: String) {
-        
+        presenter?.searchAdress(with: text)
     }
     
     func didTapResult(with index: Int) {
-        
+        presenter?.didTapResult(with: index)
     }
     
-    
 }
 
-// MARK: - MKMapViewDelegate
 
-extension MapViewController: MKMapViewDelegate {
-    
-}

@@ -86,6 +86,8 @@
 		098999362A27781F0040B67D /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 098999352A27781F0040B67D /* SDWebImage */; };
 		0989993E2A27A0470040B67D /* BankModuleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0989993D2A27A0470040B67D /* BankModuleTests.swift */; };
 		098999492A27A08D0040B67D /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 098999482A27A08D0040B67D /* SDWebImage */; };
+		099046D82A9E7D5600987B64 /* MapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099046D72A9E7D5600987B64 /* MapPresenter.swift */; };
+		099046DA2A9E836600987B64 /* MapBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099046D92A9E836600987B64 /* MapBuilder.swift */; };
 		099089E32A139A2D00EE00DA /* GroceryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099089E22A139A2D00EE00DA /* GroceryViewController.swift */; };
 		099089E52A139A3A00EE00DA /* GroceryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099089E42A139A3A00EE00DA /* GroceryPresenter.swift */; };
 		099089E72A139A4600EE00DA /* GroceryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099089E62A139A4600EE00DA /* GroceryInteractor.swift */; };
@@ -306,6 +308,8 @@
 		098999252A2772890040B67D /* LoginModuleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModuleTests.swift; sourceTree = "<group>"; };
 		0989993B2A27A0470040B67D /* BankModuleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BankModuleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0989993D2A27A0470040B67D /* BankModuleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankModuleTests.swift; sourceTree = "<group>"; };
+		099046D72A9E7D5600987B64 /* MapPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPresenter.swift; sourceTree = "<group>"; };
+		099046D92A9E836600987B64 /* MapBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapBuilder.swift; sourceTree = "<group>"; };
 		099089E22A139A2D00EE00DA /* GroceryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryViewController.swift; sourceTree = "<group>"; };
 		099089E42A139A3A00EE00DA /* GroceryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryPresenter.swift; sourceTree = "<group>"; };
 		099089E62A139A4600EE00DA /* GroceryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryInteractor.swift; sourceTree = "<group>"; };
@@ -530,6 +534,8 @@
 			isa = PBXGroup;
 			children = (
 				090C1E702A9DF75E00E75464 /* MapViewController.swift */,
+				099046D72A9E7D5600987B64 /* MapPresenter.swift */,
+				099046D92A9E836600987B64 /* MapBuilder.swift */,
 			);
 			path = MapModule;
 			sourceTree = "<group>";
@@ -1350,6 +1356,7 @@
 				090BAB942A029924006AE8F9 /* AviaRouter.swift in Sources */,
 				097E039D29EC448F00CE2A6F /* BankPresenter.swift in Sources */,
 				099A79C029F16406004B95C7 /* BankCardCell.swift in Sources */,
+				099046D82A9E7D5600987B64 /* MapPresenter.swift in Sources */,
 				09E9E82329EAFC770084416B /* UIView+Extension.swift in Sources */,
 				092F67AD2A3CDFE100E0F2B9 /* ProfileEntity.swift in Sources */,
 				09EA1CB52A9631AB00A18B41 /* Date+Extension.swift in Sources */,
@@ -1457,6 +1464,7 @@
 				090B63EC2A45C09500C7D6CD /* RealmService.swift in Sources */,
 				090BAB962A02992A006AE8F9 /* AviaBuilder.swift in Sources */,
 				090AE1E129FBAA190092515D /* TemplateRouter.swift in Sources */,
+				099046DA2A9E836600987B64 /* MapBuilder.swift in Sources */,
 				0994B9402A20F66D00F4A783 /* DeepLinkManager.swift in Sources */,
 				097ACF262A2E1E5C0023106A /* RegisterRouter.swift in Sources */,
 				09D509DA29EF50AC009CC219 /* BankHistoryLabel.swift in Sources */,
