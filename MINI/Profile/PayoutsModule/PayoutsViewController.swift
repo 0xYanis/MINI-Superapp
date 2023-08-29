@@ -23,6 +23,7 @@ final class PayoutsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
+        updateView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,7 +57,7 @@ private extension PayoutsViewController {
     }
     
     func checkForEmptyData() {
-        if let _ = presenter?.getData().isEmpty {
+        if presenter?.getData().count == 0 {
             emptyView.isHidden = false
             payoutsView.isHidden = true
         } else {
