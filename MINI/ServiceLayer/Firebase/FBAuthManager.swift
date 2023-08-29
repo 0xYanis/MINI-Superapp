@@ -8,6 +8,7 @@
 import FirebaseAuth
 
 protocol FBAuthProtocol: AnyObject {
+    
     typealias closure = (User?, Error?) -> Void
     
     var currentUser: User? { get }
@@ -15,7 +16,8 @@ protocol FBAuthProtocol: AnyObject {
     func signIn(email: String, password: String, completion: @escaping closure)
     func signIn(token: String, completion: @escaping closure)
     func signUp(email: String, password: String, completion: @escaping closure)
-    func signOut() throws
+    func signOut()
+    
 }
 
 final class FBAuthManager: FBAuthProtocol {
@@ -57,7 +59,12 @@ final class FBAuthManager: FBAuthProtocol {
         }
     }
     
-    public func signOut() throws {
-        try firebase.signOut()
+    public func signOut() {
+        do {
+            try firebase.signOut()
+        } catch {
+            print(error.localizedDescription)
+        }
     }
+    
 }

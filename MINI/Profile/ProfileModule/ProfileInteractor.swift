@@ -25,17 +25,11 @@ final class ProfileInteractor: ProfileInteractorProtocol {
     }
     
     func viewDidLoaded() {
-        // обновление состояния
-        
-        
+        //
     }
     
     func logout() {
-        do {
-            try fbAuthManager?.signOut()
-        } catch {
-            
-        }
+        fbAuthManager?.signOut()
     }
     
 }
