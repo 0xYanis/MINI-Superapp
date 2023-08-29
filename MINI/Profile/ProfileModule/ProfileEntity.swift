@@ -24,7 +24,11 @@ struct ProfileSection {
             ProfileOption(title: "Язык", icon: "globe", iconBackground: "#FF5070", enumeration: ["Русский","English"], type: .language),
             ProfileOption(title: "Почта", icon: "mail.fill", iconBackground: "#1E81B0", type: .email),
             ProfileOption(title: "Пароль", icon: "lock", iconBackground: "#FFBF49", type: .password),
+        ]),
+        ProfileSection(title: "Дополнительно", options: [
             ProfileOption(title: "Поддержка", icon: "info.circle", iconBackground: "#A0A0A0", type: .support),
+            ProfileOption(title: "Выйти", icon: "arrowshape.turn.up.backward.fill", iconBackground: "#A0A0A0", type: .logout),
+            ProfileOption(title: "Удалить аккаунт", icon: "person.crop.circle.fill.badge.minus", iconBackground: "#FF0000", type: .deleteAccount)
         ])
     ]
     
@@ -49,4 +53,6 @@ enum ProfileDetails {
     case email
     case password
     case support
+    case logout
+    case deleteAccount
 }
