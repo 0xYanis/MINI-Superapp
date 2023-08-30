@@ -39,7 +39,7 @@ final class AdressViewController: UIViewController {
             width: label.frame.size.width,
             height: label.frame.size.height)
         textField.frame = CGRect(
-            x: 16, y: 20+label.frame.size.height,
+            x: 16, y: 30 + label.frame.size.height,
             width: view.frame.size.width - 35,
             height: 36)
         let tableY: CGFloat = textField.frame.origin.y + textField.frame.size.height + 20
@@ -70,7 +70,7 @@ private extension AdressViewController {
     
     func createLabel() {
         label.text = "Введите адрес"
-        label.font = .systemFont(ofSize: 24, weight: .semibold)
+        label.font = .systemFont(ofSize: 20, weight: .semibold)
     }
     
     func createTextField() {

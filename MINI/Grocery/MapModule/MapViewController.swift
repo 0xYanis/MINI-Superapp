@@ -106,7 +106,7 @@ private extension MapViewController {
         addressView.delegate = self
         panelView.set(contentViewController: addressView)
         panelView.surfaceView.appearance.cornerRadius = 12
-        panelView.addPanel(toParent: self)
+        panelView.addPanel(toParent: self, animated: true)
     }
     
     func hideFloatingPanel() {

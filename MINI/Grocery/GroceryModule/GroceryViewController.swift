@@ -71,7 +71,7 @@ extension GroceryViewController: GroceryViewProtocol {
 private extension GroceryViewController {
     
     func initialize() {
-        view.backgroundColor = .back2MINI
+        view.backgroundColor = .secondarySystemBackground
         createNavigation(title: "grocery_navbar".localized)
         createNavigationButtons(adress: "22 Washington st. NY")
         createCollectionView()
@@ -123,7 +123,8 @@ private extension GroceryViewController {
         address.delegate = self
         panel.set(contentViewController: address)
         panel.surfaceView.appearance.cornerRadius = 12
-        panel.addPanel(toParent: self)
+        panel.addPanel(toParent: self, animated: true)
+        panel.isRemovalInteractionEnabled = true
     }
     
     func hideFloatingPanel() {
