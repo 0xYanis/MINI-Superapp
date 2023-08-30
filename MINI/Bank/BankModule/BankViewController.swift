@@ -8,31 +8,36 @@
 import UIKit
 import SnapKit
 
+// MARK: - BankViewProtocol
+
 protocol BankViewProtocol: AnyObject {
     func updateBankTable()
     func updateHistory()
-    
     func loadingDataGetFailed(with error: String)
 }
 
+// MARK: - BankViewCellDelegate
+
 protocol BankViewCellDelegate: AnyObject {
-    func handlePanGesture(_ gesture: UIPanGestureRecognizer)
     func setBigHeightOfHistory()
     func resetBottomSheetSize()
 }
 
 final class BankViewController: UIViewController {
     
-    //MARK: Public properties
+    //MARK: - Public properties
+    
     var presenter: BankPresenterProtocol?
     
-    //MARK: Private properties
+    //MARK: - Private properties
+    
     private lazy var backgroundView = UIView()
     private lazy var bankTableView  = BankTableView()
     private lazy var historyTableVC = BankHistoryViewController()
     private lazy var refreshControl = UIRefreshControl()
     
-    //MARK: Lifecycle
+    //MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
@@ -47,6 +52,7 @@ final class BankViewController: UIViewController {
 }
 
 //MARK: - BankViewProtocol
+
 extension BankViewController: BankViewProtocol {
     
     func updateBankTable() {
@@ -64,11 +70,8 @@ extension BankViewController: BankViewProtocol {
 }
 
 //MARK: - BankViewCellDelegate
+
 extension BankViewController: BankViewCellDelegate {
-    
-    func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
-        ///
-    }
     
     func setBigHeightOfHistory() {
         historyTableVC.view.animateToSuperviewSize()
@@ -81,61 +84,44 @@ extension BankViewController: BankViewCellDelegate {
 }
 
 //MARK: - Private methods
+
 private extension BankViewController {
     
     func initialize() {
         view.backgroundColor = .back2MINI
         createNavigation(title: "bank_navbar".localized)
-        //createBackgroundView()
         createTableView()
         createBottomSheet()
         createRefreshControl(scrollView: bankTableView)
     }
     
     func createNavigation(title: String) {
-        navigationItem.title = title
-        navigationItem.rightBarButtonItem = createRightBarButtonItem
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.rightBarButtonItem = rightButtonItem
+        navigationItem.title = title
     }
     
-    var createRightBarButtonItem: UIBarButtonItem {
+    var rightButtonItem: UIBarButtonItem {
         return UIBarButtonItem(
             systemItem: .compose,
             primaryAction: .none,
-            menu: createRightMenu
-        )
+            menu: addNewMenu)
     }
     
-    var createRightMenu: UIMenu {
-        let cardImage = UIImage(systemName: "creditcard.fill")
+    var addNewMenu: UIMenu {
         let addCard = UIAction(
             title: "add_new_card".localized,
-            image: cardImage) { [weak self] _ in
-                self?.presenter?.userWantToDetails(of: .newCard, with: 0)
-            }
-        let templateImage = UIImage(systemName: "plus.rectangle.fill")
+            image: .init(systemName: "creditcard.fill")
+        ) { [weak self] _ in
+            self?.presenter?.userWantToDetails(of: .newCard, with: 0)
+        }
         let addTemplate = UIAction(
             title: "add_new_template".localized,
-            image: templateImage) { [weak self] _ in
-                self?.presenter?.userWantToDetails(of: .newTemplate, with: 0)
-            }
-        return UIMenu(children: [addCard, addTemplate])
-    }
-    
-    func createBackgroundView() {
-        backgroundView.backgroundColor = .systemGray4
-        backgroundView.radiusAndShadow(
-            radius: 30,
-            color: .black,
-            opacity: 0.5,
-            shadowSize: 30
-        )
-        
-        view.insertSubview(backgroundView, at: 0)
-        backgroundView.snp.makeConstraints { make in
-            make.height.equalToSuperview().multipliedBy(0.5)
-            make.center.width.equalToSuperview()
+            image: .init(systemName: "plus.rectangle.fill")
+        ) { [weak self] _ in
+            self?.presenter?.userWantToDetails(of: .newTemplate, with: 0)
         }
+        return UIMenu(children: [addCard, addTemplate])
     }
     
     func createTableView() {
@@ -154,26 +140,27 @@ private extension BankViewController {
         historyTableVC.didMove(toParent: self)
         historyTableVC.presenter = presenter
         historyTableVC.delegate = self
+        historyTableVC.view.roundCorners(radius: 30)
         historyTableVC.view.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalToSuperview()
-            make.height.equalToSuperview().multipliedBy(0.34)
+            make.height.equalToSuperview()
+                .multipliedBy(0.34)
                 .offset(tabBarController?.tabBar.frame.height ?? 0)
         }
-        historyTableVC.view.roundCorners(radius: 30)
     }
     
     func createRefreshControl(scrollView: UIScrollView) {
         refreshControl.addTarget(
             self,
             action: #selector(refreshAction),
-            for: .valueChanged
-        )
+            for: .valueChanged)
         scrollView.refreshControl = refreshControl
     }
     
 }
 
 //MARK: - Action private methods
+
 private extension BankViewController {
     
     @objc func refreshAction() {
@@ -185,10 +172,13 @@ private extension BankViewController {
 }
 
 //MARK: - UITableViewDelegate
+
 extension BankViewController: UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView,
-                   heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(
+        _ tableView: UITableView,
+        heightForRowAt indexPath: IndexPath
+    ) -> CGFloat {
         let height = view.frame.height
         switch indexPath.row {
         case 0:
