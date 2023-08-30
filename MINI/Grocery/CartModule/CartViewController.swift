@@ -9,17 +9,12 @@ import UIKit
 import SnapKit
 
 protocol CartViewProtocol: AnyObject {
-    var cartIsEmpty: Bool { get set }
+    
 }
 
 final class CartViewController: UIViewController {
-    var presenter: CartPresenterProtocol?
     
-    private lazy var backButton = UIButton(
-        systemImage: "xmark.circle.fill",
-        color: .tintMINI,
-        size: 35
-    )
+    var presenter: CartPresenterProtocol?
     
     private lazy var emptyView = CartEmptyView()
     private lazy var cartView = CartView()
@@ -38,63 +33,56 @@ final class CartViewController: UIViewController {
 }
 
 extension CartViewController: CartViewProtocol {
-    var cartIsEmpty: Bool {
-        get {
-            return emptyView.isHidden
-        }
-        set {
-            emptyView.isHidden = !newValue
-            cartView.isHidden = newValue
-        }
-    }
     
 }
 
 private extension CartViewController {
+    
     func initialize() {
-        navigationItem.setHidesBackButton(
-            true,
-            animated: true
-        )
-        view.backgroundColor = .back2MINI
-        addView(emptyView)
-        addView(cartView)
-        
-        cartView.delegate = self
-        emptyView.delegate = self
-        
-        createBackButton()
+        view.addSubview(emptyView)
+        view.addSubview(cartView)
+        createEmptyView()
+        configureNavigationBar()
     }
     
-    func addView(_ subview: UIView) {
-        view.addSubview(subview)
-        subview.snp.makeConstraints { make in
+    func configureNavigationBar() {
+        navigationItem.hidesBackButton = true
+        navigationItem.rightBarButtonItem = popButton
+    }
+    
+    var popButton: UIBarButtonItem {
+        return UIBarButtonItem(
+            image: .init(systemName: "xmark.circle.fill"),
+            style: .plain,
+            target: self,
+            action: #selector(popAction)
+        )
+    }
+    
+    func createCartView() {
+        cartView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
     }
     
-    func createBackButton() {
-        view.insertSubview(backButton, at: 1)
-        backButton.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(additionalSafeAreaInsets.top)
-            make.right.equalToSuperview().inset(25)
+    func createEmptyView() {
+        emptyView.delegate = self
+        emptyView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
-        backButton.addTarget(
-            self,
-            action: #selector(backButtonAction),
-            for: .touchUpInside
-        )
     }
     
-    @objc func backButtonAction() {
-        navigationController?.popViewController(animated: false)
+    @objc
+    func popAction() {
+        self.popCartView()
     }
     
 }
 
 extension CartViewController: CartViewDelegate {
+    
     func popCartView() {
-        navigationController?.popViewController(animated: false)
+        navigationController?.popViewController(animated: true)
     }
     
 }

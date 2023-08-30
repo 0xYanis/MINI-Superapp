@@ -63,7 +63,7 @@ private extension CartEmptyView {
     
     func createLabel(with text: String) {
         guard let lottie = lottie else { return }
-        label.font = .systemFont(ofSize: 22)
+        label.font = .boldSystemFont(ofSize: 22)
         label.tintColor = .black
         label.text = text
         addSubview(label)
@@ -75,7 +75,7 @@ private extension CartEmptyView {
     
     func createBackButton(with title: String) {
         backButton.setTitleColor(.tintMINI, for: .normal)
-        backButton.titleLabel?.font = .systemFont(ofSize: 22)
+        backButton.titleLabel?.font = .systemFont(ofSize: 20)
         backButton.setTitle(title, for: .normal)
         backButton.addTarget(
             self,
@@ -84,7 +84,7 @@ private extension CartEmptyView {
         )
         addSubview(backButton)
         backButton.snp.makeConstraints { make in
-            make.top.equalTo(label.snp.bottom).offset(10)
+            make.top.equalTo(label.snp.bottom).offset(15)
             make.centerX.equalToSuperview()
         }
     }

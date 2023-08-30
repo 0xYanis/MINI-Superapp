@@ -30,15 +30,6 @@ final class GroceryViewController: UIViewController {
         controller.searchBar.placeholder = "grocery_search".localized
         return controller
     }()
-    private lazy var cartButton: UIButton = {
-        let butt = UIButton(systemImage: "cart.fill", color: .tintMINI, size: 50)
-        butt.addTarget(
-            self,
-            action: #selector(cartButtonAction),
-            for: .touchUpInside
-        )
-        return butt
-    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,7 +64,7 @@ private extension GroceryViewController {
     func initialize() {
         view.backgroundColor = .secondarySystemBackground
         createNavigation(title: "grocery_navbar".localized)
-        createNavigationButtons(adress: "22 Washington st. NY")
+        createNavigationButtons()
         createCollectionView()
         createRefreshControl()
     }
@@ -81,28 +72,34 @@ private extension GroceryViewController {
     func createNavigation(title: String) {
         navigationItem.title = title
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: cartButton)
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
     }
     
-    func createNavigationButtons(adress: String) {
-        navigationItem.rightBarButtonItem = rightBarAdressButton(adress: adress)
+    func createNavigationButtons() {
+        navigationItem.rightBarButtonItem = rightBarAdressButton()
+        navigationItem.leftBarButtonItem = leftBarCartButton()
     }
     
-    func rightBarAdressButton(adress: String) -> UIBarButtonItem {
+    func leftBarCartButton() -> UIBarButtonItem {
+        return UIBarButtonItem(
+            image: .init(systemName: "cart.fill"),
+            style: .plain,
+            target: self,
+            action: #selector(cartButtonAction)
+        )
+    }
+    
+    func rightBarAdressButton() -> UIBarButtonItem {
         let button = UIBarButtonItem(
             title: "adress_button".localized,
-            menu: createAdressMenu(adress: adress)
+            menu: createAdressMenu()
         )
         button.tintColor = .systemOrange
         return button
     }
     
-    func createAdressMenu(adress: String) -> UIMenu {
-        let adress = UIAction(title: adress) { _ in
-            //
-        }
+    func createAdressMenu() -> UIMenu {
         let setNewImage = UIImage(systemName: "mappin.and.ellipse")
         let setNew = UIAction(
             title: "set_new_adress".localized,
@@ -115,7 +112,7 @@ private extension GroceryViewController {
             image: getMapImage) { [weak self] _ in
                 self?.presenter?.userWantUseMapView()
             }
-        return UIMenu(children: [ setNew, adress, getMap ] )
+        return UIMenu(children: [ setNew, getMap ] )
     }
     
     func showFloatingPanel() {
