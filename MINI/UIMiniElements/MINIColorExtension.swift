@@ -8,8 +8,8 @@
 import UIKit
 
 extension UIColor {
-    static var backMINI = UIColor(hex: "#FFFFFF") // white
-    static var back2MINI = UIColor(hex: "#F8F8F8") // dark white
+    static var backMINI = UIColor.systemBackground
+    static var back2MINI = UIColor.secondarySystemBackground
     
     static var frontMINI = UIColor(hex: "#C2E3F6") // snow blue
     static var front2MINI = UIColor(hex: "#191919") // black-blue
