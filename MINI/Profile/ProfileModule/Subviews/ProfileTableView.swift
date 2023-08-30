@@ -105,6 +105,7 @@ extension ProfileTableView: UITableViewDelegate {
         _ tableView: UITableView,
         didSelectRowAt indexPath: IndexPath
     ) {
+        tableView.deselectRow(at: indexPath, animated: false)
         guard let type = presenter?
             .getProfileData()[indexPath.section]
             .options[indexPath.row]
