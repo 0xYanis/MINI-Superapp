@@ -18,35 +18,9 @@ final class AdressViewController: UIViewController {
     
     weak var delegate: AdressViewDelegate?
     
-    private lazy var label: UILabel = {
-        let label = UILabel()
-        label.text = "Введите адрес"
-        label.font = .systemFont(ofSize: 24, weight: .semibold)
-        return label
-    }()
-    
-    private lazy var textField: UITextField = {
-        let field = UITextField()
-        field.placeholder = "Enter destination"
-        field.layer.cornerRadius = 10
-        field.backgroundColor = .tertiarySystemBackground
-        field.leftView = UIView(frame: .init(x: 0, y: 0, width: 10, height: 50))
-        field.leftViewMode = .always
-        field.delegate = self
-        return field
-    }()
-    
-    private lazy var tableView: MiTableView = {
-        let table = MiTableView()
-        table.register(
-            UITableViewCell.self,
-            cellId: String(describing: UITableViewCell.self)
-        )
-        table.dataSource = self
-        table.delegate = self
-        table.backgroundColor = .clear
-        return table
-    }()
+    private lazy var label     = UILabel()
+    private lazy var textField = UITextField()
+    private lazy var tableView = MiTableView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +28,7 @@ final class AdressViewController: UIViewController {
         view.addSubview(label)
         view.addSubview(textField)
         view.addSubview(tableView)
+        initialize()
     }
     
     override func viewDidLayoutSubviews() {
@@ -85,10 +60,58 @@ final class AdressViewController: UIViewController {
     
 }
 
+private extension AdressViewController {
+    
+    func initialize() {
+        createLabel()
+        createTextField()
+        createTableView()
+    }
+    
+    func createLabel() {
+        label.text = "Введите адрес"
+        label.font = .systemFont(ofSize: 24, weight: .semibold)
+    }
+    
+    func createTextField() {
+        textField.placeholder = "Enter destination"
+        textField.layer.cornerRadius = 10
+        textField.backgroundColor = .tertiarySystemBackground
+        textField.leftView = UIView(frame: .init(x: 0, y: 0, width: 10, height: 50))
+        textField.leftViewMode = .always
+        textField.delegate = self
+    }
+    
+    func createTableView() {
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.backgroundColor = .clear
+        tableView.register(
+            UITableViewCell.self,
+            cellId: String(describing: UITableViewCell.self)
+        )
+    }
+    
+}
+
 extension AdressViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        if let text = textField.text, !text.isEmpty {
+            delegate?.searchAdress(with: text)
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+        return true
+    }
+    
+    func textField(
+        _ textField: UITextField,
+        shouldChangeCharactersIn range: NSRange,
+        replacementString string: String
+    ) -> Bool {
         if let text = textField.text, !text.isEmpty {
             delegate?.searchAdress(with: text)
             DispatchQueue.main.async {
@@ -108,6 +131,7 @@ extension AdressViewController: UITableViewDataSource {
     ) -> Int {
         return delegate?.searchResults().count ?? 0
     }
+    
     func tableView(
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath

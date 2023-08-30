@@ -38,8 +38,10 @@ final class MapPresenter: MapPresenterProtocol {
     }
     
     public func didTapResult(with index: Int) {
-        let coordinate = searchResults[index].coordinate
-        view?.setPin(with: coordinate)
+        if searchResults.isEmpty == false {
+            let coordinate = searchResults[index].coordinate
+            view?.setPin(with: coordinate)
+        }
     }
     
 }

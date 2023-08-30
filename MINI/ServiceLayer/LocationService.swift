@@ -29,6 +29,7 @@ final class LocationService: NSObject, LocationServiceProtocol {
             guard let placemarks = placemarks,
                     error == nil
             else { return completion([]) }
+            
             let models: [Location] = placemarks
                 .compactMap { place in
                     var name = ""
@@ -49,6 +50,7 @@ final class LocationService: NSObject, LocationServiceProtocol {
                         coordinate: place.location?.coordinate)
                     return result
                 }
+            
             completion(models)
         }
     }
