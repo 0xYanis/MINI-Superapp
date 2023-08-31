@@ -65,7 +65,12 @@ private extension ProfileHeader {
     func initialize() {
         backgroundColor = .back2MINI
         // image get from FB
-        imageView.image = UIImage(named: "AppIcon")
+        let defImage = UIImage(named: "AppIcon")
+        if let url = UserDefaults.standard.url(forKey: "avatarUrl") {
+            imageView.sd_setImage(with: url, placeholderImage: defImage)
+        } else {
+            imageView.image = defImage
+        }
         imageView.contentMode = .scaleAspectFill
         
         nameLabel.font = .boldSystemFont(ofSize: 24)

@@ -59,7 +59,6 @@ final class ProfileInteractor: ProfileInteractorProtocol {
 private extension ProfileInteractor {
     
     func updateURLAvatar(_ url: URL) {
-        UserDefaults.standard.removeObject(forKey: "avatarUrl")
         UserDefaults.standard.set(url, forKey: "avatarUrl")
     }
     
