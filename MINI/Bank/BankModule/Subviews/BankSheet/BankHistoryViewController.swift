@@ -45,7 +45,6 @@ private extension BankHistoryViewController {
             make.left.top.right.equalToSuperview()
             make.height.equalTo(60)
         }
-        addGestureForLabel()
     }
     
     func createTableView() {
@@ -68,18 +67,6 @@ private extension BankHistoryViewController {
             BankTransactionCell.self,
             cellId: String(describing: BankTransactionCell.self)
         )
-    }
-    
-    func addGestureForLabel() {
-        let panGesture = UIPanGestureRecognizer(
-            target: self,
-            action: #selector(handlePanGesture(_:))
-        )
-        labelView.addGestureRecognizer(panGesture)
-    }
-    
-    @objc func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
-        delegate?.handlePanGesture(gesture)
     }
     
 }

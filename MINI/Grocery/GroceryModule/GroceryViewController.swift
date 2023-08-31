@@ -27,6 +27,7 @@ final class GroceryViewController: UIViewController {
     private lazy var adressVC = AdressViewController()
     private lazy var searchController: UISearchController = {
         let controller = UISearchController(searchResultsController: nil)
+        controller.searchResultsUpdater = self
         controller.searchBar.placeholder = "grocery_search".localized
         return controller
     }()
@@ -46,6 +47,7 @@ final class GroceryViewController: UIViewController {
 }
 
 //MARK: - GroceryViewProtocol
+
 extension GroceryViewController: GroceryViewProtocol {
     
     func updateView() {
@@ -59,6 +61,7 @@ extension GroceryViewController: GroceryViewProtocol {
 }
 
 //MARK: - Private methods
+
 private extension GroceryViewController {
     
     func initialize() {
@@ -100,16 +103,14 @@ private extension GroceryViewController {
     }
     
     func createAdressMenu() -> UIMenu {
-        let setNewImage = UIImage(systemName: "mappin.and.ellipse")
         let setNew = UIAction(
             title: "set_new_adress".localized,
-            image: setNewImage) { [weak self] _ in
+            image: .init(systemName: "mappin.and.ellipse")) { [weak self] _ in
                 self?.showFloatingPanel()
             }
-        let getMapImage = UIImage(systemName: "map")
         let getMap = UIAction(
             title: "На карте",
-            image: getMapImage) { [weak self] _ in
+            image: .init(systemName: "map")) { [weak self] _ in
                 self?.presenter?.userWantUseMapView()
             }
         return UIMenu(children: [ setNew, getMap ] )
@@ -134,8 +135,7 @@ private extension GroceryViewController {
     func createCollectionView() {
         collectionView = GroceryCollectionView(
             frame: .zero,
-            collectionViewLayout: flowLayout
-        )
+            collectionViewLayout: flowLayout)
         collectionView.delegate = self
         collectionView.presenter = presenter
         view.addSubview(collectionView)
@@ -151,8 +151,7 @@ private extension GroceryViewController {
         layout.minimumInteritemSpacing = 0
         layout.sectionInset = UIEdgeInsets(
             top: 5, left: 16,
-            bottom: 20, right: 16
-        )
+            bottom: 20, right: 16)
         return layout
     }
     
@@ -161,15 +160,16 @@ private extension GroceryViewController {
         refreshControl.addTarget(
             self,
             action: #selector(refreshAction),
-            for: .valueChanged
-        )
+            for: .valueChanged)
         collectionView.refreshControl = refreshControl
     }
     
 }
 
 //MARK: - Action private methods
+
 private extension GroceryViewController {
+    
     @objc func refreshAction() {
         presenter?.updateView()
         refreshControl.endRefreshing()
@@ -180,6 +180,19 @@ private extension GroceryViewController {
     }
     
 }
+
+// MARK: - UISearchResultsUpdating
+
+extension GroceryViewController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text else { return }
+        print(text)
+    }
+    
+}
+
+// MARK: - AdressViewDelegate
 
 extension GroceryViewController: AdressViewDelegate {
     
@@ -200,7 +213,9 @@ extension GroceryViewController: AdressViewDelegate {
 }
 
 //MARK: - UICollectionViewDelegateFlowLayout
+
 extension GroceryViewController: UICollectionViewDelegateFlowLayout {
+    
     func collectionView(
         _ collectionView: UICollectionView, layout
         collectionViewLayout: UICollectionViewLayout, sizeForItemAt
