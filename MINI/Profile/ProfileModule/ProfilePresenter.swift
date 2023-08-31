@@ -11,7 +11,7 @@ protocol ProfilePresenterProtocol: AnyObject {
     func viewDidLoaded()
     func getProfileData() -> [ProfileSection]
     
-    func userSetNewProfileImage()
+    func userSetAvatar(_ imageData: Data)
     func userWantToDetailView(of type: ProfileDetails)
     
     func userWantToLogout()
@@ -42,8 +42,8 @@ extension ProfilePresenter: ProfilePresenterProtocol {
         interactor.profileData
     }
     
-    func userSetNewProfileImage() {
-        
+    func userSetAvatar(_ imageData: Data) {
+        interactor.userSetAvatar(imageData)
     }
     
     func userWantToDetailView(of type: ProfileDetails) {
