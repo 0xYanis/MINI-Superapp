@@ -13,6 +13,7 @@ import FloatingPanel
 protocol MapViewProtocol: AnyObject {
     func updateView()
     func setPin(with coordinate: CLLocationCoordinate2D?)
+    func setCurrentLocation(location: CLLocation)
 }
 
 final class MapViewController: UIViewController {
@@ -47,6 +48,7 @@ final class MapViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         showFloatingPanel()
+        presenter?.viewDidAppear()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -81,6 +83,14 @@ extension MapViewController: MapViewProtocol {
                 longitudeDelta: 0.7)
         )
         
+        mapView.setRegion(region, animated: true)
+    }
+    
+    func setCurrentLocation(location: CLLocation) {
+        let region = MKCoordinateRegion(
+            center: location.coordinate,
+            latitudinalMeters: 1000,
+            longitudinalMeters: 1000)
         mapView.setRegion(region, animated: true)
     }
     
@@ -133,5 +143,3 @@ extension MapViewController: AdressViewDelegate {
     }
     
 }
-
-

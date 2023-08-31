@@ -9,7 +9,7 @@ import Foundation
 
 protocol MapPresenterProtocol: AnyObject {
     var searchResults: [Location] { get }
-    
+    func viewDidAppear()
     func searchAdress(with text: String)
     func didTapResult(with index: Int)
 }
@@ -23,6 +23,17 @@ final class MapPresenter: MapPresenterProtocol {
     
     init(view: MapViewProtocol) {
         self.view = view
+    }
+    
+    func viewDidAppear() {
+        DispatchQueue.global().async {
+            self.locationService?.getCurrentLocation { [weak self] location in
+                guard let self = self else { return }
+                DispatchQueue.main.async {
+                    self.view?.setCurrentLocation(location: location)
+                }
+            }
+        }
     }
     
     public func searchAdress(with text: String) {

@@ -10,6 +10,7 @@ import CoreLocation
 protocol LocationServiceProtocol: AnyObject {
     typealias closure = ([Location]) -> Void
     func findLocations(with query: String, completion: @escaping closure)
+    func getCurrentLocation(completion: @escaping (CLLocation) -> Void)
 }
 
 struct Location {
@@ -20,14 +21,21 @@ struct Location {
 final class LocationService: NSObject, LocationServiceProtocol {
     
     typealias closure = ([Location]) -> Void
+    typealias current = (CLLocation) -> Void
     
-    private let manager  = CLLocationManager()
+    private var manager: CLLocationManager {
+        let manager = CLLocationManager()
+        manager.desiredAccuracy = kCLLocationAccuracyBest
+        manager.delegate = self
+        return manager
+    }
+    
     private let geocoder = CLGeocoder()
     
     public func findLocations(with query: String, completion: @escaping closure) {
         geocoder.geocodeAddressString(query) { placemarks, error in
             guard let placemarks = placemarks,
-                    error == nil
+                  error == nil
             else { return completion([]) }
             
             let models: [Location] = placemarks
@@ -53,6 +61,41 @@ final class LocationService: NSObject, LocationServiceProtocol {
             
             completion(models)
         }
+    }
+    
+    public func getCurrentLocation(completion: @escaping current) {
+        manager.desiredAccuracy = kCLLocationAccuracyBest
+        manager.requestWhenInUseAuthorization()
+        
+        guard CLLocationManager.locationServicesEnabled() else {
+            print("Location services are disabled")
+            return
+        }
+        
+        manager.requestLocation()
+        
+        if let location = manager.location {
+            completion(location)
+        }
+        
+    }
+    
+}
+
+extension LocationService: CLLocationManagerDelegate {
+    
+    func locationManager(
+        _ manager: CLLocationManager,
+        didUpdateLocations locations: [CLLocation]
+    ) {
+        
+    }
+    
+    func locationManager(
+        _ manager: CLLocationManager,
+        didFailWithError error: Error
+    ) {
+        
     }
     
 }
