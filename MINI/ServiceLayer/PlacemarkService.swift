@@ -9,13 +9,13 @@ import MapKit
 import UIKit
 
 protocol PlacemarkServiceProtocol: AnyObject {
-    typealias closure = (Result<[Placemark], Error>) -> Void
+    typealias closure = ([Placemark]) -> Void
     func searchPlace(_ place: String, completion: @escaping closure)
 }
 
 final class PlacemarkService: NSObject, PlacemarkServiceProtocol {
     
-    typealias closure = (Result<[Placemark], Error>) -> Void
+    typealias closure = ([Placemark]) -> Void
     
     private let locationManager = CLLocationManager()
     private let request = MKLocalSearch.Request()
@@ -24,11 +24,17 @@ final class PlacemarkService: NSObject, PlacemarkServiceProtocol {
     
     override init() {
         super.init()
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.requestWhenInUseAuthorization()
-            locationManager.startUpdatingLocation()
+        configureManager()
+    }
+    
+    private func configureManager() {
+        DispatchQueue.global().async { [self] in
+            if CLLocationManager.locationServicesEnabled() {
+                locationManager.delegate = self
+                locationManager.desiredAccuracy = kCLLocationAccuracyBest
+                locationManager.requestWhenInUseAuthorization()
+                locationManager.startUpdatingLocation()
+            }
         }
     }
     
@@ -40,12 +46,10 @@ final class PlacemarkService: NSObject, PlacemarkServiceProtocol {
         localSearch = MKLocalSearch(request: request)
         localSearch?.start { response, error in
             guard let items = response?.mapItems else {
-                completion(.failure(NSError(domain: "", code: 333)))
-                return
+                completion([]); return
             }
-            
-            let placemarks = items.map { Placemark(item: $0) }
-            completion(.success(placemarks))
+            let placemarks = items.map { Placemark(item: $0, coordinate: $0.placemark.coordinate) }
+            completion(placemarks)
         }
     }
     
@@ -72,8 +76,9 @@ extension PlacemarkService: CLLocationManagerDelegate {
 struct Placemark {
     
     let location: String
+    let coordinate: CLLocationCoordinate2D?
     
-    init(item: MKMapItem) {
+    init(item: MKMapItem, coordinate: CLLocationCoordinate2D) {
         
         var locationString: String = ""
         
@@ -94,6 +99,8 @@ struct Placemark {
             locationString += ", \(country)"
         }
         
-        location = locationString
+        self.location = locationString
+        self.coordinate = coordinate
     }
+    
 }

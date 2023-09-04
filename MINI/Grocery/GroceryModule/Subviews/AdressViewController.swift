@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 protocol AdressViewDelegate: AnyObject {
-    func searchResults() -> [Location]
+    func searchResults() -> [Placemark]
     func searchAdress(with text: String)
     func didTapResult(with index: Int)
 }
@@ -140,7 +140,7 @@ extension AdressViewController: UITableViewDataSource {
             withIdentifier: String(describing: UITableViewCell.self),
             for: indexPath
         )
-        let title = delegate?.searchResults()[indexPath.row].title
+        let title = delegate?.searchResults()[indexPath.row].location
         cell.textLabel?.text = title
         cell.textLabel?.numberOfLines = 0
         cell.backgroundColor = .clear

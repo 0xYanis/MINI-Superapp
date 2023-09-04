@@ -10,7 +10,7 @@ import Foundation
 protocol GroceryInteractorProtocol: AnyObject {
     var groceryData: [[GroceryEntity]] { get }
     var filteredData: [[GroceryEntity]] { get }
-    var locations: [Location] { get }
+    var locations: [Placemark] { get }
     
     
     func viewDidLoaded()
@@ -23,17 +23,20 @@ final class GroceryInteractor: GroceryInteractorProtocol {
     weak var presenter: GroceryPresenterProtocol?
     var groceryService: GroceryServiceProtocol
     var locationService: LocationServiceProtocol
+    var placemarkService: PlacemarkServiceProtocol
     
     var groceryData: [[GroceryEntity]] = []
     var filteredData: [[GroceryEntity]] = []
-    var locations: [Location] = []
+    var locations: [Placemark] = []
     
     init(
         groceryService: GroceryServiceProtocol,
-        locationService: LocationServiceProtocol = LocationService()
+        locationService: LocationServiceProtocol = LocationService(),
+        placemarkService: PlacemarkServiceProtocol = PlacemarkService()
     ) {
         self.groceryService = groceryService
         self.locationService = locationService
+        self.placemarkService = placemarkService
     }
     
     
@@ -42,9 +45,14 @@ final class GroceryInteractor: GroceryInteractorProtocol {
     }
     
     func userStartSearchAdress(with searchText: String) {
-        locationService.findLocations(with: searchText) { [weak self] locations in
-            guard let self = self else { return }
-            self.locations = locations
+        DispatchQueue.global().async {
+            self.placemarkService.searchPlace(searchText) { [weak self] locations in
+                guard let self = self else { return }
+                self.locations = locations
+                DispatchQueue.main.async {
+                    self.presenter?.updateView()
+                }
+            }
         }
     }
     

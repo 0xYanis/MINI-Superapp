@@ -130,7 +130,7 @@ private extension MapViewController {
 
 extension MapViewController: AdressViewDelegate {
     
-    func searchResults() -> [Location] {
+    func searchResults() -> [Placemark] {
         presenter?.searchResults ?? []
     }
     

@@ -8,7 +8,7 @@
 import Foundation
 
 protocol MapPresenterProtocol: AnyObject {
-    var searchResults: [Location] { get }
+    var searchResults: [Placemark] { get }
     func viewDidAppear()
     func searchAdress(with text: String)
     func didTapResult(with index: Int)
@@ -18,11 +18,13 @@ final class MapPresenter: MapPresenterProtocol {
     
     weak var view: MapViewProtocol?
     var locationService: LocationServiceProtocol?
+    var placemarkService: PlacemarkServiceProtocol?
     
-    public var searchResults: [Location] = []
+    public var searchResults: [Placemark] = []
     
     init(view: MapViewProtocol) {
         self.view = view
+        self.placemarkService = PlacemarkService()
     }
     
     func viewDidAppear() {
@@ -38,7 +40,7 @@ final class MapPresenter: MapPresenterProtocol {
     
     public func searchAdress(with text: String) {
         DispatchQueue.global().async {
-            self.locationService?.findLocations(with: text) { [weak self] locations in
+            self.placemarkService?.searchPlace(text) { [weak self] locations in
                 guard let self = self else { return }
                 self.searchResults = locations
                 DispatchQueue.main.async {
