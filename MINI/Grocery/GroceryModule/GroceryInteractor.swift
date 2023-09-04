@@ -21,9 +21,11 @@ protocol GroceryInteractorProtocol: AnyObject {
 final class GroceryInteractor: GroceryInteractorProtocol {
     
     weak var presenter: GroceryPresenterProtocol?
+    
     var groceryService: GroceryServiceProtocol
     var locationService: LocationServiceProtocol
     var placemarkService: PlacemarkServiceProtocol
+    var fbFirestoreManager: FBFirestoreProtocol
     
     var groceryData: [[GroceryEntity]] = []
     var filteredData: [[GroceryEntity]] = []
@@ -31,12 +33,14 @@ final class GroceryInteractor: GroceryInteractorProtocol {
     
     init(
         groceryService: GroceryServiceProtocol,
-        locationService: LocationServiceProtocol = LocationService(),
-        placemarkService: PlacemarkServiceProtocol = PlacemarkService()
+        locationService: LocationServiceProtocol,
+        placemarkService: PlacemarkServiceProtocol,
+        fbFirestoreManager: FBFirestoreProtocol
     ) {
         self.groceryService = groceryService
         self.locationService = locationService
         self.placemarkService = placemarkService
+        self.fbFirestoreManager = fbFirestoreManager
     }
     
     
@@ -58,8 +62,8 @@ final class GroceryInteractor: GroceryInteractorProtocol {
     
     func userDidTapLocation(at index: Int) {
         if locations.isEmpty == false {
-            let coordinate = locations[index].coordinate
-            print(coordinate)
+            let location = locations[index].location
+            self.setAddress(location)
         }
     }
     
@@ -77,6 +81,15 @@ private extension GroceryInteractor {
                 let message = error.localizedDescription
                 self.presenter?.loadingDataGetFailed(with: message)
             }
+        }
+    }
+    
+    func setAddress(_ address: String) {
+        let uid = UserDefaults.standard.string(forKey: "uid")
+        DispatchQueue.global().async {
+            self.fbFirestoreManager.updateUserData(
+                uid: uid,
+                updatedData: ["address": address])
         }
     }
     

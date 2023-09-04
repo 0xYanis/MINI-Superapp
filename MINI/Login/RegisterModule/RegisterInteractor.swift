@@ -65,6 +65,7 @@ private extension RegisterInteractor {
     
     func saveUserUID(_ uid: String) {
         UserDefaults.standard.set(uid, forKey: "uid")
+        UserDefaults.standard.synchronize()
     }
     
     enum ErrorMessages: String {

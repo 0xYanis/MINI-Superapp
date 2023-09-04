@@ -48,6 +48,7 @@ final class LoginInteractor: LoginInteractorProtocol {
     
     private func saveUserUID(_ uid: String) {
         UserDefaults.standard.set(uid, forKey: "uid")
+        UserDefaults.standard.synchronize()
     }
     
 }
