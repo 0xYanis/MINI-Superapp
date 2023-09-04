@@ -65,6 +65,7 @@
 		09503EB829F2D44000254F53 /* StackFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09503EB729F2D44000254F53 /* StackFlowLayout.swift */; };
 		09565EE02A2F13B3007A2DAC /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09565EDF2A2F13B3007A2DAC /* RegisterView.swift */; };
 		09565EE42A2F69E6007A2DAC /* CardBackDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09565EE32A2F69E6007A2DAC /* CardBackDetailView.swift */; };
+		0959E5842AA5BE7C00A3777C /* PlacemarkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0959E5832AA5BE7C00A3777C /* PlacemarkService.swift */; };
 		095B1C6D2A39BD1A00EF6828 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 095B1C6C2A39BD1A00EF6828 /* LaunchScreen.storyboard */; };
 		09632FCC29ED8A7D00DB2641 /* BankCardSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09632FCB29ED8A7D00DB2641 /* BankCardSet.swift */; };
 		09632FCE29ED8A8800DB2641 /* BankTemplateSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09632FCD29ED8A8800DB2641 /* BankTemplateSet.swift */; };
@@ -291,6 +292,7 @@
 		09503EB729F2D44000254F53 /* StackFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackFlowLayout.swift; sourceTree = "<group>"; };
 		09565EDF2A2F13B3007A2DAC /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		09565EE32A2F69E6007A2DAC /* CardBackDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBackDetailView.swift; sourceTree = "<group>"; };
+		0959E5832AA5BE7C00A3777C /* PlacemarkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacemarkService.swift; sourceTree = "<group>"; };
 		095B1C6C2A39BD1A00EF6828 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		09632FCB29ED8A7D00DB2641 /* BankCardSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankCardSet.swift; sourceTree = "<group>"; };
 		09632FCD29ED8A8800DB2641 /* BankTemplateSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTemplateSet.swift; sourceTree = "<group>"; };
@@ -1009,6 +1011,7 @@
 				09E9E82929EB16210084416B /* KeyChainService.swift */,
 				09E9E82D29EB16E10084416B /* KeyChain.swift */,
 				09FB82572A3737AA00CEF8C1 /* LocationService.swift */,
+				0959E5832AA5BE7C00A3777C /* PlacemarkService.swift */,
 				090B63EB2A45C09500C7D6CD /* RealmService.swift */,
 				090C1E632A9CA3F800E75464 /* Firebase */,
 			);
@@ -1432,6 +1435,7 @@
 				09632FCE29ED8A8800DB2641 /* BankTemplateSet.swift in Sources */,
 				09F2AE762A52FD3400E02404 /* CartRouter.swift in Sources */,
 				09E9E83029EB24840084416B /* UIAlertController+Extension.swift in Sources */,
+				0959E5842AA5BE7C00A3777C /* PlacemarkService.swift in Sources */,
 				09FC394C29FAD3F400B2D97E /* TransactionRouter.swift in Sources */,
 				09044FAB2A444AD000432A3C /* GSearchPresenter.swift in Sources */,
 				09FB824E2A37285800CEF8C1 /* ProductRouter.swift in Sources */,
