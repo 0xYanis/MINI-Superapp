@@ -55,4 +55,10 @@ extension String {
         }
         return formatted
     }
+    
+    func getEmailName() -> String? {
+        let components = self.components(separatedBy: "@")
+        return components.first
+    }
+    
 }
