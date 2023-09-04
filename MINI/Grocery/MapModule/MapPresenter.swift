@@ -19,6 +19,7 @@ final class MapPresenter: MapPresenterProtocol {
     weak var view: MapViewProtocol?
     var locationService: LocationServiceProtocol?
     var placemarkService: PlacemarkServiceProtocol?
+    var fbFirestoreManager: FBFirestoreProtocol?
     
     public var searchResults: [Placemark] = []
     
@@ -53,7 +54,18 @@ final class MapPresenter: MapPresenterProtocol {
     public func didTapResult(with index: Int) {
         if searchResults.isEmpty == false {
             let coordinate = searchResults[index].coordinate
+            let location = searchResults[index].location
+            setAddress(location)
             view?.setPin(with: coordinate)
+        }
+    }
+    
+    private func setAddress(_ address: String) {
+        let uid = UserDefaults.standard.string(forKey: "uid")
+        DispatchQueue.global().async {
+            self.fbFirestoreManager?.updateUserData(
+                uid: uid,
+                updatedData: ["address": address])
         }
     }
     
