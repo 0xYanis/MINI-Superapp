@@ -25,7 +25,7 @@ final class GroceryViewController: UIViewController {
     private var collectionView: GroceryCollectionView!
     private lazy var panel = FloatingPanelController()
     private lazy var address = AdressViewController()
-    private lazy var addressLabel: UILabel = {
+    private let addressLabel: UILabel = {
         let label = UILabel()
         label.textColor = .gray
         return label

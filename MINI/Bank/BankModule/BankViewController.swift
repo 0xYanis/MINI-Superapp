@@ -31,9 +31,8 @@ final class BankViewController: UIViewController {
     
     //MARK: - Private properties
     
-    private lazy var backgroundView = UIView()
-    private lazy var bankTableView  = BankTableView()
-    private lazy var historyTableVC = BankHistoryViewController()
+    private let bankTableView  = BankTableView()
+    private let historyTableVC = BankHistoryViewController()
     private lazy var refreshControl = UIRefreshControl()
     
     //MARK: - Lifecycle

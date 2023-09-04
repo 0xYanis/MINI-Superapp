@@ -23,7 +23,7 @@ final class AviaViewController: UIViewController {
     
     private lazy var refreshControl   = UIRefreshControl()
     private lazy var searchController = UISearchController()
-    private lazy var layout = UICollectionViewFlowLayout()
+    private let layout = UICollectionViewFlowLayout()
     private var collectionView: UICollectionView! {
         didSet {
             collectionView.backgroundColor = .clear

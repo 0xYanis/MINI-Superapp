@@ -16,7 +16,7 @@ final class ProfileViewController: UIViewController, UINavigationControllerDeleg
     
     var presenter: ProfilePresenterProtocol?
     
-    private lazy var tableView = ProfileTableView()
+    private let tableView = ProfileTableView()
     private lazy var alert: UIAlertController = {
         let alert = UIAlertController(
             title: "logout_alert_title".localized,
@@ -33,7 +33,6 @@ final class ProfileViewController: UIViewController, UINavigationControllerDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
-        presenter?.viewDidLoaded()
     }
     
     override func viewWillAppear(_ animated: Bool) {
