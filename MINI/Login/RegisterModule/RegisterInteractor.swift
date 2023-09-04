@@ -16,6 +16,7 @@ final class RegisterInteractor: RegisterInteractorProtocol {
     weak var presenter: RegisterPresenterProtocol?
     var keychainService: KeyChainServiceProtocol?
     var fbAuthManager: FBAuthProtocol?
+    var fbFirestoreManager: FBFirestoreProtocol?
     
     func userWantToLogin(login: String, password: String, repeatPassword: String) {
         if password != repeatPassword {
@@ -39,13 +40,22 @@ final class RegisterInteractor: RegisterInteractorProtocol {
             return
         }
         
-        fbAuthManager?.signUp(email: login, password: password) { [weak self] user, error in
-            guard let self = self else { return }
-            if let error = error {
-                self.presenter?.registerIsNotCorrect(with: error.localizedDescription)
+        DispatchQueue.global().async {
+            self.fbAuthManager?.signUp(
+                email: login,
+                password: password
+            ) { [weak self] user, error in
+                guard let self = self else { return }
+                if let error = error {
+                    let message = error.localizedDescription
+                    self.presenter?.registerIsNotCorrect(with: message)
+                }
+                
+                guard let user = user else { return }
+                self.fbFirestoreManager?.setUserData(user: user)
+                
+                self.presenter?.registerIsCorrect()
             }
-            guard let _ = user else { return }
-            self.presenter?.registerIsCorrect()
         }
     }
     

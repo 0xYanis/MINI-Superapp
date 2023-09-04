@@ -13,8 +13,10 @@ final class RegisterBuilder {
         let router = RegisterRouter()
         let interactor = RegisterInteractor()
         let presenter = RegisterPresenter(router: router, interactor: interactor)
+        
         let keyChain = KeyChainService()
         let fbAuthManager = FBAuthManager()
+        let fbFirestoreManager = FBFirestoreManager()
         
         view.presenter = presenter
         presenter.view = view
@@ -22,6 +24,7 @@ final class RegisterBuilder {
         interactor.presenter = presenter
         interactor.keychainService = keyChain
         interactor.fbAuthManager = fbAuthManager
+        interactor.fbFirestoreManager = fbFirestoreManager
         
         return view
     }
