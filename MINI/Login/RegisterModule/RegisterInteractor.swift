@@ -53,7 +53,7 @@ final class RegisterInteractor: RegisterInteractorProtocol {
                 
                 guard let user = user else { return }
                 self.fbFirestoreManager?.setUserData(user: user)
-                
+                self.saveUserUID(user.uid)
                 self.presenter?.registerIsCorrect()
             }
         }
@@ -62,6 +62,10 @@ final class RegisterInteractor: RegisterInteractorProtocol {
 }
 
 private extension RegisterInteractor {
+    
+    func saveUserUID(_ uid: String) {
+        UserDefaults.standard.set(uid, forKey: "uid")
+    }
     
     enum ErrorMessages: String {
         case invalidLogin = "Неверный формат ввода"

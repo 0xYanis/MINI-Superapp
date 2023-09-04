@@ -31,7 +31,8 @@ final class LoginInteractor: LoginInteractorProtocol {
                 self.presenter?.loginIsNotCorrect()
                 return
             }
-            if let _ = user {
+            if let user = user {
+                self.saveUserUID(user.uid)
                 self.presenter?.loginIsCorrect()
             }
         }
@@ -43,6 +44,10 @@ final class LoginInteractor: LoginInteractorProtocol {
             guard let _ = self.fbAuthManager?.currentUser else { return }
             if result == true { self.presenter?.loginIsCorrect() }
         }
+    }
+    
+    private func saveUserUID(_ uid: String) {
+        UserDefaults.standard.set(uid, forKey: "uid")
     }
     
 }
