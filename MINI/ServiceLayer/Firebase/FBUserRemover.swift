@@ -20,9 +20,8 @@ final class FBUserRemover {
     public func deleteUser() {
         guard let user = auth.currentUser else { return }
         let uid = user.uid
-        
-        
-        
+        firestore.removeUserData(uid)
+        storage.removeAvatar(uid)
         user.delete()
     }
     

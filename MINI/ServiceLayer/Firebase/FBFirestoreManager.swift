@@ -12,6 +12,7 @@ protocol FBFirestoreProtocol: AnyObject {
     func setUserData(user: User)
     func getUserData(uid: String?, completion: @escaping ([String:Any])->Void)
     func updateUserData(uid: String?, updatedData: [String: Any])
+    func removeUserData(_ uid: String)
 }
 
 final class FBFirestoreManager: FBFirestoreProtocol {
@@ -42,6 +43,11 @@ final class FBFirestoreManager: FBFirestoreProtocol {
         guard let uid = uid else { return }
         let path = db.collection("users").document(uid)
         path.updateData(updatedData)
+    }
+    
+    public func removeUserData(_ uid: String) {
+        let path = db.collection("users").document(uid)
+        path.delete()
     }
     
 }
