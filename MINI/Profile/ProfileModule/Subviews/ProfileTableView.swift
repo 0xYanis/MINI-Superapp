@@ -89,6 +89,11 @@ extension ProfileTableView: UITableViewDataSource {
         viewForHeaderInSection section: Int
     ) -> UIView? {
         let header = ProfileHeader()
+        
+        header.configure(
+            name: presenter?.getUserData().name ?? "User",
+            address: presenter?.getUserData().address ?? "Nil"
+        )
         self.profileHeader = header
         if section == 0 {
             return header

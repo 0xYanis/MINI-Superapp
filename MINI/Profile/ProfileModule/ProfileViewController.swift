@@ -27,6 +27,7 @@ final class ProfileViewController: UIViewController, UINavigationControllerDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
+        presenter?.viewDidLoaded()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,7 +40,7 @@ final class ProfileViewController: UIViewController, UINavigationControllerDeleg
 extension ProfileViewController: ProfileViewProtocol {
     
     func updateView() {
-        
+        tableView.reloadData()
     }
     
 }

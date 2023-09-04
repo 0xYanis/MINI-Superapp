@@ -8,9 +8,11 @@
 import Foundation
 
 protocol ProfilePresenterProtocol: AnyObject {
+    func updateView()
     func viewDidLoaded()
     func getProfileData() -> [ProfileSection]
     
+    func getUserData() -> (name: String, address: String)
     func userSetAvatar(_ imageData: Data)
     func userWantToDetailView(of type: ProfileDetails)
     
@@ -34,8 +36,17 @@ final class ProfilePresenter {
 }
 
 extension ProfilePresenter: ProfilePresenterProtocol {
+    
+    func updateView() {
+        view?.updateView()
+    }
+    
     func viewDidLoaded() {
         interactor.viewDidLoaded()
+    }
+    
+    func getUserData() -> (name: String, address: String) {
+        return (interactor.userName, interactor.userAddress)
     }
     
     func getProfileData() -> [ProfileSection] {

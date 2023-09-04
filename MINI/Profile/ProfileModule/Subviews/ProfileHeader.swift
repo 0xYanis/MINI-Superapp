@@ -38,6 +38,11 @@ final class ProfileHeader: UIView {
         //save To FIREBASE
     }
     
+    public func configure(name: String, address: String) {
+        nameLabel.text = name
+        addressLabel.text = address
+    }
+    
     public func updateScale(_ multiplier: CGFloat) {
         UIView.animate(withDuration: 0.3) {
             self.updateView(view: self.imageView, multiplier)
@@ -75,7 +80,7 @@ private extension ProfileHeader {
         
         nameLabel.font = .boldSystemFont(ofSize: 24)
         nameLabel.textAlignment = .center
-        nameLabel.text = "Yanis Rybkin"
+        nameLabel.text = "User"
         
         addressLabel.font = .systemFont(ofSize: 14)
         addressLabel.textColor = .gray
