@@ -23,6 +23,7 @@ final class GroceryViewController: UIViewController {
     //MARK: Private properties
     private var collectionView: GroceryCollectionView!
     private lazy var panel = FloatingPanelController()
+    private lazy var address = AdressViewController()
     private lazy var refreshControl = UIRefreshControl()
     private lazy var adressVC = AdressViewController()
     private lazy var searchController: UISearchController = {
@@ -52,6 +53,7 @@ extension GroceryViewController: GroceryViewProtocol {
     
     func updateView() {
         collectionView.reloadData()
+        address.updateView()
     }
     
     func showLoadingDataGetFailed(with message: String) {
@@ -117,7 +119,6 @@ private extension GroceryViewController {
     }
     
     func showFloatingPanel() {
-        let address = AdressViewController()
         address.delegate = self
         panel.set(contentViewController: address)
         panel.surfaceView.appearance.cornerRadius = 12
