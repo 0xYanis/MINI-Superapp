@@ -40,14 +40,12 @@ final class ProfileInteractor: ProfileInteractorProtocol {
     
     func getUserData() {
         let uid = UserDefaults.standard.string(forKey: "uid")
-        print(uid)
         DispatchQueue.global().async {
             self.fbFirestoreManager?.getUserData(uid: uid) { result in
                 guard
                     let name = result["name"] as? String,
                     let address = result["address"] as? String
                 else { return }
-                print(result)
                 self.userName = name.capitalized
                 self.userAddress = address
                 DispatchQueue.main.async {

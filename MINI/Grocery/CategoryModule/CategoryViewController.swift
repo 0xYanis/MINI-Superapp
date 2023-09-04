@@ -19,6 +19,7 @@ final class CategoryViewController: UIViewController {
     var presenter: CategoryPresenterProtocol?
     
     //MARK: Private properties
+    private lazy var cartView = CategoryCartView()
     private var collectionView: UICollectionView! {
         didSet {
             collectionView.backgroundColor = .clear
@@ -36,16 +37,6 @@ final class CategoryViewController: UIViewController {
             )
         }
     }
-    private lazy var cartView = CategoryCartView()
-    private lazy var searchButton: UIButton = {
-        let button = UIButton(systemImage: "magnifyingglass", color: .tintMINI, size: 50)
-        button.addTarget(
-            self,
-            action: #selector(searchButtonTapped),
-            for: .touchUpInside
-        )
-        return button
-    }()
     
     //MARK: Lifecycle
     override func viewDidLoad() {
@@ -94,8 +85,15 @@ private extension CategoryViewController {
     func createNavigation(with title: String) {
         navigationItem.title = title
         navigationItem.largeTitleDisplayMode = .never
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            customView: searchButton
+        navigationItem.rightBarButtonItem = rightButton
+    }
+    
+    var rightButton: UIBarButtonItem {
+        return UIBarButtonItem(
+            image: .init(systemName: "magnifyingglass"),
+            style: .plain,
+            target: self,
+            action: #selector(searchButtonTapped)
         )
     }
     
