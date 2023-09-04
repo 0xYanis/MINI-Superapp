@@ -58,7 +58,11 @@ extension ProfilePresenter: ProfilePresenterProtocol {
     }
     
     func userWantToDetailView(of type: ProfileDetails) {
-        router.userWantToDetailView(of: type)
+        if type == .logout {
+            view?.showAlert()
+        } else {
+            router.userWantToDetailView(of: type)
+        }
     }
     
     func userWantToLogout() {

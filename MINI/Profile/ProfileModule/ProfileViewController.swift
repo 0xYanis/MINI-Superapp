@@ -9,6 +9,7 @@ import UIKit
 
 protocol ProfileViewProtocol: AnyObject {
     func updateView()
+    func showAlert()
 }
 
 final class ProfileViewController: UIViewController, UINavigationControllerDelegate {
@@ -16,11 +17,16 @@ final class ProfileViewController: UIViewController, UINavigationControllerDeleg
     var presenter: ProfilePresenterProtocol?
     
     private lazy var tableView = ProfileTableView()
-    private lazy var alert = UIAlertController(
-        title: "logout_alert_title".localized,
-        message: "logout_alert_message".localized,
-        preferredStyle: .alert
-    )
+    private lazy var alert: UIAlertController = {
+        let alert = UIAlertController(
+            title: "logout_alert_title".localized,
+            message: "logout_alert_message".localized,
+            preferredStyle: .alert
+        )
+        alert.addAction(cancelAction)
+        alert.addAction(logoutAction)
+        return alert
+    }()
     
     private lazy var photoPicker = UIImagePickerController()
     
@@ -41,6 +47,10 @@ extension ProfileViewController: ProfileViewProtocol {
     
     func updateView() {
         tableView.reloadData()
+    }
+    
+    func showAlert() {
+        present(alert, animated: true)
     }
     
 }
@@ -90,9 +100,6 @@ private extension ProfileViewController {
 private extension ProfileViewController {
     
     @objc func logoutButtonAction() {
-        alert.addAction(cancelAction)
-        alert.addAction(logoutAction)
-        
         present(alert, animated: true)
     }
     
