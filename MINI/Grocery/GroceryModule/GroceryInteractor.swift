@@ -46,6 +46,7 @@ final class GroceryInteractor: GroceryInteractorProtocol {
     
     func viewDidLoaded() {
         getGroceries()
+        getUserAddress()
     }
     
     func userStartSearchAdress(with searchText: String) {
@@ -64,6 +65,22 @@ final class GroceryInteractor: GroceryInteractorProtocol {
         if locations.isEmpty == false {
             let location = locations[index].location
             self.setAddress(location)
+            DispatchQueue.main.async {
+                self.presenter?.updateAddress(location)
+            }
+        }
+    }
+    
+    private func getUserAddress() {
+        let uid = UserDefaults.standard.string(forKey: "uid")
+        DispatchQueue.global().async {
+            self.fbFirestoreManager.getUserData(uid: uid) { result in
+                guard let address = result["address"] as? String
+                else { return }
+                DispatchQueue.main.async {
+                    self.presenter?.updateAddress(address)
+                }
+            }
         }
     }
     

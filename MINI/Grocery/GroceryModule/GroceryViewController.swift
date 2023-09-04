@@ -12,6 +12,7 @@ import FloatingPanel
 
 protocol GroceryViewProtocol: AnyObject {
     func updateView()
+    func updateAddress(_ newAddress: String)
     func showLoadingDataGetFailed(with message: String)
 }
 
@@ -24,6 +25,7 @@ final class GroceryViewController: UIViewController {
     private var collectionView: GroceryCollectionView!
     private lazy var panel = FloatingPanelController()
     private lazy var address = AdressViewController()
+    private lazy var addressLabel = UILabel()
     private lazy var refreshControl = UIRefreshControl()
     private lazy var adressVC = AdressViewController()
     private lazy var searchController: UISearchController = {
@@ -56,6 +58,10 @@ extension GroceryViewController: GroceryViewProtocol {
         address.updateView()
     }
     
+    func updateAddress(_ newAddress: String) {
+        addressLabel.text = newAddress
+    }
+    
     func showLoadingDataGetFailed(with message: String) {
         
     }
@@ -75,6 +81,7 @@ private extension GroceryViewController {
     }
     
     func createNavigation(title: String) {
+        navigationItem.titleView = addressLabel
         navigationItem.title = title
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.searchController = searchController

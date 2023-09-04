@@ -10,9 +10,9 @@ import Foundation
 protocol GroceryPresenterProtocol: AnyObject {
     func viewDidLoaded()
     func updateView()
+    func updateAddress(_ newAddress: String)
     
     func userWantUseMapView()
-    func userWantSetNewAdress()
     func userStartSearchAdress(with searchText: String)
     func getLocationResults() -> [Placemark]
     func userDidTapLocation(at index: Int)
@@ -51,12 +51,12 @@ extension GroceryPresenter: GroceryPresenterProtocol {
         view?.updateView()
     }
     
-    func userWantUseMapView() {
-        router.goToMapView()
+    func updateAddress(_ newAddress: String) {
+        view?.updateAddress(newAddress)
     }
     
-    func userWantSetNewAdress() {
-        
+    func userWantUseMapView() {
+        router.goToMapView()
     }
     
     func userStartSearchAdress(with searchText: String) {
