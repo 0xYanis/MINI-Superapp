@@ -61,11 +61,6 @@ final class ProfileTableCell: UITableViewCell {
             make.centerY.equalToSuperview()
             make.left.equalTo(iconContainer.snp.right).offset(15)
         }
-        
-        switcher.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.right.equalToSuperview().inset(15)
-        }
     }
     
     override func prepareForReuse() {
@@ -79,8 +74,8 @@ final class ProfileTableCell: UITableViewCell {
         iconContainer.backgroundColor = UIColor(hex: data.iconBackground)
         iconImageView.image = UIImage(systemName: data.icon ?? "")
         label.text = data.title
-        if data.isToggling {
-            switcher.isHidden = false
+        if data.type == .notifications {
+            addSwitcher()
             accessoryType = .none
             selectionStyle = .none
         }
@@ -89,15 +84,21 @@ final class ProfileTableCell: UITableViewCell {
 }
 
 private extension ProfileTableCell {
+    
     func initialize() {
         contentView.addSubview(label)
         contentView.addSubview(iconContainer)
-        contentView.addSubview(switcher)
         iconContainer.addSubview(iconImageView)
-        
-        switcher.isHidden = true
         contentView.clipsToBounds = true
         accessoryType = .disclosureIndicator
+    }
+    
+    func addSwitcher() {
+        contentView.addSubview(switcher)
+        switcher.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.right.equalToSuperview().inset(15)
+        }
     }
     
 }

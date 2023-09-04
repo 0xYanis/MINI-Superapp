@@ -85,7 +85,7 @@ private extension ProfileViewController {
             title: "Изм.",
             style: .plain,
             target: self,
-            action: #selector(changeButtonAction)
+            action: #selector(showPhotoPicker)
         )
     }
     
@@ -119,7 +119,7 @@ private extension ProfileViewController {
         }
     }
     
-    @objc func changeButtonAction() {
+    @objc func showPhotoPicker() {
         guard let sheet = photoPicker.sheetPresentationController else { return }
         photoPicker.isModalInPresentation = true
         sheet.detents = [.medium(), .large()]

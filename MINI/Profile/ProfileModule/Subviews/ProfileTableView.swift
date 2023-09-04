@@ -27,6 +27,7 @@ final class ProfileTableView: MiTableView {
 private extension ProfileTableView {
     
     func initialize() {
+        sectionHeaderTopPadding = 0
         dataSource = self
         delegate = self
         backgroundColor = .clear
@@ -94,7 +95,6 @@ extension ProfileTableView: UITableViewDataSource {
         )
         self.profileHeader = header
         if section == 0 {
-            sectionHeaderTopPadding = 0
             return header
         } else {
             return nil

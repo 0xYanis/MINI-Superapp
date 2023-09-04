@@ -66,7 +66,6 @@ extension ProfilePresenter: ProfilePresenterProtocol {
     }
     
     func userWantToLogout() {
-        //interactor.сохрани состояние
         interactor.logout()
         router.userWantToLogout()
     }

@@ -32,25 +32,24 @@ final class ProfileInteractor: ProfileInteractorProtocol {
         self.fbAuthManager = FBAuthManager()
         self.fbStorageManager = FBStorageManager()
         self.fbFirestoreManager = FBFirestoreManager()
+        getUserData()
     }
     
     func viewDidLoaded() {
-        getUserData()
+        
     }
     
     func getUserData() {
         let uid = UserDefaults.standard.string(forKey: "uid")
         DispatchQueue.global().async {
-            self.fbFirestoreManager?.getUserData(uid: uid) { result in
+            self.fbFirestoreManager?.getUserData(uid: uid) { [weak self] result in
                 guard
+                    let self = self,
                     let name = result["name"] as? String,
                     let address = result["address"] as? String
                 else { return }
                 self.userName = name.capitalized
                 self.userAddress = address
-                DispatchQueue.main.async {
-                    self.presenter?.updateView()
-                }
             }
         }
     }
