@@ -76,7 +76,7 @@ extension GroceryPresenter: GroceryPresenterProtocol {
     }
     
     func userDidTapCart() {
-        router.goToCartView()
+        ///
     }
     
     func userDidTapSearchProduct() {

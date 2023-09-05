@@ -11,7 +11,6 @@ protocol GroceryRouterProtocol: AnyObject {
     func goToDetailCategory(with id: Int)
     func goToSearchView()
     func goToMapView()
-    func goToCartView()
 }
 
 final class GroceryRouter: GroceryRouterProtocol {
@@ -31,11 +30,6 @@ final class GroceryRouter: GroceryRouterProtocol {
     func goToMapView() {
         let mapView = MapBuilder.build()
         open(mapView, state: .push)
-    }
-    
-    func goToCartView() {
-        let cartView = CartBuilder.build()
-        open(cartView, state: .push)
     }
     
     private func open(_ module: UIViewController, state: NavigationState) {

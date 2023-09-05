@@ -17,6 +17,7 @@ final class BaseTabBarController: UITabBarController {
 }
 
 private extension BaseTabBarController {
+    
     func initialize() {
         addViewControllers()
         createBorder()
@@ -33,6 +34,10 @@ private extension BaseTabBarController {
                 AviaBuilder.build(),
                 barTitle: "tickets_tabbar".localized,
                 image: "airplane"),
+            createVC(
+                CartBuilder.build(),
+                barTitle: "Корзина",
+                image: "cart.fill"),
             createVC(
                 GroceryBuilder.build(),
                 barTitle: "grocery_tabbar".localized,

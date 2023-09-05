@@ -181,15 +181,12 @@
 		09EA1CB12A962DD000A18B41 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EA1CB02A962DD000A18B41 /* Message.swift */; };
 		09EA1CB32A96309C00A18B41 /* SupportBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EA1CB22A96309C00A18B41 /* SupportBuilder.swift */; };
 		09EA1CB52A9631AB00A18B41 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EA1CB42A9631AB00A18B41 /* Date+Extension.swift */; };
-		09F2AE722A52FD2100E02404 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F2AE712A52FD2100E02404 /* CartViewController.swift */; };
-		09F2AE742A52FD2E00E02404 /* CartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F2AE732A52FD2E00E02404 /* CartPresenter.swift */; };
-		09F2AE762A52FD3400E02404 /* CartRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F2AE752A52FD3400E02404 /* CartRouter.swift */; };
-		09F2AE782A52FD3C00E02404 /* CartInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F2AE772A52FD3C00E02404 /* CartInteractor.swift */; };
-		09F2AE7A2A52FD4600E02404 /* CartBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F2AE792A52FD4600E02404 /* CartBuilder.swift */; };
-		09F2AE7C2A52FD5F00E02404 /* CartEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F2AE7B2A52FD5F00E02404 /* CartEntity.swift */; };
-		09F2AE7F2A532F5000E02404 /* CartEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F2AE7E2A532F5000E02404 /* CartEmptyView.swift */; };
-		09F2AE812A532F5900E02404 /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F2AE802A532F5900E02404 /* CartView.swift */; };
-		09F2AE852A53470C00E02404 /* emptyCart.json in Resources */ = {isa = PBXBuildFile; fileRef = 09F2AE842A53470C00E02404 /* emptyCart.json */; };
+		09EE2F5C2AA728F0003F08E3 /* CartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EE2F562AA728F0003F08E3 /* CartPresenter.swift */; };
+		09EE2F5D2AA728F0003F08E3 /* CartRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EE2F572AA728F0003F08E3 /* CartRouter.swift */; };
+		09EE2F5E2AA728F0003F08E3 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EE2F582AA728F0003F08E3 /* CartViewController.swift */; };
+		09EE2F5F2AA728F0003F08E3 /* CartBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EE2F592AA728F0003F08E3 /* CartBuilder.swift */; };
+		09EE2F602AA728F0003F08E3 /* CartInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EE2F5A2AA728F0003F08E3 /* CartInteractor.swift */; };
+		09EE2F612AA728F0003F08E3 /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EE2F5B2AA728F0003F08E3 /* Cart.swift */; };
 		09F5BFD72A1285F500BC3B7C /* BankCardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F5BFD62A1285F500BC3B7C /* BankCardService.swift */; };
 		09F5BFD92A12880000BC3B7C /* BankTemplateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F5BFD82A12880000BC3B7C /* BankTemplateService.swift */; };
 		09F5BFDB2A1288A300BC3B7C /* BankTransactionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F5BFDA2A1288A300BC3B7C /* BankTransactionService.swift */; };
@@ -403,15 +400,12 @@
 		09EA1CB02A962DD000A18B41 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		09EA1CB22A96309C00A18B41 /* SupportBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportBuilder.swift; sourceTree = "<group>"; };
 		09EA1CB42A9631AB00A18B41 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
-		09F2AE712A52FD2100E02404 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
-		09F2AE732A52FD2E00E02404 /* CartPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartPresenter.swift; sourceTree = "<group>"; };
-		09F2AE752A52FD3400E02404 /* CartRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartRouter.swift; sourceTree = "<group>"; };
-		09F2AE772A52FD3C00E02404 /* CartInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartInteractor.swift; sourceTree = "<group>"; };
-		09F2AE792A52FD4600E02404 /* CartBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartBuilder.swift; sourceTree = "<group>"; };
-		09F2AE7B2A52FD5F00E02404 /* CartEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartEntity.swift; sourceTree = "<group>"; };
-		09F2AE7E2A532F5000E02404 /* CartEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartEmptyView.swift; sourceTree = "<group>"; };
-		09F2AE802A532F5900E02404 /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
-		09F2AE842A53470C00E02404 /* emptyCart.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = emptyCart.json; sourceTree = "<group>"; };
+		09EE2F562AA728F0003F08E3 /* CartPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartPresenter.swift; sourceTree = "<group>"; };
+		09EE2F572AA728F0003F08E3 /* CartRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartRouter.swift; sourceTree = "<group>"; };
+		09EE2F582AA728F0003F08E3 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
+		09EE2F592AA728F0003F08E3 /* CartBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartBuilder.swift; sourceTree = "<group>"; };
+		09EE2F5A2AA728F0003F08E3 /* CartInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartInteractor.swift; sourceTree = "<group>"; };
+		09EE2F5B2AA728F0003F08E3 /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
 		09F5BFD62A1285F500BC3B7C /* BankCardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankCardService.swift; sourceTree = "<group>"; };
 		09F5BFD82A12880000BC3B7C /* BankTemplateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTemplateService.swift; sourceTree = "<group>"; };
 		09F5BFDA2A1288A300BC3B7C /* BankTransactionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTransactionService.swift; sourceTree = "<group>"; };
@@ -586,6 +580,7 @@
 				0910961129DB332600338D22 /* Application */,
 				090BAB8B2A029889006AE8F9 /* AviaTickets */,
 				09F86C5829F6FD1200307432 /* Bank */,
+				09EE2F4F2AA7289F003F08E3 /* Cart */,
 				099089E12A1399F800EE00DA /* Grocery */,
 				09BFC9392A1B4C4F00C8505B /* Profile */,
 				09F86C5929F6FD1B00307432 /* Login */,
@@ -828,7 +823,6 @@
 			isa = PBXGroup;
 			children = (
 				090C1E6D2A9DF68000E75464 /* MapModule */,
-				09F2AE702A52FD0D00E02404 /* CartModule */,
 				09044FA72A444AB500432A3C /* GSearchModule */,
 				099089EC2A139A6000EE00DA /* GroceryModule */,
 				097A80632A337DF500B5CF3A /* CategoryModule */,
@@ -1040,34 +1034,23 @@
 			path = SupportModule;
 			sourceTree = "<group>";
 		};
+		09EE2F4F2AA7289F003F08E3 /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+				09EE2F582AA728F0003F08E3 /* CartViewController.swift */,
+				09EE2F562AA728F0003F08E3 /* CartPresenter.swift */,
+				09EE2F572AA728F0003F08E3 /* CartRouter.swift */,
+				09EE2F592AA728F0003F08E3 /* CartBuilder.swift */,
+				09EE2F5A2AA728F0003F08E3 /* CartInteractor.swift */,
+				09EE2F5B2AA728F0003F08E3 /* Cart.swift */,
+			);
+			path = Cart;
+			sourceTree = "<group>";
+		};
 		09EF874F2A24C0D000EC9D7A /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
 				09DC67AD2A780CA500AC08A4 /* AviaViewLayoutBuilder.swift */,
-			);
-			path = Subviews;
-			sourceTree = "<group>";
-		};
-		09F2AE702A52FD0D00E02404 /* CartModule */ = {
-			isa = PBXGroup;
-			children = (
-				09F2AE7D2A532EDF00E02404 /* Subviews */,
-				09F2AE712A52FD2100E02404 /* CartViewController.swift */,
-				09F2AE732A52FD2E00E02404 /* CartPresenter.swift */,
-				09F2AE752A52FD3400E02404 /* CartRouter.swift */,
-				09F2AE772A52FD3C00E02404 /* CartInteractor.swift */,
-				09F2AE792A52FD4600E02404 /* CartBuilder.swift */,
-				09F2AE7B2A52FD5F00E02404 /* CartEntity.swift */,
-			);
-			path = CartModule;
-			sourceTree = "<group>";
-		};
-		09F2AE7D2A532EDF00E02404 /* Subviews */ = {
-			isa = PBXGroup;
-			children = (
-				09F2AE7E2A532F5000E02404 /* CartEmptyView.swift */,
-				09F2AE802A532F5900E02404 /* CartView.swift */,
-				09F2AE842A53470C00E02404 /* emptyCart.json */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -1336,7 +1319,6 @@
 				0910960729DB32F400338D22 /* Assets.xcassets in Resources */,
 				09ACB2812A614C4200A7F139 /* rocket.json in Resources */,
 				095B1C6D2A39BD1A00EF6828 /* LaunchScreen.storyboard in Resources */,
-				09F2AE852A53470C00E02404 /* emptyCart.json in Resources */,
 				0913C7E22A9687FC005C887D /* GoogleService-Info.plist in Resources */,
 				09E24C132A1227C200A91F74 /* cardsColor.xcassets in Resources */,
 				09ABE0082A143447009DB57B /* DefaultFood.xcassets in Resources */,
@@ -1370,6 +1352,7 @@
 				090C1E662A9CA42E00E75464 /* FBAuthManager.swift in Sources */,
 				09FC394129FABF6B00B2D97E /* AllTemplatesEntity.swift in Sources */,
 				099D4F8329F72AFD0002C24A /* NewTemplateRouter.swift in Sources */,
+				09EE2F602AA728F0003F08E3 /* CartInteractor.swift in Sources */,
 				099D4F6B29F71A420002C24A /* CardInteractor.swift in Sources */,
 				09BFC93C2A1B4C7400C8505B /* ProfileViewController.swift in Sources */,
 				09B5662D2A937EE700AFF98E /* PayoutsCell.swift in Sources */,
@@ -1395,6 +1378,7 @@
 				09EA1CB52A9631AB00A18B41 /* Date+Extension.swift in Sources */,
 				09FB82522A37286800CEF8C1 /* ProductBuilder.swift in Sources */,
 				09F5BFD92A12880000BC3B7C /* BankTemplateService.swift in Sources */,
+				09EE2F612AA728F0003F08E3 /* Cart.swift in Sources */,
 				09FB82542A37287100CEF8C1 /* ProductEntity.swift in Sources */,
 				09044FB32A444AF000432A3C /* GSearchEnity.swift in Sources */,
 				09A04B0C2AA6544600904950 /* FBUserRemover.swift in Sources */,
@@ -1408,11 +1392,11 @@
 				09ABE0062A142805009DB57B /* GroceryViewCell.swift in Sources */,
 				09565EE42A2F69E6007A2DAC /* CardBackDetailView.swift in Sources */,
 				090AE1E329FBAA200092515D /* TemplateBuilder.swift in Sources */,
+				09EE2F5D2AA728F0003F08E3 /* CartRouter.swift in Sources */,
 				09044FAF2A444ADF00432A3C /* GSearchInteractor.swift in Sources */,
 				097ACF202A2E1E3D0023106A /* RegisterViewController.swift in Sources */,
 				090BAB8E2A0298F5006AE8F9 /* AviaViewController.swift in Sources */,
 				097A806D2A337E3600B5CF3A /* CategoryBuilder.swift in Sources */,
-				09F2AE7C2A52FD5F00E02404 /* CartEntity.swift in Sources */,
 				099D4F7B29F723090002C24A /* NewCardBuilder.swift in Sources */,
 				093932462A25E7E400F813A2 /* AviaShowplaceEntity.swift in Sources */,
 				09B02C792A8EC7E800F474E9 /* PayoutsBuilder.swift in Sources */,
@@ -1426,6 +1410,7 @@
 				09E9E81929EAE9410084416B /* LoginViewController.swift in Sources */,
 				097ACF222A2E1E470023106A /* RegisterPresenter.swift in Sources */,
 				096B4B272A1DEEC700E5C65E /* APIService.swift in Sources */,
+				09EE2F5C2AA728F0003F08E3 /* CartPresenter.swift in Sources */,
 				09FC394A29FAD3ED00B2D97E /* TransactionInteractor.swift in Sources */,
 				09E24C152A1228D000A91F74 /* BankTemplateEntity.swift in Sources */,
 				090AE1DB29FBAA020092515D /* TemplateViewController.swift in Sources */,
@@ -1445,7 +1430,6 @@
 				090BAB922A02991D006AE8F9 /* AviaInteractor.swift in Sources */,
 				09E9E81229EAE6030084416B /* UILabel+Extension.swift in Sources */,
 				09632FCE29ED8A8800DB2641 /* BankTemplateSet.swift in Sources */,
-				09F2AE762A52FD3400E02404 /* CartRouter.swift in Sources */,
 				09E9E83029EB24840084416B /* UIAlertController+Extension.swift in Sources */,
 				0959E5842AA5BE7C00A3777C /* PlacemarkService.swift in Sources */,
 				09FC394C29FAD3F400B2D97E /* TransactionRouter.swift in Sources */,
@@ -1471,11 +1455,8 @@
 				099D4F6D29F71A530002C24A /* CardRouter.swift in Sources */,
 				09044FAD2A444AD800432A3C /* GSearchRouter.swift in Sources */,
 				09632FCC29ED8A7D00DB2641 /* BankCardSet.swift in Sources */,
-				09F2AE7F2A532F5000E02404 /* CartEmptyView.swift in Sources */,
 				09BFC9422A1B4C9600C8505B /* ProfileBuilder.swift in Sources */,
-				09F2AE722A52FD2100E02404 /* CartViewController.swift in Sources */,
 				09F5BFD72A1285F500BC3B7C /* BankCardService.swift in Sources */,
-				09F2AE7A2A52FD4600E02404 /* CartBuilder.swift in Sources */,
 				09EA1CAF2A962DBE00A18B41 /* SupportPresenter.swift in Sources */,
 				09FB82502A37286000CEF8C1 /* ProductInteractor.swift in Sources */,
 				099089E32A139A2D00EE00DA /* GroceryViewController.swift in Sources */,
@@ -1491,6 +1472,7 @@
 				093D02AB2AA0EFE30032D812 /* FBFirestoreManager.swift in Sources */,
 				090AE1E529FBAA2F0092515D /* TemplateEntity.swift in Sources */,
 				09B02C802A8ED29300F474E9 /* EmptyPayoutsView.swift in Sources */,
+				09EE2F5F2AA728F0003F08E3 /* CartBuilder.swift in Sources */,
 				092F67A92A3CCE1B00E0F2B9 /* ProfileTableView.swift in Sources */,
 				099D4F6929F71A380002C24A /* CardPresenter.swift in Sources */,
 				09E9E81B29EAE94B0084416B /* LoginPresenter.swift in Sources */,
@@ -1511,14 +1493,12 @@
 				09FB82472A3714C300CEF8C1 /* CategoryHeader.swift in Sources */,
 				09F86C5729F6F8A000307432 /* UITabBarController+Extension.swift in Sources */,
 				090AE1DD29FBAA080092515D /* TemplatePresenter.swift in Sources */,
-				09F2AE812A532F5900E02404 /* CartView.swift in Sources */,
 				09FC395029FAD40500B2D97E /* TransactionEntity.swift in Sources */,
 				09044FB12A444AE500432A3C /* GSearchBuilder.swift in Sources */,
 				09DF83792A38BB8F00ECAEB6 /* LaunchController.swift in Sources */,
 				09F922692A1EA234009684F2 /* String+Extension.swift in Sources */,
 				09FB825B2A3766A600CEF8C1 /* CategoryCartView.swift in Sources */,
 				090C1E622A9C969800E75464 /* UICollectionView+Extension.swift in Sources */,
-				09F2AE782A52FD3C00E02404 /* CartInteractor.swift in Sources */,
 				097E039F29EC449900CE2A6F /* BankInteractor.swift in Sources */,
 				09E81C682A169CBA008B313B /* GroceryEntity.swift in Sources */,
 				09FC394829FAD3E300B2D97E /* TransactionPresenter.swift in Sources */,
@@ -1528,7 +1508,6 @@
 				099D4F7729F722F50002C24A /* NewCardRouter.swift in Sources */,
 				09E9E81729EAE9360084416B /* LoginBuilder.swift in Sources */,
 				099089E52A139A3A00EE00DA /* GroceryPresenter.swift in Sources */,
-				09F2AE742A52FD2E00E02404 /* CartPresenter.swift in Sources */,
 				09FC393F29FABF5B00B2D97E /* AllTemplatesBuilder.swift in Sources */,
 				09C3CB412A2DF340001731D1 /* BankTableView.swift in Sources */,
 				09FC393B29FABF4A00B2D97E /* AllTemplatesInteractor.swift in Sources */,
@@ -1546,6 +1525,7 @@
 				091335D42A405CC1005DDAEA /* MINIColorExtension.swift in Sources */,
 				0910960029DB32F000338D22 /* SceneDelegate.swift in Sources */,
 				094388EB2A56F0A200027D59 /* BankViewDetails.swift in Sources */,
+				09EE2F5E2AA728F0003F08E3 /* CartViewController.swift in Sources */,
 				09B5662B2A937D3100AFF98E /* PayoutsView.swift in Sources */,
 				099D4F8729F72B0F0002C24A /* NewTemplateEntity.swift in Sources */,
 				097A80692A337E2000B5CF3A /* CategoryInteractor.swift in Sources */,
