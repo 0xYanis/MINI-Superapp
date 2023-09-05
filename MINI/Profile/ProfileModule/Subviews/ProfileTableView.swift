@@ -27,6 +27,8 @@ final class ProfileTableView: MiTableView {
 private extension ProfileTableView {
     
     func initialize() {
+        rowHeight = 44
+        estimatedRowHeight = 44
         sectionHeaderTopPadding = 0
         dataSource = self
         delegate = self

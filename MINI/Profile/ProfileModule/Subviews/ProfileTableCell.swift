@@ -41,8 +41,8 @@ final class ProfileTableCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        let size: CGFloat = contentView.frame.height - 12
-        let imageSize: CGFloat = size/1.5
+        let size: CGFloat = 30
+        let imageSize: CGFloat = 18
         
         iconContainer.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
@@ -52,7 +52,8 @@ final class ProfileTableCell: UITableViewCell {
         }
         
         iconImageView.snp.makeConstraints { make in
-            make.center.equalTo(iconContainer)
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview()
             make.width.equalTo(imageSize)
             make.height.equalTo(imageSize)
         }
