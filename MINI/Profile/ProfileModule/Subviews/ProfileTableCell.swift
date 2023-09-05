@@ -28,7 +28,6 @@ final class ProfileTableCell: UITableViewCell {
         label.numberOfLines = 1
         return label
     }()
-    private lazy var switcher = UISwitch()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -42,7 +41,7 @@ final class ProfileTableCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         let size: CGFloat = 30
-        let imageSize: CGFloat = 18
+        let imageSize: CGFloat = 20
         
         iconContainer.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
@@ -66,20 +65,15 @@ final class ProfileTableCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        iconContainer.backgroundColor = nil
         iconImageView.image = nil
         label.text = nil
-        iconContainer.backgroundColor = nil
     }
     
     func configure(with data: ProfileOption) {
         iconContainer.backgroundColor = UIColor(hex: data.iconBackground)
         iconImageView.image = UIImage(systemName: data.icon ?? "")
         label.text = data.title
-        if data.type == .notifications {
-            addSwitcher()
-            accessoryType = .none
-            selectionStyle = .none
-        }
     }
     
 }
@@ -92,14 +86,6 @@ private extension ProfileTableCell {
         iconContainer.addSubview(iconImageView)
         contentView.clipsToBounds = true
         accessoryType = .disclosureIndicator
-    }
-    
-    func addSwitcher() {
-        contentView.addSubview(switcher)
-        switcher.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.right.equalToSuperview().inset(15)
-        }
     }
     
 }

@@ -42,7 +42,9 @@ final class ProfileInteractor: ProfileInteractorProtocol {
     // MARK: - Public methods
     
     public func viewDidLoaded() {
-        getUserData()
+        DispatchQueue.global().async {
+            self.getUserData()
+        }
     }
     
     public func userSetAvatar(_ imageData: Data) {

@@ -21,7 +21,7 @@ struct ProfileSection {
         ]),
         ProfileSection(title: "", options: []),
         ProfileSection(title: "Настройки", options: [
-            ProfileOption(title: "Уведомления", icon: "bell.badge.fill", iconBackground: "#800080", isToggling: true, type: .notifications),
+            ProfileOption(title: "Уведомления", icon: "bell.badge.fill", iconBackground: "#800080", type: .notifications),
             ProfileOption(title: "Язык", icon: "globe", iconBackground: "#FF5070", enumeration: ["Русский","English"], type: .language),
             ProfileOption(title: "Почта", icon: "mail.fill", iconBackground: "#1E81B0", type: .email),
             ProfileOption(title: "Пароль", icon: "lock", iconBackground: "#FFBF49", type: .password),
@@ -41,7 +41,6 @@ struct ProfileOption {
     var title: String
     var icon: String?
     var iconBackground: String
-    var isToggling: Bool = false
     var enumeration: [String] = []
     var type: ProfileDetails
 }
