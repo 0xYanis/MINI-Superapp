@@ -34,7 +34,7 @@ final class GroceryRouter: GroceryRouterProtocol {
     }
     
     func goToCart() {
-        view?.tabBarController?.selectedIndex = 2
+        view?.tabBarController?.selectedIndex = TabItem.cart.rawValue
     }
     
     private func open(_ module: UIViewController, state: NavigationState) {

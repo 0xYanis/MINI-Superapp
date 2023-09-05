@@ -7,6 +7,14 @@
 
 import UIKit
 
+enum TabItem : Int {
+    case bank    = 0
+    case tickets = 1
+    case cart    = 2
+    case grocery = 3
+    case profile = 4
+}
+
 final class BaseTabBarController: UITabBarController {
     
     override func viewDidLoad() {
