@@ -23,11 +23,11 @@ final class ProfilePresenter {
     
     weak var view: ProfileViewProtocol?
     var router: ProfileRouterProtocol
-    var interactor: ProfileInteractor
+    var interactor: ProfileInteractorProtocol
     
     init(
         router: ProfileRouterProtocol,
-        interactor: ProfileInteractor
+        interactor: ProfileInteractorProtocol
     ) {
         self.router = router
         self.interactor = interactor

@@ -8,6 +8,7 @@
 import Foundation
 
 protocol ProfileInteractorProtocol: AnyObject {
+    var profileData: [ProfileSection] { get }
     var userName: String { get }
     var userAddress: String { get }
     
@@ -19,46 +20,36 @@ protocol ProfileInteractorProtocol: AnyObject {
 final class ProfileInteractor: ProfileInteractorProtocol {
     
     weak var presenter: ProfilePresenterProtocol?
-    private var fbAuthManager: FBAuthProtocol?
-    private var fbStorageManager: FBStorageProtocol?
-    private var fbFirestoreManager: FBFirestoreProtocol?
     
-    var userName: String = ""
-    var userAddress: String = ""
-    var profileData: [ProfileSection] = []
+    private var fbAuthManager: FBAuthProtocol
+    private var fbStorageManager: FBStorageProtocol
+    private var fbFirestoreManager: FBFirestoreProtocol
     
-    init() {
-        self.profileData = ProfileSection.data
-        self.fbAuthManager = FBAuthManager()
-        self.fbStorageManager = FBStorageManager()
-        self.fbFirestoreManager = FBFirestoreManager()
+    public var userName: String = ""
+    public var userAddress: String = ""
+    public var profileData: [ProfileSection] = ProfileSection.data
+    
+    init(
+        fbAuthManager: FBAuthProtocol,
+        fbStorageManager: FBStorageProtocol,
+        fbFirestoreManager: FBFirestoreProtocol
+    ) {
+        self.fbAuthManager = fbAuthManager
+        self.fbStorageManager = fbStorageManager
+        self.fbFirestoreManager = fbFirestoreManager
+    }
+    
+    // MARK: - Public methods
+    
+    public func viewDidLoaded() {
         getUserData()
     }
     
-    func viewDidLoaded() {
-        
-    }
-    
-    func getUserData() {
-        let uid = UserDefaults.standard.string(forKey: "uid")
+    public func userSetAvatar(_ imageData: Data) {
         DispatchQueue.global().async {
-            self.fbFirestoreManager?.getUserData(uid: uid) { [weak self] result in
-                guard
-                    let self = self,
-                    let name = result["name"] as? String,
-                    let address = result["address"] as? String
-                else { return }
-                self.userName = name.capitalized
-                self.userAddress = address
-            }
-        }
-    }
-    
-    func userSetAvatar(_ imageData: Data) {
-        DispatchQueue.global().async {
-            guard let uid = self.fbAuthManager?.currentUser?.uid
+            guard let uid = self.fbAuthManager.currentUser?.uid
             else { return }
-            self.fbStorageManager?.uploadAvatar(
+            self.fbStorageManager.uploadAvatar(
                 imageData,
                 userID: uid
             ) { [weak self] result in
@@ -73,16 +64,32 @@ final class ProfileInteractor: ProfileInteractorProtocol {
         }
     }
     
-    func logout() {
-        fbAuthManager?.signOut()
+    public func logout() {
+        fbAuthManager.signOut()
     }
     
-}
-
-private extension ProfileInteractor {
+    // MARK: - Private methods
     
-    func updateURLAvatar(_ url: URL) {
+    private func updateURLAvatar(_ url: URL) {
         UserDefaults.standard.set(url, forKey: "avatarUrl")
+    }
+    
+    private func getUserData() {
+        let uid = UserDefaults.standard.string(forKey: "uid")
+        DispatchQueue.global().async {
+            self.fbFirestoreManager.getUserData(uid: uid) { [weak self] result in
+                guard
+                    let self = self,
+                    let name = result["name"] as? String,
+                    let address = result["address"] as? String
+                else { return }
+                self.userName = name.capitalized
+                self.userAddress = address
+                DispatchQueue.main.async {
+                    self.presenter?.updateView()
+                }
+            }
+        }
     }
     
 }
