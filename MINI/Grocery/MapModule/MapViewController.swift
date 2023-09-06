@@ -24,7 +24,9 @@ final class MapViewController: UIViewController {
     
     // MARK: - Private properties
     
-    private lazy var mapView     = MKMapView()
+    private var mapView: MKMapView!
+    private var trackerButton: MKUserTrackingBarButtonItem!
+    
     private lazy var panelView   = FloatingPanelController()
     private lazy var addressView = AdressViewController()
     
@@ -105,11 +107,18 @@ private extension MapViewController {
         navigationItem.title = "Адрес"
         navigationItem.largeTitleDisplayMode = .never
         createMapView()
+        createMKButtons()
     }
     
     func createMapView() {
+        mapView = MKMapView()
         mapView.showsUserLocation = true
         view.addSubview(mapView)
+    }
+    
+    func createMKButtons() {
+        trackerButton = MKUserTrackingBarButtonItem(mapView: mapView)
+        navigationItem.rightBarButtonItem = trackerButton
     }
     
     func showFloatingPanel() {
