@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FloatingPanel
 
 protocol CartViewProtocol: AnyObject {
 	
@@ -19,9 +20,8 @@ final class CartViewController: UIViewController {
     
     // MARK: - Private properties
     
-    private var collectionView: UICollectionView!
-    private var leftButton: UIBarButtonItem!
-    private var rightButton: UIBarButtonItem!
+    private let tableView = CartTableView()
+    private lazy var floatingPanel = FloatingPanelController()
 	
     // MARK: - Lifecycle
     
@@ -48,7 +48,44 @@ extension CartViewController: CartViewProtocol {
 private extension CartViewController {
     
     func initialize() {
-        view.backgroundColor = .back2MINI
+        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationItem.leftBarButtonItem  = clearButton
+        navigationItem.rightBarButtonItem = shareButton
+        view.backgroundColor = .secondarySystemBackground
+        navigationItem.title = "Корзина"
+        configureTableView()
+    }
+    
+    func configureTableView() {
+        tableView.presenter = presenter
+        view.addSubview(tableView)
+        tableView.frame = view.bounds
+    }
+    
+    var clearButton: UIBarButtonItem {
+        return UIBarButtonItem(
+            image: .init(systemName: "trash"),
+            style: .plain,
+            target: self,
+            action: #selector(clearAction)
+        )
+    }
+    
+    var shareButton: UIBarButtonItem {
+        return UIBarButtonItem(
+            image: .init(systemName: "square.and.arrow.up"),
+            style: .plain,
+            target: self,
+            action: #selector(shareAction)
+        )
+    }
+    
+    @objc func clearAction() {
+        
+    }
+    
+    @objc func shareAction() {
+        
     }
     
 }

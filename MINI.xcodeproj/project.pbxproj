@@ -163,6 +163,8 @@
 		09E7C7CB2A8A2317006421A6 /* ProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E7C7CA2A8A2317006421A6 /* ProfileHeader.swift */; };
 		09E81C682A169CBA008B313B /* GroceryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E81C672A169CBA008B313B /* GroceryEntity.swift */; };
 		09E81C6A2A169D1D008B313B /* GroceryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E81C692A169D1D008B313B /* GroceryService.swift */; };
+		09E88E832AA8BE6C000B3E43 /* CartTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E88E822AA8BE6C000B3E43 /* CartTableView.swift */; };
+		09E88E852AA8C045000B3E43 /* PurchaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E88E842AA8C045000B3E43 /* PurchaseCell.swift */; };
 		09E9E81229EAE6030084416B /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E9E81129EAE6030084416B /* UILabel+Extension.swift */; };
 		09E9E81729EAE9360084416B /* LoginBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E9E81629EAE9360084416B /* LoginBuilder.swift */; };
 		09E9E81929EAE9410084416B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E9E81829EAE9410084416B /* LoginViewController.swift */; };
@@ -381,6 +383,8 @@
 		09E7C7CA2A8A2317006421A6 /* ProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeader.swift; sourceTree = "<group>"; };
 		09E81C672A169CBA008B313B /* GroceryEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryEntity.swift; sourceTree = "<group>"; };
 		09E81C692A169D1D008B313B /* GroceryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryService.swift; sourceTree = "<group>"; };
+		09E88E822AA8BE6C000B3E43 /* CartTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableView.swift; sourceTree = "<group>"; };
+		09E88E842AA8C045000B3E43 /* PurchaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseCell.swift; sourceTree = "<group>"; };
 		09E9E81129EAE6030084416B /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		09E9E81629EAE9360084416B /* LoginBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBuilder.swift; sourceTree = "<group>"; };
 		09E9E81829EAE9410084416B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -995,6 +999,7 @@
 		09E88E802AA89959000B3E43 /* CartModule */ = {
 			isa = PBXGroup;
 			children = (
+				09E88E812AA8BE50000B3E43 /* Subviews */,
 				09EE2F582AA728F0003F08E3 /* CartViewController.swift */,
 				09EE2F562AA728F0003F08E3 /* CartPresenter.swift */,
 				09EE2F572AA728F0003F08E3 /* CartRouter.swift */,
@@ -1003,6 +1008,15 @@
 				09EE2F5B2AA728F0003F08E3 /* Cart.swift */,
 			);
 			path = CartModule;
+			sourceTree = "<group>";
+		};
+		09E88E812AA8BE50000B3E43 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				09E88E822AA8BE6C000B3E43 /* CartTableView.swift */,
+				09E88E842AA8C045000B3E43 /* PurchaseCell.swift */,
+			);
+			path = Subviews;
 			sourceTree = "<group>";
 		};
 		09E9E81529EAE8F50084416B /* LoginModule */ = {
@@ -1399,6 +1413,7 @@
 				09EE2F5D2AA728F0003F08E3 /* CartRouter.swift in Sources */,
 				09044FAF2A444ADF00432A3C /* GSearchInteractor.swift in Sources */,
 				097ACF202A2E1E3D0023106A /* RegisterViewController.swift in Sources */,
+				09E88E852AA8C045000B3E43 /* PurchaseCell.swift in Sources */,
 				090BAB8E2A0298F5006AE8F9 /* AviaViewController.swift in Sources */,
 				097A806D2A337E3600B5CF3A /* CategoryBuilder.swift in Sources */,
 				099D4F7B29F723090002C24A /* NewCardBuilder.swift in Sources */,
@@ -1473,6 +1488,7 @@
 				09E24C112A12239A00A91F74 /* BankCardEntity.swift in Sources */,
 				09B02C7B2A8EC84B00F474E9 /* PayoutsRouter.swift in Sources */,
 				099D4F7529F722EC0002C24A /* NewCardPresenter.swift in Sources */,
+				09E88E832AA8BE6C000B3E43 /* CartTableView.swift in Sources */,
 				093D02AB2AA0EFE30032D812 /* FBFirestoreManager.swift in Sources */,
 				090AE1E529FBAA2F0092515D /* TemplateEntity.swift in Sources */,
 				09B02C802A8ED29300F474E9 /* EmptyPayoutsView.swift in Sources */,
