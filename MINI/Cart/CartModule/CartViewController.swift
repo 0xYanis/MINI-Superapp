@@ -13,8 +13,18 @@ protocol CartViewProtocol: AnyObject {
 
 final class CartViewController: UIViewController {
 	
-	var presenter: CartPresenterProtocol?
+    // MARK: - Public properties
+    
+	public var presenter: CartPresenterProtocol?
+    
+    // MARK: - Private properties
+    
+    private var collectionView: UICollectionView!
+    private var leftButton: UIBarButtonItem!
+    private var rightButton: UIBarButtonItem!
 	
+    // MARK: - Lifecycle
+    
 	override func viewDidLoad() {
 		super.viewDidLoad()
         initialize()
@@ -27,14 +37,18 @@ final class CartViewController: UIViewController {
 	
 }
 
+// MARK: - CartViewProtocol
+
 extension CartViewController: CartViewProtocol {
 	
 }
 
+// MARK: - Private methods
+
 private extension CartViewController {
     
     func initialize() {
-        
+        view.backgroundColor = .back2MINI
     }
     
 }

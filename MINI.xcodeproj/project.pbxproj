@@ -992,6 +992,19 @@
 			path = LaunchScreen;
 			sourceTree = "<group>";
 		};
+		09E88E802AA89959000B3E43 /* CartModule */ = {
+			isa = PBXGroup;
+			children = (
+				09EE2F582AA728F0003F08E3 /* CartViewController.swift */,
+				09EE2F562AA728F0003F08E3 /* CartPresenter.swift */,
+				09EE2F572AA728F0003F08E3 /* CartRouter.swift */,
+				09EE2F592AA728F0003F08E3 /* CartBuilder.swift */,
+				09EE2F5A2AA728F0003F08E3 /* CartInteractor.swift */,
+				09EE2F5B2AA728F0003F08E3 /* Cart.swift */,
+			);
+			path = CartModule;
+			sourceTree = "<group>";
+		};
 		09E9E81529EAE8F50084416B /* LoginModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -1035,12 +1048,7 @@
 		09EE2F4F2AA7289F003F08E3 /* Cart */ = {
 			isa = PBXGroup;
 			children = (
-				09EE2F582AA728F0003F08E3 /* CartViewController.swift */,
-				09EE2F562AA728F0003F08E3 /* CartPresenter.swift */,
-				09EE2F572AA728F0003F08E3 /* CartRouter.swift */,
-				09EE2F592AA728F0003F08E3 /* CartBuilder.swift */,
-				09EE2F5A2AA728F0003F08E3 /* CartInteractor.swift */,
-				09EE2F5B2AA728F0003F08E3 /* Cart.swift */,
+				09E88E802AA89959000B3E43 /* CartModule */,
 			);
 			path = Cart;
 			sourceTree = "<group>";
