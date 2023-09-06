@@ -27,7 +27,7 @@ final class BankViewController: UIViewController {
     
     //MARK: - Public properties
     
-    var presenter: BankPresenterProtocol?
+    public var presenter: BankPresenterProtocol?
     
     //MARK: - Private properties
     
@@ -89,9 +89,9 @@ private extension BankViewController {
     func initialize() {
         view.backgroundColor = .back2MINI
         createNavigation(title: "bank_navbar".localized)
-        createTableView()
+        createRefreshControl()
         createBottomSheet()
-        createRefreshControl(scrollView: bankTableView)
+        createTableView()
     }
     
     func createNavigation(title: String) {
@@ -137,23 +137,23 @@ private extension BankViewController {
         addChild(historyTableVC)
         view.addSubview(historyTableVC.view)
         historyTableVC.didMove(toParent: self)
+        
         historyTableVC.presenter = presenter
         historyTableVC.delegate = self
         historyTableVC.view.roundCorners(radius: 30)
+        
+        let offset = tabBarController?.tabBar.frame.height
         historyTableVC.view.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalToSuperview()
             make.height.equalToSuperview()
                 .multipliedBy(0.34)
-                .offset(tabBarController?.tabBar.frame.height ?? 0)
+                .offset(offset ?? 0)
         }
     }
     
-    func createRefreshControl(scrollView: UIScrollView) {
-        refreshControl.addTarget(
-            self,
-            action: #selector(refreshAction),
-            for: .valueChanged)
-        scrollView.refreshControl = refreshControl
+    func createRefreshControl() {
+        refreshControl.addTarget(self, action: #selector(refreshAction), for: .valueChanged)
+        bankTableView.refreshControl = refreshControl
     }
     
 }
