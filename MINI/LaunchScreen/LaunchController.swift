@@ -85,17 +85,21 @@ private extension LaunchController {
     }
     
     func transitionToMainView() {
-        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-           let delegate = windowScene.delegate as? SceneDelegate {
-            let window = UIWindow(windowScene: windowScene)
-            
-            self.authManager.auth(window)
-            
-            window.backgroundColor = .backMINI
-            window.tintColor = .tintMINI
-            delegate.window = window
-            window.makeKeyAndVisible()
-        }
+//        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+//           let delegate = windowScene.delegate as? SceneDelegate {
+//            let window = UIWindow(windowScene: windowScene)
+//
+//            self.authManager.auth(window)
+//
+//            window.backgroundColor = .backMINI
+//            window.tintColor = .tintMINI
+//            delegate.window = window
+//            window.makeKeyAndVisible()
+//        }
+        
+        let onboardingView = OnboardingBuilder.build()
+        onboardingView.modalPresentationStyle = .fullScreen
+        present(onboardingView, animated: false)
     }
     
 }
