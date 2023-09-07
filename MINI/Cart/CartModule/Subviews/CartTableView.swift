@@ -72,15 +72,17 @@ extension CartTableView: UITableViewDelegate {
         return view
     }
     
+    // MARK: Swipes
+    
     func tableView(
         _ tableView: UITableView,
         trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
     ) -> UISwipeActionsConfiguration? {
-        let deleteAction = deleteSwipeAction(for: indexPath.row)
+        let deleteAction = deleteSwipeAction(at: indexPath.row)
         return .init(actions: [deleteAction])
     }
     
-    func deleteSwipeAction(for row: Int) -> UIContextualAction {
+    private func deleteSwipeAction(at row: Int) -> UIContextualAction {
         let action = UIContextualAction(
             style: .destructive,
             title: "Удалить"
@@ -92,17 +94,30 @@ extension CartTableView: UITableViewDelegate {
         return action
     }
     
+    // MARK: ContextMenu
+    
     func tableView(
         _ tableView: UITableView,
         contextMenuConfigurationForRowAt indexPath: IndexPath,
         point: CGPoint
     ) -> UIContextMenuConfiguration? {
-        return UIContextMenuConfiguration(actionProvider: { _ in
-            UIMenu(
-                title: "Контекстное меню",
-                children: []
-            )
+        let contextMenu = UIContextMenuConfiguration(actionProvider:  { [weak self] (actions) -> UIMenu? in
+            guard let self = self else { return nil }
+            let share = self.shareAction(at: indexPath.row)
+            return UIMenu(title: "Контекстное меню", children: [share])
         })
+        
+        return contextMenu
+    }
+
+    
+    private func shareAction(at row: Int) -> UIAction {
+        return UIAction(
+            title: "Поделиться",
+            image: .init(systemName: "square.and.arrow.up")
+        ) { _ in
+            print("share with row: \(row)")
+        }
     }
     
 }
