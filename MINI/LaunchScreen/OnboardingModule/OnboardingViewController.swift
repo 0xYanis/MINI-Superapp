@@ -11,13 +11,13 @@ protocol OnboardingViewProtocol: AnyObject {
     
 }
 
-final class OnboardingViewController: UIViewController {
+final class OnboardingViewController: UIPageViewController {
     
     public var presenter: OnboardingPresenterProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
+        
     }
     
 }

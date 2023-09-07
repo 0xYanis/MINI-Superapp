@@ -72,6 +72,9 @@
 		096453462A82CE6E00709821 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096453452A82CE6E00709821 /* PasswordViewController.swift */; };
 		096453482A82CF2700709821 /* PasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096453472A82CF2700709821 /* PasswordPresenter.swift */; };
 		0964534A2A82CF5E00709821 /* PasswordBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096453492A82CF5E00709821 /* PasswordBuilder.swift */; };
+		0964A14C2AAA605C00B2E99E /* ordersAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 0964A14B2AAA605C00B2E99E /* ordersAnimation.json */; };
+		0964A1522AAA63F700B2E99E /* travelAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 0964A1512AAA63F700B2E99E /* travelAnimation.json */; };
+		0964A1542AAA675300B2E99E /* cardAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 0964A1532AAA675300B2E99E /* cardAnimation.json */; };
 		096B4B272A1DEEC700E5C65E /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096B4B262A1DEEC700E5C65E /* APIService.swift */; };
 		096B4B2A2A1DEF3500E5C65E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 096B4B292A1DEF3500E5C65E /* Alamofire */; };
 		097A80652A337E0400B5CF3A /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097A80642A337E0400B5CF3A /* CategoryViewController.swift */; };
@@ -302,6 +305,9 @@
 		096453452A82CE6E00709821 /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
 		096453472A82CF2700709821 /* PasswordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordPresenter.swift; sourceTree = "<group>"; };
 		096453492A82CF5E00709821 /* PasswordBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordBuilder.swift; sourceTree = "<group>"; };
+		0964A14B2AAA605C00B2E99E /* ordersAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ordersAnimation.json; sourceTree = "<group>"; };
+		0964A1512AAA63F700B2E99E /* travelAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = travelAnimation.json; sourceTree = "<group>"; };
+		0964A1532AAA675300B2E99E /* cardAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cardAnimation.json; sourceTree = "<group>"; };
 		096B4B262A1DEEC700E5C65E /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		097A80642A337E0400B5CF3A /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		097A80662A337E1600B5CF3A /* CategoryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPresenter.swift; sourceTree = "<group>"; };
@@ -695,6 +701,16 @@
 			path = PasswordModule;
 			sourceTree = "<group>";
 		};
+		0964A14A2AAA603800B2E99E /* animations */ = {
+			isa = PBXGroup;
+			children = (
+				0964A14B2AAA605C00B2E99E /* ordersAnimation.json */,
+				0964A1512AAA63F700B2E99E /* travelAnimation.json */,
+				0964A1532AAA675300B2E99E /* cardAnimation.json */,
+			);
+			path = animations;
+			sourceTree = "<group>";
+		};
 		097A80632A337DF500B5CF3A /* CategoryModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -952,6 +968,7 @@
 		09BF17002AAA16EE0090389B /* OnboardingModule */ = {
 			isa = PBXGroup;
 			children = (
+				0964A14A2AAA603800B2E99E /* animations */,
 				09BF17012AAA17150090389B /* OnboardingViewController.swift */,
 				09BF17032AAA175D0090389B /* OnboardingPresenter.swift */,
 				09BF17052AAA17AE0090389B /* OnboardingBuilder.swift */,
@@ -1354,6 +1371,9 @@
 			files = (
 				09B566272A936E3700AFF98E /* empty.json in Resources */,
 				09F92CF52A23476300440ACC /* Localizable.strings in Resources */,
+				0964A14C2AAA605C00B2E99E /* ordersAnimation.json in Resources */,
+				0964A1522AAA63F700B2E99E /* travelAnimation.json in Resources */,
+				0964A1542AAA675300B2E99E /* cardAnimation.json in Resources */,
 				09BBA70F2A0E76950020E3C9 /* cardsLogo.xcassets in Resources */,
 				0910960729DB32F400338D22 /* Assets.xcassets in Resources */,
 				09ACB2812A614C4200A7F139 /* rocket.json in Resources */,
