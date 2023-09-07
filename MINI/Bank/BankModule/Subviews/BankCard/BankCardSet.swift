@@ -11,9 +11,11 @@ import SkeletonView
 final class BankCardSet: UITableViewCell, BankTableCellConf {
     
     //MARK: Public properties
+    
     weak var presenter: BankPresenterProtocol?
     
     //MARK: Private properties
+    
     private let snapLayout = StackFlowLayout()
     private var collectionView: UICollectionView! {
         didSet {
@@ -39,7 +41,7 @@ final class BankCardSet: UITableViewCell, BankTableCellConf {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func reloadData() {
+    public func reloadData() {
         collectionView.reloadData()
     }
     
@@ -47,6 +49,7 @@ final class BankCardSet: UITableViewCell, BankTableCellConf {
 
 //MARK: - Private methods
 private extension BankCardSet {
+    
     func initialize() {
         backgroundColor = .clear
         createCollectionView()
@@ -127,39 +130,46 @@ extension BankCardSet: SkeletonCollectionViewDataSource {
         contextMenuConfigurationForItemsAt indexPaths: [IndexPath],
         point: CGPoint
     ) -> UIContextMenuConfiguration? {
-        
-        guard indexPaths.count == 1,
-              let indexPath = indexPaths.first else { return nil }
-        
-        let editAction   = editCellsAction(collectionView, indexPath: indexPath)
+        guard
+            indexPaths.count == 1,
+            let indexPath = indexPaths.first
+        else { return nil }
+        let openAction   = openCellsAction(collectionView, indexPath: indexPath)
         let deleteAction = deleteCellsAction(collectionView, indexPath: indexPath)
+        let context = createContextMenu(indexPath, menu: [openAction, deleteAction])
         
-        
-        return UIContextMenuConfiguration(
-            identifier: nil,
-            previewProvider: nil
-        ) { _ in
-            UIMenu(
-                title: "",
-                children: [editAction, deleteAction]
-            )
+        return context
+    }
+    
+    func createContextMenu(
+        _ indexPath: IndexPath,
+        menu: [UIMenuElement]
+    ) -> UIContextMenuConfiguration? {
+        return UIContextMenuConfiguration { [weak self] () -> UIViewController? in
+            guard
+                let self = self,
+                let data = self.presenter?.getCardData()[indexPath.row]
+            else { return nil }
+            let preview = CardBuilder.build(with: data)
+            return preview
+        } actionProvider: { _ in
+            UIMenu(title: "", children: menu)
         }
     }
     
-    func editCellsAction(_ collectionView: UICollectionView, indexPath: IndexPath) -> UIAction {
-        let editAction = UIAction(
-            title: "Изменить",
+    func openCellsAction(_ collectionView: UICollectionView, indexPath: IndexPath) -> UIAction {
+        let action = UIAction(
+            title: "Открыть",
             image: UIImage(systemName: "square.and.pencil"),
             attributes: []
         ) { [weak self] _ in
             self?.presenter?.userWantToDetails(of: .card, with: indexPath.item)
         }
-        
-        return editAction
+        return action
     }
     
     func deleteCellsAction(_ collectionView: UICollectionView, indexPath: IndexPath) -> UIAction {
-        let deleteAction = UIAction(
+        let action = UIAction(
             title: "Удалить",
             image: UIImage(systemName: "trash"),
             attributes: .destructive
@@ -169,8 +179,7 @@ extension BankCardSet: SkeletonCollectionViewDataSource {
                 collectionView.deleteItems(at: [indexPath])
             })
         }
-        
-        return deleteAction
+        return action
     }
     
 }
