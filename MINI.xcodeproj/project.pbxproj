@@ -144,6 +144,10 @@
 		09B5662B2A937D3100AFF98E /* PayoutsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B5662A2A937D3000AFF98E /* PayoutsView.swift */; };
 		09B5662D2A937EE700AFF98E /* PayoutsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B5662C2A937EE700AFF98E /* PayoutsCell.swift */; };
 		09BBA70F2A0E76950020E3C9 /* cardsLogo.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09BBA70E2A0E76950020E3C9 /* cardsLogo.xcassets */; };
+		09BF17022AAA17150090389B /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BF17012AAA17150090389B /* OnboardingViewController.swift */; };
+		09BF17042AAA175D0090389B /* OnboardingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BF17032AAA175D0090389B /* OnboardingPresenter.swift */; };
+		09BF17062AAA17AE0090389B /* OnboardingBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BF17052AAA17AE0090389B /* OnboardingBuilder.swift */; };
+		09BF17082AAA18750090389B /* OnboardingEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BF17072AAA18750090389B /* OnboardingEntity.swift */; };
 		09BFC93C2A1B4C7400C8505B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BFC93B2A1B4C7400C8505B /* ProfileViewController.swift */; };
 		09BFC93E2A1B4C8000C8505B /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BFC93D2A1B4C8000C8505B /* ProfilePresenter.swift */; };
 		09BFC9402A1B4C8900C8505B /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BFC93F2A1B4C8900C8505B /* ProfileRouter.swift */; };
@@ -365,6 +369,10 @@
 		09B5662A2A937D3000AFF98E /* PayoutsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayoutsView.swift; sourceTree = "<group>"; };
 		09B5662C2A937EE700AFF98E /* PayoutsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayoutsCell.swift; sourceTree = "<group>"; };
 		09BBA70E2A0E76950020E3C9 /* cardsLogo.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = cardsLogo.xcassets; sourceTree = "<group>"; };
+		09BF17012AAA17150090389B /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		09BF17032AAA175D0090389B /* OnboardingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPresenter.swift; sourceTree = "<group>"; };
+		09BF17052AAA17AE0090389B /* OnboardingBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingBuilder.swift; sourceTree = "<group>"; };
+		09BF17072AAA18750090389B /* OnboardingEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingEntity.swift; sourceTree = "<group>"; };
 		09BFC93B2A1B4C7400C8505B /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		09BFC93D2A1B4C8000C8505B /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
 		09BFC93F2A1B4C8900C8505B /* ProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRouter.swift; sourceTree = "<group>"; };
@@ -941,6 +949,17 @@
 			path = UIMiniElements;
 			sourceTree = "<group>";
 		};
+		09BF17002AAA16EE0090389B /* OnboardingModule */ = {
+			isa = PBXGroup;
+			children = (
+				09BF17012AAA17150090389B /* OnboardingViewController.swift */,
+				09BF17032AAA175D0090389B /* OnboardingPresenter.swift */,
+				09BF17052AAA17AE0090389B /* OnboardingBuilder.swift */,
+				09BF17072AAA18750090389B /* OnboardingEntity.swift */,
+			);
+			path = OnboardingModule;
+			sourceTree = "<group>";
+		};
 		09BFC9392A1B4C4F00C8505B /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -990,6 +1009,7 @@
 		09DF836D2A3887CD00ECAEB6 /* LaunchScreen */ = {
 			isa = PBXGroup;
 			children = (
+				09BF17002AAA16EE0090389B /* OnboardingModule */,
 				09DF83782A38BB8F00ECAEB6 /* LaunchController.swift */,
 				095B1C6C2A39BD1A00EF6828 /* LaunchScreen.storyboard */,
 			);
@@ -1476,6 +1496,7 @@
 				09632FCC29ED8A7D00DB2641 /* BankCardSet.swift in Sources */,
 				09BFC9422A1B4C9600C8505B /* ProfileBuilder.swift in Sources */,
 				09F5BFD72A1285F500BC3B7C /* BankCardService.swift in Sources */,
+				09BF17042AAA175D0090389B /* OnboardingPresenter.swift in Sources */,
 				09EA1CAF2A962DBE00A18B41 /* SupportPresenter.swift in Sources */,
 				09FB82502A37286000CEF8C1 /* ProductInteractor.swift in Sources */,
 				099089E32A139A2D00EE00DA /* GroceryViewController.swift in Sources */,
@@ -1499,6 +1520,7 @@
 				092E739629EBEB3000165D37 /* LoginView.swift in Sources */,
 				093932442A25E4AC00F813A2 /* AviaShowplaceService.swift in Sources */,
 				09D509D629EF379A009CC219 /* BankTransactionCell.swift in Sources */,
+				09BF17062AAA17AE0090389B /* OnboardingBuilder.swift in Sources */,
 				0921F35F29DF1FE000B3D4F7 /* UIButton+Extension.swift in Sources */,
 				090B63EC2A45C09500C7D6CD /* RealmService.swift in Sources */,
 				090BAB962A02992A006AE8F9 /* AviaBuilder.swift in Sources */,
@@ -1507,6 +1529,7 @@
 				0994B9402A20F66D00F4A783 /* DeepLinkManager.swift in Sources */,
 				097ACF262A2E1E5C0023106A /* RegisterRouter.swift in Sources */,
 				09D509DA29EF50AC009CC219 /* BankHistoryLabel.swift in Sources */,
+				09BF17022AAA17150090389B /* OnboardingViewController.swift in Sources */,
 				09E9E81D29EAE9540084416B /* LoginInteractor.swift in Sources */,
 				09044FB52A448A3400432A3C /* GroceryCollectionView.swift in Sources */,
 				09B566292A936FA500AFF98E /* PayoutsModel.swift in Sources */,
@@ -1527,6 +1550,7 @@
 				09E9E81F29EAE95D0084416B /* LoginRouter.swift in Sources */,
 				099D4F7729F722F50002C24A /* NewCardRouter.swift in Sources */,
 				09E9E81729EAE9360084416B /* LoginBuilder.swift in Sources */,
+				09BF17082AAA18750090389B /* OnboardingEntity.swift in Sources */,
 				099089E52A139A3A00EE00DA /* GroceryPresenter.swift in Sources */,
 				09FC393F29FABF5B00B2D97E /* AllTemplatesBuilder.swift in Sources */,
 				09C3CB412A2DF340001731D1 /* BankTableView.swift in Sources */,
