@@ -76,6 +76,7 @@
 		0964A1522AAA63F700B2E99E /* travelAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 0964A1512AAA63F700B2E99E /* travelAnimation.json */; };
 		0964A1542AAA675300B2E99E /* cardAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 0964A1532AAA675300B2E99E /* cardAnimation.json */; };
 		0964A1562AAAFD9F00B2E99E /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0964A1552AAAFD9F00B2E99E /* OnboardingView.swift */; };
+		0964A1582AAB491100B2E99E /* UIPageViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0964A1572AAB491100B2E99E /* UIPageViewController+Extension.swift */; };
 		096B4B272A1DEEC700E5C65E /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096B4B262A1DEEC700E5C65E /* APIService.swift */; };
 		096B4B2A2A1DEF3500E5C65E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 096B4B292A1DEF3500E5C65E /* Alamofire */; };
 		097A80652A337E0400B5CF3A /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097A80642A337E0400B5CF3A /* CategoryViewController.swift */; };
@@ -310,6 +311,7 @@
 		0964A1512AAA63F700B2E99E /* travelAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = travelAnimation.json; sourceTree = "<group>"; };
 		0964A1532AAA675300B2E99E /* cardAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cardAnimation.json; sourceTree = "<group>"; };
 		0964A1552AAAFD9F00B2E99E /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		0964A1572AAB491100B2E99E /* UIPageViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPageViewController+Extension.swift"; sourceTree = "<group>"; };
 		096B4B262A1DEEC700E5C65E /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		097A80642A337E0400B5CF3A /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		097A80662A337E1600B5CF3A /* CategoryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPresenter.swift; sourceTree = "<group>"; };
@@ -689,6 +691,7 @@
 				09091CDB2A82AD610043A9A1 /* UIViewController+Extension.swift */,
 				09EA1CB42A9631AB00A18B41 /* Date+Extension.swift */,
 				090C1E612A9C969800E75464 /* UICollectionView+Extension.swift */,
+				0964A1572AAB491100B2E99E /* UIPageViewController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1521,6 +1524,7 @@
 				09BFC9422A1B4C9600C8505B /* ProfileBuilder.swift in Sources */,
 				09F5BFD72A1285F500BC3B7C /* BankCardService.swift in Sources */,
 				09BF17042AAA175D0090389B /* OnboardingPresenter.swift in Sources */,
+				0964A1582AAB491100B2E99E /* UIPageViewController+Extension.swift in Sources */,
 				09EA1CAF2A962DBE00A18B41 /* SupportPresenter.swift in Sources */,
 				09FB82502A37286000CEF8C1 /* ProductInteractor.swift in Sources */,
 				099089E32A139A2D00EE00DA /* GroceryViewController.swift in Sources */,
