@@ -75,6 +75,7 @@
 		0964A14C2AAA605C00B2E99E /* ordersAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 0964A14B2AAA605C00B2E99E /* ordersAnimation.json */; };
 		0964A1522AAA63F700B2E99E /* travelAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 0964A1512AAA63F700B2E99E /* travelAnimation.json */; };
 		0964A1542AAA675300B2E99E /* cardAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 0964A1532AAA675300B2E99E /* cardAnimation.json */; };
+		0964A1562AAAFD9F00B2E99E /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0964A1552AAAFD9F00B2E99E /* OnboardingView.swift */; };
 		096B4B272A1DEEC700E5C65E /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096B4B262A1DEEC700E5C65E /* APIService.swift */; };
 		096B4B2A2A1DEF3500E5C65E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 096B4B292A1DEF3500E5C65E /* Alamofire */; };
 		097A80652A337E0400B5CF3A /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097A80642A337E0400B5CF3A /* CategoryViewController.swift */; };
@@ -308,6 +309,7 @@
 		0964A14B2AAA605C00B2E99E /* ordersAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ordersAnimation.json; sourceTree = "<group>"; };
 		0964A1512AAA63F700B2E99E /* travelAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = travelAnimation.json; sourceTree = "<group>"; };
 		0964A1532AAA675300B2E99E /* cardAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cardAnimation.json; sourceTree = "<group>"; };
+		0964A1552AAAFD9F00B2E99E /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		096B4B262A1DEEC700E5C65E /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		097A80642A337E0400B5CF3A /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		097A80662A337E1600B5CF3A /* CategoryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPresenter.swift; sourceTree = "<group>"; };
@@ -707,6 +709,7 @@
 				0964A14B2AAA605C00B2E99E /* ordersAnimation.json */,
 				0964A1512AAA63F700B2E99E /* travelAnimation.json */,
 				0964A1532AAA675300B2E99E /* cardAnimation.json */,
+				0964A1552AAAFD9F00B2E99E /* OnboardingView.swift */,
 			);
 			path = animations;
 			sourceTree = "<group>";
@@ -1464,6 +1467,7 @@
 				09E9E82129EAE9650084416B /* LoginEntity.swift in Sources */,
 				09B02C752A8EC7CC00F474E9 /* PayoutsViewController.swift in Sources */,
 				097A80672A337E1600B5CF3A /* CategoryPresenter.swift in Sources */,
+				0964A1562AAAFD9F00B2E99E /* OnboardingView.swift in Sources */,
 				092F67AF2A3CE87500E0F2B9 /* UIColor+Extensions.swift in Sources */,
 				09503EB829F2D44000254F53 /* StackFlowLayout.swift in Sources */,
 				09E9E81929EAE9410084416B /* LoginViewController.swift in Sources */,
