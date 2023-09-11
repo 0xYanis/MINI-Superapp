@@ -10,11 +10,11 @@ import SnapKit
 
 final class LaunchController: UIViewController {
     
-    private lazy var emojiLabel = UILabel()
-    private lazy var imageView  = UIImageView()
-    
     private let authManager = AuthenticationManager()
     private let emojis : [String]  = ["🏦", "🛩", "🛒", "🚀"]
+    
+    private lazy var emojiLabel = UILabel()
+    private lazy var imageView  = UIImageView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +26,7 @@ final class LaunchController: UIViewController {
 }
 
 private extension LaunchController {
+    
     func initialize() {
         imageView.contentMode = .scaleAspectFill
         imageView.image = UIImage(named: "gradientbackground")
@@ -85,21 +86,21 @@ private extension LaunchController {
     }
     
     func transitionToMainView() {
-//        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-//           let delegate = windowScene.delegate as? SceneDelegate {
-//            let window = UIWindow(windowScene: windowScene)
-//
-//            self.authManager.auth(window)
-//
-//            window.backgroundColor = .backMINI
-//            window.tintColor = .tintMINI
-//            delegate.window = window
-//            window.makeKeyAndVisible()
-//        }
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let delegate = windowScene.delegate as? SceneDelegate {
+            let window = UIWindow(windowScene: windowScene)
+
+            self.authManager.auth(window)
+
+            window.backgroundColor = .backMINI
+            window.tintColor = .tintMINI
+            delegate.window = window
+            window.makeKeyAndVisible()
+        }
         
-        let onboardingView = OnboardingBuilder.build()
-        onboardingView.modalPresentationStyle = .fullScreen
-        present(onboardingView, animated: false)
+//        let onboardingView = OnboardingBuilder.build()
+//        onboardingView.modalPresentationStyle = .fullScreen
+//        present(onboardingView, animated: false)
     }
     
 }
