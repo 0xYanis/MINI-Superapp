@@ -13,8 +13,12 @@ final class CartTableView: MiTableView {
     
     public var presenter: CartPresenterProtocol?
     
+    // MARK: - Private properties
+    
+    private var items: [String] { ["Все","Избранное","Продукты","Товары","Билеты", "Заказы", "Отмененные"] }
+    
     override init(frame: CGRect = .zero, style: UITableView.Style) {
-        super.init(style: style)
+        super.init(style: .grouped)
         initialize()
     }
     
@@ -42,11 +46,7 @@ private extension CartTableView {
 
 // MARK: - UITagPickerDataSource
 
-extension CartTableView: UITagPickerDataSource {
-    
-    var items: [String] {
-        ["Все","Избранное","Продукты","Товары","Билеты", "Заказы", "Отмененные"]
-    }
+extension CartTableView: UITagPickerDelegate {
     
     func didTap(on index: Int) {
         print("tap")
@@ -85,9 +85,16 @@ extension CartTableView: UITableViewDelegate {
         _ tableView: UITableView,
         viewForHeaderInSection section: Int
     ) -> UIView? {
-        let header = UITagPickerView()
-        header.datasource = self
+        let header = UITagPickerView(items)
+        header.pickerDelegate = self
         return header
+    }
+    
+    func tableView(
+        _ tableView: UITableView,
+        heightForHeaderInSection section: Int
+    ) -> CGFloat {
+        40
     }
     
     // MARK: Swipes

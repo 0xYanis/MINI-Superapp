@@ -7,29 +7,34 @@
 
 import UIKit
 
-protocol UITagPickerDataSource: AnyObject {
-    var items: [String] { get }
+protocol UITagPickerDelegate: AnyObject {
     func didTap(on index: Int)
 }
 
 final class UITagPickerView: UICollectionView {
     
-    weak var datasource: UITagPickerDataSource?
+    weak var pickerDelegate: UITagPickerDelegate?
     
     private let flowLayout = UICollectionViewFlowLayout()
     
-    override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
-        super.init(frame: frame, collectionViewLayout: flowLayout)
+    private var tags: [String]
+    
+    init(_ tags: [String]) {
+        self.tags = tags
+        super.init(frame: .zero, collectionViewLayout: flowLayout)
         initialize()
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError()
     }
     
     private func initialize() {
         flowLayout.minimumInteritemSpacing = 5
         flowLayout.scrollDirection = .horizontal
+        flowLayout.sectionInset = .init(top: 0, left: 10, bottom: 0, right: 10)
+        showsHorizontalScrollIndicator = false
+        backgroundColor = .none
         dataSource = self
         delegate = self
         register(
@@ -50,7 +55,7 @@ extension UITagPickerView: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        datasource?.items.count ?? 0
+        tags.count
     }
     
     func collectionView(
@@ -58,8 +63,7 @@ extension UITagPickerView: UICollectionViewDataSource {
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
         let cell = collectionView.addCell(UITagPickerCell.self, at: indexPath)
-        let data = datasource?.items ?? []
-        cell.configure(item: data[indexPath.item])
+        cell.configure(item: tags[indexPath.item])
         return cell
     }
     
@@ -71,7 +75,7 @@ extension UITagPickerView: UICollectionViewDelegateFlowLayout {
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath
     ) {
-        datasource?.didTap(on: indexPath.item)
+        pickerDelegate?.didTap(on: indexPath.item)
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
     
@@ -85,9 +89,9 @@ extension UITagPickerView: UICollectionViewDelegateFlowLayout {
     }
     
     private func getWidth(at index: Int) -> CGFloat {
-        let nameFont = UIFont.systemFont(ofSize: UIFont.systemFontSize)
+        let nameFont = UIFont.boldSystemFont(ofSize: 16)
         let attributes = [NSAttributedString.Key.font : nameFont as Any]
-        let width = datasource?.items[index].size(withAttributes: attributes).width ?? 0
+        let width = tags[index].size(withAttributes: attributes).width
         return width + 20
     }
     
@@ -99,6 +103,7 @@ final class UITagPickerCell: UICollectionViewCell {
         let label = UILabel()
         label.textAlignment = .center
         label.textColor = .white
+        label.font = UIFont.boldSystemFont(ofSize: 16)
         return label
     }()
     
@@ -111,8 +116,7 @@ final class UITagPickerCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .tertiaryLabel
-        layer.cornerRadius = 10
-        
+        roundCorners(radius: 12)
         addSubview(tagLabel)
         tagLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
