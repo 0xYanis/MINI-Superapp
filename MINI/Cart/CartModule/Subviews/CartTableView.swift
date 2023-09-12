@@ -40,6 +40,22 @@ private extension CartTableView {
     
 }
 
+// MARK: - UITagPickerDataSource
+
+extension CartTableView: UITagPickerDataSource {
+    
+    var items: [String] {
+        ["Все","Избранное","Продукты","Товары","Билеты", "Заказы", "Отмененные"]
+    }
+    
+    func didTap(on index: Int) {
+        print("tap")
+    }
+    
+}
+
+// MARK: - UITableViewDataSource
+
 extension CartTableView: UITableViewDataSource {
     
     func tableView(
@@ -61,15 +77,17 @@ extension CartTableView: UITableViewDataSource {
     
 }
 
+// MARK: - UITableViewDelegate
+
 extension CartTableView: UITableViewDelegate {
     
     func tableView(
         _ tableView: UITableView,
         viewForHeaderInSection section: Int
     ) -> UIView? {
-        let view = UIView()
-        view.backgroundColor = .green
-        return view
+        let header = UITagPickerView()
+        header.datasource = self
+        return header
     }
     
     // MARK: Swipes
