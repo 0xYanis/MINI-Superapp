@@ -66,6 +66,7 @@
 		093D02C32AA12D5F0032D812 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 093D02C22AA12D5F0032D812 /* FirebaseFirestore */; };
 		093D02C52AA12D5F0032D812 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 093D02C42AA12D5F0032D812 /* FirebaseMessaging */; };
 		093D02C72AA12D5F0032D812 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 093D02C62AA12D5F0032D812 /* FirebaseStorage */; };
+		094061B32AB06847009AD0BF /* UITagPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094061B22AB06847009AD0BF /* UITagPickerView.swift */; };
 		094202C72A9E1E91008DDE2A /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = 094202C62A9E1E91008DDE2A /* FloatingPanel */; };
 		094388EB2A56F0A200027D59 /* BankViewDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094388EA2A56F0A200027D59 /* BankViewDetails.swift */; };
 		09503EB829F2D44000254F53 /* StackFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09503EB729F2D44000254F53 /* StackFlowLayout.swift */; };
@@ -148,7 +149,6 @@
 		09B02C7B2A8EC84B00F474E9 /* PayoutsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B02C7A2A8EC84B00F474E9 /* PayoutsRouter.swift */; };
 		09B02C7D2A8EC8C300F474E9 /* PayoutsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B02C7C2A8EC8C300F474E9 /* PayoutsInteractor.swift */; };
 		09B02C802A8ED29300F474E9 /* EmptyPayoutsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B02C7F2A8ED29300F474E9 /* EmptyPayoutsView.swift */; };
-		09B0C1892A545C8200E0CDEF /* UITagPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B0C1882A545C8200E0CDEF /* UITagPickerView.swift */; };
 		09B1B4D02A1673D90090676E /* GroceryHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B1B4CF2A1673D90090676E /* GroceryHeaderCell.swift */; };
 		09B566272A936E3700AFF98E /* empty.json in Resources */ = {isa = PBXBuildFile; fileRef = 09B566262A936E3700AFF98E /* empty.json */; };
 		09B566292A936FA500AFF98E /* PayoutsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B566282A936FA500AFF98E /* PayoutsModel.swift */; };
@@ -308,6 +308,7 @@
 		093D02AA2AA0EFE30032D812 /* FBFirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBFirestoreManager.swift; sourceTree = "<group>"; };
 		093D02B92AA0F9420032D812 /* FBStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBStorageManager.swift; sourceTree = "<group>"; };
 		093D02BB2AA12A230032D812 /* FBNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBNotificationManager.swift; sourceTree = "<group>"; };
+		094061B22AB06847009AD0BF /* UITagPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITagPickerView.swift; sourceTree = "<group>"; };
 		094388EA2A56F0A200027D59 /* BankViewDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankViewDetails.swift; sourceTree = "<group>"; };
 		09503EB729F2D44000254F53 /* StackFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackFlowLayout.swift; sourceTree = "<group>"; };
 		09565EDF2A2F13B3007A2DAC /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
@@ -384,7 +385,6 @@
 		09B02C7A2A8EC84B00F474E9 /* PayoutsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayoutsRouter.swift; sourceTree = "<group>"; };
 		09B02C7C2A8EC8C300F474E9 /* PayoutsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayoutsInteractor.swift; sourceTree = "<group>"; };
 		09B02C7F2A8ED29300F474E9 /* EmptyPayoutsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyPayoutsView.swift; sourceTree = "<group>"; };
-		09B0C1882A545C8200E0CDEF /* UITagPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITagPickerView.swift; sourceTree = "<group>"; };
 		09B1B4CF2A1673D90090676E /* GroceryHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryHeaderCell.swift; sourceTree = "<group>"; };
 		09B566262A936E3700AFF98E /* empty.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = empty.json; sourceTree = "<group>"; };
 		09B566282A936FA500AFF98E /* PayoutsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayoutsModel.swift; sourceTree = "<group>"; };
@@ -976,10 +976,10 @@
 			isa = PBXGroup;
 			children = (
 				091335D32A405CC1005DDAEA /* MINIColorExtension.swift */,
-				09B0C1882A545C8200E0CDEF /* UITagPickerView.swift */,
 				09091CDD2A82B49B0043A9A1 /* MiTableView.swift */,
 				09A4F5A22A8D6FC3006FA62F /* FormTextView.swift */,
 				090C1E692A9D281E00E75464 /* OTPTextField.swift */,
+				094061B22AB06847009AD0BF /* UITagPickerView.swift */,
 			);
 			path = UIMiniElements;
 			sourceTree = "<group>";
@@ -1504,7 +1504,6 @@
 				097ACF242A2E1E500023106A /* RegisterInteractor.swift in Sources */,
 				09FC394629FAD3DA00B2D97E /* TransactionViewController.swift in Sources */,
 				099A79C229F16417004B95C7 /* BankTemplateCell.swift in Sources */,
-				09B0C1892A545C8200E0CDEF /* UITagPickerView.swift in Sources */,
 				090C1E6A2A9D281E00E75464 /* OTPTextField.swift in Sources */,
 				097ACF282A2E1E690023106A /* RegisterBuilder.swift in Sources */,
 				09FB824C2A3727E200CEF8C1 /* ProductPresenter.swift in Sources */,
@@ -1597,6 +1596,7 @@
 				09FC394829FAD3E300B2D97E /* TransactionPresenter.swift in Sources */,
 				09B02C772A8EC7D700F474E9 /* PayoutsPresenter.swift in Sources */,
 				0964534A2A82CF5E00709821 /* PasswordBuilder.swift in Sources */,
+				094061B32AB06847009AD0BF /* UITagPickerView.swift in Sources */,
 				09E9E81F29EAE95D0084416B /* LoginRouter.swift in Sources */,
 				099D4F7729F722F50002C24A /* NewCardRouter.swift in Sources */,
 				09E9E81729EAE9360084416B /* LoginBuilder.swift in Sources */,

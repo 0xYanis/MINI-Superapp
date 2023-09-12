@@ -2,62 +2,130 @@
 //  UITagPickerView.swift
 //  MINI
 //
-//  Created by Yan Rybkin on 04.07.2023.
+//  Created by Yan Rybkin on 12.09.2023.
 //
 
 import UIKit
 
-protocol UITagPickerViewDataSource: AnyObject {
-    func tagPickerCount(_ tagPicker: UITagPickerView) -> Int
-    func tagPickerTitle(_ tagPicker: UITagPickerView, indexPath: IndexPath) -> String
+protocol UITagPickerDataSource: AnyObject {
+    var items: [String] { get }
+    func didTap(on index: Int)
 }
 
-public class UITagPickerView: UIControl {
+final class UITagPickerView: UICollectionView {
     
-    var dataSource: UITagPickerViewDataSource? {
-        didSet {
-            setupView()
-        }
+    weak var datasource: UITagPickerDataSource?
+    
+    private let flowLayout = UICollectionViewFlowLayout()
+    
+    override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
+        super.init(frame: frame, collectionViewLayout: flowLayout)
+        initialize()
     }
     
-    private var buttons: [UIButton] = []
-    private var stackView: UIStackView!
-    
-    public override func layoutSubviews() {
-        super.layoutSubviews()
-        stackView.frame = bounds
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
-    func setupView() {
-        let count = dataSource?.tagPickerCount(self)
-        for item  in 0..<count! {
-            let indexPath = IndexPath(row: item, section: 0)
-            let title = dataSource?.tagPickerTitle(self, indexPath: indexPath)
-            let button = UIButton(type: .system)
-            button.setTitle(title, for: .normal)
-            button.tag = item
-            button.setTitleColor(.lightGray, for: .normal)
-            button.setTitleColor(.white, for: .selected)
-            button.addTarget(
-                self,
-                action: #selector(selectedButton),
-                for: .touchUpInside
-            )
-            buttons.append(button)
-            self.addSubview(button)
-        }
+    private func initialize() {
+        flowLayout.minimumInteritemSpacing = 5
+        flowLayout.scrollDirection = .horizontal
+        dataSource = self
+        delegate = self
+        register(
+            UITagPickerCell.self,
+            forCellWithReuseIdentifier: String(describing: UITagPickerCell.self)
+        )
         
-        stackView = UIStackView(arrangedSubviews: self.buttons)
-        self.addSubview(stackView)
-        stackView.spacing = 8
-        stackView.axis = .horizontal
-        stackView.alignment = .fill
-        stackView.distribution = .fill
+        selectItem(at: [0,0], animated: true, scrollPosition: [])
     }
     
-    @objc func selectedButton(sender: UIButton) {
-        print("selectedButton")
+}
+
+// MARK: - UICollectionViewDataSource
+
+extension UITagPickerView: UICollectionViewDataSource {
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+    ) -> Int {
+        datasource?.items.count ?? 0
     }
     
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
+        let cell = collectionView.addCell(UITagPickerCell.self, at: indexPath)
+        let data = datasource?.items ?? []
+        cell.configure(item: data[indexPath.item])
+        return cell
+    }
+    
+}
+
+extension UITagPickerView: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) {
+        datasource?.didTap(on: indexPath.item)
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
+        let width = getWidth(at: indexPath.item)
+        return .init(width: width, height: collectionView.frame.height)
+    }
+    
+    private func getWidth(at index: Int) -> CGFloat {
+        let nameFont = UIFont.systemFont(ofSize: UIFont.systemFontSize)
+        let attributes = [NSAttributedString.Key.font : nameFont as Any]
+        let width = datasource?.items[index].size(withAttributes: attributes).width ?? 0
+        return width + 20
+    }
+    
+}
+
+final class UITagPickerCell: UICollectionViewCell {
+    
+    private let tagLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.textColor = .white
+        return label
+    }()
+    
+    override var isSelected: Bool {
+        didSet {
+            backgroundColor = self.isSelected ? .systemOrange : .tertiaryLabel
+        }
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        backgroundColor = .tertiaryLabel
+        layer.cornerRadius = 10
+        
+        addSubview(tagLabel)
+        tagLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview()
+        }
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError()
+    }
+    
+    public func configure(item: String) {
+        tagLabel.text = item
+    }
     
 }
