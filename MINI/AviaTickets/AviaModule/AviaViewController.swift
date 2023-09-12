@@ -21,9 +21,14 @@ final class AviaViewController: UIViewController {
     
     //MARK: - Private properties
     
-    
+    private var aviaCollectionView: AviaCollectionView = {
+        let layout = UICollectionViewLayout()
+        let view = AviaCollectionView(frame: .zero, collectionViewLayout: layout)
+        return view
+    }()
     
     //MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
@@ -57,11 +62,21 @@ private extension AviaViewController {
     func initialize() {
         createNavigation()
         view.backgroundColor = .back2MINI
+        
+        aviaCollectionView.presenter = presenter
+        view.addSubview(aviaCollectionView)
+        addConstraints()
     }
     
     func createNavigation() {
         navigationItem.title = "tickets_navbar".localized
         navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    func addConstraints() {
+        aviaCollectionView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
     
 }

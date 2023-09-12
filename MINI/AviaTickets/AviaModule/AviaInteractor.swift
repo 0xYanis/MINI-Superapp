@@ -8,21 +8,14 @@
 import Foundation
 
 protocol AviaInteractorProtocol: AnyObject {
-    
+    var dataSource: [AviaSection] { get }
 }
 
 final class AviaInteractor: AviaInteractorProtocol {
     
     weak var presenter: AviaPresenterProtocol?
-    var aivaShowplaceService: AviaShowplaceServiceProtocol
     
-    init(
-        aivaShowplaceService: AviaShowplaceServiceProtocol
-    ) {
-        self.aivaShowplaceService = aivaShowplaceService
-    }
-    
-    
+    var dataSource: [AviaSection] = AviaMockData.shared.sections
     
 }
 

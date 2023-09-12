@@ -11,8 +11,7 @@ final class AviaBuilder {
     static func build() -> UIViewController {
         let viewController = AviaViewController()
         let router = AviaRouter()
-        let showplaceService = AviaShowplaceService()
-        let interactor = AviaInteractor(aivaShowplaceService: showplaceService)
+        let interactor = AviaInteractor()
         let presenter = AviaPresenter(router: router, interactor: interactor)
         
         viewController.presenter = presenter

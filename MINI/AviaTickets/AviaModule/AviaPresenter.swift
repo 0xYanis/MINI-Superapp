@@ -8,7 +8,7 @@
 import Foundation
 
 protocol AviaPresenterProtocol: AnyObject {
-    func userDidTapResult(id: Int)
+    func getDataSource() -> [AviaSection]
 }
 
 final class AviaPresenter {
@@ -25,9 +25,9 @@ final class AviaPresenter {
 }
 
 extension AviaPresenter: AviaPresenterProtocol {
-    func userDidTapResult(id: Int) {
-        
-    }
     
+    func getDataSource() -> [AviaSection] {
+        interactor.dataSource
+    }
     
 }
