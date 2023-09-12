@@ -109,7 +109,8 @@ final class UITagPickerCell: UICollectionViewCell {
     
     override var isSelected: Bool {
         didSet {
-            backgroundColor = self.isSelected ? .systemOrange : .tertiaryLabel
+            backgroundColor = isSelected ? .systemOrange : .tertiaryLabel
+            if isSelected { pulseAnimation() }
         }
     }
     
@@ -130,6 +131,16 @@ final class UITagPickerCell: UICollectionViewCell {
     
     public func configure(item: String) {
         tagLabel.text = item
+    }
+    
+    private func pulseAnimation() {
+        UIView.animate(withDuration: 0.04) {
+            self.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+        } completion: { _ in
+            UIView.animate(withDuration: 0.06) {
+                self.transform = CGAffineTransform.identity
+            }
+        }
     }
     
 }
