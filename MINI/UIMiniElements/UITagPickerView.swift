@@ -16,6 +16,7 @@ final class UITagPickerView: UICollectionView {
     weak var pickerDelegate: UITagPickerDelegate?
     
     private let flowLayout = UICollectionViewFlowLayout()
+    private let hapticEngine = UINotificationFeedbackGenerator()
     
     private var tags: [String]
     
@@ -30,6 +31,8 @@ final class UITagPickerView: UICollectionView {
     }
     
     private func initialize() {
+        hapticEngine.prepare()
+        
         flowLayout.minimumInteritemSpacing = 5
         flowLayout.scrollDirection = .horizontal
         flowLayout.sectionInset = .init(top: 0, left: 10, bottom: 0, right: 10)
@@ -77,6 +80,7 @@ extension UITagPickerView: UICollectionViewDelegateFlowLayout {
     ) {
         pickerDelegate?.didTap(on: indexPath.item)
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        hapticEngine.notificationOccurred(.success)
     }
     
     func collectionView(
