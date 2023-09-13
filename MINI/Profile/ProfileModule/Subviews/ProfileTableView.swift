@@ -11,7 +11,6 @@ import SnapKit
 final class ProfileTableView: MiTableView {
     
     weak var presenter: ProfilePresenterProtocol?
-    var profileHeader: ProfileHeader?
     
     override init(frame: CGRect = .zero, style: UITableView.Style) {
         super.init(style: style)
@@ -19,7 +18,7 @@ final class ProfileTableView: MiTableView {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError()
     }
     
 }
@@ -63,7 +62,6 @@ extension ProfileTableView: UITableViewDataSource {
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
-        
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: ProfileTableCell.cellId,
             for: indexPath) as? ProfileTableCell,
@@ -89,18 +87,16 @@ extension ProfileTableView: UITableViewDataSource {
         _ tableView: UITableView,
         viewForHeaderInSection section: Int
     ) -> UIView? {
-        let header = ProfileHeader()
-        
-        header.configure(
-            name: presenter?.getUserData().name ?? "User",
-            address: presenter?.getUserData().address ?? "Nil"
-        )
-        self.profileHeader = header
         if section == 0 {
+            let header = ProfileHeader()
+            let userData = presenter?.getUserData()
+            header.configure(
+                name: userData?.name ?? "User",
+                address: userData?.address ?? "None"
+            )
             return header
-        } else {
-            return nil
         }
+        return nil
     }
     
 }

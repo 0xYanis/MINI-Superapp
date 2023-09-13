@@ -137,7 +137,6 @@ extension ProfileViewController: UIImagePickerControllerDelegate {
     ) {
         let originalImage = UIImagePickerController.InfoKey.originalImage
         guard let newImage = info[originalImage] as? UIImage else { return }
-        tableView.profileHeader?.setAvatar(newImage)
         guard let imageData = newImage.jpegData(compressionQuality: 0.4) else { return }
         presenter?.userSetAvatar(imageData)
     }

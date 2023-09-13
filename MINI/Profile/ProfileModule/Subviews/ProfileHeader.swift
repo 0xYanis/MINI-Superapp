@@ -44,12 +44,10 @@ private extension ProfileHeader {
     
     func initialize() {
         backgroundColor = .back2MINI
-        // image get from FB
-        let defImage = UIImage(named: "AppIcon")
         if let url = UserDefaults.standard.url(forKey: "avatarUrl") {
-            imageView.sd_setImage(with: url, placeholderImage: defImage)
+            imageView.sd_setImage(with: url)
         } else {
-            imageView.image = defImage
+            imageView.image = UIImage(named: "AppIcon")
         }
         imageView.contentMode = .scaleAspectFill
         

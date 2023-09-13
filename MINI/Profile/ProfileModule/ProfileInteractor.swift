@@ -42,13 +42,13 @@ final class ProfileInteractor: ProfileInteractorProtocol {
     // MARK: - Public methods
     
     public func viewDidLoaded() {
-        DispatchQueue.global().async {
+        DispatchQueue.global(qos: .userInitiated).async {
             self.getUserData()
         }
     }
     
     public func userSetAvatar(_ imageData: Data) {
-        DispatchQueue.global().async {
+        DispatchQueue.global(qos: .userInitiated).async {
             guard let uid = self.fbAuthManager.currentUser?.uid
             else { return }
             self.fbStorageManager.uploadAvatar(
@@ -56,10 +56,12 @@ final class ProfileInteractor: ProfileInteractorProtocol {
                 userID: uid
             ) { [weak self] result in
                 switch result {
-                case .success(let url): print("success")
+                case .success(let url):
                     self?.updateURLAvatar(url)
-                    break
-                case .failure(_): print("failure")
+                    DispatchQueue.main.async {
+                        self?.presenter?.updateView()
+                    }
+                case .failure(_):
                     break
                 }
             }
@@ -78,18 +80,16 @@ final class ProfileInteractor: ProfileInteractorProtocol {
     
     private func getUserData() {
         let uid = UserDefaults.standard.string(forKey: "uid")
-        DispatchQueue.global().async {
-            self.fbFirestoreManager.getUserData(uid: uid) { [weak self] result in
-                guard
-                    let self = self,
-                    let name = result["name"] as? String,
-                    let address = result["address"] as? String
-                else { return }
-                self.userName = name.capitalized
-                self.userAddress = address
-                DispatchQueue.main.async {
-                    self.presenter?.updateView()
-                }
+        self.fbFirestoreManager.getUserData(uid: uid) { [weak self] result in
+            guard
+                let self = self,
+                let name = result["name"] as? String,
+                let address = result["address"] as? String
+            else { return }
+            self.userName = name.capitalized
+            self.userAddress = address
+            DispatchQueue.main.async {
+                self.presenter?.updateView()
             }
         }
     }
