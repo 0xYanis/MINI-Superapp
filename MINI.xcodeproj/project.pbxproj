@@ -48,6 +48,7 @@
 		0910960729DB32F400338D22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0910960629DB32F400338D22 /* Assets.xcassets */; };
 		091335D42A405CC1005DDAEA /* MINIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091335D32A405CC1005DDAEA /* MINIColorExtension.swift */; };
 		0913C7E22A9687FC005C887D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0913C7E12A9687FB005C887D /* GoogleService-Info.plist */; };
+		0914D09F2AB19AE90040C11C /* CartFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0914D09E2AB19AE90040C11C /* CartFooterView.swift */; };
 		091CD49029DDE9250041627F /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 091CD48F29DDE9250041627F /* Lottie */; };
 		0921F35F29DF1FE000B3D4F7 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0921F35E29DF1FE000B3D4F7 /* UIButton+Extension.swift */; };
 		092E739429EBEB1F00165D37 /* LoginAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E739329EBEB1E00165D37 /* LoginAnimationView.swift */; };
@@ -296,6 +297,7 @@
 		0910960B29DB32F500338D22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		091335D32A405CC1005DDAEA /* MINIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MINIColorExtension.swift; sourceTree = "<group>"; };
 		0913C7E12A9687FB005C887D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0914D09E2AB19AE90040C11C /* CartFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartFooterView.swift; sourceTree = "<group>"; };
 		0921F35E29DF1FE000B3D4F7 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		092E739329EBEB1E00165D37 /* LoginAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAnimationView.swift; sourceTree = "<group>"; };
 		092E739529EBEB3000165D37 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -1071,6 +1073,7 @@
 			children = (
 				09E88E822AA8BE6C000B3E43 /* CartTableView.swift */,
 				09E88E842AA8C045000B3E43 /* PurchaseCell.swift */,
+				0914D09E2AB19AE90040C11C /* CartFooterView.swift */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -1455,6 +1458,7 @@
 				090AE1DF29FBAA120092515D /* TemplateInteractor.swift in Sources */,
 				090E87B42AAF7A2500C6AEF3 /* AviaCountryCell.swift in Sources */,
 				090BAB942A029924006AE8F9 /* AviaRouter.swift in Sources */,
+				0914D09F2AB19AE90040C11C /* CartFooterView.swift in Sources */,
 				097E039D29EC448F00CE2A6F /* BankPresenter.swift in Sources */,
 				099A79C029F16406004B95C7 /* BankCardCell.swift in Sources */,
 				099046D82A9E7D5600987B64 /* MapPresenter.swift in Sources */,

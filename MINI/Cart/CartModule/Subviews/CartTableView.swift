@@ -97,6 +97,22 @@ extension CartTableView: UITableViewDelegate {
         40
     }
     
+    func tableView(
+        _ tableView: UITableView,
+        viewForFooterInSection section: Int
+    ) -> UIView? {
+        let footer = CartFooterView()
+        footer.backgroundColor = .green
+        return footer
+    }
+    
+    func tableView(
+        _ tableView: UITableView,
+        heightForFooterInSection section: Int
+    ) -> CGFloat {
+        60
+    }
+    
     // MARK: Swipes
     
     func tableView(
