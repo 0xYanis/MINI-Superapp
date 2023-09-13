@@ -53,9 +53,11 @@ final class BankInteractor: BankInteractorProtocol {
     }
     
     func viewDidLoaded() {
-        getCards()
-        getTemplates()
-        getTransactions()
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.getCards()
+            self.getTemplates()
+            self.getTransactions()
+        }
     }
     
     func userDidTapCard(index: Int) -> BankCardEntity {
@@ -102,21 +104,21 @@ final class BankInteractor: BankInteractorProtocol {
 
 //MARK: - Private methods
 private extension BankInteractor {
+    
     func getCards() {
         cardService.getCardsData { [weak self] result in
             guard let self = self else { return }
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let cards):
-                    guard let cards else { return }
-                    self.cardsData = cards
+            switch result {
+            case .success(let cards):
+                guard let cards else { return }
+                self.cardsData = cards
+                DispatchQueue.main.async {
                     self.presenter?.updateView()
-                case .failure(let error):
-                    self.presenter?.loadingDataGetFailed(
-                        with: error.localizedDescription
-                    )
                 }
-                
+            case .failure(let error):
+                self.presenter?.loadingDataGetFailed(
+                    with: error.localizedDescription
+                )
             }
         }
     }
@@ -124,18 +126,17 @@ private extension BankInteractor {
     func getTemplates() {
         templateService.getTemplatesData { [weak self] result in
             guard let self = self else { return }
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let templates):
-                    guard let templates else { return }
-                    self.templatesData = templates
+            switch result {
+            case .success(let templates):
+                guard let templates else { return }
+                self.templatesData = templates
+                DispatchQueue.main.async {
                     self.presenter?.updateView()
-                case .failure(let error):
-                    self.presenter?.loadingDataGetFailed(
-                        with: error.localizedDescription
-                    )
                 }
-                
+            case .failure(let error):
+                self.presenter?.loadingDataGetFailed(
+                    with: error.localizedDescription
+                )
             }
         }
     }
@@ -143,19 +144,18 @@ private extension BankInteractor {
     func getTransactions() {
         transactionService.getTransactionsData { [weak self] result in
             guard let self = self else { return }
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let transactions):
-                    guard let transactions else { return }
-                    self.transactionsData = transactions
+            switch result {
+            case .success(let transactions):
+                guard let transactions else { return }
+                self.transactionsData = transactions
+                DispatchQueue.main.async {
                     self.presenter?.updateView()
-                case .failure(let error):
-                    self.presenter?.loadingDataGetFailed(
-                        with: error.localizedDescription
-                    )
                 }
+            case .failure(let error):
+                self.presenter?.loadingDataGetFailed(
+                    with: error.localizedDescription
+                )
             }
-            
         }
     }
     
