@@ -7,16 +7,23 @@
 
 import UIKit
 
+// MARK: - ProfileViewProtocol
+
 protocol ProfileViewProtocol: AnyObject {
     func updateView()
     func showAlert()
 }
 
-final class ProfileViewController: UIViewController, UINavigationControllerDelegate {
+final class ProfileViewController: UIViewController {
     
-    var presenter: ProfilePresenterProtocol?
+    // MARK: - Public properties
+    
+    public var presenter: ProfilePresenterProtocol?
+    
+    // MARK: - Private properties
     
     private let tableView = ProfileTableView()
+    private lazy var photoPicker = UIImagePickerController()
     private lazy var alert: UIAlertController = {
         let alert = UIAlertController(
             title: "logout_alert_title".localized,
@@ -28,7 +35,7 @@ final class ProfileViewController: UIViewController, UINavigationControllerDeleg
         return alert
     }()
     
-    private lazy var photoPicker = UIImagePickerController()
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +50,8 @@ final class ProfileViewController: UIViewController, UINavigationControllerDeleg
     
 }
 
+// MARK: - ProfileViewProtocol
+
 extension ProfileViewController: ProfileViewProtocol {
     
     func updateView() {
@@ -54,6 +63,8 @@ extension ProfileViewController: ProfileViewProtocol {
     }
     
 }
+
+// MARK: - Private methods
 
 private extension ProfileViewController {
     
@@ -97,6 +108,8 @@ private extension ProfileViewController {
     
 }
 
+// MARK: - Private alert actions
+
 private extension ProfileViewController {
     
     @objc func logoutButtonAction() {
@@ -129,7 +142,9 @@ private extension ProfileViewController {
     
 }
 
-extension ProfileViewController: UIImagePickerControllerDelegate {
+// MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
+
+extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(
         _ picker: UIImagePickerController,
