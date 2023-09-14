@@ -65,9 +65,9 @@ private extension PurchaseCell {
         container.backgroundColor = .systemBackground
         addSubview(container)
         container.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(8)
+            make.top.equalToSuperview().inset(12)
             make.left.right.equalToSuperview().inset(20)
-            make.bottom.equalToSuperview().inset(8)
+            make.bottom.equalToSuperview().inset(12)
         }
         container.roundCorners(radius: 10)
         

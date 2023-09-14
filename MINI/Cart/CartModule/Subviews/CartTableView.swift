@@ -35,6 +35,7 @@ private extension CartTableView {
         showsVerticalScrollIndicator = false
         backgroundColor = .clear
         separatorStyle = .none
+        contentInset = .init(top: 20, left: 0, bottom: 0, right: 0)
         
         dataSource = self
         delegate = self
@@ -94,7 +95,7 @@ extension CartTableView: UITableViewDelegate {
         _ tableView: UITableView,
         heightForHeaderInSection section: Int
     ) -> CGFloat {
-        40
+        38
     }
     
     func tableView(
