@@ -13,8 +13,9 @@ final class BankHistoryViewController: UIViewController {
     weak var delegate: BankViewCellDelegate?
     weak var presenter: BankPresenterProtocol?
     
-    private lazy var labelView = BankHistoryLabel()
-    private lazy var tableView = MiTableView()
+    private let indicator = UIActivityIndicatorView(style: .medium)
+    private let labelView = BankHistoryLabel()
+    private let tableView = MiTableView()
     private var isSearching = false
     
     override func viewDidLoad() {
@@ -33,14 +34,15 @@ private extension BankHistoryViewController {
     
     func intialize() {
         view.backgroundColor = .backMINI
-        createSeeAllLabel()
+        createSearchLabel()
         createTableView()
+        createIndicator()
     }
     
-    func createSeeAllLabel() {
+    func createSearchLabel() {
         labelView.delegate = self
         labelView.backgroundColor = .backMINI
-        view.addSubview(labelView)
+        view.insertSubview(labelView, at: 1)
         labelView.snp.makeConstraints { make in
             make.left.top.right.equalToSuperview()
             make.height.equalTo(60)
@@ -54,21 +56,27 @@ private extension BankHistoryViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
-        tableViewRegister()
-        view.addSubview(tableView)
+        view.insertSubview(tableView, at: 0)
         tableView.snp.makeConstraints { make in
             make.top.equalTo(labelView.snp.bottom)
             make.left.right.bottom.equalToSuperview()
         }
-    }
-    
-    func tableViewRegister() {
         tableView.register(
             BankTransactionCell.self,
-            cellId: String(describing: BankTransactionCell.self)
-        )
+            cellId: String(describing: BankTransactionCell.self))
     }
     
+    func createIndicator() {
+        indicator.hidesWhenStopped = true
+        indicator.startAnimating()
+        view.insertSubview(indicator, at: 2)
+        indicator.center = view.center
+        indicator.snp.makeConstraints { make in
+            make.top.equalTo(labelView.snp.bottom).offset(70)
+            make.centerX.equalToSuperview()
+        }
+    }
+
 }
 
 //MARK: - BankTransactionKeyboardDelegate
@@ -85,6 +93,7 @@ extension BankHistoryViewController: BankTransactionKeyboardDelegate {
     }
     
     func searchBarTextDidChange(with searchText: String) {
+        indicator.startAnimating()
         if !searchText.isEmpty {
             presenter?.searchBarTextDidChange(with: searchText)
             isSearching = true
@@ -106,7 +115,9 @@ extension BankHistoryViewController: UITableViewDataSource {
     ) -> Int {
         let filteredCounter = presenter?.getFilteredData().count
         let transanctionCounter = presenter?.getTransactionData().count
-        return (isSearching ? filteredCounter : transanctionCounter) ?? 10
+        let actualNumber = (isSearching ? filteredCounter : transanctionCounter) ?? 0
+        actualNumber == 0 ? indicator.startAnimating() : indicator.stopAnimating()
+        return actualNumber
     }
     
     

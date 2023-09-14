@@ -11,36 +11,24 @@ import SDWebImage
 
 final class BankTransactionCell: UITableViewCell {
     
-    private lazy var iconView: UIImageView = {
-        let view = UIImageView(cornerRadius: 15)
-        
-        return view
-    }()
-    
-    private lazy var transactionLabel = UILabel(
+    private let iconView = UIImageView(cornerRadius: 15)
+    private let transactionLabel = UILabel(
         text: "Wallmart: apples, cola, glock-17",
         font: .systemFont(ofSize: 16),
         numberOfLines: 2,
-        color: .none
-    )
-    
-    private lazy var dateLabel = UILabel(
+        color: .none)
+    private let dateLabel = UILabel(
         text: "19 Apr 2023",
         font: .systemFont(ofSize: 14),
-        color: .gray
-    )
-    
-    private lazy var costLabel = UILabel(
+        color: .gray)
+    private let costLabel = UILabel(
         text: "-$78",
         font: .boldSystemFont(ofSize: 16),
-        color: .none
-    )
-    
-    private lazy var cardLabel = UILabel(
+        color: .none)
+    private let cardLabel = UILabel(
         text: "*4631",
         font: .systemFont(ofSize: 14),
-        color: .none
-    )
+        color: .none)
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
