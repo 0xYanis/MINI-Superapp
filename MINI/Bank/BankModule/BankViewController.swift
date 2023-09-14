@@ -126,7 +126,7 @@ private extension BankViewController {
     func createTableView() {
         bankTableView.presenter = presenter
         bankTableView.delegate = self
-        view.addSubview(bankTableView)
+        view.insertSubview(bankTableView, at: 0)
         bankTableView.snp.makeConstraints { make in
             make.width.equalToSuperview()
             make.height.equalToSuperview().multipliedBy(0.7)
@@ -135,7 +135,7 @@ private extension BankViewController {
     
     func createBottomSheet() {
         addChild(historyTableVC)
-        view.addSubview(historyTableVC.view)
+        view.insertSubview(historyTableVC.view, at: 1)
         historyTableVC.didMove(toParent: self)
         
         historyTableVC.presenter = presenter
