@@ -8,6 +8,7 @@
 import Foundation
 
 protocol CartPresenterProtocol: AnyObject {
+    func getPurchases() -> [Purchase]
 	func getTagItems() -> [String]
     func setCurrentTag(_ index: Int)
 }
@@ -30,6 +31,10 @@ final class CartPresenter {
 
 extension CartPresenter: CartPresenterProtocol {
 	
+    func getPurchases() -> [Purchase] {
+        interactor.purchases
+    }
+    
     func getTagItems() -> [String] {
         interactor.tagItems
     }

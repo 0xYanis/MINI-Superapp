@@ -54,6 +54,15 @@ final class PurchaseCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    public func configure(with data: Purchase) {
+        purchaseImage.image = UIImage(systemName: "AppIcon")
+        purchaseLabel.text = data.name
+        subLabel.text = data.description
+        purchaseType.text = data.type.rawValue
+        priceLabel.text = "$ \(data.price)"
+        quantityLabel.text = "Количество: \(data.quantity)"
+    }
+    
 }
 
 private extension PurchaseCell {

@@ -203,7 +203,7 @@
 		09EE2F5E2AA728F0003F08E3 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EE2F582AA728F0003F08E3 /* CartViewController.swift */; };
 		09EE2F5F2AA728F0003F08E3 /* CartBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EE2F592AA728F0003F08E3 /* CartBuilder.swift */; };
 		09EE2F602AA728F0003F08E3 /* CartInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EE2F5A2AA728F0003F08E3 /* CartInteractor.swift */; };
-		09EE2F612AA728F0003F08E3 /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EE2F5B2AA728F0003F08E3 /* Cart.swift */; };
+		09EE2F612AA728F0003F08E3 /* Purchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EE2F5B2AA728F0003F08E3 /* Purchase.swift */; };
 		09F5BFD72A1285F500BC3B7C /* BankCardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F5BFD62A1285F500BC3B7C /* BankCardService.swift */; };
 		09F5BFD92A12880000BC3B7C /* BankTemplateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F5BFD82A12880000BC3B7C /* BankTemplateService.swift */; };
 		09F5BFDB2A1288A300BC3B7C /* BankTransactionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F5BFDA2A1288A300BC3B7C /* BankTransactionService.swift */; };
@@ -439,7 +439,7 @@
 		09EE2F582AA728F0003F08E3 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		09EE2F592AA728F0003F08E3 /* CartBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartBuilder.swift; sourceTree = "<group>"; };
 		09EE2F5A2AA728F0003F08E3 /* CartInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartInteractor.swift; sourceTree = "<group>"; };
-		09EE2F5B2AA728F0003F08E3 /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
+		09EE2F5B2AA728F0003F08E3 /* Purchase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Purchase.swift; sourceTree = "<group>"; };
 		09F5BFD62A1285F500BC3B7C /* BankCardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankCardService.swift; sourceTree = "<group>"; };
 		09F5BFD82A12880000BC3B7C /* BankTemplateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTemplateService.swift; sourceTree = "<group>"; };
 		09F5BFDA2A1288A300BC3B7C /* BankTransactionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTransactionService.swift; sourceTree = "<group>"; };
@@ -1063,7 +1063,7 @@
 				09EE2F562AA728F0003F08E3 /* CartPresenter.swift */,
 				09EE2F592AA728F0003F08E3 /* CartBuilder.swift */,
 				09EE2F5A2AA728F0003F08E3 /* CartInteractor.swift */,
-				09EE2F5B2AA728F0003F08E3 /* Cart.swift */,
+				09EE2F5B2AA728F0003F08E3 /* Purchase.swift */,
 			);
 			path = CartModule;
 			sourceTree = "<group>";
@@ -1467,7 +1467,7 @@
 				09EA1CB52A9631AB00A18B41 /* Date+Extension.swift in Sources */,
 				09FB82522A37286800CEF8C1 /* ProductBuilder.swift in Sources */,
 				09F5BFD92A12880000BC3B7C /* BankTemplateService.swift in Sources */,
-				09EE2F612AA728F0003F08E3 /* Cart.swift in Sources */,
+				09EE2F612AA728F0003F08E3 /* Purchase.swift in Sources */,
 				09FB82542A37287100CEF8C1 /* ProductEntity.swift in Sources */,
 				09044FB32A444AF000432A3C /* GSearchEnity.swift in Sources */,
 				09A04B0C2AA6544600904950 /* FBUserRemover.swift in Sources */,

@@ -59,17 +59,21 @@ extension CartTableView: UITableViewDataSource {
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     ) -> Int {
-        return 10
+        return presenter?.getPurchases().count ?? 0
     }
     
     func tableView(
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
-        return tableView.dequeueReusableCell(
+        guard
+            let data = presenter?.getPurchases()[indexPath.row],
+            let cell = tableView.dequeueReusableCell(
             withIdentifier: String(describing: PurchaseCell.self),
-            for: indexPath
-        )
+            for: indexPath) as? PurchaseCell
+        else { return UITableViewCell() }
+        cell.configure(with: data)
+        return cell
     }
     
 }
