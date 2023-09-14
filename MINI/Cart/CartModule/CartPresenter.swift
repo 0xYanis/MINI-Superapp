@@ -8,7 +8,8 @@
 import Foundation
 
 protocol CartPresenterProtocol: AnyObject {
-	
+	func getTagItems() -> [String]
+    func setCurrentTag(_ index: Int)
 }
 
 final class CartPresenter {
@@ -29,4 +30,12 @@ final class CartPresenter {
 
 extension CartPresenter: CartPresenterProtocol {
 	
+    func getTagItems() -> [String] {
+        interactor.tagItems
+    }
+    
+    func setCurrentTag(_ index: Int) {
+        interactor.setCurrentTag(index)
+    }
+    
 }

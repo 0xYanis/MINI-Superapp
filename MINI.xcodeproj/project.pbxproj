@@ -1059,8 +1059,8 @@
 			children = (
 				09E88E812AA8BE50000B3E43 /* Subviews */,
 				09EE2F582AA728F0003F08E3 /* CartViewController.swift */,
-				09EE2F562AA728F0003F08E3 /* CartPresenter.swift */,
 				09EE2F572AA728F0003F08E3 /* CartRouter.swift */,
+				09EE2F562AA728F0003F08E3 /* CartPresenter.swift */,
 				09EE2F592AA728F0003F08E3 /* CartBuilder.swift */,
 				09EE2F5A2AA728F0003F08E3 /* CartInteractor.swift */,
 				09EE2F5B2AA728F0003F08E3 /* Cart.swift */,
