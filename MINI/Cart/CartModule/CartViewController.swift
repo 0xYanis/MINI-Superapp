@@ -9,38 +9,39 @@ import UIKit
 import FloatingPanel
 
 protocol CartViewProtocol: AnyObject {
-	
+    
 }
 
 final class CartViewController: UIViewController {
-	
+    
     // MARK: - Public properties
     
-	public var presenter: CartPresenterProtocol?
+    public var presenter: CartPresenterProtocol?
     
     // MARK: - Private properties
     
     private let tableView = CartTableView()
+    private lazy var emptyView = EmptyPayoutsView()
     private lazy var floatingPanel = FloatingPanelController()
-	
+    
     // MARK: - Lifecycle
     
-	override func viewDidLoad() {
-		super.viewDidLoad()
+    override func viewDidLoad() {
+        super.viewDidLoad()
         initialize()
-	}
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.showTabBar()
     }
-	
+    
 }
 
 // MARK: - CartViewProtocol
 
 extension CartViewController: CartViewProtocol {
-	
+    
 }
 
 // MARK: - Private methods
@@ -53,7 +54,29 @@ private extension CartViewController {
         navigationItem.rightBarButtonItem = shareButton
         view.backgroundColor = .secondarySystemBackground
         navigationItem.title = "Корзина"
+        checkCurrentState()
+    }
+    
+    func checkCurrentState() {
+        guard
+            let purchases = presenter?.getPurchases(),
+            purchases.isEmpty != true
+        else { showEmptyView(); return }
         configureTableView()
+    }
+    
+    func showEmptyView() {
+        navigationItem.leftBarButtonItem?.isHidden = true
+        navigationItem.rightBarButtonItem?.isHidden = true
+        emptyView.configure(
+            message: "Упс!",
+            "Похоже, Ваша корзина пуста..")
+        view.addSubview(emptyView)
+        emptyView.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(130)
+            make.left.right.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
     }
     
     func configureTableView() {
@@ -81,11 +104,18 @@ private extension CartViewController {
     }
     
     @objc func clearAction() {
-        
+        presenter?.removeAll()
+        tableView.isHidden = true
+        tableView.removeFromSuperview()
+        showEmptyView()
     }
     
     @objc func shareAction() {
-        
+        let items = [Any]()
+        let activityVC = UIActivityViewController(
+            activityItems: [items],
+            applicationActivities: nil)
+        present(activityVC, animated: true)
     }
     
 }

@@ -11,6 +11,8 @@ protocol CartInteractorProtocol: AnyObject {
     var purchases: [Purchase] { get }
     var tagItems: [String] { get }
     func setCurrentTag(_ index: Int)
+    
+    func removeAll()
 }
 
 final class CartInteractor: CartInteractorProtocol {
@@ -26,6 +28,11 @@ final class CartInteractor: CartInteractorProtocol {
     
     func setCurrentTag(_ index: Int) {
         
+    }
+    
+    func removeAll() {
+        purchases.removeAll()
+        //db.purchases.removeAll()
     }
 	
 }

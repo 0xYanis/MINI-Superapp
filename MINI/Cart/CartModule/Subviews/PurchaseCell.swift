@@ -55,7 +55,7 @@ final class PurchaseCell: UITableViewCell {
     }
     
     public func configure(with data: Purchase) {
-        purchaseImage.image = UIImage(systemName: "AppIcon")
+        purchaseImage.image = UIImage(named: "AppIcon")
         purchaseLabel.text = data.name
         subLabel.text = data.description
         purchaseType.text = data.type.rawValue

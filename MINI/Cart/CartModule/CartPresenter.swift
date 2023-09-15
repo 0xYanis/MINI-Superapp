@@ -11,6 +11,8 @@ protocol CartPresenterProtocol: AnyObject {
     func getPurchases() -> [Purchase]
 	func getTagItems() -> [String]
     func setCurrentTag(_ index: Int)
+    
+    func removeAll()
 }
 
 final class CartPresenter {
@@ -41,6 +43,10 @@ extension CartPresenter: CartPresenterProtocol {
     
     func setCurrentTag(_ index: Int) {
         interactor.setCurrentTag(index)
+    }
+    
+    func removeAll() {
+        interactor.removeAll()
     }
     
 }
