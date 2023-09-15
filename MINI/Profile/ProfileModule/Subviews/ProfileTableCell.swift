@@ -12,22 +12,23 @@ final class ProfileTableCell: UITableViewCell {
     
     static let cellId = "ProfileTableCell"
     
-    private lazy var iconContainer: UIView = {
+    private let iconContainer: UIView = {
         let view = UIView()
         view.roundCorners(radius: 8)
         return view
     }()
-    private lazy var iconImageView: UIImageView = {
+    private let iconImageView: UIImageView = {
         let view = UIImageView()
         view.tintColor = .white
         view.contentMode = .scaleAspectFit
         return view
     }()
-    private lazy var label: UILabel = {
+    private let label: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
         return label
     }()
+    private var switcher = UISwitch()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -68,12 +69,15 @@ final class ProfileTableCell: UITableViewCell {
         iconContainer.backgroundColor = nil
         iconImageView.image = nil
         label.text = nil
+        accessoryView = nil
     }
     
-    func configure(with data: ProfileOption) {
+    func configure(with data: ProfileOption,_ row: Int) {
         iconContainer.backgroundColor = UIColor(hex: data.iconBackground)
         iconImageView.image = UIImage(systemName: data.icon ?? "")
         label.text = data.title
+        switcher.tag = row
+        accessoryView = data.switcher ? switcher : nil
     }
     
 }

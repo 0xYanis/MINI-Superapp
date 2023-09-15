@@ -70,7 +70,7 @@ extension ProfileTableView: UITableViewDataSource {
             .options[indexPath.row]
         else { return UITableViewCell() }
         
-        cell.configure(with: data)
+        cell.configure(with: data, indexPath.row)
         return cell
     }
     
