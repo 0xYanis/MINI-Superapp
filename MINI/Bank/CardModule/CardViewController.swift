@@ -13,13 +13,13 @@ protocol CardViewProtocol: AnyObject {
 
 final class CardViewController: UIViewController {
     
-    private lazy var cardView   = UIView()
-    private lazy var frontView  = CardDetailView()
-    private lazy var backView   = CardBackDetailView()
-    private lazy var tableView  = MiTableView(style: .insetGrouped)
-    private var isFlipped: Bool = false
-    
     var presenter: CardPresenterProtocol?
+    
+    private let cardView  = UIView()
+    private let frontView = CardDetailView()
+    private let backView  = CardBackDetailView()
+    private let tableView = MiTableView(style: .insetGrouped)
+    private var isFlipped: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +34,10 @@ final class CardViewController: UIViewController {
     
 }
 
+// MARK: - CardViewProtocol
+
 extension CardViewController: CardViewProtocol {
+    
     func updateView(with data: BankCardEntity) {
         createNavigation(title: data.bankName)
         frontView.configure(with: data)
@@ -46,10 +49,11 @@ extension CardViewController: CardViewProtocol {
 
 // MARK: - private methods
 private extension CardViewController {
+    
     func initialize() {
         view.backgroundColor = .back2MINI
+        cardView.backgroundColor = .none
         
-        createCardView()
         createFrontView()
         createBackView()
         createTableView()
@@ -63,18 +67,6 @@ private extension CardViewController {
         navigationItem.largeTitleDisplayMode = .never
     }
     
-    func createCardView() {
-        cardView.backgroundColor = .clear
-        
-        view.addSubview(cardView)
-        cardView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
-            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
-            make.height.equalToSuperview().multipliedBy(0.25)
-        }
-    }
-    
     func createFrontView() {
         cardView.addSubview(frontView)
         frontView.snp.makeConstraints { make in
@@ -84,7 +76,6 @@ private extension CardViewController {
     
     func createBackView() {
         backView.isHidden = true
-        
         cardView.addSubview(backView)
         backView.snp.makeConstraints { make in
             make.edges.equalTo(cardView)
@@ -92,20 +83,21 @@ private extension CardViewController {
     }
     
     func createTableView() {
-        tableView.isScrollEnabled = false
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.backgroundColor = .clear
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
-            make.top.equalTo(cardView.snp.bottom)
-            make.left.right.bottom.equalToSuperview()
+            make.edges.equalToSuperview()
         }
     }
     
 }
 
 // MARK: - Navigation Bar buttons
+
 private extension CardViewController {
+    
     func addButtonsToNavBar() {
         navigationItem.rightBarButtonItems = [
             createEditBarButtonItem, createDeleteBarButtonItem
@@ -157,13 +149,13 @@ private extension CardViewController {
         )
         alert.addAction(cancelAction)
         
-        present(alert, animated: true, completion: nil)
+        present(alert, animated: true)
     }
-    
     
 }
 
 // MARK: - Rotation animation CardView
+
 private extension CardViewController {
     func createViewRotation(uiView: UIView) {
         let swipeRight = UISwipeGestureRecognizer(
@@ -195,8 +187,7 @@ private extension CardViewController {
                 .transitionFlipFromRight,
                 .showHideTransitionViews
             ])
-        default:
-            break
+        default: break
         }
     }
     
@@ -213,16 +204,23 @@ private extension CardViewController {
         )
     }
     
-    
 }
 
 // MARK: - UITableViewDataSource
+
 extension CardViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    func tableView(
+        _ tableView: UITableView,
+        numberOfRowsInSection section: Int
+    ) -> Int {
         return 8
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath
+    ) -> UITableViewCell {
         let cell = UITableViewCell()
         guard let card = presenter?.getCardData() else { return cell }
         cell.selectionStyle = .none
@@ -242,9 +240,7 @@ extension CardViewController: UITableViewDataSource {
         case 5:
             cell.textLabel?.text = "Bank Name: \(card.bankName)"
         case 6:
-            if let holderName = card.holderName {
-                cell.textLabel?.text = "Holder Name: \(holderName)"
-            }
+            cell.textLabel?.text = "Holder Name: \(card.holderName ?? "")"
         case 7:
             cell.textLabel?.text = "Expiration Date: \(card.expirationDate)"
         default:
@@ -253,5 +249,25 @@ extension CardViewController: UITableViewDataSource {
         return cell
     }
     
+    
+}
+
+// MARK: - UITableViewDelegate
+
+extension CardViewController: UITableViewDelegate {
+    
+    func tableView(
+        _ tableView: UITableView,
+        viewForHeaderInSection section: Int
+    ) -> UIView? {
+        return cardView
+    }
+    
+    func tableView(
+        _ tableView: UITableView,
+        heightForHeaderInSection section: Int
+    ) -> CGFloat {
+        UIScreen.main.bounds.height * 0.32
+    }
     
 }

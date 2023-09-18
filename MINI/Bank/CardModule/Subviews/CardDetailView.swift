@@ -71,8 +71,8 @@ private extension CardDetailView {
         cardView.radiusAndShadow(radius: 20, shadowSize: 10)
         addSubview(cardView)
         cardView.snp.makeConstraints { make in
-            make.left.right.equalToSuperview().inset(20)
-            make.top.bottom.equalToSuperview()
+            make.left.right.equalToSuperview()
+            make.top.bottom.equalToSuperview().inset(25)
         }
     }
     func createCardLogo() {
