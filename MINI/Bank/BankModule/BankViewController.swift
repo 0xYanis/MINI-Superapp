@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import FloatingPanel
 
 // MARK: - BankViewProtocol
 
@@ -31,9 +32,10 @@ final class BankViewController: UIViewController {
     
     //MARK: - Private properties
     
+    private let refreshControl = UIRefreshControl()
     private let bankTableView  = BankTableView()
     private let historyTableVC = BankHistoryViewController()
-    private lazy var refreshControl = UIRefreshControl()
+    private lazy var historyBottomSheet = FloatingPanelController()
     
     //MARK: - Lifecycle
     
@@ -73,11 +75,11 @@ extension BankViewController: BankViewProtocol {
 extension BankViewController: BankViewCellDelegate {
     
     func setBigHeightOfHistory() {
-        historyTableVC.view.animateToSuperviewSize()
+        historyBottomSheet.move(to: .full, animated: true)
     }
     
     func resetBottomSheetSize() {
-        historyTableVC.view.resetToOriginalState(with: true)
+        historyBottomSheet.move(to: .half, animated: true)
     }
     
 }
@@ -134,21 +136,12 @@ private extension BankViewController {
     }
     
     func createBottomSheet() {
-        addChild(historyTableVC)
-        view.insertSubview(historyTableVC.view, at: 1)
-        historyTableVC.didMove(toParent: self)
-        
-        historyTableVC.presenter = presenter
         historyTableVC.delegate = self
-        historyTableVC.view.roundCorners(radius: 30)
-        
-        let offset = tabBarController?.tabBar.frame.height
-        historyTableVC.view.snp.makeConstraints { make in
-            make.leading.trailing.bottom.equalToSuperview()
-            make.height.equalToSuperview()
-                .multipliedBy(0.34)
-                .offset(offset ?? 0)
-        }
+        historyTableVC.presenter = presenter
+        historyBottomSheet.set(contentViewController: historyTableVC)
+        historyBottomSheet.surfaceView.appearance.cornerRadius = 30
+        historyBottomSheet.addPanel(toParent: self, animated: true)
+        // heigh = 0.34
     }
     
     func createRefreshControl() {
@@ -180,14 +173,10 @@ extension BankViewController: UITableViewDelegate {
     ) -> CGFloat {
         let height = view.frame.height
         switch indexPath.row {
-        case 0:
-            return (height/5)
-        case 1:
-            return (height/30)
-        case 2:
-            return (height/6.3)
-        default:
-            return 0
+        case 0:  return (height/5)
+        case 1:  return (height/30)
+        case 2:  return (height/6.3)
+        default: return 0
         }
     }
     

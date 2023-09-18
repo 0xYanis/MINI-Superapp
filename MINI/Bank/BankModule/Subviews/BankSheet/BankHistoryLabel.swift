@@ -19,7 +19,6 @@ final class BankHistoryLabel: UIView {
     
     var delegate: BankTransactionKeyboardDelegate?
     
-    private lazy var graberView = UIView()
     private lazy var historyLabel = UILabel(
         text: "payment_history_label".localized,
         font: .boldSystemFont(ofSize: 22),
@@ -63,22 +62,9 @@ extension BankHistoryLabel {
 private extension BankHistoryLabel {
     
     func initialize() {
-        createGraberView()
         createLabel(label: historyLabel)
         createSearchButton()
         createSearchBar()
-    }
-    
-    func createGraberView() {
-        graberView.backgroundColor = .init(white: 0.6, alpha: 0.7)
-        graberView.roundCorners(radius: 3)
-        addSubview(graberView)
-        graberView.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.top.equalToSuperview().inset(6)
-            make.width.equalTo(45)
-            make.height.equalTo(6)
-        }
     }
     
     func createLabel(label: UILabel) {
