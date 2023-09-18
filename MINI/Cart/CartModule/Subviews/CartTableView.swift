@@ -120,16 +120,18 @@ extension CartTableView: UITableViewDelegate {
         _ tableView: UITableView,
         trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
     ) -> UISwipeActionsConfiguration? {
-        let deleteAction = deleteSwipeAction(at: indexPath.row)
+        let deleteAction = deleteSwipeAction(indexPath)
         return .init(actions: [deleteAction])
     }
     
-    private func deleteSwipeAction(at row: Int) -> UIContextualAction {
+    private func deleteSwipeAction(_ indexPath: IndexPath) -> UIContextualAction {
         let action = UIContextualAction(
             style: .destructive,
             title: "Удалить"
-        ) { _, _, completion in
+        ) { [weak self] _, _, completion in
+            self?.presenter?.deleteCell(at: indexPath.row)
             completion(true)
+            self?.deleteRows(at: [indexPath], with: .none)
         }
         action.image = .init(systemName: "trash")
         action.backgroundColor = .systemOrange

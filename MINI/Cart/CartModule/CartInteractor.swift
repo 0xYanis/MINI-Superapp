@@ -12,6 +12,7 @@ protocol CartInteractorProtocol: AnyObject {
     var tagItems: [String] { get }
     func setCurrentTag(_ index: Int)
     
+    func deleteCell(at index: Int)
     func removeAll()
 }
 
@@ -28,6 +29,12 @@ final class CartInteractor: CartInteractorProtocol {
     
     func setCurrentTag(_ index: Int) {
         
+    }
+    
+    func deleteCell(at index: Int) {
+        if index < purchases.count {
+            purchases.remove(at: index)
+        }
     }
     
     func removeAll() {

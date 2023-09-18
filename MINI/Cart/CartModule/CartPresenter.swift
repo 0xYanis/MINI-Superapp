@@ -12,6 +12,7 @@ protocol CartPresenterProtocol: AnyObject {
 	func getTagItems() -> [String]
     func setCurrentTag(_ index: Int)
     
+    func deleteCell(at index: Int)
     func removeAll()
 }
 
@@ -43,6 +44,10 @@ extension CartPresenter: CartPresenterProtocol {
     
     func setCurrentTag(_ index: Int) {
         interactor.setCurrentTag(index)
+    }
+    
+    func deleteCell(at index: Int) {
+        interactor.deleteCell(at: index)
     }
     
     func removeAll() {
