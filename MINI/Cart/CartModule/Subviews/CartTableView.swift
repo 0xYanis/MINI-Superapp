@@ -66,11 +66,8 @@ extension CartTableView: UITableViewDataSource {
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
-        guard
-            let data = presenter?.getPurchases()[indexPath.row],
-            let cell = tableView.dequeueReusableCell(
-            withIdentifier: String(describing: PurchaseCell.self),
-            for: indexPath) as? PurchaseCell
+        let cell = addCell(PurchaseCell.self, indexPath: indexPath)
+        guard let data = presenter?.getPurchases()[indexPath.row]
         else { return UITableViewCell() }
         cell.configure(with: data)
         return cell

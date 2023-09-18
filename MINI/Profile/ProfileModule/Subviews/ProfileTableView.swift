@@ -59,14 +59,11 @@ extension ProfileTableView: UITableViewDataSource {
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: ProfileTableCell.cellId,
-            for: indexPath) as? ProfileTableCell,
-              let data = presenter?
+        let cell = addCell(ProfileTableCell.self, indexPath: indexPath)
+        guard let data = presenter?
             .getProfileData()[indexPath.section]
             .options[indexPath.row]
         else { return UITableViewCell() }
-        
         cell.configure(with: data, indexPath.row)
         return cell
     }

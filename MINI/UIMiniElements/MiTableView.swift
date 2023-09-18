@@ -21,4 +21,13 @@ class MiTableView: UITableView {
         register(cell, forCellReuseIdentifier: String(describing: cell))
     }
     
+    func addCell<C: UITableViewCell>(_ cell: C.Type, indexPath: IndexPath) -> C {
+        guard
+            let cell = dequeueReusableCell(
+                withIdentifier: String(describing: cell),
+                for: indexPath) as? C
+        else { fatalError() }
+        return cell
+    }
+    
 }
