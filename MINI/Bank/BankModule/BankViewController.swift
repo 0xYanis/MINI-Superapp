@@ -141,7 +141,8 @@ private extension BankViewController {
         historyBottomSheet.set(contentViewController: historyTableVC)
         historyBottomSheet.surfaceView.appearance.cornerRadius = 30
         historyBottomSheet.addPanel(toParent: self, animated: true)
-        // heigh = 0.34
+        historyBottomSheet.layout = BankSheetLayout()
+        historyBottomSheet.invalidateLayout()
     }
     
     func createRefreshControl() {

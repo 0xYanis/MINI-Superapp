@@ -51,6 +51,7 @@
 		0914D09F2AB19AE90040C11C /* CartFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0914D09E2AB19AE90040C11C /* CartFooterView.swift */; };
 		091CD49029DDE9250041627F /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 091CD48F29DDE9250041627F /* Lottie */; };
 		0921F35F29DF1FE000B3D4F7 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0921F35E29DF1FE000B3D4F7 /* UIButton+Extension.swift */; };
+		0925E3D02AB8DDC100E886AE /* BankSheetLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0925E3CF2AB8DDC100E886AE /* BankSheetLayout.swift */; };
 		092E739429EBEB1F00165D37 /* LoginAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E739329EBEB1E00165D37 /* LoginAnimationView.swift */; };
 		092E739629EBEB3000165D37 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E739529EBEB3000165D37 /* LoginView.swift */; };
 		092E739A29EBFB8800165D37 /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E739929EBFB8800165D37 /* UIStackView+Extension.swift */; };
@@ -299,6 +300,7 @@
 		0913C7E12A9687FB005C887D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0914D09E2AB19AE90040C11C /* CartFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartFooterView.swift; sourceTree = "<group>"; };
 		0921F35E29DF1FE000B3D4F7 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		0925E3CF2AB8DDC100E886AE /* BankSheetLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankSheetLayout.swift; sourceTree = "<group>"; };
 		092E739329EBEB1E00165D37 /* LoginAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAnimationView.swift; sourceTree = "<group>"; };
 		092E739529EBEB3000165D37 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		092E739929EBFB8800165D37 /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
@@ -918,6 +920,7 @@
 				09D509CD29EF1E76009CC219 /* BankHistoryViewController.swift */,
 				09D509D529EF379A009CC219 /* BankTransactionCell.swift */,
 				09D509D929EF50AC009CC219 /* BankHistoryLabel.swift */,
+				0925E3CF2AB8DDC100E886AE /* BankSheetLayout.swift */,
 			);
 			path = BankSheet;
 			sourceTree = "<group>";
@@ -1501,6 +1504,7 @@
 				096B4B272A1DEEC700E5C65E /* APIService.swift in Sources */,
 				09EE2F5C2AA728F0003F08E3 /* CartPresenter.swift in Sources */,
 				09FC394A29FAD3ED00B2D97E /* TransactionInteractor.swift in Sources */,
+				0925E3D02AB8DDC100E886AE /* BankSheetLayout.swift in Sources */,
 				09E24C152A1228D000A91F74 /* BankTemplateEntity.swift in Sources */,
 				090AE1DB29FBAA020092515D /* TemplateViewController.swift in Sources */,
 				097A806B2A337E2800B5CF3A /* CategoryRouter.swift in Sources */,
