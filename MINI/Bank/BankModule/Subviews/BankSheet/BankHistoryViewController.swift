@@ -61,9 +61,7 @@ private extension BankHistoryViewController {
             make.top.equalTo(labelView.snp.bottom)
             make.left.right.bottom.equalToSuperview()
         }
-        tableView.register(
-            BankTransactionCell.self,
-            cellId: String(describing: BankTransactionCell.self))
+        tableView.register(BankTransactionCell.self)
     }
     
     func createIndicator() {

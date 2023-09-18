@@ -27,7 +27,7 @@ final class CartTableView: MiTableView {
 private extension CartTableView {
     
     func initialize() {
-        register(PurchaseCell.self, cellId: String(describing: PurchaseCell.self))
+        register(PurchaseCell.self)
         showsVerticalScrollIndicator = false
         backgroundColor = .clear
         separatorStyle = .none

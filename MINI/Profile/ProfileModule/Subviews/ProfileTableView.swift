@@ -32,10 +32,7 @@ private extension ProfileTableView {
         dataSource = self
         delegate = self
         backgroundColor = .clear
-        register(
-            ProfileTableCell.self,
-            cellId: ProfileTableCell.cellId
-        )
+        register(ProfileTableCell.self)
     }
     
 }

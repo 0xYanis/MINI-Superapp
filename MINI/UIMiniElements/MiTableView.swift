@@ -17,8 +17,8 @@ class MiTableView: UITableView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func register(_ cellClass: AnyClass?, cellId: String) {
-        register(cellClass, forCellReuseIdentifier: cellId)
+    func register<C: UITableViewCell>(_ cell: C.Type) {
+        register(cell, forCellReuseIdentifier: String(describing: cell))
     }
     
 }

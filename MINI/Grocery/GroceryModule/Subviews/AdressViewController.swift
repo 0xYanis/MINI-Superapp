@@ -86,10 +86,7 @@ private extension AdressViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.backgroundColor = .clear
-        tableView.register(
-            UITableViewCell.self,
-            cellId: String(describing: UITableViewCell.self)
-        )
+        tableView.register(UITableViewCell.self)
     }
     
 }

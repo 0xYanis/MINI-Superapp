@@ -46,15 +46,9 @@ private extension BankTableView {
     }
     
     func tableViewRegisters() {
-        register(
-            BankCardSet.self,
-            cellId: String(describing: BankCardSet.self))
-        register(
-            BankTemplateLabelCell.self,
-            cellId: String(describing: BankTemplateLabelCell.self))
-        register(
-            BankTemplateSet.self,
-            cellId: String(describing: BankTemplateSet.self))
+        register(BankCardSet.self)
+        register(BankTemplateLabelCell.self)
+        register(BankTemplateSet.self)
     }
     
 }

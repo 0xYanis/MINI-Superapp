@@ -41,10 +41,7 @@ private extension PayoutsView {
         addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(
-            PayoutsCell.self,
-            cellId: PayoutsCell.cellId
-        )
+        tableView.register(PayoutsCell.self)
     }
     
 }
