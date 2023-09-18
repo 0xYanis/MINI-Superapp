@@ -19,17 +19,20 @@ final class BankHistoryLabel: UIView {
     
     var delegate: BankTransactionKeyboardDelegate?
     
-    private lazy var historyLabel = UILabel(
+    private let historyLabel = UILabel(
         text: "payment_history_label".localized,
         font: .boldSystemFont(ofSize: 22),
         color: .none
     )
     
-    private lazy var searchButton = UIButton(
-        systemImage: "magnifyingglass.circle.fill",
-        color: .tintMINI,
-        size: 35
-    )
+    private let searchButton: UIButton = {
+        let button = UIButton()
+        button.setImage(.init(systemName: "magnifyingglass.circle.fill"), for: .normal)
+        button.addPulseAnimation()
+        button.contentVerticalAlignment = .fill
+        button.contentHorizontalAlignment = .fill
+        return button
+    }()
     
     private lazy var searchBar = UISearchBar()
     private var isSearchBarShown = false
@@ -40,7 +43,7 @@ final class BankHistoryLabel: UIView {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError()
     }
     
 }
@@ -62,14 +65,14 @@ extension BankHistoryLabel {
 private extension BankHistoryLabel {
     
     func initialize() {
-        createLabel(label: historyLabel)
+        createLabel()
         createSearchButton()
         createSearchBar()
     }
     
-    func createLabel(label: UILabel) {
-        addSubview(label)
-        label.snp.makeConstraints { make in
+    func createLabel() {
+        addSubview(historyLabel)
+        historyLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(20)
             make.left.equalToSuperview().inset(16)
         }
@@ -78,8 +81,10 @@ private extension BankHistoryLabel {
     func createSearchButton() {
         addSubview(searchButton)
         searchButton.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(20)
-            make.right.equalToSuperview().inset(20)
+            make.top.equalToSuperview().inset(16)
+            make.right.equalToSuperview().inset(16)
+            make.height.equalTo(35)
+            make.width.equalTo(35)
         }
         searchButton.addTarget(
             self,
