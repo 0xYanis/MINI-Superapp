@@ -16,27 +16,24 @@ final class ProductViewController: UIViewController {
     
     var presenter: ProductPresenterProtocol?
     
-    private lazy var imageView    = UIImageView()
-    private lazy var productLabel = UILabel()
+    private let imageView    = UIImageView()
+    private let productLabel = UILabel()
     
-    private lazy var backView     = UIView()
-    private lazy var cancelButton = UIButton(
+    private let backView     = UIView()
+    private let cancelButton = UIButton(
         systemImage: "xmark.circle.fill",
         color: .systemOrange,
-        size: 35
-    )
-    private lazy var priceView  = UIView()
-    private lazy var priceLabel = UILabel()
-    private lazy var lessButton = UIButton(
+        size: 35)
+    private let priceView  = UIView()
+    private let priceLabel = UILabel()
+    private let lessButton = UIButton(
         systemImage: "minus",
         color: .white,
-        size: 25
-    )
-    private lazy var moreButton = UIButton(
+        size: 25)
+    private let moreButton = UIButton(
         systemImage: "plus",
         color: .white,
-        size: 25
-    )
+        size: 25)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +44,7 @@ final class ProductViewController: UIViewController {
 }
 
 extension ProductViewController: ProductViewProtocol {
+    
     func updateView() {
         createNavigaion(with: "Product")
     }
@@ -54,6 +52,7 @@ extension ProductViewController: ProductViewProtocol {
 }
 
 private extension ProductViewController {
+    
     func initialize() {
         view.backgroundColor = .back2MINI
         createBackView()
@@ -112,8 +111,7 @@ private extension ProductViewController {
         cancelButton.addTarget(
             self,
             action: #selector(cancelButtonAction),
-            for: .touchUpInside
-        )
+            for: .touchUpInside)
     }
     
     func createPriceView() {
@@ -144,17 +142,15 @@ private extension ProductViewController {
         }
         let tapGesture = UIGestureRecognizer(
             target: self,
-            action: #selector(priceTapAction)
-        )
+            action: #selector(priceTapAction))
         priceLabel.addGestureRecognizer(tapGesture)
     }
     
     func createMoreAndLessButtons() {
         lessButton.addTarget(
             self,
-            action: #selector(lessButtonAction),
-            for: .touchUpInside
-        )
+            action: #selector(minusButtonAction),
+            for: .touchUpInside)
         priceView.addSubview(lessButton)
         lessButton.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(15)
@@ -163,9 +159,8 @@ private extension ProductViewController {
         
         moreButton.addTarget(
             self,
-            action: #selector(moreButtonAction),
-            for: .touchUpInside
-        )
+            action: #selector(plusButtonAction),
+            for: .touchUpInside)
         priceView.addSubview(moreButton)
         moreButton.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(15)
@@ -177,19 +172,20 @@ private extension ProductViewController {
 
 //MARK: - Private action methods
 private extension ProductViewController {
+    
     @objc func cancelButtonAction() {
         dismiss(animated: true)
     }
     
     @objc func priceTapAction() {
+        presenter?.openCart()
+    }
+    
+    @objc func minusButtonAction() {
         
     }
     
-    @objc func lessButtonAction() {
-        
-    }
-    
-    @objc func moreButtonAction() {
+    @objc func plusButtonAction() {
         
     }
     

@@ -10,6 +10,7 @@ import Foundation
 protocol ProductPresenterProtocol: AnyObject {
     func viewDidLoaded()
     func updateView()
+    func openCart()
 }
 
 final class ProductPresenter {
@@ -35,6 +36,10 @@ extension ProductPresenter: ProductPresenterProtocol {
     
     func updateView() {
         view?.updateView()
+    }
+    
+    func openCart() {
+        router.goToCart()
     }
     
 }
