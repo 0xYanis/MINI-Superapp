@@ -38,7 +38,7 @@ final class BankCardSet: UITableViewCell, BankTableCellConf {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError()
     }
     
     public func reloadData() {
@@ -59,8 +59,7 @@ private extension BankCardSet {
     func createCollectionView() {
         collectionView = UICollectionView(
             frame: .zero,
-            collectionViewLayout: snapLayout
-        )
+            collectionViewLayout: snapLayout)
     }
     
     func addConstraintsOfView() {
@@ -71,22 +70,22 @@ private extension BankCardSet {
         collectionView.isSkeletonable = true
         collectionView.showAnimatedSkeleton(
             usingColor: .asbestos,
-            transition: .crossDissolve(0.25)
-        )
+            transition: .crossDissolve(0.25))
     }
     
     func stopSkeleton() {
         collectionView.stopSkeletonAnimation()
         hideSkeleton(
             reloadDataAfter: true,
-            transition: .crossDissolve(0.25)
-        )
+            transition: .crossDissolve(0.25))
     }
     
 }
 
 // MARK: - SkeletonCollectionViewDataSource
+
 extension BankCardSet: SkeletonCollectionViewDataSource {
+    
     func collectionSkeletonView(
         _ skeletonView: UICollectionView,
         cellIdentifierForItemAt indexPath: IndexPath
@@ -134,14 +133,14 @@ extension BankCardSet: SkeletonCollectionViewDataSource {
             indexPaths.count == 1,
             let indexPath = indexPaths.first
         else { return nil }
-        let openAction   = openCellsAction(collectionView, indexPath: indexPath)
+        let openAction   = openCellsAction(indexPath: indexPath)
         let deleteAction = deleteCellsAction(collectionView, indexPath: indexPath)
         let context = createContextMenu(indexPath, menu: [openAction, deleteAction])
         
         return context
     }
     
-    func createContextMenu(
+    private func createContextMenu(
         _ indexPath: IndexPath,
         menu: [UIMenuElement]
     ) -> UIContextMenuConfiguration? {
@@ -157,36 +156,38 @@ extension BankCardSet: SkeletonCollectionViewDataSource {
         }
     }
     
-    func openCellsAction(_ collectionView: UICollectionView, indexPath: IndexPath) -> UIAction {
-        let action = UIAction(
+    private func openCellsAction(indexPath: IndexPath) -> UIAction {
+        return UIAction(
             title: "Открыть",
             image: UIImage(systemName: "square.and.pencil"),
             attributes: []
         ) { [weak self] _ in
             self?.presenter?.userWantToDetails(of: .card, with: indexPath.item)
         }
-        return action
     }
     
-    func deleteCellsAction(_ collectionView: UICollectionView, indexPath: IndexPath) -> UIAction {
-        let action = UIAction(
+    private func deleteCellsAction(
+        _ collectionView: UICollectionView,
+        indexPath: IndexPath
+    ) -> UIAction {
+        return UIAction(
             title: "Удалить",
             image: UIImage(systemName: "trash"),
             attributes: .destructive
         ) { [weak self] _ in
             self?.presenter?.userWantToDeleteCard(at: indexPath.item)
-            collectionView.performBatchUpdates({
+            collectionView.performBatchUpdates {
                 collectionView.deleteItems(at: [indexPath])
-            })
+            }
         }
-        return action
     }
     
 }
 
-
 // MARK: - UICollectionViewDelegateFlowLayout
+
 extension BankCardSet: UICollectionViewDelegateFlowLayout {
+    
     func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
