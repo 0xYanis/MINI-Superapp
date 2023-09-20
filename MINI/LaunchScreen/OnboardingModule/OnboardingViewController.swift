@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 // MARK: - OnboardingViewProtocol
 
@@ -22,15 +23,10 @@ final class OnboardingViewController: UIPageViewController, OnboardingViewProtoc
     private var pages: [UIViewController] = []
     private var initialPage: Int = 0
     
-    private let skipButton  = UIButton()
-    private let nextButton  = UIButton()
-    private let pageControl = UIPageControl()
-    
-    // MARK: - Private animation properties
-    
-    private var pageControlBottom: NSLayoutConstraint?
-    private var skipButtonTop: NSLayoutConstraint?
-    private var nextButtonTop: NSLayoutConstraint?
+    private let skipButton     = UIButton()
+    private let nextButton     = UIButton()
+    private let pageControl    = UIPageControl()
+    private let continueButton = UIButton()
     
     // MARK: - Lifecycle
     
@@ -70,6 +66,7 @@ private extension OnboardingViewController {
         configurePageControl()
         configureSkipButton()
         configureNextButton()
+        configureContinueButton()
     }
     
     func addDataSource() {
@@ -87,7 +84,6 @@ private extension OnboardingViewController {
     
     func configurePageControl() {
         pageControl.addTarget(self, action: #selector(pageControlAction), for: .valueChanged)
-        pageControl.translatesAutoresizingMaskIntoConstraints = false
         pageControl.currentPageIndicatorTintColor = .black
         pageControl.pageIndicatorTintColor = .systemGray2
         pageControl.numberOfPages = pages.count
@@ -96,47 +92,51 @@ private extension OnboardingViewController {
     }
     
     func configureSkipButton() {
-        skipButton.translatesAutoresizingMaskIntoConstraints = false
-        skipButton.setTitleColor(.systemBlue, for: .normal)
+        skipButton.setTitleColor(.systemOrange, for: .normal)
         skipButton.setTitle("Пропуск", for: .normal)
         skipButton.addTarget(self, action: #selector(skipTapped), for: .primaryActionTriggered)
         view.addSubview(skipButton)
     }
     
     func configureNextButton() {
-        nextButton.translatesAutoresizingMaskIntoConstraints = false
-        nextButton.setTitleColor(.systemBlue, for: .normal)
+        nextButton.setTitleColor(.systemOrange, for: .normal)
         nextButton.setTitle("Дальше", for: .normal)
         nextButton.addTarget(self, action: #selector(nextTapped), for: .primaryActionTriggered)
         view.addSubview(nextButton)
     }
     
+    func configureContinueButton() {
+        continueButton.setTitleColor(.white, for: .normal)
+        continueButton.setTitle("Понятно", for: .normal)
+        continueButton.backgroundColor = .systemOrange
+        continueButton.roundCorners(radius: 12)
+        continueButton.addTarget(self, action: #selector(continueTapped), for: .touchUpInside)
+        view.addSubview(continueButton)
+    }
+    
     func configureConstraints() {
-        NSLayoutConstraint.activate([
-            pageControl.widthAnchor.constraint(equalTo: view.widthAnchor),
-            pageControl.heightAnchor.constraint(equalToConstant: 20),
-            pageControl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            skipButton.leadingAnchor.constraint(
-                equalToSystemSpacingAfter: view.leadingAnchor,
-                multiplier: 2),
-            view.trailingAnchor.constraint(
-                equalToSystemSpacingAfter: nextButton.trailingAnchor,
-                multiplier: 2),
-        ])
-        // animations
-        skipButtonTop = skipButton.topAnchor.constraint(
-            equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor,
-            multiplier: 2)
-        nextButtonTop = nextButton.topAnchor.constraint(
-            equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor,
-            multiplier: 2)
-        pageControlBottom = view.bottomAnchor.constraint(
-            equalToSystemSpacingBelow: pageControl.bottomAnchor,
-            multiplier: 2)
+        skipButton.snp.makeConstraints { make in
+            make.leading.equalToSuperview().inset(16)
+            make.top.equalToSuperview().inset(40)
+        }
         
-        skipButtonTop?.isActive     = true
-        nextButtonTop?.isActive     = true
-        pageControlBottom?.isActive = true
+        nextButton.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().inset(16)
+            make.top.equalToSuperview().inset(40)
+        }
+        
+        pageControl.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.height.equalTo(20)
+            make.bottom.equalToSuperview().inset(60)
+        }
+        
+        continueButton.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.height.equalTo(45)
+            make.width.equalToSuperview().inset(50)
+            make.bottom.equalToSuperview().inset(-90)
+        }
     }
     
 }
@@ -144,6 +144,11 @@ private extension OnboardingViewController {
 // MARK: - Action methods
 
 private extension OnboardingViewController {
+    
+    @objc
+    func continueTapped(_ sender: UIButton) {
+        print("NEXT")
+    }
     
     @objc
     func pageControlAction(_ sender: UIPageControl) {
@@ -226,15 +231,40 @@ extension OnboardingViewController: UIPageViewControllerDelegate {
     }
     
     private func hideControls() {
-        pageControlBottom?.constant = -100
-        skipButtonTop?.constant = -100
-        nextButtonTop?.constant = -100
+        UIView.animate(withDuration: 0.3, delay: 0) { [weak self] in
+            self?.removeConstraints()
+        }
     }
     
     private func showControls() {
-        pageControlBottom?.constant = 30
-        skipButtonTop?.constant = 16
-        nextButtonTop?.constant = 16
+        UIView.animate(withDuration: 0.3, delay: 0) { [weak self] in
+            self?.configureConstraints()
+        }
+    }
+    
+    private func removeConstraints() {
+        skipButton.snp.makeConstraints { make in
+            make.leading.equalToSuperview().inset(16)
+            make.top.equalToSuperview().inset(-90)
+        }
+        
+        nextButton.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().inset(16)
+            make.top.equalToSuperview().inset(-90)
+        }
+        
+        pageControl.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.height.equalTo(20)
+            make.bottom.equalToSuperview().inset(-90)
+        }
+        
+        continueButton.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.height.equalTo(45)
+            make.width.equalToSuperview().inset(50)
+            make.bottom.equalToSuperview().inset(60)
+        }
     }
     
 }

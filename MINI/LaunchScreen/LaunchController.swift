@@ -12,7 +12,6 @@ final class LaunchController: UIViewController {
     
     public var completion: (() -> Void)?
     
-    private let authManager = AuthenticationManager()
     private let emojis : [String]  = ["🏦", "🛩", "🛒", "🚀"]
     
     private lazy var emojiLabel = UILabel()
