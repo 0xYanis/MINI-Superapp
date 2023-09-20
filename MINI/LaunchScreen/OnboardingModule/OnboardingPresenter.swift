@@ -25,6 +25,7 @@ final class OnboardingPresenter: OnboardingPresenterProtocol {
     }
     
     func readyToContinue() {
+        UserDefaults.standard.set(true, forKey: "seenOnboarding")
         coordinatorDelegate?.canLaunch()
     }
     

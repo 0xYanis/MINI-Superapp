@@ -61,7 +61,6 @@ final class AppCoordinator: ICoordinator {
             let navController = UINavigationController(rootViewController: login)
             setRoot(navController)
         } else {
-            UserDefaults.standard.set(true, forKey: "seenOnboarding")
             let controller = OnboardingBuilder.build(with: self)
             controller.modalPresentationStyle = .fullScreen
             launch.present(controller, animated: true)

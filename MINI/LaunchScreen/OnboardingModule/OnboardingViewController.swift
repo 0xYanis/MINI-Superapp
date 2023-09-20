@@ -147,7 +147,9 @@ private extension OnboardingViewController {
     
     @objc
     func continueTapped(_ sender: UIButton) {
-        presenter?.readyToContinue()
+        dismiss(animated: true) { [weak self] in
+            self?.presenter?.readyToContinue()
+        }
     }
     
     @objc
