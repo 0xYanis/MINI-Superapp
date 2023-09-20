@@ -10,6 +10,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var coordinator: ICoordinator?
 
     func scene(
         _ scene: UIScene,
@@ -18,16 +19,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     ) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
-        
-        window.rootViewController = LaunchController()
-        window.tintColor = .tintMINI
-        window.backgroundColor = .backMINI
         self.window = window
+        self.coordinator = AppCoordinator()
+        coordinator?.window = window
+        coordinator?.start()
         
         let deeplinks = DeepLinkManager()
         UIApplication.shared.shortcutItems = deeplinks.buildShortCuts()
-        
-        window.makeKeyAndVisible()
     }
     
 }

@@ -60,6 +60,7 @@
 		092F67AB2A3CCED200E0F2B9 /* ProfileTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092F67AA2A3CCED200E0F2B9 /* ProfileTableCell.swift */; };
 		092F67AD2A3CDFE100E0F2B9 /* ProfileEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092F67AC2A3CDFE100E0F2B9 /* ProfileEntity.swift */; };
 		092F67AF2A3CE87500E0F2B9 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092F67AE2A3CE87500E0F2B9 /* UIColor+Extensions.swift */; };
+		0936E7BD2ABAF27200F50698 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0936E7BC2ABAF27200F50698 /* AppCoordinator.swift */; };
 		093D02AB2AA0EFE30032D812 /* FBFirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093D02AA2AA0EFE30032D812 /* FBFirestoreManager.swift */; };
 		093D02BA2AA0F9420032D812 /* FBStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093D02B92AA0F9420032D812 /* FBStorageManager.swift */; };
 		093D02BC2AA12A230032D812 /* FBNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093D02BB2AA12A230032D812 /* FBNotificationManager.swift */; };
@@ -309,6 +310,7 @@
 		092F67AA2A3CCED200E0F2B9 /* ProfileTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableCell.swift; sourceTree = "<group>"; };
 		092F67AC2A3CDFE100E0F2B9 /* ProfileEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEntity.swift; sourceTree = "<group>"; };
 		092F67AE2A3CE87500E0F2B9 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		0936E7BC2ABAF27200F50698 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		093D02AA2AA0EFE30032D812 /* FBFirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBFirestoreManager.swift; sourceTree = "<group>"; };
 		093D02B92AA0F9420032D812 /* FBStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBStorageManager.swift; sourceTree = "<group>"; };
 		093D02BB2AA12A230032D812 /* FBNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBNotificationManager.swift; sourceTree = "<group>"; };
@@ -615,6 +617,7 @@
 			isa = PBXGroup;
 			children = (
 				0910961129DB332600338D22 /* Application */,
+				0936E7BB2ABAF20700F50698 /* Base */,
 				090BAB8B2A029889006AE8F9 /* AviaTickets */,
 				09F86C5829F6FD1200307432 /* Bank */,
 				09EE2F4F2AA7289F003F08E3 /* Cart */,
@@ -635,8 +638,6 @@
 			children = (
 				091095FD29DB32F000338D22 /* AppDelegate.swift */,
 				091095FF29DB32F000338D22 /* SceneDelegate.swift */,
-				09F86C4B29F6E75600307432 /* AuthenticationManager.swift */,
-				09F86C4E29F6E96C00307432 /* BaseTabBarController.swift */,
 				0994B93F2A20F66D00F4A783 /* DeepLinkManager.swift */,
 				0913C7E12A9687FB005C887D /* GoogleService-Info.plist */,
 				09F92CF72A23476300440ACC /* Localizable.strings */,
@@ -681,6 +682,16 @@
 				09ABE0052A142805009DB57B /* GroceryViewCell.swift */,
 			);
 			path = GroceryCells;
+			sourceTree = "<group>";
+		};
+		0936E7BB2ABAF20700F50698 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				0936E7BC2ABAF27200F50698 /* AppCoordinator.swift */,
+				09F86C4B29F6E75600307432 /* AuthenticationManager.swift */,
+				09F86C4E29F6E96C00307432 /* BaseTabBarController.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 		09565EDE2A2F1399007A2DAC /* Subviews */ = {
@@ -1514,6 +1525,7 @@
 				099A79C229F16417004B95C7 /* BankTemplateCell.swift in Sources */,
 				090C1E6A2A9D281E00E75464 /* OTPTextField.swift in Sources */,
 				097ACF282A2E1E690023106A /* RegisterBuilder.swift in Sources */,
+				0936E7BD2ABAF27200F50698 /* AppCoordinator.swift in Sources */,
 				09FB824C2A3727E200CEF8C1 /* ProductPresenter.swift in Sources */,
 				097E03A329EC44BD00CE2A6F /* BankBuilder.swift in Sources */,
 				090BAB902A029914006AE8F9 /* AviaPresenter.swift in Sources */,
