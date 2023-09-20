@@ -26,7 +26,11 @@ final class FBAuthManager: FBAuthProtocol {
     private let firebase = Auth.auth()
     
     public var currentUser: User? {
-        return firebase.currentUser
+        if UserDefaults.standard.bool(forKey: "seenOnboarding") == true {
+            return firebase.currentUser
+        } else {
+            return nil
+        }
     }
     
     public func signIn(email: String, password: String, completion: @escaping closure) {
