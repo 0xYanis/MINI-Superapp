@@ -117,12 +117,12 @@ private extension OnboardingViewController {
     func configureConstraints() {
         skipButton.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(16)
-            make.top.equalToSuperview().inset(40)
+            make.top.equalTo(view.safeAreaLayoutGuide)
         }
         
         nextButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().inset(16)
-            make.top.equalToSuperview().inset(40)
+            make.top.equalTo(view.safeAreaLayoutGuide)
         }
         
         pageControl.snp.makeConstraints { make in
@@ -187,6 +187,8 @@ extension OnboardingViewController: UIPageViewControllerDataSource {
             let currentIndex = pages.firstIndex(of: viewController)
         else { return nil }
         
+        if currentIndex == 0 { return nil }
+        
         return currentIndex == 0 ? pages.last : pages[currentIndex - 1]
     }
     
@@ -198,6 +200,8 @@ extension OnboardingViewController: UIPageViewControllerDataSource {
             let currentIndex = pages.firstIndex(of: viewController)
         else { return nil }
         
+        if currentIndex == pages.count - 1 { return nil }
+
         return currentIndex < pages.count - 1 ? pages[currentIndex + 1] : pages.first
     }
     
