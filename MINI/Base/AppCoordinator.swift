@@ -27,6 +27,7 @@ final class AppCoordinator: ICoordinator {
     public var window: UIWindow?
     
     // MARK: - Private properties
+    private var launchController: LaunchController?
     private var authManager: FBAuthProtocol = FBAuthManager()
     private var islogin: Bool = false
     
@@ -35,7 +36,8 @@ final class AppCoordinator: ICoordinator {
     // MARK: - Public methods
     
     public func start() {
-        let launch = LaunchController()
+        launchController = LaunchController()
+        guard let launch = launchController else { return }
         setRoot(launch)
         launch.completion = { [weak self] in
             guard let self = self else { fatalError() }
@@ -46,6 +48,8 @@ final class AppCoordinator: ICoordinator {
     // MARK: - Private methods
     
     private func showMain() {
+        launchController?.completion = nil
+        launchController = nil
         let baseTabbar = BaseTabBarController()
         setRoot(baseTabbar)
     }
@@ -53,8 +57,8 @@ final class AppCoordinator: ICoordinator {
     private func showLogin(from launch: UIViewController = UIViewController()) {
         let seenOnboarding = UserDefaults.standard.bool(forKey: "seenOnboarding")
         if seenOnboarding {
-            let controller = LoginBuilder.build()
-            let navController  = UINavigationController(rootViewController: controller)
+            let login = LoginBuilder.build()
+            let navController = UINavigationController(rootViewController: login)
             setRoot(navController)
         } else {
             UserDefaults.standard.set(true, forKey: "seenOnboarding")
