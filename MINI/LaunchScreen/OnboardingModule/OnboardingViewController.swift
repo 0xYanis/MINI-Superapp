@@ -147,7 +147,7 @@ private extension OnboardingViewController {
     
     @objc
     func continueTapped(_ sender: UIButton) {
-        print("NEXT")
+        presenter?.readyToContinue()
     }
     
     @objc

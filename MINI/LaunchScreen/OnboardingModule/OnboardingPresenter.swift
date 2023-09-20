@@ -9,16 +9,23 @@ import Foundation
 
 protocol OnboardingPresenterProtocol: AnyObject {
     var content: [OnboardingEntity] { get }
+    
+    func readyToContinue()
 }
 
 final class OnboardingPresenter: OnboardingPresenterProtocol {
     
     weak public var view: OnboardingViewProtocol?
+    weak public var coordinatorDelegate: AppCoordinatorDelegate?
     
     public var content: [OnboardingEntity] = [.first, .second, .third]
     
     init(view: OnboardingViewProtocol) {
         self.view = view
+    }
+    
+    func readyToContinue() {
+        coordinatorDelegate?.canLaunch()
     }
     
 }

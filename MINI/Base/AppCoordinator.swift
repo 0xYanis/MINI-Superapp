@@ -14,6 +14,12 @@ protocol ICoordinator: AnyObject {
     func start()
 }
 
+// MARK: - Delegate
+
+protocol AppCoordinatorDelegate: AnyObject {
+    func canLaunch()
+}
+
 final class AppCoordinator: ICoordinator {
     
     // MARK: - Public properties
@@ -44,7 +50,7 @@ final class AppCoordinator: ICoordinator {
         setRoot(baseTabbar)
     }
     
-    private func showLogin(from launch: UIViewController) {
+    private func showLogin(from launch: UIViewController = UIViewController()) {
         let seenOnboarding = UserDefaults.standard.bool(forKey: "seenOnboarding")
         if seenOnboarding {
             let controller = LoginBuilder.build()
@@ -52,7 +58,7 @@ final class AppCoordinator: ICoordinator {
             setRoot(navController)
         } else {
             UserDefaults.standard.set(true, forKey: "seenOnboarding")
-            let controller = OnboardingBuilder.build()
+            let controller = OnboardingBuilder.build(with: self)
             controller.modalPresentationStyle = .fullScreen
             launch.present(controller, animated: true)
         }
@@ -72,3 +78,14 @@ final class AppCoordinator: ICoordinator {
     }
     
 }
+
+// MARK: - AppCoordinatorDelegate
+
+extension AppCoordinator: AppCoordinatorDelegate {
+    
+    func canLaunch() {
+        showLogin()
+    }
+    
+}
+
