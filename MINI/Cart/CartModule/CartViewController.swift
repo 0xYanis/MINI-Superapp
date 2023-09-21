@@ -21,6 +21,7 @@ final class CartViewController: UIViewController {
     // MARK: - Private properties
     
     private let tableView = CartTableView()
+    private let orderPriceView = OrderPriceView()
     private lazy var emptyView = EmptyPayoutsView()
     private lazy var floatingPanel = FloatingPanelController()
     
@@ -63,6 +64,7 @@ private extension CartViewController {
             purchases.isEmpty != true
         else { showEmptyView(); return }
         configureTableView()
+        configurePriceView()
     }
     
     func showEmptyView() {
@@ -81,8 +83,21 @@ private extension CartViewController {
     
     func configureTableView() {
         tableView.presenter = presenter
-        view.addSubview(tableView)
-        tableView.frame = view.bounds
+        view.insertSubview(tableView, at: 0)
+        tableView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+    }
+    
+    func configurePriceView() {
+        view.addSubview(orderPriceView)
+        orderPriceView.snp.makeConstraints { make in
+            make.height.equalToSuperview().multipliedBy(0.08)
+            make.bottom.equalTo(view.snp.bottomMargin).inset(10)
+            make.leading.equalToSuperview().inset(10)
+            make.trailing.equalToSuperview().inset(10)
+        }
+        orderPriceView.roundCorners(radius: 15)
     }
     
     var clearButton: UIBarButtonItem {
@@ -106,7 +121,9 @@ private extension CartViewController {
     @objc func clearAction() {
         presenter?.removeAll()
         tableView.isHidden = true
+        orderPriceView.isHidden = true
         tableView.removeFromSuperview()
+        orderPriceView.removeFromSuperview()
         showEmptyView()
     }
     

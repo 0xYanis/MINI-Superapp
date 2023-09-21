@@ -71,6 +71,7 @@
 		093D02C72AA12D5F0032D812 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 093D02C62AA12D5F0032D812 /* FirebaseStorage */; };
 		094061B32AB06847009AD0BF /* UITagPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094061B22AB06847009AD0BF /* UITagPickerView.swift */; };
 		094202C72A9E1E91008DDE2A /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = 094202C62A9E1E91008DDE2A /* FloatingPanel */; };
+		0943493B2ABC892D00F81C00 /* OrderPriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0943493A2ABC892D00F81C00 /* OrderPriceView.swift */; };
 		094388EB2A56F0A200027D59 /* BankViewDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094388EA2A56F0A200027D59 /* BankViewDetails.swift */; };
 		09503EB829F2D44000254F53 /* StackFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09503EB729F2D44000254F53 /* StackFlowLayout.swift */; };
 		09565EE02A2F13B3007A2DAC /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09565EDF2A2F13B3007A2DAC /* RegisterView.swift */; };
@@ -314,6 +315,7 @@
 		093D02B92AA0F9420032D812 /* FBStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBStorageManager.swift; sourceTree = "<group>"; };
 		093D02BB2AA12A230032D812 /* FBNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBNotificationManager.swift; sourceTree = "<group>"; };
 		094061B22AB06847009AD0BF /* UITagPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITagPickerView.swift; sourceTree = "<group>"; };
+		0943493A2ABC892D00F81C00 /* OrderPriceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderPriceView.swift; sourceTree = "<group>"; };
 		094388EA2A56F0A200027D59 /* BankViewDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankViewDetails.swift; sourceTree = "<group>"; };
 		09503EB729F2D44000254F53 /* StackFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackFlowLayout.swift; sourceTree = "<group>"; };
 		09565EDF2A2F13B3007A2DAC /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
@@ -1085,6 +1087,7 @@
 				09E88E822AA8BE6C000B3E43 /* CartTableView.swift */,
 				09E88E842AA8C045000B3E43 /* PurchaseCell.swift */,
 				0914D09E2AB19AE90040C11C /* CartFooterView.swift */,
+				0943493A2ABC892D00F81C00 /* OrderPriceView.swift */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -1452,6 +1455,7 @@
 				09EE2F602AA728F0003F08E3 /* CartInteractor.swift in Sources */,
 				099D4F6B29F71A420002C24A /* CardInteractor.swift in Sources */,
 				09BFC93C2A1B4C7400C8505B /* ProfileViewController.swift in Sources */,
+				0943493B2ABC892D00F81C00 /* OrderPriceView.swift in Sources */,
 				09B5662D2A937EE700AFF98E /* PayoutsCell.swift in Sources */,
 				09091CDE2A82B49B0043A9A1 /* MiTableView.swift in Sources */,
 				090E87AE2AAF79BE00C6AEF3 /* AviaDealCell.swift in Sources */,

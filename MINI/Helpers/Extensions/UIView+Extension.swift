@@ -8,6 +8,7 @@
 import UIKit
 
 extension UIView {
+    
     func radiusAndShadow(radius: Double, color: UIColor = .black, opacity: Float = 0.2, shadowSize: CGFloat = 15) {
         roundCorners(radius: radius)
         shadow(color: color, opacity: opacity, radius: shadowSize)
@@ -80,4 +81,13 @@ extension UIView {
             
         }
     }
+    
+    func createBlurEffect(blurStyle: UIBlurEffect.Style) {
+        let blurEffect = UIBlurEffect(style: blurStyle)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        insertSubview(blurEffectView, at: 0)
+    }
+    
 }

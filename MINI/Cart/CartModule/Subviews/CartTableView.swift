@@ -31,7 +31,7 @@ private extension CartTableView {
         showsVerticalScrollIndicator = false
         backgroundColor = .clear
         separatorStyle = .none
-        contentInset = .init(top: 20, left: 0, bottom: 0, right: 0)
+        contentInset = .init(top: 20, left: 0, bottom: 50, right: 0)
         
         dataSource = self
         delegate = self
