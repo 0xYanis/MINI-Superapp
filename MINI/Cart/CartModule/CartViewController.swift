@@ -25,6 +25,8 @@ final class CartViewController: UIViewController {
     private lazy var emptyView = EmptyPayoutsView()
     private lazy var floatingPanel = FloatingPanelController()
     
+    private var isSmallOrderView: Bool = true
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -90,14 +92,11 @@ private extension CartViewController {
     }
     
     func configurePriceView() {
+        orderPriceView.delegate = self
         view.addSubview(orderPriceView)
-        orderPriceView.snp.makeConstraints { make in
-            make.height.equalToSuperview().multipliedBy(0.08)
-            make.bottom.equalTo(view.snp.bottomMargin).inset(10)
-            make.leading.equalToSuperview().inset(10)
-            make.trailing.equalToSuperview().inset(10)
-        }
+        setSmallSizeOrderView()
         orderPriceView.roundCorners(radius: 15)
+        //orderPriceView.updatePrice("$ \(sum)")
     }
     
     var clearButton: UIBarButtonItem {
@@ -133,6 +132,51 @@ private extension CartViewController {
             activityItems: [items],
             applicationActivities: nil)
         present(activityVC, animated: true)
+    }
+    
+    func setFullSizeOrderView() {
+        orderPriceView.snp.makeConstraints { make in
+            make.height.equalToSuperview().multipliedBy(0.08)
+            make.bottom.equalTo(view.snp.bottomMargin).inset(10)
+            make.leading.equalToSuperview().inset(10)
+            make.trailing.equalToSuperview().inset(10)
+        }
+    }
+    
+    func setSmallSizeOrderView() {
+        orderPriceView.snp.makeConstraints { make in
+            make.height.equalToSuperview().multipliedBy(0.05)
+            make.bottom.equalTo(view.snp.bottomMargin).inset(20)
+            make.width.equalTo(90)
+            make.trailing.equalToSuperview().inset(10)
+        }
+    }
+    
+}
+
+extension CartViewController: OrderPriceViewDelegate {
+    
+    func priceButtonAction() {
+        orderPriceView.snp.removeConstraints()
+        
+        if isSmallOrderView {
+            UIView.animate(withDuration: 0.3, delay: 0) { [weak self] in
+                self?.setFullSizeOrderView()
+                self?.view.layoutIfNeeded()
+            }
+            isSmallOrderView = false
+        } else {
+            UIView.animate(withDuration: 0.3, delay: 0) { [weak self] in
+                self?.setSmallSizeOrderView()
+                self?.view.layoutIfNeeded()
+            }
+            isSmallOrderView = true
+        }
+    }
+    
+    
+    func didTapBuy() {
+        
     }
     
 }
