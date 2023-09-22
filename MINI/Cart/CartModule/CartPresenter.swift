@@ -17,6 +17,8 @@ protocol CartPresenterProtocol: AnyObject {
     
     func deleteCell(at index: Int)
     func removeAll()
+    
+    func userWantToBuy()
 }
 
 final class CartPresenter {
@@ -63,6 +65,10 @@ extension CartPresenter: CartPresenterProtocol {
     
     func removeAll() {
         interactor.removeAll()
+    }
+    
+    func userWantToBuy() {
+        router.goToBuyView()
     }
     
 }

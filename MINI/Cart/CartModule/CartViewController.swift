@@ -71,7 +71,7 @@ extension CartViewController: OrderPriceViewDelegate {
     }
     
     func didTapBuy() {
-        print(#function)
+        presenter?.userWantToBuy()
     }
     
 }
