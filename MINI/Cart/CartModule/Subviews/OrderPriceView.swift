@@ -54,7 +54,7 @@ private extension OrderPriceView {
     
     func createPriceButton() {
         priceButton.addTarget(self, action: #selector(priceButtonAction), for: .touchUpInside)
-        priceButton.setTitle("$399.4", for: .normal)
+        //priceButton.setTitle("$399.4", for: .normal)
         priceButton.backgroundColor = .systemOrange
         priceButton.roundCorners(radius: 10)
         priceButton.addPulseAnimation()

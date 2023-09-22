@@ -8,6 +8,9 @@
 import Foundation
 
 protocol CartPresenterProtocol: AnyObject {
+    func viewWillAppear()
+    func updateView(with price: Double)
+    
     func getPurchases() -> [Purchase]
 	func getTagItems() -> [String]
     func setCurrentTag(_ index: Int)
@@ -34,6 +37,14 @@ final class CartPresenter {
 
 extension CartPresenter: CartPresenterProtocol {
 	
+    func viewWillAppear() {
+        interactor.viewWillAppear()
+    }
+    
+    func updateView(with price: Double) {
+        view?.updateView(with: price)
+    }
+    
     func getPurchases() -> [Purchase] {
         interactor.purchases
     }

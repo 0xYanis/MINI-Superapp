@@ -12,6 +12,7 @@ protocol CartInteractorProtocol: AnyObject {
     var tagItems: [String] { get }
     func setCurrentTag(_ index: Int)
     
+    func viewWillAppear()
     func deleteCell(at index: Int)
     func removeAll()
 }
@@ -24,20 +25,35 @@ final class CartInteractor: CartInteractorProtocol {
     public var tagItems: [String] = [
         "Все","Избранное","Продукты",
         "Товары","Билеты", "Заказы",
-        "Отмененные"
-    ]
+        "Отмененные"]
+    private var totalPrice: Double = 0.0 {
+        didSet { presenter?.updateView(with: totalPrice) }
+    }
     
-    func setCurrentTag(_ index: Int) {
+    public func viewWillAppear() {
+        purchasePriceCount()
+    }
+    
+    public func setCurrentTag(_ index: Int) {
         
     }
     
-    func deleteCell(at index: Int) {
+    public func purchasePriceCount() {
+        if purchases.isEmpty { return }
+        let totalPrice = purchases
+            .compactMap { $0.price }
+            .reduce(0, +)
+            .rounded()
+        self.totalPrice = totalPrice
+    }
+    
+    public func deleteCell(at index: Int) {
         if index < purchases.count {
             purchases.remove(at: index)
         }
     }
     
-    func removeAll() {
+    public func removeAll() {
         purchases.removeAll()
         //db.purchases.removeAll()
     }

@@ -9,7 +9,7 @@ import UIKit
 import FloatingPanel
 
 protocol CartViewProtocol: AnyObject {
-    
+    func updateView(with price: Double)
 }
 
 final class CartViewController: UIViewController {
@@ -37,6 +37,7 @@ final class CartViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.showTabBar()
+        presenter?.viewWillAppear()
     }
     
 }
@@ -44,6 +45,11 @@ final class CartViewController: UIViewController {
 // MARK: - CartViewProtocol
 
 extension CartViewController: CartViewProtocol {
+    
+    func updateView(with price: Double) {
+        tableView.reloadData()
+        orderPriceView.updatePrice("$ \(price)")
+    }
     
 }
 
