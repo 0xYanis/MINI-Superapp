@@ -40,6 +40,24 @@ final class OrderPriceView: UIView {
         priceButton.setTitle(price, for: .normal)
     }
     
+    public func updateButtonSize() {
+        priceButton.snp.removeConstraints()
+        isSmall = !isSmall
+        UIView.animate(withDuration: 0.2, delay: 0) { [weak self] in
+            if self?.isSmall == true {
+                self?.setSmallSizeButton()
+                self?.removeContainer()
+            } else {
+                self?.setFullSizeButton()
+                self?.addContainer()
+            }
+            self?.layoutIfNeeded()
+        } completion: { [weak self] _ in
+            guard let self = self else { return }
+            self.stackView.alpha = self.isSmall ? 0.0 : 1.0
+        }
+    }
+    
 }
 
 // MARK: - Private methods
@@ -127,22 +145,6 @@ private extension OrderPriceView {
     }
     
     @objc func priceButtonAction() {
-        priceButton.snp.removeConstraints()
-        isSmall = !isSmall
-        UIView.animate(withDuration: 0.2, delay: 0) { [weak self] in
-            if self?.isSmall == true {
-                self?.setSmallSizeButton()
-                self?.removeContainer()
-            } else {
-                self?.setFullSizeButton()
-                self?.addContainer()
-            }
-            self?.layoutIfNeeded()
-        } completion: { [weak self] _ in
-            guard let self = self else { return }
-            self.stackView.alpha = self.isSmall ? 0.0 : 1.0
-        }
-        
         delegate?.priceButtonAction()
     }
     

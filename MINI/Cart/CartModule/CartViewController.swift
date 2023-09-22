@@ -23,7 +23,6 @@ final class CartViewController: UIViewController {
     private let tableView = CartTableView()
     private let orderPriceView = OrderPriceView()
     private lazy var emptyView = EmptyPayoutsView()
-    private lazy var floatingPanel = FloatingPanelController()
     
     private var isSmallOrderView: Bool = true
     
@@ -58,6 +57,8 @@ extension CartViewController: CartViewProtocol {
 extension CartViewController: OrderPriceViewDelegate {
     
     func priceButtonAction() {
+        orderPriceView.updateButtonSize()
+        
         orderPriceView.snp.removeConstraints()
         isSmallOrderView = !isSmallOrderView
         UIView.animate(withDuration: 0.3, delay: 0) { [weak self] in
