@@ -46,7 +46,6 @@ final class CartViewController: UIViewController {
 extension CartViewController: CartViewProtocol {
     
     func updateView(with price: Double) {
-        tableView.reloadData()
         orderPriceView.updatePrice("$ \(price)")
     }
     
@@ -56,7 +55,7 @@ extension CartViewController: CartViewProtocol {
 
 extension CartViewController: OrderPriceViewDelegate {
     
-    func priceButtonAction() {
+    func updateOrderPriceViewSize() {
         orderPriceView.updateButtonSize()
         
         orderPriceView.snp.removeConstraints()
@@ -73,6 +72,20 @@ extension CartViewController: OrderPriceViewDelegate {
     
     func didTapBuy() {
         print(#function)
+    }
+    
+}
+
+extension CartViewController: CartTableScrollDelegate {
+    
+    func scrollViewWillBeginDragging() {
+        if isSmallOrderView == false {
+            updateOrderPriceViewSize()
+        }
+    }
+    
+    func scrollViewDidEndDecelerating() {
+        updateOrderPriceViewSize()
     }
     
 }
@@ -114,6 +127,7 @@ private extension CartViewController {
     }
     
     func configureTableView() {
+        tableView.scrollDelegate = self
         tableView.presenter = presenter
         view.insertSubview(tableView, at: 0)
         tableView.snp.makeConstraints { make in

@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 protocol OrderPriceViewDelegate: AnyObject {
-    func priceButtonAction()
+    func updateOrderPriceViewSize()
     func didTapBuy()
 }
 
@@ -145,7 +145,7 @@ private extension OrderPriceView {
     }
     
     @objc func priceButtonAction() {
-        delegate?.priceButtonAction()
+        delegate?.updateOrderPriceViewSize()
     }
     
     

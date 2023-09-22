@@ -7,11 +7,17 @@
 
 import UIKit
 
+protocol CartTableScrollDelegate: AnyObject {
+    func scrollViewWillBeginDragging()
+    func scrollViewDidEndDecelerating()
+}
+
 final class CartTableView: MiTableView {
     
     // MARK: - Public properties
     
     public var presenter: CartPresenterProtocol?
+    public weak var scrollDelegate: CartTableScrollDelegate?
     
     override init(frame: CGRect = .zero, style: UITableView.Style) {
         super.init(style: .grouped)
@@ -146,6 +152,20 @@ extension CartTableView: UITableViewDelegate {
         ) { _ in
             print("share with row: \(row)")
         }
+    }
+    
+    // MARK: Scroll
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        scrollDelegate?.scrollViewWillBeginDragging()
+    }
+    
+//    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
+//        scrollDelegate?.scrollViewWillBeginDecelerating()
+//    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        scrollDelegate?.scrollViewDidEndDecelerating()
     }
     
 }
