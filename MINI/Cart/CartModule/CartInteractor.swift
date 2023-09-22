@@ -27,7 +27,7 @@ final class CartInteractor: CartInteractorProtocol {
         "Товары","Билеты", "Заказы",
         "Отмененные"]
     private var totalPrice: Double = 0.0 {
-        didSet { presenter?.updateView(with: totalPrice) }
+        didSet { presenter?.updateView(quantity: purchases.count, with: totalPrice) }
     }
     
     public func viewWillAppear() {

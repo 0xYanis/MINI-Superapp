@@ -9,7 +9,7 @@ import UIKit
 import FloatingPanel
 
 protocol CartViewProtocol: AnyObject {
-    func updateView(with price: Double)
+    func updateOrder(quantity: Int, price: Double)
 }
 
 final class CartViewController: UIViewController {
@@ -45,8 +45,8 @@ final class CartViewController: UIViewController {
 
 extension CartViewController: CartViewProtocol {
     
-    func updateView(with price: Double) {
-        orderPriceView.updatePrice("$ \(price)")
+    func updateOrder(quantity: Int, price: Double) {
+        orderPriceView.updateData(quantity: quantity, price: "$ \(price)")
     }
     
 }

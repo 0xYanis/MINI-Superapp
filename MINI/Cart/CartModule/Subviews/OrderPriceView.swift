@@ -36,7 +36,8 @@ final class OrderPriceView: UIView {
         fatalError()
     }
     
-    public func updatePrice(_ price: String) {
+    public func updateData(quantity: Int, price: String) {
+        countLabel.text = "Всего: \(quantity) товара"
         priceButton.setTitle(price, for: .normal)
     }
     
@@ -93,8 +94,7 @@ private extension OrderPriceView {
     }
     
     func addContainterSubviews() {
-        countLabel.text = "Всего: 4 товара"
-        countLabel.font = .systemFont(ofSize: 20)
+        countLabel.font = .systemFont(ofSize: 17)
         
         nextLabel.text = "Продолжить оформление заказа?"
         nextLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
