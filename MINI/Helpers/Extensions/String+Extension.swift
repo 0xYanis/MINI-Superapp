@@ -61,4 +61,15 @@ extension String {
         return components.first
     }
     
+    func pluralize(count: Int) -> String {
+        if count % 10 == 1 && count % 100 != 11 {
+            return self
+        } else if count % 10 >= 2 && count % 10 <= 4 && (count % 100 < 10 || count % 100 >= 20) {
+            return self + "а"
+        } else {
+            return self + "ов"
+        }
+    }
+    
+    
 }

@@ -37,7 +37,9 @@ final class OrderPriceView: UIView {
     }
     
     public func updateData(quantity: Int, price: String) {
-        countLabel.text = "Всего: \(quantity) товара"
+        let word = "товар"
+        let pluralize = word.pluralize(count: quantity)
+        countLabel.text = "Всего: \(quantity) \(pluralize)"
         priceButton.setTitle(price, for: .normal)
     }
     
