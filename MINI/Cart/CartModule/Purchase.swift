@@ -25,7 +25,7 @@ struct Purchase {
 }
 
 enum PurchaseType: String {
-    case grocery
-    case product
-    case ticket
+    case grocery = "Продукты"
+    case product = "Товары"
+    case ticket  = "Билеты"
 }
