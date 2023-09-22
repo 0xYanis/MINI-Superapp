@@ -19,6 +19,8 @@ final class OrderPriceView: UIView {
     
     private var isSmall: Bool = true
     
+    private let tapGesture  = UITapGestureRecognizer()
+    private let containterView = UIView()
     private let priceButton = UIButton()
     
     override init(frame: CGRect) {
@@ -41,9 +43,29 @@ final class OrderPriceView: UIView {
 private extension OrderPriceView {
     
     func initialize() {
+        tapGesture.addTarget(self, action: #selector(didTapped))
         backgroundColor = .clear
         createBlurEffect(blurStyle: .systemUltraThinMaterialDark)
         createPriceButton()
+    }
+    
+    func addContainer() {
+        containterView.addGestureRecognizer(tapGesture)
+        containterView.backgroundColor = .red
+        addSubview(containterView)
+        containterView.snp.makeConstraints { make in
+            make.height.equalToSuperview()
+            make.width.equalToSuperview().multipliedBy(0.7)
+        }
+    }
+    
+    func removeContainer() {
+        containterView.snp.removeConstraints()
+        containterView.removeGestureRecognizer(tapGesture)
+    }
+    
+    @objc func didTapped() {
+        delegate?.didTapBuy()
     }
     
 }
@@ -54,7 +76,6 @@ private extension OrderPriceView {
     
     func createPriceButton() {
         priceButton.addTarget(self, action: #selector(priceButtonAction), for: .touchUpInside)
-        //priceButton.setTitle("$399.4", for: .normal)
         priceButton.backgroundColor = .systemOrange
         priceButton.roundCorners(radius: 10)
         priceButton.addPulseAnimation()
@@ -83,8 +104,10 @@ private extension OrderPriceView {
         UIView.animate(withDuration: 0.2, delay: 0) { [weak self] in
             if self?.isSmall == true {
                 self?.setSmallSizeButton()
+                self?.removeContainer()
             } else {
                 self?.setFullSizeButton()
+                self?.addContainer()
             }
             self?.layoutIfNeeded()
         }
