@@ -90,7 +90,7 @@ extension CartViewController: CartTableScrollDelegate {
     
 }
 
-// MARK: - Private methods
+// MARK: - Private methods & computed variables
 
 private extension CartViewController {
     
@@ -162,12 +162,39 @@ private extension CartViewController {
     }
     
     @objc func clearAction() {
-        presenter?.removeAll()
-        tableView.isHidden = true
-        orderPriceView.isHidden = true
-        tableView.removeFromSuperview()
-        orderPriceView.removeFromSuperview()
-        showEmptyView()
+        let actionSheet = UIAlertController(
+            title: "Очистка корзины",
+            message: "Вы уверены, что хотите очистить корзину?",
+            preferredStyle: .actionSheet
+        )
+        actionSheet.addAction(cancelAlertAction)
+        actionSheet.addAction(clearAlertActiion)
+        present(actionSheet, animated: true)
+    }
+    
+    var cancelAlertAction: UIAlertAction {
+        return UIAlertAction(
+            title: "Отмена",
+            style: .cancel,
+            handler: { [weak self] _ in
+                self?.dismiss(animated: true)
+            }
+        )
+    }
+    
+    var clearAlertActiion: UIAlertAction {
+        return UIAlertAction(
+            title: "Очистить",
+            style: .destructive,
+            handler: { [weak self] _ in
+                self?.presenter?.removeAll()
+                self?.tableView.isHidden = true
+                self?.orderPriceView.isHidden = true
+                self?.tableView.removeFromSuperview()
+                self?.orderPriceView.removeFromSuperview()
+                self?.showEmptyView()
+            }
+        )
     }
     
     @objc func shareAction() {
