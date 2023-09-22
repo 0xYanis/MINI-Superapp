@@ -36,6 +36,8 @@ final class OrderPriceView: UIView {
     
 }
 
+// MARK: - Private methods
+
 private extension OrderPriceView {
     
     func initialize() {
@@ -43,6 +45,12 @@ private extension OrderPriceView {
         createBlurEffect(blurStyle: .systemUltraThinMaterialDark)
         createPriceButton()
     }
+    
+}
+
+// MARK: - Price button private methods
+
+private extension OrderPriceView {
     
     func createPriceButton() {
         priceButton.addTarget(self, action: #selector(priceButtonAction), for: .touchUpInside)
@@ -71,21 +79,18 @@ private extension OrderPriceView {
     
     @objc func priceButtonAction() {
         priceButton.snp.removeConstraints()
-        
-        if isSmall {
-            UIView.animate(withDuration: 0.2, delay: 0) { [weak self] in
-                self?.setFullSizeButton()
-                self?.layoutIfNeeded()
-            }
-            isSmall = false
-        } else {
-            UIView.animate(withDuration: 0.2, delay: 0) { [weak self] in
+        isSmall = !isSmall
+        UIView.animate(withDuration: 0.2, delay: 0) { [weak self] in
+            if self?.isSmall == true {
                 self?.setSmallSizeButton()
-                self?.layoutIfNeeded()
+            } else {
+                self?.setFullSizeButton()
             }
-            isSmall = true
+            self?.layoutIfNeeded()
         }
+        
         delegate?.priceButtonAction()
     }
+    
     
 }

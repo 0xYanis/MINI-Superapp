@@ -47,6 +47,29 @@ extension CartViewController: CartViewProtocol {
     
 }
 
+// MARK: - OrderPriceViewDelegate
+
+extension CartViewController: OrderPriceViewDelegate {
+    
+    func priceButtonAction() {
+        orderPriceView.snp.removeConstraints()
+        isSmallOrderView = !isSmallOrderView
+        UIView.animate(withDuration: 0.3, delay: 0) { [weak self] in
+            if self?.isSmallOrderView == true {
+                self?.setSmallSizeOrderView()
+            } else {
+                self?.setFullSizeOrderView()
+            }
+            self?.view.layoutIfNeeded()
+        }
+    }
+    
+    func didTapBuy() {
+        
+    }
+    
+}
+
 // MARK: - Private methods
 
 private extension CartViewController {
@@ -96,7 +119,7 @@ private extension CartViewController {
         view.addSubview(orderPriceView)
         setSmallSizeOrderView()
         orderPriceView.roundCorners(radius: 15)
-        //orderPriceView.updatePrice("$ \(sum)")
+        //orderPriceView.updatePrice("")
     }
     
     var clearButton: UIBarButtonItem {
@@ -150,33 +173,6 @@ private extension CartViewController {
             make.width.equalTo(90)
             make.trailing.equalToSuperview().inset(10)
         }
-    }
-    
-}
-
-extension CartViewController: OrderPriceViewDelegate {
-    
-    func priceButtonAction() {
-        orderPriceView.snp.removeConstraints()
-        
-        if isSmallOrderView {
-            UIView.animate(withDuration: 0.3, delay: 0) { [weak self] in
-                self?.setFullSizeOrderView()
-                self?.view.layoutIfNeeded()
-            }
-            isSmallOrderView = false
-        } else {
-            UIView.animate(withDuration: 0.3, delay: 0) { [weak self] in
-                self?.setSmallSizeOrderView()
-                self?.view.layoutIfNeeded()
-            }
-            isSmallOrderView = true
-        }
-    }
-    
-    
-    func didTapBuy() {
-        
     }
     
 }
