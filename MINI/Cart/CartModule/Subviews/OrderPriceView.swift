@@ -46,7 +46,7 @@ final class OrderPriceView: UIView {
     public func updateButtonSize() {
         priceButton.snp.removeConstraints()
         isSmall = !isSmall
-        UIView.animate(withDuration: 0.2, delay: 0) { [weak self] in
+        UIView.animate(withDuration: 0.2) { [weak self] in
             if self?.isSmall == true {
                 self?.setSmallSizeButton()
                 self?.removeContainer()

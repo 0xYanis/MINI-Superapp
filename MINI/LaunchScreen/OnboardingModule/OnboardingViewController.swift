@@ -237,13 +237,13 @@ extension OnboardingViewController: UIPageViewControllerDelegate {
     }
     
     private func hideControls() {
-        UIView.animate(withDuration: 0.3, delay: 0) { [weak self] in
+        UIView.animate(withDuration: 0.3) { [weak self] in
             self?.removeConstraints()
         }
     }
     
     private func showControls() {
-        UIView.animate(withDuration: 0.3, delay: 0) { [weak self] in
+        UIView.animate(withDuration: 0.3) { [weak self] in
             self?.configureConstraints()
         }
     }

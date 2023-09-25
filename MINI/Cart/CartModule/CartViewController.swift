@@ -60,7 +60,7 @@ extension CartViewController: OrderPriceViewDelegate {
         
         orderPriceView.snp.removeConstraints()
         isSmallOrderView = !isSmallOrderView
-        UIView.animate(withDuration: 0.3, delay: 0) { [weak self] in
+        UIView.animate(withDuration: 0.3) { [weak self] in
             if self?.isSmallOrderView == true {
                 self?.setSmallSizeOrderView()
             } else {
@@ -115,9 +115,7 @@ private extension CartViewController {
     func showEmptyView() {
         navigationItem.leftBarButtonItem?.isHidden = true
         navigationItem.rightBarButtonItem?.isHidden = true
-        emptyView.configure(
-            message: "Упс!",
-            "Похоже, Ваша корзина пуста..")
+        emptyView.configure(message: "Упс!", "Похоже, Ваша корзина пуста..")
         view.addSubview(emptyView)
         emptyView.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(130)
@@ -140,7 +138,6 @@ private extension CartViewController {
         view.addSubview(orderPriceView)
         setSmallSizeOrderView()
         orderPriceView.roundCorners(radius: 15)
-        //orderPriceView.updatePrice("")
     }
     
     var clearButton: UIBarButtonItem {

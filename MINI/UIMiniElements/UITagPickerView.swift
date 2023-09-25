@@ -138,11 +138,11 @@ final class UITagPickerCell: UICollectionViewCell {
     }
     
     private func pulseAnimation() {
-        UIView.animate(withDuration: 0.04) {
-            self.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
-        } completion: { _ in
+        UIView.animate(withDuration: 0.04) { [weak self] in
+            self?.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+        } completion: { [weak self] _ in
             UIView.animate(withDuration: 0.06) {
-                self.transform = CGAffineTransform.identity
+                self?.transform = CGAffineTransform.identity
             }
         }
     }
