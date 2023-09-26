@@ -24,6 +24,7 @@ final class GroceryCollectionView: UICollectionView {
 }
 
 private extension GroceryCollectionView {
+    
     func initialize() {
         dataSource = self
         backgroundColor = .clear
@@ -46,7 +47,9 @@ private extension GroceryCollectionView {
 }
 
 //MARK: - UICollectionViewDataSource
+
 extension GroceryCollectionView: UICollectionViewDataSource {
+    
     func numberOfSections(in collectionView: UICollectionView
     ) -> Int {
         presenter?.getGroceryData().count ?? 3
@@ -64,13 +67,12 @@ extension GroceryCollectionView: UICollectionViewDataSource {
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
         guard let data = presenter?.getGroceryData()[indexPath.section],
-              indexPath.row < data.count else { return UICollectionViewCell() }
-        
-        guard let cell = collectionView.dequeueReusableCell(
+              indexPath.row < data.count,
+              let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: GroceryViewCell.cellId,
-            for: indexPath) as? GroceryViewCell else {
-            return UICollectionViewCell()
-        }
+            for: indexPath) as? GroceryViewCell
+        else { return UICollectionViewCell() }
+        
         cell.radiusAndShadow(radius: 12, color: .black, opacity: 0.15, shadowSize: 8)
         cell.configure(with: data[indexPath.row])
         return cell
@@ -79,7 +81,9 @@ extension GroceryCollectionView: UICollectionViewDataSource {
 }
 
 //MARK: - Header titles for sections
+
 extension GroceryCollectionView {
+    
     func collectionView(
         _ collectionView: UICollectionView,
         viewForSupplementaryElementOfKind kind: String,

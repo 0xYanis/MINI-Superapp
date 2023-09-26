@@ -30,8 +30,8 @@ final class GroceryViewController: UIViewController {
         label.textColor = .gray
         return label
     }()
-    private lazy var refreshControl = UIRefreshControl()
-    private lazy var adressVC = AdressViewController()
+    private let scrollToTopButton = UIButton()
+    private let refreshControl = UIRefreshControl()
     private lazy var searchController: UISearchController = {
         let controller = UISearchController(searchResultsController: nil)
         controller.searchResultsUpdater = self
@@ -49,7 +49,6 @@ final class GroceryViewController: UIViewController {
         super.viewWillAppear(animated)
         tabBarController?.showTabBar()
     }
-    
     
 }
 
@@ -82,6 +81,7 @@ private extension GroceryViewController {
         createNavigationButtons()
         createCollectionView()
         createRefreshControl()
+        createScrollButton()
     }
     
     func createNavigation(title: String) {
@@ -176,6 +176,24 @@ private extension GroceryViewController {
         collectionView.refreshControl = refreshControl
     }
     
+    func createScrollButton() {
+        let symbolConf = UIImage.SymbolConfiguration(weight: .bold)
+        let image = UIImage(systemName: "arrow.up", withConfiguration: symbolConf)
+        scrollToTopButton.setImage(image, for: .normal)
+        scrollToTopButton.tintColor = .tintMINI
+        scrollToTopButton.backgroundColor = .secondarySystemBackground
+        scrollToTopButton.contentMode = .scaleAspectFill
+        scrollToTopButton.isHidden = true
+        
+        view.addSubview(scrollToTopButton)
+        scrollToTopButton.snp.makeConstraints { make in
+            make.right.equalToSuperview().inset(20)
+            make.bottom.equalTo(view.snp.bottomMargin).inset(20)
+            make.width.height.equalTo(50)
+        }
+        scrollToTopButton.radiusAndShadow(radius: 25, shadowSize: 15)
+    }
+    
 }
 
 //MARK: - Action private methods
@@ -265,6 +283,16 @@ extension GroceryViewController: UICollectionViewDelegateFlowLayout {
         willDecelerate decelerate: Bool
     ) {
         hideFloatingPanel()
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let viewHeight = view.frame.height
+        let offsetY = scrollView.contentOffset.y + viewHeight // intial = -200
+        if offsetY > viewHeight {
+            scrollToTopButton.isHidden = false
+        } else {
+            scrollToTopButton.isHidden = true
+        }
     }
     
 }
