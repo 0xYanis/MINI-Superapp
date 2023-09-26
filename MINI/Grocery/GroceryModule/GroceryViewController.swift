@@ -183,6 +183,8 @@ private extension GroceryViewController {
         scrollToTopButton.tintColor = .tintMINI
         scrollToTopButton.backgroundColor = .secondarySystemBackground
         scrollToTopButton.contentMode = .scaleAspectFill
+        
+        scrollToTopButton.addTarget(self, action: #selector(scrollToTopAction), for: .touchUpInside)
         scrollToTopButton.isHidden = true
         
         view.addSubview(scrollToTopButton)
@@ -207,6 +209,11 @@ private extension GroceryViewController {
     
     @objc func cartButtonAction() {
         presenter?.userDidTapCart()
+    }
+    
+    @objc func scrollToTopAction() {
+        let topIndexPath = IndexPath(item: 0, section: 0)
+        collectionView.scrollToItem(at: topIndexPath, at: .top, animated: true)
     }
     
 }
