@@ -139,6 +139,7 @@
 		09A4F59D2A8D63AB006FA62F /* CardFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A4F59C2A8D63AB006FA62F /* CardFormView.swift */; };
 		09A4F5A32A8D6FC3006FA62F /* FormTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A4F5A22A8D6FC3006FA62F /* FormTextView.swift */; };
 		09A7496029F992940005A649 /* CardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A7495F29F992940005A649 /* CardDetailView.swift */; };
+		09A9D78B2AC33408005FAC5A /* TransactionTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A9D78A2AC33408005FAC5A /* TransactionTableView.swift */; };
 		09ABD8232A652BA0003E0B39 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 09ABD8222A652BA0003E0B39 /* Realm */; };
 		09ABD8252A652BA0003E0B39 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 09ABD8242A652BA0003E0B39 /* RealmSwift */; };
 		09ABD8272A65315E003E0B39 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 09ABD8262A65315E003E0B39 /* Realm */; };
@@ -381,6 +382,7 @@
 		09A4F59C2A8D63AB006FA62F /* CardFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFormView.swift; sourceTree = "<group>"; };
 		09A4F5A22A8D6FC3006FA62F /* FormTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTextView.swift; sourceTree = "<group>"; };
 		09A7495F29F992940005A649 /* CardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailView.swift; sourceTree = "<group>"; };
+		09A9D78A2AC33408005FAC5A /* TransactionTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableView.swift; sourceTree = "<group>"; };
 		09ABE0052A142805009DB57B /* GroceryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryViewCell.swift; sourceTree = "<group>"; };
 		09ABE0072A143447009DB57B /* DefaultFood.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DefaultFood.xcassets; sourceTree = "<group>"; };
 		09ACB2802A614C4200A7F139 /* rocket.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = rocket.json; sourceTree = "<group>"; };
@@ -960,6 +962,14 @@
 			path = Subviews;
 			sourceTree = "<group>";
 		};
+		09A9D7892AC333ED005FAC5A /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				09A9D78A2AC33408005FAC5A /* TransactionTableView.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
 		09B02C732A8EC79B00F474E9 /* PayoutsModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -1188,6 +1198,7 @@
 		09F86C5C29F6FD6600307432 /* TransactionModule */ = {
 			isa = PBXGroup;
 			children = (
+				09A9D7892AC333ED005FAC5A /* Subviews */,
 				09FC394529FAD3DA00B2D97E /* TransactionViewController.swift */,
 				09FC394729FAD3E300B2D97E /* TransactionPresenter.swift */,
 				09FC394929FAD3ED00B2D97E /* TransactionInteractor.swift */,
@@ -1640,6 +1651,7 @@
 				09EE2F5E2AA728F0003F08E3 /* CartViewController.swift in Sources */,
 				09B5662B2A937D3100AFF98E /* PayoutsView.swift in Sources */,
 				099D4F8729F72B0F0002C24A /* NewTemplateEntity.swift in Sources */,
+				09A9D78B2AC33408005FAC5A /* TransactionTableView.swift in Sources */,
 				097A80692A337E2000B5CF3A /* CategoryInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
