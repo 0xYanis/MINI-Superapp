@@ -8,6 +8,8 @@
 import UIKit
 import SnapKit
 
+// MARK: - OrderPriceViewDelegate
+
 protocol OrderPriceViewDelegate: AnyObject {
     func updateOrderPriceViewSize()
     func didTapBuy()
@@ -15,7 +17,11 @@ protocol OrderPriceViewDelegate: AnyObject {
 
 final class OrderPriceView: UIView {
     
-    weak var delegate: OrderPriceViewDelegate?
+    // MARK: - Public properties
+    
+    public weak var delegate: OrderPriceViewDelegate?
+    
+    // MARK: - Private properties
     
     private var isSmall: Bool = true
     
@@ -24,8 +30,9 @@ final class OrderPriceView: UIView {
     private let stackView      = UIStackView()
     private let countLabel     = UILabel()
     private let nextLabel      = UILabel()
-    
     private let priceButton    = UIButton()
+    
+    // MARK: - Initializers
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -35,6 +42,8 @@ final class OrderPriceView: UIView {
     required init?(coder: NSCoder) {
         fatalError()
     }
+    
+    // MARK: - Public methods
     
     public func updateData(quantity: Int, price: String) {
         let word = "товар"
@@ -74,6 +83,10 @@ private extension OrderPriceView {
         createPriceButton()
     }
     
+    @objc func didTapped() {
+        delegate?.didTapBuy()
+    }
+    
     func addContainer() {
         containterView.addGestureRecognizer(tapGesture)
         addSubview(containterView)
@@ -89,10 +102,6 @@ private extension OrderPriceView {
         stackView.removeFromSuperview()
         containterView.snp.removeConstraints()
         containterView.removeGestureRecognizer(tapGesture)
-    }
-    
-    @objc func didTapped() {
-        delegate?.didTapBuy()
     }
     
     func addContainterSubviews() {
@@ -131,6 +140,10 @@ private extension OrderPriceView {
         setSmallSizeButton()
     }
     
+    @objc func priceButtonAction() {
+        delegate?.updateOrderPriceViewSize()
+    }
+    
     func setFullSizeButton() {
         priceButton.snp.makeConstraints { make in
             make.right.equalToSuperview().inset(16)
@@ -145,10 +158,5 @@ private extension OrderPriceView {
             make.edges.equalToSuperview()
         }
     }
-    
-    @objc func priceButtonAction() {
-        delegate?.updateOrderPriceViewSize()
-    }
-    
     
 }

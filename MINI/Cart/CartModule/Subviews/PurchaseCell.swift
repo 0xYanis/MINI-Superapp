@@ -10,6 +10,8 @@ import SnapKit
 
 final class PurchaseCell: UITableViewCell {
     
+    // MARK: - Private properties
+    
     private let container = UIView()
     private let purchaseImage: UIImageView = {
         let view = UIImageView(cornerRadius: 15)
@@ -43,6 +45,8 @@ final class PurchaseCell: UITableViewCell {
         color: .label,
         size: 25)
     
+    // MARK: - Initalizers
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         initialize()
@@ -51,19 +55,23 @@ final class PurchaseCell: UITableViewCell {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError()
     }
+    
+    // MARK: - Public methods
     
     public func configure(with data: Purchase) {
         purchaseImage.image = UIImage(named: "AppIcon")
-        purchaseLabel.text = data.name
-        subLabel.text = data.description
-        purchaseType.text = data.type.rawValue
-        priceLabel.text = "$ \(data.price)"
-        quantityLabel.text = "Количество: \(data.quantity)"
+        purchaseLabel.text  = data.name
+        subLabel.text       = data.description
+        purchaseType.text   = data.type.rawValue
+        priceLabel.text     = "$ \(data.price)"
+        quantityLabel.text  = "Количество: \(data.quantity)"
     }
     
 }
+
+// MARK: - Private methods & computed properties
 
 private extension PurchaseCell {
     

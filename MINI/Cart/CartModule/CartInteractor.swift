@@ -21,7 +21,7 @@ final class CartInteractor: CartInteractorProtocol {
 	
 	weak var presenter: CartPresenterProtocol?
     
-    public var purchases: [Purchase] = Purchase.mockData
+    public var purchases: [Purchase] = mockPurchase
     public var tagItems: [String] = [
         "Все","Избранное","Продукты",
         "Товары","Билеты", "Заказы",

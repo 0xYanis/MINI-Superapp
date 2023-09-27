@@ -19,6 +19,8 @@ final class CartTableView: MiTableView {
     public var presenter: CartPresenterProtocol?
     public weak var scrollDelegate: CartTableScrollDelegate?
     
+    // MARK: - Initializers
+    
     override init(frame: CGRect = .zero, style: UITableView.Style) {
         super.init(style: .grouped)
         initialize()
@@ -29,6 +31,8 @@ final class CartTableView: MiTableView {
     }
     
 }
+
+// MARK: - Private methods
 
 private extension CartTableView {
     
@@ -104,7 +108,7 @@ extension CartTableView: UITableViewDelegate {
         38
     }
     
-    // MARK: Swipes
+    // MARK: Swipe methods
     
     func tableView(
         _ tableView: UITableView,
@@ -128,7 +132,7 @@ extension CartTableView: UITableViewDelegate {
         return action
     }
     
-    // MARK: ContextMenu
+    // MARK: ContextMenu methods
     
     func tableView(
         _ tableView: UITableView,
@@ -154,15 +158,11 @@ extension CartTableView: UITableViewDelegate {
         }
     }
     
-    // MARK: Scroll
+    // MARK: Scroll methods
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         scrollDelegate?.scrollViewWillBeginDragging()
     }
-    
-//    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
-//        scrollDelegate?.scrollViewWillBeginDecelerating()
-//    }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         scrollDelegate?.scrollViewDidEndDecelerating()

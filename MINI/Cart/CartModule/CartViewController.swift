@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import FloatingPanel
 
 protocol CartViewProtocol: AnyObject {
     func updateOrder(quantity: Int, price: Double)
@@ -75,6 +74,8 @@ extension CartViewController: OrderPriceViewDelegate {
     }
     
 }
+
+// MARK: - CartTableScrollDelegate
 
 extension CartViewController: CartTableScrollDelegate {
     
@@ -184,14 +185,18 @@ private extension CartViewController {
             title: "Очистить",
             style: .destructive,
             handler: { [weak self] _ in
-                self?.presenter?.removeAll()
-                self?.tableView.isHidden = true
-                self?.orderPriceView.isHidden = true
-                self?.tableView.removeFromSuperview()
-                self?.orderPriceView.removeFromSuperview()
-                self?.showEmptyView()
+                self?.clearHandler()
             }
         )
+    }
+    
+    func clearHandler() {
+        presenter?.removeAll()
+        tableView.isHidden = true
+        orderPriceView.isHidden = true
+        tableView.removeFromSuperview()
+        orderPriceView.removeFromSuperview()
+        showEmptyView()
     }
     
     @objc func shareAction() {
