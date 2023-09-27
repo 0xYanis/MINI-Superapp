@@ -8,6 +8,8 @@
 import UIKit
 import SnapKit
 
+// MARK: - AdressViewDelegate
+
 protocol AdressViewDelegate: AnyObject {
     func searchResults() -> [Placemark]
     func searchAdress(with text: String)
@@ -16,11 +18,17 @@ protocol AdressViewDelegate: AnyObject {
 
 final class AdressViewController: UIViewController {
     
+    // MARK: - Public properties
+    
     weak var delegate: AdressViewDelegate?
     
-    private lazy var label     = UILabel()
-    private lazy var textField = UITextField()
+    // MARK: - Private properties
+    
+    private let label     = UILabel()
+    private let textField = UITextField()
     private lazy var tableView = MiTableView()
+    
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,21 +41,10 @@ final class AdressViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        label.sizeToFit()
-        label.frame = CGRect(
-            x: 16, y: 15,
-            width: label.frame.size.width,
-            height: label.frame.size.height)
-        textField.frame = CGRect(
-            x: 16, y: 30 + label.frame.size.height,
-            width: view.frame.size.width - 35,
-            height: 36)
-        let tableY: CGFloat = textField.frame.origin.y + textField.frame.size.height + 20
-        tableView.frame = .init(
-            x: 0, y: tableY,
-            width: view.frame.size.width,
-            height: view.frame.size.height - tableY)
+        configureSizes()
     }
+    
+    // MARK: - Public methods
     
     public func configure(label: String, placeholder: String) {
         self.label.text = label
@@ -59,6 +56,8 @@ final class AdressViewController: UIViewController {
     }
     
 }
+
+// MARK: - Private methods
 
 private extension AdressViewController {
     
@@ -89,7 +88,29 @@ private extension AdressViewController {
         tableView.register(UITableViewCell.self)
     }
     
+    func configureSizes() {
+        label.sizeToFit()
+        
+        label.frame = CGRect(
+            x: 16, y: 15,
+            width: label.frame.size.width,
+            height: label.frame.size.height)
+        
+        textField.frame = CGRect(
+            x: 16, y: 30 + label.frame.size.height,
+            width: view.frame.size.width - 35,
+            height: 36)
+        
+        let tableY: CGFloat = textField.frame.origin.y + textField.frame.size.height + 20
+        tableView.frame = .init(
+            x: 0, y: tableY,
+            width: view.frame.size.width,
+            height: view.frame.size.height - tableY)
+    }
+    
 }
+
+// MARK: - UITextFieldDelegate
 
 extension AdressViewController: UITextFieldDelegate {
     
@@ -105,6 +126,8 @@ extension AdressViewController: UITextFieldDelegate {
     }
     
 }
+
+// MARK: - UITableViewDataSource
 
 extension AdressViewController: UITableViewDataSource {
     
@@ -132,6 +155,8 @@ extension AdressViewController: UITableViewDataSource {
     }
     
 }
+
+// MARK: - UITableViewDelegate
 
 extension AdressViewController: UITableViewDelegate {
     
