@@ -31,7 +31,7 @@
 
 - КОРЗИНА
 
-  ///
+  Список всех покупок, сортировка по типу и стоимости, управление корзиной
   
 - ДОСТАВКА ПРОДУКТОВ
 
@@ -39,22 +39,33 @@
 
 - ПРОФИЛЬ
 
-  ///
+  Список избранного, уведомления, удаление учетной записи, выход из учетной записи, смена языка
 
 ## Технологии
 
-- Swift язык
-- VIPER архитектура (VIPER + Builder модули)
-- UIKit + SnapKit
-- Firebase
-- API (Alamofire)
-- SDWebImage загрузка и кеширование изображений
-- Lottie анимация
-- SkeletonView анимация подгрузки
-- Keychain для паролей
-- FaceID / TouchID быстрый вход
+Архитектура:
+- Swift, VIPER + DI контейнеры (Builders)
+- Сервер: Firebase, mock-объекты через mock-API, общение через Alamofire
+- Изображения + кеш: SDWebImage
+- Многопоточность: GCD
+- Flow запуска приложения - Coordinator
+
+Безопасность:
+- Keychain
+- FaceID, TouchID
+- Firebase auth
+
+Данные:
+- Firebase storage, firestore, Realm (опционально)
+- UserDefaults для хранения переменных состояний приложения
+
+UI:
+- UIKit (Layout через SnapKit)
+
+Анимация:
+- Lottie
+- SkeletonView
+
+SDK:
+- MapKit
 - CoreLocation
-- DI
-- SOLID
-- Clean code
-- XCTests
