@@ -615,17 +615,7 @@
 			isa = PBXGroup;
 			children = (
 				0910961129DB332600338D22 /* Application */,
-				0936E7BB2ABAF20700F50698 /* Base */,
-				090BAB8B2A029889006AE8F9 /* AviaTickets */,
-				09F86C5829F6FD1200307432 /* Bank */,
-				09EE2F4F2AA7289F003F08E3 /* Cart */,
-				099089E12A1399F800EE00DA /* Grocery */,
-				09BFC9392A1B4C4F00C8505B /* Profile */,
-				09F86C5929F6FD1B00307432 /* Login */,
-				09DF836D2A3887CD00ECAEB6 /* LaunchScreen */,
-				09E9E82829EB119D0084416B /* ServiceLayer */,
-				0921F35D29DF1FD100B3D4F7 /* Helpers */,
-				09B0C1872A545C2500E0CDEF /* UIMiniElements */,
+				0957A3402AC6FA41006576D0 /* Core */,
 				0910961229DB333400338D22 /* Resources */,
 			);
 			path = MINI;
@@ -636,7 +626,6 @@
 			children = (
 				091095FD29DB32F000338D22 /* AppDelegate.swift */,
 				091095FF29DB32F000338D22 /* SceneDelegate.swift */,
-				0994B93F2A20F66D00F4A783 /* DeepLinkManager.swift */,
 				0913C7E12A9687FB005C887D /* GoogleService-Info.plist */,
 				09F92CF72A23476300440ACC /* Localizable.strings */,
 			);
@@ -687,6 +676,7 @@
 			children = (
 				0936E7BC2ABAF27200F50698 /* AppCoordinator.swift */,
 				09F86C4E29F6E96C00307432 /* BaseTabBarController.swift */,
+				0994B93F2A20F66D00F4A783 /* DeepLinkManager.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -697,6 +687,24 @@
 				09565EDF2A2F13B3007A2DAC /* RegisterView.swift */,
 			);
 			path = Subviews;
+			sourceTree = "<group>";
+		};
+		0957A3402AC6FA41006576D0 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				0936E7BB2ABAF20700F50698 /* Base */,
+				090BAB8B2A029889006AE8F9 /* AviaTickets */,
+				09F86C5829F6FD1200307432 /* Bank */,
+				09EE2F4F2AA7289F003F08E3 /* Cart */,
+				099089E12A1399F800EE00DA /* Grocery */,
+				09BFC9392A1B4C4F00C8505B /* Profile */,
+				09F86C5929F6FD1B00307432 /* Login */,
+				09DF836D2A3887CD00ECAEB6 /* LaunchScreen */,
+				09E9E82829EB119D0084416B /* ServiceLayer */,
+				0921F35D29DF1FD100B3D4F7 /* Helpers */,
+				09B0C1872A545C2500E0CDEF /* UIMiniElements */,
+			);
+			path = Core;
 			sourceTree = "<group>";
 		};
 		0959E5852AA5CCD100A3777C /* Extensions */ = {
