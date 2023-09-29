@@ -136,8 +136,7 @@
 		099D4F8529F72B050002C24A /* NewTemplateBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099D4F8429F72B050002C24A /* NewTemplateBuilder.swift */; };
 		099D4F8729F72B0F0002C24A /* NewTemplateEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099D4F8629F72B0F0002C24A /* NewTemplateEntity.swift */; };
 		09A04B0C2AA6544600904950 /* FBUserRemover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A04B0B2AA6544600904950 /* FBUserRemover.swift */; };
-		09A4F59D2A8D63AB006FA62F /* CardFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A4F59C2A8D63AB006FA62F /* CardFormView.swift */; };
-		09A4F5A32A8D6FC3006FA62F /* FormTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A4F5A22A8D6FC3006FA62F /* FormTextView.swift */; };
+		09A4F5A32A8D6FC3006FA62F /* FormTextController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A4F5A22A8D6FC3006FA62F /* FormTextController.swift */; };
 		09A7496029F992940005A649 /* CardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A7495F29F992940005A649 /* CardDetailView.swift */; };
 		09A9D78B2AC33408005FAC5A /* TransactionTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A9D78A2AC33408005FAC5A /* TransactionTableView.swift */; };
 		09ABD8232A652BA0003E0B39 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 09ABD8222A652BA0003E0B39 /* Realm */; };
@@ -379,8 +378,7 @@
 		099D4F8429F72B050002C24A /* NewTemplateBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTemplateBuilder.swift; sourceTree = "<group>"; };
 		099D4F8629F72B0F0002C24A /* NewTemplateEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTemplateEntity.swift; sourceTree = "<group>"; };
 		09A04B0B2AA6544600904950 /* FBUserRemover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBUserRemover.swift; sourceTree = "<group>"; };
-		09A4F59C2A8D63AB006FA62F /* CardFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFormView.swift; sourceTree = "<group>"; };
-		09A4F5A22A8D6FC3006FA62F /* FormTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTextView.swift; sourceTree = "<group>"; };
+		09A4F5A22A8D6FC3006FA62F /* FormTextController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTextController.swift; sourceTree = "<group>"; };
 		09A7495F29F992940005A649 /* CardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailView.swift; sourceTree = "<group>"; };
 		09A9D78A2AC33408005FAC5A /* TransactionTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableView.swift; sourceTree = "<group>"; };
 		09ABE0052A142805009DB57B /* GroceryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryViewCell.swift; sourceTree = "<group>"; };
@@ -948,7 +946,6 @@
 		09A4F59B2A8D638C006FA62F /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
-				09A4F59C2A8D63AB006FA62F /* CardFormView.swift */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -1000,7 +997,7 @@
 			children = (
 				091335D32A405CC1005DDAEA /* MINIColorExtension.swift */,
 				09091CDD2A82B49B0043A9A1 /* MiTableView.swift */,
-				09A4F5A22A8D6FC3006FA62F /* FormTextView.swift */,
+				09A4F5A22A8D6FC3006FA62F /* FormTextController.swift */,
 				090C1E692A9D281E00E75464 /* OTPTextField.swift */,
 				094061B22AB06847009AD0BF /* UITagPickerView.swift */,
 			);
@@ -1548,7 +1545,7 @@
 				09FC394C29FAD3F400B2D97E /* TransactionRouter.swift in Sources */,
 				09044FAB2A444AD000432A3C /* GSearchPresenter.swift in Sources */,
 				09FB824E2A37285800CEF8C1 /* ProductRouter.swift in Sources */,
-				09A4F5A32A8D6FC3006FA62F /* FormTextView.swift in Sources */,
+				09A4F5A32A8D6FC3006FA62F /* FormTextController.swift in Sources */,
 				090C1E712A9DF75E00E75464 /* MapViewController.swift in Sources */,
 				092E739429EBEB1F00165D37 /* LoginAnimationView.swift in Sources */,
 				09FB82452A3714B800CEF8C1 /* CategoryCell.swift in Sources */,
@@ -1563,7 +1560,6 @@
 				09FC393729FABF2D00B2D97E /* AllTemplatesViewController.swift in Sources */,
 				09F5BFDB2A1288A300BC3B7C /* BankTransactionService.swift in Sources */,
 				09E9E82E29EB16E10084416B /* KeyChain.swift in Sources */,
-				09A4F59D2A8D63AB006FA62F /* CardFormView.swift in Sources */,
 				09E81C6A2A169D1D008B313B /* GroceryService.swift in Sources */,
 				099D4F6D29F71A530002C24A /* CardRouter.swift in Sources */,
 				09044FAD2A444AD800432A3C /* GSearchRouter.swift in Sources */,
