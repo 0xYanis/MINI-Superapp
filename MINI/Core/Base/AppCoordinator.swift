@@ -10,7 +10,6 @@ import UIKit
 // MARK: - Coordinator interface
 
 protocol ICoordinator: AnyObject {
-    var window: UIWindow? { get set }
     func start()
 }
 
@@ -22,16 +21,18 @@ protocol AppCoordinatorDelegate: AnyObject {
 
 final class AppCoordinator: ICoordinator {
     
-    // MARK: - Public properties
-    
-    public var window: UIWindow?
-    
     // MARK: - Private properties
+    
+    private var window: UIWindow
+    
     private var launchController: LaunchController?
     private var authManager: FBAuthProtocol = FBAuthManager()
     private var islogin: Bool = false
     
-    init() { checkLogin() }
+    init(_ window: UIWindow) {
+        self.window = window
+        checkLogin()
+    }
     
     // MARK: - Public methods
     
@@ -68,10 +69,10 @@ final class AppCoordinator: ICoordinator {
     }
     
     private func setRoot(_ viewController: UIViewController) {
-        window?.backgroundColor = .backMINI
-        window?.tintColor = .tintMINI
-        window?.rootViewController = viewController
-        window?.makeKeyAndVisible()
+        window.backgroundColor = .backMINI
+        window.tintColor = .tintMINI
+        window.rootViewController = viewController
+        window.makeKeyAndVisible()
     }
     
     private func checkLogin() {

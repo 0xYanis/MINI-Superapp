@@ -20,8 +20,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
         self.window = window
-        self.coordinator = AppCoordinator()
-        coordinator?.window = window
+        
+        self.coordinator = AppCoordinator(window)
         coordinator?.start()
         
         let deeplinks = DeepLinkManager()
