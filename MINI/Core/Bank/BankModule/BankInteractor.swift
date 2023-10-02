@@ -28,6 +28,8 @@ protocol BankInteractorProtocol: AnyObject {
 
 final class BankInteractor: BankInteractorProtocol {
     
+    //MARK: - Public properties
+    
     weak var presenter: BankPresenterProtocol?
     
     var cardsData: [BankCardEntity]               = []
@@ -35,10 +37,14 @@ final class BankInteractor: BankInteractorProtocol {
     var transactionsData: [BankTransactionEntity] = []
     var filteredData: [BankTransactionEntity]     = []
     
+    //MARK: - Private properties
+    
     private var cardService: BankCardServiceProtocol
     private var templateService: BankTemplateServiceProtocol
     private var transactionService: BankTransactionServiceProtocol
     private var realmService: RealmServiceProtocol?
+    
+    //MARK: - Init
     
     init(
         realmService: RealmServiceProtocol = RealmService(),
@@ -52,7 +58,9 @@ final class BankInteractor: BankInteractorProtocol {
         self.transactionService = transactionService
     }
     
-    func viewDidLoaded() {
+    //MARK: - Public methods
+    
+    public func viewDidLoaded() {
         DispatchQueue.global(qos: .userInitiated).async {
             self.getCards()
             self.getTemplates()
@@ -60,25 +68,25 @@ final class BankInteractor: BankInteractorProtocol {
         }
     }
     
-    func userDidTapCard(index: Int) -> BankCardEntity {
+    public func userDidTapCard(index: Int) -> BankCardEntity {
         return cardsData[index]
     }
     
-    func userDidTapTransaction(index: Int) -> BankTransactionEntity {
+    public func userDidTapTransaction(index: Int) -> BankTransactionEntity {
         filteredData.isEmpty ? transactionsData[index] : filteredData[index]
     }
     
-    func userDidTapSeeAll() -> [BankTemplateEntity] {
+    public func userDidTapSeeAll() -> [BankTemplateEntity] {
         return templatesData
     }
     
-    func userWantToDeleteCard(at id: Int) {
+    public func userWantToDeleteCard(at id: Int) {
         if !cardsData.isEmpty {
             cardsData.remove(at: id)
         }
     }
     
-    func userWantToDeleteTransaction(at id: Int) {
+    public func userWantToDeleteTransaction(at id: Int) {
         if !filteredData.isEmpty {
             filteredData.remove(at: id)
             return
@@ -89,7 +97,7 @@ final class BankInteractor: BankInteractorProtocol {
         }
     }
     
-    func searchBarTextDidChange(with searchText: String) {
+    public func searchBarTextDidChange(with searchText: String) {
         if searchText.isEmpty {
             filteredData.removeAll()
         } else {
@@ -103,6 +111,7 @@ final class BankInteractor: BankInteractorProtocol {
 }
 
 //MARK: - Private methods
+
 private extension BankInteractor {
     
     func getCards() {
