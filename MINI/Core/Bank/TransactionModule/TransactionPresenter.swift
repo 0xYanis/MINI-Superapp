@@ -16,8 +16,9 @@ protocol TransactionPresenterProtocol: AnyObject {
 
 final class TransactionPresenter {
     weak var view: TransactionViewProtocol?
-    var router: TransactionRouterProtocol
-    var interactor: TransactionInteractorProtocol
+    
+    private var router: TransactionRouterProtocol
+    private var interactor: TransactionInteractorProtocol
     
     init(router: TransactionRouterProtocol, interactor: TransactionInteractorProtocol) {
         self.router = router

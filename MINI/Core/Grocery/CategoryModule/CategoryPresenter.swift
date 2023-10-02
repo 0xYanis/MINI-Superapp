@@ -23,8 +23,9 @@ protocol CategoryPresenterProtocol: AnyObject {
 final class CategoryPresenter {
     
     weak var view: CategoryViewProtocol?
-    var router: CategoryRouterProtocol
-    var interactor: CategoryInteractorProtocol
+    
+    private var router: CategoryRouterProtocol
+    private var interactor: CategoryInteractorProtocol
     
     init(
         router: CategoryRouterProtocol,

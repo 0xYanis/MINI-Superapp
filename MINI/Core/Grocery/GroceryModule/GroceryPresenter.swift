@@ -27,9 +27,11 @@ protocol GroceryPresenterProtocol: AnyObject {
 }
 
 final class GroceryPresenter {
+    
     weak var view: GroceryViewProtocol?
-    var router: GroceryRouterProtocol
-    var interactor: GroceryInteractorProtocol
+    
+    private var router: GroceryRouterProtocol
+    private var interactor: GroceryInteractorProtocol
     
     init(
         router: GroceryRouterProtocol,

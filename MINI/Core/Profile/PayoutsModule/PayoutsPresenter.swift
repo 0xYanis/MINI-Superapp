@@ -16,8 +16,10 @@ protocol PayoutsPresenterProtocol: AnyObject {
 final class PayoutsPresenter: PayoutsPresenterProtocol {
     
     weak var view: PayoutsViewProtocol?
-    var router: PayoutsRouterProtocol
-    var interactor: PayoutsInteractorProtocol
+    
+    private var router: PayoutsRouterProtocol
+    private var interactor: PayoutsInteractorProtocol
+    
     var type: PayoutsType? {
         didSet {
             switch type {

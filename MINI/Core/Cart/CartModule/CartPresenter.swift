@@ -24,8 +24,9 @@ protocol CartPresenterProtocol: AnyObject {
 final class CartPresenter {
 	
 	weak var view: CartViewProtocol?
-	var router: CartRouterProtocol
-	var interactor: CartInteractorProtocol
+    
+    private var router: CartRouterProtocol
+    private var interactor: CartInteractorProtocol
 	
 	init(
 		router: CartRouterProtocol,

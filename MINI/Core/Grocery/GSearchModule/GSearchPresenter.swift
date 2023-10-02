@@ -18,8 +18,9 @@ protocol GSearchPresenterProtocol: AnyObject {
 final class GSearchPresenter {
     
     weak var view: GSearchViewProtocol?
-    var router: GSearchRouterProtocol
-    var interactor: GSearchInteractorProtocol
+    
+    private var router: GSearchRouterProtocol
+    private var interactor: GSearchInteractorProtocol
     
     init(
         router: GSearchRouterProtocol,

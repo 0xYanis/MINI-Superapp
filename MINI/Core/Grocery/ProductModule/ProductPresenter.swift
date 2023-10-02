@@ -16,8 +16,9 @@ protocol ProductPresenterProtocol: AnyObject {
 final class ProductPresenter {
     
     weak var view: ProductViewProtocol?
-    var router: ProductRouterProtocol
-    var interactor: ProductInteractorProtocol
+    
+    private var router: ProductRouterProtocol
+    private var interactor: ProductInteractorProtocol
     
     init(
         router: ProductRouterProtocol,

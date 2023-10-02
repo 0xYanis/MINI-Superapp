@@ -14,8 +14,9 @@ protocol TemplatePresenterProtocol: AnyObject {
 final class TemplatePresenter {
     
     weak var view: TemplateViewProtocol?
-    var interactor: TemplateInteractorProtocol
-    var router: TemplateRouterProtocol
+    
+    private var interactor: TemplateInteractorProtocol
+    private var router: TemplateRouterProtocol
     
     init(interactor: TemplateInteractorProtocol, router: TemplateRouterProtocol) {
         self.interactor = interactor

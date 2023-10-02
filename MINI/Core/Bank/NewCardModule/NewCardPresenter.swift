@@ -14,8 +14,8 @@ protocol NewCardPresenterProtocol: AnyObject {
 final class NewCardPresenter {
     
     weak var view: NewCardViewProtocol?
-    var router: NewCardRouterProtocol
-    var interactor: NewCardInteractorProtocol
+    private var router: NewCardRouterProtocol
+    private var interactor: NewCardInteractorProtocol
     
     init(router: NewCardRouterProtocol, interactor: NewCardInteractorProtocol) {
         self.router = router

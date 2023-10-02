@@ -13,8 +13,9 @@ protocol NewTemplatePresenterProtocol: AnyObject {
 
 final class NewTemplatePresenter {
     weak var view: NewTemplateViewProtocol?
-    var router: NewTemplateRouterProtocol
-    var interactor: NewTemplateInteractorProtocol
+    
+    private var router: NewTemplateRouterProtocol
+    private var interactor: NewTemplateInteractorProtocol
     
     init(router: NewTemplateRouterProtocol, interactor: NewTemplateInteractorProtocol) {
         self.router = router

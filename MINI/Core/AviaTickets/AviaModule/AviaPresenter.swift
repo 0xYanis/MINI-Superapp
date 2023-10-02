@@ -14,8 +14,8 @@ protocol AviaPresenterProtocol: AnyObject {
 final class AviaPresenter {
     
     weak var view: AviaViewProtocol?
-    var router: AviaRouterProtocol
-    var interactor: AviaInteractorProtocol
+    private var router: AviaRouterProtocol
+    private var interactor: AviaInteractorProtocol
     
     init(router: AviaRouterProtocol, interactor: AviaInteractorProtocol) {
         self.router = router

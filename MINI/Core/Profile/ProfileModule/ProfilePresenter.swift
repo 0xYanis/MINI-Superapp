@@ -22,8 +22,9 @@ protocol ProfilePresenterProtocol: AnyObject {
 final class ProfilePresenter {
     
     weak var view: ProfileViewProtocol?
-    var router: ProfileRouterProtocol
-    var interactor: ProfileInteractorProtocol
+    
+    private var router: ProfileRouterProtocol
+    private var interactor: ProfileInteractorProtocol
     
     init(
         router: ProfileRouterProtocol,

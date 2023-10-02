@@ -21,8 +21,9 @@ protocol LoginPresenterProtocol: AnyObject {
 final class LoginPresenter {
     
     weak var view: LoginViewProtocol?
-    var interactor: LoginInteractorProtocol
-    var router: LoginRouterProtocol
+    
+    private var interactor: LoginInteractorProtocol
+    private var router: LoginRouterProtocol
     
     init(
         interactor: LoginInteractorProtocol,
