@@ -23,32 +23,36 @@ final class BankRouter: BankRouterProtocol {
     
     func goToDetailCard(with data: BankCardEntity) {
         let cardView = CardBuilder.build(with: data)
-        view?.navigationController?.pushViewController(cardView, animated: true)
+        push(to: cardView)
     }
     
     func goToDetailTemplate(id: Int) {
         let templateView = TemplateBuilder.build()
-        view?.navigationController?.pushViewController(templateView, animated: true)
+        push(to: templateView)
     }
     
     func goToAllTemplates(with data: [BankTemplateEntity]) {
         let allTemplatesView = AllTemplatesBuilder.build(with: data)
-        view?.navigationController?.pushViewController(allTemplatesView, animated: true)
+        push(to: allTemplatesView)
     }
     
     func goToDetailTransaction(with data: BankTransactionEntity) {
         let transactionView = TransactionBuilder.build(with: data)
-        view?.navigationController?.pushViewController(transactionView, animated: true)
+        push(to: transactionView)
     }
     
     func goToAddNewCard() {
         let newCard = NewCardBuilder.build()
-        view?.navigationController?.pushViewController(newCard, animated: true)
+        push(to: newCard)
     }
     
     func goToAddNewTemplate() {
         let newTemplate = NewTemplateBuilder.build()
-        view?.navigationController?.pushViewController(newTemplate, animated: true)
+        push(to: newTemplate)
+    }
+    
+    private func push(to vc: UIViewController) {
+        view?.navigationController?.pushViewController(vc, animated: true)
     }
     
 }

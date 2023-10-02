@@ -29,15 +29,15 @@ protocol BankInteractorProtocol: AnyObject {
 final class BankInteractor: BankInteractorProtocol {
     
     weak var presenter: BankPresenterProtocol?
-    var cardService: BankCardServiceProtocol
-    var templateService: BankTemplateServiceProtocol
-    var transactionService: BankTransactionServiceProtocol
     
     var cardsData: [BankCardEntity]               = []
     var templatesData: [BankTemplateEntity]       = []
     var transactionsData: [BankTransactionEntity] = []
     var filteredData: [BankTransactionEntity]     = []
     
+    private var cardService: BankCardServiceProtocol
+    private var templateService: BankTemplateServiceProtocol
+    private var transactionService: BankTransactionServiceProtocol
     private var realmService: RealmServiceProtocol?
     
     init(

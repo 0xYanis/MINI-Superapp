@@ -31,8 +31,9 @@ protocol BankPresenterProtocol: AnyObject {
 final class BankPresenter {
     
     weak var view: BankViewProtocol?
-    let router: BankRouterProtocol
-    let interactor: BankInteractorProtocol
+    
+    private var router: BankRouterProtocol
+    private var interactor: BankInteractorProtocol
     
     init(router: BankRouterProtocol, interactor: BankInteractorProtocol) {
         self.router = router
@@ -43,6 +44,7 @@ final class BankPresenter {
 
 // MARK: - BankPresenterProtocol
 extension BankPresenter: BankPresenterProtocol {
+    
     func viewDidLoaded() {
         interactor.viewDidLoaded()
     }
@@ -64,6 +66,7 @@ extension BankPresenter: BankPresenterProtocol {
 
 // MARK: - Routing
 extension BankPresenter {
+    
     func userWantToDetails(of type: BankViewDetails, with index: Int = 0) {
         switch type {
         case .card:
@@ -88,6 +91,7 @@ extension BankPresenter {
 
 // MARK: - GET data
 extension BankPresenter {
+    
     func getCardData() -> [BankCardEntity] {
         interactor.cardsData
     }
@@ -107,6 +111,7 @@ extension BankPresenter {
 }
 
 extension BankPresenter {
+    
     func userWantToDeleteCard(at id: Int) {
         interactor.userWantToDeleteCard(at: id)
     }

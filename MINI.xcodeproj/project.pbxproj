@@ -783,15 +783,13 @@
 		097E039929EC444400CE2A6F /* BankModule */ = {
 			isa = PBXGroup;
 			children = (
+				09BE625E2ACAF9F40098ACB2 /* BankApi */,
 				09D509D129EF3571009CC219 /* Subviews */,
 				097E039A29EC447000CE2A6F /* BankViewController.swift */,
 				097E039C29EC448F00CE2A6F /* BankPresenter.swift */,
 				097E039E29EC449900CE2A6F /* BankInteractor.swift */,
 				097E03A029EC44A500CE2A6F /* BankRouter.swift */,
 				097E03A229EC44BD00CE2A6F /* BankBuilder.swift */,
-				09F5BFD62A1285F500BC3B7C /* BankCardService.swift */,
-				09F5BFD82A12880000BC3B7C /* BankTemplateService.swift */,
-				09F5BFDA2A1288A300BC3B7C /* BankTransactionService.swift */,
 				094388EA2A56F0A200027D59 /* BankViewDetails.swift */,
 				09E24C102A12239A00A91F74 /* BankCardEntity.swift */,
 				09E24C142A1228D000A91F74 /* BankTemplateEntity.swift */,
@@ -1015,6 +1013,16 @@
 				094061B22AB06847009AD0BF /* UITagPickerView.swift */,
 			);
 			path = UIMiniElements;
+			sourceTree = "<group>";
+		};
+		09BE625E2ACAF9F40098ACB2 /* BankApi */ = {
+			isa = PBXGroup;
+			children = (
+				09F5BFD62A1285F500BC3B7C /* BankCardService.swift */,
+				09F5BFD82A12880000BC3B7C /* BankTemplateService.swift */,
+				09F5BFDA2A1288A300BC3B7C /* BankTransactionService.swift */,
+			);
+			path = BankApi;
 			sourceTree = "<group>";
 		};
 		09BF17002AAA16EE0090389B /* OnboardingModule */ = {
