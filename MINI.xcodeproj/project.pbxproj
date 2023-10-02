@@ -159,6 +159,7 @@
 		09B5662D2A937EE700AFF98E /* PayoutsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B5662C2A937EE700AFF98E /* PayoutsCell.swift */; };
 		09BBA70F2A0E76950020E3C9 /* cardsLogo.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09BBA70E2A0E76950020E3C9 /* cardsLogo.xcassets */; };
 		09BE625A2ACACC610098ACB2 /* BankCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BE62592ACACC610098ACB2 /* BankCollectionView.swift */; };
+		09BE625C2ACAF95B0098ACB2 /* BankSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BE625B2ACAF95A0098ACB2 /* BankSection.swift */; };
 		09BF17022AAA17150090389B /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BF17012AAA17150090389B /* OnboardingViewController.swift */; };
 		09BF17042AAA175D0090389B /* OnboardingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BF17032AAA175D0090389B /* OnboardingPresenter.swift */; };
 		09BF17062AAA17AE0090389B /* OnboardingBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BF17052AAA17AE0090389B /* OnboardingBuilder.swift */; };
@@ -398,6 +399,7 @@
 		09B5662C2A937EE700AFF98E /* PayoutsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayoutsCell.swift; sourceTree = "<group>"; };
 		09BBA70E2A0E76950020E3C9 /* cardsLogo.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = cardsLogo.xcassets; sourceTree = "<group>"; };
 		09BE62592ACACC610098ACB2 /* BankCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankCollectionView.swift; sourceTree = "<group>"; };
+		09BE625B2ACAF95A0098ACB2 /* BankSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankSection.swift; sourceTree = "<group>"; };
 		09BF17012AAA17150090389B /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		09BF17032AAA175D0090389B /* OnboardingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPresenter.swift; sourceTree = "<group>"; };
 		09BF17052AAA17AE0090389B /* OnboardingBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingBuilder.swift; sourceTree = "<group>"; };
@@ -794,6 +796,7 @@
 				09E24C102A12239A00A91F74 /* BankCardEntity.swift */,
 				09E24C142A1228D000A91F74 /* BankTemplateEntity.swift */,
 				09E24C162A122C2E00A91F74 /* BankTransactionEntity.swift */,
+				09BE625B2ACAF95A0098ACB2 /* BankSection.swift */,
 			);
 			path = BankModule;
 			sourceTree = "<group>";
@@ -1483,6 +1486,7 @@
 				09EA1CAD2A962DB500A18B41 /* SupportViewContoller.swift in Sources */,
 				093D02BC2AA12A230032D812 /* FBNotificationManager.swift in Sources */,
 				09E9E82A29EB16210084416B /* KeyChainService.swift in Sources */,
+				09BE625C2ACAF95B0098ACB2 /* BankSection.swift in Sources */,
 				09A7496029F992940005A649 /* CardDetailView.swift in Sources */,
 				09FC394E29FAD3FB00B2D97E /* TransactionBuilder.swift in Sources */,
 				09B02C7D2A8EC8C300F474E9 /* PayoutsInteractor.swift in Sources */,
