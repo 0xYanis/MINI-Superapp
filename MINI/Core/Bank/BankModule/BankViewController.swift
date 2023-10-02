@@ -50,6 +50,14 @@ final class BankViewController: UIViewController {
         tabBarController?.showTabBar()
     }
     
+    //MARK: - Private methods
+    
+    @objc private func refreshAction() {
+        presenter?.viewDidLoaded()
+        presenter?.updateView()
+        refreshControl.endRefreshing()
+    }
+    
 }
 
 //MARK: - BankViewProtocol
@@ -148,18 +156,6 @@ private extension BankViewController {
     func createRefreshControl() {
         refreshControl.addTarget(self, action: #selector(refreshAction), for: .valueChanged)
         bankTableView.refreshControl = refreshControl
-    }
-    
-}
-
-//MARK: - Action private methods
-
-private extension BankViewController {
-    
-    @objc func refreshAction() {
-        presenter?.viewDidLoaded()
-        presenter?.updateView()
-        refreshControl.endRefreshing()
     }
     
 }
