@@ -8,7 +8,20 @@
 import UIKit
 import SnapKit
 
+protocol AviaSearchViewDelegate: AnyObject {
+    func set(location: String?,_ state: AviaLocationState)
+    func didTapDatePicker()
+    func showSearchResults()
+}
+
+enum AviaLocationState {
+    case from
+    case to
+}
+
 final class AviaSearchView: UICollectionReusableView {
+    
+    public weak var delegate: AviaSearchViewDelegate?
     
     private let firstTextField = UITextField()
     private let seconTextField = UITextField()
@@ -61,6 +74,7 @@ final class AviaSearchView: UICollectionReusableView {
     }
     
     private func createDateButton() {
+        dateButton.addTarget(self, action: #selector(dateTapAction), for: .touchUpInside)
         dateButton.setTitle(" Даты", for: .normal)
         dateButton.setImage(.init(systemName: "calendar"), for: .normal)
         dateButton.tintColor = .gray
@@ -73,6 +87,30 @@ final class AviaSearchView: UICollectionReusableView {
             make.height.equalTo(40)
         }
         dateButton.roundCorners(radius: 8)
+    }
+    
+    @objc private func dateTapAction() {
+        delegate?.didTapDatePicker()
+    }
+    
+}
+
+//MARK: - UITextFieldDelegate
+
+extension AviaSearchView: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case firstTextField:
+            delegate?.set(location: textField.text, .from)
+            seconTextField.becomeFirstResponder()
+        case seconTextField:
+            delegate?.set(location: textField.text, .to)
+            seconTextField.resignFirstResponder()
+            delegate?.showSearchResults()
+        default: break
+        }
+        return true
     }
     
 }
@@ -104,19 +142,22 @@ extension AviaSearchView: UITableViewDataSource {
         _ placeholder: String
     ) -> UITableViewCell {
         let cell = UITableViewCell()
+        cell.selectionStyle = .none
+        cell.backgroundColor = .darkGray
+        cell.contentView.addSubview(field)
+        
+        field.delegate = self
         field.attributedPlaceholder = NSAttributedString(
             string: placeholder,
             attributes: [.foregroundColor : UIColor.lightGray])
         field.textColor = .white
         field.font = .boldSystemFont(ofSize: UIFont.labelFontSize)
-        cell.selectionStyle = .none
-        cell.backgroundColor = .darkGray
-        cell.contentView.addSubview(field)
         field.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
             make.left.equalToSuperview().inset(20)
             make.right.equalToSuperview().inset(20)
-            make.centerY.equalToSuperview()
         }
+        
         return cell
     }
     
