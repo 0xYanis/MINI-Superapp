@@ -21,13 +21,13 @@ final class ProfileInteractor: ProfileInteractorProtocol {
     
     weak var presenter: ProfilePresenterProtocol?
     
+    public var userName: String = ""
+    public var userAddress: String = ""
+    public var profileData: [ProfileSection] = profileTableData
+    
     private var fbAuthManager: FBAuthProtocol
     private var fbStorageManager: FBStorageProtocol
     private var fbFirestoreManager: FBFirestoreProtocol
-    
-    public var userName: String = ""
-    public var userAddress: String = ""
-    public var profileData: [ProfileSection] = ProfileSection.data
     
     init(
         fbAuthManager: FBAuthProtocol,
@@ -42,7 +42,7 @@ final class ProfileInteractor: ProfileInteractorProtocol {
     // MARK: - Public methods
     
     public func viewDidLoaded() {
-        DispatchQueue.global(qos: .userInitiated).async {
+        DispatchQueue.global(qos: .userInteractive).async {
             self.getUserData()
         }
     }
@@ -61,8 +61,7 @@ final class ProfileInteractor: ProfileInteractorProtocol {
                     DispatchQueue.main.async {
                         self?.presenter?.updateView()
                     }
-                case .failure(_):
-                    break
+                case .failure(_): break
                 }
             }
         }

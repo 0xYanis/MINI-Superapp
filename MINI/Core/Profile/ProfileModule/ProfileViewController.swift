@@ -39,8 +39,8 @@ final class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initialize()
         presenter?.viewDidLoaded()
+        initialize()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -69,7 +69,6 @@ extension ProfileViewController: ProfileViewProtocol {
 private extension ProfileViewController {
     
     func initialize() {
-        photoPicker.delegate = self
         view.backgroundColor = .back2MINI
         createNavigation(title: "profile_navbar".localized)
         createTableView()
@@ -133,6 +132,7 @@ private extension ProfileViewController {
     }
     
     @objc func showPhotoPicker() {
+        photoPicker.delegate = self
         guard let sheet = photoPicker.sheetPresentationController else { return }
         photoPicker.isModalInPresentation = true
         sheet.detents = [.medium(), .large()]
