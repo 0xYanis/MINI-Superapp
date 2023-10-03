@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import SwiftUI
 
 protocol AviaCellProtocol: UICollectionViewCell {
     func configure(with data: AviaItem)
@@ -46,7 +47,7 @@ private extension AviaCollectionView {
         register(cell, forCellWithReuseIdentifier: String(describing: cell))
     }
     
-    func createLayout() -> UICollectionViewCompositionalLayout {
+    func createLayout() -> UICollectionViewLayout {
         return UICollectionViewCompositionalLayout { [weak self] sectionIndex, _ in
             guard let self = self else { return nil }
             let section = self.presenter?.getDataSource()[sectionIndex]
@@ -65,20 +66,21 @@ private extension AviaCollectionView {
             widthDimension: .fractionalWidth(1),
             heightDimension: .fractionalHeight(1)))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(
-            widthDimension: .fractionalWidth(0.8),
-            heightDimension: .fractionalHeight(0.3)), subitems: [item])
-        let section = createSection(group: group, behavior: .groupPaging, interGroupSpacing: 5, haveInsets: false)
+            widthDimension: .fractionalWidth(0.95),
+            heightDimension: .fractionalHeight(0.25)), subitems: [item])
+        let section = createSection(group: group, behavior: .groupPagingCentered, interGroupSpacing: 5, haveInsets: false)
         return section
     }
     
     var placesSection: NSCollectionLayoutSection {
         let item = NSCollectionLayoutItem(layoutSize: .init(
-            widthDimension: .fractionalWidth(0.3),
+            widthDimension: .fractionalWidth(1),
             heightDimension: .fractionalHeight(1)))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(
-            widthDimension: .fractionalWidth(1),
-            heightDimension: .fractionalHeight(0.1)), subitems: [item])
+            widthDimension: .fractionalWidth(0.35),
+            heightDimension: .fractionalHeight(0.15)), subitems: [item])
         let section = createSection(group: group, behavior: .continuous, interGroupSpacing: 10, haveInsets: true)
+        section.contentInsets = .init(top: 20, leading: 16, bottom: 20, trailing: 16)
         return section
     }
     
@@ -87,9 +89,10 @@ private extension AviaCollectionView {
             widthDimension: .fractionalWidth(1),
             heightDimension: .fractionalHeight(1)))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(
-            widthDimension: .fractionalWidth(0.8),
+            widthDimension: .fractionalWidth(0.7),
             heightDimension: .fractionalHeight(0.3)), subitems: [item])
-        let section = createSection(group: group, behavior: .groupPaging, interGroupSpacing: 5, haveInsets: true)
+        let section = createSection(group: group, behavior: .groupPaging, interGroupSpacing: 10, haveInsets: true)
+        
         return section
     }
     
@@ -98,9 +101,10 @@ private extension AviaCollectionView {
             widthDimension: .fractionalWidth(1),
             heightDimension: .fractionalHeight(1)))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(
-            widthDimension: .fractionalWidth(0.8),
-            heightDimension: .fractionalHeight(0.3)), subitems: [item])
-        let section = createSection(group: group, behavior: .groupPaging, interGroupSpacing: 5, haveInsets: true)
+            widthDimension: .fractionalWidth(0.3),
+            heightDimension: .fractionalHeight(0.12)), subitems: [item])
+        let section = createSection(group: group, behavior: .continuousGroupLeadingBoundary, interGroupSpacing: 15, haveInsets: true)
+        section.contentInsets = .init(top: 20, leading: 16, bottom: 20, trailing: 16)
         return section
     }
  
@@ -185,4 +189,25 @@ extension AviaCollectionView: UICollectionViewDelegate {
         
     }
     
+}
+
+struct AviaPreview: PreviewProvider {
+    
+    static var previews: some View {
+        NavigationStack {
+            ContentView().ignoresSafeArea()
+                .navigationTitle("Avia")
+                .navigationBarTitleDisplayMode(.large)
+        }
+    }
+    
+    struct ContentView: UIViewControllerRepresentable {
+        func makeUIViewController(context: Context) -> UIViewController {
+            return AviaBuilder.build()
+        }
+        
+        func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
+            
+        }
+    }
 }
