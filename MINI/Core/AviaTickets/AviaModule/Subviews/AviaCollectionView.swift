@@ -15,6 +15,7 @@ protocol AviaCellProtocol: UICollectionViewCell {
 final class AviaCollectionView: UICollectionView {
     
     public var presenter: AviaPresenterProtocol?
+    public weak var aviaDelegate: AviaSearchViewDelegate?
     
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
@@ -25,11 +26,7 @@ final class AviaCollectionView: UICollectionView {
         fatalError()
     }
     
-}
-
-private extension AviaCollectionView {
-    
-    func initialize() {
+    private func initialize() {
         backgroundColor = UIColor.midnightBlue.lighter.lighter
         contentInsetAdjustmentBehavior = .never
         dataSource = self
@@ -43,6 +40,12 @@ private extension AviaCollectionView {
         
         collectionViewLayout = createLayout()
     }
+    
+}
+
+//MARK: - Private methods
+
+private extension AviaCollectionView {
     
     func register<C: UICollectionViewCell>(_ cell: C.Type) {
         register(cell, forCellWithReuseIdentifier: String(describing: cell))
@@ -214,6 +217,7 @@ extension AviaCollectionView: UICollectionViewDataSource {
                     withReuseIdentifier: String(describing: AviaSearchView.self),
                     for: indexPath) as? AviaSearchView
             else { return UICollectionReusableView() }
+            header.delegate = aviaDelegate
             return header
         case UICollectionView.elementKindSectionFooter:
             return UICollectionReusableView()

@@ -21,6 +21,7 @@ final class AviaViewController: UIViewController {
     
     //MARK: - Private properties
     
+    private let refreshControl = UIRefreshControl()
     private var aviaCollectionView: AviaCollectionView = {
         let layout = UICollectionViewLayout()
         let view = AviaCollectionView(frame: .zero, collectionViewLayout: layout)
@@ -46,10 +47,28 @@ final class AviaViewController: UIViewController {
 extension AviaViewController: AviaViewProtocol {
     
     func updateView() {
-        
+        aviaCollectionView.reloadData()
     }
     
     func loadingDataGetFailed(with error: String) {
+        
+    }
+    
+}
+
+//MARK: - AviaSearchViewDelegate
+
+extension AviaViewController: AviaSearchViewDelegate {
+    
+    func set(location: String?,_ state: AviaLocationState) {
+        
+    }
+    
+    func didTapDatePicker() {
+        
+    }
+    
+    func showSearchResults() {
         
     }
     
@@ -63,7 +82,11 @@ private extension AviaViewController {
         createNavigation()
         view.backgroundColor = .back2MINI
         
+        refreshControl.addTarget(self, action: #selector(refreshAction), for: .valueChanged)
+        aviaCollectionView.refreshControl = refreshControl
+        
         aviaCollectionView.presenter = presenter
+        aviaCollectionView.aviaDelegate = self
         view.addSubview(aviaCollectionView)
         addConstraints()
     }
@@ -77,6 +100,10 @@ private extension AviaViewController {
         aviaCollectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+    }
+    
+    @objc func refreshAction() {
+        refreshControl.endRefreshing()
     }
     
 }
