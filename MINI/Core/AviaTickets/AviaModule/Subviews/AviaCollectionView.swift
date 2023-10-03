@@ -7,7 +7,6 @@
 
 import UIKit
 import SnapKit
-import SwiftUI
 
 protocol AviaCellProtocol: UICollectionViewCell {
     func configure(with data: AviaItem)
@@ -237,6 +236,9 @@ extension AviaCollectionView: UICollectionViewDelegate {
     }
     
 }
+/*
+ 
+import SwiftUI
 
 struct AviaPreview: PreviewProvider {
     
@@ -258,3 +260,5 @@ struct AviaPreview: PreviewProvider {
         }
     }
 }
+ 
+*/
