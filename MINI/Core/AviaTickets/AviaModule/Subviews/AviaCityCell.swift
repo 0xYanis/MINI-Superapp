@@ -29,7 +29,7 @@ final class AviaCityCell: UICollectionViewCell, AviaCellProtocol {
     
     private func initialize() {
         backgroundColor = .systemOrange
-        roundCorners(radius: 12)
+        roundCorners(radius: 0)
     }
     
     private func setConstraints() {

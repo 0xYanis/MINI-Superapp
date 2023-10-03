@@ -31,7 +31,8 @@ final class AviaCollectionView: UICollectionView {
 private extension AviaCollectionView {
     
     func initialize() {
-        backgroundColor = .none
+        backgroundColor = UIColor.midnightBlue.lighter.lighter
+        contentInsetAdjustmentBehavior = .never
         dataSource = self
         delegate = self
         
@@ -39,12 +40,23 @@ private extension AviaCollectionView {
         register(AviaPlaceCell.self)
         register(AviaCityCell.self)
         register(AviaCountryCell.self)
+        register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "head")
         
         collectionViewLayout = createLayout()
     }
     
     func register<C: UICollectionViewCell>(_ cell: C.Type) {
         register(cell, forCellWithReuseIdentifier: String(describing: cell))
+    }
+    
+    func register<S: UICollectionReusableView>(_ view: S.Type, isHeader: Bool = true) {
+        let head = UICollectionView.elementKindSectionHeader
+        let foot = UICollectionView.elementKindSectionFooter
+        register(
+            view,
+            forSupplementaryViewOfKind: isHeader ? head : foot,
+            withReuseIdentifier: String(describing: view)
+        )
     }
     
     func createLayout() -> UICollectionViewLayout {
@@ -61,14 +73,28 @@ private extension AviaCollectionView {
         }
     }
     
+    func makeSearchItem() -> NSCollectionLayoutBoundarySupplementaryItem {
+        .init(
+            layoutSize: .init(
+                widthDimension: .fractionalWidth(1),
+                heightDimension: .estimated(400)),
+            elementKind: UICollectionView.elementKindSectionHeader,
+            alignment: .top)
+    }
+    
     var hotDealsSection: NSCollectionLayoutSection {
+        let searchItem = makeSearchItem()
+        searchItem.zIndex = 0
+        
         let item = NSCollectionLayoutItem(layoutSize: .init(
             widthDimension: .fractionalWidth(1),
             heightDimension: .fractionalHeight(1)))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(
-            widthDimension: .fractionalWidth(0.95),
+            widthDimension: .fractionalWidth(0.9),
             heightDimension: .fractionalHeight(0.25)), subitems: [item])
-        let section = createSection(group: group, behavior: .groupPagingCentered, interGroupSpacing: 5, haveInsets: false)
+        group.contentInsets = .init(top: 0, leading: 16, bottom: 0, trailing: 16)
+        let section = createSection(group: group, behavior: .groupPaging, interGroupSpacing: 0,supplementaryItems: [searchItem], haveInsets: false)
+        section.contentInsets = .init(top: -30, leading: 0, bottom: 0, trailing: 0)
         return section
     }
     
@@ -80,7 +106,7 @@ private extension AviaCollectionView {
             widthDimension: .fractionalWidth(0.35),
             heightDimension: .fractionalHeight(0.15)), subitems: [item])
         let section = createSection(group: group, behavior: .continuous, interGroupSpacing: 10, haveInsets: true)
-        section.contentInsets = .init(top: 20, leading: 16, bottom: 20, trailing: 16)
+        section.contentInsets = .init(top: 50, leading: 16, bottom: 0, trailing: 16)
         return section
     }
     
@@ -92,7 +118,7 @@ private extension AviaCollectionView {
             widthDimension: .fractionalWidth(0.7),
             heightDimension: .fractionalHeight(0.3)), subitems: [item])
         let section = createSection(group: group, behavior: .groupPaging, interGroupSpacing: 10, haveInsets: true)
-        
+        section.contentInsets = .init(top: 50, leading: 16, bottom: 0, trailing: 16)
         return section
     }
     
@@ -101,13 +127,13 @@ private extension AviaCollectionView {
             widthDimension: .fractionalWidth(1),
             heightDimension: .fractionalHeight(1)))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(
-            widthDimension: .fractionalWidth(0.3),
-            heightDimension: .fractionalHeight(0.12)), subitems: [item])
+            widthDimension: .fractionalWidth(0.5),
+            heightDimension: .fractionalHeight(0.25)), subitems: [item])
         let section = createSection(group: group, behavior: .continuousGroupLeadingBoundary, interGroupSpacing: 15, haveInsets: true)
-        section.contentInsets = .init(top: 20, leading: 16, bottom: 20, trailing: 16)
+        section.contentInsets = .init(top: 50, leading: 16, bottom: 50, trailing: 16)
         return section
     }
- 
+
     func createSection(
         group: NSCollectionLayoutGroup,
         behavior: UICollectionLayoutSectionOrthogonalScrollingBehavior,
@@ -174,6 +200,24 @@ extension AviaCollectionView: UICollectionViewDataSource {
         else { fatalError("Error from cell: \(cell)") }
         cell.configure(with: data)
         return cell
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        viewForSupplementaryElementOfKind kind: String,
+        at indexPath: IndexPath
+    ) -> UICollectionReusableView {
+        switch kind {
+        case UICollectionView.elementKindSectionHeader:
+            let header = collectionView.dequeueReusableSupplementaryView(
+                ofKind: kind, withReuseIdentifier: "head", for: indexPath)
+            header.backgroundColor = .midnightBlue.darker.darker
+            return header
+        case UICollectionView.elementKindSectionFooter:
+            return UICollectionReusableView()
+        default:
+            return UICollectionReusableView()
+        }
     }
     
 }
