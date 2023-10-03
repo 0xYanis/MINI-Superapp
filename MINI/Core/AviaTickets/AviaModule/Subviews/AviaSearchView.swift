@@ -10,47 +10,123 @@ import SnapKit
 
 final class AviaSearchView: UICollectionReusableView {
     
-    private var fromTextField = UITextField()
-    private var toTextField = UITextField()
+    private let firstTextField = UITextField()
+    private let seconTextField = UITextField()
+    
+    private let container = UIView()
+    private let tableView = MiTableView(frame: .zero, style: .insetGrouped)
+    private let dateButton = UIButton()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .midnightBlue.darker.darker
-        
-        fromTextField.backgroundColor = .systemGray4
-        fromTextField.placeholder = "Поиск авиабилетов"
-        addSubview(fromTextField)
-        fromTextField.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-            make.left.right.equalToSuperview().inset(50)
-            make.height.equalTo(35)
-        }
-        fromTextField.roundCorners(radius: 8)
-        appearance(fromTextField, padding: 10)
-        
-        toTextField.backgroundColor = .systemGray4
-        toTextField.placeholder = "Поиск авиабилетов"
-        addSubview(toTextField)
-        toTextField.snp.makeConstraints { make in
-            make.top.equalTo(fromTextField.snp.bottom).offset(35)
-            make.left.right.equalToSuperview().inset(50)
-            make.height.equalTo(35)
-        }
-        toTextField.roundCorners(radius: 8)
-        appearance(toTextField, padding: 10)
+        initialize()
     }
     
     required init?(coder: NSCoder) {
         fatalError()
     }
     
-    func appearance(_ textField: UITextField, padding: CGFloat) {
-        let leftPaddingView = UIView(frame: CGRect(x: 0, y: 0, width: padding, height: frame.height))
-        let rightPaddingView = UIView(frame: CGRect(x: frame.width - padding, y: 0, width: padding, height: frame.height))
-        textField.leftView = leftPaddingView
-        textField.leftViewMode = .always
-        textField.rightView = rightPaddingView
-        textField.rightViewMode = .always
+    public func configure() {
+        
+    }
+    
+    private func initialize() {
+        backgroundColor = .midnightBlue.darker.darker
+        firstTextField.text = "Пулково, Санкт-Петербург"
+        createContainer()
+        createTableView()
+        createDateButton()
+    }
+    
+    private func createContainer() {
+        addSubview(container)
+        container.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(150)
+            make.left.right.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
+    }
+    
+    private func createTableView() {
+        tableView.isScrollEnabled = false
+        tableView.separatorColor = .white
+        tableView.backgroundColor = .none
+        tableView.dataSource = self
+        container.addSubview(tableView)
+        tableView.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.left.right.equalToSuperview()
+            make.bottom.equalToSuperview().inset(115)
+        }
+    }
+    
+    private func createDateButton() {
+        dateButton.setTitle(" Даты", for: .normal)
+        dateButton.setImage(.init(systemName: "calendar"), for: .normal)
+        dateButton.tintColor = .gray
+        dateButton.backgroundColor = .darkGray
+        container.addSubview(dateButton)
+        dateButton.snp.makeConstraints { make in
+            make.top.equalTo(tableView.snp.bottom)
+            make.left.equalToSuperview().inset(20)
+            make.width.equalTo(90)
+            make.height.equalTo(40)
+        }
+        dateButton.roundCorners(radius: 8)
+    }
+    
+}
+
+//MARK: - UITableViewDataSource
+
+extension AviaSearchView: UITableViewDataSource {
+    
+    func tableView(
+        _ tableView: UITableView,
+        numberOfRowsInSection section: Int
+    ) -> Int {
+        2
+    }
+    
+    func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath
+    ) -> UITableViewCell {
+        switch indexPath.row {
+        case 0:  return makeTextFieldCell(field: firstTextField, "Из города..")
+        case 1:  return makeTextFieldCell(field: seconTextField, "Куда летим..")
+        default: return UITableViewCell()
+        }
+    }
+    
+    private func makeTextFieldCell(
+        field: UITextField,
+        _ placeholder: String
+    ) -> UITableViewCell {
+        let cell = UITableViewCell()
+        field.attributedPlaceholder = NSAttributedString(
+            string: placeholder,
+            attributes: [.foregroundColor : UIColor.lightGray])
+        field.textColor = .white
+        field.font = .boldSystemFont(ofSize: UIFont.labelFontSize)
+        cell.selectionStyle = .none
+        cell.backgroundColor = .darkGray
+        cell.contentView.addSubview(field)
+        field.snp.makeConstraints { make in
+            make.left.equalToSuperview().inset(20)
+            make.right.equalToSuperview().inset(20)
+            make.centerY.equalToSuperview()
+        }
+        return cell
+    }
+    
+    private func makeLabelCell(
+        _ label: String?
+    ) -> UITableViewCell {
+        let cell = UITableViewCell()
+        cell.textLabel?.text = label
+        cell.selectionStyle = .none
+        return cell
     }
     
 }
