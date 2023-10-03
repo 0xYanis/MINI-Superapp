@@ -61,6 +61,7 @@ final class AviaSearchView: UICollectionReusableView {
     }
     
     private func createTableView() {
+        tableView.rowHeight = 44
         tableView.isScrollEnabled = false
         tableView.separatorColor = .white
         tableView.backgroundColor = .none
