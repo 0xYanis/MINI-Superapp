@@ -40,7 +40,7 @@ private extension AviaCollectionView {
         register(AviaPlaceCell.self)
         register(AviaCityCell.self)
         register(AviaCountryCell.self)
-        register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "head")
+        register(AviaSearchView.self)
         
         collectionViewLayout = createLayout()
     }
@@ -133,7 +133,7 @@ private extension AviaCollectionView {
         section.contentInsets = .init(top: 50, leading: 16, bottom: 50, trailing: 16)
         return section
     }
-
+    
     func createSection(
         group: NSCollectionLayoutGroup,
         behavior: UICollectionLayoutSectionOrthogonalScrollingBehavior,
@@ -209,9 +209,12 @@ extension AviaCollectionView: UICollectionViewDataSource {
     ) -> UICollectionReusableView {
         switch kind {
         case UICollectionView.elementKindSectionHeader:
-            let header = collectionView.dequeueReusableSupplementaryView(
-                ofKind: kind, withReuseIdentifier: "head", for: indexPath)
-            header.backgroundColor = .midnightBlue.darker.darker
+            guard
+                let header = collectionView.dequeueReusableSupplementaryView(
+                    ofKind: kind,
+                    withReuseIdentifier: String(describing: AviaSearchView.self),
+                    for: indexPath) as? AviaSearchView
+            else { return UICollectionReusableView() }
             return header
         case UICollectionView.elementKindSectionFooter:
             return UICollectionReusableView()

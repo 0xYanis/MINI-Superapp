@@ -99,6 +99,7 @@
 		097ACF242A2E1E500023106A /* RegisterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097ACF232A2E1E500023106A /* RegisterInteractor.swift */; };
 		097ACF262A2E1E5C0023106A /* RegisterRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097ACF252A2E1E5C0023106A /* RegisterRouter.swift */; };
 		097ACF282A2E1E690023106A /* RegisterBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097ACF272A2E1E690023106A /* RegisterBuilder.swift */; };
+		097CC4E72ACC47FF008F82A6 /* AviaSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097CC4E62ACC47FF008F82A6 /* AviaSearchView.swift */; };
 		097E039B29EC447000CE2A6F /* BankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097E039A29EC447000CE2A6F /* BankViewController.swift */; };
 		097E039D29EC448F00CE2A6F /* BankPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097E039C29EC448F00CE2A6F /* BankPresenter.swift */; };
 		097E039F29EC449900CE2A6F /* BankInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097E039E29EC449900CE2A6F /* BankInteractor.swift */; };
@@ -343,6 +344,7 @@
 		097ACF232A2E1E500023106A /* RegisterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInteractor.swift; sourceTree = "<group>"; };
 		097ACF252A2E1E5C0023106A /* RegisterRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRouter.swift; sourceTree = "<group>"; };
 		097ACF272A2E1E690023106A /* RegisterBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterBuilder.swift; sourceTree = "<group>"; };
+		097CC4E62ACC47FF008F82A6 /* AviaSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AviaSearchView.swift; sourceTree = "<group>"; };
 		097E039A29EC447000CE2A6F /* BankViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankViewController.swift; sourceTree = "<group>"; };
 		097E039C29EC448F00CE2A6F /* BankPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankPresenter.swift; sourceTree = "<group>"; };
 		097E039E29EC449900CE2A6F /* BankInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankInteractor.swift; sourceTree = "<group>"; };
@@ -1170,6 +1172,7 @@
 			isa = PBXGroup;
 			children = (
 				090E87AB2AAF6BD500C6AEF3 /* AviaCollectionView.swift */,
+				097CC4E62ACC47FF008F82A6 /* AviaSearchView.swift */,
 				090E87AD2AAF79BE00C6AEF3 /* AviaDealCell.swift */,
 				090E87AF2AAF7A0400C6AEF3 /* AviaPlaceCell.swift */,
 				090E87B12AAF7A1700C6AEF3 /* AviaCityCell.swift */,
@@ -1504,6 +1507,7 @@
 				097E039D29EC448F00CE2A6F /* BankPresenter.swift in Sources */,
 				099A79C029F16406004B95C7 /* BankCardCell.swift in Sources */,
 				099046D82A9E7D5600987B64 /* MapPresenter.swift in Sources */,
+				097CC4E72ACC47FF008F82A6 /* AviaSearchView.swift in Sources */,
 				09E9E82329EAFC770084416B /* UIView+Extension.swift in Sources */,
 				092F67AD2A3CDFE100E0F2B9 /* ProfileEntity.swift in Sources */,
 				09EA1CB52A9631AB00A18B41 /* Date+Extension.swift in Sources */,
