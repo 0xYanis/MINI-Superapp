@@ -17,7 +17,7 @@ final class TransactionViewController: UIViewController {
     
     var presenter: TransactionPresenterProtocol?
     
-    private let tableView = TransactionTableView()
+    private let tableView = TransactionTableView(frame: .zero, style: .grouped)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +35,7 @@ final class TransactionViewController: UIViewController {
 extension TransactionViewController: TransactionViewProtocol {
     
     func updateView(with data: BankTransactionEntity) {
+        navigationItem.title = data.name
         tableView.configure(with: data)
     }
     
@@ -44,12 +45,11 @@ private extension TransactionViewController {
     
     func initialize() {
         view.backgroundColor = .back2MINI
-        createNavigation()
+        configureNavigation()
         createTableView()
     }
     
-    func createNavigation() {
-        navigationItem.title = "Transaction"
+    func configureNavigation() {
         navigationItem.largeTitleDisplayMode = .never
     }
     
