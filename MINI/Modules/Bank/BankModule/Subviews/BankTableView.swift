@@ -41,7 +41,7 @@ final class BankTableView: MiTableView {
     
     public func hidePersonalData() {
         dataIsHidden.toggle()
-        reloadRows(at: [IndexPath(row: 0, section: 0)], with: .fade)
+        reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
     }
     
 }

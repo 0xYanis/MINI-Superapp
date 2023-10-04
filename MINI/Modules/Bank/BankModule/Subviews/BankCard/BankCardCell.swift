@@ -14,7 +14,7 @@ final class BankCardCell: UICollectionViewCell {
     //MARK: - Public properties
     
     public var valueIsHidden: Bool = false {
-        didSet {  }
+        didSet { cardAmount.isHidden = valueIsHidden }
     }
     
     //MARK: Private properties
