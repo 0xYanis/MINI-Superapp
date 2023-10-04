@@ -106,11 +106,23 @@ private extension BankViewController {
     
     func createNavigation(title: String) {
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.rightBarButtonItem = rightButtonItem
+        navigationItem.rightBarButtonItems = [addNewItemBarButton, lockViewBarButton]
         navigationItem.title = title
     }
     
-    var rightButtonItem: UIBarButtonItem {
+    var lockViewBarButton: UIBarButtonItem {
+        return UIBarButtonItem(
+            image: .init(systemName: "lock.circle"),
+            style: .plain,
+            target: self,
+            action: #selector(lockViewAction))
+    }
+    
+    @objc func lockViewAction() {
+        bankTableView.hidePersonalData()
+    }
+    
+    var addNewItemBarButton: UIBarButtonItem {
         return UIBarButtonItem(
             systemItem: .compose,
             primaryAction: .none,

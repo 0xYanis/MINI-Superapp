@@ -11,6 +11,12 @@ import SkeletonView
 
 final class BankCardCell: UICollectionViewCell {
     
+    //MARK: - Public properties
+    
+    public var valueIsHidden: Bool = false {
+        didSet {  }
+    }
+    
     //MARK: Private properties
     private lazy var cardView = UIView()
     private lazy var cardLogo = UIImageView()

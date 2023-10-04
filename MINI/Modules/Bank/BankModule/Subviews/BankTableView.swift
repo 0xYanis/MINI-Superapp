@@ -17,6 +17,8 @@ final class BankTableView: MiTableView {
     
     weak var presenter: BankPresenterProtocol?
     
+    private var dataIsHidden: Bool = false
+    
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
         initialize()
@@ -37,6 +39,11 @@ final class BankTableView: MiTableView {
         register(BankTemplateSet.self)
     }
     
+    public func hidePersonalData() {
+        dataIsHidden.toggle()
+        reloadRows(at: [IndexPath(row: 0, section: 0)], with: .fade)
+    }
+    
 }
 
 //MARK: - UITableViewDataSource
@@ -55,7 +62,10 @@ extension BankTableView: UITableViewDataSource {
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
         switch indexPath.row {
-        case 0:  return configureCell(BankCardSet.self, indexPath: indexPath)
+        case 0:
+            let cardSet = configureCell(BankCardSet.self, indexPath: indexPath)
+            cardSet.valueIsHidden = self.dataIsHidden
+            return cardSet
         case 1:  return configureCell(BankTemplateLabelCell.self, indexPath: indexPath)
         case 2:  return configureCell(BankTemplateSet.self, indexPath: indexPath)
         default: fatalError()

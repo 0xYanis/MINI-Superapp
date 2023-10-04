@@ -13,6 +13,7 @@ final class BankCardSet: UITableViewCell, BankTableCellConf {
     //MARK: Public properties
     
     weak var presenter: BankPresenterProtocol?
+    public var valueIsHidden: Bool = false
     
     //MARK: Private properties
     
@@ -105,7 +106,9 @@ extension BankCardSet: SkeletonCollectionViewDataSource {
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
         if indexPath.section == 0 {
-            return collectionView.addCell(BankCardCell.self, at: indexPath)
+            let cell = collectionView.addCell(BankCardCell.self, at: indexPath)
+            cell.valueIsHidden = self.valueIsHidden
+            return cell
         } else {
             return collectionView.addCell(BankEmptyCardCell.self, at: indexPath)
         }
