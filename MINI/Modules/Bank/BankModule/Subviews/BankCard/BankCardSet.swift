@@ -138,8 +138,9 @@ extension BankCardSet: SkeletonCollectionViewDataSource {
             let indexPath = indexPaths.first
         else { return nil }
         let openAction   = openCellsAction(indexPath: indexPath)
+        let updateAction = updateCellsAction(indexPath: indexPath)
         let deleteAction = deleteCellsAction(collectionView, indexPath: indexPath)
-        let context = createContextMenu(indexPath, menu: [openAction, deleteAction])
+        let context = createContextMenu(indexPath, menu: [openAction, updateAction, deleteAction])
         
         return context
     }
@@ -156,13 +157,23 @@ extension BankCardSet: SkeletonCollectionViewDataSource {
             let preview = CardBuilder.build(with: data)
             return preview
         } actionProvider: { _ in
-            UIMenu(title: "", children: menu)
+            UIMenu(title: "Выберите действие", children: menu)
         }
     }
     
     private func openCellsAction(indexPath: IndexPath) -> UIAction {
         return UIAction(
             title: "Открыть",
+            image: UIImage(systemName: "creditcard"),
+            attributes: []
+        ) { [weak self] _ in
+            self?.presenter?.userWantToDetails(of: .card, with: indexPath.item)
+        }
+    }
+    
+    private func updateCellsAction(indexPath: IndexPath) -> UIAction {
+        return UIAction(
+            title: "Изменить",
             image: UIImage(systemName: "square.and.pencil"),
             attributes: []
         ) { [weak self] _ in
