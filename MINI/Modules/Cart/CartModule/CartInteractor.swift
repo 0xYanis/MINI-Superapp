@@ -40,11 +40,10 @@ final class CartInteractor: CartInteractorProtocol {
     
     public func purchasePriceCount() {
         if purchases.isEmpty { return }
-        let totalPrice = purchases
+        self.totalPrice = purchases
             .compactMap { $0.price }
             .reduce(0, +)
             .rounded()
-        self.totalPrice = totalPrice
     }
     
     public func deleteCell(at index: Int) {
