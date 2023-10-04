@@ -25,10 +25,8 @@ final class BankCardSet: UITableViewCell, BankTableCellConf {
             collectionView.showsHorizontalScrollIndicator = false
             collectionView.backgroundColor = .clear
             collectionView.contentInset = .init(top: 0, left: 16, bottom: 0, right: 16)
-            collectionView.register(
-                BankCardCell.self,
-                forCellWithReuseIdentifier: String(describing: BankCardCell.self)
-            )
+            collectionView.register(BankCardCell.self, forCellWithReuseIdentifier: String(describing: BankCardCell.self))
+            collectionView.register(BankEmptyCardCell.self, forCellWithReuseIdentifier: String(describing: BankEmptyCardCell.self))
         }
     }
     
@@ -51,15 +49,9 @@ final class BankCardSet: UITableViewCell, BankTableCellConf {
 private extension BankCardSet {
     
     func initialize() {
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: snapLayout)
         backgroundColor = .clear
-        createCollectionView()
         addConstraintsOfView()
-    }
-    
-    func createCollectionView() {
-        collectionView = UICollectionView(
-            frame: .zero,
-            collectionViewLayout: snapLayout)
     }
     
     func addConstraintsOfView() {
@@ -86,6 +78,10 @@ private extension BankCardSet {
 
 extension BankCardSet: SkeletonCollectionViewDataSource {
     
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        2
+    }
+    
     func collectionSkeletonView(
         _ skeletonView: UICollectionView,
         cellIdentifierForItemAt indexPath: IndexPath
@@ -97,14 +93,22 @@ extension BankCardSet: SkeletonCollectionViewDataSource {
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        return presenter?.getCardData().count ?? 5
+        if section == 0 {
+            return presenter?.getCardData().count ?? 5
+        } else {
+            return 1
+        }
     }
     
     func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
-        return collectionView.addCell(BankCardCell.self, at: indexPath)
+        if indexPath.section == 0 {
+            return collectionView.addCell(BankCardCell.self, at: indexPath)
+        } else {
+            return collectionView.addCell(BankEmptyCardCell.self, at: indexPath)
+        }
     }
     
     
@@ -199,6 +203,15 @@ extension BankCardSet: UICollectionViewDelegateFlowLayout {
     func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
+        insetForSectionAt section: Int
+    ) -> UIEdgeInsets {
+        if section == 1 { return .init(top: 0, left: 16, bottom: 0, right: 0) }
+        return .zero
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
         let width = frame.width / 2.5
@@ -209,7 +222,11 @@ extension BankCardSet: UICollectionViewDelegateFlowLayout {
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath
     ) {
-        presenter?.userWantToDetails(of: .card, with: indexPath.item)
+        if indexPath.section == 0 {
+            presenter?.userWantToDetails(of: .card, with: indexPath.item)
+        } else {
+            presenter?.userWantToDetails(of: .newCard, with: 0)
+        }
     }
     
 }

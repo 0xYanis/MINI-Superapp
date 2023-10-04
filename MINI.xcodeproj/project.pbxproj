@@ -48,6 +48,7 @@
 		0910960729DB32F400338D22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0910960629DB32F400338D22 /* Assets.xcassets */; };
 		091335D42A405CC1005DDAEA /* MINIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091335D32A405CC1005DDAEA /* MINIColorExtension.swift */; };
 		0913C7E22A9687FC005C887D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0913C7E12A9687FB005C887D /* GoogleService-Info.plist */; };
+		091BC7472ACDBB6900EE3A14 /* BankEmptyCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091BC7462ACDBB6900EE3A14 /* BankEmptyCardCell.swift */; };
 		091CD49029DDE9250041627F /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 091CD48F29DDE9250041627F /* Lottie */; };
 		0921F35F29DF1FE000B3D4F7 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0921F35E29DF1FE000B3D4F7 /* UIButton+Extension.swift */; };
 		0925E3D02AB8DDC100E886AE /* BankSheetLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0925E3CF2AB8DDC100E886AE /* BankSheetLayout.swift */; };
@@ -301,6 +302,7 @@
 		0910960B29DB32F500338D22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		091335D32A405CC1005DDAEA /* MINIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MINIColorExtension.swift; sourceTree = "<group>"; };
 		0913C7E12A9687FB005C887D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		091BC7462ACDBB6900EE3A14 /* BankEmptyCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankEmptyCardCell.swift; sourceTree = "<group>"; };
 		0921F35E29DF1FE000B3D4F7 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		0925E3CF2AB8DDC100E886AE /* BankSheetLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankSheetLayout.swift; sourceTree = "<group>"; };
 		092E739329EBEB1E00165D37 /* LoginAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAnimationView.swift; sourceTree = "<group>"; };
@@ -921,6 +923,7 @@
 			children = (
 				09632FCB29ED8A7D00DB2641 /* BankCardSet.swift */,
 				099A79BF29F16406004B95C7 /* BankCardCell.swift */,
+				091BC7462ACDBB6900EE3A14 /* BankEmptyCardCell.swift */,
 			);
 			path = BankCard;
 			sourceTree = "<group>";
@@ -1481,6 +1484,7 @@
 				099D4F8529F72B050002C24A /* NewTemplateBuilder.swift in Sources */,
 				090C1E662A9CA42E00E75464 /* FBAuthManager.swift in Sources */,
 				09FC394129FABF6B00B2D97E /* AllTemplatesEntity.swift in Sources */,
+				091BC7472ACDBB6900EE3A14 /* BankEmptyCardCell.swift in Sources */,
 				099D4F8329F72AFD0002C24A /* NewTemplateRouter.swift in Sources */,
 				09EE2F602AA728F0003F08E3 /* CartInteractor.swift in Sources */,
 				099D4F6B29F71A420002C24A /* CardInteractor.swift in Sources */,
