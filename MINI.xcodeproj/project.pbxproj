@@ -621,8 +621,9 @@
 			isa = PBXGroup;
 			children = (
 				0910961129DB332600338D22 /* Application */,
-				0957A3402AC6FA41006576D0 /* Core */,
+				0957A3402AC6FA41006576D0 /* Modules */,
 				0910961229DB333400338D22 /* Resources */,
+				09E9E82829EB119D0084416B /* Services */,
 			);
 			path = MINI;
 			sourceTree = "<group>";
@@ -695,7 +696,7 @@
 			path = Subviews;
 			sourceTree = "<group>";
 		};
-		0957A3402AC6FA41006576D0 /* Core */ = {
+		0957A3402AC6FA41006576D0 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
 				0936E7BB2ABAF20700F50698 /* Base */,
@@ -706,11 +707,10 @@
 				09BFC9392A1B4C4F00C8505B /* Profile */,
 				09F86C5929F6FD1B00307432 /* Login */,
 				09DF836D2A3887CD00ECAEB6 /* LaunchScreen */,
-				09E9E82829EB119D0084416B /* ServiceLayer */,
 				0921F35D29DF1FD100B3D4F7 /* Helpers */,
 				09B0C1872A545C2500E0CDEF /* UIMiniElements */,
 			);
-			path = Core;
+			path = Modules;
 			sourceTree = "<group>";
 		};
 		0959E5852AA5CCD100A3777C /* Extensions */ = {
@@ -1134,7 +1134,7 @@
 			path = LoginModule;
 			sourceTree = "<group>";
 		};
-		09E9E82829EB119D0084416B /* ServiceLayer */ = {
+		09E9E82829EB119D0084416B /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				096B4B262A1DEEC700E5C65E /* APIService.swift */,
@@ -1146,7 +1146,7 @@
 				090B63EB2A45C09500C7D6CD /* RealmService.swift */,
 				090C1E632A9CA3F800E75464 /* Firebase */,
 			);
-			path = ServiceLayer;
+			path = Services;
 			sourceTree = "<group>";
 		};
 		09EA1CAB2A962D9D00A18B41 /* SupportModule */ = {
