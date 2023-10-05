@@ -11,6 +11,7 @@ protocol CartPresenterProtocol: AnyObject {
     func viewWillAppear()
     func updateView()
     func updateOrder(quantity: Int, with price: Double)
+    func showEmptyView()
     
     func getPurchases() -> [Purchase]
 	func getTagItems() -> [String]
@@ -55,6 +56,10 @@ extension CartPresenter: CartPresenterProtocol {
     
     func getPurchases() -> [Purchase] {
         interactor.filtered
+    }
+    
+    func showEmptyView() {
+        view?.showEmptyView()
     }
     
     func getTagItems() -> [String] {

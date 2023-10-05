@@ -55,7 +55,7 @@ final class CartInteractor: CartInteractorProtocol {
     }
     
     public func purchasePriceCount() {
-        if purchases.isEmpty { return }
+        if purchases.isEmpty { self.totalPrice = 0.0; return }
         self.totalPrice = filtered
             .compactMap { $0.price }
             .reduce(0, +)
@@ -63,9 +63,12 @@ final class CartInteractor: CartInteractorProtocol {
     }
     
     public func deleteCell(at index: Int) {
-        if index < purchases.count {
-            purchases.remove(at: index)
-        }
+        defer { if purchases.isEmpty { presenter?.showEmptyView() } }
+        guard purchases.count > index else { return }
+        purchases = purchases.filter { $0.description != filtered[index].description }
+        filtered.remove(at: index)
+        purchasePriceCount()
+        //db.purchases.remove(at: index)
     }
     
     public func removeAll() {

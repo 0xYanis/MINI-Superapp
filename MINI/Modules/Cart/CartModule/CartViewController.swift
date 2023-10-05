@@ -10,6 +10,7 @@ import UIKit
 protocol CartViewProtocol: AnyObject {
     func updateView()
     func updateOrder(quantity: Int, price: Double)
+    func showEmptyView()
 }
 
 final class CartViewController: UIViewController {
@@ -56,6 +57,10 @@ extension CartViewController: CartViewProtocol {
             orderPriceView.isHidden = false
             orderPriceView.updateData(quantity: quantity, price: "$ \(price)")
         }
+    }
+    
+    func showEmptyView() {
+        clearHandler()
     }
     
 }
@@ -118,12 +123,12 @@ private extension CartViewController {
         guard
             let purchases = presenter?.getPurchases(),
             purchases.isEmpty != true
-        else { showEmptyView(); return }
+        else { configureEmptyView(); return }
         configureTableView()
         configurePriceView()
     }
     
-    func showEmptyView() {
+    func configureEmptyView() {
         navigationItem.leftBarButtonItem?.isHidden = true
         navigationItem.rightBarButtonItem?.isHidden = true
         emptyView.configure(message: "Упс!", "Похоже, Ваша корзина пуста..")
@@ -206,7 +211,7 @@ private extension CartViewController {
         orderPriceView.isHidden = true
         tableView.removeFromSuperview()
         orderPriceView.removeFromSuperview()
-        showEmptyView()
+        configureEmptyView()
     }
     
     @objc func shareAction() {
