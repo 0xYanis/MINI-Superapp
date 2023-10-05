@@ -24,8 +24,8 @@ final class CartInteractor: CartInteractorProtocol {
     public var filtered: [Purchase] = mockPurchase
     
     public var tagItems: [String] = [
-        "Все","Избранное","Продукты",
-        "Товары","Билеты", "Заказы",
+        "Все","Продукты",
+        "Товары","Билеты",
         "Отмененные"]
     private var purchases: [Purchase] = mockPurchase
     private var totalPrice: Double = 0.0 {
@@ -63,6 +63,7 @@ final class CartInteractor: CartInteractorProtocol {
     }
     
     public func removeAll() {
+        filtered.removeAll()
         purchases.removeAll()
         //db.purchases.removeAll()
     }
