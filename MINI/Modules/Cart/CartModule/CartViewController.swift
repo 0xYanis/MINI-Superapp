@@ -50,7 +50,12 @@ extension CartViewController: CartViewProtocol {
     }
     
     func updateOrder(quantity: Int, price: Double) {
-        orderPriceView.updateData(quantity: quantity, price: "$ \(price)")
+        if quantity == 0 {
+            orderPriceView.isHidden = true
+        } else {
+            orderPriceView.isHidden = false
+            orderPriceView.updateData(quantity: quantity, price: "$ \(price)")
+        }
     }
     
 }
