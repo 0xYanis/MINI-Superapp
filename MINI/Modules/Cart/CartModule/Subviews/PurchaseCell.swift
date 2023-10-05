@@ -80,7 +80,7 @@ private extension PurchaseCell {
         backgroundColor = .clear
         
         container.backgroundColor = .systemBackground
-        addSubview(container)
+        contentView.addSubview(container)
         container.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(12)
             make.left.right.equalToSuperview().inset(20)
