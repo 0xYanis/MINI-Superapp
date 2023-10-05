@@ -18,16 +18,19 @@ final class UITagPickerView: UICollectionView {
     private let flowLayout = UICollectionViewFlowLayout()
     private let hapticEngine = UINotificationFeedbackGenerator()
     
-    private var tags: [String]
+    private var tags: [String] = []
     
-    init(_ tags: [String]) {
-        self.tags = tags
-        super.init(frame: .zero, collectionViewLayout: flowLayout)
-        initialize()
+    override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
+        super.init(frame: frame, collectionViewLayout: flowLayout)
     }
     
     required init?(coder: NSCoder) {
         fatalError()
+    }
+    
+    public func configure(with tags: [String]) {
+        self.tags = tags
+        initialize()
     }
     
     private func initialize() {

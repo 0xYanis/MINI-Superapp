@@ -37,16 +37,14 @@ final class CartTableView: MiTableView {
 private extension CartTableView {
     
     func initialize() {
+        register(CartTagCell.self)
         register(PurchaseCell.self)
         showsVerticalScrollIndicator = false
         backgroundColor = .clear
         separatorStyle = .none
-        contentInset = .init(top: 20, left: 0, bottom: 50, right: 0)
-        
+        sectionHeaderTopPadding = 0
         dataSource = self
         delegate = self
-        
-        rowHeight = 140
     }
     
 }
@@ -65,10 +63,15 @@ extension CartTableView: UITagPickerDelegate {
 
 extension CartTableView: UITableViewDataSource {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        2
+    }
+    
     func tableView(
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     ) -> Int {
+        if section == 0 { return 1 }
         return presenter?.getPurchases().count ?? 0
     }
     
@@ -76,11 +79,17 @@ extension CartTableView: UITableViewDataSource {
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
-        let cell = addCell(PurchaseCell.self, indexPath: indexPath)
-        guard let data = presenter?.getPurchases()[indexPath.row]
-        else { return UITableViewCell() }
-        cell.configure(with: data)
-        return cell
+        if indexPath.section == 0 {
+            let cell = addCell(CartTagCell.self, indexPath: indexPath)
+            cell.configure(with: presenter?.getTagItems() ?? [])
+            return cell
+        } else {
+            let cell = addCell(PurchaseCell.self, indexPath: indexPath)
+            guard let data = presenter?.getPurchases()[indexPath.row]
+            else { return UITableViewCell() }
+            cell.configure(with: data)
+            return cell
+        }
     }
     
 }
@@ -91,21 +100,9 @@ extension CartTableView: UITableViewDelegate {
     
     func tableView(
         _ tableView: UITableView,
-        viewForHeaderInSection section: Int
-    ) -> UIView? {
-        guard
-            let items = presenter?.getTagItems()
-        else { return nil }
-        let header = UITagPickerView(items)
-        header.pickerDelegate = self
-        return header
-    }
-    
-    func tableView(
-        _ tableView: UITableView,
-        heightForHeaderInSection section: Int
+        heightForRowAt indexPath: IndexPath
     ) -> CGFloat {
-        38
+        indexPath.section == 0 ? 38 : 140
     }
     
     // MARK: Swipe methods
@@ -114,6 +111,7 @@ extension CartTableView: UITableViewDelegate {
         _ tableView: UITableView,
         trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
     ) -> UISwipeActionsConfiguration? {
+        if indexPath.section == 0 { return nil }
         let deleteAction = deleteSwipeAction(indexPath)
         return .init(actions: [deleteAction])
     }
@@ -139,6 +137,7 @@ extension CartTableView: UITableViewDelegate {
         contextMenuConfigurationForRowAt indexPath: IndexPath,
         point: CGPoint
     ) -> UIContextMenuConfiguration? {
+        if indexPath.section == 0 { return nil }
         let contextMenu = UIContextMenuConfiguration(actionProvider:  { [weak self] (actions) -> UIMenu? in
             guard let self = self else { return nil }
             let share = self.shareAction(at: indexPath.row)
