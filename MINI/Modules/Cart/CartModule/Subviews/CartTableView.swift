@@ -30,10 +30,6 @@ final class CartTableView: MiTableView {
         fatalError()
     }
     
-    public func updateCells() {
-        
-    }
-    
 }
 
 // MARK: - Private methods
@@ -71,7 +67,11 @@ extension CartTableView: UITableViewDataSource {
         _ tableView: UITableView,
         titleForHeaderInSection section: Int
     ) -> String? {
-        section == 1 ? "Ваша корзина" : nil
+        if section == 1 {
+            let count = presenter?.getPurchases().count ?? 0
+            return count > 0 ? "Ваша корзина" : nil
+        }
+        return nil
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
