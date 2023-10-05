@@ -63,6 +63,13 @@ extension CartTableView: UITagPickerDelegate {
 
 extension CartTableView: UITableViewDataSource {
     
+    func tableView(
+        _ tableView: UITableView,
+        titleForHeaderInSection section: Int
+    ) -> String? {
+        section == 1 ? "Ваша корзина" : nil
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         2
     }
