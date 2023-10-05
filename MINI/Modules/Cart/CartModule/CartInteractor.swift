@@ -19,18 +19,22 @@ protocol CartInteractorProtocol: AnyObject {
 
 final class CartInteractor: CartInteractorProtocol {
 	
+    //MARK: - Public properties
+    
 	weak var presenter: CartPresenterProtocol?
     
     public var filtered: [Purchase] = mockPurchase
+    public var tagItems: [String] = ["Все","Продукты","Товары","Билеты","Отмененные"]
     
-    public var tagItems: [String] = [
-        "Все","Продукты",
-        "Товары","Билеты",
-        "Отмененные"]
+    //MARK: - Private properties
+    
     private var purchases: [Purchase] = mockPurchase
+    private var cancelledPurchases: [Purchase] = []
     private var totalPrice: Double = 0.0 {
         didSet { presenter?.updateOrder(quantity: filtered.count, with: totalPrice) }
     }
+    
+    //MARK: - Public methods
     
     public func viewWillAppear() {
         purchasePriceCount()
@@ -41,6 +45,8 @@ final class CartInteractor: CartInteractorProtocol {
         filtered.removeAll()
         if tagItems[index] == tagItems.first {
             filtered = purchases
+        } else if tagItems[index] == tagItems.last {
+            filtered = cancelledPurchases
         } else {
             filtered = purchases.filter { $0.type.rawValue == tagItems[index] }
         }
