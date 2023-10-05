@@ -8,6 +8,7 @@
 import UIKit
 
 protocol CartViewProtocol: AnyObject {
+    func updateView()
     func updateOrder(quantity: Int, price: Double)
 }
 
@@ -43,6 +44,10 @@ final class CartViewController: UIViewController {
 // MARK: - CartViewProtocol
 
 extension CartViewController: CartViewProtocol {
+    
+    func updateView() {
+        tableView.reloadSections(.init(integer: 1), with: .left)
+    }
     
     func updateOrder(quantity: Int, price: Double) {
         orderPriceView.updateData(quantity: quantity, price: "$ \(price)")

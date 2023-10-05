@@ -30,6 +30,10 @@ final class CartTableView: MiTableView {
         fatalError()
     }
     
+    public func updateCells() {
+        
+    }
+    
 }
 
 // MARK: - Private methods

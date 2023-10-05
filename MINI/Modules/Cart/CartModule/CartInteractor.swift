@@ -8,7 +8,7 @@
 import Foundation
 
 protocol CartInteractorProtocol: AnyObject {
-    var purchases: [Purchase] { get }
+    var filtered: [Purchase] { get }
     var tagItems: [String] { get }
     func setCurrentTag(_ index: Int)
     
@@ -21,13 +21,15 @@ final class CartInteractor: CartInteractorProtocol {
 	
 	weak var presenter: CartPresenterProtocol?
     
-    public var purchases: [Purchase] = mockPurchase
+    public var filtered: [Purchase] = mockPurchase
+    
     public var tagItems: [String] = [
         "Все","Избранное","Продукты",
         "Товары","Билеты", "Заказы",
         "Отмененные"]
+    private var purchases: [Purchase] = mockPurchase
     private var totalPrice: Double = 0.0 {
-        didSet { presenter?.updateView(quantity: purchases.count, with: totalPrice) }
+        didSet { presenter?.updateOrder(quantity: filtered.count, with: totalPrice) }
     }
     
     public func viewWillAppear() {
@@ -35,12 +37,20 @@ final class CartInteractor: CartInteractorProtocol {
     }
     
     public func setCurrentTag(_ index: Int) {
-        
+        guard purchases.count > index else { return }
+        filtered.removeAll()
+        if tagItems[index] == tagItems.first {
+            filtered = purchases
+        } else {
+            filtered = purchases.filter { $0.type.rawValue == tagItems[index] }
+        }
+        presenter?.updateView()
+        purchasePriceCount()
     }
     
     public func purchasePriceCount() {
         if purchases.isEmpty { return }
-        self.totalPrice = purchases
+        self.totalPrice = filtered
             .compactMap { $0.price }
             .reduce(0, +)
             .rounded()

@@ -9,7 +9,8 @@ import Foundation
 
 protocol CartPresenterProtocol: AnyObject {
     func viewWillAppear()
-    func updateView(quantity: Int, with price: Double)
+    func updateView()
+    func updateOrder(quantity: Int, with price: Double)
     
     func getPurchases() -> [Purchase]
 	func getTagItems() -> [String]
@@ -44,12 +45,16 @@ extension CartPresenter: CartPresenterProtocol {
         interactor.viewWillAppear()
     }
     
-    func updateView(quantity: Int, with price: Double) {
+    func updateView() {
+        view?.updateView()
+    }
+    
+    func updateOrder(quantity: Int, with price: Double) {
         view?.updateOrder(quantity: quantity, price: price)
     }
     
     func getPurchases() -> [Purchase] {
-        interactor.purchases
+        interactor.filtered
     }
     
     func getTagItems() -> [String] {
