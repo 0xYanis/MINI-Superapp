@@ -17,6 +17,7 @@ final class CartTableView: MiTableView {
     // MARK: - Public properties
     
     public var presenter: CartPresenterProtocol?
+    public weak var purchaseDelegate: PurchaseCellDelegate?
     public weak var scrollDelegate: CartTableScrollDelegate?
     
     // MARK: - Initializers
@@ -100,6 +101,7 @@ extension CartTableView: UITableViewDataSource {
             guard let data = presenter?.getPurchases()[indexPath.row]
             else { return UITableViewCell() }
             cell.configure(with: data)
+            cell.delegate = purchaseDelegate
             return cell
         }
     }
@@ -140,33 +142,6 @@ extension CartTableView: UITableViewDelegate {
         action.image = .init(systemName: "trash")
         action.backgroundColor = .systemOrange
         return action
-    }
-    
-    // MARK: ContextMenu methods
-    
-    func tableView(
-        _ tableView: UITableView,
-        contextMenuConfigurationForRowAt indexPath: IndexPath,
-        point: CGPoint
-    ) -> UIContextMenuConfiguration? {
-        if indexPath.section == 0 { return nil }
-        let contextMenu = UIContextMenuConfiguration(actionProvider:  { [weak self] (actions) -> UIMenu? in
-            guard let self = self else { return nil }
-            let share = self.shareAction(at: indexPath.row)
-            return UIMenu(title: "Контекстное меню", children: [share])
-        })
-        
-        return contextMenu
-    }
-
-    
-    private func shareAction(at row: Int) -> UIAction {
-        return UIAction(
-            title: "Поделиться",
-            image: .init(systemName: "square.and.arrow.up")
-        ) { _ in
-            print("share with row: \(row)")
-        }
     }
     
     // MARK: Scroll methods

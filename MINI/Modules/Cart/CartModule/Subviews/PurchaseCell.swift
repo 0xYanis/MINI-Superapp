@@ -8,7 +8,15 @@
 import UIKit
 import SnapKit
 
+protocol PurchaseCellDelegate: AnyObject {
+    func sharePurchase(named: String)
+}
+
 final class PurchaseCell: UITableViewCell {
+    
+    //MARK: - Public properties
+    
+    weak var delegate: PurchaseCellDelegate?
     
     // MARK: - Private properties
     
@@ -103,9 +111,10 @@ private extension PurchaseCell {
     }
     
     var additionalMenu: UIMenu {
-        return UIMenu(children: [
+        return UIMenu(title: "Выберите действие", children: [
             changeQuantityAction,
-            addToFavoriteAction
+            addToFavoriteAction,
+            shareAction
         ])
     }
     
@@ -124,6 +133,16 @@ private extension PurchaseCell {
             image: .init(systemName: "bookmark")
         ) { _ in
             
+        }
+    }
+    
+    var shareAction: UIAction {
+        return UIAction(
+            title: "Поделиться товаром",
+            image: .init(systemName: "square.and.arrow.up"))
+        { [weak self] _ in
+            guard let name = self?.purchaseLabel.text else { return }
+            self?.delegate?.sharePurchase(named: name)
         }
     }
     

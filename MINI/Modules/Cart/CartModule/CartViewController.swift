@@ -65,6 +65,26 @@ extension CartViewController: CartViewProtocol {
     
 }
 
+//MARK: - PurchaseCellDelegate
+
+extension CartViewController: PurchaseCellDelegate {
+    
+    func sharePurchase(named: String) {
+        guard
+            let items = presenter?.getPurchases(),
+            let item = items.filter({ $0.name == named }).first
+        else { return }
+        
+        let shareData = [item.name, item.description]
+        let activityVC = UIActivityViewController(
+            activityItems: [shareData],
+            applicationActivities: nil)
+        
+        present(activityVC, animated: true)
+    }
+    
+}
+
 // MARK: - OrderPriceViewDelegate
 
 extension CartViewController: OrderPriceViewDelegate {
@@ -141,6 +161,7 @@ private extension CartViewController {
     }
     
     func configureTableView() {
+        tableView.purchaseDelegate = self
         tableView.scrollDelegate = self
         tableView.presenter = presenter
         view.insertSubview(tableView, at: 0)
