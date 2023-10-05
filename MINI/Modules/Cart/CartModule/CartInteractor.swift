@@ -43,13 +43,13 @@ final class CartInteractor: CartInteractorProtocol {
     public func setCurrentTag(_ index: Int) {
         guard purchases.count > index else { return }
         filtered.removeAll()
-        if tagItems[index] == tagItems.first {
-            filtered = purchases
-        } else if tagItems[index] == tagItems.last {
-            filtered = cancelledPurchases
-        } else {
-            filtered = purchases.filter { $0.type.rawValue == tagItems[index] }
+        
+        switch tagItems[index] {
+        case tagItems.first: filtered = purchases
+        case tagItems.last:  filtered = cancelledPurchases
+        default: filtered = purchases.filter { $0.type.rawValue == tagItems[index] }
         }
+        
         presenter?.updateView()
         purchasePriceCount()
     }
