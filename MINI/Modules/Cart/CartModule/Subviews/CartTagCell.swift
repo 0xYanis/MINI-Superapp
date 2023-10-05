@@ -9,6 +9,8 @@ import UIKit
 
 final class CartTagCell: UITableViewCell {
     
+    weak var pickerDelegate: UITagPickerDelegate?
+    
     private let pickerView = UITagPickerView()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -26,6 +28,7 @@ final class CartTagCell: UITableViewCell {
     }
     
     public func configure(with tags: [String]) {
+        pickerView.pickerDelegate = pickerDelegate
         pickerView.configure(with: tags)
     }
     

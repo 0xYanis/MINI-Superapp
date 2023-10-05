@@ -88,6 +88,7 @@ extension CartTableView: UITableViewDataSource {
     ) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = addCell(CartTagCell.self, indexPath: indexPath)
+            cell.pickerDelegate = self
             cell.configure(with: presenter?.getTagItems() ?? [])
             return cell
         } else {
