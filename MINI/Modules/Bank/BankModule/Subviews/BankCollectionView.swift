@@ -160,12 +160,12 @@ extension BankCollectionView: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        let sectionData = presenter?.getDataSource()[section]
-        switch sectionData {
-        case .card(let cards)        : return cards.count
-        case .template(let templates): return templates.count
-        case .none: return 0
-        }
+        return presenter?.getDataSource()[section].count ?? 0
+//        switch sectionData {
+//        case .card(let cards)        : return cards.count
+//        case .template(let templates): return templates.count
+//        case .none: return 0
+//        }
     }
     
     func collectionView(
@@ -248,7 +248,8 @@ extension BankCollectionView: UICollectionViewDelegate {
         point: CGPoint
     ) -> UIContextMenuConfiguration? {
         return .init { [weak self] () -> UIViewController? in
-            self?.showPreview(for: indexPaths[0])
+            guard let path = indexPaths.first else { return nil }
+            return self?.showPreview(for: path)
         } actionProvider: { _ in
             UIMenu(
                 title: "Выберите действие",
