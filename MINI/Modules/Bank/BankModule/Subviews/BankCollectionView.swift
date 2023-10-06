@@ -267,20 +267,13 @@ extension BankCollectionView: UICollectionViewDelegate {
     }
     
     private func openAction(for indexPath: IndexPath) -> UIAction {
-        let dataSource = presenter?.getDataSource()[indexPath.section]
         return UIAction(
             title: "Открыть",
             image: .init(systemName: "creditcard")
         ) { [weak self] _ in
-            switch dataSource {
-            case .card(let cards):
-                if indexPath.item == (cards.count - 1) {
-                    self?.presenter?.userWantToDetails(of: .newCard, with: 0)
-                } else {
-                    self?.presenter?.userWantToDetails(of: .card, with: indexPath.item)
-                }
-            case .template(_):
-                self?.presenter?.userWantToDetails(of: .template, with: indexPath.item)
+            switch indexPath.section {
+            case 0: self?.didTapCard(indexPath)
+            case 1: self?.presenter?.userWantToDetails(of: .template, with: indexPath.item)
             default: break
             }
         }
@@ -291,10 +284,8 @@ extension BankCollectionView: UICollectionViewDelegate {
         didSelectItemAt indexPath: IndexPath
     ) {
         switch indexPath.section {
-        case 0:
-            didTapCard(indexPath)
-        case 1:
-            presenter?.userWantToDetails(of: .template, with: indexPath.item)
+        case 0: didTapCard(indexPath)
+        case 1: presenter?.userWantToDetails(of: .template, with: indexPath.item)
         default: break
         }
     }
