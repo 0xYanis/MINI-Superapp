@@ -244,6 +244,33 @@ extension BankCollectionView: UICollectionViewDelegate {
     
     func collectionView(
         _ collectionView: UICollectionView,
+        contextMenuConfigurationForItemsAt indexPaths: [IndexPath],
+        point: CGPoint
+    ) -> UIContextMenuConfiguration? {
+        return .init { [weak self] () -> UIViewController? in
+            self?.showPreview(for: indexPaths[0])
+        } actionProvider: { _ in
+            UIMenu(
+                title: "Выберите действие",
+                image: .init(systemName: "globe"),
+                children: [])
+        }
+    }
+    
+    private func showPreview(for indexPath: IndexPath) -> UIViewController? {
+        let dataSource = presenter?.getDataSource()[indexPath.section]
+        switch dataSource {
+        case .card(let cards):
+            guard indexPath.item != (cards.count - 1) else { return nil }
+            return CardBuilder.build(with: cards[indexPath.item])
+        case .template(_):
+            return TemplateBuilder.build()
+        default: return nil
+        }
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath
     ) {
         switch indexPath.section {
