@@ -15,10 +15,9 @@ protocol BankPresenterProtocol: AnyObject {
     
     func userWantToDetails(of type: BankViewDetails, with index: Int)
     
-    func getCardData() -> [BankCardEntity]
-    func getTemplateData() -> [BankTemplateEntity]
-    func getTransactionData() -> [BankTransactionEntity]
-    func getFilteredData() -> [BankTransactionEntity]
+    func getDataSource() -> [BankSection]
+    func getTransactionData() -> [Transaction]
+    func getFilteredData() -> [Transaction]
     
     func userWantToDeleteCard(at id: Int)
     func userWantToDeleteTransaction(at id: Int)
@@ -68,23 +67,23 @@ extension BankPresenter: BankPresenterProtocol {
 extension BankPresenter {
     
     func userWantToDetails(of type: BankViewDetails, with index: Int = 0) {
-        switch type {
-        case .card:
-            let data = interactor.userDidTapCard(index: index)
-            router.goToDetailCard(with: data)
-        case .template:
-            router.goToDetailTemplate(id: index)
-        case .transaction:
-            let data = interactor.userDidTapTransaction(index: index)
-            router.goToDetailTransaction(with: data)
-        case .allTransactions:
-            let data = interactor.userDidTapSeeAll()
-            router.goToAllTemplates(with: data)
-        case .newCard:
-            router.goToAddNewCard()
-        case .newTemplate:
-            router.goToAddNewTemplate()
-        }
+//        switch type {
+//        case .card:
+//            let data = interactor.userDidTapCard(index: index)
+//            router.goToDetailCard(with: data)
+//        case .template:
+//            router.goToDetailTemplate(id: index)
+//        case .transaction:
+//            let data = interactor.userDidTapTransaction(index: index)
+//            router.goToDetailTransaction(with: data)
+//        case .allTransactions:
+//            let data = interactor.userDidTapSeeAll()
+//            router.goToAllTemplates(with: data)
+//        case .newCard:
+//            router.goToAddNewCard()
+//        case .newTemplate:
+//            router.goToAddNewTemplate()
+//        }
     }
     
 }
@@ -92,19 +91,15 @@ extension BankPresenter {
 // MARK: - GET data
 extension BankPresenter {
     
-    func getCardData() -> [BankCardEntity] {
-        interactor.cardsData
+    func getDataSource() -> [BankSection] {
+        interactor.dataSource
     }
     
-    func getTemplateData() -> [BankTemplateEntity] {
-        interactor.templatesData
-    }
-    
-    func getTransactionData() -> [BankTransactionEntity] {
+    func getTransactionData() -> [Transaction] {
         interactor.transactionsData
     }
     
-    func getFilteredData() -> [BankTransactionEntity] {
+    func getFilteredData() -> [Transaction] {
         interactor.filteredData
     }
     

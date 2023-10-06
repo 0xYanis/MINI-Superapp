@@ -8,16 +8,16 @@
 import Foundation
 
 protocol CardInteractorProtocol: AnyObject {
-    var cardData: BankCardEntity? { get }
+    var cardData: Card? { get }
     func viewDidLoaded()
 }
 
 final class CardInteractor: CardInteractorProtocol {
     weak var presenter: CardPresenterProtocol?
     
-    var cardData: BankCardEntity?
+    var cardData: Card?
     
-    init(cardData: BankCardEntity) {
+    init(cardData: Card) {
         self.cardData = cardData
     }
     

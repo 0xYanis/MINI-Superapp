@@ -33,7 +33,11 @@ final class BankViewController: UIViewController {
     //MARK: - Private properties
     
     private let refreshControl = UIRefreshControl()
-    private let bankTableView  = BankTableView()
+    private let bankCollectionView: BankCollectionView = {
+        let layout = UICollectionViewLayout()
+        let view = BankCollectionView(frame: .zero, collectionViewLayout: layout)
+        return view
+    }()
     private let historyTableVC = BankHistoryViewController()
     private lazy var historyBottomSheet = FloatingPanelController()
     
@@ -65,7 +69,7 @@ final class BankViewController: UIViewController {
 extension BankViewController: BankViewProtocol {
     
     func updateBankTable() {
-        bankTableView.reloadData()
+        bankCollectionView.reloadData()
     }
     
     func updateHistory() {
@@ -101,7 +105,7 @@ private extension BankViewController {
         createNavigation(title: "bank_navbar".localized)
         createRefreshControl()
         createBottomSheet()
-        createTableView()
+        createCollectionView()
     }
     
     func createNavigation(title: String) {
@@ -119,7 +123,7 @@ private extension BankViewController {
     }
     
     @objc func lockViewAction() {
-        bankTableView.hidePersonalData()
+        bankCollectionView.hidePersonalData()
     }
     
     var addNewItemBarButton: UIBarButtonItem {
@@ -145,13 +149,11 @@ private extension BankViewController {
         return UIMenu(children: [addCard, addTemplate])
     }
     
-    func createTableView() {
-        bankTableView.presenter = presenter
-        bankTableView.delegate = self
-        view.insertSubview(bankTableView, at: 0)
-        bankTableView.snp.makeConstraints { make in
-            make.width.equalToSuperview()
-            make.height.equalToSuperview().multipliedBy(0.7)
+    func createCollectionView() {
+        bankCollectionView.presenter = presenter
+        view.insertSubview(bankCollectionView, at: 0)
+        bankCollectionView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
     }
     
@@ -167,11 +169,11 @@ private extension BankViewController {
     
     func createRefreshControl() {
         refreshControl.addTarget(self, action: #selector(refreshAction), for: .valueChanged)
-        bankTableView.refreshControl = refreshControl
+        bankCollectionView.refreshControl = refreshControl
     }
     
 }
-
+/*
 //MARK: - UITableViewDelegate
 
 extension BankViewController: UITableViewDelegate {
@@ -190,3 +192,4 @@ extension BankViewController: UITableViewDelegate {
     }
     
 }
+*/

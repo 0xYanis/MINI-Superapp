@@ -19,7 +19,7 @@ final class BankTemplateCell: UICollectionViewCell {
         color: UIColor(named: "textColor")
     )
     
-    func configure(with template: BankTemplateEntity) {
+    func configure(with template: Template) {
         imageView.image = UIImage(systemName: template.image)
         textLabel.text = template.label
     }

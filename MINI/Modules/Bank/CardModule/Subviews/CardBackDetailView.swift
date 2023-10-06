@@ -32,7 +32,7 @@ final class CardBackDetailView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with data: BankCardEntity) {
+    func configure(with data: Card) {
         cardView.backgroundColor = UIColor(named: data.cardColor)
         cvvNumber = data.cvv
         bankLabel.text = data.bankName

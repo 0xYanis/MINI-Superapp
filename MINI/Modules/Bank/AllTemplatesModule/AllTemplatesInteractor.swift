@@ -8,7 +8,7 @@
 import Foundation
 
 protocol AllTemplatesInteractorProtocol: AnyObject {
-    var tempaltesData: [BankTemplateEntity] { get }
+    var tempaltesData: [Template] { get }
     func userWillDeleteTemplate(id: Int)
     func userWillMoveTemplate(from: Int, to: Int)
 }
@@ -16,9 +16,9 @@ protocol AllTemplatesInteractorProtocol: AnyObject {
 final class AllTemplatesInteractor: AllTemplatesInteractorProtocol {
     weak var presenter: AllTemplatesPresenterProtocol?
     
-    var tempaltesData: [BankTemplateEntity] = []
+    var tempaltesData: [Template] = []
     
-    init(templatesData: [BankTemplateEntity]) {
+    init(templatesData: [Template]) {
         self.tempaltesData = templatesData
     }
     

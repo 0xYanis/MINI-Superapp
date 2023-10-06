@@ -8,7 +8,7 @@
 import UIKit
 
 protocol CardViewProtocol: AnyObject {
-    func updateView(with data: BankCardEntity)
+    func updateView(with data: Card)
 }
 
 final class CardViewController: UIViewController {
@@ -38,7 +38,7 @@ final class CardViewController: UIViewController {
 
 extension CardViewController: CardViewProtocol {
     
-    func updateView(with data: BankCardEntity) {
+    func updateView(with data: Card) {
         createNavigation(title: data.bankName)
         frontView.configure(with: data)
         backView.configure(with: data)

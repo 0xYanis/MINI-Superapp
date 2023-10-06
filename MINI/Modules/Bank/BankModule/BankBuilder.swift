@@ -9,17 +9,9 @@ import UIKit
 
 final class BankBuilder {
     static func build() -> UIViewController {
-        let cardService = BankCardService()
-        let templateService = BankTemplateService()
-        let transactionService = BankTransactionService()
-        
         let viewController = BankViewController()
         let router = BankRouter()
-        let interactor = BankInteractor(
-            cardService: cardService,
-            templateService: templateService,
-            transactionService: transactionService
-        )
+        let interactor = BankInteractor()
         let presenter = BankPresenter(
             router: router,
             interactor: interactor

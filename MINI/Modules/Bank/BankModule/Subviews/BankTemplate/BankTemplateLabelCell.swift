@@ -7,9 +7,8 @@
 
 import UIKit
 
-final class BankTemplateLabelCell: UITableViewCell, BankTableCellConf {
+final class BankTemplateLabelCell: UICollectionReusableView {
     
-    static let cellId = "BankTemplateLabelCell"
     weak var presenter: BankPresenterProtocol?
     
     private lazy var titleLabel = UILabel(
@@ -26,17 +25,13 @@ final class BankTemplateLabelCell: UITableViewCell, BankTableCellConf {
         return button
     }()
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         initialize()
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func reloadData() {
-        
+        fatalError()
     }
     
 }
@@ -44,15 +39,14 @@ final class BankTemplateLabelCell: UITableViewCell, BankTableCellConf {
 private extension BankTemplateLabelCell {
     
     func initialize() {
-        selectionStyle = .none
         backgroundColor = .clear
-        contentView.addSubview(titleLabel)
+        addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.left.equalToSuperview().inset(16)
         }
         
-        contentView.addSubview(seeAllButt)
+        addSubview(seeAllButt)
         seeAllButt.addPulseAnimation()
         seeAllButt.addTarget(
             self,

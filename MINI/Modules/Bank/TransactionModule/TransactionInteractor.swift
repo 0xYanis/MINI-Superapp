@@ -8,7 +8,7 @@
 import Foundation
 
 protocol TransactionInteractorProtocol: AnyObject {
-    var transactionData: BankTransactionEntity? { get }
+    var transactionData: Transaction? { get }
     func viewDidLoaded()
     func userWillRemoveTransaction(id: Int)
     
@@ -17,9 +17,9 @@ protocol TransactionInteractorProtocol: AnyObject {
 final class TransactionInteractor: TransactionInteractorProtocol {
     weak var presenter: TransactionPresenterProtocol?
     
-    var transactionData: BankTransactionEntity?
+    var transactionData: Transaction?
     
-    init(data: BankTransactionEntity) {
+    init(data: Transaction) {
         self.transactionData = data
     }
     

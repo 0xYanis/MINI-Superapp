@@ -7,12 +7,8 @@
 
 import Foundation
 
-struct BankTransactionList: Codable {
-    var transactionList: [BankTransactionEntity]
-}
-
-struct BankTransactionEntity: Codable {
-    var id: Int
+struct Transaction: Identifiable, Codable {
+    var id = UUID().uuidString
     var icon: String?
     var name: String
     var date: String

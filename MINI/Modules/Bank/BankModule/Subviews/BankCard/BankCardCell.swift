@@ -32,7 +32,7 @@ final class BankCardCell: UICollectionViewCell {
     )
     
     // MARK: - Public methods
-    func configure(with card: BankCardEntity) {
+    func configure(with card: Card) {
         cardView.backgroundColor = UIColor(named: card.cardColor)
         cardLogo.image = UIImage(named: card.logo)
         cardAmount.text = card.currency.getCurrencySymbol() + "\(card.amount)"

@@ -9,7 +9,7 @@ import Foundation
 
 protocol AllTemplatesPresenterProtocol: AnyObject {
     
-    func getTemplatesData() -> [BankTemplateEntity]
+    func getTemplatesData() -> [Template]
     
     func userDidTapTemplate(id: Int)
     func userDidTapAddNew()
@@ -32,7 +32,7 @@ final class AllTemplatesPresenter {
 
 extension AllTemplatesPresenter: AllTemplatesPresenterProtocol {
     
-    func getTemplatesData() -> [BankTemplateEntity] {
+    func getTemplatesData() -> [Template] {
         interactor.tempaltesData
     }
     
