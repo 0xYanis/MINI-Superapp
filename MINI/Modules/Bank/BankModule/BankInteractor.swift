@@ -81,6 +81,7 @@ final class BankInteractor: BankInteractorProtocol {
             return nil
         }.flatMap { $0 }
         guard cards.count > index else { return }
+        cards.remove(at: index)
         dataSource[0] = .card(cards)
     }
     
