@@ -211,7 +211,9 @@ extension BankCollectionView: UICollectionViewDataSource {
     ) -> UICollectionReusableView {
         switch kind {
         case UICollectionView.elementKindSectionHeader:
-            return dequeue(BankTemplateLabelCell.self, kind, collectionView, indexPath)
+            let header = dequeue(BankTemplateLabelCell.self, kind, collectionView, indexPath)
+            header.presenter = presenter
+            return header
         case UICollectionView.elementKindSectionFooter:
             return UICollectionReusableView()
         default: return UICollectionReusableView()
@@ -242,10 +244,31 @@ extension BankCollectionView: UICollectionViewDelegate {
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath
     ) {
-        //presenter?.userWantToDetails(of: ., with: indexPath.item)
+        switch indexPath.section {
+        case 0:
+            didTapCard(indexPath)
+        case 1:
+            presenter?.userWantToDetails(of: .template, with: indexPath.item)
+        default: break
+        }
+    }
+    
+    private func didTapCard(_ indexPath: IndexPath) {
+        switch presenter?.getDataSource()[0] {
+        case .card(let cards):
+            if indexPath.item == (cards.count - 1) {
+                presenter?.userWantToDetails(of: .newCard, with: 0)
+            } else {
+                presenter?.userWantToDetails(of: .card, with: indexPath.item)
+            }
+        default: break
+        }
     }
     
 }
+
+/*
+
 import SwiftUI
 struct SomePreview: PreviewProvider {
     
@@ -266,3 +289,5 @@ struct SomePreview: PreviewProvider {
         }
     }
 }
+
+*/

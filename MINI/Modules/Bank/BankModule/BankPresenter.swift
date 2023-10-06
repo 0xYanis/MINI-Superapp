@@ -67,23 +67,23 @@ extension BankPresenter: BankPresenterProtocol {
 extension BankPresenter {
     
     func userWantToDetails(of type: BankViewDetails, with index: Int = 0) {
-//        switch type {
-//        case .card:
-//            let data = interactor.userDidTapCard(index: index)
-//            router.goToDetailCard(with: data)
-//        case .template:
-//            router.goToDetailTemplate(id: index)
-//        case .transaction:
-//            let data = interactor.userDidTapTransaction(index: index)
-//            router.goToDetailTransaction(with: data)
-//        case .allTransactions:
-//            let data = interactor.userDidTapSeeAll()
-//            router.goToAllTemplates(with: data)
-//        case .newCard:
-//            router.goToAddNewCard()
-//        case .newTemplate:
-//            router.goToAddNewTemplate()
-//        }
+        switch type {
+        case .card:
+            let data = interactor.userDidTapCard(index: index)
+            router.goToDetailCard(with: data!)
+        case .template:
+            router.goToDetailTemplate(id: index)
+        case .transaction:
+            let data = interactor.userDidTapTransaction(index: index)
+            router.goToDetailTransaction(with: data)
+        case .allTransactions:
+            let data = interactor.userDidTapSeeAll()
+            router.goToAllTemplates(with: data)
+        case .newCard:
+            router.goToAddNewCard()
+        case .newTemplate:
+            router.goToAddNewTemplate()
+        }
     }
     
 }

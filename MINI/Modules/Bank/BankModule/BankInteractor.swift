@@ -53,6 +53,11 @@ final class BankInteractor: BankInteractorProtocol {
     }
     
     public func userDidTapCard(index: Int) -> Card? {
+        switch dataSource[0] {
+        case .card(let cards):
+            if cards.count > index { return cards[index] }
+        default: return nil
+        }
         return nil
     }
     
@@ -61,7 +66,10 @@ final class BankInteractor: BankInteractorProtocol {
     }
     
     public func userDidTapSeeAll() -> [Template] {
-        []
+        switch dataSource[1] {
+        case .template(let templates): return templates
+        default: return []
+        }
     }
     
     public func userWantToDeleteCard(at id: Int) {
