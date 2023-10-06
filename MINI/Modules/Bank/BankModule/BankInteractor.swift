@@ -53,27 +53,39 @@ final class BankInteractor: BankInteractorProtocol {
     }
     
     public func userDidTapCard(index: Int) -> Card? {
-        switch dataSource[0] {
-        case .card(let cards):
-            if cards.count > index { return cards[index] }
-        default: return nil
-        }
-        return nil
+        let cards = dataSource.compactMap { section -> [Card]? in
+            if case .card(let cards) = section {
+                return cards
+            }
+            return nil
+        }.flatMap { $0 }
+        guard cards.count > index else { return nil }
+        return cards[index]
+    }
+    
+    public func userDidTapSeeAll() -> [Template] {
+        let templates = dataSource.compactMap { section -> [Template]? in
+            if case .template(let templates) = section {
+                return templates
+            }
+            return nil
+        }.flatMap { $0 }
+        return templates
+    }
+    
+    public func userWantToDeleteCard(at index: Int) {
+        var cards = dataSource.compactMap { section -> [Card]? in
+            if case .card(let cards) = section {
+                return cards
+            }
+            return nil
+        }.flatMap { $0 }
+        guard cards.count > index else { return }
+        dataSource[0] = .card(cards)
     }
     
     public func userDidTapTransaction(index: Int) -> Transaction {
         filteredData.isEmpty ? transactionsData[index] : filteredData[index]
-    }
-    
-    public func userDidTapSeeAll() -> [Template] {
-        switch dataSource[1] {
-        case .template(let templates): return templates
-        default: return []
-        }
-    }
-    
-    public func userWantToDeleteCard(at id: Int) {
-        
     }
     
     public func userWantToDeleteTransaction(at id: Int) {

@@ -161,11 +161,6 @@ extension BankCollectionView: UICollectionViewDataSource {
         numberOfItemsInSection section: Int
     ) -> Int {
         return presenter?.getDataSource()[section].count ?? 0
-//        switch sectionData {
-//        case .card(let cards)        : return cards.count
-//        case .template(let templates): return templates.count
-//        case .none: return 0
-//        }
     }
     
     func collectionView(
