@@ -10,39 +10,49 @@ import XCTest
 
 final class BankModuleTests: XCTestCase {
     
-    var view: MockBankView?
-    var router: BankRouter?
-    var presenter: BankPresenter?
-    var interactor: BankInteractor?
+    private var view: MockView!
+    private var router: BankRouter!
+    private var presenter: BankPresenter!
+    private var interactor: BankInteractor!
     
-    var cardData: [Card] = []
-    var tempData: [Template] = []
-    var tranData: [Transaction] = []
+    private var cardData: [Card] = []
+    private var tempData: [Template] = []
+    private var tranData: [Transaction] = []
     
     override func setUpWithError() throws {
-        view = MockBankView()
         router = BankRouter()
         interactor = BankInteractor()
         presenter = BankPresenter(router: router, interactor: interactor)
+        view = MockView(presenter: presenter)
         
-        view.presenter = presenter
         presenter.view = view
         interactor.presenter = presenter
-    }
-    
-    override func tearDownWithError() throws {
-        view        = nil
-        router      = nil
-        interactor  = nil
-        presenter   = nil
-        
-        cardData    = []
-        tempData    = []
-        tranData    = []
     }
     
     func testMock() throws {
         
     }
     
+}
+
+final class MockView: BankViewProtocol {
+    
+    private var presenter: BankPresenterProtocol
+    
+    init(presenter: BankPresenterProtocol) {
+        self.presenter = presenter
+        presenter.viewDidLoaded()
+    }
+    
+    func updateBankTable() {
+        
+    }
+    
+    func updateHistory() {
+        
+    }
+    
+    func loadingDataGetFailed(with error: String) {
+        
+    }
 }
