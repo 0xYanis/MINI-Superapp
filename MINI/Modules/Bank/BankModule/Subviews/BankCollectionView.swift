@@ -65,7 +65,7 @@ private extension BankCollectionView {
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: groupSize,
             subitems: [defaultItem])
-        let section = customSection(group: group, spacing: 15, scrollType: .groupPaging)
+        let section = customSection(group: group, spacing: 16, scrollType: .groupPaging)
         section.contentInsets = .init(top: 16, leading: 16, bottom: 16, trailing: 16)
         return section
     }
@@ -177,11 +177,13 @@ extension BankCollectionView: UICollectionViewDataSource {
         case .card(let cards):
             if indexPath.item == (cards.count - 1) {
                 let empty = dequeue(BankEmptyCardCell.self, collectionView, indexPath)
+                empty.shadow(color: .black, opacity: 0.3, radius: 15)
                 return empty
             } else {
                 let cell = dequeue(BankCardCell.self, collectionView, indexPath)
                 cell.configure(with: cards[indexPath.item])
                 cell.valueIsHidden = self.dataIsHidden
+                cell.shadow(color: .black, opacity: 0.3, radius: 10)
                 return cell
             }
         case .template(let templates):
