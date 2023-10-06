@@ -27,5 +27,7 @@ var mockCards: [Card] = [
     .init(cardColor: "mastercard", logo: "mastercard", cardType: "mastercard", amount: 10.0, currency: "USD", number: "1111222233334444", bankName: "OTP", expirationDate: "02.02.23", cvv: "432"),
     .init(cardColor: "mastercard", logo: "mastercard", cardType: "mastercard", amount: 10.0, currency: "USD", number: "1111222233334444", bankName: "OTP", expirationDate: "02.02.23", cvv: "432"),
     .init(cardColor: "mastercard", logo: "mastercard", cardType: "mastercard", amount: 10.0, currency: "USD", number: "1111222233334444", bankName: "OTP", expirationDate: "02.02.23", cvv: "432"),
-    .init(cardColor: "mastercard", logo: "mastercard", cardType: "mastercard", amount: 10.0, currency: "USD", number: "1111222233334444", bankName: "OTP", expirationDate: "02.02.23", cvv: "432")
+    .init(cardColor: "mastercard", logo: "mastercard", cardType: "mastercard", amount: 10.0, currency: "USD", number: "1111222233334444", bankName: "OTP", expirationDate: "02.02.23", cvv: "432"),
+    // empty card
+    .init(cardColor: "", logo: "", cardType: "", amount: 0.0, currency: "", number: "", bankName: "", expirationDate: "", cvv: "")
 ]

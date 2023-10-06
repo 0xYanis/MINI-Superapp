@@ -60,8 +60,8 @@ private extension BankCollectionView {
     
     func makeCardSection() -> NSCollectionLayoutSection {
         let groupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(0.4),
-            heightDimension: .fractionalHeight(0.2))
+            widthDimension: .fractionalWidth(0.38),
+            heightDimension: .fractionalHeight(0.15))
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: groupSize,
             subitems: [defaultItem])
@@ -73,7 +73,7 @@ private extension BankCollectionView {
     func makeTemplateSection() -> NSCollectionLayoutSection {
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(0.35),
-            heightDimension: .fractionalHeight(0.15))
+            heightDimension: .fractionalHeight(0.12))
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: groupSize,
             subitems: [defaultItem])
@@ -175,11 +175,15 @@ extension BankCollectionView: UICollectionViewDataSource {
         let dataSource = presenter?.getDataSource()[indexPath.section]
         switch dataSource {
         case .card(let cards):
-            let empty = dequeue(BankEmptyCardCell.self, collectionView, indexPath)
-            let cell = dequeue(BankCardCell.self, collectionView, indexPath)
-            cell.configure(with: cards[indexPath.item])
-            cell.valueIsHidden = self.dataIsHidden
-            return cell
+            if indexPath.item == (cards.count - 1) {
+                let empty = dequeue(BankEmptyCardCell.self, collectionView, indexPath)
+                return empty
+            } else {
+                let cell = dequeue(BankCardCell.self, collectionView, indexPath)
+                cell.configure(with: cards[indexPath.item])
+                cell.valueIsHidden = self.dataIsHidden
+                return cell
+            }
         case .template(let templates):
             let cell = dequeue(BankTemplateCell.self, collectionView, indexPath)
             cell.configure(with: templates[indexPath.item])
