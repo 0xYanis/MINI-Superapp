@@ -173,23 +173,3 @@ private extension BankViewController {
     }
     
 }
-/*
-//MARK: - UITableViewDelegate
-
-extension BankViewController: UITableViewDelegate {
-    
-    func tableView(
-        _ tableView: UITableView,
-        heightForRowAt indexPath: IndexPath
-    ) -> CGFloat {
-        let height = view.frame.height
-        switch indexPath.row {
-        case 0:  return (height/5)
-        case 1:  return (height/30)
-        case 2:  return (height/6.3)
-        default: return 0
-        }
-    }
-    
-}
-*/

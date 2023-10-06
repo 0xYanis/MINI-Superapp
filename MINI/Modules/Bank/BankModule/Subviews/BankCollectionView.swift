@@ -24,7 +24,7 @@ final class BankCollectionView: UICollectionView {
     
     public func hidePersonalData() {
         dataIsHidden.toggle()
-        reloadSections(IndexSet(integersIn: 0...2))
+        reloadSections(IndexSet(integer: 0))
     }
     
     private func initialize() {
@@ -33,6 +33,7 @@ final class BankCollectionView: UICollectionView {
         delegate = self
         
         register(BankCardCell.self)
+        register(BankEmptyCardCell.self)
         register(BankTemplateLabelCell.self, isHeader: true)
         register(BankTemplateCell.self)
         
@@ -41,21 +42,9 @@ final class BankCollectionView: UICollectionView {
     
 }
 
+//MARK: - Private layout methods
+
 private extension BankCollectionView {
-    
-    private func register<C: UICollectionViewCell>(_ cell: C.Type) {
-        register(cell, forCellWithReuseIdentifier: String(describing: cell))
-    }
-    
-    private func register<V: UICollectionReusableView>(_ view: V.Type, isHeader: Bool = true) {
-        let head = UICollectionView.elementKindSectionHeader
-        let foot = UICollectionView.elementKindSectionFooter
-        register(
-            view,
-            forSupplementaryViewOfKind: isHeader ? head : foot,
-            withReuseIdentifier: String(describing: view)
-        )
-    }
     
     func makeLayout() -> UICollectionViewLayout {
         return UICollectionViewCompositionalLayout { [weak self] sectionIndex, env in
@@ -70,46 +59,88 @@ private extension BankCollectionView {
     }
     
     func makeCardSection() -> NSCollectionLayoutSection {
-        let item = NSCollectionLayoutItem(layoutSize: .init(
-            widthDimension: .fractionalWidth(1),
-            heightDimension: .fractionalHeight(1)))
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(0.4),
             heightDimension: .fractionalHeight(0.2))
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: groupSize,
-            subitems: [item])
-        let section = NSCollectionLayoutSection(group: group)
-        section.orthogonalScrollingBehavior = .groupPaging
+            subitems: [defaultItem])
+        let section = customSection(group: group, spacing: 15, scrollType: .groupPaging)
+        section.contentInsets = .init(top: 16, leading: 16, bottom: 16, trailing: 16)
         return section
     }
     
     func makeTemplateSection() -> NSCollectionLayoutSection {
-        let header = makeTemplateHeader()
-        let item = NSCollectionLayoutItem(layoutSize: .init(
-            widthDimension: .fractionalWidth(1),
-            heightDimension: .fractionalHeight(1)))
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(0.35),
             heightDimension: .fractionalHeight(0.15))
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: groupSize,
-            subitems: [item])
-        let section = NSCollectionLayoutSection(group: group)
-        section.boundarySupplementaryItems = [header]
-        section.orthogonalScrollingBehavior = .continuous
+            subitems: [defaultItem])
+        let section = customSection(group: group, subItems: [makeTemplateHeader()], spacing: 10, scrollType: .continuous)
+        section.contentInsets = .init(top: 16, leading: 16, bottom: 16, trailing: 16)
         return section
     }
     
     func makeTemplateHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
         let kind = UICollectionView.elementKindSectionHeader
+        return defaultSupplementaryItem(kind: kind, height: 30)
+    }
+    
+}
+
+//MARK: - Private helper methods
+
+private extension BankCollectionView {
+    
+    var defaultItem: NSCollectionLayoutItem {
+        return NSCollectionLayoutItem(layoutSize: .init(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .fractionalHeight(1))
+        )
+    }
+    
+    func defaultSupplementaryItem(
+        kind: String,
+        height: CGFloat
+    ) -> NSCollectionLayoutBoundarySupplementaryItem {
         let size = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1),
-            heightDimension: .estimated(30))
+            heightDimension: .estimated(height))
         return .init(
             layoutSize: size,
             elementKind: kind,
             alignment: .top
+        )
+    }
+    
+    func customSection(
+        group: NSCollectionLayoutGroup,
+        subItems: [NSCollectionLayoutBoundarySupplementaryItem] = [],
+        spacing: CGFloat,
+        scrollType: UICollectionLayoutSectionOrthogonalScrollingBehavior = .continuous
+    ) -> NSCollectionLayoutSection {
+        let section = NSCollectionLayoutSection(group: group)
+        section.boundarySupplementaryItems = subItems
+        section.interGroupSpacing = spacing
+        section.orthogonalScrollingBehavior = scrollType
+        return section
+    }
+    
+    private func register<C: UICollectionViewCell>(_ cell: C.Type) {
+        register(cell, forCellWithReuseIdentifier: String(describing: cell))
+    }
+    
+    private func register<V: UICollectionReusableView>(
+        _ view: V.Type,
+        isHeader: Bool = true
+    ) {
+        let head = UICollectionView.elementKindSectionHeader
+        let foot = UICollectionView.elementKindSectionFooter
+        register(
+            view,
+            forSupplementaryViewOfKind: isHeader ? head : foot,
+            withReuseIdentifier: String(describing: view)
         )
     }
     
@@ -144,8 +175,10 @@ extension BankCollectionView: UICollectionViewDataSource {
         let dataSource = presenter?.getDataSource()[indexPath.section]
         switch dataSource {
         case .card(let cards):
+            let empty = dequeue(BankEmptyCardCell.self, collectionView, indexPath)
             let cell = dequeue(BankCardCell.self, collectionView, indexPath)
             cell.configure(with: cards[indexPath.item])
+            cell.valueIsHidden = self.dataIsHidden
             return cell
         case .template(let templates):
             let cell = dequeue(BankTemplateCell.self, collectionView, indexPath)
@@ -208,4 +241,24 @@ extension BankCollectionView: UICollectionViewDelegate {
         //presenter?.userWantToDetails(of: ., with: indexPath.item)
     }
     
+}
+import SwiftUI
+struct SomePreview: PreviewProvider {
+    
+    static var previews: some View {
+        NavigationStack {
+            ContentView()
+                .navigationTitle("Bank")
+        }
+    }
+    
+    struct ContentView: UIViewControllerRepresentable {
+        func makeUIViewController(context: Context) -> UIViewController {
+            return BankBuilder.build()
+        }
+        
+        func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
+            
+        }
+    }
 }
