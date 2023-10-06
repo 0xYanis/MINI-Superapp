@@ -75,7 +75,7 @@ extension CartViewController: PurchaseCellDelegate {
             let item = items.filter({ $0.name == named }).first
         else { return }
         
-        let shareData = [item.name, item.description]
+        let shareData = ["$ \(item.price)", item.name, item.description]
         let activityVC = UIActivityViewController(
             activityItems: [shareData],
             applicationActivities: nil)
