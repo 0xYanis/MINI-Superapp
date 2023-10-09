@@ -11,7 +11,7 @@ protocol TransactionPresenterProtocol: AnyObject {
     func viewDidLoaded()
     func userWantRemoveTransaction(id: Int)
     
-    func updateView(with data: Transaction)
+    func updateView(with data: TransactionEntity)
 }
 
 final class TransactionPresenter {
@@ -36,7 +36,7 @@ extension TransactionPresenter: TransactionPresenterProtocol {
         interactor.userWillRemoveTransaction(id: id)
     }
     
-    func updateView(with data: Transaction) {
+    func updateView(with data: TransactionEntity) {
         view?.updateView(with: data)
     }
     

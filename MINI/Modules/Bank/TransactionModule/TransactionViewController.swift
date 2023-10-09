@@ -10,7 +10,7 @@ import SnapKit
 import SDWebImage
 
 protocol TransactionViewProtocol: AnyObject {
-    func updateView(with data: Transaction)
+    func updateView(with data: TransactionEntity)
 }
 
 final class TransactionViewController: UIViewController {
@@ -34,8 +34,8 @@ final class TransactionViewController: UIViewController {
 
 extension TransactionViewController: TransactionViewProtocol {
     
-    func updateView(with data: Transaction) {
-        navigationItem.title = data.name
+    func updateView(with data: TransactionEntity) {
+        navigationItem.title = data.navTitle
         tableView.configure(with: data)
     }
     

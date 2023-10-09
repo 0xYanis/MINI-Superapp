@@ -22,10 +22,10 @@ final class TransactionTableView: MiTableView {
         fatalError()
     }
     
-    public func configure(with data: Transaction) {
-        guard let image = SDImageCache.shared.imageFromCache(
-            forKey: data.icon
-        ) else { return }
+    public func configure(with data: TransactionEntity) {
+        guard
+            let image = SDImageCache.shared.imageFromCache(forKey: data.image)
+        else { return }
         imageView.image = image
     }
     

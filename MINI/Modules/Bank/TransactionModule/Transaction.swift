@@ -21,4 +21,21 @@ struct Transaction: Identifiable, Codable {
     var notes: String
     var merchantID: Int
     var customerID: Int
+    
+    func mapToTableDatasource() -> [String?:String?] {
+        return [
+            "Владедец карты" : name,
+            "Дата транзакции" : date,
+            "Стоимость" : "\(cost)",
+            "Платежный счет" : "\(cardNumber)",
+            "Адресс на карте" : location,
+            "Тип валюты" : currency,
+            "Статус" : status,
+            "Категория" : category,
+            "Заметки" : notes,
+            "merchantID" : "\(merchantID)",
+            "customerID" : "\(customerID)"
+        ]
+    }
+    
 }
