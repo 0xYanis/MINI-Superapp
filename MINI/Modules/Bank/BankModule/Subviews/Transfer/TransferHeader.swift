@@ -11,17 +11,18 @@ final class TransferHeader: UICollectionReusableView {
     
     weak var presenter: BankPresenterProtocol?
     
-    private lazy var titleLabel = UILabel(
-        text: "Перевести",
-        font: .boldSystemFont(ofSize: 22),
+    private let titleLabel = UILabel(
+        text: "Перевод",
+        font: .boldSystemFont(ofSize: 20),
         color: UIColor(named: "textColor")
     )
     
-    private lazy var seeAllButt: UIButton = {
+    private let seeAllButt: UIButton = {
         let button = UIButton()
         button.addPulseAnimation()
-        button.setTitle("see_all_button".localized, for: .normal)
-        button.setTitleColor(.systemOrange, for: .normal)
+        //button.setTitle("see_all_button".localized, for: .normal)
+        button.setImage(.init(systemName: "chevron.right.circle"), for: .normal)
+        button.tintColor = .label
         return button
     }()
     

@@ -31,7 +31,7 @@ final class BankInteractor: BankInteractorProtocol {
     
     weak var presenter: BankPresenterProtocol?
     
-    var dataSource: [BankSection] = [.card(mockCards), .template(mockTemplates)]
+    var dataSource: [BankSection] = [.card(mockCards), .template(mockTemplates), .transfer(mockTransfers)]
     
     var transactionsData: [Transaction] = []
     var filteredData: [Transaction]     = []

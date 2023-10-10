@@ -34,8 +34,12 @@ final class BankCollectionView: UICollectionView {
         
         register(BankCardCell.self)
         register(BankEmptyCardCell.self)
+        
         register(BankTemplateLabelCell.self, isHeader: true)
         register(BankTemplateCell.self)
+        
+        register(TransferHeader.self, isHeader: true)
+        register(TransferCell.self)
         
         collectionViewLayout = makeLayout()
     }
@@ -53,6 +57,7 @@ private extension BankCollectionView {
             switch section {
             case .card(_)    : return self.makeCardSection()
             case .template(_): return self.makeTemplateSection()
+            case .transfer(_): return self.makeTransferSection()
             case .none: return nil
             }
         }
@@ -77,14 +82,21 @@ private extension BankCollectionView {
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: groupSize,
             subitems: [defaultItem])
-        let section = customSection(group: group, subItems: [makeTemplateHeader()], spacing: 10, scrollType: .continuous)
+        let section = customSection(group: group, subItems: [makeDefaultHeader()], spacing: 10, scrollType: .continuous)
         section.contentInsets = .init(top: 16, leading: 16, bottom: 16, trailing: 16)
         return section
     }
     
-    func makeTemplateHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
-        let kind = UICollectionView.elementKindSectionHeader
-        return defaultSupplementaryItem(kind: kind, height: 30)
+    func makeTransferSection() -> NSCollectionLayoutSection {
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(0.18),
+            heightDimension: .fractionalHeight(0.09))
+        let group = NSCollectionLayoutGroup.horizontal(
+            layoutSize: groupSize,
+            subitems: [defaultItem])
+        let section = customSection(group: group, subItems: [makeDefaultHeader()], spacing: 8, scrollType: .continuous)
+        section.contentInsets = .init(top: 16, leading: 16, bottom: 16, trailing: 16)
+        return section
     }
     
 }
@@ -98,6 +110,11 @@ private extension BankCollectionView {
             widthDimension: .fractionalWidth(1),
             heightDimension: .fractionalHeight(1))
         )
+    }
+    
+    func makeDefaultHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
+        let kind = UICollectionView.elementKindSectionHeader
+        return defaultSupplementaryItem(kind: kind, height: 30)
     }
     
     func defaultSupplementaryItem(
@@ -185,6 +202,10 @@ extension BankCollectionView: UICollectionViewDataSource {
             let cell = dequeue(BankTemplateCell.self, collectionView, indexPath)
             cell.configure(with: templates[indexPath.item])
             return cell
+        case .transfer(let transfers):
+            let cell = dequeue(TransferCell.self, collectionView, indexPath)
+            cell.configure(with: transfers[indexPath.item])
+            return cell
         default: return UICollectionViewCell()
         }
     }
@@ -206,15 +227,23 @@ extension BankCollectionView: UICollectionViewDataSource {
         viewForSupplementaryElementOfKind kind: String,
         at indexPath: IndexPath
     ) -> UICollectionReusableView {
-        switch kind {
-        case UICollectionView.elementKindSectionHeader:
-            let header = dequeue(BankTemplateLabelCell.self, kind, collectionView, indexPath)
-            header.presenter = presenter
-            return header
-        case UICollectionView.elementKindSectionFooter:
-            return UICollectionReusableView()
-        default: return UICollectionReusableView()
+        switch indexPath.section {
+        case 0: break
+        case 1:
+            if kind == UICollectionView.elementKindSectionHeader {
+                let header = dequeue(BankTemplateLabelCell.self, kind, collectionView, indexPath)
+                header.presenter = presenter
+                return header
+            }
+        case 2:
+            if kind == UICollectionView.elementKindSectionHeader {
+                let header = dequeue(TransferHeader.self, kind, collectionView, indexPath)
+                header.presenter = presenter
+                return header
+            }
+        default: break
         }
+        return UICollectionReusableView()
     }
     
     private func dequeue<V: UICollectionReusableView>(

@@ -13,7 +13,7 @@ final class BankTemplateLabelCell: UICollectionReusableView {
     
     private lazy var titleLabel = UILabel(
         text: "templates_label".localized,
-        font: .boldSystemFont(ofSize: 22),
+        font: .boldSystemFont(ofSize: 20),
         color: UIColor(named: "textColor")
     )
     
