@@ -158,6 +158,7 @@
 		097E03A129EC44A500CE2A6F /* BankRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097E03A029EC44A500CE2A6F /* BankRouter.swift */; };
 		097E03A329EC44BD00CE2A6F /* BankBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097E03A229EC44BD00CE2A6F /* BankBuilder.swift */; };
 		097EFCB72AD53CBE002D5946 /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097EFCB62AD53CBE002D5946 /* TransactionCell.swift */; };
+		097EFCBB2AD542C3002D5946 /* TransferHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097EFCBA2AD542C3002D5946 /* TransferHeader.swift */; };
 		098999262A2772890040B67D /* LoginModuleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098999252A2772890040B67D /* LoginModuleTests.swift */; };
 		098999362A27781F0040B67D /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 098999352A27781F0040B67D /* SDWebImage */; };
 		0989993E2A27A0470040B67D /* BankModuleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0989993D2A27A0470040B67D /* BankModuleTests.swift */; };
@@ -398,6 +399,7 @@
 		097E03A029EC44A500CE2A6F /* BankRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankRouter.swift; sourceTree = "<group>"; };
 		097E03A229EC44BD00CE2A6F /* BankBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankBuilder.swift; sourceTree = "<group>"; };
 		097EFCB62AD53CBE002D5946 /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
+		097EFCBA2AD542C3002D5946 /* TransferHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferHeader.swift; sourceTree = "<group>"; };
 		098999232A2772890040B67D /* LoginModuleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoginModuleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		098999252A2772890040B67D /* LoginModuleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModuleTests.swift; sourceTree = "<group>"; };
 		0989993B2A27A0470040B67D /* BankModuleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BankModuleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -894,6 +896,14 @@
 			path = BankModule;
 			sourceTree = "<group>";
 		};
+		097EFCB92AD542AE002D5946 /* Transfer */ = {
+			isa = PBXGroup;
+			children = (
+				097EFCBA2AD542C3002D5946 /* TransferHeader.swift */,
+			);
+			path = Transfer;
+			sourceTree = "<group>";
+		};
 		098999052A276A650040B67D /* MINIUnitTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -1150,6 +1160,7 @@
 		09D509D129EF3571009CC219 /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
+				097EFCB92AD542AE002D5946 /* Transfer */,
 				09BE62592ACACC610098ACB2 /* BankCollectionView.swift */,
 				099A79C329F1641E004B95C7 /* Card */,
 				099A79C429F16427004B95C7 /* Template */,
@@ -1778,6 +1789,7 @@
 				09FC394829FAD3E300B2D97E /* TransactionPresenter.swift in Sources */,
 				09B02C772A8EC7D700F474E9 /* PayoutsPresenter.swift in Sources */,
 				0964534A2A82CF5E00709821 /* PasswordBuilder.swift in Sources */,
+				097EFCBB2AD542C3002D5946 /* TransferHeader.swift in Sources */,
 				094061B32AB06847009AD0BF /* UITagPickerView.swift in Sources */,
 				09E9E81F29EAE95D0084416B /* LoginRouter.swift in Sources */,
 				099D4F7729F722F50002C24A /* NewCardRouter.swift in Sources */,
