@@ -19,6 +19,7 @@ final class BankSheetLayout: FloatingPanelLayout {
     var anchors: [FloatingPanel.FloatingPanelState : FloatingPanel.FloatingPanelLayoutAnchoring] = [
         .full: anchor(absoluteInset: 16.0, edge: .top, referenceGuide: .safeArea),
         .half: anchor(fractionalInset: 0.47, edge: .bottom, referenceGuide: .safeArea),
+        .tip: anchor(fractionalInset: 0.1, edge: .bottom, referenceGuide: .safeArea)
     ]
     
 }
