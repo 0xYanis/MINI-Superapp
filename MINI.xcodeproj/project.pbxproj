@@ -1009,25 +1009,25 @@
 			path = GroceryModule;
 			sourceTree = "<group>";
 		};
-		099A79C329F1641E004B95C7 /* BankCard */ = {
+		099A79C329F1641E004B95C7 /* Card */ = {
 			isa = PBXGroup;
 			children = (
 				099A79BF29F16406004B95C7 /* BankCardCell.swift */,
 				091BC7462ACDBB6900EE3A14 /* BankEmptyCardCell.swift */,
 			);
-			path = BankCard;
+			path = Card;
 			sourceTree = "<group>";
 		};
-		099A79C429F16427004B95C7 /* BankTemplate */ = {
+		099A79C429F16427004B95C7 /* Template */ = {
 			isa = PBXGroup;
 			children = (
 				099A79C129F16417004B95C7 /* BankTemplateCell.swift */,
 				0909D1C229F192E50078EEB5 /* BankTemplateLabelCell.swift */,
 			);
-			path = BankTemplate;
+			path = Template;
 			sourceTree = "<group>";
 		};
-		099A79C529F16441004B95C7 /* BankSheet */ = {
+		099A79C529F16441004B95C7 /* HistorySheet */ = {
 			isa = PBXGroup;
 			children = (
 				09D509CD29EF1E76009CC219 /* BankHistoryViewController.swift */,
@@ -1035,7 +1035,7 @@
 				09D509D929EF50AC009CC219 /* BankHistoryLabel.swift */,
 				0925E3CF2AB8DDC100E886AE /* BankSheetLayout.swift */,
 			);
-			path = BankSheet;
+			path = HistorySheet;
 			sourceTree = "<group>";
 		};
 		099C6D572A13E2F80039AC41 /* Subviews */ = {
@@ -1151,9 +1151,9 @@
 			isa = PBXGroup;
 			children = (
 				09BE62592ACACC610098ACB2 /* BankCollectionView.swift */,
-				099A79C329F1641E004B95C7 /* BankCard */,
-				099A79C429F16427004B95C7 /* BankTemplate */,
-				099A79C529F16441004B95C7 /* BankSheet */,
+				099A79C329F1641E004B95C7 /* Card */,
+				099A79C429F16427004B95C7 /* Template */,
+				099A79C529F16441004B95C7 /* HistorySheet */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
