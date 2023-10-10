@@ -14,7 +14,7 @@ protocol OnboardingViewProtocol: AnyObject {
     
 }
 
-final class OnboardingViewController: UIPageViewController, OnboardingViewProtocol {
+final class OnboardingPageController: UIPageViewController, OnboardingViewProtocol {
     
     public var presenter: OnboardingPresenterProtocol?
     
@@ -56,7 +56,7 @@ final class OnboardingViewController: UIPageViewController, OnboardingViewProtoc
 
 // MARK: - Private properties
 
-private extension OnboardingViewController {
+private extension OnboardingPageController {
     
     func initialize() {
         view.backgroundColor = .back2MINI
@@ -71,9 +71,9 @@ private extension OnboardingViewController {
     
     func addDataSource() {
         guard let entities = presenter?.content else { return }
-        let firstPage  = OnboardingView(entity: entities[0])
-        let secondPage = OnboardingView(entity: entities[1])
-        let thirdPage  = OnboardingView(entity: entities[2])
+        let firstPage  = OnboardingViewController(entity: entities[0])
+        let secondPage = OnboardingViewController(entity: entities[1])
+        let thirdPage  = OnboardingViewController(entity: entities[2])
         
         pages.append(firstPage)
         pages.append(secondPage)
@@ -143,7 +143,7 @@ private extension OnboardingViewController {
 
 // MARK: - Action methods
 
-private extension OnboardingViewController {
+private extension OnboardingPageController {
     
     @objc
     func continueTapped(_ sender: UIButton) {
@@ -177,7 +177,7 @@ private extension OnboardingViewController {
 
 // MARK: - UIPageViewControllerDataSource
 
-extension OnboardingViewController: UIPageViewControllerDataSource {
+extension OnboardingPageController: UIPageViewControllerDataSource {
     
     func pageViewController(
         _ pageViewController: UIPageViewController,
@@ -209,7 +209,7 @@ extension OnboardingViewController: UIPageViewControllerDataSource {
 
 // MARK: - UIPageViewControllerDelegate
 
-extension OnboardingViewController: UIPageViewControllerDelegate {
+extension OnboardingPageController: UIPageViewControllerDelegate {
     
     func pageViewController(
         _ pageViewController: UIPageViewController,

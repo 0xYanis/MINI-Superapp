@@ -8,7 +8,7 @@
 import UIKit
 import Lottie
 
-final class OnboardingView: UIViewController {
+final class OnboardingViewController: UIViewController {
     
     private let entity: OnboardingEntity
     

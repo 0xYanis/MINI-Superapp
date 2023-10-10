@@ -139,7 +139,7 @@
 		0964A14C2AAA605C00B2E99E /* ordersAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 0964A14B2AAA605C00B2E99E /* ordersAnimation.json */; };
 		0964A1522AAA63F700B2E99E /* travelAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 0964A1512AAA63F700B2E99E /* travelAnimation.json */; };
 		0964A1542AAA675300B2E99E /* cardAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 0964A1532AAA675300B2E99E /* cardAnimation.json */; };
-		0964A1562AAAFD9F00B2E99E /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0964A1552AAAFD9F00B2E99E /* OnboardingView.swift */; };
+		0964A1562AAAFD9F00B2E99E /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0964A1552AAAFD9F00B2E99E /* OnboardingViewController.swift */; };
 		0964A1582AAB491100B2E99E /* UIPageViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0964A1572AAB491100B2E99E /* UIPageViewController+Extension.swift */; };
 		097A80652A337E0400B5CF3A /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097A80642A337E0400B5CF3A /* CategoryViewController.swift */; };
 		097A80672A337E1600B5CF3A /* CategoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097A80662A337E1600B5CF3A /* CategoryPresenter.swift */; };
@@ -217,7 +217,7 @@
 		09BBA70F2A0E76950020E3C9 /* cardsLogo.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09BBA70E2A0E76950020E3C9 /* cardsLogo.xcassets */; };
 		09BE625A2ACACC610098ACB2 /* BankCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BE62592ACACC610098ACB2 /* BankCollectionView.swift */; };
 		09BE625C2ACAF95B0098ACB2 /* BankSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BE625B2ACAF95A0098ACB2 /* BankSection.swift */; };
-		09BF17022AAA17150090389B /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BF17012AAA17150090389B /* OnboardingViewController.swift */; };
+		09BF17022AAA17150090389B /* OnboardingPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BF17012AAA17150090389B /* OnboardingPageController.swift */; };
 		09BF17042AAA175D0090389B /* OnboardingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BF17032AAA175D0090389B /* OnboardingPresenter.swift */; };
 		09BF17062AAA17AE0090389B /* OnboardingBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BF17052AAA17AE0090389B /* OnboardingBuilder.swift */; };
 		09BF17082AAA18750090389B /* OnboardingEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BF17072AAA18750090389B /* OnboardingEntity.swift */; };
@@ -382,7 +382,7 @@
 		0964A14B2AAA605C00B2E99E /* ordersAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ordersAnimation.json; sourceTree = "<group>"; };
 		0964A1512AAA63F700B2E99E /* travelAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = travelAnimation.json; sourceTree = "<group>"; };
 		0964A1532AAA675300B2E99E /* cardAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cardAnimation.json; sourceTree = "<group>"; };
-		0964A1552AAAFD9F00B2E99E /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		0964A1552AAAFD9F00B2E99E /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		0964A1572AAB491100B2E99E /* UIPageViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPageViewController+Extension.swift"; sourceTree = "<group>"; };
 		097A80642A337E0400B5CF3A /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		097A80662A337E1600B5CF3A /* CategoryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPresenter.swift; sourceTree = "<group>"; };
@@ -456,7 +456,7 @@
 		09BBA70E2A0E76950020E3C9 /* cardsLogo.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = cardsLogo.xcassets; sourceTree = "<group>"; };
 		09BE62592ACACC610098ACB2 /* BankCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankCollectionView.swift; sourceTree = "<group>"; };
 		09BE625B2ACAF95A0098ACB2 /* BankSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankSection.swift; sourceTree = "<group>"; };
-		09BF17012AAA17150090389B /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		09BF17012AAA17150090389B /* OnboardingPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageController.swift; sourceTree = "<group>"; };
 		09BF17032AAA175D0090389B /* OnboardingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPresenter.swift; sourceTree = "<group>"; };
 		09BF17052AAA17AE0090389B /* OnboardingBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingBuilder.swift; sourceTree = "<group>"; };
 		09BF17072AAA18750090389B /* OnboardingEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingEntity.swift; sourceTree = "<group>"; };
@@ -854,7 +854,7 @@
 				0964A14B2AAA605C00B2E99E /* ordersAnimation.json */,
 				0964A1512AAA63F700B2E99E /* travelAnimation.json */,
 				0964A1532AAA675300B2E99E /* cardAnimation.json */,
-				0964A1552AAAFD9F00B2E99E /* OnboardingView.swift */,
+				0964A1552AAAFD9F00B2E99E /* OnboardingViewController.swift */,
 			);
 			path = animations;
 			sourceTree = "<group>";
@@ -1130,7 +1130,7 @@
 			isa = PBXGroup;
 			children = (
 				0964A14A2AAA603800B2E99E /* animations */,
-				09BF17012AAA17150090389B /* OnboardingViewController.swift */,
+				09BF17012AAA17150090389B /* OnboardingPageController.swift */,
 				09BF17032AAA175D0090389B /* OnboardingPresenter.swift */,
 				09BF17052AAA17AE0090389B /* OnboardingBuilder.swift */,
 				09BF17072AAA18750090389B /* OnboardingEntity.swift */,
@@ -1696,7 +1696,7 @@
 				09E9E82129EAE9650084416B /* LoginEntity.swift in Sources */,
 				09B02C752A8EC7CC00F474E9 /* PayoutsViewController.swift in Sources */,
 				097A80672A337E1600B5CF3A /* CategoryPresenter.swift in Sources */,
-				0964A1562AAAFD9F00B2E99E /* OnboardingView.swift in Sources */,
+				0964A1562AAAFD9F00B2E99E /* OnboardingViewController.swift in Sources */,
 				092F67AF2A3CE87500E0F2B9 /* UIColor+Extensions.swift in Sources */,
 				09503EB829F2D44000254F53 /* StackFlowLayout.swift in Sources */,
 				09E9E81929EAE9410084416B /* LoginViewController.swift in Sources */,
@@ -1779,7 +1779,7 @@
 				0994B9402A20F66D00F4A783 /* DeepLinkManager.swift in Sources */,
 				097ACF262A2E1E5C0023106A /* RegisterRouter.swift in Sources */,
 				09D509DA29EF50AC009CC219 /* BankHistoryLabel.swift in Sources */,
-				09BF17022AAA17150090389B /* OnboardingViewController.swift in Sources */,
+				09BF17022AAA17150090389B /* OnboardingPageController.swift in Sources */,
 				09E9E81D29EAE9540084416B /* LoginInteractor.swift in Sources */,
 				09044FB52A448A3400432A3C /* GroceryCollectionView.swift in Sources */,
 				090E87AA2AAF670500C6AEF3 /* AviaMockData.swift in Sources */,
