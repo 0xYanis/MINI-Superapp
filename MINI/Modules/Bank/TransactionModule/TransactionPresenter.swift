@@ -28,6 +28,7 @@ final class TransactionPresenter {
 }
 
 extension TransactionPresenter: TransactionPresenterProtocol {
+    
     func viewDidLoaded() {
         interactor.viewDidLoaded()
     }

@@ -37,6 +37,7 @@ extension TransactionViewController: TransactionViewProtocol {
     func updateView(with data: TransactionEntity) {
         navigationItem.title = data.navTitle
         tableView.configure(with: data)
+        tableView.reloadData()
     }
     
 }

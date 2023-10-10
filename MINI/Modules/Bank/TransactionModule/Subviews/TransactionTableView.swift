@@ -12,6 +12,7 @@ final class TransactionTableView: MiTableView {
     
     private let imageView  = UIImageView()
     private let headerView = UIView()
+    private var cellData: TransactionEntity? = nil
     
     override init(frame: CGRect = .zero, style: UITableView.Style) {
         super.init(style: style)
@@ -23,16 +24,17 @@ final class TransactionTableView: MiTableView {
     }
     
     public func configure(with data: TransactionEntity) {
-        guard
-            let image = SDImageCache.shared.imageFromCache(forKey: data.image)
-        else { return }
+        let image = SDImageCache.shared.imageFromCache(forKey: data.image)
         imageView.image = image
+        self.cellData = data
     }
     
     private func initialize() {
+        register(TransactionCell.self)
         configureHeader()
         sectionHeaderTopPadding = 0
         sectionHeaderHeight = 200
+        rowHeight = 50
         dataSource = self
         delegate = self
     }
@@ -55,15 +57,19 @@ extension TransactionTableView: UITableViewDataSource {
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     ) -> Int {
-        return 10
+        cellData?.labels.count ?? 0
     }
     
     func tableView(
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.textLabel?.text = "Cell #\(indexPath.row + 1)."
+        let cell = addCell(TransactionCell.self, indexPath: indexPath)
+        guard
+            let head = cellData?.titles[indexPath.row],
+            let foot = cellData?.labels[indexPath.row]
+        else { return UITableViewCell() }
+        cell.configure(head: head, foot: foot)
         return cell
     }
     

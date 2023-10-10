@@ -22,12 +22,12 @@ final class TransactionInteractor: TransactionInteractorProtocol {
     
     //MARK: - Private properties
     
-    private var transactionData: Transaction?
+    private var transaction: Transaction?
     
     //MARK: - Lifecycle
     
     init(data: Transaction) {
-        self.transactionData = data
+        self.transaction = data
     }
     
     //MARK: - Public methods
@@ -43,16 +43,16 @@ final class TransactionInteractor: TransactionInteractorProtocol {
     //MARK: - Private methods
     
     private func entityMapper() {
-        guard let data = transactionData else { return }
+        guard let data = transaction else { return }
         self.dataSource = TransactionEntity()
         dataSource.image = data.icon ?? ""
         dataSource.navTitle = data.name
         
-        _ = data.mapToTableDatasource().map { key, value in
+        _ = data.mapToDict().map { key, value in
             if let key = key,
                let value = value {
-                dataSource.title.append(key)
-                dataSource.label.append(value)
+                dataSource.titles.append(key)
+                dataSource.labels.append(value)
             }
         }
         
@@ -64,6 +64,6 @@ final class TransactionInteractor: TransactionInteractorProtocol {
 struct TransactionEntity {
     var navTitle: String = ""
     var image: String = ""
-    var title: [String] = []
-    var label: [String] = []
+    var titles: [String] = []
+    var labels: [String] = []
 }

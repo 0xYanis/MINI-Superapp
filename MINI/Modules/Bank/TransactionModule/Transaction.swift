@@ -22,7 +22,7 @@ struct Transaction: Identifiable, Codable {
     var merchantID: Int
     var customerID: Int
     
-    func mapToTableDatasource() -> [String?:String?] {
+    func mapToDict() -> [String?:String?] {
         return [
             "Владедец карты" : name,
             "Дата транзакции" : date,

@@ -157,6 +157,7 @@
 		097E039F29EC449900CE2A6F /* BankInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097E039E29EC449900CE2A6F /* BankInteractor.swift */; };
 		097E03A129EC44A500CE2A6F /* BankRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097E03A029EC44A500CE2A6F /* BankRouter.swift */; };
 		097E03A329EC44BD00CE2A6F /* BankBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097E03A229EC44BD00CE2A6F /* BankBuilder.swift */; };
+		097EFCB72AD53CBE002D5946 /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097EFCB62AD53CBE002D5946 /* TransactionCell.swift */; };
 		098999262A2772890040B67D /* LoginModuleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098999252A2772890040B67D /* LoginModuleTests.swift */; };
 		098999362A27781F0040B67D /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 098999352A27781F0040B67D /* SDWebImage */; };
 		0989993E2A27A0470040B67D /* BankModuleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0989993D2A27A0470040B67D /* BankModuleTests.swift */; };
@@ -396,6 +397,7 @@
 		097E039E29EC449900CE2A6F /* BankInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankInteractor.swift; sourceTree = "<group>"; };
 		097E03A029EC44A500CE2A6F /* BankRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankRouter.swift; sourceTree = "<group>"; };
 		097E03A229EC44BD00CE2A6F /* BankBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankBuilder.swift; sourceTree = "<group>"; };
+		097EFCB62AD53CBE002D5946 /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
 		098999232A2772890040B67D /* LoginModuleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoginModuleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		098999252A2772890040B67D /* LoginModuleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModuleTests.swift; sourceTree = "<group>"; };
 		0989993B2A27A0470040B67D /* BankModuleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BankModuleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1066,6 +1068,7 @@
 			isa = PBXGroup;
 			children = (
 				09A9D78A2AC33408005FAC5A /* TransactionTableView.swift */,
+				097EFCB62AD53CBE002D5946 /* TransactionCell.swift */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -1650,6 +1653,7 @@
 				09FB82542A37287100CEF8C1 /* ProductEntity.swift in Sources */,
 				09044FB32A444AF000432A3C /* GSearchEnity.swift in Sources */,
 				09A04B0C2AA6544600904950 /* FBUserRemover.swift in Sources */,
+				097EFCB72AD53CBE002D5946 /* TransactionCell.swift in Sources */,
 				092F67AB2A3CCED200E0F2B9 /* ProfileTableCell.swift in Sources */,
 				09BFC9402A1B4C8900C8505B /* ProfileRouter.swift in Sources */,
 				099D4F6F29F71A610002C24A /* CardBuilder.swift in Sources */,
