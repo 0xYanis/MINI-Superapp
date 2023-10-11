@@ -16,20 +16,21 @@ final class BankHistoryViewController: UIViewController {
     private let indicator = UIActivityIndicatorView(style: .medium)
     private let labelView = BankHistoryLabel()
     private let tableView = MiTableView()
-    private var isSearching = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         intialize()
     }
     
-    func reloadData() {
+    public func reloadData() {
+        indicator.stopAnimating()
         tableView.reloadData()
     }
     
 }
 
 //MARK: - Private methods
+
 private extension BankHistoryViewController {
     
     func intialize() {
@@ -78,6 +79,7 @@ private extension BankHistoryViewController {
 }
 
 //MARK: - BankTransactionKeyboardDelegate
+
 extension BankHistoryViewController: BankTransactionKeyboardDelegate {
     
     func userDidBeginUseKeyboard() {
@@ -86,36 +88,26 @@ extension BankHistoryViewController: BankTransactionKeyboardDelegate {
     
     func userDidEndUseKeyboard() {
         delegate?.resetBottomSheetSize()
-        isSearching = false
-        tableView.reloadData()
     }
     
     func searchBarTextDidChange(with searchText: String) {
         indicator.startAnimating()
-        if !searchText.isEmpty {
-            presenter?.searchBarTextDidChange(with: searchText)
-            isSearching = true
-            tableView.reloadData()
-        } else {
-            isSearching = false
-            tableView.reloadData()
-        }
+        presenter?.searchBarTextDidChange(with: searchText)
     }
     
 }
 
 //MARK: - UITableViewDataSource
+
 extension BankHistoryViewController: UITableViewDataSource {
     
     func tableView(
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     ) -> Int {
-        let filteredCounter = presenter?.getFilteredData().count
-        let transanctionCounter = presenter?.getTransactionData().count
-        let actualNumber = (isSearching ? filteredCounter : transanctionCounter) ?? 0
-        actualNumber == 0 ? indicator.startAnimating() : indicator.stopAnimating()
-        return actualNumber
+        let count = presenter?.getTransactions().count ?? 0
+        count == 0 ? indicator.startAnimating() : indicator.stopAnimating()
+        return count
     }
     
     
@@ -123,12 +115,11 @@ extension BankHistoryViewController: UITableViewDataSource {
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(
+        guard
+            let cell = tableView.dequeueReusableCell(
             withIdentifier: String(describing: BankTransactionCell.self),
-            for: indexPath
-        ) as? BankTransactionCell else {
-            return UITableViewCell()
-        }
+            for: indexPath) as? BankTransactionCell
+        else { return UITableViewCell() }
         return cell
     }
     
@@ -138,8 +129,7 @@ extension BankHistoryViewController: UITableViewDataSource {
         willDisplay cell: UITableViewCell,
         forRowAt indexPath: IndexPath
     ) {
-        guard let data = isSearching ? presenter?.getFilteredData() : presenter?.getTransactionData() else { return }
-        
+        guard let data = presenter?.getTransactions() else { return }
         if let cell = cell as? BankTransactionCell {
             cell.configure(with: data[indexPath.row])
         }
@@ -191,8 +181,7 @@ extension BankHistoryViewController: UITableViewDelegate {
         _ tableView: UITableView,
         didSelectRowAt indexPath: IndexPath
     ) {
-        let index = indexPath.row
-        presenter?.userWantToDetails(of: .transaction, with: index)
+        presenter?.userWantToDetails(of: .transaction, with: indexPath.row)
     }
     
 }
