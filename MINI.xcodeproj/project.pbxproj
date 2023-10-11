@@ -78,6 +78,7 @@
 		09565EE42A2F69E6007A2DAC /* CardBackDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09565EE32A2F69E6007A2DAC /* CardBackDetailView.swift */; };
 		0959E5842AA5BE7C00A3777C /* PlacemarkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0959E5832AA5BE7C00A3777C /* PlacemarkService.swift */; };
 		095B1C6D2A39BD1A00EF6828 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 095B1C6C2A39BD1A00EF6828 /* LaunchScreen.storyboard */; };
+		095B9CCB2AD6E641001CCAB6 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095B9CCA2AD6E641001CCAB6 /* UIImage+Extension.swift */; };
 		0964061D2AD02D75009A3A88 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 0964061C2AD02D75009A3A88 /* FirebaseAnalytics */; };
 		0964061F2AD02D75009A3A88 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 0964061E2AD02D75009A3A88 /* FirebaseAnalyticsOnDeviceConversion */; };
 		096406212AD02D75009A3A88 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 096406202AD02D75009A3A88 /* FirebaseAnalyticsSwift */; };
@@ -374,6 +375,7 @@
 		09565EE32A2F69E6007A2DAC /* CardBackDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBackDetailView.swift; sourceTree = "<group>"; };
 		0959E5832AA5BE7C00A3777C /* PlacemarkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacemarkService.swift; sourceTree = "<group>"; };
 		095B1C6C2A39BD1A00EF6828 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		095B9CCA2AD6E641001CCAB6 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		096453452A82CE6E00709821 /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
 		096453472A82CF2700709821 /* PasswordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordPresenter.swift; sourceTree = "<group>"; };
 		096453492A82CF5E00709821 /* PasswordBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordBuilder.swift; sourceTree = "<group>"; };
@@ -831,6 +833,7 @@
 				09EA1CB42A9631AB00A18B41 /* Date+Extension.swift */,
 				090C1E612A9C969800E75464 /* UICollectionView+Extension.swift */,
 				0964A1572AAB491100B2E99E /* UIPageViewController+Extension.swift */,
+				095B9CCA2AD6E641001CCAB6 /* UIImage+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1682,6 +1685,7 @@
 				097EFCBD2AD54350002D5946 /* TransferCell.swift in Sources */,
 				09044FAF2A444ADF00432A3C /* GSearchInteractor.swift in Sources */,
 				097ACF202A2E1E3D0023106A /* RegisterViewController.swift in Sources */,
+				095B9CCB2AD6E641001CCAB6 /* UIImage+Extension.swift in Sources */,
 				09E88E852AA8C045000B3E43 /* PurchaseCell.swift in Sources */,
 				090BAB8E2A0298F5006AE8F9 /* AviaViewController.swift in Sources */,
 				097A806D2A337E3600B5CF3A /* CategoryBuilder.swift in Sources */,

@@ -16,8 +16,7 @@ protocol BankPresenterProtocol: AnyObject {
     func userWantToDetails(of type: BankViewDetails, with index: Int)
     
     func getDataSource() -> [BankSection]
-    func getTransactionData() -> [Transaction]
-    func getFilteredData() -> [Transaction]
+    func getTransactions() -> [Transaction]
     
     func userWantToDeleteCard(at id: Int)
     func userWantToDeleteTransaction(at id: Int)
@@ -42,11 +41,9 @@ final class BankPresenter {
 }
 
 // MARK: - BankPresenterProtocol
+// Updates view
+
 extension BankPresenter: BankPresenterProtocol {
-    
-    func viewDidLoaded() {
-        interactor.viewDidLoaded()
-    }
     
     func updateView() {
         view?.updateBankTable()
@@ -61,9 +58,14 @@ extension BankPresenter: BankPresenterProtocol {
         view?.updateHistory()
     }
     
+    func loadingDataGetFailed(with error: String) {
+        view?.loadingDataGetFailed(with: error)
+    }
+    
 }
 
-// MARK: - Routing
+// MARK: - Actions to routing
+
 extension BankPresenter {
     
     func userWantToDetails(of type: BankViewDetails, with index: Int = 0) {
@@ -74,7 +76,7 @@ extension BankPresenter {
         case .template:
             router.goToDetailTemplate(id: index)
         case .transaction:
-            let data = interactor.userDidTapTransaction(index: index)
+            guard let data = interactor.userDidTapTransaction(index: index) else { return }
             router.goToDetailTransaction(with: data)
         case .allTransactions:
             let data = interactor.userDidTapSeeAll()
@@ -88,24 +90,21 @@ extension BankPresenter {
     
 }
 
-// MARK: - GET data
+// MARK: - User actions
+
 extension BankPresenter {
+    
+    func viewDidLoaded() {
+        interactor.viewDidLoaded()
+    }
     
     func getDataSource() -> [BankSection] {
         interactor.dataSource
     }
     
-    func getTransactionData() -> [Transaction] {
-        interactor.transactionsData
+    func getTransactions() -> [Transaction] {
+        interactor.transactions
     }
-    
-    func getFilteredData() -> [Transaction] {
-        interactor.filteredData
-    }
-    
-}
-
-extension BankPresenter {
     
     func userWantToDeleteCard(at id: Int) {
         interactor.userWantToDeleteCard(at: id)
@@ -119,8 +118,5 @@ extension BankPresenter {
         interactor.searchBarTextDidChange(with: searchText)
     }
     
-    func loadingDataGetFailed(with error: String) {
-        view?.loadingDataGetFailed(with: error)
-    }
-    
 }
+
