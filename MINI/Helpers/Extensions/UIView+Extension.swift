@@ -39,49 +39,6 @@ extension UIView {
         layer.mask = shape
     }
     
-    func roundTopCorners(radius: CGFloat) {
-        let cornerRadius: CGFloat = radius
-        let maskPath = UIBezierPath(
-            roundedRect: bounds,
-            byRoundingCorners: [.topLeft, .topRight],
-            cornerRadii: CGSize(width: cornerRadius, height: cornerRadius)
-        )
-        let shape = CAShapeLayer()
-        shape.path = maskPath.cgPath
-        layer.mask = shape
-    }
-    
-    func animateToSuperviewSize() {
-        guard let superview = superview else { return }
-        let topMargin = superview.safeAreaInsets.top
-        UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseInOut], animations: {
-            self.snp.remakeConstraints { make in
-                make.top.equalToSuperview().offset(topMargin)
-                make.left.right.bottom.equalToSuperview()
-            }
-            superview.layoutIfNeeded()
-        }) {_ in
-            
-        }
-    }
-    
-    func resetToOriginalState(with animation: Bool) {
-        guard let superview = superview else { return }
-        let bottomMargin = superview.safeAreaInsets.bottom
-        let duration = animation ? 0.3 : 0
-        UIView.animate(withDuration: duration, delay: 0, options: [.curveEaseInOut], animations: {
-            self.snp.remakeConstraints { make in
-                make.leading.trailing.bottom.equalToSuperview()
-                make.height.equalToSuperview()
-                    .multipliedBy(0.34)
-                    .offset(bottomMargin)
-            }
-            superview.layoutIfNeeded()
-        }) {_ in
-            
-        }
-    }
-    
     func createBlurEffect(blurStyle: UIBlurEffect.Style) {
         let blurEffect = UIBlurEffect(style: blurStyle)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
