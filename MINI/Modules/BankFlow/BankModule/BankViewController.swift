@@ -58,8 +58,6 @@ final class BankViewController: UIViewController {
     
     @objc private func refreshAction() {
         presenter?.viewDidLoaded()
-        presenter?.updateView()
-        refreshControl.endRefreshing()
     }
     
 }
@@ -70,10 +68,12 @@ extension BankViewController: BankViewProtocol {
     
     func updateBankTable() {
         bankCollectionView.reloadData()
+        refreshControl.endRefreshing()
     }
     
     func updateHistory() {
         historyTableVC.reloadData()
+        refreshControl.endRefreshing()
     }
     
     func loadingDataGetFailed(with error: String) {
