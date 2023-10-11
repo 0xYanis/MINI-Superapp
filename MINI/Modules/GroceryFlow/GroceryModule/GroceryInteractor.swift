@@ -52,6 +52,7 @@ final class GroceryInteractor: GroceryInteractorProtocol {
     }
     
     func userStartSearchAdress(with searchText: String) {
+        placemarkService.configureService()
         DispatchQueue.global().async {
             self.placemarkService.searchPlace(searchText) { [weak self] locations in
                 guard let self = self else { return }

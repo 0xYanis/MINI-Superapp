@@ -25,7 +25,6 @@ final class MapPresenter: MapPresenterProtocol {
     
     init(view: MapViewProtocol) {
         self.view = view
-        self.placemarkService = PlacemarkService()
     }
     
     func viewDidAppear() {
@@ -40,6 +39,8 @@ final class MapPresenter: MapPresenterProtocol {
     }
     
     public func searchAdress(with text: String) {
+        self.placemarkService = PlacemarkService()
+        placemarkService?.configureService()
         DispatchQueue.global().async {
             self.placemarkService?.searchPlace(text) { [weak self] locations in
                 guard let self = self else { return }

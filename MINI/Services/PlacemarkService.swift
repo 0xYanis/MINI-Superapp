@@ -10,6 +10,7 @@ import UIKit
 
 protocol PlacemarkServiceProtocol: AnyObject {
     typealias closure = ([Placemark]) -> Void
+    func configureService()
     func searchPlace(_ place: String, completion: @escaping closure)
 }
 
@@ -22,12 +23,7 @@ final class PlacemarkService: NSObject, PlacemarkServiceProtocol {
     private var localSearch: MKLocalSearch?
     private var region = MKCoordinateRegion()
     
-    override init() {
-        super.init()
-        configureManager()
-    }
-    
-    private func configureManager() {
+    public func configureService() {
         DispatchQueue.global().async { [self] in
             if CLLocationManager.locationServicesEnabled() {
                 locationManager.delegate = self
