@@ -49,7 +49,9 @@ final class BankInteractor: BankInteractorProtocol {
     //MARK: - Public methods
     
     public func viewDidLoaded() {
-        
+        //api.fetch()
+        //completion:
+        presenter?.updateView()
     }
     
     public func userDidTapCard(index: Int) -> Card? {
