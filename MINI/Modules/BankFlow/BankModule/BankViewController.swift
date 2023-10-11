@@ -77,7 +77,8 @@ extension BankViewController: BankViewProtocol {
     }
     
     func loadingDataGetFailed(with error: String) {
-        
+        let alert = UIAlertController()
+        alert.showAlert(title: "Ошибка", message: error, from: self)
     }
     
 }
@@ -96,7 +97,7 @@ extension BankViewController: BankViewCellDelegate {
     
 }
 
-//MARK: - Private methods
+//MARK: - Private methods & computed properties
 
 private extension BankViewController {
     
