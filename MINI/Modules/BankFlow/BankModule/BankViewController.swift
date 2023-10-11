@@ -58,8 +58,6 @@ final class BankViewController: UIViewController {
     
     @objc private func refreshAction() {
         presenter?.viewDidLoaded()
-        presenter?.updateView()
-        refreshControl.endRefreshing()
     }
     
 }
@@ -70,14 +68,17 @@ extension BankViewController: BankViewProtocol {
     
     func updateBankTable() {
         bankCollectionView.reloadData()
+        refreshControl.endRefreshing()
     }
     
     func updateHistory() {
         historyTableVC.reloadData()
+        refreshControl.endRefreshing()
     }
     
     func loadingDataGetFailed(with error: String) {
-        
+        let alert = UIAlertController()
+        alert.showAlert(title: "Ошибка", message: error, from: self)
     }
     
 }
@@ -96,7 +97,7 @@ extension BankViewController: BankViewCellDelegate {
     
 }
 
-//MARK: - Private methods
+//MARK: - Private methods & computed properties
 
 private extension BankViewController {
     
