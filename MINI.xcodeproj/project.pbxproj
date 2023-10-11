@@ -654,12 +654,12 @@
 			path = TemplateModule;
 			sourceTree = "<group>";
 		};
-		090BAB8B2A029889006AE8F9 /* AviaTickets */ = {
+		090BAB8B2A029889006AE8F9 /* AviaFlow */ = {
 			isa = PBXGroup;
 			children = (
 				090BAB8C2A0298C8006AE8F9 /* AviaModule */,
 			);
-			path = AviaTickets;
+			path = AviaFlow;
 			sourceTree = "<group>";
 		};
 		090BAB8C2A0298C8006AE8F9 /* AviaModule */ = {
@@ -724,7 +724,10 @@
 			isa = PBXGroup;
 			children = (
 				0910961129DB332600338D22 /* Application */,
+				0936E7BB2ABAF20700F50698 /* Base */,
 				0957A3402AC6FA41006576D0 /* Modules */,
+				0921F35D29DF1FD100B3D4F7 /* Helpers */,
+				09B0C1872A545C2500E0CDEF /* UIMiniElements */,
 				0910961229DB333400338D22 /* Resources */,
 				09E9E82829EB119D0084416B /* Services */,
 			);
@@ -802,16 +805,13 @@
 		0957A3402AC6FA41006576D0 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				0936E7BB2ABAF20700F50698 /* Base */,
-				090BAB8B2A029889006AE8F9 /* AviaTickets */,
-				09F86C5829F6FD1200307432 /* Bank */,
-				09EE2F4F2AA7289F003F08E3 /* Cart */,
-				099089E12A1399F800EE00DA /* Grocery */,
-				09BFC9392A1B4C4F00C8505B /* Profile */,
-				09F86C5929F6FD1B00307432 /* Login */,
-				09DF836D2A3887CD00ECAEB6 /* LaunchScreen */,
-				0921F35D29DF1FD100B3D4F7 /* Helpers */,
-				09B0C1872A545C2500E0CDEF /* UIMiniElements */,
+				090BAB8B2A029889006AE8F9 /* AviaFlow */,
+				09F86C5829F6FD1200307432 /* BankFlow */,
+				09EE2F4F2AA7289F003F08E3 /* CartFlow */,
+				099089E12A1399F800EE00DA /* GroceryFlow */,
+				09BFC9392A1B4C4F00C8505B /* ProfileFlow */,
+				09F86C5929F6FD1B00307432 /* AuthFlow */,
+				09DF836D2A3887CD00ECAEB6 /* LaunchFlow */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -998,7 +998,7 @@
 			path = BankModuleTests;
 			sourceTree = "<group>";
 		};
-		099089E12A1399F800EE00DA /* Grocery */ = {
+		099089E12A1399F800EE00DA /* GroceryFlow */ = {
 			isa = PBXGroup;
 			children = (
 				090C1E6D2A9DF68000E75464 /* MapModule */,
@@ -1007,7 +1007,7 @@
 				097A80632A337DF500B5CF3A /* CategoryModule */,
 				09FB82482A3724DB00CEF8C1 /* ProductModule */,
 			);
-			path = Grocery;
+			path = GroceryFlow;
 			sourceTree = "<group>";
 		};
 		099089EC2A139A6000EE00DA /* GroceryModule */ = {
@@ -1138,7 +1138,7 @@
 			path = OnboardingModule;
 			sourceTree = "<group>";
 		};
-		09BFC9392A1B4C4F00C8505B /* Profile */ = {
+		09BFC9392A1B4C4F00C8505B /* ProfileFlow */ = {
 			isa = PBXGroup;
 			children = (
 				09EA1CAB2A962D9D00A18B41 /* SupportModule */,
@@ -1146,7 +1146,7 @@
 				096453442A82CE3900709821 /* PasswordModule */,
 				09BFC93A2A1B4C5C00C8505B /* ProfileModule */,
 			);
-			path = Profile;
+			path = ProfileFlow;
 			sourceTree = "<group>";
 		};
 		09BFC93A2A1B4C5C00C8505B /* ProfileModule */ = {
@@ -1185,14 +1185,14 @@
 			path = Subviews;
 			sourceTree = "<group>";
 		};
-		09DF836D2A3887CD00ECAEB6 /* LaunchScreen */ = {
+		09DF836D2A3887CD00ECAEB6 /* LaunchFlow */ = {
 			isa = PBXGroup;
 			children = (
 				09BF17002AAA16EE0090389B /* OnboardingModule */,
 				09DF83782A38BB8F00ECAEB6 /* LaunchController.swift */,
 				095B1C6C2A39BD1A00EF6828 /* LaunchScreen.storyboard */,
 			);
-			path = LaunchScreen;
+			path = LaunchFlow;
 			sourceTree = "<group>";
 		};
 		09E88E802AA89959000B3E43 /* CartModule */ = {
@@ -1259,12 +1259,12 @@
 			path = SupportModule;
 			sourceTree = "<group>";
 		};
-		09EE2F4F2AA7289F003F08E3 /* Cart */ = {
+		09EE2F4F2AA7289F003F08E3 /* CartFlow */ = {
 			isa = PBXGroup;
 			children = (
 				09E88E802AA89959000B3E43 /* CartModule */,
 			);
-			path = Cart;
+			path = CartFlow;
 			sourceTree = "<group>";
 		};
 		09EF874F2A24C0D000EC9D7A /* Subviews */ = {
@@ -1280,7 +1280,7 @@
 			path = Subviews;
 			sourceTree = "<group>";
 		};
-		09F86C5829F6FD1200307432 /* Bank */ = {
+		09F86C5829F6FD1200307432 /* BankFlow */ = {
 			isa = PBXGroup;
 			children = (
 				097E039929EC444400CE2A6F /* BankModule */,
@@ -1291,16 +1291,16 @@
 				09F86C5F29F6FDEE00307432 /* AllTemplatesModule */,
 				09F86C5C29F6FD6600307432 /* TransactionModule */,
 			);
-			path = Bank;
+			path = BankFlow;
 			sourceTree = "<group>";
 		};
-		09F86C5929F6FD1B00307432 /* Login */ = {
+		09F86C5929F6FD1B00307432 /* AuthFlow */ = {
 			isa = PBXGroup;
 			children = (
 				097ACF1E2A2E1E220023106A /* RegisterModule */,
 				09E9E81529EAE8F50084416B /* LoginModule */,
 			);
-			path = Login;
+			path = AuthFlow;
 			sourceTree = "<group>";
 		};
 		09F86C5A29F6FD4200307432 /* CardModule */ = {

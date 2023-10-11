@@ -73,6 +73,12 @@ final class AppCoordinator: ICoordinator {
         window.tintColor = .tintMINI
         window.rootViewController = viewController
         window.makeKeyAndVisible()
+        UIView.transition(
+            with: window,
+            duration: 0.3,
+            options: .transitionCrossDissolve,
+            animations: nil
+        )
     }
     
     private func checkLogin() {
