@@ -14,49 +14,37 @@ protocol RegisterInteractorProtocol: AnyObject {
 final class RegisterInteractor: RegisterInteractorProtocol {
     
     weak var presenter: RegisterPresenterProtocol?
-    var keychainService: KeyChainServiceProtocol?
-    var fbAuthManager: FBAuthProtocol?
-    var fbFirestoreManager: FBFirestoreProtocol?
+    private var keychainService: KeyChainServiceProtocol
+    private var fbAuthManager: FBAuthProtocol
+    private var fbFirestoreManager: FBFirestoreProtocol
+    
+    init(
+        keychain: KeyChainServiceProtocol,
+        authManager: FBAuthProtocol,
+        firestore: FBFirestoreProtocol
+    ) {
+        self.keychainService = keychain
+        self.fbAuthManager = authManager
+        self.fbFirestoreManager = firestore
+    }
     
     func userWantToLogin(login: String, password: String, repeatPassword: String) {
         if password != repeatPassword {
             presenter?.registerIsNotCorrect(
-                with: ErrorMessages.passwordsDoNotMatch.rawValue
-            )
+                with: ErrorMessages.passwordsDoNotMatch.rawValue)
             return
         }
-        
         if isNotValid(login) {
             presenter?.registerIsNotCorrect(
-                with: ErrorMessages.invalidLogin.rawValue
-            )
+                with: ErrorMessages.invalidLogin.rawValue)
             return
         }
-        
         if isNotValid(password) {
             presenter?.registerIsNotCorrect(
-                with: ErrorMessages.weakPassword.rawValue
-            )
+                with: ErrorMessages.weakPassword.rawValue)
             return
         }
-        
-        DispatchQueue.global().async {
-            self.fbAuthManager?.signUp(
-                email: login,
-                password: password
-            ) { [weak self] user, error in
-                guard let self = self else { return }
-                if let error = error {
-                    let message = error.localizedDescription
-                    self.presenter?.registerIsNotCorrect(with: message)
-                }
-                
-                guard let user = user else { return }
-                self.fbFirestoreManager?.setUserData(user: user)
-                self.saveUserUID(user.uid)
-                self.presenter?.registerIsCorrect()
-            }
-        }
+        signUp(login: login, password: password)
     }
     
 }
@@ -83,6 +71,25 @@ private extension RegisterInteractor {
             return true
         }
         return false
+    }
+    
+    func signUp(login: String, password: String) {
+        DispatchQueue.global().async {
+            self.fbAuthManager.signUp(
+                email: login,
+                password: password
+            ) { [weak self] user, error in
+                guard let self = self else { return }
+                if let error = error {
+                    let message = error.localizedDescription
+                    self.presenter?.registerIsNotCorrect(with: message)
+                }
+                guard let user = user else { return }
+                self.fbFirestoreManager.setUserData(user: user)
+                self.saveUserUID(user.uid)
+                self.presenter?.registerIsCorrect()
+            }
+        }
     }
     
     

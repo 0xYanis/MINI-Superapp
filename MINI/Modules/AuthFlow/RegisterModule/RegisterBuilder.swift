@@ -8,23 +8,21 @@
 import UIKit
 
 final class RegisterBuilder {
+    
     static func build() -> UIViewController {
+        let keychain = KeyChainService()
+        let authManager = FBAuthManager()
+        let firestore = FBFirestoreManager()
+        
         let view = RegisterViewController()
         let router = RegisterRouter()
-        let interactor = RegisterInteractor()
+        let interactor = RegisterInteractor(keychain: keychain, authManager: authManager, firestore: firestore)
         let presenter = RegisterPresenter(router: router, interactor: interactor)
-        
-        let keyChain = KeyChainService()
-        let fbAuthManager = FBAuthManager()
-        let fbFirestoreManager = FBFirestoreManager()
         
         view.presenter = presenter
         presenter.view = view
         router.view = view
         interactor.presenter = presenter
-        interactor.keychainService = keyChain
-        interactor.fbAuthManager = fbAuthManager
-        interactor.fbFirestoreManager = fbFirestoreManager
         
         return view
     }
