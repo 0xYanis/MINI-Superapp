@@ -15,6 +15,9 @@ protocol AllTemplatesViewProtocol: AnyObject {
 
 final class AllTemplatesViewController: UIViewController {
     
+    //MARK: - Public properties
+    var presenter: AllTemplatesPresenterProtocol?
+    
     //MARK: - Private properties
     private var templateCollectionView: UICollectionView! {
         didSet {
@@ -22,14 +25,6 @@ final class AllTemplatesViewController: UIViewController {
             templateCollectionView.dataSource = self
             templateCollectionView.backgroundColor = .clear
         }
-    }
-    
-    //MARK: - Public properties
-    var presenter: AllTemplatesPresenterProtocol?
-    
-    //MARK: - public methdods
-    func configure() {
-        
     }
     
     //MARK: - lifecycle
@@ -47,6 +42,7 @@ final class AllTemplatesViewController: UIViewController {
 
 //MARK: - AllTemplatesViewProtocol
 extension AllTemplatesViewController: AllTemplatesViewProtocol {
+    
     func viewDidLoaded(data: AllTemplatesEntity) {
         
     }
@@ -59,6 +55,7 @@ extension AllTemplatesViewController: AllTemplatesViewProtocol {
 
 //MARK: - Private methods
 private extension AllTemplatesViewController {
+    
     func initialize() {
         view.backgroundColor = .back2MINI
         createNavigation()
@@ -69,10 +66,10 @@ private extension AllTemplatesViewController {
     func createNavigation() {
         navigationItem.title = "all_templates_navbar".localized
         navigationItem.largeTitleDisplayMode = .never
-        navigationItem.rightBarButtonItems = [AddBtton]
+        navigationItem.rightBarButtonItems = [addBtton]
     }
     
-    var AddBtton: UIBarButtonItem {
+    var addBtton: UIBarButtonItem {
         return UIBarButtonItem(
             image: UIImage(systemName: "plus"),
             style: .plain,
@@ -84,7 +81,10 @@ private extension AllTemplatesViewController {
     @objc func editAction(_ gesture: UILongPressGestureRecognizer) {
         switch gesture.state {
         case .began:
-            guard let selectedIndexPath = templateCollectionView.indexPathForItem(at: gesture.location(in: templateCollectionView)) else { return }
+            guard
+                let selectedIndexPath = templateCollectionView.indexPathForItem(
+                    at: gesture.location(in: templateCollectionView))
+            else { return }
             templateCollectionView.beginInteractiveMovementForItem(at: selectedIndexPath)
         case .changed:
             templateCollectionView.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view))
@@ -141,6 +141,7 @@ private extension AllTemplatesViewController {
 
 // MARK: - UICollectionViewDataSource
 extension AllTemplatesViewController: UICollectionViewDataSource {
+    
     func collectionView(
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
@@ -188,15 +189,21 @@ extension AllTemplatesViewController: UICollectionViewDataSource {
 
 // MARK: - UICollectionViewDelegateFlowLayout
 extension AllTemplatesViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout
-                        collectionViewLayout: UICollectionViewLayout, sizeForItemAt
-                        indexPath: IndexPath) -> CGSize {
+    
+    func collectionView(
+        _ collectionView: UICollectionView, layout
+        collectionViewLayout: UICollectionViewLayout, sizeForItemAt
+        indexPath: IndexPath
+    ) -> CGSize {
         let itemSpacing: CGFloat = 16
         let width = (collectionView.bounds.width - itemSpacing * 3) / 2
         return CGSize(width: width, height: width)
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) {
         presenter?.userDidTapTemplate(id: indexPath.item)
     }
     
