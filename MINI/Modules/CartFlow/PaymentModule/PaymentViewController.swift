@@ -31,8 +31,22 @@ extension PaymentViewController: PaymentViewProtocol {
 private extension PaymentViewController {
     
     func initialize() {
-        
+        navigationItem.rightBarButtonItem = doneButton
+        navigationItem.title = "Оплата"
+        view.backgroundColor = .back2MINI
+    }
+    
+    var doneButton: UIBarButtonItem {
+        UIBarButtonItem(
+            title: "Отмена",
+            style: .done,
+            target: self,
+            action: #selector(closeViewAction)
+        )
+    }
+    
+    @objc func closeViewAction() {
+        dismiss(animated: true)
     }
     
 }
-

@@ -16,7 +16,7 @@ final class CartRouter: CartRouterProtocol {
 	weak var view: UIViewController?
     
     public func goToBuyView() {
-        let paymentView = PaymentBuilder.build()
+        let paymentView = UINavigationController(rootViewController: PaymentBuilder.build())
         view?.present(paymentView, animated: true)
     }
 	
