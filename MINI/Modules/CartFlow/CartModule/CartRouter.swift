@@ -16,8 +16,7 @@ final class CartRouter: CartRouterProtocol {
 	weak var view: UIViewController?
     
     public func goToBuyView() {
-        let paymentView = UIViewController()
-        paymentView.view.backgroundColor = .gray
+        let paymentView = PaymentBuilder.build()
         view?.present(paymentView, animated: true)
     }
 	
