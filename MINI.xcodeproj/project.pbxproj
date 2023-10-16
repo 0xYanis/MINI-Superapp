@@ -141,6 +141,11 @@
 		0964A1542AAA675300B2E99E /* cardAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 0964A1532AAA675300B2E99E /* cardAnimation.json */; };
 		0964A1562AAAFD9F00B2E99E /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0964A1552AAAFD9F00B2E99E /* OnboardingViewController.swift */; };
 		0964A1582AAB491100B2E99E /* UIPageViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0964A1572AAB491100B2E99E /* UIPageViewController+Extension.swift */; };
+		0973B3782ADD64EC006B07B9 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0973B3772ADD64EC006B07B9 /* PaymentViewController.swift */; };
+		0973B37A2ADD657F006B07B9 /* PaymentPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0973B3792ADD657F006B07B9 /* PaymentPresenter.swift */; };
+		0973B37C2ADD6589006B07B9 /* PaymentRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0973B37B2ADD6589006B07B9 /* PaymentRouter.swift */; };
+		0973B37E2ADD6594006B07B9 /* PaymentInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0973B37D2ADD6594006B07B9 /* PaymentInteractor.swift */; };
+		0973B3802ADD66E8006B07B9 /* PaymentBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0973B37F2ADD66E8006B07B9 /* PaymentBuilder.swift */; };
 		097A80652A337E0400B5CF3A /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097A80642A337E0400B5CF3A /* CategoryViewController.swift */; };
 		097A80672A337E1600B5CF3A /* CategoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097A80662A337E1600B5CF3A /* CategoryPresenter.swift */; };
 		097A80692A337E2000B5CF3A /* CategoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097A80682A337E2000B5CF3A /* CategoryInteractor.swift */; };
@@ -384,6 +389,11 @@
 		0964A1532AAA675300B2E99E /* cardAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cardAnimation.json; sourceTree = "<group>"; };
 		0964A1552AAAFD9F00B2E99E /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		0964A1572AAB491100B2E99E /* UIPageViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPageViewController+Extension.swift"; sourceTree = "<group>"; };
+		0973B3772ADD64EC006B07B9 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
+		0973B3792ADD657F006B07B9 /* PaymentPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentPresenter.swift; sourceTree = "<group>"; };
+		0973B37B2ADD6589006B07B9 /* PaymentRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentRouter.swift; sourceTree = "<group>"; };
+		0973B37D2ADD6594006B07B9 /* PaymentInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentInteractor.swift; sourceTree = "<group>"; };
+		0973B37F2ADD66E8006B07B9 /* PaymentBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentBuilder.swift; sourceTree = "<group>"; };
 		097A80642A337E0400B5CF3A /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		097A80662A337E1600B5CF3A /* CategoryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPresenter.swift; sourceTree = "<group>"; };
 		097A80682A337E2000B5CF3A /* CategoryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryInteractor.swift; sourceTree = "<group>"; };
@@ -1054,6 +1064,18 @@
 			path = HistorySheet;
 			sourceTree = "<group>";
 		};
+		099AE9972ADD62BE00ADE701 /* PaymentModule */ = {
+			isa = PBXGroup;
+			children = (
+				0973B3772ADD64EC006B07B9 /* PaymentViewController.swift */,
+				0973B3792ADD657F006B07B9 /* PaymentPresenter.swift */,
+				0973B37B2ADD6589006B07B9 /* PaymentRouter.swift */,
+				0973B37D2ADD6594006B07B9 /* PaymentInteractor.swift */,
+				0973B37F2ADD66E8006B07B9 /* PaymentBuilder.swift */,
+			);
+			path = PaymentModule;
+			sourceTree = "<group>";
+		};
 		099C6D572A13E2F80039AC41 /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
@@ -1262,6 +1284,7 @@
 		09EE2F4F2AA7289F003F08E3 /* CartFlow */ = {
 			isa = PBXGroup;
 			children = (
+				099AE9972ADD62BE00ADE701 /* PaymentModule */,
 				09E88E802AA89959000B3E43 /* CartModule */,
 			);
 			path = CartFlow;
@@ -1644,6 +1667,7 @@
 				090E87AE2AAF79BE00C6AEF3 /* AviaDealCell.swift in Sources */,
 				09B1B4D02A1673D90090676E /* GroceryHeaderCell.swift in Sources */,
 				09044FA92A444AC900432A3C /* GSearchViewController.swift in Sources */,
+				0973B37A2ADD657F006B07B9 /* PaymentPresenter.swift in Sources */,
 				09FC394329FAC53200B2D97E /* AllTemplatesViewCell.swift in Sources */,
 				09E9E82729EB0B3F0084416B /* BiometryService.swift in Sources */,
 				09F86C4F29F6E96C00307432 /* BaseTabBarController.swift in Sources */,
@@ -1672,8 +1696,10 @@
 				09A04B0C2AA6544600904950 /* FBUserRemover.swift in Sources */,
 				097EFCB72AD53CBE002D5946 /* TransactionCell.swift in Sources */,
 				092F67AB2A3CCED200E0F2B9 /* ProfileTableCell.swift in Sources */,
+				0973B37C2ADD6589006B07B9 /* PaymentRouter.swift in Sources */,
 				09BFC9402A1B4C8900C8505B /* ProfileRouter.swift in Sources */,
 				099D4F6F29F71A610002C24A /* CardBuilder.swift in Sources */,
+				0973B3802ADD66E8006B07B9 /* PaymentBuilder.swift in Sources */,
 				09BFC9442A1B4CA800C8505B /* ProfileInteractor.swift in Sources */,
 				09BE625A2ACACC610098ACB2 /* BankCollectionView.swift in Sources */,
 				099D4F7D29F72ADB0002C24A /* NewTemplateViewController.swift in Sources */,
@@ -1695,6 +1721,7 @@
 				09E24C172A122C2E00A91F74 /* Transaction.swift in Sources */,
 				09FB824A2A3724F900CEF8C1 /* ProductViewController.swift in Sources */,
 				09E9E82129EAE9650084416B /* LoginEntity.swift in Sources */,
+				0973B3782ADD64EC006B07B9 /* PaymentViewController.swift in Sources */,
 				09B02C752A8EC7CC00F474E9 /* PayoutsViewController.swift in Sources */,
 				097A80672A337E1600B5CF3A /* CategoryPresenter.swift in Sources */,
 				0964A1562AAAFD9F00B2E99E /* OnboardingViewController.swift in Sources */,
@@ -1739,6 +1766,7 @@
 				093D02BA2AA0F9420032D812 /* FBStorageManager.swift in Sources */,
 				09EA1CB12A962DD000A18B41 /* Message.swift in Sources */,
 				09FC393D29FABF5200B2D97E /* AllTemplatesRouter.swift in Sources */,
+				0973B37E2ADD6594006B07B9 /* PaymentInteractor.swift in Sources */,
 				09FC393729FABF2D00B2D97E /* AllTemplatesViewController.swift in Sources */,
 				09E9E82E29EB16E10084416B /* KeyChain.swift in Sources */,
 				09E81C6A2A169D1D008B313B /* GroceryService.swift in Sources */,
