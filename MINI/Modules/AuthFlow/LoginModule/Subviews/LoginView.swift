@@ -17,7 +17,7 @@ class LoginView: UIView {
         font: .boldSystemFont(ofSize: 26),
         color: .none
     )
-    let faceIDButton = UIButton(systemImage: "faceid", color: .tintMINI, size: 26)
+    let faceIDButton = UIButton(systemImage: "faceid", color: .label, size: 26)
     let loginButt    = UIButton(label: "login_button".localized, color: .tintMINI)
     let registerButt = UIButton()
     let nameField    = UITextField()
@@ -28,15 +28,17 @@ class LoginView: UIView {
         initialize()
     }
     
-    @available(*, unavailable)
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError()
     }
     
 }
 
 private extension LoginView {
     func initialize() {
+        backgroundColor = .backMINI.withAlphaComponent(0.7)
+        createBlurEffect(blurStyle: .light)
+        roundCorners(radius: 30)
         createHelloLabel()
         createFaceIDButton()
         createNameField()
@@ -92,7 +94,7 @@ private extension LoginView {
             for: .touchUpInside
         )
         registerButt.setTitle("Нет аккаунта?", for: .normal)
-        registerButt.setTitleColor(.tintMINI, for: .normal)
+        registerButt.setTitleColor(.label, for: .normal)
         
         addSubview(registerButt)
         registerButt.snp.makeConstraints { make in

@@ -19,9 +19,8 @@ class LoginAnimationView: UIView {
         animationView?.play()
     }
     
-    @available(*, unavailable)
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError()
     }
     
     override func layoutSubviews() {
@@ -37,7 +36,12 @@ class LoginAnimationView: UIView {
 }
 
 private extension LoginAnimationView {
+    
     func initialize() {
+        backgroundColor = UIColor(
+            named: "frontColor"
+        )?.withAlphaComponent(0.5)
+        
         configureAnimation()
         createAnimationConstraints()
     }

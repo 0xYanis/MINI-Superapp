@@ -8,6 +8,23 @@
 import UIKit
 import SnapKit
 import Lottie
+import SwiftUI
+struct SomePreview: PreviewProvider {
+    
+    static var previews: some View {
+        ContentView().ignoresSafeArea()
+    }
+    
+    struct ContentView: UIViewControllerRepresentable {
+        func makeUIViewController(context: Context) -> UIViewController {
+            return LoginBuilder.build()
+        }
+        
+        func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
+            
+        }
+    }
+}
 
 protocol LoginViewProtocol: AnyObject {
     func showAlert(_ title: String, message: String)
@@ -16,14 +33,17 @@ protocol LoginViewProtocol: AnyObject {
 
 final class LoginViewController: UIViewController {
     
-    //MARK: Public properties
+    // MARK: Public properties
+    
     var presenter: LoginPresenterProtocol?
     
-    //MARK: Private properties
-    private lazy var generator = UINotificationFeedbackGenerator()
-    private lazy var animationView = LoginAnimationView()
-    private lazy var loginView = LoginView()
-    private lazy var versionLabel = UILabel()
+    // MARK: Private properties
+    
+    private let blurredView   = UIImageView()
+    private let generator     = UINotificationFeedbackGenerator()
+    private let animationView = LoginAnimationView()
+    private let loginView     = LoginView()
+    private let versionLabel  = UILabel()
     private lazy var scrollView = UIScrollView(
         frame: .init(
             x: 0, y: 0,
@@ -31,6 +51,8 @@ final class LoginViewController: UIViewController {
             height: view.frame.height
         )
     )
+    
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +62,8 @@ final class LoginViewController: UIViewController {
     
 }
 
-//MARK: - LoginViewProtocol
+// MARK: - LoginViewProtocol
+
 extension LoginViewController: LoginViewProtocol {
     
     func showAlert(_ title: String, message: String) {
@@ -54,12 +77,13 @@ extension LoginViewController: LoginViewProtocol {
     
 }
 
-//MARK: - Private methods
+// MARK: - Private methods
+
 private extension LoginViewController {
     
     func initialize() {
-        view.backgroundColor = .back2MINI
         generator.prepare()
+        createBlurView()
         createTapGesture()
         createNavBarButtons()
         createAnimationView()
@@ -68,6 +92,13 @@ private extension LoginViewController {
         configureLoginView()
         registerForKeyboardNotifications()
         createVersionLabel()
+    }
+    
+    func createBlurView() {
+        blurredView.image = UIImage(named: "city")
+        view.insertSubview(blurredView, at: 0)
+        blurredView.frame = view.bounds
+        blurredView.createBlurEffect(blurStyle: .regular)
     }
     
     func createTapGesture() {
@@ -85,19 +116,16 @@ private extension LoginViewController {
     var githubButton: UIBarButtonItem {
         let button = UIButton(
             systemImage: "link.icloud.fill",
-            color: .tintMINI
-        )
+            color: .tintMINI)
         button.addTarget(
             self,
             action: #selector(goToWebsiteAction),
-            for: .touchUpInside
-        )
+            for: .touchUpInside)
         return UIBarButtonItem(customView: button)
     }
     
     func createAnimationView() {
-        animationView.backgroundColor = UIColor(named: "frontColor")
-        view.insertSubview(animationView, at: 0)
+        view.insertSubview(animationView, at: 1)
         animationView.snp.makeConstraints { make in
             make.top.left.right.equalToSuperview()
             make.height.equalTo(view.frame.height / 2.5)
@@ -105,7 +133,7 @@ private extension LoginViewController {
     }
     
     func createScrollView() {
-        view.insertSubview(scrollView, at: 1)
+        view.insertSubview(scrollView, at: 2)
         scrollView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
@@ -113,8 +141,6 @@ private extension LoginViewController {
     
     func createLoginView() {
         loginView.presenter = presenter
-        loginView.backgroundColor = .backMINI
-        loginView.radiusAndShadow(radius: 30)
         scrollView.addSubview(loginView)
         loginView.snp.makeConstraints { make in
             make.height.equalToSuperview().multipliedBy(0.42)
@@ -122,6 +148,7 @@ private extension LoginViewController {
             make.center.equalToSuperview()
         }
     }
+    
     
     func configureLoginView() {
         loginView.faceIDButton.addTarget(
@@ -150,7 +177,7 @@ private extension LoginViewController {
             forInfoDictionaryKey: "CFBundleShortVersionString"
         ) as? String  else { return }
         
-        versionLabel.textColor = .darkGray
+        versionLabel.textColor = .label
         versionLabel.text = "MINI. Version: \(version) Created by 0xYanis"
         versionLabel.font = .systemFont(ofSize: 15)
         versionLabel.textAlignment = .center
@@ -166,7 +193,8 @@ private extension LoginViewController {
     
 }
 
-//MARK: - functionality methods
+// MARK: - Action methods
+
 private extension LoginViewController {
     
     @objc func goToWebsiteAction() {
@@ -210,7 +238,8 @@ private extension LoginViewController {
     
 }
 
-//MARK: - protocol UITextFieldDelegate
+// MARK: - UITextFieldDelegate
+
 extension LoginViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
