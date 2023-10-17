@@ -31,6 +31,8 @@ final class RegisterPresenter {
     
 }
 
+// MARK: - RegisterPresenterProtocol
+
 extension RegisterPresenter: RegisterPresenterProtocol {
     
     func userWantToLogin(login: String, password: String, repeatPassword: String) {
