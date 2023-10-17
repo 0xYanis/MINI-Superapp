@@ -20,6 +20,7 @@ final class RegisterViewController: UIViewController {
     
     // MARK: - Private properties
     
+    private let blurredView  = UIImageView()
     private let generator    = UINotificationFeedbackGenerator()
     private let registerView = RegisterView()
     private let scrollView   = UIScrollView()
@@ -60,11 +61,18 @@ extension RegisterViewController: RegisterViewDelegate {
 private extension RegisterViewController {
     
     func initialize() {
-        view.backgroundColor = .back2MINI
+        createBlurView()
         createScrollView()
         createRegisterView()
         createTapGesture()
         registerForKeyboardNotifications()
+    }
+    
+    func createBlurView() {
+        blurredView.image = UIImage(named: "city")
+        view.insertSubview(blurredView, at: 0)
+        blurredView.frame = view.bounds
+        blurredView.createBlurEffect(blurStyle: .prominent)
     }
     
     func createScrollView() {
