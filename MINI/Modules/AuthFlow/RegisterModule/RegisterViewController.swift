@@ -14,11 +14,18 @@ protocol RegisterViewProtocol: AnyObject {
 
 final class RegisterViewController: UIViewController {
     
+    // MARK: - Public properties
+    
     var presenter: RegisterPresenterProtocol?
     
-    private lazy var generator    = UINotificationFeedbackGenerator()
-    private lazy var registerView = RegisterView()
-    private lazy var scrollView   = UIScrollView()
+    // MARK: - Private properties
+    
+    private let blurredView  = UIImageView()
+    private let generator    = UINotificationFeedbackGenerator()
+    private let registerView = RegisterView()
+    private let scrollView   = UIScrollView()
+    
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +33,8 @@ final class RegisterViewController: UIViewController {
     }
     
 }
+
+// MARK: - RegisterViewProtocol
 
 extension RegisterViewController: RegisterViewProtocol {
     
@@ -37,15 +46,33 @@ extension RegisterViewController: RegisterViewProtocol {
     
 }
 
+// MARK: - RegisterViewDelegate
+
+extension RegisterViewController: RegisterViewDelegate {
+    
+    func userDidTapRegister(name: String, pass: String, secondPass: String) {
+        presenter?.userWantToLogin(login: name, password: pass, repeatPassword: secondPass)
+    }
+    
+}
+
+// MARK: - Private methods
+
 private extension RegisterViewController {
     
     func initialize() {
-        view.backgroundColor = .back2MINI
+        createBlurView()
         createScrollView()
         createRegisterView()
-        configureRegisterView()
         createTapGesture()
         registerForKeyboardNotifications()
+    }
+    
+    func createBlurView() {
+        blurredView.image = UIImage(named: "city")
+        view.insertSubview(blurredView, at: 0)
+        blurredView.frame = view.bounds
+        blurredView.createBlurEffect(blurStyle: .prominent)
     }
     
     func createScrollView() {
@@ -53,31 +80,17 @@ private extension RegisterViewController {
         scrollView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        if #available(iOS 11.0, *) {
-            scrollView.contentInsetAdjustmentBehavior = .never
-        } else {
-            automaticallyAdjustsScrollViewInsets = false
-        }
+        scrollView.contentInsetAdjustmentBehavior = .never
     }
     
     func createRegisterView() {
+        registerView.delegate = self
         scrollView.addSubview(registerView)
         registerView.snp.makeConstraints { make in
             make.height.equalToSuperview().multipliedBy(0.42)
             make.width.equalToSuperview().multipliedBy(0.9)
             make.center.equalToSuperview()
         }
-    }
-    
-    func configureRegisterView() {
-        registerView.regButton.addTarget(
-            self,
-            action: #selector(userDidTapRegister),
-            for: .touchUpInside
-        )
-        registerView.nameField.delegate = self
-        registerView.passField.delegate = self
-        registerView.secondPassField.delegate = self
     }
     
     func createTapGesture() {
@@ -97,7 +110,8 @@ private extension RegisterViewController {
     
 }
 
-//MARK: - functionality methods
+// MARK: - Action methods
+
 private extension RegisterViewController {
     
     @objc func keyboardWillShow(notification: Notification) {
@@ -116,41 +130,7 @@ private extension RegisterViewController {
     
     
     @objc func handleTapOffTheField() {
-        registerView.nameField.resignFirstResponder()
-        registerView.passField.resignFirstResponder()
-        registerView.secondPassField.resignFirstResponder()
-    }
-    
-    @objc func userDidTapRegister() {
-        let login      = registerView.nameField.text ?? ""
-        let pass       = registerView.passField.text ?? ""
-        let secondPass = registerView.secondPassField.text ?? ""
-        presenter?.userWantToLogin(
-            login: login,
-            password: pass,
-            repeatPassword: secondPass
-        )
-    }
-    
-    
-}
-
-//MARK: - UITextFieldDelegate
-extension RegisterViewController: UITextFieldDelegate {
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        switch textField {
-        case registerView.nameField:
-            registerView.passField.becomeFirstResponder()
-            
-        case registerView.passField:
-            registerView.secondPassField.becomeFirstResponder()
-            
-        default:
-            registerView.secondPassField.resignFirstResponder()
-            userDidTapRegister()
-        }
-        return true
+        registerView.tapOffTheField()
     }
     
 }

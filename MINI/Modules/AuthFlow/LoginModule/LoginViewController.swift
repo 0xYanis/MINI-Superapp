@@ -8,23 +8,6 @@
 import UIKit
 import SnapKit
 import Lottie
-import SwiftUI
-struct SomePreview: PreviewProvider {
-    
-    static var previews: some View {
-        ContentView().ignoresSafeArea()
-    }
-    
-    struct ContentView: UIViewControllerRepresentable {
-        func makeUIViewController(context: Context) -> UIViewController {
-            return LoginBuilder.build()
-        }
-        
-        func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
-            
-        }
-    }
-}
 
 protocol LoginViewProtocol: AnyObject {
     func showAlert(_ title: String, message: String)

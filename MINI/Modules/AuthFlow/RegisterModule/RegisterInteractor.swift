@@ -49,6 +49,8 @@ final class RegisterInteractor: RegisterInteractorProtocol {
     
 }
 
+// MARK: - Private methods
+
 private extension RegisterInteractor {
     
     func saveUserUID(_ uid: String) {
@@ -91,6 +93,5 @@ private extension RegisterInteractor {
             }
         }
     }
-    
     
 }

@@ -8,21 +8,24 @@
 import UIKit
 import SnapKit
 
+protocol RegisterViewDelegate: AnyObject {
+    func userDidTapRegister(name: String, pass: String, secondPass: String)
+}
+
 final class RegisterView: UIView {
     
-    let nameField       = UITextField()
-    let passField       = UITextField()
-    let secondPassField = UITextField()
+    weak var delegate: RegisterViewDelegate?
     
-    private lazy var helloLabel = UILabel(
+    private let nameField       = UITextField()
+    private let passField       = UITextField()
+    private let secondPassField = UITextField()
+    private let helloLabel = UILabel(
         text: "welcomeReg_label".localized,
         font: .boldSystemFont(ofSize: 26),
-        color: .tintMINI
-    )
-    let regButton  = UIButton(
+        color: .tintMINI)
+    private let regButton = UIButton(
         label: "login_button".localized,
-        color: .tintMINI
-    )
+        color: .tintMINI)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -30,13 +33,40 @@ final class RegisterView: UIView {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError()
     }
     
+    public func tapOffTheField() {
+        nameField.resignFirstResponder()
+        passField.resignFirstResponder()
+        secondPassField.resignFirstResponder()
+    }
     
 }
 
+// MARK: - UITextFieldDelegate
+
+extension RegisterView: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case nameField:
+            passField.becomeFirstResponder()
+        case passField:
+            secondPassField.becomeFirstResponder()
+        default:
+            secondPassField.resignFirstResponder()
+            userDidTapRegister()
+        }
+        return true
+    }
+    
+}
+
+// MARK: - Private methods
+
 private extension RegisterView {
+    
     func initialize() {
         backgroundColor = .clear
         roundCorners(radius: 30)
@@ -57,6 +87,7 @@ private extension RegisterView {
     func createNameField() {
         nameField.setCustomAppearance(withBorderColor: .tintMINI, cornerRadius: 15, padding: 10)
         nameField.placeholder = "name_placeholder".localized
+        nameField.delegate = self
         
         addSubview(nameField)
         nameField.snp.makeConstraints { make in
@@ -70,6 +101,7 @@ private extension RegisterView {
         passField.isSecureTextEntry = true
         passField.setCustomAppearance(withBorderColor: .tintMINI, cornerRadius: 15, padding: 10)
         passField.placeholder = "pass_placeholer".localized
+        passField.delegate = self
         
         addSubview(passField)
         passField.snp.makeConstraints { make in
@@ -83,6 +115,7 @@ private extension RegisterView {
         secondPassField.isSecureTextEntry = true
         secondPassField.setCustomAppearance(withBorderColor: .tintMINI, cornerRadius: 15, padding: 10)
         secondPassField.placeholder = "secondPass_placeholer".localized
+        secondPassField.delegate = self
         
         addSubview(secondPassField)
         secondPassField.snp.makeConstraints { make in
@@ -93,6 +126,7 @@ private extension RegisterView {
     }
     
     func createRegButton() {
+        regButton.addTarget(self, action: #selector(userDidTapRegister), for: .touchUpInside)
         regButton.addPulseAnimation()
         
         addSubview(regButton)
@@ -103,5 +137,13 @@ private extension RegisterView {
         }
     }
     
+    @objc func userDidTapRegister() {
+        guard
+            let name = nameField.text,
+            let pass = passField.text,
+            let secondPass = secondPassField.text
+        else { return }
+        delegate?.userDidTapRegister(name: name, pass: pass, secondPass: secondPass)
+    }
     
 }
