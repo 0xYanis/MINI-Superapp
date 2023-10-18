@@ -14,6 +14,9 @@ extension UIImage {
     }
     
     enum SystemSymbol: String {
+        case basketFill = "basket.fill"
+        case airplane
+        case houseFill = "house.fill"
         case calendar
         case globe
         case creditcard

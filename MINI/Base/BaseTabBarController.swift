@@ -37,23 +37,23 @@ private extension BaseTabBarController {
             createVC(
                 BankBuilder.build(),
                 barTitle: "bank_tabbar".localized,
-                image: "house.fill"),
+                image: UIImage.SystemSymbol.houseFill.rawValue),
             createVC(
                 AviaBuilder.build(),
                 barTitle: "tickets_tabbar".localized,
-                image: "airplane"),
+                image: UIImage.SystemSymbol.airplane.rawValue),
             createVC(
                 CartBuilder.build(),
                 barTitle: "Корзина",
-                image: "cart.fill"),
+                image: UIImage.SystemSymbol.cartFill.rawValue),
             createVC(
                 GroceryBuilder.build(),
                 barTitle: "grocery_tabbar".localized,
-                image: "basket.fill"),
+                image: UIImage.SystemSymbol.basketFill.rawValue),
             createVC(
                 ProfileBuilder.build(),
                 barTitle: "profile_tabbar".localized,
-                image: "person.fill")
+                image: UIImage.SystemSymbol.personFill.rawValue)
         ]
     }
     

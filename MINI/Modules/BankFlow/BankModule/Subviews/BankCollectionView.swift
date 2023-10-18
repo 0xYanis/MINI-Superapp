@@ -298,7 +298,7 @@ extension BankCollectionView: UICollectionViewDelegate {
     private func openAction(for indexPath: IndexPath) -> UIAction {
         return UIAction(
             title: "Открыть",
-            image: .init(systemName: "creditcard")
+            image: .init(.creditcard)
         ) { [weak self] _ in
             switch indexPath.section {
             case 0: self?.didTapCard(indexPath)

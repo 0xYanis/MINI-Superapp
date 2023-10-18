@@ -106,7 +106,7 @@ private extension CardViewController {
     
     var createEditBarButtonItem: UIBarButtonItem {
         let editButton = UIBarButtonItem(
-            image: UIImage(systemName: "square.and.pencil"),
+            image: UIImage(.sqaureAndPencil),
             style: .plain,
             target: self,
             action: #selector(rightButtonAction)
@@ -116,7 +116,7 @@ private extension CardViewController {
     
     var createDeleteBarButtonItem: UIBarButtonItem {
         let deleteButton = UIBarButtonItem(
-            image: UIImage(systemName: "trash"),
+            image: UIImage(.trash),
             style: .plain,
             target: self,
             action: #selector(leftButtonAction)
@@ -225,7 +225,7 @@ extension CardViewController: UITableViewDataSource {
         guard let card = presenter?.getCardData() else { return cell }
         cell.selectionStyle = .none
         cell.backgroundColor = .backMINI
-        cell.imageView?.image = UIImage(systemName: "circle.fill")
+        cell.imageView?.image = UIImage(.circleFill)
         switch indexPath.row {
         case 0:
             cell.textLabel?.text = "Card: \(card.logo)"

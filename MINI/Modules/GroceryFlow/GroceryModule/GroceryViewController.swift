@@ -99,7 +99,7 @@ private extension GroceryViewController {
     
     func leftBarCartButton() -> UIBarButtonItem {
         return UIBarButtonItem(
-            image: .init(systemName: "cart.fill"),
+            image: .init(.cartFill),
             style: .plain,
             target: self,
             action: #selector(cartButtonAction)
@@ -118,12 +118,12 @@ private extension GroceryViewController {
     func createAdressMenu() -> UIMenu {
         let setNew = UIAction(
             title: "set_new_adress".localized,
-            image: .init(systemName: "mappin.and.ellipse")) { [weak self] _ in
+            image: UIImage(.mappinAndEllipse)) { [weak self] _ in
                 self?.showFloatingPanel()
             }
         let getMap = UIAction(
             title: "На карте",
-            image: .init(systemName: "map")) { [weak self] _ in
+            image: UIImage(.map)) { [weak self] _ in
                 self?.presenter?.userWantUseMapView()
             }
         return UIMenu(children: [ setNew, getMap ] )
@@ -178,7 +178,7 @@ private extension GroceryViewController {
     
     func createScrollButton() {
         let symbolConf = UIImage.SymbolConfiguration(weight: .bold)
-        let image = UIImage(systemName: "arrow.up", withConfiguration: symbolConf)
+        let image = UIImage(systemName: UIImage.SystemSymbol.arrowUp.rawValue, withConfiguration: symbolConf)
         scrollToTopButton.setImage(image, for: .normal)
         scrollToTopButton.tintColor = .tintMINI
         scrollToTopButton.backgroundColor = .secondarySystemBackground

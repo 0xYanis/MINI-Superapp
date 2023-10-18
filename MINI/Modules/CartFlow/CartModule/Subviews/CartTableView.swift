@@ -139,7 +139,7 @@ extension CartTableView: UITableViewDelegate {
             completion(true)
             self?.deleteRows(at: [indexPath], with: .none)
         }
-        action.image = .init(systemName: "trash")
+        action.image = .init(.trash)
         action.backgroundColor = .systemOrange
         return action
     }

@@ -14,7 +14,7 @@ final class AllTemplatesViewCell: UICollectionViewCell {
     //MARK: - Private properties
     private let templateView = UIView()
     private let circleView   = UIView()
-    private let imageView    = UIImageView(image: UIImage(systemName: "gear"))
+    private let imageView    = UIImageView(image: UIImage(.gear))
     private let textLabel    = UILabel(
         text: "Utility Payments",
         font: .systemFont(ofSize: 15),

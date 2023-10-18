@@ -68,7 +68,7 @@ extension TemplateViewController: UITableViewDataSource {
         cell.textLabel?.text = "\(indexPath.row) cell"
         cell.backgroundColor = .clear
         cell.detailTextLabel?.text = "\(indexPath.row)"
-        cell.imageView?.image = UIImage(systemName: "note.text")
+        cell.imageView?.image = UIImage(.noteText)
         return cell
     }
     
