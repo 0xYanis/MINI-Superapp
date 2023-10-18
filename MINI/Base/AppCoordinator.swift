@@ -94,7 +94,7 @@ final class AppCoordinator: ICoordinator {
 private extension AppCoordinator {
     
     enum Consts: String {
-        case seenOnboardingKey
+        case seenOnboardingKey = "seenOnboarding"
     }
     
 }

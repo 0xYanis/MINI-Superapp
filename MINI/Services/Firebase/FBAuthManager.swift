@@ -25,8 +25,10 @@ final class FBAuthManager: FBAuthProtocol {
     typealias closure  = (User?, Error?) -> Void
     private let firebase = Auth.auth()
     
+    
+    
     public var currentUser: User? {
-        if UserDefaults.standard.bool(forKey: "seenOnboarding") == true {
+        if UserDefaults.standard.bool(forKey: Consts.seenOnboardingKey.rawValue) == true {
             return firebase.currentUser
         } else {
             return nil
@@ -69,6 +71,16 @@ final class FBAuthManager: FBAuthProtocol {
         } catch {
             print(error.localizedDescription)
         }
+    }
+    
+}
+
+// MARK: - Constants
+
+private extension FBAuthManager {
+    
+    enum Consts: String {
+        case seenOnboardingKey = "seenOnboarding"
     }
     
 }
