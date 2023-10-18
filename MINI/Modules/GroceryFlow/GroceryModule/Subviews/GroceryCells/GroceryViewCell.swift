@@ -82,7 +82,7 @@ private extension GroceryViewCell {
     }
     
     func createPercentView() {
-        percentView.image = UIImage(systemName: "percent")
+        percentView.image = UIImage(.percent)
         percentView.tintColor = .backMINI
         discountView.addSubview(percentView)
         percentView.snp.makeConstraints { make in

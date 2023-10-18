@@ -30,7 +30,7 @@ final class BankEmptyCardCell: UICollectionViewCell {
             make.top.bottom.equalToSuperview()
         }
         
-        let image = UIImageView(image: .init(systemName: "plus"))
+        let image = UIImageView(image: .init(.plus))
         image.contentMode = .scaleAspectFit
         image.tintColor = .label
         

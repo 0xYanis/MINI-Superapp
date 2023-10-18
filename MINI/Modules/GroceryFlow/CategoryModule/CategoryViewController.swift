@@ -90,7 +90,7 @@ private extension CategoryViewController {
     
     var rightButton: UIBarButtonItem {
         return UIBarButtonItem(
-            image: .init(systemName: "magnifyingglass"),
+            image: UIImage(.magnifyingglass),
             style: .plain,
             target: self,
             action: #selector(searchButtonTapped)

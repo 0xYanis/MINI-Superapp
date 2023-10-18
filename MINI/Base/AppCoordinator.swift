@@ -56,7 +56,7 @@ final class AppCoordinator: ICoordinator {
     }
     
     private func showLogin(from launch: UIViewController = UIViewController()) {
-        let seenOnboarding = UserDefaults.standard.bool(forKey: "seenOnboarding")
+        let seenOnboarding = UserDefaults.standard.bool(forKey: Consts.seenOnboardingKey.rawValue)
         if seenOnboarding {
             let login = LoginBuilder.build()
             let navController = UINavigationController(rootViewController: login)
@@ -85,6 +85,16 @@ final class AppCoordinator: ICoordinator {
         if let _ = authManager.currentUser {
             islogin = true
         }
+    }
+    
+}
+
+// MARK: - Constants
+
+private extension AppCoordinator {
+    
+    enum Consts: String {
+        case seenOnboardingKey = "seenOnboarding"
     }
     
 }

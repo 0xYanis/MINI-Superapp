@@ -71,7 +71,7 @@ private extension AllTemplatesViewController {
     
     var addBtton: UIBarButtonItem {
         return UIBarButtonItem(
-            image: UIImage(systemName: "plus"),
+            image: UIImage(.plus),
             style: .plain,
             target: self,
             action: #selector(addAction)

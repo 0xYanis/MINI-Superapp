@@ -160,7 +160,7 @@ extension BankHistoryViewController: UITableViewDataSource {
     ) -> UIAction {
         let deleteAction = UIAction(
             title: "Удалить",
-            image: UIImage(systemName: "trash"),
+            image: UIImage(.trash),
             attributes: .destructive
         ) { [weak self] _ in
             self?.presenter?.userWantToDeleteTransaction(at: indexPath.row)

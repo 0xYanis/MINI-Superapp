@@ -142,7 +142,7 @@ private extension CategoryCell {
     }
     
     func createPercentView() {
-        percentView.image = UIImage(systemName: "percent")
+        percentView.image = UIImage(.percent)
         percentView.tintColor = .black
         discountView.addSubview(percentView)
         percentView.snp.makeConstraints { make in

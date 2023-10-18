@@ -117,7 +117,7 @@ private extension BankViewController {
     
     var lockViewBarButton: UIBarButtonItem {
         return UIBarButtonItem(
-            image: .init(systemName: "lock.circle"),
+            image: .init(.lockCircle),
             style: .plain,
             target: self,
             action: #selector(lockViewAction))
@@ -137,13 +137,13 @@ private extension BankViewController {
     var addNewMenu: UIMenu {
         let addCard = UIAction(
             title: "add_new_card".localized,
-            image: .init(systemName: "creditcard.fill")
+            image: .init(.creditcardFill)
         ) { [weak self] _ in
             self?.presenter?.userWantToDetails(of: .newCard, with: 0)
         }
         let addTemplate = UIAction(
             title: "add_new_template".localized,
-            image: .init(systemName: "plus.rectangle.fill")
+            image: .init(.plusRectangleFill)
         ) { [weak self] _ in
             self?.presenter?.userWantToDetails(of: .newTemplate, with: 0)
         }

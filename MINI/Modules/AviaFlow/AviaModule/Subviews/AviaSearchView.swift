@@ -77,7 +77,7 @@ final class AviaSearchView: UICollectionReusableView {
     private func createDateButton() {
         dateButton.addTarget(self, action: #selector(dateTapAction), for: .touchUpInside)
         dateButton.setTitle(" Даты", for: .normal)
-        dateButton.setImage(.init(systemName: "calendar"), for: .normal)
+        dateButton.setImage(UIImage(.calendar), for: .normal)
         dateButton.tintColor = .gray
         dateButton.backgroundColor = .darkGray
         container.addSubview(dateButton)

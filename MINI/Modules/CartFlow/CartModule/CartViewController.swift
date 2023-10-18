@@ -179,7 +179,7 @@ private extension CartViewController {
     
     var clearButton: UIBarButtonItem {
         return UIBarButtonItem(
-            image: .init(systemName: "trash"),
+            image: .init(.trash),
             style: .plain,
             target: self,
             action: #selector(clearAction)
@@ -188,7 +188,7 @@ private extension CartViewController {
     
     var shareButton: UIBarButtonItem {
         return UIBarButtonItem(
-            image: .init(systemName: "square.and.arrow.up"),
+            image: .init(.squareAndArrowUp),
             style: .plain,
             target: self,
             action: #selector(shareAction)

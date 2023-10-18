@@ -65,7 +65,7 @@ private extension CategoryCartView {
             make.left.equalTo(labelView.snp.right).offset(7)
         }
         
-        cartImage.image = UIImage(systemName: "cart.fill")
+        cartImage.image = UIImage(.cartFill)
         cartImage.layer.shadowColor = UIColor.black.cgColor
         cartImage.layer.shadowOpacity = 0.5
         cartImage.layer.shadowOffset = CGSize(width: 0, height: 0)

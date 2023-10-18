@@ -67,10 +67,7 @@ final class LocationService: NSObject, LocationServiceProtocol {
         manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.requestWhenInUseAuthorization()
         
-        guard CLLocationManager.locationServicesEnabled() else {
-            print("Location services are disabled")
-            return
-        }
+        guard CLLocationManager.locationServicesEnabled() else { return }
         
         manager.requestLocation()
         

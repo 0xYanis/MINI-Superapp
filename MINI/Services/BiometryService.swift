@@ -15,8 +15,12 @@ final class BiometryService: BiometryServiceProtocol {
     
     private let context = LAContext()
     
+    private enum Consts: String {
+        case reason = "Authenticate with Face ID"
+    }
+    
     func authWithBiometry(completion: @escaping (Bool, Error?) -> Void) {
-        let reason = "Authenticate with Face ID"
+        let reason = Consts.reason.rawValue
         var error: NSError?
         
         guard context.canEvaluatePolicy(

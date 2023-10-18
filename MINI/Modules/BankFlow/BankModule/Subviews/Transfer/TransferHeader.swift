@@ -21,7 +21,7 @@ final class TransferHeader: UICollectionReusableView {
         let button = UIButton()
         button.addPulseAnimation()
         //button.setTitle("see_all_button".localized, for: .normal)
-        button.setImage(.init(systemName: "chevron.right.circle"), for: .normal)
+        button.setImage(UIImage(.chevronRigthCircle), for: .normal)
         button.tintColor = .label
         return button
     }()

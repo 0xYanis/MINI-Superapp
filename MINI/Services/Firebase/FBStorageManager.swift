@@ -27,7 +27,7 @@ final class FBStorageManager: FBStorageProtocol {
     private let storage = Storage.storage()
     
     public func removeAvatar(_ uid: String) {
-        let path = storage.reference().child("avatars/\(uid)")
+        let path = storage.reference().child("\(Consts.avatars.rawValue)/\(uid)")
         path.delete { error in
             if let error = error {
                 print(error.localizedDescription)
@@ -38,9 +38,9 @@ final class FBStorageManager: FBStorageProtocol {
     public func uploadAvatar(_ data: Data, userID: String, completion: @escaping uploadClosure) {
         // - storage/avatars/<userID>.jpeg
         let referance = storage.reference()
-        let path = referance.child("avatars").child(userID)
+        let path = avatars.child(userID)
         let metadata = StorageMetadata()
-        metadata.contentType = "image.jpeg"
+        metadata.contentType = Consts.contentType.rawValue
         path.putData(data, metadata: metadata) { metadata, error in
             if error != nil {
                 completion(.failure(.someError))
@@ -60,6 +60,21 @@ final class FBStorageManager: FBStorageProtocol {
                 completion(.success(url))
             }
         }
+    }
+    
+}
+
+// MARK: - Constants
+
+private extension FBStorageManager {
+    
+    var avatars: StorageReference {
+        storage.reference().child(Consts.avatars.rawValue)
+    }
+    
+    enum Consts: String {
+        case avatars
+        case contentType = "image.jpeg"
     }
     
 }

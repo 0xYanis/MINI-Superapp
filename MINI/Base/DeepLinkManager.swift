@@ -13,11 +13,15 @@ final class DeepLinkManager {
     private var shortcuts: [UIApplicationShortcutItem] = []
     
     private lazy var searchTransactions = UIMutableApplicationShortcutItem(
-        type: "searchTransactions",
+        type: Consts.searchTransactions.rawValue,
         localizedTitle: "shortcut_transactions".localized,
         localizedSubtitle: "",
         icon: UIApplicationShortcutIcon(type: .search)
     )
+    
+    private enum Consts: String {
+        case searchTransactions
+    }
     
     init() {
         self.shortcuts.append(searchTransactions)
