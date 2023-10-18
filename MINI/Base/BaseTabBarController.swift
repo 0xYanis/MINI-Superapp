@@ -22,6 +22,14 @@ final class BaseTabBarController: UITabBarController {
         initialize()
     }
     
+    public func updateBadge(item: TabItem, value: Int) {
+        tabBar.updateBadge(item: item, value: value)
+    }
+    
+    public func removeBadge(item: TabItem) {
+        tabBar.removeBadge(item: item)
+    }
+    
 }
 
 private extension BaseTabBarController {

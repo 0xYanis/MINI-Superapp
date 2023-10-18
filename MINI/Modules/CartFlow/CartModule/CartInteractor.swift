@@ -38,6 +38,7 @@ final class CartInteractor: CartInteractorProtocol {
     
     public func viewWillAppear() {
         purchasePriceCount()
+        purchasesCounter()
     }
     
     public func setCurrentTag(_ index: Int) {
@@ -68,13 +69,19 @@ final class CartInteractor: CartInteractorProtocol {
         purchases = purchases.filter { $0.description != filtered[index].description }
         filtered.remove(at: index)
         purchasePriceCount()
+        purchasesCounter()
         //db.purchases.remove(at: index)
     }
     
     public func removeAll() {
         filtered.removeAll()
         purchases.removeAll()
+        purchasesCounter()
         //db.purchases.removeAll()
+    }
+    
+    private func purchasesCounter() {
+        presenter?.updateBadge(newValue: purchases.count)
     }
 	
 }

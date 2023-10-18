@@ -7,10 +7,30 @@
 
 import UIKit
 
+import SwiftUI
+
+struct SomePreview: PreviewProvider {
+    
+    static var previews: some View {
+        ContentView().ignoresSafeArea()
+    }
+    
+    struct ContentView: UIViewControllerRepresentable {
+        func makeUIViewController(context: Context) -> UITabBarController {
+            return BaseTabBarController()
+        }
+        
+        func updateUIViewController(_ uiViewController: UITabBarController, context: Context) {
+            
+        }
+    }
+}
+
 protocol CartViewProtocol: AnyObject {
     func updateView()
     func updateOrder(quantity: Int, price: Double)
     func showEmptyView()
+    func updateBadge(newValue: Int)
 }
 
 final class CartViewController: UIViewController {
@@ -61,6 +81,14 @@ extension CartViewController: CartViewProtocol {
     
     func showEmptyView() {
         clearHandler()
+    }
+    
+    func updateBadge(newValue: Int) {
+        if let tabBarController = tabBarController as? BaseTabBarController {
+            newValue > 0
+            ? tabBarController.updateBadge(item: .cart, value: newValue)
+            : tabBarController.removeBadge(item: .cart)
+        }
     }
     
 }
