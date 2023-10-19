@@ -27,7 +27,7 @@ final class BankHistoryLabel: UIView {
     
     private let searchButton: UIButton = {
         let button = UIButton()
-        button.setImage(.init(systemName: "magnifyingglass.circle.fill"), for: .normal)
+        button.setImage(UIImage(.magnifyingglassCircleFill), for: .normal)
         button.addPulseAnimation()
         button.contentVerticalAlignment = .fill
         button.contentHorizontalAlignment = .fill

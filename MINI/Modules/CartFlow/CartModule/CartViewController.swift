@@ -11,6 +11,7 @@ protocol CartViewProtocol: AnyObject {
     func updateView()
     func updateOrder(quantity: Int, price: Double)
     func showEmptyView()
+    func updateBadge(newValue: Int)
 }
 
 final class CartViewController: UIViewController {
@@ -61,6 +62,14 @@ extension CartViewController: CartViewProtocol {
     
     func showEmptyView() {
         clearHandler()
+    }
+    
+    func updateBadge(newValue: Int) {
+        if let tabBarController = tabBarController as? BaseTabBarController {
+            newValue > 0
+            ? tabBarController.updateBadge(item: .cart, value: newValue)
+            : tabBarController.removeBadge(item: .cart)
+        }
     }
     
 }
@@ -174,12 +183,11 @@ private extension CartViewController {
         orderPriceView.delegate = self
         view.addSubview(orderPriceView)
         setSmallSizeOrderView()
-        orderPriceView.roundCorners(radius: 15)
     }
     
     var clearButton: UIBarButtonItem {
         return UIBarButtonItem(
-            image: .init(systemName: "trash"),
+            image: .init(.trash),
             style: .plain,
             target: self,
             action: #selector(clearAction)
@@ -188,7 +196,7 @@ private extension CartViewController {
     
     var shareButton: UIBarButtonItem {
         return UIBarButtonItem(
-            image: .init(systemName: "square.and.arrow.up"),
+            image: .init(.squareAndArrowUp),
             style: .plain,
             target: self,
             action: #selector(shareAction)

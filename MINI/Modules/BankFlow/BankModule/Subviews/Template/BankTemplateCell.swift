@@ -69,7 +69,7 @@ private extension BankTemplateCell {
     }
     
     func createImageView() {
-        imageView.image = UIImage(systemName: "gear")
+        imageView.image = UIImage(.gear)
         imageView.contentMode = .scaleAspectFit
         imageView.tintColor = .front2MINI
         circleView.addSubview(imageView)

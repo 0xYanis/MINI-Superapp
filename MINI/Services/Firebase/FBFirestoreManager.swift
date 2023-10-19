@@ -17,38 +17,57 @@ protocol FBFirestoreProtocol: AnyObject {
 
 final class FBFirestoreManager: FBFirestoreProtocol {
     
+    typealias UserDict = [String:Any]
+    
     private let db = Firestore.firestore()
     
     public func setUserData(user: User) {
-        let path = db.collection("users").document(user.uid)
+        let path = users.document(user.uid)
         path.setData([
-            "name" : user.email?.getEmailName() ?? "",
-            "email" : user.email ?? "",
-            "address" : "None"
+            Consts.users.rawValue   : user.email?.getEmailName() ?? "",
+            Consts.email.rawValue   : user.email ?? "",
+            Consts.address.rawValue : "None"
         ])
     }
     
-    public func getUserData(uid: String?, completion: @escaping ([String:Any])->Void) {
+    public func getUserData(uid: String?, completion: @escaping (UserDict) -> Void) {
         guard let uid = uid else { return }
-        let path = db.collection("users").document(uid)
+        let path = users.document(uid)
         path.getDocument { snapshot, error in
-            guard let data = snapshot?.data(),
-                  error == nil
+            guard
+                let data = snapshot?.data(),
+                error == nil
             else { return }
             completion(data)
         }
     }
     
-    public func updateUserData(uid: String?, updatedData: [String: Any]) {
+    public func updateUserData(uid: String?, updatedData: UserDict) {
         guard let uid = uid else { return }
-        let path = db.collection("users").document(uid)
+        let path = users.document(uid)
         path.updateData(updatedData)
     }
     
     public func removeUserData(_ uid: String) {
-        let path = db.collection("users").document(uid)
+        let path = users.document(uid)
         path.delete()
     }
     
 }
 
+// MARK: - Constants
+
+private extension FBFirestoreManager {
+    
+    var users: CollectionReference {
+        db.collection(Consts.users.rawValue)
+    }
+    
+    enum Consts: String {
+        case users
+        case name
+        case email
+        case address
+    }
+    
+}

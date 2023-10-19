@@ -12,7 +12,7 @@ final class CardDetailView: UIView {
     
     //MARK: Private properties
     private lazy var cardView   = UIView()
-    private lazy var cardLogo   = UIImageView(image: UIImage(systemName: "globe"))
+    private lazy var cardLogo   = UIImageView(image: UIImage(.globe))
     private lazy var bankLabel  = UILabel(
         text: "BANK",
         font: .boldSystemFont(ofSize: 28),

@@ -27,7 +27,7 @@ final class TransferCell: UICollectionViewCell {
         if let imageStr = data.image {
             imageView.sd_setImage(with: URL(string: imageStr))
         } else {
-            imageView.image = .init(systemName: "person.fill")
+            imageView.image = .init(.personFill)
         }
         nameLabel.text = data.name
         textLabel.text = data.text

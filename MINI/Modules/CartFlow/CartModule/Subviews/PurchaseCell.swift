@@ -121,7 +121,7 @@ private extension PurchaseCell {
     var changeQuantityAction: UIAction {
         return UIAction(
             title: "Изменить количество",
-            image: .init(systemName: "plusminus")
+            image: .init(.plusMinus)
         ) { _ in
             
         }
@@ -130,7 +130,7 @@ private extension PurchaseCell {
     var addToFavoriteAction: UIAction {
         return UIAction(
             title: "Добавить в избранное",
-            image: .init(systemName: "bookmark")
+            image: .init(.bookmark)
         ) { _ in
             
         }
@@ -139,7 +139,7 @@ private extension PurchaseCell {
     var shareAction: UIAction {
         return UIAction(
             title: "Поделиться товаром",
-            image: .init(systemName: "square.and.arrow.up"))
+            image: .init(.squareAndArrowUp))
         { [weak self] _ in
             guard let name = self?.purchaseLabel.text else { return }
             self?.delegate?.sharePurchase(named: name)
