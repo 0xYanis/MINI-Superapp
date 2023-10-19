@@ -7,25 +7,6 @@
 
 import UIKit
 
-import SwiftUI
-
-struct SomePreview: PreviewProvider {
-    
-    static var previews: some View {
-        ContentView().ignoresSafeArea()
-    }
-    
-    struct ContentView: UIViewControllerRepresentable {
-        func makeUIViewController(context: Context) -> UITabBarController {
-            return BaseTabBarController()
-        }
-        
-        func updateUIViewController(_ uiViewController: UITabBarController, context: Context) {
-            
-        }
-    }
-}
-
 protocol CartViewProtocol: AnyObject {
     func updateView()
     func updateOrder(quantity: Int, price: Double)
@@ -202,7 +183,6 @@ private extension CartViewController {
         orderPriceView.delegate = self
         view.addSubview(orderPriceView)
         setSmallSizeOrderView()
-        orderPriceView.roundCorners(radius: 15)
     }
     
     var clearButton: UIBarButtonItem {

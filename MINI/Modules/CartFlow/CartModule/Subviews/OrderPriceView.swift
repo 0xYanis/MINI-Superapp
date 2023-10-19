@@ -81,6 +81,7 @@ private extension OrderPriceView {
         backgroundColor = .clear
         createBlurEffect(blurStyle: .systemUltraThinMaterialLight)
         createPriceButton()
+        roundCorners(radius: 15)
     }
     
     @objc func didTapped() {
