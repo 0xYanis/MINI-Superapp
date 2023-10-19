@@ -12,6 +12,7 @@ protocol CartPresenterProtocol: AnyObject {
     func updateView()
     func updateOrder(quantity: Int, with price: Double)
     func showEmptyView()
+    func updateBadge(newValue: Int)
     
     func getPurchases() -> [Purchase]
 	func getTagItems() -> [String]
@@ -60,6 +61,10 @@ extension CartPresenter: CartPresenterProtocol {
     
     func showEmptyView() {
         view?.showEmptyView()
+    }
+    
+    func updateBadge(newValue: Int) {
+        view?.updateBadge(newValue: newValue)
     }
     
     func getTagItems() -> [String] {

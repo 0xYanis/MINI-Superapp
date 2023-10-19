@@ -15,12 +15,7 @@ final class CartTagCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        backgroundColor = .clear
-        contentView.backgroundColor = .clear
-        contentView.addSubview(pickerView)
-        pickerView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
+        initialize()
     }
     
     required init?(coder: NSCoder) {
@@ -30,6 +25,15 @@ final class CartTagCell: UITableViewCell {
     public func configure(with tags: [String]) {
         pickerView.pickerDelegate = pickerDelegate
         pickerView.configure(with: tags)
+    }
+    
+    private func initialize() {
+        backgroundColor = .clear
+        contentView.backgroundColor = .clear
+        contentView.addSubview(pickerView)
+        pickerView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
     
 }
