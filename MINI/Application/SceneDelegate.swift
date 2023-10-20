@@ -10,7 +10,9 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    var coordinator: ICoordinator?
+    
+    private var coordinator: ICoordinator?
+    private var lauchController: LaunchController?
 
     func scene(
         _ scene: UIScene,
@@ -21,11 +23,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         self.window = window
         
-        self.coordinator = AppCoordinator(window)
-        coordinator?.start()
+        self.coordinator = AppCoordinator()
         
-        let deeplinks = DeepLinkManager()
-        UIApplication.shared.shortcutItems = deeplinks.buildShortCuts()
+        lauchController = LaunchController()
+        
+        window.rootViewController = lauchController
+        window.makeKeyAndVisible()
+        
+        lauchController?.completion = { [weak self] in
+            self?.coordinator?.start()
+            self?.window?.rootViewController = self?.coordinator?.rootController
+            self?.lauchController = nil
+        }
     }
     
 }

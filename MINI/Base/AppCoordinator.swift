@@ -10,102 +10,90 @@ import UIKit
 // MARK: - Coordinator interface
 
 protocol ICoordinator: AnyObject {
+    var rootController: UIViewController? { get set }
     func start()
-}
-
-// MARK: - Delegate
-
-protocol AppCoordinatorDelegate: AnyObject {
-    func canLaunch()
 }
 
 final class AppCoordinator: ICoordinator {
     
-    // MARK: - Private properties
-    
-    private var window: UIWindow
-    
-    private var launchController: LaunchController?
-    private var authManager: FBAuthProtocol = FBAuthManager()
-    private var islogin: Bool = false
-    
-    init(_ window: UIWindow) {
-        self.window = window
-        checkLogin()
-    }
-    
-    // MARK: - Public methods
+    var rootController: UIViewController?
+    private var authManager: FBAuthProtocol?
     
     public func start() {
-        launchController = LaunchController()
-        guard let launch = launchController else { return }
-        setRoot(launch)
-        launch.completion = { [weak self] in
-            guard let self = self else { fatalError() }
-            self.islogin ? self.showMain() : self.showLogin(from: launch)
-        }
-    }
-    
-    // MARK: - Private methods
-    
-    private func showMain() {
-        launchController?.completion = nil
-        launchController = nil
-        let baseTabbar = BaseTabBarController()
-        setRoot(baseTabbar)
-    }
-    
-    private func showLogin(from launch: UIViewController = UIViewController()) {
-        let seenOnboarding = UserDefaults.standard.bool(forKey: Consts.seenOnboardingKey.rawValue)
-        if seenOnboarding {
-            let login = LoginBuilder.build()
-            let navController = UINavigationController(rootViewController: login)
-            setRoot(navController)
-        } else {
-            let controller = OnboardingBuilder.build(with: self)
-            controller.modalPresentationStyle = .fullScreen
-            launch.present(controller, animated: true)
-        }
-    }
-    
-    private func setRoot(_ viewController: UIViewController) {
-        window.backgroundColor = .backMINI
-        window.tintColor = .tintMINI
-        window.rootViewController = viewController
-        window.makeKeyAndVisible()
-        UIView.transition(
-            with: window,
-            duration: 0.3,
-            options: .transitionCrossDissolve,
-            animations: nil
-        )
-    }
-    
-    private func checkLogin() {
-        if let _ = authManager.currentUser {
-            islogin = true
-        }
+        self.rootController = makeRootController()
     }
     
 }
 
-// MARK: - Constants
+// MARK: - Private constants, methods & computed properties
 
 private extension AppCoordinator {
     
     enum Consts: String {
-        case seenOnboardingKey = "seenOnboarding"
+        case seenOnboarding
+    }
+    
+    enum StartState {
+        case onBoarding
+        case login
+        case main
+    }
+    
+    func makeRootController() -> UIViewController {
+        switch currentState {
+        case .onBoarding : return OnboardingBuilder.build()
+        case .login      : return withNav(LoginBuilder.build())
+        case .main       : return BaseTabBarController()
+        }
+    }
+    
+    var currentState: StartState {
+        if isSeenOnboarding {
+            return isLogin ? .main : .login
+        } else {
+            return .onBoarding
+        }
+    }
+    
+    var isSeenOnboarding: Bool {
+        let ud = UserDefaults.standard
+        return ud.bool(forKey: Consts.seenOnboarding.rawValue)
+    }
+    
+    var isLogin: Bool {
+        defer { authManager = nil }
+        self.authManager = FBAuthManager()
+        return authManager?.currentUser != nil
+    }
+    
+    private func withNav(_ viewController: UIViewController) -> UIViewController {
+        UINavigationController(rootViewController: viewController)
     }
     
 }
 
-// MARK: - AppCoordinatorDelegate
-
-extension AppCoordinator: AppCoordinatorDelegate {
+final class OnBoardingCoordinator {
     
-    func canLaunch() {
-        showLogin()
+    weak var parentCoordinator: AppCoordinator?
+    
+    lazy private var view: UIViewController = {
+        OnboardingBuilder.build()
+    }()
+    
+    func startFlow() {
+        
+    }
+    
+    func stopFlow() {
+        parentCoordinator?.start()
     }
     
 }
 
+final class LoginCoordinator {
+    
+}
+
+final class TabBarCoordinator {
+    
+}

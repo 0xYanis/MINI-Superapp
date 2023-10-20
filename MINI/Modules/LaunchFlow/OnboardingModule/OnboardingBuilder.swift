@@ -9,11 +9,10 @@ import UIKit
 
 final class OnboardingBuilder {
     
-    static func build(with delegate: AppCoordinatorDelegate) -> UIViewController {
+    static func build() -> UIViewController {
         let view = OnboardingPageController()
         let presenter = OnboardingPresenter(view: view)
         presenter.view = view
-        presenter.coordinatorDelegate = delegate
         view.presenter = presenter
         return view
     }

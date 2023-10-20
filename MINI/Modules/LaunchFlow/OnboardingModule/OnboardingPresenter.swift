@@ -16,7 +16,6 @@ protocol OnboardingPresenterProtocol: AnyObject {
 final class OnboardingPresenter: OnboardingPresenterProtocol {
     
     weak public var view: OnboardingViewProtocol?
-    weak public var coordinatorDelegate: AppCoordinatorDelegate?
     
     public var content: [OnboardingEntity] = [.first, .second, .third]
     
@@ -26,7 +25,7 @@ final class OnboardingPresenter: OnboardingPresenterProtocol {
     
     func readyToContinue() {
         UserDefaults.standard.set(true, forKey: "seenOnboarding")
-        coordinatorDelegate?.canLaunch()
+        
     }
     
 }
