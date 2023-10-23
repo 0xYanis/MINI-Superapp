@@ -18,6 +18,8 @@ final class FormTableView: UITableView {
     
     public weak var formDelegate: FormTableDelegate?
     public var formFields = [FormField]()
+    public var headerTitle: String?
+    public var footerTitle: String?
     
     // MARK: - Init
     
@@ -37,6 +39,7 @@ final class FormTableView: UITableView {
     struct FormField {
         var title: String
         var placeholder: String
+        var isSecure: Bool = false
     }
     
 }
@@ -54,6 +57,14 @@ extension FormTableView: FormTextDelegate {
 // MARK: - UITableViewDataSource
 
 extension FormTableView: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return headerTitle
+    }
+    
+    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        return footerTitle
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         formFields.count

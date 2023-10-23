@@ -41,10 +41,11 @@ final class FormCell: UITableViewCell {
         textField.resignFirstResponder()
     }
     
-    public func configure(with data: FormField, tag: Int) {
+    public func configure(with data: FormTableView.FormField, tag: Int) {
         textField.tag = tag
         titleLabel.text = data.title
         textField.placeholder = data.placeholder
+        textField.isSecureTextEntry = data.isSecure
     }
     
     // MARK: - Private methods
@@ -79,6 +80,7 @@ extension FormCell: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         guard let text = textField.text else { return true }
         delegate?.textFieldDidReturn(text, from: textField.tag)
+        textField.resignFirstResponder()
         return true
     }
     
