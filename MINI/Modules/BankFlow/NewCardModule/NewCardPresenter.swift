@@ -8,12 +8,16 @@
 import Foundation
 
 protocol NewCardPresenterProtocol: AnyObject {
+    func viewDidLoaded()
+    func setFormTextFields(_ textFields: [FormTableView.FormField])
     
+    func popToRoot()
 }
 
 final class NewCardPresenter {
     
     weak var view: NewCardViewProtocol?
+    
     private var router: NewCardRouterProtocol
     private var interactor: NewCardInteractorProtocol
     
@@ -26,6 +30,16 @@ final class NewCardPresenter {
 
 extension NewCardPresenter: NewCardPresenterProtocol {
     
+    func viewDidLoaded() {
+        interactor.viewDidLoaded()
+    }
     
+    func setFormTextFields(_ textFields: [FormTableView.FormField]) {
+        view?.setFormTextFields(textFields)
+    }
+    
+    func popToRoot() {
+        router.popToRoot()
+    }
     
 }
