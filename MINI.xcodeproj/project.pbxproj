@@ -235,6 +235,7 @@
 		09BFC9442A1B4CA800C8505B /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BFC9432A1B4CA800C8505B /* ProfileInteractor.swift */; };
 		09CFB4262A1E6A940007FF40 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 09CFB4252A1E6A940007FF40 /* SDWebImage */; };
 		09D4BFD82AE670D100697A6F /* FormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D4BFD72AE670D100697A6F /* FormCell.swift */; };
+		09D4BFDA2AE6805D00697A6F /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D4BFD92AE6805D00697A6F /* AddButton.swift */; };
 		09D509CE29EF1E76009CC219 /* BankHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D509CD29EF1E76009CC219 /* BankHistoryViewController.swift */; };
 		09D509D629EF379A009CC219 /* BankTransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D509D529EF379A009CC219 /* BankTransactionCell.swift */; };
 		09D509D829EF4EDE009CC219 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D509D729EF4EDE009CC219 /* UIImageView+Extension.swift */; };
@@ -481,6 +482,7 @@
 		09BFC9412A1B4C9600C8505B /* ProfileBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileBuilder.swift; sourceTree = "<group>"; };
 		09BFC9432A1B4CA800C8505B /* ProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
 		09D4BFD72AE670D100697A6F /* FormCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormCell.swift; sourceTree = "<group>"; };
+		09D4BFD92AE6805D00697A6F /* AddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddButton.swift; path = MINI/Helpers/Extensions/AddButton.swift; sourceTree = SOURCE_ROOT; };
 		09D509CD29EF1E76009CC219 /* BankHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankHistoryViewController.swift; sourceTree = "<group>"; };
 		09D509D529EF379A009CC219 /* BankTransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTransactionCell.swift; sourceTree = "<group>"; };
 		09D509D729EF4EDE009CC219 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
@@ -1096,6 +1098,7 @@
 		09A4F59B2A8D638C006FA62F /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
+				09D4BFD92AE6805D00697A6F /* AddButton.swift */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -1731,6 +1734,7 @@
 				097ACF202A2E1E3D0023106A /* RegisterViewController.swift in Sources */,
 				095B9CCB2AD6E641001CCAB6 /* UIImage+Extension.swift in Sources */,
 				09E88E852AA8C045000B3E43 /* PurchaseCell.swift in Sources */,
+				09D4BFDA2AE6805D00697A6F /* AddButton.swift in Sources */,
 				090BAB8E2A0298F5006AE8F9 /* AviaViewController.swift in Sources */,
 				097A806D2A337E3600B5CF3A /* CategoryBuilder.swift in Sources */,
 				099D4F7B29F723090002C24A /* NewCardBuilder.swift in Sources */,

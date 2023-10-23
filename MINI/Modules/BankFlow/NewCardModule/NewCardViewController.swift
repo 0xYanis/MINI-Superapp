@@ -18,6 +18,7 @@ final class NewCardViewController: UIViewController {
     var presenter: NewCardPresenterProtocol?
     
     private var formTable = FormTableView(frame: .zero, style: .insetGrouped)
+    private var addButton = AddButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,12 +66,32 @@ private extension NewCardViewController {
         view.backgroundColor = .back2MINI
         navigationItem.largeTitleDisplayMode = .never
         navigationItem.title = "add_new_card_title".localized
+        
+        createTable()
+        createAddButton()
+    }
+    
+    func createTable() {
         view.insertSubview(formTable, at: 0)
         formTable.frame = view.bounds
         formTable.formDelegate = self
-        
         formTable.headerTitle = "Добавление новой карты"
         formTable.footerTitle = "Если введенные данные будут верны - Вы сможете добавить карту в общий список."
+    }
+    
+    func createAddButton() {
+        addButton.addTarget(self, action: #selector(didTapAddButton), for: .touchUpInside)
+        view.insertSubview(addButton, at: 1)
+        addButton.snp.makeConstraints { make in
+            make.right.equalToSuperview().inset(35)
+            make.bottom.equalToSuperview().inset(55)
+            make.width.height.equalTo(60)
+        }
+        addButton.radiusAndShadow(radius: 30, shadowSize: 15)
+    }
+    
+    @objc func didTapAddButton() {
+        
     }
     
 }

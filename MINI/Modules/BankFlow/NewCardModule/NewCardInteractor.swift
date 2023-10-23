@@ -32,18 +32,4 @@ final class NewCardInteractor: NewCardInteractorProtocol {
         return predicate.evaluate(with: text)
     }
     
-    struct Card: Identifiable, Codable {
-        var id = UUID().uuidString
-        var cardColor: String
-        var logo: String
-        var cardType: String
-        var amount: Double
-        var currency: String
-        var number: String
-        var bankName: String
-        var holderName: String?
-        var expirationDate: String
-        var cvv: String
-    }
-    
 }
