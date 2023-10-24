@@ -8,10 +8,10 @@
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
+    
     var window: UIWindow?
     var coordinator: ICoordinator?
-
+    
     func scene(
         _ scene: UIScene,
         willConnectTo session: UISceneSession,
@@ -26,6 +26,34 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let deeplinks = DeepLinkManager()
         UIApplication.shared.shortcutItems = deeplinks.buildShortCuts()
+    }
+    
+    func sceneWillResignActive(_ scene: UIScene) {
+        guard let windowScene = scene as? UIWindowScene else { return }
+        let blurEffect = UIBlurEffect(style: .regular)
+        let blurView = UIVisualEffectView(effect: blurEffect)
+        
+        blurView.alpha = 0.0
+        blurView.frame = windowScene.coordinateSpace.bounds
+        windowScene.keyWindow?.rootViewController?.view.addSubview(blurView)
+        
+        UIView.animate(withDuration: 0.3) {
+            blurView.alpha = 1.0
+        }
+        
+    }
+    
+    func sceneDidBecomeActive(_ scene: UIScene) {
+        guard let windowScene = scene as? UIWindowScene else { return }
+        windowScene.keyWindow?.rootViewController?.view.subviews.forEach { view in
+            if view is UIVisualEffectView {
+                UIView.animate(withDuration: 0.1) {
+                    view.alpha = 0.0
+                } completion: { _ in
+                    view.removeFromSuperview()
+                }
+            }
+        }
     }
     
 }
