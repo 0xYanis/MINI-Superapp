@@ -167,6 +167,7 @@
 		097EFCBB2AD542C3002D5946 /* TransferHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097EFCBA2AD542C3002D5946 /* TransferHeader.swift */; };
 		097EFCBD2AD54350002D5946 /* TransferCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097EFCBC2AD54350002D5946 /* TransferCell.swift */; };
 		097EFCC12AD559D4002D5946 /* Transfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097EFCC02AD559D3002D5946 /* Transfer.swift */; };
+		098632E72AE7CAB000F39A8C /* PaymentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098632E62AE7CAB000F39A8C /* PaymentButton.swift */; };
 		098999262A2772890040B67D /* LoginModuleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098999252A2772890040B67D /* LoginModuleTests.swift */; };
 		098999362A27781F0040B67D /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 098999352A27781F0040B67D /* SDWebImage */; };
 		0989993E2A27A0470040B67D /* BankModuleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0989993D2A27A0470040B67D /* BankModuleTests.swift */; };
@@ -419,6 +420,7 @@
 		097EFCBA2AD542C3002D5946 /* TransferHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferHeader.swift; sourceTree = "<group>"; };
 		097EFCBC2AD54350002D5946 /* TransferCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferCell.swift; sourceTree = "<group>"; };
 		097EFCC02AD559D3002D5946 /* Transfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transfer.swift; sourceTree = "<group>"; };
+		098632E62AE7CAB000F39A8C /* PaymentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentButton.swift; sourceTree = "<group>"; };
 		098999232A2772890040B67D /* LoginModuleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoginModuleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		098999252A2772890040B67D /* LoginModuleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModuleTests.swift; sourceTree = "<group>"; };
 		0989993B2A27A0470040B67D /* BankModuleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BankModuleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -929,6 +931,14 @@
 			path = Transfer;
 			sourceTree = "<group>";
 		};
+		098632E52AE7CA9D00F39A8C /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				098632E62AE7CAB000F39A8C /* PaymentButton.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
 		098999052A276A650040B67D /* MINIUnitTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -1076,6 +1086,7 @@
 		099AE9972ADD62BE00ADE701 /* PaymentModule */ = {
 			isa = PBXGroup;
 			children = (
+				098632E52AE7CA9D00F39A8C /* Subviews */,
 				0973B3772ADD64EC006B07B9 /* PaymentViewController.swift */,
 				0973B3792ADD657F006B07B9 /* PaymentPresenter.swift */,
 				0973B37B2ADD6589006B07B9 /* PaymentRouter.swift */,
@@ -1794,6 +1805,7 @@
 				09E9E82E29EB16E10084416B /* KeyChain.swift in Sources */,
 				09E81C6A2A169D1D008B313B /* GroceryService.swift in Sources */,
 				099D4F6D29F71A530002C24A /* CardRouter.swift in Sources */,
+				098632E72AE7CAB000F39A8C /* PaymentButton.swift in Sources */,
 				09044FAD2A444AD800432A3C /* GSearchRouter.swift in Sources */,
 				09BFC9422A1B4C9600C8505B /* ProfileBuilder.swift in Sources */,
 				09BF17042AAA175D0090389B /* OnboardingPresenter.swift in Sources */,
