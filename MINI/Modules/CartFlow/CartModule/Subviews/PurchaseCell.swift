@@ -28,24 +28,24 @@ final class PurchaseCell: UITableViewCell {
         return view
     }()
     private let purchaseType = UILabel(
-        text: "(Товары)",
+        text: "",
         font: .boldSystemFont(ofSize: UIFont.systemFontSize),
         color: .secondaryLabel)
     private let purchaseLabel = UILabel(
-        text: "Кроссовки",
+        text: "",
         font: .systemFont(ofSize: UIFont.systemFontSize),
         color: .label)
     private let subLabel = UILabel(
-        text: "Удобные кроссовки на каждый день, демисезон",
+        text: "",
         font: .systemFont(ofSize: UIFont.systemFontSize),
         numberOfLines: 3,
         color: .secondaryLabel)
     private let priceLabel = UILabel(
-        text: "$96.99",
+        text: "",
         font: .boldSystemFont(ofSize: 16),
         color: .systemOrange)
     private let quantityLabel = UILabel(
-        text: "Количество: 1",
+        text: "",
         font: .systemFont(ofSize: 13),
         color: .secondaryLabel)
     private let additionalButton = UIButton(
