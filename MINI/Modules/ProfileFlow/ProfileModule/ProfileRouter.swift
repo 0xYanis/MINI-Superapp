@@ -17,20 +17,9 @@ final class ProfileRouter: ProfileRouterProtocol {
     weak var view: UIViewController?
     
     func userWantToLogout() {
-        let loginView = LoginBuilder.build()
-        let loginScreen = UINavigationController(rootViewController: loginView)
-        
-        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-           let delegate = windowScene.delegate as? SceneDelegate {
-            let window = UIWindow(windowScene: windowScene)
-            
-            window.rootViewController = loginScreen
-            window.backgroundColor = .backMINI
-            window.tintColor = .tintMINI
-            delegate.window = window
-            window.makeKeyAndVisible()
+        if let tabBarController = view?.tabBarController as? BaseTabBarController {
+            tabBarController.coordinator?.finish()
         }
-        
     }
     
     func userWantToDetailView(of type: ProfileDetails) {

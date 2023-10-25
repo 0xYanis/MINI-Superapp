@@ -8,9 +8,9 @@
 import UIKit
 
 final class LoginBuilder {
-    static func build() -> UIViewController {
+    static func build(coordinator: LoginCoordinator) -> UIViewController {
         let viewController = LoginViewController()
-        let router = LoginRouter()
+        let router = LoginRouter(view: viewController, coordinator: coordinator)
         let interactor = LoginInteractor()
         let presenter = LoginPresenter(interactor: interactor, router: router)
         let biometryService = BiometryService()
@@ -23,7 +23,6 @@ final class LoginBuilder {
         interactor.keychainService = keychainService
         interactor.biometryService = biometryService
         interactor.fbAuthManager = fbAuthManager
-        router.view = viewController
         
         return viewController
     }

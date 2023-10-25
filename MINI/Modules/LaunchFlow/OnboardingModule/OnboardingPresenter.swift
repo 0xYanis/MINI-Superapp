@@ -15,17 +15,19 @@ protocol OnboardingPresenterProtocol: AnyObject {
 
 final class OnboardingPresenter: OnboardingPresenterProtocol {
     
-    weak public var view: OnboardingViewProtocol?
+    weak private var view: OnboardingViewProtocol?
+    weak private var coordinator: OnBoardingCoordinator?
     
     public var content: [OnboardingEntity] = [.first, .second, .third]
     
-    init(view: OnboardingViewProtocol) {
+    init(view: OnboardingViewProtocol, coordinator: OnBoardingCoordinator) {
         self.view = view
+        self.coordinator = coordinator
     }
     
     func readyToContinue() {
         UserDefaults.standard.set(true, forKey: "seenOnboarding")
-        
+        coordinator?.finish()
     }
     
 }

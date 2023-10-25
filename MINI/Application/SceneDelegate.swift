@@ -11,7 +11,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     
-    private var coordinator: ICoordinator?
+    private var coordinator: MainCoordinator?
     private var lauchController: LaunchController?
 
     func scene(
@@ -23,18 +23,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         self.window = window
         
-        self.coordinator = AppCoordinator()
+        let navController = UINavigationController()
+        coordinator = MainCoordinator(navController: navController)
+        coordinator?.start()
         
-        lauchController = LaunchController()
-        
-        window.rootViewController = lauchController
+        window.rootViewController = navController
         window.makeKeyAndVisible()
-        
-        lauchController?.completion = { [weak self] in
-            self?.coordinator?.start()
-            self?.window?.rootViewController = self?.coordinator?.rootController
-            self?.lauchController = nil
-        }
     }
     
 }
