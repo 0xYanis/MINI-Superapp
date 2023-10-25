@@ -28,6 +28,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         coordinator?.start()
         
         window.rootViewController = navController
+        window.backgroundColor = .backMINI
+        window.tintColor = .tintMINI
         window.makeKeyAndVisible()
     }
     
