@@ -9,103 +9,118 @@ import UIKit
 
 // MARK: - Coordinator interface
 
-protocol ICoordinator: AnyObject {
+protocol Coordinator: AnyObject {
+    var childCoordinators: [Coordinator] { get set }
+    var navController: UINavigationController { get set }
     func start()
 }
 
-// MARK: - Delegate
-
-protocol AppCoordinatorDelegate: AnyObject {
-    func canLaunch()
-}
-
-final class AppCoordinator: ICoordinator {
+final class MainCoordinator: Coordinator {
+    
+    // MARK: - Public properties
+    
+    public var childCoordinators = [Coordinator]()
+    public var navController: UINavigationController
     
     // MARK: - Private properties
     
-    private var window: UIWindow
-    
+    private var authManager: FBAuthProtocol?
     private var launchController: LaunchController?
-    private var authManager: FBAuthProtocol = FBAuthManager()
-    private var islogin: Bool = false
+    private var didLaunch: Bool = false {
+        didSet {
+            startFlow()
+            launchController?.completion = nil
+            launchController = nil
+        }
+    }
     
-    init(_ window: UIWindow) {
-        self.window = window
-        checkLogin()
+    // MARK: - Init
+    
+    init(navController: UINavigationController) {
+        self.navController = navController
     }
     
     // MARK: - Public methods
     
     public func start() {
-        launchController = LaunchController()
-        guard let launch = launchController else { return }
-        setRoot(launch)
-        launch.completion = { [weak self] in
-            guard let self = self else { fatalError() }
-            self.islogin ? self.showMain() : self.showLogin(from: launch)
+        self.launchController = LaunchController()
+        guard let lauch = launchController else { fatalError() }
+        
+        self.navController.pushViewController(lauch, animated: false)
+        launchController?.completion = { [weak self] in
+            self?.didLaunch = true
         }
+    }
+    
+    public func childDidFinish(_ child: Coordinator?) {
+        childCoordinators.removeAll { $0 === child }
+        startFlow()
     }
     
     // MARK: - Private methods
     
-    private func showMain() {
-        launchController?.completion = nil
-        launchController = nil
-        let baseTabbar = BaseTabBarController()
-        setRoot(baseTabbar)
-    }
-    
-    private func showLogin(from launch: UIViewController = UIViewController()) {
-        let seenOnboarding = UserDefaults.standard.bool(forKey: Consts.seenOnboardingKey.rawValue)
-        if seenOnboarding {
-            let login = LoginBuilder.build()
-            let navController = UINavigationController(rootViewController: login)
-            setRoot(navController)
-        } else {
-            let controller = OnboardingBuilder.build(with: self)
-            controller.modalPresentationStyle = .fullScreen
-            launch.present(controller, animated: true)
+    private func startFlow() {
+        switch currentState {
+        case .onBoarding: startOnboarding()
+        case .login     : startLogin()
+        case .tabBar    : startTabBar()
         }
     }
     
-    private func setRoot(_ viewController: UIViewController) {
-        window.backgroundColor = .backMINI
-        window.tintColor = .tintMINI
-        window.rootViewController = viewController
-        window.makeKeyAndVisible()
-        UIView.transition(
-            with: window,
-            duration: 0.3,
-            options: .transitionCrossDissolve,
-            animations: nil
-        )
+    private func startOnboarding() {
+        let coordinator = OnBoardingCoordinator(navController: navController)
+        childCoordinators.append(coordinator)
+        coordinator.parentCoordinator = self
+        coordinator.start()
     }
     
-    private func checkLogin() {
-        if let _ = authManager.currentUser {
-            islogin = true
-        }
+    private func startLogin() {
+        let coordinator = AuthCoordinator(navController: navController)
+        childCoordinators.append(coordinator)
+        coordinator.parentCoordinator = self
+        coordinator.start()
+    }
+    
+    private func startTabBar() {
+        let coordinator = TabBarCoordinator(navController: navController)
+        childCoordinators.append(coordinator)
+        coordinator.parentCoordinator = self
+        coordinator.start()
     }
     
 }
 
-// MARK: - Constants
+// MARK: - Private constants, methods & computed properties
 
-private extension AppCoordinator {
+private extension MainCoordinator {
     
     enum Consts: String {
-        case seenOnboardingKey = "seenOnboarding"
+        case seenOnboarding
+    }
+    
+    enum AppState {
+        case onBoarding
+        case login
+        case tabBar
+    }
+    
+    var currentState: AppState {
+        if isSeenOnboarding {
+            return isLogin ? .tabBar : .login
+        } else {
+            return .onBoarding
+        }
+    }
+    
+    var isSeenOnboarding: Bool {
+        let ud = UserDefaults.standard
+        return ud.bool(forKey: Consts.seenOnboarding.rawValue)
+    }
+    
+    var isLogin: Bool {
+        defer { authManager = nil }
+        self.authManager = FBAuthManager()
+        return authManager?.currentUser != nil
     }
     
 }
-
-// MARK: - AppCoordinatorDelegate
-
-extension AppCoordinator: AppCoordinatorDelegate {
-    
-    func canLaunch() {
-        showLogin()
-    }
-    
-}
-

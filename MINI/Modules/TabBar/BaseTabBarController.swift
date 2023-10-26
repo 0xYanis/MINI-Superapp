@@ -17,6 +17,8 @@ enum TabItem : Int {
 
 final class BaseTabBarController: UITabBarController {
     
+    weak public var coordinator: TabBarCoordinator?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
