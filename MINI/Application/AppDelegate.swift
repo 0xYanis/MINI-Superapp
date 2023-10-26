@@ -36,17 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         performActionFor shortcutItem: UIApplicationShortcutItem,
         completionHandler: @escaping (Bool) -> Void
     ) {
-        guard
-            let _ = UserDefaults.standard.string(forKey: "authToken")
-        else { return }
-        
-        switch shortcutItem.type {
-        case "searchTransactions":
-            print("searchTransactions")
-            // диплинк к поиску транзакций
-        default:
-            return
-        }
+        // TODO: Deeplink
     }
     
 }
