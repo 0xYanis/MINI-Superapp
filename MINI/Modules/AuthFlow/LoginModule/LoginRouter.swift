@@ -14,29 +14,20 @@ protocol LoginRouterProtocol: AnyObject {
 
 final class LoginRouter: LoginRouterProtocol {
     
-    weak var view: UIViewController?
+    weak private var view: UIViewController?
+    weak private var coordinator: AuthCoordinator?
+    
+    init(view: UIViewController, coordinator: AuthCoordinator) {
+        self.view = view
+        self.coordinator = coordinator
+    }
     
     func userDidLogin() {
-        let nextView = BaseTabBarController()
-        
-        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-           let delegate = windowScene.delegate as? SceneDelegate {
-            let window = UIWindow(windowScene: windowScene)
-            
-            window.rootViewController = nextView
-            window.backgroundColor = .backMINI
-            window.tintColor = .tintMINI
-            delegate.window = window
-            window.makeKeyAndVisible()
-        }
+        coordinator?.finish()
     }
     
     func goToRegisterView() {
-        let registerView = RegisterBuilder.build()
-        view?.navigationController?.pushViewController(
-            registerView,
-            animated: true
-        )
+        coordinator?.goToRegistrate()
     }
     
 }

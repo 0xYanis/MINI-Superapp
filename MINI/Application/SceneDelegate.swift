@@ -10,8 +10,10 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
-    var coordinator: ICoordinator?
     
+    private var coordinator: MainCoordinator?
+    private var lauchController: LaunchController?
+
     func scene(
         _ scene: UIScene,
         willConnectTo session: UISceneSession,
@@ -21,11 +23,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         self.window = window
         
-        self.coordinator = AppCoordinator(window)
+        let navController = UINavigationController()
+        coordinator = MainCoordinator(navController: navController)
         coordinator?.start()
         
-        let deeplinks = DeepLinkManager()
-        UIApplication.shared.shortcutItems = deeplinks.buildShortCuts()
+        window.rootViewController = navController
+        window.backgroundColor = .backMINI
+        window.tintColor = .tintMINI
+        window.makeKeyAndVisible()
     }
     
     func sceneWillResignActive(_ scene: UIScene) {

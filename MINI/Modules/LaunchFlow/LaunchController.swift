@@ -78,15 +78,6 @@ private extension LaunchController {
     }
     
     func startTransition() {
-        UIView.animate(withDuration: 0.3) {
-            self.view.alpha = 0.0
-        } completion: { _ in
-            self.transitionToMainView()
-        }
-
-    }
-    
-    func transitionToMainView() {
         completion?()
     }
     
