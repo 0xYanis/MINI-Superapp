@@ -37,7 +37,6 @@ final class FBStorageManager: FBStorageProtocol {
     
     public func uploadAvatar(_ data: Data, userID: String, completion: @escaping uploadClosure) {
         // - storage/avatars/<userID>.jpeg
-        let referance = storage.reference()
         let path = avatars.child(userID)
         let metadata = StorageMetadata()
         metadata.contentType = Consts.contentType.rawValue

@@ -95,7 +95,7 @@ final class BankInteractor: BankInteractorProtocol {
     
     public func userWantToDeleteTransaction(at id: Int) {
         if !transactions.isEmpty && transactions.count > id {
-            var objectToRemove = transactions.remove(at: id)
+            let objectToRemove = transactions.remove(at: id)
             guard
                 let indexToRemove = storedTransactions.firstIndex(where: { $0.id == objectToRemove.id })
             else { return }
