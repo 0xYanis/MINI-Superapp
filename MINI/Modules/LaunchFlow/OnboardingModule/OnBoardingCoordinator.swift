@@ -25,7 +25,7 @@ final class OnBoardingCoordinator: Coordinator {
     }
     
     func finish() {
-        navController.dismiss(animated: false)
+        navController.dismiss(animated: true)
         parentCoordinator?.childDidFinish(self)
     }
     
