@@ -806,9 +806,7 @@
 			isa = PBXGroup;
 			children = (
 				0936E7BC2ABAF27200F50698 /* AppCoordinator.swift */,
-				09F86C4E29F6E96C00307432 /* BaseTabBarController.swift */,
 				0994B93F2A20F66D00F4A783 /* DeepLinkManager.swift */,
-				09D8E3D12AEA6A2800C7D7D2 /* TabBarCoordinator.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -824,6 +822,7 @@
 		0957A3402AC6FA41006576D0 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				09D8E3D32AEA70E500C7D7D2 /* TabBar */,
 				090BAB8B2A029889006AE8F9 /* AviaFlow */,
 				09F86C5829F6FD1200307432 /* BankFlow */,
 				09EE2F4F2AA7289F003F08E3 /* CartFlow */,
@@ -1216,6 +1215,15 @@
 				092E739529EBEB3000165D37 /* LoginView.swift */,
 			);
 			path = Subviews;
+			sourceTree = "<group>";
+		};
+		09D8E3D32AEA70E500C7D7D2 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				09F86C4E29F6E96C00307432 /* BaseTabBarController.swift */,
+				09D8E3D12AEA6A2800C7D7D2 /* TabBarCoordinator.swift */,
+			);
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 		09DF836D2A3887CD00ECAEB6 /* LaunchFlow */ = {
