@@ -17,12 +17,15 @@ protocol Coordinator: AnyObject {
 
 final class MainCoordinator: Coordinator {
     
+    // MARK: - Public properties
+    
     public var childCoordinators = [Coordinator]()
     public var navController: UINavigationController
     
+    // MARK: - Private properties
+    
     private var authManager: FBAuthProtocol?
     private var launchController: LaunchController?
-    
     private var didLaunch: Bool = false {
         didSet {
             startFlow()
@@ -31,9 +34,13 @@ final class MainCoordinator: Coordinator {
         }
     }
     
+    // MARK: - Init
+    
     init(navController: UINavigationController) {
         self.navController = navController
     }
+    
+    // MARK: - Public methods
     
     public func start() {
         self.launchController = LaunchController()
@@ -50,8 +57,9 @@ final class MainCoordinator: Coordinator {
         startFlow()
     }
     
+    // MARK: - Private methods
+    
     private func startFlow() {
-        print(currentState)
         switch currentState {
         case .onBoarding: startOnboarding()
         case .login     : startLogin()
@@ -67,7 +75,7 @@ final class MainCoordinator: Coordinator {
     }
     
     private func startLogin() {
-        let coordinator = LoginCoordinator(navController: navController)
+        let coordinator = AuthCoordinator(navController: navController)
         childCoordinators.append(coordinator)
         coordinator.parentCoordinator = self
         coordinator.start()
@@ -113,82 +121,6 @@ private extension MainCoordinator {
         defer { authManager = nil }
         self.authManager = FBAuthManager()
         return authManager?.currentUser != nil
-    }
-    
-}
-
-final class OnBoardingCoordinator: Coordinator {
-    
-    weak public var parentCoordinator: MainCoordinator?
-    public var childCoordinators: [Coordinator] = []
-    public var navController: UINavigationController
-    
-    init(navController: UINavigationController) {
-        self.navController = navController
-    }
-    
-    func start() {
-        let onBoarding = OnboardingBuilder.build(coordinator: self)
-        onBoarding.modalPresentationStyle = .fullScreen
-        onBoarding.modalTransitionStyle = .coverVertical
-        navController.present(onBoarding, animated: true)
-    }
-    
-    func finish() {
-        navController.dismiss(animated: false)
-        parentCoordinator?.childDidFinish(self)
-    }
-    
-}
-
-final class LoginCoordinator: Coordinator {
-    
-    weak public var parentCoordinator: MainCoordinator?
-    public var childCoordinators: [Coordinator] = []
-    public var navController: UINavigationController
-    
-    init(navController: UINavigationController) {
-        self.navController = navController
-    }
-    
-    public func start() {
-        let login = LoginBuilder.build(coordinator: self)
-        login.navigationItem.hidesBackButton = true
-        navController.pushViewController(login, animated: false)
-    }
-    
-    public func finish() {
-        parentCoordinator?.childDidFinish(self)
-    }
-    
-    public func goToRegistrate() {
-        let register = RegisterBuilder.build(coordinator: self)
-        navController.pushViewController(register, animated: true)
-    }
-    
-}
-
-final class TabBarCoordinator: Coordinator {
-    
-    weak public var parentCoordinator: MainCoordinator?
-    public var childCoordinators: [Coordinator] = []
-    public var navController: UINavigationController
-    
-    init(navController: UINavigationController) {
-        self.navController = navController
-    }
-    
-    public func start() {
-        // TODO: [Костыль] Навбар имеет Таббар, который внутри имеет навбары
-        let tabBar = BaseTabBarController()
-        tabBar.coordinator = self
-        navController.setViewControllers([tabBar], animated: false)
-        navController.isNavigationBarHidden = true
-    }
-    
-    func finish() {
-        navController.popViewController(animated: false)
-        parentCoordinator?.childDidFinish(self)
     }
     
 }

@@ -9,7 +9,7 @@ import UIKit
 
 final class RegisterBuilder {
     
-    static func build(coordinator: LoginCoordinator) -> UIViewController {
+    static func build(coordinator: AuthCoordinator) -> UIViewController {
         let keychain = KeyChainService()
         let authManager = FBAuthManager()
         let firestore = FBFirestoreManager()

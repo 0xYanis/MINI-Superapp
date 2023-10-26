@@ -8,7 +8,7 @@
 import UIKit
 
 final class LoginBuilder {
-    static func build(coordinator: LoginCoordinator) -> UIViewController {
+    static func build(coordinator: AuthCoordinator) -> UIViewController {
         let viewController = LoginViewController()
         let router = LoginRouter(view: viewController, coordinator: coordinator)
         let interactor = LoginInteractor()

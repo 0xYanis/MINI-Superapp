@@ -237,6 +237,9 @@
 		09D509D629EF379A009CC219 /* BankTransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D509D529EF379A009CC219 /* BankTransactionCell.swift */; };
 		09D509D829EF4EDE009CC219 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D509D729EF4EDE009CC219 /* UIImageView+Extension.swift */; };
 		09D509DA29EF50AC009CC219 /* BankHistoryLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D509D929EF50AC009CC219 /* BankHistoryLabel.swift */; };
+		09D8E3CE2AEA69AC00C7D7D2 /* OnBoardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D8E3CD2AEA69AC00C7D7D2 /* OnBoardingCoordinator.swift */; };
+		09D8E3D02AEA69E300C7D7D2 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D8E3CF2AEA69E300C7D7D2 /* AuthCoordinator.swift */; };
+		09D8E3D22AEA6A2800C7D7D2 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D8E3D12AEA6A2800C7D7D2 /* TabBarCoordinator.swift */; };
 		09DF83792A38BB8F00ECAEB6 /* LaunchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DF83782A38BB8F00ECAEB6 /* LaunchController.swift */; };
 		09E24C112A12239A00A91F74 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E24C102A12239A00A91F74 /* Card.swift */; };
 		09E24C132A1227C200A91F74 /* cardsColor.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09E24C122A1227C200A91F74 /* cardsColor.xcassets */; };
@@ -481,6 +484,9 @@
 		09D509D529EF379A009CC219 /* BankTransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTransactionCell.swift; sourceTree = "<group>"; };
 		09D509D729EF4EDE009CC219 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		09D509D929EF50AC009CC219 /* BankHistoryLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankHistoryLabel.swift; sourceTree = "<group>"; };
+		09D8E3CD2AEA69AC00C7D7D2 /* OnBoardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingCoordinator.swift; sourceTree = "<group>"; };
+		09D8E3CF2AEA69E300C7D7D2 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
+		09D8E3D12AEA6A2800C7D7D2 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		09DF83782A38BB8F00ECAEB6 /* LaunchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchController.swift; sourceTree = "<group>"; };
 		09E24C102A12239A00A91F74 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		09E24C122A1227C200A91F74 /* cardsColor.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = cardsColor.xcassets; sourceTree = "<group>"; };
@@ -802,6 +808,7 @@
 				0936E7BC2ABAF27200F50698 /* AppCoordinator.swift */,
 				09F86C4E29F6E96C00307432 /* BaseTabBarController.swift */,
 				0994B93F2A20F66D00F4A783 /* DeepLinkManager.swift */,
+				09D8E3D12AEA6A2800C7D7D2 /* TabBarCoordinator.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -1159,6 +1166,7 @@
 				09BF17032AAA175D0090389B /* OnboardingPresenter.swift */,
 				09BF17052AAA17AE0090389B /* OnboardingBuilder.swift */,
 				09BF17072AAA18750090389B /* OnboardingEntity.swift */,
+				09D8E3CD2AEA69AC00C7D7D2 /* OnBoardingCoordinator.swift */,
 			);
 			path = OnboardingModule;
 			sourceTree = "<group>";
@@ -1325,6 +1333,7 @@
 			children = (
 				097ACF1E2A2E1E220023106A /* RegisterModule */,
 				09E9E81529EAE8F50084416B /* LoginModule */,
+				09D8E3CF2AEA69E300C7D7D2 /* AuthCoordinator.swift */,
 			);
 			path = AuthFlow;
 			sourceTree = "<group>";
@@ -1665,6 +1674,7 @@
 				099D4F6B29F71A420002C24A /* CardInteractor.swift in Sources */,
 				09BFC93C2A1B4C7400C8505B /* ProfileViewController.swift in Sources */,
 				0943493B2ABC892D00F81C00 /* OrderPriceView.swift in Sources */,
+				09D8E3CE2AEA69AC00C7D7D2 /* OnBoardingCoordinator.swift in Sources */,
 				09B5662D2A937EE700AFF98E /* PayoutsCell.swift in Sources */,
 				09091CDE2A82B49B0043A9A1 /* MiTableView.swift in Sources */,
 				090E87AE2AAF79BE00C6AEF3 /* AviaDealCell.swift in Sources */,
@@ -1732,6 +1742,7 @@
 				09E9E81929EAE9410084416B /* LoginViewController.swift in Sources */,
 				097ACF222A2E1E470023106A /* RegisterPresenter.swift in Sources */,
 				09EE2F5C2AA728F0003F08E3 /* CartPresenter.swift in Sources */,
+				09D8E3D02AEA69E300C7D7D2 /* AuthCoordinator.swift in Sources */,
 				09FC394A29FAD3ED00B2D97E /* TransactionInteractor.swift in Sources */,
 				0925E3D02AB8DDC100E886AE /* BankSheetLayout.swift in Sources */,
 				0999058B2AE00A850010C826 /* UITabBar+Extension.swift in Sources */,
@@ -1814,6 +1825,7 @@
 				09BF17022AAA17150090389B /* OnboardingPageController.swift in Sources */,
 				09E9E81D29EAE9540084416B /* LoginInteractor.swift in Sources */,
 				09044FB52A448A3400432A3C /* GroceryCollectionView.swift in Sources */,
+				09D8E3D22AEA6A2800C7D7D2 /* TabBarCoordinator.swift in Sources */,
 				090E87AA2AAF670500C6AEF3 /* AviaMockData.swift in Sources */,
 				09B566292A936FA500AFF98E /* PayoutsModel.swift in Sources */,
 				09FB82472A3714C300CEF8C1 /* CategoryHeader.swift in Sources */,

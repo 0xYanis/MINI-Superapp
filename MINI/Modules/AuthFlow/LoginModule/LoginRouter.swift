@@ -15,9 +15,9 @@ protocol LoginRouterProtocol: AnyObject {
 final class LoginRouter: LoginRouterProtocol {
     
     weak private var view: UIViewController?
-    weak private var coordinator: LoginCoordinator?
+    weak private var coordinator: AuthCoordinator?
     
-    init(view: UIViewController, coordinator: LoginCoordinator) {
+    init(view: UIViewController, coordinator: AuthCoordinator) {
         self.view = view
         self.coordinator = coordinator
     }
