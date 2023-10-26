@@ -19,8 +19,7 @@ final class AuthCoordinator: Coordinator {
     
     public func start() {
         let login = LoginBuilder.build(coordinator: self)
-        login.navigationItem.hidesBackButton = true
-        navController.pushViewController(login, animated: false)
+        navController.setViewControllers([login], animated: true)
     }
     
     public func finish() {

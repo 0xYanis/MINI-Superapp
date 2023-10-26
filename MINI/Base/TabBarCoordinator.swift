@@ -21,12 +21,12 @@ final class TabBarCoordinator: Coordinator {
         // TODO: [Костыль] Навбар имеет Таббар, который внутри имеет навбары
         let tabBar = BaseTabBarController()
         tabBar.coordinator = self
-        navController.setViewControllers([tabBar], animated: false)
+        navController.setViewControllers([tabBar], animated: true)
         navController.isNavigationBarHidden = true
     }
     
     func finish() {
-        navController.popViewController(animated: false)
+        navController.isNavigationBarHidden = false
         parentCoordinator?.childDidFinish(self)
     }
     

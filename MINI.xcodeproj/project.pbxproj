@@ -1331,9 +1331,9 @@
 		09F86C5929F6FD1B00307432 /* AuthFlow */ = {
 			isa = PBXGroup;
 			children = (
+				09D8E3CF2AEA69E300C7D7D2 /* AuthCoordinator.swift */,
 				097ACF1E2A2E1E220023106A /* RegisterModule */,
 				09E9E81529EAE8F50084416B /* LoginModule */,
-				09D8E3CF2AEA69E300C7D7D2 /* AuthCoordinator.swift */,
 			);
 			path = AuthFlow;
 			sourceTree = "<group>";
