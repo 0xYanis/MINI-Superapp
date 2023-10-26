@@ -41,9 +41,9 @@ private extension CartTableView {
         register(CartTagCell.self)
         register(PurchaseCell.self)
         showsVerticalScrollIndicator = false
+        sectionHeaderTopPadding = 0
         backgroundColor = .clear
         separatorStyle = .none
-        sectionHeaderTopPadding = 0
         dataSource = self
         delegate = self
     }

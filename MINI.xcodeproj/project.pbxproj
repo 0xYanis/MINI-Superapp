@@ -35,6 +35,7 @@
 		090C1E662A9CA42E00E75464 /* FBAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C1E652A9CA42E00E75464 /* FBAuthManager.swift */; };
 		090C1E6A2A9D281E00E75464 /* OTPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C1E692A9D281E00E75464 /* OTPTextField.swift */; };
 		090C1E712A9DF75E00E75464 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C1E702A9DF75E00E75464 /* MapViewController.swift */; };
+		090DFC4E2AE2F2AB00DF0653 /* FormTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090DFC4D2AE2F2AB00DF0653 /* FormTableView.swift */; };
 		090E87A62AAF60A500C6AEF3 /* AviaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090E87A52AAF60A500C6AEF3 /* AviaItem.swift */; };
 		090E87A82AAF633400C6AEF3 /* AviaSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090E87A72AAF633400C6AEF3 /* AviaSection.swift */; };
 		090E87AA2AAF670500C6AEF3 /* AviaMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090E87A92AAF670500C6AEF3 /* AviaMockData.swift */; };
@@ -166,6 +167,7 @@
 		097EFCBB2AD542C3002D5946 /* TransferHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097EFCBA2AD542C3002D5946 /* TransferHeader.swift */; };
 		097EFCBD2AD54350002D5946 /* TransferCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097EFCBC2AD54350002D5946 /* TransferCell.swift */; };
 		097EFCC12AD559D4002D5946 /* Transfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097EFCC02AD559D3002D5946 /* Transfer.swift */; };
+		098632E72AE7CAB000F39A8C /* PaymentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098632E62AE7CAB000F39A8C /* PaymentButton.swift */; };
 		098999262A2772890040B67D /* LoginModuleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098999252A2772890040B67D /* LoginModuleTests.swift */; };
 		098999362A27781F0040B67D /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 098999352A27781F0040B67D /* SDWebImage */; };
 		0989993E2A27A0470040B67D /* BankModuleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0989993D2A27A0470040B67D /* BankModuleTests.swift */; };
@@ -233,6 +235,8 @@
 		09BFC9422A1B4C9600C8505B /* ProfileBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BFC9412A1B4C9600C8505B /* ProfileBuilder.swift */; };
 		09BFC9442A1B4CA800C8505B /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BFC9432A1B4CA800C8505B /* ProfileInteractor.swift */; };
 		09CFB4262A1E6A940007FF40 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 09CFB4252A1E6A940007FF40 /* SDWebImage */; };
+		09D4BFD82AE670D100697A6F /* FormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D4BFD72AE670D100697A6F /* FormCell.swift */; };
+		09D4BFDA2AE6805D00697A6F /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D4BFD92AE6805D00697A6F /* AddButton.swift */; };
 		09D509CE29EF1E76009CC219 /* BankHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D509CD29EF1E76009CC219 /* BankHistoryViewController.swift */; };
 		09D509D629EF379A009CC219 /* BankTransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D509D529EF379A009CC219 /* BankTransactionCell.swift */; };
 		09D509D829EF4EDE009CC219 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D509D729EF4EDE009CC219 /* UIImageView+Extension.swift */; };
@@ -346,6 +350,7 @@
 		090C1E652A9CA42E00E75464 /* FBAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBAuthManager.swift; sourceTree = "<group>"; };
 		090C1E692A9D281E00E75464 /* OTPTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPTextField.swift; sourceTree = "<group>"; };
 		090C1E702A9DF75E00E75464 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		090DFC4D2AE2F2AB00DF0653 /* FormTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTableView.swift; sourceTree = "<group>"; };
 		090E87A52AAF60A500C6AEF3 /* AviaItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AviaItem.swift; sourceTree = "<group>"; };
 		090E87A72AAF633400C6AEF3 /* AviaSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AviaSection.swift; sourceTree = "<group>"; };
 		090E87A92AAF670500C6AEF3 /* AviaMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AviaMockData.swift; sourceTree = "<group>"; };
@@ -418,6 +423,7 @@
 		097EFCBA2AD542C3002D5946 /* TransferHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferHeader.swift; sourceTree = "<group>"; };
 		097EFCBC2AD54350002D5946 /* TransferCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferCell.swift; sourceTree = "<group>"; };
 		097EFCC02AD559D3002D5946 /* Transfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transfer.swift; sourceTree = "<group>"; };
+		098632E62AE7CAB000F39A8C /* PaymentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentButton.swift; sourceTree = "<group>"; };
 		098999232A2772890040B67D /* LoginModuleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoginModuleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		098999252A2772890040B67D /* LoginModuleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModuleTests.swift; sourceTree = "<group>"; };
 		0989993B2A27A0470040B67D /* BankModuleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BankModuleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -480,6 +486,8 @@
 		09BFC93F2A1B4C8900C8505B /* ProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRouter.swift; sourceTree = "<group>"; };
 		09BFC9412A1B4C9600C8505B /* ProfileBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileBuilder.swift; sourceTree = "<group>"; };
 		09BFC9432A1B4CA800C8505B /* ProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
+		09D4BFD72AE670D100697A6F /* FormCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormCell.swift; sourceTree = "<group>"; };
+		09D4BFD92AE6805D00697A6F /* AddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddButton.swift; path = MINI/Helpers/Extensions/AddButton.swift; sourceTree = SOURCE_ROOT; };
 		09D509CD29EF1E76009CC219 /* BankHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankHistoryViewController.swift; sourceTree = "<group>"; };
 		09D509D529EF379A009CC219 /* BankTransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTransactionCell.swift; sourceTree = "<group>"; };
 		09D509D729EF4EDE009CC219 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
@@ -929,6 +937,14 @@
 			path = Transfer;
 			sourceTree = "<group>";
 		};
+		098632E52AE7CA9D00F39A8C /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				098632E62AE7CAB000F39A8C /* PaymentButton.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
 		098999052A276A650040B67D /* MINIUnitTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -1076,6 +1092,7 @@
 		099AE9972ADD62BE00ADE701 /* PaymentModule */ = {
 			isa = PBXGroup;
 			children = (
+				098632E52AE7CA9D00F39A8C /* Subviews */,
 				0973B3772ADD64EC006B07B9 /* PaymentViewController.swift */,
 				0973B3792ADD657F006B07B9 /* PaymentPresenter.swift */,
 				0973B37B2ADD6589006B07B9 /* PaymentRouter.swift */,
@@ -1098,6 +1115,7 @@
 		09A4F59B2A8D638C006FA62F /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
+				09D4BFD92AE6805D00697A6F /* AddButton.swift */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -1148,6 +1166,7 @@
 		09B0C1872A545C2500E0CDEF /* UIMiniElements */ = {
 			isa = PBXGroup;
 			children = (
+				09D4BFD62AE670BC00697A6F /* FormTable */,
 				091335D32A405CC1005DDAEA /* MINIColorExtension.swift */,
 				09091CDD2A82B49B0043A9A1 /* MiTableView.swift */,
 				09A4F5A22A8D6FC3006FA62F /* FormTextController.swift */,
@@ -1193,6 +1212,15 @@
 				092F67AC2A3CDFE100E0F2B9 /* ProfileEntity.swift */,
 			);
 			path = ProfileModule;
+			sourceTree = "<group>";
+		};
+		09D4BFD62AE670BC00697A6F /* FormTable */ = {
+			isa = PBXGroup;
+			children = (
+				090DFC4D2AE2F2AB00DF0653 /* FormTableView.swift */,
+				09D4BFD72AE670D100697A6F /* FormCell.swift */,
+			);
+			path = FormTable;
 			sourceTree = "<group>";
 		};
 		09D509D129EF3571009CC219 /* Subviews */ = {
@@ -1680,6 +1708,7 @@
 				099D4F8329F72AFD0002C24A /* NewTemplateRouter.swift in Sources */,
 				09EE2F602AA728F0003F08E3 /* CartInteractor.swift in Sources */,
 				099D4F6B29F71A420002C24A /* CardInteractor.swift in Sources */,
+				090DFC4E2AE2F2AB00DF0653 /* FormTableView.swift in Sources */,
 				09BFC93C2A1B4C7400C8505B /* ProfileViewController.swift in Sources */,
 				0943493B2ABC892D00F81C00 /* OrderPriceView.swift in Sources */,
 				09D8E3CE2AEA69AC00C7D7D2 /* OnBoardingCoordinator.swift in Sources */,
@@ -1734,6 +1763,7 @@
 				097ACF202A2E1E3D0023106A /* RegisterViewController.swift in Sources */,
 				095B9CCB2AD6E641001CCAB6 /* UIImage+Extension.swift in Sources */,
 				09E88E852AA8C045000B3E43 /* PurchaseCell.swift in Sources */,
+				09D4BFDA2AE6805D00697A6F /* AddButton.swift in Sources */,
 				090BAB8E2A0298F5006AE8F9 /* AviaViewController.swift in Sources */,
 				097A806D2A337E3600B5CF3A /* CategoryBuilder.swift in Sources */,
 				099D4F7B29F723090002C24A /* NewCardBuilder.swift in Sources */,
@@ -1794,6 +1824,7 @@
 				09E9E82E29EB16E10084416B /* KeyChain.swift in Sources */,
 				09E81C6A2A169D1D008B313B /* GroceryService.swift in Sources */,
 				099D4F6D29F71A530002C24A /* CardRouter.swift in Sources */,
+				098632E72AE7CAB000F39A8C /* PaymentButton.swift in Sources */,
 				09044FAD2A444AD800432A3C /* GSearchRouter.swift in Sources */,
 				09BFC9422A1B4C9600C8505B /* ProfileBuilder.swift in Sources */,
 				09BF17042AAA175D0090389B /* OnboardingPresenter.swift in Sources */,
@@ -1811,6 +1842,7 @@
 				099D4F7529F722EC0002C24A /* NewCardPresenter.swift in Sources */,
 				09E88E832AA8BE6C000B3E43 /* CartTableView.swift in Sources */,
 				093D02AB2AA0EFE30032D812 /* FBFirestoreManager.swift in Sources */,
+				09D4BFD82AE670D100697A6F /* FormCell.swift in Sources */,
 				090AE1E529FBAA2F0092515D /* TemplateEntity.swift in Sources */,
 				090E87A62AAF60A500C6AEF3 /* AviaItem.swift in Sources */,
 				09B02C802A8ED29300F474E9 /* EmptyPayoutsView.swift in Sources */,

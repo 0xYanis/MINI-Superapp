@@ -8,7 +8,7 @@
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
+    
     var window: UIWindow?
     
     private var coordinator: MainCoordinator?
@@ -31,6 +31,34 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.backgroundColor = .backMINI
         window.tintColor = .tintMINI
         window.makeKeyAndVisible()
+    }
+    
+    func sceneWillResignActive(_ scene: UIScene) {
+        guard let windowScene = scene as? UIWindowScene else { return }
+        let blurEffect = UIBlurEffect(style: .regular)
+        let blurView = UIVisualEffectView(effect: blurEffect)
+        
+        blurView.alpha = 0.0
+        blurView.frame = windowScene.coordinateSpace.bounds
+        windowScene.keyWindow?.rootViewController?.view.addSubview(blurView)
+        
+        UIView.animate(withDuration: 0.3) {
+            blurView.alpha = 1.0
+        }
+        
+    }
+    
+    func sceneDidBecomeActive(_ scene: UIScene) {
+        guard let windowScene = scene as? UIWindowScene else { return }
+        windowScene.keyWindow?.rootViewController?.view.subviews.forEach { view in
+            if view is UIVisualEffectView {
+                UIView.animate(withDuration: 0.1) {
+                    view.alpha = 0.0
+                } completion: { _ in
+                    view.removeFromSuperview()
+                }
+            }
+        }
     }
     
 }

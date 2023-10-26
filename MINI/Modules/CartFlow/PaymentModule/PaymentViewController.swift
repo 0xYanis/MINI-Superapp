@@ -15,6 +15,8 @@ final class PaymentViewController: UIViewController {
     
     var presenter: PaymentPresenterProtocol?
     
+    private var payButton = PayButton()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
@@ -47,6 +49,15 @@ private extension PaymentViewController {
     
     @objc func closeViewAction() {
         dismiss(animated: true)
+    }
+    
+    func createPayButton() {
+        view.addSubview(payButton)
+        payButton.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.height.equalTo(44)
+        }
     }
     
 }
