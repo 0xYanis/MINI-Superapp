@@ -183,6 +183,7 @@ private extension GroceryViewController {
         scrollToTopButton.tintColor = .tintMINI
         scrollToTopButton.backgroundColor = .secondarySystemBackground
         scrollToTopButton.contentMode = .scaleAspectFill
+        scrollToTopButton.addPulseAnimation()
         
         scrollToTopButton.addTarget(self, action: #selector(scrollToTopAction), for: .touchUpInside)
         scrollToTopButton.isHidden = true
@@ -278,6 +279,28 @@ extension GroceryViewController: UICollectionViewDelegateFlowLayout {
     ) {
         presenter?.userDidTapDetailCategory(id: indexPath.item)
     }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didHighlightItemAt indexPath: IndexPath
+    ) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        UIView.animate(withDuration: 0.1) {
+            cell?.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+        }
+    }
+
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didUnhighlightItemAt indexPath: IndexPath
+    ) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        UIView.animate(withDuration: 0.1) {
+            cell?.transform = .identity
+        }
+    }
+    
+    // MARK: - Collection scroll methods
     
     func scrollViewDidEndDecelerating(
         _ scrollView: UIScrollView
