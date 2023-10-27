@@ -10,7 +10,7 @@ import UIKit
 
 final class DeepLinkManager {
     
-    private var shortcuts: [UIApplicationShortcutItem] = []
+    private var shortcuts = [UIApplicationShortcutItem]()
     
     private lazy var searchTransactions = UIMutableApplicationShortcutItem(
         type: Consts.searchTransactions.rawValue,
@@ -27,7 +27,7 @@ final class DeepLinkManager {
         self.shortcuts.append(searchTransactions)
     }
     
-    func buildShortCuts() -> [UIApplicationShortcutItem] {
+    func makeShortCuts() -> [UIApplicationShortcutItem] {
         return shortcuts
     }
     

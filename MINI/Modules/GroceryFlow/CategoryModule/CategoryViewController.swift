@@ -232,6 +232,7 @@ extension CategoryViewController: UICollectionViewDataSource {
 
 //MARK: - Header titles for sections
 extension CategoryViewController {
+    
     func collectionView(
         _ collectionView: UICollectionView,
         viewForSupplementaryElementOfKind kind: String,
@@ -263,6 +264,7 @@ extension CategoryViewController {
 
 //MARK: - UICollectionViewDelegateFlowLayout
 extension CategoryViewController: UICollectionViewDelegateFlowLayout {
+    
     func collectionView(
         _ collectionView: UICollectionView, layout
         collectionViewLayout: UICollectionViewLayout, sizeForItemAt
@@ -282,9 +284,30 @@ extension CategoryViewController: UICollectionViewDelegateFlowLayout {
         presenter?.userDidTapProduct(index: indexPath.item)
     }
     
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didHighlightItemAt indexPath: IndexPath
+    ) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        UIView.animate(withDuration: 0.1) {
+            cell?.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+        }
+    }
+
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didUnhighlightItemAt indexPath: IndexPath
+    ) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        UIView.animate(withDuration: 0.1) {
+            cell?.transform = .identity
+        }
+    }
+    
 }
 
 extension CategoryViewController: UIScrollViewDelegate {
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         cartViewScrollAppearance(
             scrollView,

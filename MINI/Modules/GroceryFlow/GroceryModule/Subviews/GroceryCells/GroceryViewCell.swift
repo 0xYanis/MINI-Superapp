@@ -45,6 +45,7 @@ private extension GroceryViewCell {
         createImageView()
         
         createDiscountView()
+        radiusAndShadow(radius: 12, color: .black, opacity: 0.15, shadowSize: 8)
     }
     
     func createTextLabel() {

@@ -79,7 +79,7 @@ private extension OrderPriceView {
     func initialize() {
         tapGesture.addTarget(self, action: #selector(didTapped))
         backgroundColor = .clear
-        createBlurEffect(blurStyle: .systemUltraThinMaterialLight)
+        createBlurEffect(blurStyle: .regular)
         createPriceButton()
         roundCorners(radius: 15)
     }

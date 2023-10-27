@@ -12,7 +12,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     
     private var coordinator: MainCoordinator?
-    private var lauchController: LaunchController?
 
     func scene(
         _ scene: UIScene,
@@ -33,8 +32,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.makeKeyAndVisible()
     }
     
-    func sceneWillResignActive(_ scene: UIScene) {
-        guard let windowScene = scene as? UIWindowScene else { return }
+    func sceneWillResignActive(
+        _ scene: UIScene
+    ) {
+        guard let windowScene = (scene as? UIWindowScene) else { return }
         let blurEffect = UIBlurEffect(style: .regular)
         let blurView = UIVisualEffectView(effect: blurEffect)
         
@@ -48,8 +49,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
     }
     
-    func sceneDidBecomeActive(_ scene: UIScene) {
-        guard let windowScene = scene as? UIWindowScene else { return }
+    func sceneDidBecomeActive(
+        _ scene: UIScene
+    ) {
+        guard let windowScene = (scene as? UIWindowScene) else { return }
         windowScene.keyWindow?.rootViewController?.view.subviews.forEach { view in
             if view is UIVisualEffectView {
                 UIView.animate(withDuration: 0.1) {
