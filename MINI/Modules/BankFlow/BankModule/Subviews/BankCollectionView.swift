@@ -332,28 +332,3 @@ extension BankCollectionView: UICollectionViewDelegate {
     }
     
 }
-
-/*
-
-import SwiftUI
-struct SomePreview: PreviewProvider {
-    
-    static var previews: some View {
-        NavigationStack {
-            ContentView()
-                .navigationTitle("Bank")
-        }
-    }
-    
-    struct ContentView: UIViewControllerRepresentable {
-        func makeUIViewController(context: Context) -> UIViewController {
-            return BankBuilder.build()
-        }
-        
-        func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
-            
-        }
-    }
-}
-
-*/

@@ -18,7 +18,7 @@ final class GroceryCollectionView: UICollectionView {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError()
     }
     
 }
@@ -72,8 +72,6 @@ extension GroceryCollectionView: UICollectionViewDataSource {
             withReuseIdentifier: GroceryViewCell.cellId,
             for: indexPath) as? GroceryViewCell
         else { return UICollectionViewCell() }
-        
-        cell.radiusAndShadow(radius: 12, color: .black, opacity: 0.15, shadowSize: 8)
         cell.configure(with: data[indexPath.row])
         return cell
     }

@@ -17,6 +17,11 @@ final class PurchaseCell: UITableViewCell {
     //MARK: - Public properties
     
     weak var delegate: PurchaseCellDelegate?
+    public var cellColor: UIColor = .systemBackground {
+        didSet {
+            container.backgroundColor = cellColor
+        }
+    }
     
     // MARK: - Private properties
     
@@ -87,7 +92,7 @@ private extension PurchaseCell {
         selectionStyle = .none
         backgroundColor = .clear
         
-        container.backgroundColor = .systemBackground
+        container.backgroundColor = cellColor
         contentView.addSubview(container)
         container.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(12)
@@ -163,15 +168,15 @@ private extension PurchaseCell {
             make.trailing.equalToSuperview().inset(15)
         }
         
+        purchaseType.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(10)
+            make.trailing.equalToSuperview().inset(10)
+        }
+        
         purchaseLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(10)
             make.leading.equalTo(purchaseImage.snp.trailing).offset(10)
-        }
-        
-        purchaseType.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(10)
-            make.leading.equalTo(purchaseLabel.snp.trailing).offset(5)
-            make.width.equalToSuperview().multipliedBy(0.3)
+            make.width.equalToSuperview().multipliedBy(0.5)
         }
         
         subLabel.snp.makeConstraints { make in
