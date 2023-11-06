@@ -152,7 +152,7 @@ extension CartTableView: UITableViewDelegate {
             let cell = tableView.cellForRow(at: indexPath) as? PurchaseCell
         else { return }
         UIView.animate(withDuration: 0.2) {
-            cell.cellColor = .systemGray3
+            cell.cellColor = .systemGray5
             cell.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
         }
     }

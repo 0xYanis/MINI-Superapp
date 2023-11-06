@@ -64,13 +64,25 @@ final class CartInteractor: CartInteractorProtocol {
     }
     
     public func deleteCell(at index: Int) {
-        defer { if purchases.isEmpty { presenter?.showEmptyView() } }
+        defer { if purchases.isEmpty && cancelledPurchases.isEmpty { presenter?.showEmptyView() } }
         guard purchases.count > index else { return }
+        
+        addCancelledPurchase(filtered[index])
+        
         purchases = purchases.filter { $0.description != filtered[index].description }
         filtered.remove(at: index)
         purchasePriceCount()
         purchasesCounter()
         //db.purchases.remove(at: index)
+    }
+    
+    private func addCancelledPurchase(_ purchase: Purchase) {
+        if filtered.containsSameElements(as: cancelledPurchases) {
+            cancelledPurchases = cancelledPurchases.filter { $0.description != purchase.description }
+        } else {
+            cancelledPurchases.append(purchase)
+        }
+        
     }
     
     public func removeAll() {
