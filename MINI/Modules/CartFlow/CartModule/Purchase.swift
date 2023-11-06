@@ -7,13 +7,17 @@
 
 import Foundation
 
-struct Purchase {
+struct Purchase: Comparable {
     var name: String
     var image: String = "AppIcon"
     var type: PurchaseType
     var description: String
     var quantity: Int
     var price: Double
+    
+    static func < (lhs: Purchase, rhs: Purchase) -> Bool {
+        return lhs.name < rhs.name
+    }
 }
 
 enum PurchaseType: String {
