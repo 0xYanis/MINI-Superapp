@@ -48,7 +48,7 @@ final class CartViewController: UIViewController {
 extension CartViewController: CartViewProtocol {
     
     func updateView() {
-        tableView.reloadSections(.init(integer: 1), with: .left)
+        tableView.reloadSections(.init(integer: 1), with: .fade)
     }
     
     func updateOrder(quantity: Int, price: Double) {
