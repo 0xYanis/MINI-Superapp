@@ -17,6 +17,7 @@
 		09044FB52A448A3400432A3C /* GroceryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09044FB42A448A3400432A3C /* GroceryCollectionView.swift */; };
 		09091CDC2A82AD620043A9A1 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09091CDB2A82AD610043A9A1 /* UIViewController+Extension.swift */; };
 		09091CDE2A82B49B0043A9A1 /* MiTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09091CDD2A82B49B0043A9A1 /* MiTableView.swift */; };
+		0909BC612AF9035200CEE009 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0909BC602AF9035200CEE009 /* Array+Extension.swift */; };
 		0909D1C329F192E50078EEB5 /* BankTemplateLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0909D1C229F192E50078EEB5 /* BankTemplateLabelCell.swift */; };
 		090AE1DB29FBAA020092515D /* TemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090AE1DA29FBAA020092515D /* TemplateViewController.swift */; };
 		090AE1DD29FBAA080092515D /* TemplatePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090AE1DC29FBAA080092515D /* TemplatePresenter.swift */; };
@@ -333,6 +334,7 @@
 		09044FB42A448A3400432A3C /* GroceryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryCollectionView.swift; sourceTree = "<group>"; };
 		09091CDB2A82AD610043A9A1 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		09091CDD2A82B49B0043A9A1 /* MiTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiTableView.swift; sourceTree = "<group>"; };
+		0909BC602AF9035200CEE009 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		0909D1C229F192E50078EEB5 /* BankTemplateLabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTemplateLabelCell.swift; sourceTree = "<group>"; };
 		090AE1DA29FBAA020092515D /* TemplateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateViewController.swift; sourceTree = "<group>"; };
 		090AE1DC29FBAA080092515D /* TemplatePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplatePresenter.swift; sourceTree = "<group>"; };
@@ -861,6 +863,7 @@
 				0964A1572AAB491100B2E99E /* UIPageViewController+Extension.swift */,
 				095B9CCA2AD6E641001CCAB6 /* UIImage+Extension.swift */,
 				0999058A2AE00A850010C826 /* UITabBar+Extension.swift */,
+				0909BC602AF9035200CEE009 /* Array+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1747,6 +1750,7 @@
 				097EFCB72AD53CBE002D5946 /* TransactionCell.swift in Sources */,
 				092F67AB2A3CCED200E0F2B9 /* ProfileTableCell.swift in Sources */,
 				0973B37C2ADD6589006B07B9 /* PaymentRouter.swift in Sources */,
+				0909BC612AF9035200CEE009 /* Array+Extension.swift in Sources */,
 				09BFC9402A1B4C8900C8505B /* ProfileRouter.swift in Sources */,
 				099D4F6F29F71A610002C24A /* CardBuilder.swift in Sources */,
 				0973B3802ADD66E8006B07B9 /* PaymentBuilder.swift in Sources */,

@@ -49,7 +49,7 @@
 - Сервер: Firebase, mock-объекты через mock-API, общение через Alamofire
 - Изображения + кеш: SDWebImage
 - Многопоточность: GCD
-- Flow запуска приложения - Coordinator
+- Flow приложения - Coordinator
 
 Безопасность:
 - Keychain
