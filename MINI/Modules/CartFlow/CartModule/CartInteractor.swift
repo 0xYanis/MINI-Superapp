@@ -19,14 +19,17 @@ protocol CartInteractorProtocol: AnyObject {
 
 final class CartInteractor: CartInteractorProtocol {
 	
-    //MARK: - Public properties
+    // MARK: - Public properties
     
 	weak var presenter: CartPresenterProtocol?
     
     public var filtered: [Purchase] = mockPurchase
-    public var tagItems: [String] = ["Все","Продукты","Товары","Билеты","Отмененные"]
+    public var tagItems: [String] = [
+        "Все","Продукты","Товары","Билеты",
+        "Отмененные"
+    ]
     
-    //MARK: - Private properties
+    // MARK: - Private properties
     
     private var purchases: [Purchase] = mockPurchase
     private var cancelledPurchases: [Purchase] = []
@@ -34,7 +37,7 @@ final class CartInteractor: CartInteractorProtocol {
         didSet { presenter?.updateOrder(quantity: filtered.count, with: totalPrice) }
     }
     
-    //MARK: - Public methods
+    // MARK: - Public methods
     
     public func viewWillAppear() {
         purchasePriceCount()
@@ -76,6 +79,15 @@ final class CartInteractor: CartInteractorProtocol {
         //db.purchases.remove(at: index)
     }
     
+    public func removeAll() {
+        filtered.removeAll()
+        purchases.removeAll()
+        purchasesCounter()
+        //db.purchases.removeAll()
+    }
+    
+    // MARK: - Private methods
+    
     private func addCancelledPurchase(_ purchase: Purchase) {
         if filtered.containsSameElements(as: cancelledPurchases) {
             cancelledPurchases = cancelledPurchases.filter { $0.description != purchase.description }
@@ -83,13 +95,6 @@ final class CartInteractor: CartInteractorProtocol {
             cancelledPurchases.append(purchase)
         }
         
-    }
-    
-    public func removeAll() {
-        filtered.removeAll()
-        purchases.removeAll()
-        purchasesCounter()
-        //db.purchases.removeAll()
     }
     
     private func purchasesCounter() {
