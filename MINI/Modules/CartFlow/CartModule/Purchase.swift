@@ -21,9 +21,21 @@ struct Purchase: Comparable {
 }
 
 enum PurchaseType: String {
-    case grocery = "Продукты"
-    case product = "Товары"
-    case ticket  = "Билеты"
+    case all      = "Все"
+    case grocery  = "Продукты"
+    case product  = "Товары"
+    case ticket   = "Билеты"
+    case canceled = "Отмененные"
+    
+    static var array: [String] {
+        [
+            PurchaseType.all.rawValue,
+            PurchaseType.grocery.rawValue,
+            PurchaseType.product.rawValue,
+            PurchaseType.ticket.rawValue,
+            PurchaseType.canceled.rawValue
+        ]
+    }
 }
 
 var mockPurchase: [Purchase] = [

@@ -9,7 +9,6 @@ import Foundation
 
 protocol CartInteractorProtocol: AnyObject {
     var filtered: [Purchase] { get }
-    var tagItems: [String] { get }
     func setCurrentTag(_ index: Int)
     
     func viewWillAppear()
@@ -18,21 +17,16 @@ protocol CartInteractorProtocol: AnyObject {
 }
 
 final class CartInteractor: CartInteractorProtocol {
-	
+    
     // MARK: - Public properties
     
-	weak var presenter: CartPresenterProtocol?
+    weak var presenter: CartPresenterProtocol?
     
     public var filtered: [Purchase] = mockPurchase
-    public var tagItems: [String] = [
-        "Все","Продукты","Товары","Билеты",
-        "Отмененные"
-    ]
     
     // MARK: - Private properties
     
     private var purchases: [Purchase] = mockPurchase
-    private var cancelledPurchases: [Purchase] = []
     private var totalPrice: Double = 0.0 {
         didSet { presenter?.updateOrder(quantity: filtered.count, with: totalPrice) }
     }
@@ -45,15 +39,15 @@ final class CartInteractor: CartInteractorProtocol {
     }
     
     public func setCurrentTag(_ index: Int) {
-        guard purchases.count > index else { return }
         filtered.removeAll()
-        
-        switch tagItems[index] {
-        case tagItems.first: filtered = purchases
-        case tagItems.last:  filtered = cancelledPurchases
-        default: filtered = purchases.filter { $0.type.rawValue == tagItems[index] }
+        guard PurchaseType.array.indices.contains(index) else { return }
+        let currentString = PurchaseType.array[index]
+        switch currentString {
+        case PurchaseType.all.rawValue:
+            filtered = purchases
+        default:
+            filtered = purchases.filter { $0.type.rawValue == currentString }
         }
-        
         presenter?.updateView()
         purchasePriceCount()
     }
@@ -67,38 +61,35 @@ final class CartInteractor: CartInteractorProtocol {
     }
     
     public func deleteCell(at index: Int) {
-        defer { if purchases.isEmpty && cancelledPurchases.isEmpty { presenter?.showEmptyView() } }
-        guard purchases.count > index else { return }
+        defer { if purchases.isEmpty { presenter?.showEmptyView() } }
+        guard purchases.indices.contains(index),
+              filtered.indices.contains(index)
+        else { return }
+        guard let secondIndex = purchases.firstIndex(of: filtered[index]) else { return }
         
-        addCancelledPurchase(filtered[index])
-        
-        purchases = purchases.filter { $0.description != filtered[index].description }
         filtered.remove(at: index)
+        
+        if purchases[secondIndex].type != PurchaseType.canceled {
+            purchases[secondIndex].type = PurchaseType.canceled
+        } else {
+            purchases.remove(at: secondIndex)
+        }
+        
         purchasePriceCount()
         purchasesCounter()
-        //db.purchases.remove(at: index)
+        //db.remove()
     }
     
     public func removeAll() {
-        filtered.removeAll()
         purchases.removeAll()
+        filtered.removeAll()
         purchasesCounter()
-        //db.purchases.removeAll()
     }
     
     // MARK: - Private methods
     
-    private func addCancelledPurchase(_ purchase: Purchase) {
-        if filtered.containsSameElements(as: cancelledPurchases) {
-            cancelledPurchases = cancelledPurchases.filter { $0.description != purchase.description }
-        } else {
-            cancelledPurchases.append(purchase)
-        }
-        
-    }
-    
     private func purchasesCounter() {
         presenter?.updateBadge(newValue: purchases.count)
     }
-	
+    
 }
