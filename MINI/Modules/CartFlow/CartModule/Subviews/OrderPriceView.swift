@@ -102,6 +102,7 @@ private extension OrderPriceView {
         stackView.snp.removeConstraints()
         stackView.removeFromSuperview()
         containterView.snp.removeConstraints()
+        containterView.removeFromSuperview()
         containterView.removeGestureRecognizer(tapGesture)
     }
     
@@ -117,6 +118,7 @@ private extension OrderPriceView {
         stackView.axis = .vertical
         stackView.alignment = .leading
         stackView.distribution = .fillEqually
+        
         containterView.addSubview(stackView)
         stackView.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
