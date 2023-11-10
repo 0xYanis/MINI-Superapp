@@ -28,7 +28,7 @@ final class CartInteractor: CartInteractorProtocol {
     
     private var purchases: [Purchase] = mockPurchase
     private var totalPrice: Double = 0.0 {
-        didSet { presenter?.updateOrder(quantity: filtered.count, with: totalPrice) }
+        didSet { presenter?.updateOrder(quantity: totalPrice == 0.0 ? 0 : filtered.count, with: totalPrice) }
     }
     
     // MARK: - Public methods
@@ -44,12 +44,16 @@ final class CartInteractor: CartInteractorProtocol {
         let currentString = PurchaseType.array[index]
         switch currentString {
         case PurchaseType.all.rawValue:
-            filtered = purchases
+            filtered = purchases.filter { $0.type.rawValue != PurchaseType.canceled.rawValue }
+            purchasePriceCount()
+        case PurchaseType.canceled.rawValue:
+            filtered = purchases.filter { $0.type.rawValue == currentString }
+            totalPrice = 0.0
         default:
             filtered = purchases.filter { $0.type.rawValue == currentString }
+            purchasePriceCount()
         }
         presenter?.updateView()
-        purchasePriceCount()
     }
     
     public func purchasePriceCount() {

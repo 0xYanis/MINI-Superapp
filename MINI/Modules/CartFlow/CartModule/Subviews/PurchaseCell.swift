@@ -77,7 +77,7 @@ final class PurchaseCell: UITableViewCell {
         purchaseImage.image = UIImage(named: "AppIcon")
         purchaseLabel.text  = data.name
         subLabel.text       = data.description
-        purchaseType.text   = data.type.rawValue
+        purchaseType.text   = (data.type == PurchaseType.canceled) ? "" : data.type.rawValue
         priceLabel.text     = "$ \(data.price)"
         quantityLabel.text  = "Количество: \(data.quantity)"
     }
