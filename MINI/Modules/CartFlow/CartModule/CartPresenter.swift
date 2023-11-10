@@ -68,7 +68,7 @@ extension CartPresenter: CartPresenterProtocol {
     }
     
     func getTagItems() -> [String] {
-        interactor.tagItems
+        PurchaseType.array
     }
     
     func setCurrentTag(_ index: Int) {

@@ -244,9 +244,10 @@ private extension CartViewController {
     }
     
     @objc func shareAction() {
-        let items = [Any]()
+        guard let items = presenter?.getPurchases() else { return }
+        let names = items.map { $0.name }.joined(separator: ", ")
         let activityVC = UIActivityViewController(
-            activityItems: [items],
+            activityItems: [names],
             applicationActivities: nil)
         present(activityVC, animated: true)
     }
