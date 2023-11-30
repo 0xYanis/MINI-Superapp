@@ -148,6 +148,7 @@
 		0973B37C2ADD6589006B07B9 /* PaymentRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0973B37B2ADD6589006B07B9 /* PaymentRouter.swift */; };
 		0973B37E2ADD6594006B07B9 /* PaymentInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0973B37D2ADD6594006B07B9 /* PaymentInteractor.swift */; };
 		0973B3802ADD66E8006B07B9 /* PaymentBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0973B37F2ADD66E8006B07B9 /* PaymentBuilder.swift */; };
+		09796E8D2B18D2D600DC76DA /* BankDBWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09796E8C2B18D2D600DC76DA /* BankDBWorker.swift */; };
 		097A80652A337E0400B5CF3A /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097A80642A337E0400B5CF3A /* CategoryViewController.swift */; };
 		097A80672A337E1600B5CF3A /* CategoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097A80662A337E1600B5CF3A /* CategoryPresenter.swift */; };
 		097A80692A337E2000B5CF3A /* CategoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097A80682A337E2000B5CF3A /* CategoryInteractor.swift */; };
@@ -405,6 +406,7 @@
 		0973B37B2ADD6589006B07B9 /* PaymentRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentRouter.swift; sourceTree = "<group>"; };
 		0973B37D2ADD6594006B07B9 /* PaymentInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentInteractor.swift; sourceTree = "<group>"; };
 		0973B37F2ADD66E8006B07B9 /* PaymentBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentBuilder.swift; sourceTree = "<group>"; };
+		09796E8C2B18D2D600DC76DA /* BankDBWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankDBWorker.swift; sourceTree = "<group>"; };
 		097A80642A337E0400B5CF3A /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		097A80662A337E1600B5CF3A /* CategoryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPresenter.swift; sourceTree = "<group>"; };
 		097A80682A337E2000B5CF3A /* CategoryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryInteractor.swift; sourceTree = "<group>"; };
@@ -927,6 +929,7 @@
 				094388EA2A56F0A200027D59 /* BankViewDetails.swift */,
 				09BE625B2ACAF95A0098ACB2 /* BankSection.swift */,
 				097EFCC02AD559D3002D5946 /* Transfer.swift */,
+				09796E8C2B18D2D600DC76DA /* BankDBWorker.swift */,
 			);
 			path = BankModule;
 			sourceTree = "<group>";
@@ -1731,6 +1734,7 @@
 				09BE625C2ACAF95B0098ACB2 /* BankSection.swift in Sources */,
 				09A7496029F992940005A649 /* CardDetailView.swift in Sources */,
 				09FC394E29FAD3FB00B2D97E /* TransactionBuilder.swift in Sources */,
+				09796E8D2B18D2D600DC76DA /* BankDBWorker.swift in Sources */,
 				09B02C7D2A8EC8C300F474E9 /* PayoutsInteractor.swift in Sources */,
 				090AE1DF29FBAA120092515D /* TemplateInteractor.swift in Sources */,
 				090E87B42AAF7A2500C6AEF3 /* AviaCountryCell.swift in Sources */,
