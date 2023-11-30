@@ -15,9 +15,9 @@ protocol CardDBProtocol: AnyObject {
 }
 
 protocol TemplateDBProtocol: AnyObject {
-    func addTemplate(_ card: Template) throws
-    func deleteTemplate(_ card: Template) throws
-    func updateTemplate(_ card: Template) throws
+    func addTemplate(_ template: Template) throws
+    func deleteTemplate(_ template: Template) throws
+    func updateTemplate(_ template: Template) throws
     func fetchTemplates() -> [Template]
 }
 
@@ -68,20 +68,28 @@ extension BankDBWorker: CardDBProtocol {
 
 extension BankDBWorker: TemplateDBProtocol {
     
-    func addTemplate(_ card: Template) throws {
-        
+    func addTemplate(_ template: Template) throws {
+        let object = TemplateObject.convertToTempObject(tempStruct: template)
+        try realmService.add(object)
     }
     
-    func deleteTemplate(_ card: Template) throws {
-        
+    func deleteTemplate(_ template: Template) throws {
+        let object = TemplateObject.convertToTempObject(tempStruct: template)
+        try realmService.delete(object)
     }
     
-    func updateTemplate(_ card: Template) throws {
-        
+    func updateTemplate(_ template: Template) throws {
+        let object = TemplateObject.convertToTempObject(tempStruct: template)
+        try realmService.update(object)
     }
     
     func fetchTemplates() -> [Template] {
-        []
+        guard
+            let results = realmService.fetch(TemplateObject.self)
+        else { return [] }
+        return results.compactMap { tempObj in
+            Template.convertToTempStruct(tempObject: tempObj)
+        }
     }
     
 }
