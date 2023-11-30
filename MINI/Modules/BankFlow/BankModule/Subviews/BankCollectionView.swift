@@ -38,9 +38,6 @@ final class BankCollectionView: UICollectionView {
         register(BankTemplateLabelCell.self, isHeader: true)
         register(BankTemplateCell.self)
         
-        register(TransferHeader.self, isHeader: true)
-        register(TransferCell.self)
-        
         collectionViewLayout = makeLayout()
     }
     
@@ -57,7 +54,6 @@ private extension BankCollectionView {
             switch section {
             case .card(_)    : return self.makeCardSection()
             case .template(_): return self.makeTemplateSection()
-            case .transfer(_): return self.makeTransferSection()
             case .none: return nil
             }
         }
@@ -202,10 +198,6 @@ extension BankCollectionView: UICollectionViewDataSource {
             let cell = dequeue(BankTemplateCell.self, collectionView, indexPath)
             cell.configure(with: templates[indexPath.item])
             return cell
-        case .transfer(let transfers):
-            let cell = dequeue(TransferCell.self, collectionView, indexPath)
-            cell.configure(with: transfers[indexPath.item])
-            return cell
         default: return UICollectionViewCell()
         }
     }
@@ -232,12 +224,6 @@ extension BankCollectionView: UICollectionViewDataSource {
         case 1:
             if kind == UICollectionView.elementKindSectionHeader {
                 let header = dequeue(BankTemplateLabelCell.self, kind, collectionView, indexPath)
-                header.presenter = presenter
-                return header
-            }
-        case 2:
-            if kind == UICollectionView.elementKindSectionHeader {
-                let header = dequeue(TransferHeader.self, kind, collectionView, indexPath)
                 header.presenter = presenter
                 return header
             }

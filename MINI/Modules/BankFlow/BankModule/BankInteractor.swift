@@ -29,7 +29,7 @@ final class BankInteractor: BankInteractorProtocol {
     //MARK: - Public properties
     
     public weak var presenter: BankPresenterProtocol?
-    public var dataSource: [BankSection] = [.card(mockCards), .template(mockTemplates), .transfer(mockTransfers)]
+    public var dataSource: [BankSection] = [.card(mockCards), .template(mockTemplates)]
     public var transactions: [Transaction] = []
     
     //MARK: - Private properties
@@ -47,7 +47,7 @@ final class BankInteractor: BankInteractorProtocol {
     
     public func viewDidLoaded() {
         //api.fetch()
-        fetch()
+        getData()
         //completion:
         presenter?.updateView()
     }
@@ -81,7 +81,7 @@ final class BankInteractor: BankInteractorProtocol {
             return nil
         }.flatMap { $0 }
         guard cards.count > index else { return }
-        var deletedCard = cards.remove(at: index)
+        let deletedCard = cards.remove(at: index)
         dataSource[0] = .card(cards)
         
         try! database.deleteCard(deletedCard)
@@ -105,7 +105,7 @@ final class BankInteractor: BankInteractorProtocol {
             storedTransactions.remove(at: indexToRemove)
             try! database.deleteTransaction(objectToRemove)
         } else if !storedTransactions.isEmpty && storedTransactions.count > id {
-            var objectToRemove = storedTransactions.remove(at: id)
+            let objectToRemove = storedTransactions.remove(at: id)
             try! database.deleteTransaction(objectToRemove)
         }
     }
@@ -125,13 +125,24 @@ final class BankInteractor: BankInteractorProtocol {
 
 private extension BankInteractor {
     
-    func fetch() {
+    func getData() {
+        // network logic
+        
+        fetchAllFromDB()
+    }
+    
+    func fetchAllFromDB() {
         let cards = database.fetchCards()
-        let temps = database.fetchTemplates()
-        let trans = database.fetchTransactions()
-        dataSource.append(.card(cards))
-        dataSource.append(.template(temps))
-        transactions = trans
+        let templates = database.fetchTemplates()
+        let transactions = database.fetchTransactions()
+        
+        dataSource = [.card(cards), .template(templates)]
+        self.transactions = transactions
+    }
+    
+    func fetchTransactionsFromDB() {
+        let transactions = database.fetchTransactions()
+        self.transactions = transactions
     }
     
 }

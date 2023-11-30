@@ -15,12 +15,18 @@ final class NewCardInteractor: NewCardInteractorProtocol {
     
     weak var presenter: NewCardPresenterProtocol?
     
+    private var database: BankDBWorker
+    
     private let formFields: [FormTableView.FormField] = [
         .init(title: "Название банка", placeholder: "Например 'МИНИБАНК'"),
         .init(title: "Номер карты", placeholder: "1111 2222 3333 4444"),
         .init(title: "Имя держателя карты", placeholder: "IVAN IVANOV"),
         .init(title: "cvv", placeholder: "111", isSecure: true)
     ]
+    
+    init() {
+        self.database = BankDBWorker()
+    }
     
     func viewDidLoaded() {
         presenter?.setFormTextFields(formFields)
@@ -30,6 +36,20 @@ final class NewCardInteractor: NewCardInteractorProtocol {
         let regex = "^[0-9]+$"
         let predicate = NSPredicate(format: "SELF MATCHES %@", regex)
         return predicate.evaluate(with: text)
+    }
+    
+    func addCard() {
+        let newCard = Card(
+            cardColor: "visa",
+            logo: "visa",
+            cardType: "Classic",
+            amount: Double.random(in: 11.0...999.0),
+            currency: "USD",
+            number: "8373120473591274",
+            bankName: "Mono",
+            expirationDate: "01.01.2025",
+            cvv: "818")
+        try! database.addCard(newCard)
     }
     
 }
