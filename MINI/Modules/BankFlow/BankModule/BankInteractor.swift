@@ -34,19 +34,20 @@ final class BankInteractor: BankInteractorProtocol {
     
     //MARK: - Private properties
     
-    private var realmService: RealmServiceProtocol?
+    public var database: BankDBWorker
     private var storedTransactions: [Transaction] = []
     
     //MARK: - Init
     
-    init(realmService: RealmServiceProtocol = RealmService()) {
-        self.realmService = realmService
+    init() {
+        self.database = BankDBWorker()
     }
     
     //MARK: - Public methods
     
     public func viewDidLoaded() {
         //api.fetch()
+        fetch()
         //completion:
         presenter?.updateView()
     }
@@ -80,8 +81,10 @@ final class BankInteractor: BankInteractorProtocol {
             return nil
         }.flatMap { $0 }
         guard cards.count > index else { return }
-        cards.remove(at: index)
+        var deletedCard = cards.remove(at: index)
         dataSource[0] = .card(cards)
+        
+        try! database.deleteCard(deletedCard)
     }
     
     public func userDidTapTransaction(index: Int) -> Transaction? {
@@ -100,8 +103,10 @@ final class BankInteractor: BankInteractorProtocol {
                 let indexToRemove = storedTransactions.firstIndex(where: { $0.id == objectToRemove.id })
             else { return }
             storedTransactions.remove(at: indexToRemove)
+            try! database.deleteTransaction(objectToRemove)
         } else if !storedTransactions.isEmpty && storedTransactions.count > id {
-            storedTransactions.remove(at: id)
+            var objectToRemove = storedTransactions.remove(at: id)
+            try! database.deleteTransaction(objectToRemove)
         }
     }
     
@@ -119,5 +124,14 @@ final class BankInteractor: BankInteractorProtocol {
 //MARK: - Private methods
 
 private extension BankInteractor {
+    
+    func fetch() {
+        let cards = database.fetchCards()
+        let temps = database.fetchTemplates()
+        let trans = database.fetchTransactions()
+        dataSource.append(.card(cards))
+        dataSource.append(.template(temps))
+        transactions = trans
+    }
     
 }
