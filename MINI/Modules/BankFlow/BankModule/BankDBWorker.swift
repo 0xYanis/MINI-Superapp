@@ -97,19 +97,27 @@ extension BankDBWorker: TemplateDBProtocol {
 extension BankDBWorker: TransactionDBProtocol {
     
     func addTransaction(_ transaction: Transaction) throws {
-        
+        let object = TransactionObject.convertToObject(transaction)
+        try realmService.add(object)
     }
     
     func deleteTransaction(_ transaction: Transaction) throws {
-        
+        let object = TransactionObject.convertToObject(transaction)
+        try realmService.delete(object)
     }
     
     func updateTransaction(_ transaction: Transaction) throws {
-        
+        let object = TransactionObject.convertToObject(transaction)
+        try realmService.update(object)
     }
     
     func fetchTransactions() -> [Transaction] {
-        []
+        guard
+            let results = realmService.fetch(TransactionObject.self)
+        else { return [] }
+        return results.compactMap { object in
+            Transaction.convertToTransaction(object)
+        }
     }
     
 }
