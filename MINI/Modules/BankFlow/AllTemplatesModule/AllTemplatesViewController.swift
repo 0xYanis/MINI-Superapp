@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 protocol AllTemplatesViewProtocol: AnyObject {
-    func viewDidLoaded(data: AllTemplatesEntity)
+    func updateView()
     func userWantToDeleteTemplate(id: Int)
 }
 
@@ -31,6 +31,7 @@ final class AllTemplatesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
+        presenter?.viewDidLoaded()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,8 +44,8 @@ final class AllTemplatesViewController: UIViewController {
 //MARK: - AllTemplatesViewProtocol
 extension AllTemplatesViewController: AllTemplatesViewProtocol {
     
-    func viewDidLoaded(data: AllTemplatesEntity) {
-        
+    func updateView() {
+        templateCollectionView.reloadData()
     }
     
     func userWantToDeleteTemplate(id: Int) {

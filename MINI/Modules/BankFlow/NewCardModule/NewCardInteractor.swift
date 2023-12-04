@@ -9,11 +9,14 @@ import Foundation
 
 protocol NewCardInteractorProtocol: AnyObject {
     func viewDidLoaded()
+    func addCard()
 }
 
 final class NewCardInteractor: NewCardInteractorProtocol {
     
     weak var presenter: NewCardPresenterProtocol?
+    
+    private var repository: CardRepository
     
     private let formFields: [FormTableView.FormField] = [
         .init(title: "Название банка", placeholder: "Например 'МИНИБАНК'"),
@@ -21,6 +24,10 @@ final class NewCardInteractor: NewCardInteractorProtocol {
         .init(title: "Имя держателя карты", placeholder: "IVAN IVANOV"),
         .init(title: "cvv", placeholder: "111", isSecure: true)
     ]
+    
+    init() {
+        self.repository = CardRepository()
+    }
     
     func viewDidLoaded() {
         presenter?.setFormTextFields(formFields)
@@ -30,6 +37,11 @@ final class NewCardInteractor: NewCardInteractorProtocol {
         let regex = "^[0-9]+$"
         let predicate = NSPredicate(format: "SELF MATCHES %@", regex)
         return predicate.evaluate(with: text)
+    }
+    
+    func addCard() {
+        let card = Card.generate()
+        try? repository.addCard(card)
     }
     
 }

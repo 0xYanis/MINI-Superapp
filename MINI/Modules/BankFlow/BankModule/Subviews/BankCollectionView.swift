@@ -38,9 +38,6 @@ final class BankCollectionView: UICollectionView {
         register(BankTemplateLabelCell.self, isHeader: true)
         register(BankTemplateCell.self)
         
-        register(TransferHeader.self, isHeader: true)
-        register(TransferCell.self)
-        
         collectionViewLayout = makeLayout()
     }
     
@@ -57,7 +54,6 @@ private extension BankCollectionView {
             switch section {
             case .card(_)    : return self.makeCardSection()
             case .template(_): return self.makeTemplateSection()
-            case .transfer(_): return self.makeTransferSection()
             case .none: return nil
             }
         }
@@ -189,7 +185,7 @@ extension BankCollectionView: UICollectionViewDataSource {
         case .card(let cards):
             if indexPath.item == (cards.count - 1) {
                 let empty = dequeue(BankEmptyCardCell.self, collectionView, indexPath)
-                empty.shadow(color: .black, opacity: 0.3, radius: 15)
+                empty.shadow(color: .black, opacity: 0.1, radius: 10)
                 return empty
             } else {
                 let cell = dequeue(BankCardCell.self, collectionView, indexPath)
@@ -201,10 +197,6 @@ extension BankCollectionView: UICollectionViewDataSource {
         case .template(let templates):
             let cell = dequeue(BankTemplateCell.self, collectionView, indexPath)
             cell.configure(with: templates[indexPath.item])
-            return cell
-        case .transfer(let transfers):
-            let cell = dequeue(TransferCell.self, collectionView, indexPath)
-            cell.configure(with: transfers[indexPath.item])
             return cell
         default: return UICollectionViewCell()
         }
@@ -232,12 +224,6 @@ extension BankCollectionView: UICollectionViewDataSource {
         case 1:
             if kind == UICollectionView.elementKindSectionHeader {
                 let header = dequeue(BankTemplateLabelCell.self, kind, collectionView, indexPath)
-                header.presenter = presenter
-                return header
-            }
-        case 2:
-            if kind == UICollectionView.elementKindSectionHeader {
-                let header = dequeue(TransferHeader.self, kind, collectionView, indexPath)
                 header.presenter = presenter
                 return header
             }
@@ -288,7 +274,7 @@ extension BankCollectionView: UICollectionViewDelegate {
         switch dataSource {
         case .card(let cards):
             guard indexPath.item != (cards.count - 1) else { return nil }
-            return CardBuilder.build(with: cards[indexPath.item])
+            return CardBuilder.build(with: cards[indexPath.item].id)
         case .template(_):
             return TemplateBuilder.build()
         default: return nil

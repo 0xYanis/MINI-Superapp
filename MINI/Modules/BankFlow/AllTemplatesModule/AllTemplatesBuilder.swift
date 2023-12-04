@@ -11,7 +11,7 @@ final class AllTemplatesBuilder {
     static func build(with data: [Template]) -> UIViewController {
         let viewController = AllTemplatesViewController()
         let router = AllTemplatesRouter()
-        let interactor = AllTemplatesInteractor(templatesData: data)
+        let interactor = AllTemplatesInteractor(tempaltes: data)
         let presenter = AllTemplatesPresenter(router: router, interactor: interactor)
         
         viewController.presenter = presenter

@@ -11,6 +11,7 @@ protocol NewCardPresenterProtocol: AnyObject {
     func viewDidLoaded()
     func setFormTextFields(_ textFields: [FormTableView.FormField])
     
+    func didTapAddButton()
     func popToRoot()
 }
 
@@ -36,6 +37,10 @@ extension NewCardPresenter: NewCardPresenterProtocol {
     
     func setFormTextFields(_ textFields: [FormTableView.FormField]) {
         view?.setFormTextFields(textFields)
+    }
+    
+    func didTapAddButton() {
+        interactor.addCard()
     }
     
     func popToRoot() {

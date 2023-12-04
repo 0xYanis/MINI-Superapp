@@ -91,7 +91,7 @@ private extension NewCardViewController {
     }
     
     @objc func didTapAddButton() {
-        
+        presenter?.didTapAddButton()
     }
     
 }

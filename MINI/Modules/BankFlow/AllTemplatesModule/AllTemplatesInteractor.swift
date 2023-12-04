@@ -8,26 +8,40 @@
 import Foundation
 
 protocol AllTemplatesInteractorProtocol: AnyObject {
-    var tempaltesData: [Template] { get }
-    func userWillDeleteTemplate(id: Int)
-    func userWillMoveTemplate(from: Int, to: Int)
+    var tempaltes: [Template] { get }
+    
+    func deleteTemplate(id: Int)
+    func moveTemplate(from: Int, to: Int)
+    func fetchTemplates()
 }
 
 final class AllTemplatesInteractor: AllTemplatesInteractorProtocol {
     weak var presenter: AllTemplatesPresenterProtocol?
     
-    var tempaltesData: [Template] = []
+    var tempaltes = [Template]()
     
-    init(templatesData: [Template]) {
-        self.tempaltesData = templatesData
+    private var repository: TemplateRepositoryProtocol
+    
+    init(tempaltes: [Template]) {
+        self.tempaltes = tempaltes
+        self.repository = TemplateRepository()
     }
     
-    func userWillDeleteTemplate(id: Int) {
-        tempaltesData.remove(at: id)
+    func deleteTemplate(id: Int) {
+        let current = tempaltes.remove(at: id)
+        try? repository.deleteTemplateBy(key: current.id)
     }
     
-    func userWillMoveTemplate(from: Int, to: Int) {
-        tempaltesData.swapAt(from, to)
+    func moveTemplate(from: Int, to: Int) {
+        tempaltes.swapAt(from, to)
+    }
+    
+    func fetchTemplates() {
+        guard let templates = try? repository.fetchTemplates()
+        else { return }
+        templates.forEach { self.tempaltes.append($0) }
+        
+        presenter?.updateView()
     }
     
 }
