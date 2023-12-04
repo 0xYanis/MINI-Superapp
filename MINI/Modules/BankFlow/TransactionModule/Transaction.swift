@@ -38,29 +38,28 @@ struct Transaction: Identifiable, Codable {
             "customerID" : "\(customerID)"
         ]
     }
-    
-    static func convertToTransaction(_ object: TransactionObject) -> Transaction {
-        return Transaction(
-            id: object.id,
-            icon: object.icon,
-            name: object.name,
-            date: object.date,
-            cost: object.cost,
-            cardNumber: object.cardNumber,
-            location: object.location,
-            currency: object.currency,
-            status: object.status,
-            category: object.category,
-            notes: object.notes,
-            merchantID: object.merchantID,
-            customerID: object.customerID
-        )
+}
+
+extension Transaction {
+    init(_ object: TransactionObject) {
+        id = object.id
+        icon = object.icon
+        name = object.name
+        date = object.date
+        cost = object.cost
+        cardNumber = object.cardNumber
+        location = object.location
+        currency = object.currency
+        status = object.status
+        category = object.category
+        notes = object.notes
+        merchantID = object.merchantID
+        customerID = object.customerID
     }
-    
 }
 
 class TransactionObject: Object {
-    @Persisted var id = UUID().uuidString
+    @Persisted(primaryKey: true) var id = UUID().uuidString
     @Persisted var icon: String?
     @Persisted var name: String
     @Persisted var date: String
@@ -73,25 +72,23 @@ class TransactionObject: Object {
     @Persisted var notes: String
     @Persisted var merchantID: Int
     @Persisted var customerID: Int
-    
-    class func convertToObject(_ transaction: Transaction) -> TransactionObject {
-        let object = TransactionObject()
-        
-        object.id = transaction.id
-        object.icon = transaction.icon
-        object.name = transaction.name
-        object.date = transaction.date
-        object.cost = transaction.cost
-        object.cardNumber = transaction.cardNumber
-        object.location = transaction.location
-        object.currency = transaction.currency
-        object.status = transaction.status
-        object.category = transaction.category
-        object.notes = transaction.notes
-        object.merchantID = transaction.merchantID
-        object.customerID = transaction.customerID
-        
-        return object
-    }
+}
 
+extension TransactionObject {
+    convenience init(_ dto: Transaction) {
+        self.init()
+        id = dto.id
+        icon = dto.icon
+        name = dto.name
+        date = dto.date
+        cost = dto.cost
+        cardNumber = dto.cardNumber
+        location = dto.location
+        currency = dto.currency
+        status = dto.status
+        category = dto.category
+        notes = dto.notes
+        merchantID = dto.merchantID
+        customerID = dto.customerID
+    }
 }

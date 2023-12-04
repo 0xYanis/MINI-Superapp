@@ -47,8 +47,8 @@ extension CardPresenter: CardPresenterProtocol {
     }
     
     func userWantToDeleteCard() {
+        interactor.deleteCard()
         router.goBackToBankView()
-        // delete card
     }
     
 }

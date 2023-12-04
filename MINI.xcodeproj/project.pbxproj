@@ -64,6 +64,9 @@
 		092F67AD2A3CDFE100E0F2B9 /* ProfileEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092F67AC2A3CDFE100E0F2B9 /* ProfileEntity.swift */; };
 		092F67AF2A3CE87500E0F2B9 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092F67AE2A3CE87500E0F2B9 /* UIColor+Extensions.swift */; };
 		0936E7BD2ABAF27200F50698 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0936E7BC2ABAF27200F50698 /* AppCoordinator.swift */; };
+		093A50F42B1CF73E00C237FE /* TemplateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093A50F32B1CF73E00C237FE /* TemplateRepository.swift */; };
+		093A50F62B1CF7C200C237FE /* TransactionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093A50F52B1CF7C200C237FE /* TransactionRepository.swift */; };
+		093A50FB2B1D154B00C237FE /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093A50FA2B1D154B00C237FE /* Double+Extension.swift */; };
 		093D02AB2AA0EFE30032D812 /* FBFirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093D02AA2AA0EFE30032D812 /* FBFirestoreManager.swift */; };
 		093D02BA2AA0F9420032D812 /* FBStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093D02B92AA0F9420032D812 /* FBStorageManager.swift */; };
 		093D02BC2AA12A230032D812 /* FBNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093D02BB2AA12A230032D812 /* FBNotificationManager.swift */; };
@@ -148,7 +151,7 @@
 		0973B37C2ADD6589006B07B9 /* PaymentRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0973B37B2ADD6589006B07B9 /* PaymentRouter.swift */; };
 		0973B37E2ADD6594006B07B9 /* PaymentInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0973B37D2ADD6594006B07B9 /* PaymentInteractor.swift */; };
 		0973B3802ADD66E8006B07B9 /* PaymentBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0973B37F2ADD66E8006B07B9 /* PaymentBuilder.swift */; };
-		09796E8D2B18D2D600DC76DA /* BankDBWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09796E8C2B18D2D600DC76DA /* BankDBWorker.swift */; };
+		09796E8D2B18D2D600DC76DA /* CardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09796E8C2B18D2D600DC76DA /* CardRepository.swift */; };
 		097A80652A337E0400B5CF3A /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097A80642A337E0400B5CF3A /* CategoryViewController.swift */; };
 		097A80672A337E1600B5CF3A /* CategoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097A80662A337E1600B5CF3A /* CategoryPresenter.swift */; };
 		097A80692A337E2000B5CF3A /* CategoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097A80682A337E2000B5CF3A /* CategoryInteractor.swift */; };
@@ -379,6 +382,9 @@
 		092F67AC2A3CDFE100E0F2B9 /* ProfileEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEntity.swift; sourceTree = "<group>"; };
 		092F67AE2A3CE87500E0F2B9 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		0936E7BC2ABAF27200F50698 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		093A50F32B1CF73E00C237FE /* TemplateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateRepository.swift; sourceTree = "<group>"; };
+		093A50F52B1CF7C200C237FE /* TransactionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionRepository.swift; sourceTree = "<group>"; };
+		093A50FA2B1D154B00C237FE /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		093D02AA2AA0EFE30032D812 /* FBFirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBFirestoreManager.swift; sourceTree = "<group>"; };
 		093D02B92AA0F9420032D812 /* FBStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBStorageManager.swift; sourceTree = "<group>"; };
 		093D02BB2AA12A230032D812 /* FBNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBNotificationManager.swift; sourceTree = "<group>"; };
@@ -403,7 +409,7 @@
 		0973B37B2ADD6589006B07B9 /* PaymentRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentRouter.swift; sourceTree = "<group>"; };
 		0973B37D2ADD6594006B07B9 /* PaymentInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentInteractor.swift; sourceTree = "<group>"; };
 		0973B37F2ADD66E8006B07B9 /* PaymentBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentBuilder.swift; sourceTree = "<group>"; };
-		09796E8C2B18D2D600DC76DA /* BankDBWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankDBWorker.swift; sourceTree = "<group>"; };
+		09796E8C2B18D2D600DC76DA /* CardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRepository.swift; sourceTree = "<group>"; };
 		097A80642A337E0400B5CF3A /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		097A80662A337E1600B5CF3A /* CategoryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPresenter.swift; sourceTree = "<group>"; };
 		097A80682A337E2000B5CF3A /* CategoryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryInteractor.swift; sourceTree = "<group>"; };
@@ -674,6 +680,7 @@
 				090AE1E229FBAA200092515D /* TemplateBuilder.swift */,
 				090AE1E429FBAA2F0092515D /* TemplateEntity.swift */,
 				09E24C142A1228D000A91F74 /* Template.swift */,
+				093A50F32B1CF73E00C237FE /* TemplateRepository.swift */,
 			);
 			path = TemplateModule;
 			sourceTree = "<group>";
@@ -860,6 +867,7 @@
 				095B9CCA2AD6E641001CCAB6 /* UIImage+Extension.swift */,
 				0999058A2AE00A850010C826 /* UITabBar+Extension.swift */,
 				0909BC602AF9035200CEE009 /* Array+Extension.swift */,
+				093A50FA2B1D154B00C237FE /* Double+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -914,15 +922,14 @@
 		097E039929EC444400CE2A6F /* BankModule */ = {
 			isa = PBXGroup;
 			children = (
-				09D509D129EF3571009CC219 /* Subviews */,
+				097E039E29EC449900CE2A6F /* BankInteractor.swift */,
+				09BE625B2ACAF95A0098ACB2 /* BankSection.swift */,
+				097E03A029EC44A500CE2A6F /* BankRouter.swift */,
+				094388EA2A56F0A200027D59 /* BankViewDetails.swift */,
+				097E03A229EC44BD00CE2A6F /* BankBuilder.swift */,
 				097E039A29EC447000CE2A6F /* BankViewController.swift */,
 				097E039C29EC448F00CE2A6F /* BankPresenter.swift */,
-				097E039E29EC449900CE2A6F /* BankInteractor.swift */,
-				097E03A029EC44A500CE2A6F /* BankRouter.swift */,
-				097E03A229EC44BD00CE2A6F /* BankBuilder.swift */,
-				094388EA2A56F0A200027D59 /* BankViewDetails.swift */,
-				09BE625B2ACAF95A0098ACB2 /* BankSection.swift */,
-				09796E8C2B18D2D600DC76DA /* BankDBWorker.swift */,
+				09D509D129EF3571009CC219 /* Subviews */,
 			);
 			path = BankModule;
 			sourceTree = "<group>";
@@ -1373,6 +1380,7 @@
 				099D4F6C29F71A530002C24A /* CardRouter.swift */,
 				099D4F6E29F71A610002C24A /* CardBuilder.swift */,
 				09E24C102A12239A00A91F74 /* Card.swift */,
+				09796E8C2B18D2D600DC76DA /* CardRepository.swift */,
 			);
 			path = CardModule;
 			sourceTree = "<group>";
@@ -1387,6 +1395,7 @@
 				09FC394B29FAD3F400B2D97E /* TransactionRouter.swift */,
 				09FC394D29FAD3FB00B2D97E /* TransactionBuilder.swift */,
 				09E24C162A122C2E00A91F74 /* Transaction.swift */,
+				093A50F52B1CF7C200C237FE /* TransactionRepository.swift */,
 			);
 			path = TransactionModule;
 			sourceTree = "<group>";
@@ -1717,7 +1726,7 @@
 				09BE625C2ACAF95B0098ACB2 /* BankSection.swift in Sources */,
 				09A7496029F992940005A649 /* CardDetailView.swift in Sources */,
 				09FC394E29FAD3FB00B2D97E /* TransactionBuilder.swift in Sources */,
-				09796E8D2B18D2D600DC76DA /* BankDBWorker.swift in Sources */,
+				09796E8D2B18D2D600DC76DA /* CardRepository.swift in Sources */,
 				09B02C7D2A8EC8C300F474E9 /* PayoutsInteractor.swift in Sources */,
 				090AE1DF29FBAA120092515D /* TemplateInteractor.swift in Sources */,
 				090E87B42AAF7A2500C6AEF3 /* AviaCountryCell.swift in Sources */,
@@ -1803,6 +1812,7 @@
 				09D509D829EF4EDE009CC219 /* UIImageView+Extension.swift in Sources */,
 				09565EE02A2F13B3007A2DAC /* RegisterView.swift in Sources */,
 				096453482A82CF2700709821 /* PasswordPresenter.swift in Sources */,
+				093A50F42B1CF73E00C237FE /* TemplateRepository.swift in Sources */,
 				099089F02A13C2C400EE00DA /* AdressViewController.swift in Sources */,
 				099089EB2A139A5800EE00DA /* GroceryBuilder.swift in Sources */,
 				093D02BA2AA0F9420032D812 /* FBStorageManager.swift in Sources */,
@@ -1827,6 +1837,7 @@
 				099089E92A139A5100EE00DA /* GroceryRouter.swift in Sources */,
 				099D4F6729F71A2C0002C24A /* CardViewController.swift in Sources */,
 				09E24C112A12239A00A91F74 /* Card.swift in Sources */,
+				093A50FB2B1D154B00C237FE /* Double+Extension.swift in Sources */,
 				09B02C7B2A8EC84B00F474E9 /* PayoutsRouter.swift in Sources */,
 				099D4F7529F722EC0002C24A /* NewCardPresenter.swift in Sources */,
 				09E88E832AA8BE6C000B3E43 /* CartTableView.swift in Sources */,
@@ -1869,6 +1880,7 @@
 				09E81C682A169CBA008B313B /* GroceryEntity.swift in Sources */,
 				09FC394829FAD3E300B2D97E /* TransactionPresenter.swift in Sources */,
 				09B02C772A8EC7D700F474E9 /* PayoutsPresenter.swift in Sources */,
+				093A50F62B1CF7C200C237FE /* TransactionRepository.swift in Sources */,
 				0964534A2A82CF5E00709821 /* PasswordBuilder.swift in Sources */,
 				094061B32AB06847009AD0BF /* UITagPickerView.swift in Sources */,
 				09E9E81F29EAE95D0084416B /* LoginRouter.swift in Sources */,

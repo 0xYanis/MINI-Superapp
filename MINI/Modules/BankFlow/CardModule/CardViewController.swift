@@ -232,7 +232,7 @@ extension CardViewController: UITableViewDataSource {
         case 1:
             cell.textLabel?.text = "Card Type: \(card.cardType)"
         case 2:
-            cell.textLabel?.text = "Amount: \(card.amount)"
+            cell.textLabel?.text = "Amount: \(card.amount.toCurrency)"
         case 3:
             cell.textLabel?.text = "Currency: \(card.currency)"
         case 4:

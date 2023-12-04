@@ -9,13 +9,14 @@ import Foundation
 
 protocol NewCardInteractorProtocol: AnyObject {
     func viewDidLoaded()
+    func addCard()
 }
 
 final class NewCardInteractor: NewCardInteractorProtocol {
     
     weak var presenter: NewCardPresenterProtocol?
     
-    private var database: BankDBWorker
+    private var repository: CardRepository
     
     private let formFields: [FormTableView.FormField] = [
         .init(title: "Название банка", placeholder: "Например 'МИНИБАНК'"),
@@ -25,7 +26,7 @@ final class NewCardInteractor: NewCardInteractorProtocol {
     ]
     
     init() {
-        self.database = BankDBWorker()
+        self.repository = CardRepository()
     }
     
     func viewDidLoaded() {
@@ -39,17 +40,8 @@ final class NewCardInteractor: NewCardInteractorProtocol {
     }
     
     func addCard() {
-        let newCard = Card(
-            cardColor: "visa",
-            logo: "visa",
-            cardType: "Classic",
-            amount: Double.random(in: 11.0...999.0),
-            currency: "USD",
-            number: "8373120473591274",
-            bankName: "Mono",
-            expirationDate: "01.01.2025",
-            cvv: "818")
-        try! database.addCard(newCard)
+        let card = Card.generate()
+        try? repository.addCard(card)
     }
     
 }
