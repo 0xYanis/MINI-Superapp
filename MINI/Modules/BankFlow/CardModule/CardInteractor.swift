@@ -8,7 +8,7 @@
 import Foundation
 
 protocol CardInteractorProtocol: AnyObject {
-    var cardData: Card? { get }
+    var card: Card? { get }
     func viewDidLoaded()
     func deleteCard()
 }
@@ -16,23 +16,25 @@ protocol CardInteractorProtocol: AnyObject {
 final class CardInteractor: CardInteractorProtocol {
     weak var presenter: CardPresenterProtocol?
     
-    var cardData: Card?
+    var card: Card?
     
+    private var cardId: UUID
     private var repository: CardRepositoryProtocol
     
-    init(cardData: Card) {
-        self.cardData = cardData
+    init(_ cardId: UUID) {
+        self.cardId = cardId
         self.repository = CardRepository()
     }
     
     func viewDidLoaded() {
-        guard let cardData = cardData else { return }
-        presenter?.udpateView(with: cardData)
+        guard let card = repository.readCard(primaryKey: cardId)
+        else { return }
+        self.card = card
+        presenter?.udpateView(with: card)
     }
     
     func deleteCard() {
-        guard let cardData else { return }
-        try? repository.deleteCard(cardData)
+        try? repository.deleteCardBy(key: cardId)
     }
     
 }

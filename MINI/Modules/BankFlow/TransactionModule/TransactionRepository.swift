@@ -38,7 +38,7 @@ final class TransactionRepository: TransactionRepositoryProtocol {
     }
     
     func fetchTransactions() throws -> [Transaction] {
-        let objects = try storage.fetch(TransactionObject.self)
+        let objects = try storage.fetchAll(TransactionObject.self)
         return objects.compactMap { Transaction($0) }
     }
     

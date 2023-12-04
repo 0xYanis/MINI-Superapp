@@ -39,7 +39,7 @@ extension CardPresenter: CardPresenterProtocol {
     }
     
     func getCardData() -> Card? {
-        interactor.cardData
+        interactor.card
     }
     
     func userWantToEditCard() {

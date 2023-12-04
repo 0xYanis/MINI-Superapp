@@ -38,7 +38,7 @@ final class TemplateRepository: TemplateRepositoryProtocol {
     }
     
     func fetchTemplates() throws -> [Template] {
-        let objects = try storage.fetch(TemplateObject.self)
+        let objects = try storage.fetchAll(TemplateObject.self)
         return objects.compactMap { Template($0) }
     }
     

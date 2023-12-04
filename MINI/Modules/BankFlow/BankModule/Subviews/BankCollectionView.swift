@@ -274,7 +274,7 @@ extension BankCollectionView: UICollectionViewDelegate {
         switch dataSource {
         case .card(let cards):
             guard indexPath.item != (cards.count - 1) else { return nil }
-            return CardBuilder.build(with: cards[indexPath.item])
+            return CardBuilder.build(with: cards[indexPath.item].id)
         case .template(_):
             return TemplateBuilder.build()
         default: return nil

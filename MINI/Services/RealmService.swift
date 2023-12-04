@@ -5,12 +5,14 @@
 //  Created by Yan Rybkin on 23.06.2023.
 //
 
+import Foundation
 import RealmSwift
 
 protocol RealmServiceProtocol {
     func add<T: Object>(_ object: T) throws
-    func read<T: Object>(_ objectType: T.Type, key: Any) -> T?
+    func read<T: Object>(_ objectType: T.Type, key: UUID) -> T?
     func delete<T: Object>(_ object: T) throws
+    func deleteByKey<T: Object>(_ objectType: T.Type, forKey primaryKey: UUID) throws
     func update<T: Object>(_ object: T) throws
     func fetchAll<T: Object>(_ objectType: T.Type) throws -> [T]
     func deleteAll() throws
@@ -46,7 +48,7 @@ final class RealmService: RealmServiceProtocol {
         }
     }
     
-    func read<T: Object>(_ objectType: T.Type, key: Any) -> T? {
+    func read<T: Object>(_ objectType: T.Type, key: UUID) -> T? {
         guard let realm else { return nil }
         let object = realm.object(ofType: objectType, forPrimaryKey: key)
         return object
@@ -56,6 +58,21 @@ final class RealmService: RealmServiceProtocol {
         guard let realm else { return }
         do {
             try realm.write {
+                realm.delete(object)
+            }
+        } catch {
+            throw realmErr.deleteObjectFailed(
+                detail: error.localizedDescription
+            )
+        }
+    }
+    
+    func deleteByKey<T: Object>(_ objectType: T.Type, forKey primaryKey: UUID) throws {
+        guard let realm else { return }
+        do {
+            try realm.write {
+                guard let object = realm.object(ofType: T.self, forPrimaryKey: primaryKey)
+                else { return }
                 realm.delete(object)
             }
         } catch {
