@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import RealmSwift
 
 struct Card: Identifiable, Codable {
     var id: UUID
@@ -57,36 +56,5 @@ extension Card {
         holderName = object.holderName
         expirationDate = object.expirationDate
         cvv = object.cvv
-    }
-}
-
-class CardObject: Object, Identifiable {
-    @Persisted(primaryKey: true) var id: UUID
-    @Persisted var cardColor: String
-    @Persisted var logo: String
-    @Persisted var cardType: String
-    @Persisted var amount: Double
-    @Persisted var currency: String
-    @Persisted var number: String
-    @Persisted var bankName: String
-    @Persisted var holderName: String?
-    @Persisted var expirationDate: String
-    @Persisted var cvv: String
-}
-
-extension CardObject {
-    convenience init(_ dto: Card) {
-        self.init()
-        id = dto.id
-        cardColor = dto.cardColor
-        logo = dto.logo
-        cardType = dto.cardType
-        amount = dto.amount
-        currency = dto.currency
-        number = dto.number
-        bankName = dto.bankName
-        holderName = dto.holderName
-        expirationDate = dto.expirationDate
-        cvv = dto.cvv
     }
 }
