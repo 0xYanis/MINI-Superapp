@@ -9,9 +9,11 @@ import RealmSwift
 
 protocol RealmServiceProtocol {
     func add<T: Object>(_ object: T) throws
+    func read<T: Object>(_ objectType: T.Type, key: Any) -> T?
     func delete<T: Object>(_ object: T) throws
     func update<T: Object>(_ object: T) throws
-    func fetch<T: Object>(_ objectType: T.Type) throws -> [T]
+    func fetchAll<T: Object>(_ objectType: T.Type) throws -> [T]
+    func deleteAll() throws
 }
 
 final class RealmService: RealmServiceProtocol {
@@ -44,6 +46,12 @@ final class RealmService: RealmServiceProtocol {
         }
     }
     
+    func read<T: Object>(_ objectType: T.Type, key: Any) -> T? {
+        guard let realm else { return nil }
+        let object = realm.object(ofType: objectType, forPrimaryKey: key)
+        return object
+    }
+    
     func delete<T: Object>(_ object: T) throws {
         guard let realm else { return }
         do {
@@ -70,7 +78,7 @@ final class RealmService: RealmServiceProtocol {
         }
     }
     
-    func fetch<T: Object>(_ objectType: T.Type) throws -> [T] {
+    func fetchAll<T: Object>(_ objectType: T.Type) throws -> [T] {
         guard let realm else { return [] }
         return realm.objects(T.self).asArray
     }
