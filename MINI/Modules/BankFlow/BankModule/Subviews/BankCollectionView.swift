@@ -185,7 +185,7 @@ extension BankCollectionView: UICollectionViewDataSource {
         case .card(let cards):
             if indexPath.item == (cards.count - 1) {
                 let empty = dequeue(BankEmptyCardCell.self, collectionView, indexPath)
-                empty.shadow(color: .black, opacity: 0.3, radius: 15)
+                empty.shadow(color: .black, opacity: 0.1, radius: 10)
                 return empty
             } else {
                 let cell = dequeue(BankCardCell.self, collectionView, indexPath)

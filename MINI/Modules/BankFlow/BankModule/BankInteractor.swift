@@ -144,7 +144,10 @@ private extension BankInteractor {
     
     func fetchAll() {
         do {
-            let cards = try cardRepository.fetchCards()
+            var cards = try cardRepository.fetchCards()
+            // default card for "Add new card" button
+            cards.append(Card.generate())
+            
             let templates = try templateRepository.fetchTemplates()
             let transactions = try transacionRepository.fetchTransactions()
             dataSource = [.card(cards), .template(templates)]
