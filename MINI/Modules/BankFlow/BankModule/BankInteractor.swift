@@ -148,7 +148,9 @@ private extension BankInteractor {
             // default card for "Add new card" button
             cards.append(Card.generate())
             
-            let templates = try templateRepository.fetchTemplates()
+            var templates = try templateRepository.fetchTemplates()
+            // Default templates
+            Template.examples.forEach { templates.append($0) }
             let transactions = try transacionRepository.fetchTransactions()
             dataSource = [.card(cards), .template(templates)]
             self.transactions = transactions
