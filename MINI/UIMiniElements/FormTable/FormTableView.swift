@@ -39,6 +39,7 @@ final class FormTableView: UITableView {
     struct FormField {
         var title: String
         var placeholder: String
+        var text: String = ""
         var isSecure: Bool = false
     }
     

@@ -7,6 +7,9 @@
 
 import Foundation
 
+fileprivate let systems = ["visa", "mastercard", "american", "mir"]
+fileprivate let banks = ["Privet", "Mono", "Chester", "BooFoo"]
+
 struct Card: Identifiable, Codable {
     var id: UUID
     var cardColor: String
@@ -21,8 +24,6 @@ struct Card: Identifiable, Codable {
     var cvv: String
     
     static func generate() -> Card {
-        let systems = ["visa", "mastercard", "american", "mir"]
-        let banks = ["Privet", "Mono", "Chester", "BooFoo"]
         
         let randomCardNumber = (0..<16).map { _ in
             String(Int.random(in: 0..<10))
@@ -33,7 +34,7 @@ struct Card: Identifiable, Codable {
             cardColor: systems.randomElement() ?? "",
             logo: systems.randomElement() ?? "",
             cardType: "Classic",
-            amount: Double.random(in: 11.0...999.0),
+            amount: Double.random(in: 1.0...9999.0),
             currency: "USD",
             number: randomCardNumber.joined(),
             bankName: banks.randomElement() ?? "",
@@ -56,5 +57,21 @@ extension Card {
         holderName = object.holderName
         expirationDate = object.expirationDate
         cvv = object.cvv
+    }
+}
+
+extension Card {
+    init(bank: String, number: String, holderName: String, cvv: String) {
+        id = .init()
+        cardColor = systems.randomElement() ?? ""
+        logo = systems.randomElement() ?? ""
+        cardType = "Classic"
+        amount = Double.random(in: 1.0...9999.0)
+        currency = "USD"
+        self.number = number
+        bankName = bank
+        self.holderName = holderName
+        expirationDate = "\(123)"
+        self.cvv = cvv
     }
 }

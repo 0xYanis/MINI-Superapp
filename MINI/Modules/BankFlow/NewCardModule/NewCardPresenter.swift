@@ -11,6 +11,8 @@ protocol NewCardPresenterProtocol: AnyObject {
     func viewDidLoaded()
     func setFormTextFields(_ textFields: [FormTableView.FormField])
     
+    func updateView(dataIsCorrect: Bool)
+    func enterText(_ text: String, fieldId: Int)
     func didTapAddButton()
     func popToRoot()
 }
@@ -31,16 +33,25 @@ final class NewCardPresenter {
 
 extension NewCardPresenter: NewCardPresenterProtocol {
     
+    func updateView(dataIsCorrect: Bool) {
+        view?.updateView(dataIsCorrect: dataIsCorrect)
+    }
+    
+    func enterText(_ text: String, fieldId: Int) {
+        interactor.enterText(text, fieldId: fieldId)
+    }
+    
     func viewDidLoaded() {
         interactor.viewDidLoaded()
     }
     
     func setFormTextFields(_ textFields: [FormTableView.FormField]) {
-        view?.setFormTextFields(textFields)
+        view?.configureTextFields(textFields)
     }
     
     func didTapAddButton() {
         interactor.addCard()
+        popToRoot()
     }
     
     func popToRoot() {

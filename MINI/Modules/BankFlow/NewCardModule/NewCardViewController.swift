@@ -9,7 +9,8 @@ import UIKit
 import SnapKit
 
 protocol NewCardViewProtocol: AnyObject {
-    func setFormTextFields(_ textFields: [FormTableView.FormField])
+    func updateView(dataIsCorrect: Bool)
+    func configureTextFields(_ textFields: [FormTableView.FormField])
     func invalidInput(with message: String)
 }
 
@@ -37,9 +38,14 @@ final class NewCardViewController: UIViewController {
 
 extension NewCardViewController: NewCardViewProtocol {
     
-    func setFormTextFields(_ textFields: [FormTableView.FormField]) {
+    func updateView(dataIsCorrect: Bool) {
+        addButton.isHidden = !dataIsCorrect
+    }
+    
+    func configureTextFields(_ textFields: [FormTableView.FormField]) {
         formTable.formFields = textFields
         formTable.reloadData()
+        addButton.isHidden = true
     }
     
     func invalidInput(with message: String) {
@@ -53,6 +59,7 @@ extension NewCardViewController: NewCardViewProtocol {
 extension NewCardViewController: FormTableDelegate {
     
     func textFieldDidReturn(_ text: String, from fieldTag: Int) {
+        presenter?.enterText(text, fieldId: fieldTag)
         print(text, fieldTag)
     }
     
