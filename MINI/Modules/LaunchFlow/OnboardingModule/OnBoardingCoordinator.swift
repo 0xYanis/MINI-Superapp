@@ -19,13 +19,11 @@ final class OnBoardingCoordinator: Coordinator {
     
     func start() {
         let onBoarding = OnboardingBuilder.build(coordinator: self)
-        onBoarding.modalPresentationStyle = .fullScreen
-        onBoarding.modalTransitionStyle = .coverVertical
-        navController.present(onBoarding, animated: true)
+        navController.pushViewController(onBoarding, animated: false)
     }
     
     func finish() {
-        navController.dismiss(animated: true)
+        navController.popViewController(animated: false)
         parentCoordinator?.childDidFinish(self)
     }
     

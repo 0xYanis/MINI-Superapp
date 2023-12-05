@@ -139,10 +139,6 @@
 		096453462A82CE6E00709821 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096453452A82CE6E00709821 /* PasswordViewController.swift */; };
 		096453482A82CF2700709821 /* PasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096453472A82CF2700709821 /* PasswordPresenter.swift */; };
 		0964534A2A82CF5E00709821 /* PasswordBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096453492A82CF5E00709821 /* PasswordBuilder.swift */; };
-		0964A14C2AAA605C00B2E99E /* ordersAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 0964A14B2AAA605C00B2E99E /* ordersAnimation.json */; };
-		0964A1522AAA63F700B2E99E /* travelAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 0964A1512AAA63F700B2E99E /* travelAnimation.json */; };
-		0964A1542AAA675300B2E99E /* cardAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 0964A1532AAA675300B2E99E /* cardAnimation.json */; };
-		0964A1562AAAFD9F00B2E99E /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0964A1552AAAFD9F00B2E99E /* OnboardingViewController.swift */; };
 		0964A1582AAB491100B2E99E /* UIPageViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0964A1572AAB491100B2E99E /* UIPageViewController+Extension.swift */; };
 		0973B3782ADD64EC006B07B9 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0973B3772ADD64EC006B07B9 /* PaymentViewController.swift */; };
 		0973B37A2ADD657F006B07B9 /* PaymentPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0973B3792ADD657F006B07B9 /* PaymentPresenter.swift */; };
@@ -150,6 +146,9 @@
 		0973B37E2ADD6594006B07B9 /* PaymentInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0973B37D2ADD6594006B07B9 /* PaymentInteractor.swift */; };
 		0973B3802ADD66E8006B07B9 /* PaymentBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0973B37F2ADD66E8006B07B9 /* PaymentBuilder.swift */; };
 		097905CA2B1E221100EADB03 /* CardObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097905C92B1E221100EADB03 /* CardObject.swift */; };
+		097905CF2B1F628900EADB03 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097905CE2B1F628900EADB03 /* OnboardingViewController.swift */; };
+		097905D22B1F64EA00EADB03 /* SPPageController in Frameworks */ = {isa = PBXBuildFile; productRef = 097905D12B1F64EA00EADB03 /* SPPageController */; };
+		097905D52B1F772000EADB03 /* order.json in Resources */ = {isa = PBXBuildFile; fileRef = 097905D42B1F771F00EADB03 /* order.json */; };
 		09796E8D2B18D2D600DC76DA /* CardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09796E8C2B18D2D600DC76DA /* CardRepository.swift */; };
 		097A80652A337E0400B5CF3A /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097A80642A337E0400B5CF3A /* CategoryViewController.swift */; };
 		097A80672A337E1600B5CF3A /* CategoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097A80662A337E1600B5CF3A /* CategoryPresenter.swift */; };
@@ -226,7 +225,6 @@
 		09BBA70F2A0E76950020E3C9 /* cardsLogo.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09BBA70E2A0E76950020E3C9 /* cardsLogo.xcassets */; };
 		09BE625A2ACACC610098ACB2 /* BankCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BE62592ACACC610098ACB2 /* BankCollectionView.swift */; };
 		09BE625C2ACAF95B0098ACB2 /* BankSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BE625B2ACAF95A0098ACB2 /* BankSection.swift */; };
-		09BF17022AAA17150090389B /* OnboardingPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BF17012AAA17150090389B /* OnboardingPageController.swift */; };
 		09BF17042AAA175D0090389B /* OnboardingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BF17032AAA175D0090389B /* OnboardingPresenter.swift */; };
 		09BF17062AAA17AE0090389B /* OnboardingBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BF17052AAA17AE0090389B /* OnboardingBuilder.swift */; };
 		09BF17082AAA18750090389B /* OnboardingEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BF17072AAA18750090389B /* OnboardingEntity.swift */; };
@@ -395,10 +393,6 @@
 		096453452A82CE6E00709821 /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
 		096453472A82CF2700709821 /* PasswordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordPresenter.swift; sourceTree = "<group>"; };
 		096453492A82CF5E00709821 /* PasswordBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordBuilder.swift; sourceTree = "<group>"; };
-		0964A14B2AAA605C00B2E99E /* ordersAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ordersAnimation.json; sourceTree = "<group>"; };
-		0964A1512AAA63F700B2E99E /* travelAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = travelAnimation.json; sourceTree = "<group>"; };
-		0964A1532AAA675300B2E99E /* cardAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cardAnimation.json; sourceTree = "<group>"; };
-		0964A1552AAAFD9F00B2E99E /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		0964A1572AAB491100B2E99E /* UIPageViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPageViewController+Extension.swift"; sourceTree = "<group>"; };
 		0973B3772ADD64EC006B07B9 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		0973B3792ADD657F006B07B9 /* PaymentPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentPresenter.swift; sourceTree = "<group>"; };
@@ -406,6 +400,8 @@
 		0973B37D2ADD6594006B07B9 /* PaymentInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentInteractor.swift; sourceTree = "<group>"; };
 		0973B37F2ADD66E8006B07B9 /* PaymentBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentBuilder.swift; sourceTree = "<group>"; };
 		097905C92B1E221100EADB03 /* CardObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardObject.swift; sourceTree = "<group>"; };
+		097905CE2B1F628900EADB03 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		097905D42B1F771F00EADB03 /* order.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = order.json; sourceTree = "<group>"; };
 		09796E8C2B18D2D600DC76DA /* CardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRepository.swift; sourceTree = "<group>"; };
 		097A80642A337E0400B5CF3A /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		097A80662A337E1600B5CF3A /* CategoryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPresenter.swift; sourceTree = "<group>"; };
@@ -478,7 +474,6 @@
 		09BBA70E2A0E76950020E3C9 /* cardsLogo.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = cardsLogo.xcassets; sourceTree = "<group>"; };
 		09BE62592ACACC610098ACB2 /* BankCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankCollectionView.swift; sourceTree = "<group>"; };
 		09BE625B2ACAF95A0098ACB2 /* BankSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankSection.swift; sourceTree = "<group>"; };
-		09BF17012AAA17150090389B /* OnboardingPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageController.swift; sourceTree = "<group>"; };
 		09BF17032AAA175D0090389B /* OnboardingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPresenter.swift; sourceTree = "<group>"; };
 		09BF17052AAA17AE0090389B /* OnboardingBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingBuilder.swift; sourceTree = "<group>"; };
 		09BF17072AAA18750090389B /* OnboardingEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingEntity.swift; sourceTree = "<group>"; };
@@ -566,6 +561,7 @@
 				090B63EF2A45C16700C7D6CD /* RealmSwift in Frameworks */,
 				09CFB4262A1E6A940007FF40 /* SDWebImage in Frameworks */,
 				093D02C32AA12D5F0032D812 /* FirebaseFirestore in Frameworks */,
+				097905D22B1F64EA00EADB03 /* SPPageController in Frameworks */,
 				093D02C72AA12D5F0032D812 /* FirebaseStorage in Frameworks */,
 				093D02C12AA12D5F0032D812 /* FirebaseAuth in Frameworks */,
 				09035D0929DDAE2F003D4B0B /* SnapKit in Frameworks */,
@@ -859,17 +855,6 @@
 			path = PasswordModule;
 			sourceTree = "<group>";
 		};
-		0964A14A2AAA603800B2E99E /* animations */ = {
-			isa = PBXGroup;
-			children = (
-				0964A14B2AAA605C00B2E99E /* ordersAnimation.json */,
-				0964A1512AAA63F700B2E99E /* travelAnimation.json */,
-				0964A1532AAA675300B2E99E /* cardAnimation.json */,
-				0964A1552AAAFD9F00B2E99E /* OnboardingViewController.swift */,
-			);
-			path = animations;
-			sourceTree = "<group>";
-		};
 		097905C52B1DF90B00EADB03 /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -944,6 +929,14 @@
 				09EE2F5B2AA728F0003F08E3 /* Purchase.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		097905D32B1F732F00EADB03 /* animations */ = {
+			isa = PBXGroup;
+			children = (
+				097905D42B1F771F00EADB03 /* order.json */,
+			);
+			path = animations;
 			sourceTree = "<group>";
 		};
 		097A80632A337DF500B5CF3A /* CategoryModule */ = {
@@ -1229,12 +1222,12 @@
 		09BF17002AAA16EE0090389B /* OnboardingModule */ = {
 			isa = PBXGroup;
 			children = (
-				0964A14A2AAA603800B2E99E /* animations */,
-				09BF17012AAA17150090389B /* OnboardingPageController.swift */,
+				097905D32B1F732F00EADB03 /* animations */,
 				09BF17032AAA175D0090389B /* OnboardingPresenter.swift */,
 				09BF17052AAA17AE0090389B /* OnboardingBuilder.swift */,
 				09BF17072AAA18750090389B /* OnboardingEntity.swift */,
 				09D8E3CD2AEA69AC00C7D7D2 /* OnBoardingCoordinator.swift */,
+				097905CE2B1F628900EADB03 /* OnboardingViewController.swift */,
 			);
 			path = OnboardingModule;
 			sourceTree = "<group>";
@@ -1549,6 +1542,7 @@
 				093D02C22AA12D5F0032D812 /* FirebaseFirestore */,
 				093D02C42AA12D5F0032D812 /* FirebaseMessaging */,
 				093D02C62AA12D5F0032D812 /* FirebaseStorage */,
+				097905D12B1F64EA00EADB03 /* SPPageController */,
 			);
 			productName = MINI;
 			productReference = 091095FA29DB32F000338D22 /* MINI.app */;
@@ -1694,6 +1688,7 @@
 				090B63ED2A45C16700C7D6CD /* XCRemoteSwiftPackageReference "realm-swift" */,
 				094202C52A9E1E91008DDE2A /* XCRemoteSwiftPackageReference "FloatingPanel" */,
 				093D02BD2AA12D5F0032D812 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				097905D02B1F64EA00EADB03 /* XCRemoteSwiftPackageReference "SPPageController" */,
 			);
 			productRefGroup = 091095FB29DB32F000338D22 /* Products */;
 			projectDirPath = "";
@@ -1713,15 +1708,13 @@
 			files = (
 				09B566272A936E3700AFF98E /* empty.json in Resources */,
 				09F92CF52A23476300440ACC /* Localizable.strings in Resources */,
-				0964A14C2AAA605C00B2E99E /* ordersAnimation.json in Resources */,
-				0964A1522AAA63F700B2E99E /* travelAnimation.json in Resources */,
-				0964A1542AAA675300B2E99E /* cardAnimation.json in Resources */,
 				09BBA70F2A0E76950020E3C9 /* cardsLogo.xcassets in Resources */,
 				0910960729DB32F400338D22 /* Assets.xcassets in Resources */,
 				09ACB2812A614C4200A7F139 /* rocket.json in Resources */,
 				095B1C6D2A39BD1A00EF6828 /* LaunchScreen.storyboard in Resources */,
 				0913C7E22A9687FC005C887D /* GoogleService-Info.plist in Resources */,
 				09E24C132A1227C200A91F74 /* cardsColor.xcassets in Resources */,
+				097905D52B1F772000EADB03 /* order.json in Resources */,
 				09ABE0082A143447009DB57B /* DefaultFood.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1778,6 +1771,7 @@
 				09796E8D2B18D2D600DC76DA /* CardRepository.swift in Sources */,
 				09B02C7D2A8EC8C300F474E9 /* PayoutsInteractor.swift in Sources */,
 				090AE1DF29FBAA120092515D /* TemplateInteractor.swift in Sources */,
+				097905CF2B1F628900EADB03 /* OnboardingViewController.swift in Sources */,
 				090E87B42AAF7A2500C6AEF3 /* AviaCountryCell.swift in Sources */,
 				090BAB942A029924006AE8F9 /* AviaRouter.swift in Sources */,
 				097E039D29EC448F00CE2A6F /* BankPresenter.swift in Sources */,
@@ -1821,7 +1815,6 @@
 				0973B3782ADD64EC006B07B9 /* PaymentViewController.swift in Sources */,
 				09B02C752A8EC7CC00F474E9 /* PayoutsViewController.swift in Sources */,
 				097A80672A337E1600B5CF3A /* CategoryPresenter.swift in Sources */,
-				0964A1562AAAFD9F00B2E99E /* OnboardingViewController.swift in Sources */,
 				092F67AF2A3CE87500E0F2B9 /* UIColor+Extensions.swift in Sources */,
 				09E9E81929EAE9410084416B /* LoginViewController.swift in Sources */,
 				097ACF222A2E1E470023106A /* RegisterPresenter.swift in Sources */,
@@ -1910,7 +1903,6 @@
 				0994B9402A20F66D00F4A783 /* DeepLinkManager.swift in Sources */,
 				097ACF262A2E1E5C0023106A /* RegisterRouter.swift in Sources */,
 				09D509DA29EF50AC009CC219 /* BankHistoryLabel.swift in Sources */,
-				09BF17022AAA17150090389B /* OnboardingPageController.swift in Sources */,
 				09E9E81D29EAE9540084416B /* LoginInteractor.swift in Sources */,
 				09044FB52A448A3400432A3C /* GroceryCollectionView.swift in Sources */,
 				09D8E3D22AEA6A2800C7D7D2 /* TabBarCoordinator.swift in Sources */,
@@ -2348,6 +2340,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		097905D02B1F64EA00EADB03 /* XCRemoteSwiftPackageReference "SPPageController" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ivanvorobei/SPPageController";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		09CFB4242A1E6A940007FF40 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
@@ -2681,6 +2681,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 093D02BD2AA12D5F0032D812 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = "FirebaseStorageCombine-Community";
+		};
+		097905D12B1F64EA00EADB03 /* SPPageController */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 097905D02B1F64EA00EADB03 /* XCRemoteSwiftPackageReference "SPPageController" */;
+			productName = SPPageController;
 		};
 		098999352A27781F0040B67D /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;
