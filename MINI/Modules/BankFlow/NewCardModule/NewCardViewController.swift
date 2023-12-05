@@ -79,9 +79,23 @@ private extension NewCardViewController {
         view.backgroundColor = .back2MINI
         navigationItem.largeTitleDisplayMode = .never
         navigationItem.title = "add_new_card_title".localized
+        navigationItem.rightBarButtonItem = infoBarButtonItem
         
         createTable()
         createAddButton()
+    }
+    
+    var infoBarButtonItem: UIBarButtonItem {
+        return UIBarButtonItem(
+            image: .init(systemName: "info.circle"),
+            style: .plain,
+            target: self,
+            action: #selector(didTapInfoButton))
+    }
+    
+    @objc func didTapInfoButton() {
+        let infoViewController = UIViewController()
+        present(infoViewController, animated: true)
     }
     
     func createTable() {
