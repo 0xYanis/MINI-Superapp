@@ -10,6 +10,7 @@ import Foundation
 protocol NewCardPresenterProtocol: AnyObject {
     func viewDidLoaded()
     func setFormTextFields(_ textFields: [FormTableView.FormField])
+    func updateFieldMark(of field: Int, with state: Bool)
     
     func updateView(dataIsCorrect: Bool)
     func enterText(_ text: String, fieldId: Int)
@@ -47,6 +48,10 @@ extension NewCardPresenter: NewCardPresenterProtocol {
     
     func setFormTextFields(_ textFields: [FormTableView.FormField]) {
         view?.configureTextFields(textFields)
+    }
+    
+    func updateFieldMark(of field: Int, with state: Bool) {
+        view?.updateFieldMark(of: field, with: state)
     }
     
     func didTapAddButton() {

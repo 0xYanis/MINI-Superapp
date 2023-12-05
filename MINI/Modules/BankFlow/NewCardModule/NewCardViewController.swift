@@ -11,6 +11,7 @@ import SnapKit
 protocol NewCardViewProtocol: AnyObject {
     func updateView(dataIsCorrect: Bool)
     func configureTextFields(_ textFields: [FormTableView.FormField])
+    func updateFieldMark(of field: Int, with state: Bool)
     func invalidInput(with message: String)
 }
 
@@ -50,6 +51,11 @@ extension NewCardViewController: NewCardViewProtocol {
     
     func invalidInput(with message: String) {
         showAlert(message: message)
+    }
+    
+    func updateFieldMark(of field: Int, with state: Bool) {
+        let indexPath = IndexPath(item: field, section: 0)
+        formTable.updateCellMark(at: indexPath, with: state)
     }
     
 }
