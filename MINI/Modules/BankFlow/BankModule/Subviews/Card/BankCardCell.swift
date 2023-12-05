@@ -35,7 +35,7 @@ final class BankCardCell: UICollectionViewCell {
     func configure(with card: Card) {
         cardView.backgroundColor = UIColor(named: card.cardColor)
         cardLogo.image = UIImage(named: card.logo)
-        cardAmount.text = card.currency.getCurrencySymbol() + "\(card.amount)"
+        cardAmount.text = card.amount.toCurrency
         cardNumber.text = "*" + card.number.suffix(4)
     }
     

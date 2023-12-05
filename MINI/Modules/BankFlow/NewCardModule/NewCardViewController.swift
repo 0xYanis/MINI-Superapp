@@ -9,7 +9,9 @@ import UIKit
 import SnapKit
 
 protocol NewCardViewProtocol: AnyObject {
-    func setFormTextFields(_ textFields: [FormTableView.FormField])
+    func updateView(dataIsCorrect: Bool)
+    func configureTextFields(_ textFields: [FormTableView.FormField])
+    func updateFieldMark(of field: Int, with state: Bool)
     func invalidInput(with message: String)
 }
 
@@ -37,13 +39,23 @@ final class NewCardViewController: UIViewController {
 
 extension NewCardViewController: NewCardViewProtocol {
     
-    func setFormTextFields(_ textFields: [FormTableView.FormField]) {
+    func updateView(dataIsCorrect: Bool) {
+        addButton.isHidden = !dataIsCorrect
+    }
+    
+    func configureTextFields(_ textFields: [FormTableView.FormField]) {
         formTable.formFields = textFields
         formTable.reloadData()
+        addButton.isHidden = true
     }
     
     func invalidInput(with message: String) {
         showAlert(message: message)
+    }
+    
+    func updateFieldMark(of field: Int, with state: Bool) {
+        let indexPath = IndexPath(item: field, section: 0)
+        formTable.updateCellMark(at: indexPath, with: state)
     }
     
 }
@@ -53,6 +65,7 @@ extension NewCardViewController: NewCardViewProtocol {
 extension NewCardViewController: FormTableDelegate {
     
     func textFieldDidReturn(_ text: String, from fieldTag: Int) {
+        presenter?.enterText(text, fieldId: fieldTag)
         print(text, fieldTag)
     }
     
@@ -66,9 +79,23 @@ private extension NewCardViewController {
         view.backgroundColor = .back2MINI
         navigationItem.largeTitleDisplayMode = .never
         navigationItem.title = "add_new_card_title".localized
+        navigationItem.rightBarButtonItem = infoBarButtonItem
         
         createTable()
         createAddButton()
+    }
+    
+    var infoBarButtonItem: UIBarButtonItem {
+        return UIBarButtonItem(
+            image: .init(systemName: "info.circle"),
+            style: .plain,
+            target: self,
+            action: #selector(didTapInfoButton))
+    }
+    
+    @objc func didTapInfoButton() {
+        let infoViewController = UIViewController()
+        present(infoViewController, animated: true)
     }
     
     func createTable() {
@@ -91,7 +118,7 @@ private extension NewCardViewController {
     }
     
     @objc func didTapAddButton() {
-        
+        presenter?.didTapAddButton()
     }
     
 }

@@ -16,15 +16,15 @@ struct OnboardingEntity {
     static var first: OnboardingEntity = .init(
         title: "Совершайте заказы",
         message: Message.first.rawValue,
-        animation: "ordersAnimation")
+        animation: "order")
     static var second: OnboardingEntity = .init(
         title: "Планируйте авиаперелеты",
         message: Message.second.rawValue,
-        animation: "travelAnimation")
+        animation: "travel")
     static var third: OnboardingEntity = .init(
-        title: "Управляйте денежными средствами",
+        title: "Управляйте финансами",
         message: Message.third.rawValue,
-        animation: "cardAnimation")
+        animation: "creditcard")
     
     private enum Message: String {
         case first =

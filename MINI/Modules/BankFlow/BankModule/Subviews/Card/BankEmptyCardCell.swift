@@ -22,7 +22,7 @@ final class BankEmptyCardCell: UICollectionViewCell {
     
     private func initialize() {
         cardView.roundCorners(radius: 10)
-        cardView.backgroundColor = .lightGray
+        cardView.backgroundColor = .systemGroupedBackground
         
         addSubview(cardView)
         cardView.snp.makeConstraints { make in
@@ -37,7 +37,7 @@ final class BankEmptyCardCell: UICollectionViewCell {
         cardView.addSubview(image)
         image.snp.makeConstraints { make in
             make.center.equalToSuperview()
-            make.width.height.equalToSuperview().multipliedBy(0.3)
+            make.width.height.equalToSuperview().multipliedBy(0.22)
         }
     }
     

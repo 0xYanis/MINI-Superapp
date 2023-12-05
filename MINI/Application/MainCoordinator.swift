@@ -1,5 +1,5 @@
 //
-//  AppCoordinator.swift
+//  MainCoordinator.swift
 //  MINI
 //
 //  Created by Yan Rybkin on 20.09.2023.

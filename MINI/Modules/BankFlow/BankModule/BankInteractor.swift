@@ -12,6 +12,7 @@ protocol BankInteractorProtocol: AnyObject {
     var transactions: [Transaction] { get }
     
     func viewDidLoaded()
+    func viewWillAppear()
     
     func userDidTapCard(index: Int) -> Card?
     func userDidTapSeeAll() -> [Template]
@@ -29,26 +30,37 @@ final class BankInteractor: BankInteractorProtocol {
     //MARK: - Public properties
     
     public weak var presenter: BankPresenterProtocol?
-    public var dataSource: [BankSection] = [.card(mockCards), .template(mockTemplates), .transfer(mockTransfers)]
+    
+    public var dataSource: [BankSection] = []
     public var transactions: [Transaction] = []
     
     //MARK: - Private properties
     
-    private var realmService: RealmServiceProtocol?
+    private var cardRepository: CardRepositoryProtocol
+    private var templateRepository: TemplateRepositoryProtocol
+    private var transacionRepository: TransactionRepositoryProtocol
+    
     private var storedTransactions: [Transaction] = []
     
-    //MARK: - Init
+    //MARK: - Lifecycle
     
-    init(realmService: RealmServiceProtocol = RealmService()) {
-        self.realmService = realmService
+    init() {
+        self.cardRepository = CardRepository()
+        self.templateRepository = TemplateRepository()
+        self.transacionRepository = TransactionRepository()
     }
     
     //MARK: - Public methods
     
     public func viewDidLoaded() {
         //api.fetch()
+        getData()
         //completion:
-        presenter?.updateView()
+    }
+    
+    func viewWillAppear() {
+        // закоментил чтобы не спамить запросы
+        //getData()
     }
     
     public func userDidTapCard(index: Int) -> Card? {
@@ -80,8 +92,10 @@ final class BankInteractor: BankInteractorProtocol {
             return nil
         }.flatMap { $0 }
         guard cards.count > index else { return }
-        cards.remove(at: index)
+        let deletedCard = cards.remove(at: index)
         dataSource[0] = .card(cards)
+        
+        try? cardRepository.deleteCard(deletedCard)
     }
     
     public func userDidTapTransaction(index: Int) -> Transaction? {
@@ -100,8 +114,10 @@ final class BankInteractor: BankInteractorProtocol {
                 let indexToRemove = storedTransactions.firstIndex(where: { $0.id == objectToRemove.id })
             else { return }
             storedTransactions.remove(at: indexToRemove)
+            try? transacionRepository.deleteTransaction(objectToRemove)
         } else if !storedTransactions.isEmpty && storedTransactions.count > id {
-            storedTransactions.remove(at: id)
+            let objectToRemove = storedTransactions.remove(at: id)
+            try? transacionRepository.deleteTransaction(objectToRemove)
         }
     }
     
@@ -119,5 +135,38 @@ final class BankInteractor: BankInteractorProtocol {
 //MARK: - Private methods
 
 private extension BankInteractor {
+    
+    func getData() {
+        // network logic
+        
+        fetchAll()
+        presenter?.updateView()
+    }
+    
+    func fetchAll() {
+        do {
+            var cards = try cardRepository.fetchCards()
+            // default card for "Add new card" button
+            cards.append(Card.generate())
+            
+            var templates = try templateRepository.fetchTemplates()
+            // Default templates
+            Template.examples.forEach { templates.append($0) }
+            let transactions = try transacionRepository.fetchTransactions()
+            dataSource = [.card(cards), .template(templates)]
+            self.transactions = transactions
+        } catch {
+            presenter?.loadingDataGetFailed(with: error.localizedDescription)
+        }
+    }
+    
+    func fetchTransactionsFromDB() {
+        do {
+            let transactions = try transacionRepository.fetchTransactions()
+            self.transactions = transactions
+        } catch {
+            presenter?.loadingDataGetFailed(with: error.localizedDescription)
+        }
+    }
     
 }

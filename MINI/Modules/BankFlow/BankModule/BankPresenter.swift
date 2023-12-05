@@ -9,6 +9,7 @@ import Foundation
 
 protocol BankPresenterProtocol: AnyObject {
     func viewDidLoaded()
+    func viewWillAppear()
     func updateView()
     func setNewCard()
     func setNewTransaction()
@@ -71,8 +72,8 @@ extension BankPresenter {
     func userWantToDetails(of type: BankViewDetails, with index: Int = 0) {
         switch type {
         case .card:
-            let data = interactor.userDidTapCard(index: index)
-            router.goToDetailCard(with: data!)
+            guard let data = interactor.userDidTapCard(index: index) else { return }
+            router.goToDetailCard(with: data)
         case .template:
             router.goToDetailTemplate(id: index)
         case .transaction:
@@ -96,6 +97,10 @@ extension BankPresenter {
     
     func viewDidLoaded() {
         interactor.viewDidLoaded()
+    }
+    
+    func viewWillAppear() {
+        interactor.viewWillAppear()
     }
     
     func getDataSource() -> [BankSection] {

@@ -39,7 +39,14 @@ final class FormTableView: UITableView {
     struct FormField {
         var title: String
         var placeholder: String
+        var text: String = ""
         var isSecure: Bool = false
+    }
+    
+    func updateCellMark(at indexPath: IndexPath, with state: Bool) {
+        guard let cell = cellForRow(at: indexPath) as? FormCell
+        else { return }
+        cell.updateRightView(state)
     }
     
 }

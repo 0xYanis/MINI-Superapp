@@ -20,6 +20,14 @@ extension String {
         return !isEmpty && range(of: "[^a-zA-Z0-9]", options: .regularExpression) == nil
     }
     
+    var isOnlyLetters: Bool {
+        allSatisfy { $0.isLetter }
+    }
+    
+    var isOnlyNumbers: Bool {
+        allSatisfy { $0.isNumber }
+    }
+    
     func formattedDateString(dateFormat: String) -> String? {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "date_formatter_id".localized)

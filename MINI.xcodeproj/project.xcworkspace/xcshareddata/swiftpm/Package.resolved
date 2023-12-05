@@ -122,8 +122,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/realm/realm-core.git",
       "state" : {
-        "revision" : "72226e2fd84f3a3a8ab3cffc2890c7951f1351d5",
-        "version" : "13.10.1"
+        "revision" : "c569bec4d04da84030d94f376437bc4efda3686b",
+        "version" : "13.23.1"
       }
     },
     {
@@ -132,7 +132,7 @@
       "location" : "https://github.com/realm/realm-swift",
       "state" : {
         "branch" : "master",
-        "revision" : "1823c2680df733a2e7884bbf62f812237b8bc96e"
+        "revision" : "95cb711d60801e82542b866d16d75608c40d7b2e"
       }
     },
     {
@@ -160,6 +160,15 @@
       "state" : {
         "branch" : "develop",
         "revision" : "58320fe80522414bf3a7e24c88123581dc586752"
+      }
+    },
+    {
+      "identity" : "sppagecontroller",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ivanvorobei/SPPageController",
+      "state" : {
+        "revision" : "6bf5378947f5ef123d6b65a391c63de97b1ccf77",
+        "version" : "1.3.3"
       }
     },
     {

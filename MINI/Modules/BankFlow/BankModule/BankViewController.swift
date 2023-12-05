@@ -51,6 +51,7 @@ final class BankViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        presenter?.viewWillAppear()
         tabBarController?.showTabBar()
     }
     

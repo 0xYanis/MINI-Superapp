@@ -9,6 +9,9 @@ import Foundation
 
 protocol AllTemplatesPresenterProtocol: AnyObject {
     
+    func viewDidLoaded()
+    func updateView()
+    
     func getTemplatesData() -> [Template]
     
     func userDidTapTemplate(id: Int)
@@ -19,6 +22,7 @@ protocol AllTemplatesPresenterProtocol: AnyObject {
 }
 
 final class AllTemplatesPresenter {
+    
     weak var view: AllTemplatesViewProtocol?
     var router: AllTemplatesRouterProtocol
     var interactor: AllTemplatesInteractorProtocol
@@ -32,8 +36,16 @@ final class AllTemplatesPresenter {
 
 extension AllTemplatesPresenter: AllTemplatesPresenterProtocol {
     
+    func viewDidLoaded() {
+        interactor.fetchTemplates()
+    }
+    
+    func updateView() {
+        view?.updateView()
+    }
+    
     func getTemplatesData() -> [Template] {
-        interactor.tempaltesData
+        interactor.tempaltes
     }
     
     func userDidTapTemplate(id: Int) {
@@ -45,11 +57,11 @@ extension AllTemplatesPresenter: AllTemplatesPresenterProtocol {
     }
     
     func userWillDeleteTemplate(id: Int) {
-        interactor.userWillDeleteTemplate(id: id)
+        interactor.deleteTemplate(id: id)
     }
     
     func userWillMoveTemplate(from: Int, to: Int) {
-        interactor.userWillMoveTemplate(from: from, to: to)
+        interactor.moveTemplate(from: from, to: to)
     }
     
 }
