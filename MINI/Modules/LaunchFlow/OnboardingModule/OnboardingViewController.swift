@@ -126,7 +126,7 @@ fileprivate final class OnBoardingController: UIViewController {
         self.tag = tag
         titleLabel.text = entity.title
         messageLabel.text = entity.message
-        animationView = LottieAnimationView(name: "order")
+        animationView = LottieAnimationView(name: entity.animation)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -162,8 +162,8 @@ fileprivate final class OnBoardingController: UIViewController {
         animationView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(50)
             $0.centerX.equalToSuperview()
-            $0.width.equalToSuperview().multipliedBy(0.4)
-            $0.height.equalToSuperview().multipliedBy(0.4)
+            $0.width.equalToSuperview().multipliedBy(0.9)
+            $0.height.equalToSuperview().multipliedBy(0.5)
         }
         
         titleLabel.snp.makeConstraints {
@@ -187,8 +187,8 @@ fileprivate final class OnBoardingController: UIViewController {
     private func configureUI() {
         guard let animationView else { return }
         animationView.play()
-        animationView.loopMode = .loop
-        animationView.contentMode = .scaleAspectFill
+        animationView.loopMode = .autoReverse
+        animationView.contentMode = .scaleAspectFit
         
         titleLabel.font = .boldSystemFont(ofSize: 20)
         

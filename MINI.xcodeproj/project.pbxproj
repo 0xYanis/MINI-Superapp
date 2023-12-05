@@ -149,6 +149,8 @@
 		097905CF2B1F628900EADB03 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097905CE2B1F628900EADB03 /* OnboardingViewController.swift */; };
 		097905D22B1F64EA00EADB03 /* SPPageController in Frameworks */ = {isa = PBXBuildFile; productRef = 097905D12B1F64EA00EADB03 /* SPPageController */; };
 		097905D52B1F772000EADB03 /* order.json in Resources */ = {isa = PBXBuildFile; fileRef = 097905D42B1F771F00EADB03 /* order.json */; };
+		097905D72B1F924E00EADB03 /* creditcard.json in Resources */ = {isa = PBXBuildFile; fileRef = 097905D62B1F924E00EADB03 /* creditcard.json */; };
+		097905D92B1F92AA00EADB03 /* travel.json in Resources */ = {isa = PBXBuildFile; fileRef = 097905D82B1F92AA00EADB03 /* travel.json */; };
 		09796E8D2B18D2D600DC76DA /* CardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09796E8C2B18D2D600DC76DA /* CardRepository.swift */; };
 		097A80652A337E0400B5CF3A /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097A80642A337E0400B5CF3A /* CategoryViewController.swift */; };
 		097A80672A337E1600B5CF3A /* CategoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097A80662A337E1600B5CF3A /* CategoryPresenter.swift */; };
@@ -402,6 +404,8 @@
 		097905C92B1E221100EADB03 /* CardObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardObject.swift; sourceTree = "<group>"; };
 		097905CE2B1F628900EADB03 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		097905D42B1F771F00EADB03 /* order.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = order.json; sourceTree = "<group>"; };
+		097905D62B1F924E00EADB03 /* creditcard.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = creditcard.json; sourceTree = "<group>"; };
+		097905D82B1F92AA00EADB03 /* travel.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = travel.json; sourceTree = "<group>"; };
 		09796E8C2B18D2D600DC76DA /* CardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRepository.swift; sourceTree = "<group>"; };
 		097A80642A337E0400B5CF3A /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		097A80662A337E1600B5CF3A /* CategoryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPresenter.swift; sourceTree = "<group>"; };
@@ -935,6 +939,8 @@
 			isa = PBXGroup;
 			children = (
 				097905D42B1F771F00EADB03 /* order.json */,
+				097905D62B1F924E00EADB03 /* creditcard.json */,
+				097905D82B1F92AA00EADB03 /* travel.json */,
 			);
 			path = animations;
 			sourceTree = "<group>";
@@ -1714,6 +1720,8 @@
 				095B1C6D2A39BD1A00EF6828 /* LaunchScreen.storyboard in Resources */,
 				0913C7E22A9687FC005C887D /* GoogleService-Info.plist in Resources */,
 				09E24C132A1227C200A91F74 /* cardsColor.xcassets in Resources */,
+				097905D72B1F924E00EADB03 /* creditcard.json in Resources */,
+				097905D92B1F92AA00EADB03 /* travel.json in Resources */,
 				097905D52B1F772000EADB03 /* order.json in Resources */,
 				09ABE0082A143447009DB57B /* DefaultFood.xcassets in Resources */,
 			);
