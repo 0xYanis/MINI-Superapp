@@ -94,4 +94,10 @@ extension FormCell: UITextFieldDelegate {
         return true
     }
     
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        guard let text = textField.text else { return true }
+        delegate?.textFieldDidReturn(text, from: textField.tag)
+        return true
+    }
+    
 }
