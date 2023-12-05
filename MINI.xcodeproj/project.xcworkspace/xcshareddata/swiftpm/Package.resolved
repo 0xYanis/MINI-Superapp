@@ -163,6 +163,15 @@
       }
     },
     {
+      "identity" : "sppagecontroller",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ivanvorobei/SPPageController",
+      "state" : {
+        "revision" : "6bf5378947f5ef123d6b65a391c63de97b1ccf77",
+        "version" : "1.3.3"
+      }
+    },
+    {
       "identity" : "swift-protobuf",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-protobuf.git",

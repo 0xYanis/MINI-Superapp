@@ -20,9 +20,14 @@ final class OnboardingPresenter: OnboardingPresenterProtocol {
     
     public var content: [OnboardingEntity] = [.first, .second, .third]
     
-    init(view: OnboardingViewProtocol, coordinator: OnBoardingCoordinator) {
+    init(
+        view: OnboardingViewProtocol,
+        coordinator: OnBoardingCoordinator
+    ) {
         self.view = view
         self.coordinator = coordinator
+        
+        view.setData(entities: content)
     }
     
     func readyToContinue() {
