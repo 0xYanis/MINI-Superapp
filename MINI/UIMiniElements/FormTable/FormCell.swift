@@ -71,6 +71,16 @@ final class FormCell: UITableViewCell {
         }
     }
     
+    func updateRightView(_ isValid: Bool) {
+        textField.rightView = nil
+        let image = UIImageView(image: UIImage(
+            systemName: isValid ? "checkmark.circle.fill" : "xmark.circle.fill"))
+        image.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        image.tintColor = isValid ? .systemGreen : .systemRed
+        textField.rightViewMode = .always
+        textField.rightView = image
+    }
+    
 }
 
 // MARK: - UITextFieldDelegate
@@ -84,5 +94,10 @@ extension FormCell: UITextFieldDelegate {
         return true
     }
     
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        guard let text = textField.text else { return true }
+        delegate?.textFieldDidReturn(text, from: textField.tag)
+        return true
+    }
+    
 }
-

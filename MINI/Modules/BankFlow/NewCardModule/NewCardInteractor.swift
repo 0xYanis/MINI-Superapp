@@ -42,10 +42,12 @@ final class NewCardInteractor: NewCardInteractorProtocol {
     func enterText(_ text: String, fieldId: Int) {
         // TODO: Добавить сообщение об ошибке
         guard isValid(text, fieldId: fieldId) else {
+            presenter?.updateFieldMark(of: fieldId, with: false)
             formFields[fieldId].text = ""
             return
         }
         formFields[fieldId].text = text
+        presenter?.updateFieldMark(of: fieldId, with: true)
         
         self.isCorrect = formFields.allSatisfy { !$0.text.isEmpty }
     }

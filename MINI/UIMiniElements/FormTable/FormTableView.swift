@@ -43,6 +43,12 @@ final class FormTableView: UITableView {
         var isSecure: Bool = false
     }
     
+    func updateCellMark(at indexPath: IndexPath, with state: Bool) {
+        guard let cell = cellForRow(at: indexPath) as? FormCell
+        else { return }
+        cell.updateRightView(state)
+    }
+    
 }
 
 // MARK: - FormTextDelegate
