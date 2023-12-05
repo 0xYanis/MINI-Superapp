@@ -19,11 +19,10 @@ final class OnBoardingCoordinator: Coordinator {
     
     func start() {
         let onBoarding = OnboardingBuilder.build(coordinator: self)
-        navController.pushViewController(onBoarding, animated: false)
+        navController.setViewControllers([onBoarding], animated: false)
     }
     
     func finish() {
-        navController.popViewController(animated: false)
         parentCoordinator?.childDidFinish(self)
     }
     
