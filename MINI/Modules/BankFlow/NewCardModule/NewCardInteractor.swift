@@ -40,17 +40,14 @@ final class NewCardInteractor: NewCardInteractorProtocol {
     }
     
     func enterText(_ text: String, fieldId: Int) {
-        // Можно добавить сообщение об ошибке
+        // TODO: Добавить сообщение об ошибке
         guard isValid(text, fieldId: fieldId) else {
             formFields[fieldId].text = ""
-            print("DEBUG: валидация провалена");
             return
         }
-        print("DEBUG: валидация успешно пройдена")
         formFields[fieldId].text = text
         
         self.isCorrect = formFields.allSatisfy { !$0.text.isEmpty }
-        print("DEBUG: isCorrect = \(isCorrect)")
     }
     
     private func isValid(_ text: String, fieldId: Int) -> Bool {

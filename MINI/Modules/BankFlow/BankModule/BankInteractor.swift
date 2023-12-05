@@ -59,7 +59,8 @@ final class BankInteractor: BankInteractorProtocol {
     }
     
     func viewWillAppear() {
-        getData()
+        // закоментил чтобы не спамить запросы
+        //getData()
     }
     
     public func userDidTapCard(index: Int) -> Card? {
