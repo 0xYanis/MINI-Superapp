@@ -18,6 +18,7 @@ protocol LocalSearchService: AnyObject {
     var output: LocalSearchOutput? { get set }
     
     func searchLocations(localRegion: MKCoordinateRegion, query: String)
+    func getLocalPlace(from location: LocalSearchResult, completion: @escaping MKLocalSearch.CompletionHandler)
 }
 
 // MARK: - Output protocol
@@ -40,9 +41,21 @@ final class LocalSearchServiceImpl: NSObject, LocalSearchService {
         completer?.delegate = self
     }
     
+    /// Search for locations
     func searchLocations(localRegion: MKCoordinateRegion, query: String) {
         completer?.region = localRegion
         completer?.queryFragment = query
+    }
+    
+    /// Search 
+    func getLocalPlace(
+        from location: LocalSearchResult,
+        completion: @escaping MKLocalSearch.CompletionHandler
+    ) {
+        let request = MKLocalSearch.Request()
+        request.naturalLanguageQuery = location.title.appending(location.subtitle)
+        let search = MKLocalSearch(request: request)
+        search.start(completionHandler: completion)
     }
     
 }

@@ -36,7 +36,17 @@ final class MapPresenter: MapPresenterProtocol {
     }
     
     public func didTapResult(with index: Int) {
-        
+        let address = addressList[index]
+        localSearch.getLocalPlace(from: address) { [weak self] response, error in
+            if let error = error {
+                self?.view?.showError(
+                    message: error.localizedDescription
+                )
+            }
+            guard let item = response?.mapItems.first
+            else { return }
+            self?.view?.addAnnotation(withCoordinate: item.placemark.coordinate)
+        }
     }
     
     private func setAddress(_ address: String) {

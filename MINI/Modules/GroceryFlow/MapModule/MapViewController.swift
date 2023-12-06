@@ -64,7 +64,7 @@ extension MapViewController: MapViewProtocol {
     }
     
     func showError(message: String) {
-        
+        showAlert(message: message)
     }
     
     func addAnnotation(withCoordinate coordinate: CLLocationCoordinate2D) {
