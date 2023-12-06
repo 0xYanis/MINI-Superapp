@@ -13,6 +13,7 @@ final class LocationService: NSObject {
     static let shared = LocationService()
     
     var userLocation: CLLocationCoordinate2D?
+    var userRegion: CLCircularRegion?
     
     private let manager = CLLocationManager()
     
@@ -40,6 +41,15 @@ extension LocationService: CLLocationManagerDelegate {
         guard let location = locations.first else { return }
         self.userLocation = location.coordinate
         manager.stopUpdatingLocation()
+    }
+    
+    func locationManager(
+        _ manager: CLLocationManager,
+        didEnterRegion region: CLRegion
+    ) {
+        guard let region = region as? CLCircularRegion
+        else {  return }
+        userRegion = region
     }
     
 }

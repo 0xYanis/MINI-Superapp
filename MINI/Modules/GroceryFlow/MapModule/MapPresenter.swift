@@ -42,16 +42,22 @@ final class MapPresenter: MapPresenterProtocol {
                 self?.view?.showError(
                     message: error.localizedDescription
                 )
-                print("DEBUG: ERROR!")
             }
             guard let item = response?.mapItems.first
             else { return }
             self?.view?.addAnnotation(withCoordinate: item.placemark.coordinate)
         }
+        let result = address.title + ", " + address.subtitle
+        saveAddress(result)
     }
     
-    private func setAddress(_ address: String) {
-        // save to DB
+    private func saveAddress(_ address: String) {
+        let uid = UserDefaults.standard.string(forKey: "uid")
+        DispatchQueue.global().async {
+            self.fbFirestoreManager?.updateUserData(
+                uid: uid,
+                updatedData: ["address": address])
+        }
     }
     
 }

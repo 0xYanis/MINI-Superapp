@@ -13,6 +13,7 @@ import FloatingPanel
 protocol GroceryViewProtocol: AnyObject {
     func updateView()
     func updateAddress(_ newAddress: String)
+    func didUpdateResults(_ results: [LocalSearchResult])
     func showLoadingDataGetFailed(with message: String)
 }
 
@@ -62,10 +63,15 @@ extension GroceryViewController: GroceryViewProtocol {
     
     func updateAddress(_ newAddress: String) {
         addressLabel.text = newAddress
+        navigationItem.titleView = addressLabel
+    }
+    
+    func didUpdateResults(_ results: [LocalSearchResult]) {
+        address.addressList = results
     }
     
     func showLoadingDataGetFailed(with message: String) {
-        
+        showAlert(message: message)
     }
     
 }
@@ -107,7 +113,7 @@ private extension GroceryViewController {
     
     func rightBarAdressButton() -> UIBarButtonItem {
         let button = UIBarButtonItem(
-            title: "adress_button".localized,
+            title: "Адрес",
             menu: createAdressMenu()
         )
         button.tintColor = .systemOrange
@@ -203,7 +209,7 @@ private extension GroceryViewController {
 private extension GroceryViewController {
     
     @objc func refreshAction() {
-        presenter?.updateView()
+        presenter?.viewDidLoaded()
         refreshControl.endRefreshing()
     }
     
