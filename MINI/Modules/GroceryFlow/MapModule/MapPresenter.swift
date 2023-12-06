@@ -42,6 +42,7 @@ final class MapPresenter: MapPresenterProtocol {
                 self?.view?.showError(
                     message: error.localizedDescription
                 )
+                print("DEBUG: ERROR!")
             }
             guard let item = response?.mapItems.first
             else { return }

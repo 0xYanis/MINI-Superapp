@@ -12,7 +12,7 @@ final class MapView: UIView {
     
     // MARK: - Public properties
     
-    var userLocation: CLLocationCoordinate2D?
+    var userCoordinate: CLLocationCoordinate2D?
     var currentRegion: MKCoordinateRegion?
     
     // MARK: - Private properties
@@ -41,6 +41,8 @@ final class MapView: UIView {
         annotaion.coordinate = coordinate
         mkMapView.addAnnotation(annotaion)
         mkMapView.selectAnnotation(annotaion, animated: true)
+        
+        setRegion(coordinate: coordinate)
     }
     
     public func removeAnnotation() {
@@ -48,6 +50,11 @@ final class MapView: UIView {
         if let currentRegion {
             mkMapView.setRegion(currentRegion, animated: true)
         }
+    }
+    
+    private func setRegion(coordinate: CLLocationCoordinate2D) {
+        let region = makeRegion(coordinate: coordinate, delta: 0.005)
+        mkMapView.setRegion(region, animated: true)
     }
     
     private func configure() {
@@ -64,17 +71,21 @@ final class MapView: UIView {
 extension MapView: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-        self.userLocation = userLocation.coordinate
-        let region = MKCoordinateRegion(
-            center: .init(
-                latitude: userLocation.coordinate.latitude,
-                longitude: userLocation.coordinate.longitude),
-            span: .init(
-                latitudeDelta: 0.05,
-                longitudeDelta: 0.05)
-        )
+        self.userCoordinate = userLocation.coordinate
+        let region = makeRegion(coordinate: userLocation.coordinate, delta: 0.005)
         self.currentRegion = region
         mkMapView.setRegion(region, animated: true)
+    }
+    
+    func makeRegion(coordinate: CLLocationCoordinate2D, delta: Double) -> MKCoordinateRegion {
+        MKCoordinateRegion(
+            center: .init(
+                latitude: coordinate.latitude,
+                longitude: coordinate.longitude),
+            span: .init(
+                latitudeDelta: delta,
+                longitudeDelta: delta)
+        )
     }
     
 }
