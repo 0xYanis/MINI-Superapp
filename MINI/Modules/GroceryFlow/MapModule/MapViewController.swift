@@ -11,9 +11,10 @@ import MapKit
 import FloatingPanel
 
 protocol MapViewProtocol: AnyObject {
-    func updateView()
-    func setPin(with coordinate: CLLocationCoordinate2D?)
-    func setCurrentLocation(location: CLLocation)
+    func setResults(_ results: [LocalSearchResult])
+    func showError(message: String)
+    func addAnnotation(withCoordinate coordinate: CLLocationCoordinate2D)
+    func removeAnnotation()
 }
 
 final class MapViewController: UIViewController {
@@ -24,8 +25,7 @@ final class MapViewController: UIViewController {
     
     // MARK: - Private properties
     
-    private var mapView: MKMapView!
-    private var trackerButton: MKUserTrackingBarButtonItem!
+    private var mapView = MapView()
     
     private lazy var panelView   = FloatingPanelController()
     private lazy var addressView = AdressViewController()
@@ -40,11 +40,6 @@ final class MapViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.hideTabBar()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        mapView.frame = view.bounds
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -64,36 +59,21 @@ final class MapViewController: UIViewController {
 
 extension MapViewController: MapViewProtocol {
     
-    func updateView() {
-        addressView.updateView()
+    func setResults(_ results: [LocalSearchResult]) {
+        addressView.addressList = results
     }
     
-    func setPin(with coordinate: CLLocationCoordinate2D?) {
-        guard let coordinate = coordinate else { return }
-        
+    func showError(message: String) {
+        showAlert(message: message)
+    }
+    
+    func addAnnotation(withCoordinate coordinate: CLLocationCoordinate2D) {
+        mapView.addAnnotation(withCoordinate: coordinate)
         panelView.move(to: .tip, animated: true)
-        
-        mapView.removeAnnotations(mapView.annotations)
-        let pin = MKPointAnnotation()
-        pin.coordinate = coordinate
-        mapView.addAnnotation(pin)
-        
-        let region = MKCoordinateRegion(
-            center: coordinate,
-            span: MKCoordinateSpan(
-                latitudeDelta: 0.7,
-                longitudeDelta: 0.7)
-        )
-        
-        mapView.setRegion(region, animated: true)
     }
     
-    func setCurrentLocation(location: CLLocation) {
-        let region = MKCoordinateRegion(
-            center: location.coordinate,
-            latitudinalMeters: 1000,
-            longitudinalMeters: 1000)
-        mapView.setRegion(region, animated: true)
+    func removeAnnotation() {
+        mapView.removeAnnotation()
     }
     
 }
@@ -106,19 +86,8 @@ private extension MapViewController {
         view.backgroundColor = .back2MINI
         navigationItem.title = "Адрес"
         navigationItem.largeTitleDisplayMode = .never
-        createMapView()
-        createMKButtons()
-    }
-    
-    func createMapView() {
-        mapView = MKMapView()
-        mapView.showsUserLocation = true
-        view.addSubview(mapView)
-    }
-    
-    func createMKButtons() {
-        trackerButton = MKUserTrackingBarButtonItem(mapView: mapView)
-        navigationItem.rightBarButtonItem = trackerButton
+        view.insertSubview(mapView, at: 0)
+        mapView.frame = view.bounds
     }
     
     func showFloatingPanel() {
@@ -139,12 +108,10 @@ private extension MapViewController {
 
 extension MapViewController: AdressViewDelegate {
     
-    func searchResults() -> [Placemark] {
-        presenter?.searchResults ?? []
-    }
-    
     func searchAdress(with text: String) {
-        presenter?.searchAdress(with: text)
+        if let region = mapView.currentRegion {
+            presenter?.searchAdress(with: text, region: region)
+        }
     }
     
     func didTapResult(with index: Int) {
