@@ -17,7 +17,6 @@ protocol MapPresenterProtocol: AnyObject {
 final class MapPresenter: MapPresenterProtocol {
     
     weak var view: MapViewProtocol?
-    var locationService: LocationServiceProtocol?
     var placemarkService: PlacemarkServiceProtocol?
     var fbFirestoreManager: FBFirestoreProtocol?
     
@@ -28,14 +27,7 @@ final class MapPresenter: MapPresenterProtocol {
     }
     
     func viewDidAppear() {
-        DispatchQueue.global().async {
-            self.locationService?.getCurrentLocation { [weak self] location in
-                guard let self = self else { return }
-                DispatchQueue.main.async {
-                    self.view?.setCurrentLocation(location: location)
-                }
-            }
-        }
+        LocationService.shared.userLocation
     }
     
     public func searchAdress(with text: String) {

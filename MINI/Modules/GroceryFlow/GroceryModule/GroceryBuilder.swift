@@ -11,7 +11,6 @@ final class GroceryBuilder {
     
     static func build() -> UIViewController {
         let groceryService = GroceryService()
-        let locationService = LocationService()
         let placemarkService = PlacemarkService()
         let fbFirestoreManager = FBFirestoreManager()
         
@@ -19,7 +18,6 @@ final class GroceryBuilder {
         let router = GroceryRouter()
         let interactor = GroceryInteractor(
             groceryService: groceryService,
-            locationService: locationService,
             placemarkService: placemarkService,
             fbFirestoreManager: fbFirestoreManager)
         let presenter = GroceryPresenter(

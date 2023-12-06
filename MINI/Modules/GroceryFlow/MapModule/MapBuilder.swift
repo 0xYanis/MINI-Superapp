@@ -13,11 +13,9 @@ final class MapBuilder {
         let view = MapViewController()
         let presenter = MapPresenter(view: view)
         
-        let location = LocationService()
         let fbFirestoreManager = FBFirestoreManager()
         
         view.presenter = presenter
-        presenter.locationService = location
         presenter.fbFirestoreManager = fbFirestoreManager
         
         return view

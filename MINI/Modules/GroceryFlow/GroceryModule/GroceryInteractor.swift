@@ -23,7 +23,6 @@ final class GroceryInteractor: GroceryInteractorProtocol {
     weak var presenter: GroceryPresenterProtocol?
     
     var groceryService: GroceryServiceProtocol
-    var locationService: LocationServiceProtocol
     var placemarkService: PlacemarkServiceProtocol
     var fbFirestoreManager: FBFirestoreProtocol
     
@@ -33,12 +32,10 @@ final class GroceryInteractor: GroceryInteractorProtocol {
     
     init(
         groceryService: GroceryServiceProtocol,
-        locationService: LocationServiceProtocol,
         placemarkService: PlacemarkServiceProtocol,
         fbFirestoreManager: FBFirestoreProtocol
     ) {
         self.groceryService = groceryService
-        self.locationService = locationService
         self.placemarkService = placemarkService
         self.fbFirestoreManager = fbFirestoreManager
     }
