@@ -12,12 +12,7 @@ final class MapBuilder {
     static func build() -> UIViewController {
         let view = MapViewController()
         let presenter = MapPresenter(view: view)
-        
-        let fbFirestoreManager = FBFirestoreManager()
-        
         view.presenter = presenter
-        presenter.fbFirestoreManager = fbFirestoreManager
-        
         return view
     }
     

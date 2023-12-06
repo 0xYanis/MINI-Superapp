@@ -86,7 +86,7 @@ extension GroceryPresenter: GroceryPresenterProtocol {
     }
     
     func getGroceryData() -> [[GroceryEntity]] {
-        interactor.groceryData
+        []
     }
     
     func loadingDataGetFailed(with message: String) {
