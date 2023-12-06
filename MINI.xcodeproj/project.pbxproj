@@ -224,6 +224,8 @@
 		09B566292A936FA500AFF98E /* PayoutsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B566282A936FA500AFF98E /* PayoutsModel.swift */; };
 		09B5662B2A937D3100AFF98E /* PayoutsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B5662A2A937D3000AFF98E /* PayoutsView.swift */; };
 		09B5662D2A937EE700AFF98E /* PayoutsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B5662C2A937EE700AFF98E /* PayoutsCell.swift */; };
+		09BB78842B2092EE00C26A5C /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BB78832B2092EE00C26A5C /* MapView.swift */; };
+		09BB78862B2097C600C26A5C /* LocalSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BB78852B2097C600C26A5C /* LocalSearchService.swift */; };
 		09BBA70F2A0E76950020E3C9 /* cardsLogo.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09BBA70E2A0E76950020E3C9 /* cardsLogo.xcassets */; };
 		09BE625A2ACACC610098ACB2 /* BankCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BE62592ACACC610098ACB2 /* BankCollectionView.swift */; };
 		09BE625C2ACAF95B0098ACB2 /* BankSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BE625B2ACAF95A0098ACB2 /* BankSection.swift */; };
@@ -475,6 +477,8 @@
 		09B566282A936FA500AFF98E /* PayoutsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayoutsModel.swift; sourceTree = "<group>"; };
 		09B5662A2A937D3000AFF98E /* PayoutsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayoutsView.swift; sourceTree = "<group>"; };
 		09B5662C2A937EE700AFF98E /* PayoutsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayoutsCell.swift; sourceTree = "<group>"; };
+		09BB78832B2092EE00C26A5C /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		09BB78852B2097C600C26A5C /* LocalSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalSearchService.swift; sourceTree = "<group>"; };
 		09BBA70E2A0E76950020E3C9 /* cardsLogo.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = cardsLogo.xcassets; sourceTree = "<group>"; };
 		09BE62592ACACC610098ACB2 /* BankCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankCollectionView.swift; sourceTree = "<group>"; };
 		09BE625B2ACAF95A0098ACB2 /* BankSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankSection.swift; sourceTree = "<group>"; };
@@ -1221,6 +1225,7 @@
 				09A4F5A22A8D6FC3006FA62F /* FormTextController.swift */,
 				090C1E692A9D281E00E75464 /* OTPTextField.swift */,
 				094061B22AB06847009AD0BF /* UITagPickerView.swift */,
+				09BB78832B2092EE00C26A5C /* MapView.swift */,
 			);
 			path = UIMiniElements;
 			sourceTree = "<group>";
@@ -1359,6 +1364,7 @@
 				09E9E82D29EB16E10084416B /* KeyChain.swift */,
 				09FB82572A3737AA00CEF8C1 /* LocationService.swift */,
 				0959E5832AA5BE7C00A3777C /* PlacemarkService.swift */,
+				09BB78852B2097C600C26A5C /* LocalSearchService.swift */,
 				090B63EB2A45C09500C7D6CD /* RealmService.swift */,
 				090C1E632A9CA3F800E75464 /* Firebase */,
 			);
@@ -1785,8 +1791,10 @@
 				097E039D29EC448F00CE2A6F /* BankPresenter.swift in Sources */,
 				099A79C029F16406004B95C7 /* BankCardCell.swift in Sources */,
 				099046D82A9E7D5600987B64 /* MapPresenter.swift in Sources */,
+				09BB78842B2092EE00C26A5C /* MapView.swift in Sources */,
 				097CC4E72ACC47FF008F82A6 /* AviaSearchView.swift in Sources */,
 				09E9E82329EAFC770084416B /* UIView+Extension.swift in Sources */,
+				09BB78862B2097C600C26A5C /* LocalSearchService.swift in Sources */,
 				092F67AD2A3CDFE100E0F2B9 /* ProfileEntity.swift in Sources */,
 				09EA1CB52A9631AB00A18B41 /* Date+Extension.swift in Sources */,
 				09FB82522A37286800CEF8C1 /* ProductBuilder.swift in Sources */,
