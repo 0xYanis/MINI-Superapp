@@ -58,7 +58,6 @@ extension GroceryViewController: GroceryViewProtocol {
     
     func updateView() {
         collectionView.reloadData()
-        address.updateView()
     }
     
     func updateAddress(_ newAddress: String) {

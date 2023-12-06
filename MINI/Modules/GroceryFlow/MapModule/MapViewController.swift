@@ -42,11 +42,6 @@ final class MapViewController: UIViewController {
         tabBarController?.hideTabBar()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        mapView.frame = view.bounds
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         showFloatingPanel()
@@ -74,6 +69,7 @@ extension MapViewController: MapViewProtocol {
     
     func addAnnotation(withCoordinate coordinate: CLLocationCoordinate2D) {
         mapView.addAnnotation(withCoordinate: coordinate)
+        panelView.move(to: .tip, animated: true)
     }
     
     func removeAnnotation() {
@@ -90,7 +86,8 @@ private extension MapViewController {
         view.backgroundColor = .back2MINI
         navigationItem.title = "Адрес"
         navigationItem.largeTitleDisplayMode = .never
-        view.addSubview(mapView)
+        view.insertSubview(mapView, at: 0)
+        mapView.frame = view.bounds
     }
     
     func showFloatingPanel() {

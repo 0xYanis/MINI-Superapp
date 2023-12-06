@@ -30,6 +30,11 @@ final class MapView: UIView {
         fatalError()
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        mkMapView.frame = bounds
+    }
+    
     public func addAnnotation(withCoordinate coordinate: CLLocationCoordinate2D) {
         mkMapView.removeAnnotations(mkMapView.annotations)
         let annotaion = MKPointAnnotation()
@@ -51,8 +56,7 @@ final class MapView: UIView {
         mkMapView.isRotateEnabled = false
         mkMapView.delegate = self
         
-        addSubview(mkMapView)
-        mkMapView.frame = self.bounds
+        insertSubview(mkMapView, at: 0)
     }
     
 }

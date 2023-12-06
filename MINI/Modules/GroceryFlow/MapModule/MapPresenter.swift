@@ -38,8 +38,7 @@ final class MapPresenter: MapPresenterProtocol {
     }
     
     public func didTapResult(with index: Int) {
-        let resultTitle = addressList[index].title
-        let resultSubtitle = addressList[index].subtitle
+        
     }
     
     private func setAddress(_ address: String) {
