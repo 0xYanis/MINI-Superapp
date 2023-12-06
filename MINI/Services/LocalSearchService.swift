@@ -10,7 +10,7 @@ import MapKit
 // MARK: - Input protocol
 
 protocol LocalSearchService: AnyObject {
-    func queryFragment(query: String)
+    func searchLocations(localRegion: MKCoordinateRegion, query: String)
 }
 
 // MARK: - Output protocol
@@ -33,7 +33,8 @@ final class LocalSearchServiceImpl: NSObject, LocalSearchService {
         completer?.delegate = self
     }
     
-    public func queryFragment(query: String) {
+    func searchLocations(localRegion: MKCoordinateRegion, query: String) {
+        completer?.region = localRegion
         completer?.queryFragment = query
     }
     
