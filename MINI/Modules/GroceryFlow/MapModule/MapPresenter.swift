@@ -8,8 +8,6 @@
 import MapKit
 
 protocol MapPresenterProtocol: AnyObject {
-    var addressList: [LocalSearchResult] { get }
-    
     func viewDidAppear()
     func searchAdress(with text: String, region: MKCoordinateRegion)
     func didTapResult(with index: Int)
@@ -21,7 +19,7 @@ final class MapPresenter: MapPresenterProtocol {
     var fbFirestoreManager: FBFirestoreProtocol?
     
     private var localSearch: LocalSearchService
-    var addressList: [LocalSearchResult] = []
+    private var addressList: [LocalSearchResult] = []
     
     init(view: MapViewProtocol) {
         self.view = view
@@ -42,7 +40,7 @@ final class MapPresenter: MapPresenterProtocol {
     }
     
     private func setAddress(_ address: String) {
-        
+        // save to DB
     }
     
 }
@@ -50,6 +48,7 @@ final class MapPresenter: MapPresenterProtocol {
 extension MapPresenter: LocalSearchOutput {
     
     func didUpdateResults(_ results: [LocalSearchResult]) {
+        self.addressList = results
         view?.setResults(results)
     }
     

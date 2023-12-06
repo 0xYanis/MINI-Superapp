@@ -722,6 +722,7 @@
 				090C1E702A9DF75E00E75464 /* MapViewController.swift */,
 				099046D72A9E7D5600987B64 /* MapPresenter.swift */,
 				099046D92A9E836600987B64 /* MapBuilder.swift */,
+				099089EF2A13C2C400EE00DA /* AdressViewController.swift */,
 			);
 			path = MapModule;
 			sourceTree = "<group>";
@@ -1156,7 +1157,6 @@
 		099C6D572A13E2F80039AC41 /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
-				099089EF2A13C2C400EE00DA /* AdressViewController.swift */,
 				093111CD2A162C1B008A6329 /* GroceryCells */,
 				09044FB42A448A3400432A3C /* GroceryCollectionView.swift */,
 			);
