@@ -21,6 +21,12 @@ final class AdressViewController: UIViewController {
     
     weak var delegate: AdressViewDelegate?
     
+    var addressList: [LocalSearchResult] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
     // MARK: - Private properties
     
     private let label     = UILabel()
@@ -48,10 +54,6 @@ final class AdressViewController: UIViewController {
     public func configure(label: String, placeholder: String) {
         self.label.text = label
         self.textField.placeholder = placeholder
-    }
-    
-    public func updateView() {
-        tableView.reloadData()
     }
     
 }
@@ -134,7 +136,7 @@ extension AdressViewController: UITableViewDataSource {
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     ) -> Int {
-        0
+        addressList.count
     }
     
     func tableView(
@@ -143,13 +145,18 @@ extension AdressViewController: UITableViewDataSource {
     ) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(
             withIdentifier: String(describing: UITableViewCell.self),
-            for: indexPath
-        )
-        let title = ""
-        cell.textLabel?.text = title
+            for: indexPath)
+        let address = addressList[indexPath.row]
+        cell.textLabel?.text = address.title
         cell.textLabel?.numberOfLines = 0
+        
+        cell.detailTextLabel?.text = address.subtitle
+        cell.detailTextLabel?.textColor = .secondaryLabel
+        cell.detailTextLabel?.numberOfLines = 0
+        
         cell.backgroundColor = .clear
         cell.contentView.backgroundColor = .clear
+        
         return cell
     }
     

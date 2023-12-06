@@ -11,9 +11,10 @@ import MapKit
 import FloatingPanel
 
 protocol MapViewProtocol: AnyObject {
-    func updateView()
-    func setPin(with coordinate: CLLocationCoordinate2D?)
-    func setCurrentLocation(location: CLLocation)
+    func setResults(_ results: [LocalSearchResult])
+    func showError(message: String)
+    func addAnnotation(withCoordinate coordinate: CLLocationCoordinate2D)
+    func removeAnnotation()
 }
 
 final class MapViewController: UIViewController {
@@ -24,8 +25,7 @@ final class MapViewController: UIViewController {
     
     // MARK: - Private properties
     
-    private var mapView: MKMapView!
-    private var trackerButton: MKUserTrackingBarButtonItem!
+    private var mapView = MapView()
     
     private lazy var panelView   = FloatingPanelController()
     private lazy var addressView = AdressViewController()
@@ -64,16 +64,20 @@ final class MapViewController: UIViewController {
 
 extension MapViewController: MapViewProtocol {
     
-    func updateView() {
-        addressView.updateView()
+    func setResults(_ results: [LocalSearchResult]) {
+        addressView.addressList = results
     }
     
-    func setPin(with coordinate: CLLocationCoordinate2D?) {
+    func showError(message: String) {
         
     }
     
-    func setCurrentLocation(location: CLLocation) {
-        
+    func addAnnotation(withCoordinate coordinate: CLLocationCoordinate2D) {
+        mapView.addAnnotation(withCoordinate: coordinate)
+    }
+    
+    func removeAnnotation() {
+        mapView.removeAnnotation()
     }
     
 }
@@ -86,19 +90,7 @@ private extension MapViewController {
         view.backgroundColor = .back2MINI
         navigationItem.title = "Адрес"
         navigationItem.largeTitleDisplayMode = .never
-        createMapView()
-        createMKButtons()
-    }
-    
-    func createMapView() {
-        mapView = MKMapView()
-        mapView.showsUserLocation = true
         view.addSubview(mapView)
-    }
-    
-    func createMKButtons() {
-        trackerButton = MKUserTrackingBarButtonItem(mapView: mapView)
-        navigationItem.rightBarButtonItem = trackerButton
     }
     
     func showFloatingPanel() {
@@ -120,7 +112,9 @@ private extension MapViewController {
 extension MapViewController: AdressViewDelegate {
     
     func searchAdress(with text: String) {
-        presenter?.searchAdress(with: text)
+        if let region = mapView.currentRegion {
+            presenter?.searchAdress(with: text, region: region)
+        }
     }
     
     func didTapResult(with index: Int) {

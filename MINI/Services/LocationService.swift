@@ -20,6 +20,9 @@ final class LocationService: NSObject {
         super.init()
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
+    }
+    
+    func request() {
         manager.requestWhenInUseAuthorization()
         manager.startUpdatingLocation()
     }

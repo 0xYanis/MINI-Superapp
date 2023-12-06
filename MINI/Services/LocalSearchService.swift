@@ -9,14 +9,21 @@ import MapKit
 
 // MARK: - Input protocol
 
+struct LocalSearchResult {
+    var title: String
+    var subtitle: String
+}
+
 protocol LocalSearchService: AnyObject {
+    var output: LocalSearchOutput? { get set }
+    
     func searchLocations(localRegion: MKCoordinateRegion, query: String)
 }
 
 // MARK: - Output protocol
 
 protocol LocalSearchOutput: AnyObject {
-    func didUpdateResults(_ results: [MKLocalSearchCompletion])
+    func didUpdateResults(_ results: [LocalSearchResult])
     func didFailWithError(_ error: Error)
 }
 
@@ -45,7 +52,13 @@ final class LocalSearchServiceImpl: NSObject, LocalSearchService {
 extension LocalSearchServiceImpl: MKLocalSearchCompleterDelegate {
     
     func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
-        output?.didUpdateResults(completer.results)
+        let results = completer.results.map { result in
+            return LocalSearchResult(
+                title: result.title,
+                subtitle: result.subtitle
+            )
+        }
+        output?.didUpdateResults(results)
     }
     
     func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {
