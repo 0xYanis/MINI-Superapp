@@ -16,12 +16,13 @@ protocol MapPresenterProtocol: AnyObject {
 final class MapPresenter: MapPresenterProtocol {
     
     weak var view: MapViewProtocol?
-    var fbFirestoreManager: FBFirestoreProtocol?
     
+    private var userDataWorker: UserDataWorker
     private var localSearch: LocalSearchService
     private var addressList: [LocalSearchResult] = []
     
     init(view: MapViewProtocol) {
+        self.userDataWorker = UserDataWorkerImpl()
         self.view = view
         localSearch = LocalSearchServiceImpl()
         localSearch.output = self
@@ -52,12 +53,7 @@ final class MapPresenter: MapPresenterProtocol {
     }
     
     private func saveAddress(_ address: String) {
-        let uid = UserDefaults.standard.string(forKey: "uid")
-        DispatchQueue.global().async {
-            self.fbFirestoreManager?.updateUserData(
-                uid: uid,
-                updatedData: ["address": address])
-        }
+        userDataWorker.saveUserAddress(address)
     }
     
 }

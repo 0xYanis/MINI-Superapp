@@ -8,9 +8,6 @@
 import Foundation
 
 protocol GroceryInteractorProtocol: AnyObject {
-    var groceryData: [[GroceryEntity]] { get }
-    var filteredData: [[GroceryEntity]] { get }
-    
     func viewDidLoaded()
     func userStartSearchAdress(with searchText: String)
     func userDidTapLocation(at index: Int)
@@ -19,21 +16,13 @@ protocol GroceryInteractorProtocol: AnyObject {
 final class GroceryInteractor: GroceryInteractorProtocol {
     
     weak var presenter: GroceryPresenterProtocol?
-    var groceryData: [[GroceryEntity]] = []
-    var filteredData: [[GroceryEntity]] = []
     
-    private var groceryService: GroceryServiceProtocol
-    private var fbFirestoreManager: FBFirestoreProtocol
     private var localSearch: LocalSearchService
-    
+    private var userDataWorker: UserDataWorker
     private var locationList = [LocalSearchResult]()
     
-    init(
-        groceryService: GroceryServiceProtocol,
-        fbFirestoreManager: FBFirestoreProtocol
-    ) {
-        self.groceryService = GroceryService()
-        self.fbFirestoreManager = FBFirestoreManager()
+    init() {
+        self.userDataWorker = UserDataWorkerImpl()
         self.localSearch = LocalSearchServiceImpl()
         localSearch.output = self
     }
@@ -76,34 +65,17 @@ extension GroceryInteractor: LocalSearchOutput {
 private extension GroceryInteractor {
     
     func getGroceries() {
-        groceryService.getGroceryData { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success(let groceries):
-                self.groceryData = groceries ?? []
-            case .failure(let error):
-                let message = error.localizedDescription
-                self.presenter?.loadingDataGetFailed(with: message)
-            }
-        }
+        
     }
     
     func saveAddress(_ address: String) {
-        let uid = UserDefaults.standard.string(forKey: "uid")
-        DispatchQueue.global().async {
-            self.fbFirestoreManager.updateUserData(
-                uid: uid,
-                updatedData: ["address": address])
-        }
+        userDataWorker.saveUserAddress(address)
     }
     
     func getAddres() {
-        let uid = UserDefaults.standard.string(forKey: "uid")
-        self.fbFirestoreManager.getUserData(uid: uid) { result in
-            guard let address = result["address"] as? String
-            else { return }
+        userDataWorker.getUserAddres { [weak self] address in
             DispatchQueue.main.async {
-                self.presenter?.updateAddress(address)
+                self?.presenter?.updateAddress(address)
             }
         }
     }

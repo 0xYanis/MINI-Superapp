@@ -225,6 +225,7 @@
 		09B5662D2A937EE700AFF98E /* PayoutsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B5662C2A937EE700AFF98E /* PayoutsCell.swift */; };
 		09BB78842B2092EE00C26A5C /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BB78832B2092EE00C26A5C /* MapView.swift */; };
 		09BB78862B2097C600C26A5C /* LocalSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BB78852B2097C600C26A5C /* LocalSearchService.swift */; };
+		09BB78882B20DC7C00C26A5C /* UserDataWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BB78872B20DC7C00C26A5C /* UserDataWorker.swift */; };
 		09BBA70F2A0E76950020E3C9 /* cardsLogo.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09BBA70E2A0E76950020E3C9 /* cardsLogo.xcassets */; };
 		09BE625A2ACACC610098ACB2 /* BankCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BE62592ACACC610098ACB2 /* BankCollectionView.swift */; };
 		09BE625C2ACAF95B0098ACB2 /* BankSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BE625B2ACAF95A0098ACB2 /* BankSection.swift */; };
@@ -253,7 +254,6 @@
 		09E24C172A122C2E00A91F74 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E24C162A122C2E00A91F74 /* Transaction.swift */; };
 		09E7C7CB2A8A2317006421A6 /* ProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E7C7CA2A8A2317006421A6 /* ProfileHeader.swift */; };
 		09E81C682A169CBA008B313B /* GroceryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E81C672A169CBA008B313B /* GroceryEntity.swift */; };
-		09E81C6A2A169D1D008B313B /* GroceryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E81C692A169D1D008B313B /* GroceryService.swift */; };
 		09E88E832AA8BE6C000B3E43 /* CartTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E88E822AA8BE6C000B3E43 /* CartTableView.swift */; };
 		09E88E852AA8C045000B3E43 /* PurchaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E88E842AA8C045000B3E43 /* PurchaseCell.swift */; };
 		09E9E81229EAE6030084416B /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E9E81129EAE6030084416B /* UILabel+Extension.swift */; };
@@ -477,6 +477,7 @@
 		09B5662C2A937EE700AFF98E /* PayoutsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayoutsCell.swift; sourceTree = "<group>"; };
 		09BB78832B2092EE00C26A5C /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		09BB78852B2097C600C26A5C /* LocalSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalSearchService.swift; sourceTree = "<group>"; };
+		09BB78872B20DC7C00C26A5C /* UserDataWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataWorker.swift; sourceTree = "<group>"; };
 		09BBA70E2A0E76950020E3C9 /* cardsLogo.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = cardsLogo.xcassets; sourceTree = "<group>"; };
 		09BE62592ACACC610098ACB2 /* BankCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankCollectionView.swift; sourceTree = "<group>"; };
 		09BE625B2ACAF95A0098ACB2 /* BankSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankSection.swift; sourceTree = "<group>"; };
@@ -504,7 +505,6 @@
 		09E24C162A122C2E00A91F74 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		09E7C7CA2A8A2317006421A6 /* ProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeader.swift; sourceTree = "<group>"; };
 		09E81C672A169CBA008B313B /* GroceryEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryEntity.swift; sourceTree = "<group>"; };
-		09E81C692A169D1D008B313B /* GroceryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryService.swift; sourceTree = "<group>"; };
 		09E88E822AA8BE6C000B3E43 /* CartTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableView.swift; sourceTree = "<group>"; };
 		09E88E842AA8C045000B3E43 /* PurchaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseCell.swift; sourceTree = "<group>"; };
 		09E9E81129EAE6030084416B /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
@@ -1100,14 +1100,13 @@
 		099089EC2A139A6000EE00DA /* GroceryModule */ = {
 			isa = PBXGroup;
 			children = (
+				09BB78892B20DEC200C26A5C /* Data */,
 				099C6D572A13E2F80039AC41 /* Subviews */,
 				099089E22A139A2D00EE00DA /* GroceryViewController.swift */,
 				099089E42A139A3A00EE00DA /* GroceryPresenter.swift */,
 				099089E62A139A4600EE00DA /* GroceryInteractor.swift */,
 				099089E82A139A5100EE00DA /* GroceryRouter.swift */,
 				099089EA2A139A5800EE00DA /* GroceryBuilder.swift */,
-				09E81C672A169CBA008B313B /* GroceryEntity.swift */,
-				09E81C692A169D1D008B313B /* GroceryService.swift */,
 			);
 			path = GroceryModule;
 			sourceTree = "<group>";
@@ -1226,6 +1225,15 @@
 				09BB78832B2092EE00C26A5C /* MapView.swift */,
 			);
 			path = UIMiniElements;
+			sourceTree = "<group>";
+		};
+		09BB78892B20DEC200C26A5C /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				09E81C672A169CBA008B313B /* GroceryEntity.swift */,
+				09BB78872B20DC7C00C26A5C /* UserDataWorker.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		09BF17002AAA16EE0090389B /* OnboardingModule */ = {
@@ -1875,7 +1883,6 @@
 				0973B37E2ADD6594006B07B9 /* PaymentInteractor.swift in Sources */,
 				09FC393729FABF2D00B2D97E /* AllTemplatesViewController.swift in Sources */,
 				09E9E82E29EB16E10084416B /* KeyChain.swift in Sources */,
-				09E81C6A2A169D1D008B313B /* GroceryService.swift in Sources */,
 				099D4F6D29F71A530002C24A /* CardRouter.swift in Sources */,
 				098632E72AE7CAB000F39A8C /* PaymentButton.swift in Sources */,
 				09044FAD2A444AD800432A3C /* GSearchRouter.swift in Sources */,
@@ -1883,6 +1890,7 @@
 				09BF17042AAA175D0090389B /* OnboardingPresenter.swift in Sources */,
 				0964A1582AAB491100B2E99E /* UIPageViewController+Extension.swift in Sources */,
 				09EA1CAF2A962DBE00A18B41 /* SupportPresenter.swift in Sources */,
+				09BB78882B20DC7C00C26A5C /* UserDataWorker.swift in Sources */,
 				09FB82502A37286000CEF8C1 /* ProductInteractor.swift in Sources */,
 				099089E32A139A2D00EE00DA /* GroceryViewController.swift in Sources */,
 				099D4F8129F72AF40002C24A /* NewTemplateInteractor.swift in Sources */,
