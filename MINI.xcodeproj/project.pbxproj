@@ -79,7 +79,6 @@
 		094388EB2A56F0A200027D59 /* BankViewDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094388EA2A56F0A200027D59 /* BankViewDetails.swift */; };
 		09565EE02A2F13B3007A2DAC /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09565EDF2A2F13B3007A2DAC /* RegisterView.swift */; };
 		09565EE42A2F69E6007A2DAC /* CardBackDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09565EE32A2F69E6007A2DAC /* CardBackDetailView.swift */; };
-		0959E5842AA5BE7C00A3777C /* PlacemarkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0959E5832AA5BE7C00A3777C /* PlacemarkService.swift */; };
 		095B1C6D2A39BD1A00EF6828 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 095B1C6C2A39BD1A00EF6828 /* LaunchScreen.storyboard */; };
 		095B9CCB2AD6E641001CCAB6 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095B9CCA2AD6E641001CCAB6 /* UIImage+Extension.swift */; };
 		0964061D2AD02D75009A3A88 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 0964061C2AD02D75009A3A88 /* FirebaseAnalytics */; };
@@ -391,7 +390,6 @@
 		094388EA2A56F0A200027D59 /* BankViewDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankViewDetails.swift; sourceTree = "<group>"; };
 		09565EDF2A2F13B3007A2DAC /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		09565EE32A2F69E6007A2DAC /* CardBackDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBackDetailView.swift; sourceTree = "<group>"; };
-		0959E5832AA5BE7C00A3777C /* PlacemarkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacemarkService.swift; sourceTree = "<group>"; };
 		095B1C6C2A39BD1A00EF6828 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		095B9CCA2AD6E641001CCAB6 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		096453452A82CE6E00709821 /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
@@ -1363,7 +1361,6 @@
 				09E9E82929EB16210084416B /* KeyChainService.swift */,
 				09E9E82D29EB16E10084416B /* KeyChain.swift */,
 				09FB82572A3737AA00CEF8C1 /* LocationService.swift */,
-				0959E5832AA5BE7C00A3777C /* PlacemarkService.swift */,
 				09BB78852B2097C600C26A5C /* LocalSearchService.swift */,
 				090B63EB2A45C09500C7D6CD /* RealmService.swift */,
 				090C1E632A9CA3F800E75464 /* Firebase */,
@@ -1858,7 +1855,6 @@
 				09E9E81229EAE6030084416B /* UILabel+Extension.swift in Sources */,
 				090E87A82AAF633400C6AEF3 /* AviaSection.swift in Sources */,
 				09E9E83029EB24840084416B /* UIAlertController+Extension.swift in Sources */,
-				0959E5842AA5BE7C00A3777C /* PlacemarkService.swift in Sources */,
 				097905CA2B1E221100EADB03 /* CardObject.swift in Sources */,
 				09FC394C29FAD3F400B2D97E /* TransactionRouter.swift in Sources */,
 				09044FAB2A444AD000432A3C /* GSearchPresenter.swift in Sources */,

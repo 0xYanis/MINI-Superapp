@@ -11,7 +11,6 @@ import SnapKit
 // MARK: - AdressViewDelegate
 
 protocol AdressViewDelegate: AnyObject {
-    func searchResults() -> [Placemark]
     func searchAdress(with text: String)
     func didTapResult(with index: Int)
 }
@@ -135,7 +134,7 @@ extension AdressViewController: UITableViewDataSource {
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     ) -> Int {
-        return delegate?.searchResults().count ?? 0
+        0
     }
     
     func tableView(
@@ -146,7 +145,7 @@ extension AdressViewController: UITableViewDataSource {
             withIdentifier: String(describing: UITableViewCell.self),
             for: indexPath
         )
-        let title = delegate?.searchResults()[indexPath.row].location
+        let title = ""
         cell.textLabel?.text = title
         cell.textLabel?.numberOfLines = 0
         cell.backgroundColor = .clear

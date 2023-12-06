@@ -234,12 +234,6 @@ extension GroceryViewController: UISearchResultsUpdating {
 
 extension GroceryViewController: AdressViewDelegate {
     
-    func searchResults() -> [Placemark] {
-        guard let locations = presenter?.getLocationResults()
-        else { return [] }
-        return locations
-    }
-    
     func searchAdress(with text: String) {
         presenter?.userStartSearchAdress(with: text)
     }

@@ -11,14 +11,12 @@ final class GroceryBuilder {
     
     static func build() -> UIViewController {
         let groceryService = GroceryService()
-        let placemarkService = PlacemarkService()
         let fbFirestoreManager = FBFirestoreManager()
         
         let view = GroceryViewController()
         let router = GroceryRouter()
         let interactor = GroceryInteractor(
             groceryService: groceryService,
-            placemarkService: placemarkService,
             fbFirestoreManager: fbFirestoreManager)
         let presenter = GroceryPresenter(
             router: router,

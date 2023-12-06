@@ -69,31 +69,11 @@ extension MapViewController: MapViewProtocol {
     }
     
     func setPin(with coordinate: CLLocationCoordinate2D?) {
-        guard let coordinate = coordinate else { return }
         
-        panelView.move(to: .tip, animated: true)
-        
-        mapView.removeAnnotations(mapView.annotations)
-        let pin = MKPointAnnotation()
-        pin.coordinate = coordinate
-        mapView.addAnnotation(pin)
-        
-        let region = MKCoordinateRegion(
-            center: coordinate,
-            span: MKCoordinateSpan(
-                latitudeDelta: 0.7,
-                longitudeDelta: 0.7)
-        )
-        
-        mapView.setRegion(region, animated: true)
     }
     
     func setCurrentLocation(location: CLLocation) {
-        let region = MKCoordinateRegion(
-            center: location.coordinate,
-            latitudinalMeters: 1000,
-            longitudinalMeters: 1000)
-        mapView.setRegion(region, animated: true)
+        
     }
     
 }
@@ -138,10 +118,6 @@ private extension MapViewController {
 }
 
 extension MapViewController: AdressViewDelegate {
-    
-    func searchResults() -> [Placemark] {
-        presenter?.searchResults ?? []
-    }
     
     func searchAdress(with text: String) {
         presenter?.searchAdress(with: text)
