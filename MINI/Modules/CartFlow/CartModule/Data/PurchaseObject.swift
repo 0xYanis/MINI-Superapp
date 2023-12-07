@@ -9,7 +9,7 @@ import Foundation
 import RealmSwift
 
 class PurchaseObject: Object {
-    @Persisted var id: UUID
+    @Persisted(primaryKey: true) var id: UUID
     @Persisted var name: String
     @Persisted var image: String = "AppIcon"
     @Persisted var type: PurchaseType

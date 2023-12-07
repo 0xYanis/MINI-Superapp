@@ -26,9 +26,16 @@ final class CartInteractor: CartInteractorProtocol {
     
     // MARK: - Private properties
     
+    private var cartRepository: CartRepositoryProtocol
     private var purchases: [Purchase] = mockPurchase
     private var totalPrice: Double = 0.0 {
         didSet { presenter?.updateOrder(quantity: totalPrice == 0.0 ? 0 : filtered.count, with: totalPrice) }
+    }
+    
+    // MARK: - Lifecycle
+    
+    init() {
+        self.cartRepository = CartRepository()
     }
     
     // MARK: - Public methods
@@ -94,6 +101,35 @@ final class CartInteractor: CartInteractorProtocol {
     
     private func purchasesCounter() {
         presenter?.updateBadge(newValue: purchases.count)
+    }
+    
+}
+
+// MARK: - Data layler methods
+
+extension CartInteractor {
+    
+    func deletePurchase(key: UUID) {
+        try? cartRepository.deletePurchase(key: key)
+    }
+    
+    func removeAllPurchases() {
+        try? cartRepository.removeAll()
+    }
+    
+    func fetchPurchases() {
+        guard let purchases = try? cartRepository.fetchPurchases()
+        else { return }
+        self.purchases = purchases
+        self.filtered = purchases
+    }
+    
+    func updatePurchaseType(key: UUID, newType: PurchaseType) {
+        try? cartRepository.updatePurchaseType(newType, with: key)
+    }
+    
+    func updateQuantity(key: UUID, newValue: Int) {
+        // TODO:
     }
     
 }
