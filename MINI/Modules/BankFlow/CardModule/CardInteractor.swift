@@ -34,7 +34,7 @@ final class CardInteractor: CardInteractorProtocol {
     }
     
     func deleteCard() {
-        try? repository.deleteCardBy(key: cardId)
+        try? repository.deleteCard(key: cardId)
     }
     
 }

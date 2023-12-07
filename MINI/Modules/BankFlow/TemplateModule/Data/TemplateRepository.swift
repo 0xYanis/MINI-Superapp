@@ -10,8 +10,7 @@ import Foundation
 protocol TemplateRepositoryProtocol: AnyObject {
     func addTemplate(_ template: Template) throws
     func readTemplate(primaryKey: UUID) -> Template?
-    func deleteTemplate(_ template: Template) throws
-    func deleteTemplateBy(key: UUID) throws
+    func deleteTemplate(key: UUID) throws
     func updateTemplate(_ template: Template) throws
     func fetchTemplates() throws -> [Template]
 }
@@ -35,13 +34,8 @@ final class TemplateRepository: TemplateRepositoryProtocol {
         return Template(object)
     }
     
-    func deleteTemplate(_ template: Template) throws {
-        let object = TemplateObject(template)
-        try storage.delete(object)
-    }
-    
-    func deleteTemplateBy(key: UUID) throws {
-        try storage.deleteByKey(TemplateObject.self, forKey: key)
+    func deleteTemplate(key: UUID) throws {
+        try storage.delete(TemplateObject.self, forKey: key)
     }
     
     func updateTemplate(_ template: Template) throws {
