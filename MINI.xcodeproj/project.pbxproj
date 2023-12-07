@@ -278,6 +278,8 @@
 		09EE2F5F2AA728F0003F08E3 /* CartBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EE2F592AA728F0003F08E3 /* CartBuilder.swift */; };
 		09EE2F602AA728F0003F08E3 /* CartInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EE2F5A2AA728F0003F08E3 /* CartInteractor.swift */; };
 		09EE2F612AA728F0003F08E3 /* Purchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EE2F5B2AA728F0003F08E3 /* Purchase.swift */; };
+		09F3CB1C2B2214510022175F /* CartRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F3CB1B2B2214510022175F /* CartRepository.swift */; };
+		09F3CB1E2B2214910022175F /* PurchaseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F3CB1D2B2214910022175F /* PurchaseObject.swift */; };
 		09F5BFE02A12B47800BC3B7C /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = 09F5BFDF2A12B47800BC3B7C /* SkeletonView */; };
 		09F86C4F29F6E96C00307432 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F86C4E29F6E96C00307432 /* BaseTabBarController.swift */; };
 		09F86C5729F6F8A000307432 /* UITabBarController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F86C5629F6F8A000307432 /* UITabBarController+Extension.swift */; };
@@ -528,6 +530,8 @@
 		09EE2F592AA728F0003F08E3 /* CartBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartBuilder.swift; sourceTree = "<group>"; };
 		09EE2F5A2AA728F0003F08E3 /* CartInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartInteractor.swift; sourceTree = "<group>"; };
 		09EE2F5B2AA728F0003F08E3 /* Purchase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Purchase.swift; sourceTree = "<group>"; };
+		09F3CB1B2B2214510022175F /* CartRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartRepository.swift; sourceTree = "<group>"; };
+		09F3CB1D2B2214910022175F /* PurchaseObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseObject.swift; sourceTree = "<group>"; };
 		09F86C4E29F6E96C00307432 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		09F86C5629F6F8A000307432 /* UITabBarController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarController+Extension.swift"; sourceTree = "<group>"; };
 		09F922682A1EA234009684F2 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
@@ -931,6 +935,8 @@
 			isa = PBXGroup;
 			children = (
 				09EE2F5B2AA728F0003F08E3 /* Purchase.swift */,
+				09F3CB1B2B2214510022175F /* CartRepository.swift */,
+				09F3CB1D2B2214910022175F /* PurchaseObject.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -1748,6 +1754,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09F3CB1E2B2214910022175F /* PurchaseObject.swift in Sources */,
 				092E739C29EBFD9100165D37 /* UITextField+Extension.swift in Sources */,
 				09FC393929FABF4200B2D97E /* AllTemplatesPresenter.swift in Sources */,
 				099D4F8529F72B050002C24A /* NewTemplateBuilder.swift in Sources */,
@@ -1825,6 +1832,7 @@
 				097A80672A337E1600B5CF3A /* CategoryPresenter.swift in Sources */,
 				092F67AF2A3CE87500E0F2B9 /* UIColor+Extensions.swift in Sources */,
 				09E9E81929EAE9410084416B /* LoginViewController.swift in Sources */,
+				09F3CB1C2B2214510022175F /* CartRepository.swift in Sources */,
 				097ACF222A2E1E470023106A /* RegisterPresenter.swift in Sources */,
 				09EE2F5C2AA728F0003F08E3 /* CartPresenter.swift in Sources */,
 				09D8E3D02AEA69E300C7D7D2 /* AuthCoordinator.swift in Sources */,
