@@ -51,6 +51,7 @@
 		091BC7472ACDBB6900EE3A14 /* BankEmptyCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091BC7462ACDBB6900EE3A14 /* BankEmptyCardCell.swift */; };
 		091BC7492ACEAF6D00EE3A14 /* CartTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091BC7482ACEAF6D00EE3A14 /* CartTagCell.swift */; };
 		091CD49029DDE9250041627F /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 091CD48F29DDE9250041627F /* Lottie */; };
+		091D66552B278DBE0037D9A3 /* BackgroundSceneBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091D66542B278DBE0037D9A3 /* BackgroundSceneBlur.swift */; };
 		0921F35F29DF1FE000B3D4F7 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0921F35E29DF1FE000B3D4F7 /* UIButton+Extension.swift */; };
 		0925E3D02AB8DDC100E886AE /* BankSheetLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0925E3CF2AB8DDC100E886AE /* BankSheetLayout.swift */; };
 		092E739429EBEB1F00165D37 /* LoginAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E739329EBEB1E00165D37 /* LoginAnimationView.swift */; };
@@ -368,6 +369,7 @@
 		0913C7E12A9687FB005C887D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		091BC7462ACDBB6900EE3A14 /* BankEmptyCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankEmptyCardCell.swift; sourceTree = "<group>"; };
 		091BC7482ACEAF6D00EE3A14 /* CartTagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTagCell.swift; sourceTree = "<group>"; };
+		091D66542B278DBE0037D9A3 /* BackgroundSceneBlur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundSceneBlur.swift; sourceTree = "<group>"; };
 		0921F35E29DF1FE000B3D4F7 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		0925E3CF2AB8DDC100E886AE /* BankSheetLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankSheetLayout.swift; sourceTree = "<group>"; };
 		092E739329EBEB1E00165D37 /* LoginAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAnimationView.swift; sourceTree = "<group>"; };
@@ -1223,6 +1225,7 @@
 				090C1E692A9D281E00E75464 /* OTPTextField.swift */,
 				094061B22AB06847009AD0BF /* UITagPickerView.swift */,
 				09BB78832B2092EE00C26A5C /* MapView.swift */,
+				091D66542B278DBE0037D9A3 /* BackgroundSceneBlur.swift */,
 			);
 			path = UIMiniElements;
 			sourceTree = "<group>";
@@ -1890,6 +1893,7 @@
 				09BF17042AAA175D0090389B /* OnboardingPresenter.swift in Sources */,
 				0964A1582AAB491100B2E99E /* UIPageViewController+Extension.swift in Sources */,
 				09EA1CAF2A962DBE00A18B41 /* SupportPresenter.swift in Sources */,
+				091D66552B278DBE0037D9A3 /* BackgroundSceneBlur.swift in Sources */,
 				09BB78882B20DC7C00C26A5C /* UserDataWorker.swift in Sources */,
 				09FB82502A37286000CEF8C1 /* ProductInteractor.swift in Sources */,
 				099089E32A139A2D00EE00DA /* GroceryViewController.swift in Sources */,
