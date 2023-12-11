@@ -19,10 +19,12 @@ protocol GroceryViewProtocol: AnyObject {
 
 final class GroceryViewController: UIViewController {
     
-    //MARK: Public properties
+    // MARK: Public properties
+    
     var presenter: GroceryPresenterProtocol?
     
-    //MARK: Private properties
+    // MARK: Private properties
+    
     private var collectionView: GroceryCollectionView!
     private lazy var panel = FloatingPanelController()
     private lazy var address = AdressViewController()
@@ -40,6 +42,8 @@ final class GroceryViewController: UIViewController {
         return controller
     }()
     
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.viewDidLoaded()
@@ -53,7 +57,7 @@ final class GroceryViewController: UIViewController {
     
 }
 
-//MARK: - GroceryViewProtocol
+// MARK: - GroceryViewProtocol
 
 extension GroceryViewController: GroceryViewProtocol {
     
@@ -76,7 +80,7 @@ extension GroceryViewController: GroceryViewProtocol {
     
 }
 
-//MARK: - Private methods
+// MARK: - Private methods
 
 private extension GroceryViewController {
     
@@ -204,7 +208,7 @@ private extension GroceryViewController {
     
 }
 
-//MARK: - Action private methods
+// MARK: - Action private methods
 
 private extension GroceryViewController {
     

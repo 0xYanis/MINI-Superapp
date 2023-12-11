@@ -15,11 +15,17 @@ protocol GroceryInteractorProtocol: AnyObject {
 
 final class GroceryInteractor: GroceryInteractorProtocol {
     
+    // MARK: - Public properties
+    
     weak var presenter: GroceryPresenterProtocol?
+    
+    // MARK: - Private properties
     
     private var localSearch: LocalSearchService
     private var userDataWorker: UserDataWorker
     private var locationList = [LocalSearchResult]()
+    
+    // MARK: - Lifecycle
     
     init() {
         self.userDataWorker = UserDataWorkerImpl()
@@ -27,6 +33,7 @@ final class GroceryInteractor: GroceryInteractorProtocol {
         localSearch.output = self
     }
     
+    // MARK: - Public methods
     
     func viewDidLoaded() {
         LocationService.shared.request()
@@ -49,6 +56,8 @@ final class GroceryInteractor: GroceryInteractorProtocol {
     
 }
 
+// MARK: - LocalSearchOutput
+
 extension GroceryInteractor: LocalSearchOutput {
     
     func didUpdateResults(_ results: [LocalSearchResult]) {
@@ -61,6 +70,8 @@ extension GroceryInteractor: LocalSearchOutput {
     }
     
 }
+
+// MARK: - Private methods
 
 private extension GroceryInteractor {
     
