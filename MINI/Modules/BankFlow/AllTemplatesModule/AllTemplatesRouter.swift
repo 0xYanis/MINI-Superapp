@@ -18,12 +18,12 @@ final class AllTemplatesRouter: AllTemplatesRouterProtocol {
     
     func goToAddNewTemplate() {
         let addNewTemplateView = NewTemplateBuilder.build()
-        view?.navigationController?.pushViewController(addNewTemplateView, animated: true)
+        view?.navigationController?.push(addNewTemplateView)
     }
     
     func goToTemplate(id: Int) {
         let templateView = TemplateBuilder.build()
-        view?.navigationController?.pushViewController(templateView, animated: true)
+        view?.navigationController?.push(templateView)
     }
     
 }

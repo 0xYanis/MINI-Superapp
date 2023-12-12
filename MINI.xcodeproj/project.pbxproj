@@ -280,6 +280,7 @@
 		09EE2F5F2AA728F0003F08E3 /* CartBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EE2F592AA728F0003F08E3 /* CartBuilder.swift */; };
 		09EE2F602AA728F0003F08E3 /* CartInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EE2F5A2AA728F0003F08E3 /* CartInteractor.swift */; };
 		09EE2F612AA728F0003F08E3 /* Purchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EE2F5B2AA728F0003F08E3 /* Purchase.swift */; };
+		09F2B4CC2B28ACD7000E89B9 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F2B4CB2B28ACD7000E89B9 /* UINavigationController+Extension.swift */; };
 		09F5BFE02A12B47800BC3B7C /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = 09F5BFDF2A12B47800BC3B7C /* SkeletonView */; };
 		09F86C4F29F6E96C00307432 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F86C4E29F6E96C00307432 /* BaseTabBarController.swift */; };
 		09F86C5729F6F8A000307432 /* UITabBarController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F86C5629F6F8A000307432 /* UITabBarController+Extension.swift */; };
@@ -532,6 +533,7 @@
 		09EE2F592AA728F0003F08E3 /* CartBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartBuilder.swift; sourceTree = "<group>"; };
 		09EE2F5A2AA728F0003F08E3 /* CartInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartInteractor.swift; sourceTree = "<group>"; };
 		09EE2F5B2AA728F0003F08E3 /* Purchase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Purchase.swift; sourceTree = "<group>"; };
+		09F2B4CB2B28ACD7000E89B9 /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
 		09F86C4E29F6E96C00307432 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		09F86C5629F6F8A000307432 /* UITabBarController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarController+Extension.swift"; sourceTree = "<group>"; };
 		09F922682A1EA234009684F2 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
@@ -881,6 +883,7 @@
 				0964A1572AAB491100B2E99E /* UIPageViewController+Extension.swift */,
 				095B9CCA2AD6E641001CCAB6 /* UIImage+Extension.swift */,
 				0999058A2AE00A850010C826 /* UITabBar+Extension.swift */,
+				09F2B4CB2B28ACD7000E89B9 /* UINavigationController+Extension.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1845,6 +1848,7 @@
 				09EE2F5C2AA728F0003F08E3 /* CartPresenter.swift in Sources */,
 				09D8E3D02AEA69E300C7D7D2 /* AuthCoordinator.swift in Sources */,
 				09FC394A29FAD3ED00B2D97E /* TransactionInteractor.swift in Sources */,
+				09F2B4CC2B28ACD7000E89B9 /* UINavigationController+Extension.swift in Sources */,
 				0925E3D02AB8DDC100E886AE /* BankSheetLayout.swift in Sources */,
 				0999058B2AE00A850010C826 /* UITabBar+Extension.swift in Sources */,
 				09E24C152A1228D000A91F74 /* Template.swift in Sources */,

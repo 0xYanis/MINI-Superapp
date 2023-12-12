@@ -46,7 +46,7 @@ final class MainCoordinator: Coordinator {
         self.launchController = LaunchController()
         guard let lauch = launchController else { fatalError() }
         
-        self.navController.pushViewController(lauch, animated: false)
+        self.navController.push(lauch)
         launchController?.completion = { [weak self] in
             self?.didLaunch = true
         }

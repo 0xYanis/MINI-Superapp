@@ -16,10 +16,7 @@ final class GSearchRouter: GSearchRouterProtocol {
     
     func goToDetaiProduct() {
         let detailProduct = ProductBuilder.build()
-        view?.navigationController?.pushViewController(
-            detailProduct,
-            animated: true
-        )
+        view?.navigationController?.push(detailProduct)
     }
     
 }

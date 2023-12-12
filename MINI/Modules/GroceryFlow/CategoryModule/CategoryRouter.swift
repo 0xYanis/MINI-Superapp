@@ -32,12 +32,12 @@ final class CategoryRouter: CategoryRouterProtocol {
         let cartView = UIViewController()
         cartView.view.backgroundColor = .black
         cartView.navigationItem.title = "Cart"
-        view?.navigationController?.pushViewController(cartView, animated: true)
+        view?.navigationController?.push(cartView)
     }
     
     func goToSearchView() {
         let searchView = GSearchBuilder.build()
-        view?.navigationController?.pushViewController(searchView, animated: true)
+        view?.navigationController?.push(searchView)
     }
     
 }

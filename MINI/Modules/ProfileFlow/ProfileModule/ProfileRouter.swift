@@ -49,10 +49,7 @@ final class ProfileRouter: ProfileRouterProtocol {
     }
     
     private func goToDetailView(to module: UIViewController) {
-        view?.navigationController?.pushViewController(
-            module,
-            animated: true
-        )
+        view?.navigationController?.push(module)
     }
     
     private func languageSheet() {

@@ -40,7 +40,7 @@ final class GroceryRouter: GroceryRouterProtocol {
     private func open(_ module: UIViewController, state: NavigationState) {
         switch state {
         case .push:
-            view?.navigationController?.pushViewController(module, animated: true)
+            view?.navigationController?.push(module)
         case .present:
             view?.present(module, animated: true)
         }
