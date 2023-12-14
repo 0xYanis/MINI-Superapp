@@ -40,8 +40,7 @@ extension RegisterViewController: RegisterViewProtocol {
     
     func registerIsNotCorrect(with message: String) {
         let title = "error_login_title".localized
-        let alert = UIAlertController()
-        alert.showAlert(title: title, message: message, from: self)
+        showAlert(title: title, message: message)
     }
     
 }
@@ -115,16 +114,14 @@ private extension RegisterViewController {
 private extension RegisterViewController {
     
     @objc func keyboardWillShow(notification: Notification) {
-        guard let userInfo = notification.userInfo else {
-            return
-        }
+        guard let userInfo = notification.userInfo else { return }
         guard let keyboardSize = (userInfo[UIResponder.keyboardFrameEndUserInfoKey]
                                   as? NSValue)?.cgRectValue.size else { return }
         
         scrollView.contentOffset = .init(x: 0, y: keyboardSize.height / 3)
     }
     
-    @objc func keyboardWillHide(notification: Notification) {
+    @objc func keyboardWillHide() {
         scrollView.contentOffset = .zero
     }
     
