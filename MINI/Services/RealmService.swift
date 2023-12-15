@@ -11,16 +11,13 @@ import RealmSwift
 protocol RealmServiceProtocol {
     func add<T: Object>(_ object: T) throws
     func read<T: Object>(_ objectType: T.Type, key: UUID) -> T?
-    func delete<T: Object>(_ object: T) throws
-    func deleteByKey<T: Object>(_ objectType: T.Type, forKey primaryKey: UUID) throws
+    func delete<T: Object>(_ objectType: T.Type, forKey primaryKey: UUID) throws
     func update<T: Object>(_ object: T) throws
     func fetchAll<T: Object>(_ objectType: T.Type) throws -> [T]
     func deleteAll() throws
 }
 
 final class RealmService: RealmServiceProtocol {
-    
-    typealias realmErr = RealmServiceError
     
     // MARK: - Private properties
     
@@ -37,14 +34,8 @@ final class RealmService: RealmServiceProtocol {
     
     func add<T: Object>(_ object: T) throws {
         guard let realm else { return }
-        do {
-            try realm.write {
-                realm.add(object, update: .all)
-            }
-        } catch {
-            throw realmErr.addObjectFailed(
-                detail: error.localizedDescription
-            )
+        try realm.write {
+            realm.add(object, update: .all)
         }
     }
     
@@ -54,44 +45,19 @@ final class RealmService: RealmServiceProtocol {
         return object
     }
     
-    func delete<T: Object>(_ object: T) throws {
+    func delete<T: Object>(_ objectType: T.Type, forKey primaryKey: UUID) throws {
         guard let realm else { return }
-        do {
-            try realm.write {
-                realm.delete(object)
-            }
-        } catch {
-            throw realmErr.deleteObjectFailed(
-                detail: error.localizedDescription
-            )
-        }
-    }
-    
-    func deleteByKey<T: Object>(_ objectType: T.Type, forKey primaryKey: UUID) throws {
-        guard let realm else { return }
-        do {
-            try realm.write {
-                guard let object = realm.object(ofType: T.self, forPrimaryKey: primaryKey)
-                else { return }
-                realm.delete(object)
-            }
-        } catch {
-            throw realmErr.deleteObjectFailed(
-                detail: error.localizedDescription
-            )
+        try realm.write {
+            guard let object = realm.object(ofType: T.self, forPrimaryKey: primaryKey)
+            else { return }
+            realm.delete(object)
         }
     }
     
     func update<T: Object>(_ object: T) throws {
         guard let realm else { return }
-        do {
-            try realm.write {
-                realm.add(object, update: .modified)
-            }
-        } catch {
-            throw realmErr.updateObjectFailed(
-                detail: error.localizedDescription
-            )
+        try realm.write {
+            realm.add(object, update: .modified)
         }
     }
     
@@ -107,17 +73,6 @@ final class RealmService: RealmServiceProtocol {
         }
     }
     
-}
-
-// MARK: - RealmServiceError
-
-extension RealmService {
-    enum RealmServiceError: Error {
-        case addObjectFailed(detail: String)
-        case deleteObjectFailed(detail: String)
-        case updateObjectFailed(detail: String)
-        case fetchObjectFailed(detail: String)
-    }
 }
 
 // MARK: - Results+Extension

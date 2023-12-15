@@ -28,6 +28,7 @@ final class ProfileInteractor: ProfileInteractorProtocol {
     private var fbAuthManager: FBAuthProtocol
     private var fbStorageManager: FBStorageProtocol
     private var fbFirestoreManager: FBFirestoreProtocol
+    private var userDataWorker: UserDataWorker
     
     init(
         fbAuthManager: FBAuthProtocol,
@@ -37,6 +38,7 @@ final class ProfileInteractor: ProfileInteractorProtocol {
         self.fbAuthManager = fbAuthManager
         self.fbStorageManager = fbStorageManager
         self.fbFirestoreManager = fbFirestoreManager
+        self.userDataWorker = UserDataWorkerImpl()
     }
     
     // MARK: - Public methods
@@ -48,21 +50,10 @@ final class ProfileInteractor: ProfileInteractorProtocol {
     }
     
     public func userSetAvatar(_ imageData: Data) {
-        DispatchQueue.global(qos: .userInitiated).async {
-            guard let uid = self.fbAuthManager.currentUser?.uid
-            else { return }
-            self.fbStorageManager.uploadAvatar(
-                imageData,
-                userID: uid
-            ) { [weak self] result in
-                switch result {
-                case .success(let url):
-                    self?.updateURLAvatar(url)
-                    DispatchQueue.main.async {
-                        self?.presenter?.updateView()
-                    }
-                case .failure(_): break
-                }
+        userDataWorker.saveAvatar(imageData) { [weak self] url in
+            self?.updateURLAvatar(url)
+            DispatchQueue.main.async {
+                self?.presenter?.updateView()
             }
         }
     }
@@ -78,17 +69,11 @@ final class ProfileInteractor: ProfileInteractorProtocol {
     }
     
     private func getUserData() {
-        let uid = UserDefaults.standard.string(forKey: "uid")
-        self.fbFirestoreManager.getUserData(uid: uid) { [weak self] result in
-            guard
-                let self = self,
-                let name = result["name"] as? String,
-                let address = result["address"] as? String
-            else { return }
-            self.userName = name.capitalized
-            self.userAddress = address
+        userDataWorker.getUserData { [weak self] name, address in
+            self?.userName = name
+            self?.userAddress = address
             DispatchQueue.main.async {
-                self.presenter?.updateView()
+                self?.presenter?.updateView()
             }
         }
     }

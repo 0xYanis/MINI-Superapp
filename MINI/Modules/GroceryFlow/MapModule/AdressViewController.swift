@@ -11,7 +11,6 @@ import SnapKit
 // MARK: - AdressViewDelegate
 
 protocol AdressViewDelegate: AnyObject {
-    func searchResults() -> [Placemark]
     func searchAdress(with text: String)
     func didTapResult(with index: Int)
 }
@@ -21,6 +20,12 @@ final class AdressViewController: UIViewController {
     // MARK: - Public properties
     
     weak var delegate: AdressViewDelegate?
+    
+    var addressList: [LocalSearchResult] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
     // MARK: - Private properties
     
@@ -49,10 +54,6 @@ final class AdressViewController: UIViewController {
     public func configure(label: String, placeholder: String) {
         self.label.text = label
         self.textField.placeholder = placeholder
-    }
-    
-    public func updateView() {
-        tableView.reloadData()
     }
     
 }
@@ -85,7 +86,7 @@ private extension AdressViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.backgroundColor = .clear
-        tableView.register(UITableViewCell.self)
+        tableView.register(AddressResultCell.self)
     }
     
     func configureSizes() {
@@ -135,22 +136,20 @@ extension AdressViewController: UITableViewDataSource {
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     ) -> Int {
-        return delegate?.searchResults().count ?? 0
+        addressList.count
     }
     
     func tableView(
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(
-            withIdentifier: String(describing: UITableViewCell.self),
-            for: indexPath
-        )
-        let title = delegate?.searchResults()[indexPath.row].location
-        cell.textLabel?.text = title
-        cell.textLabel?.numberOfLines = 0
-        cell.backgroundColor = .clear
-        cell.contentView.backgroundColor = .clear
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: String(describing: AddressResultCell.self),
+            for: indexPath) as? AddressResultCell
+        else { return UITableViewCell() }
+        let address = addressList[indexPath.row]
+        cell.configure(title: address.title, subtitle: address.subtitle)
+        
         return cell
     }
     
@@ -166,6 +165,60 @@ extension AdressViewController: UITableViewDelegate {
     ) {
         tableView.deselectRow(at: indexPath, animated: true)
         delegate?.didTapResult(with: indexPath.row)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        44
+    }
+    
+}
+
+class AddressResultCell: UITableViewCell {
+    
+    private var titleTextLabel = UILabel()
+    private var subtitleTextLabel = UILabel()
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupUI()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError()
+    }
+    
+    func configure(title: String, subtitle: String) {
+        titleTextLabel.text = title
+        subtitleTextLabel.text = subtitle
+    }
+    
+    private func setupUI() {
+        backgroundColor = .clear
+        contentView.backgroundColor = .clear
+        
+        titleTextLabel.font = .systemFont(ofSize: UIFont.labelFontSize)
+        titleTextLabel.numberOfLines = 0
+        subtitleTextLabel.font = .systemFont(ofSize: UIFont.systemFontSize)
+        subtitleTextLabel.numberOfLines = 0
+        subtitleTextLabel.textColor = .secondaryLabel
+        
+        contentView.addSubview(titleTextLabel)
+        contentView.addSubview(subtitleTextLabel)
+        
+        titleTextLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(9)
+            $0.leading.trailing.equalToSuperview().inset(16)
+        }
+        
+        subtitleTextLabel.snp.makeConstraints {
+            $0.top.equalTo(titleTextLabel.snp.bottom).offset(5)
+            $0.bottom.equalToSuperview().inset(6)
+            $0.leading.trailing.equalToSuperview().inset(16)
+        }
     }
     
 }

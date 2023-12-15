@@ -95,7 +95,7 @@ final class BankInteractor: BankInteractorProtocol {
         let deletedCard = cards.remove(at: index)
         dataSource[0] = .card(cards)
         
-        try? cardRepository.deleteCard(deletedCard)
+        try? cardRepository.deleteCard(key: deletedCard.id)
     }
     
     public func userDidTapTransaction(index: Int) -> Transaction? {

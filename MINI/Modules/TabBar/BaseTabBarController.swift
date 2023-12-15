@@ -7,12 +7,12 @@
 
 import UIKit
 
-enum TabItem : Int {
-    case bank    = 0
-    case tickets = 1
-    case cart    = 2
-    case grocery = 3
-    case profile = 4
+enum TabItem: Int {
+    case bank
+    case tickets
+    case cart
+    case grocery
+    case profile
 }
 
 final class BaseTabBarController: UITabBarController {

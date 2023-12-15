@@ -13,10 +13,17 @@ protocol RegisterInteractorProtocol: AnyObject {
 
 final class RegisterInteractor: RegisterInteractorProtocol {
     
+    // MARK: - Public properties
+    
     weak var presenter: RegisterPresenterProtocol?
+    
+    // MARK: - Private properties
+    
     private var keychainService: KeyChainServiceProtocol
     private var fbAuthManager: FBAuthProtocol
     private var fbFirestoreManager: FBFirestoreProtocol
+    
+    // MARK: - Lifecycle
     
     init(
         keychain: KeyChainServiceProtocol,
@@ -27,6 +34,8 @@ final class RegisterInteractor: RegisterInteractorProtocol {
         self.fbAuthManager = authManager
         self.fbFirestoreManager = firestore
     }
+    
+    // MARK: - Public methods
     
     func userWantToLogin(login: String, password: String, repeatPassword: String) {
         if password != repeatPassword {
@@ -53,16 +62,16 @@ final class RegisterInteractor: RegisterInteractorProtocol {
 
 private extension RegisterInteractor {
     
-    func saveUserUID(_ uid: String) {
-        UserDefaults.standard.set(uid, forKey: "uid")
-        UserDefaults.standard.synchronize()
-    }
-    
     enum ErrorMessages: String {
         case invalidLogin = "Неверный формат ввода"
         case weakPassword = "Слабый пароль"
         case passwordsDoNotMatch = "Пароли не совпадают"
         case loginAlreadyRegistered = "Аккаунт уже зарегистрирован"
+    }
+    
+    func saveUserUID(_ uid: String) {
+        UserDefaults.standard.set(uid, forKey: "uid")
+        UserDefaults.standard.synchronize()
     }
     
     func isNotValid(_ string: String) -> Bool {

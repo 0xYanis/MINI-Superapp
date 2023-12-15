@@ -13,15 +13,18 @@ import FloatingPanel
 protocol GroceryViewProtocol: AnyObject {
     func updateView()
     func updateAddress(_ newAddress: String)
+    func didUpdateResults(_ results: [LocalSearchResult])
     func showLoadingDataGetFailed(with message: String)
 }
 
 final class GroceryViewController: UIViewController {
     
-    //MARK: Public properties
+    // MARK: Public properties
+    
     var presenter: GroceryPresenterProtocol?
     
-    //MARK: Private properties
+    // MARK: Private properties
+    
     private var collectionView: GroceryCollectionView!
     private lazy var panel = FloatingPanelController()
     private lazy var address = AdressViewController()
@@ -39,6 +42,8 @@ final class GroceryViewController: UIViewController {
         return controller
     }()
     
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.viewDidLoaded()
@@ -52,26 +57,30 @@ final class GroceryViewController: UIViewController {
     
 }
 
-//MARK: - GroceryViewProtocol
+// MARK: - GroceryViewProtocol
 
 extension GroceryViewController: GroceryViewProtocol {
     
     func updateView() {
         collectionView.reloadData()
-        address.updateView()
     }
     
     func updateAddress(_ newAddress: String) {
         addressLabel.text = newAddress
+        navigationItem.titleView = addressLabel
+    }
+    
+    func didUpdateResults(_ results: [LocalSearchResult]) {
+        address.addressList = results
     }
     
     func showLoadingDataGetFailed(with message: String) {
-        
+        showAlert(message: message)
     }
     
 }
 
-//MARK: - Private methods
+// MARK: - Private methods
 
 private extension GroceryViewController {
     
@@ -108,7 +117,7 @@ private extension GroceryViewController {
     
     func rightBarAdressButton() -> UIBarButtonItem {
         let button = UIBarButtonItem(
-            title: "adress_button".localized,
+            title: "Адрес",
             menu: createAdressMenu()
         )
         button.tintColor = .systemOrange
@@ -199,12 +208,12 @@ private extension GroceryViewController {
     
 }
 
-//MARK: - Action private methods
+// MARK: - Action private methods
 
 private extension GroceryViewController {
     
     @objc func refreshAction() {
-        presenter?.updateView()
+        presenter?.viewDidLoaded()
         refreshControl.endRefreshing()
     }
     
@@ -213,8 +222,7 @@ private extension GroceryViewController {
     }
     
     @objc func scrollToTopAction() {
-        let topIndexPath = IndexPath(item: 0, section: 0)
-        collectionView.scrollToItem(at: topIndexPath, at: .top, animated: true)
+        collectionView.setContentOffset(.zero, animated: true)
     }
     
 }
@@ -233,12 +241,6 @@ extension GroceryViewController: UISearchResultsUpdating {
 // MARK: - AdressViewDelegate
 
 extension GroceryViewController: AdressViewDelegate {
-    
-    func searchResults() -> [Placemark] {
-        guard let locations = presenter?.getLocationResults()
-        else { return [] }
-        return locations
-    }
     
     func searchAdress(with text: String) {
         presenter?.userStartSearchAdress(with: text)

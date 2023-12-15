@@ -22,7 +22,7 @@ final class CardRouter: CardRouterProtocol {
     
     func userWantToEditCard() {
         let editView = NewCardBuilder.build()
-        view?.navigationController?.pushViewController(editView, animated: true)
+        view?.navigationController?.push(editView)
     }
     
 }

@@ -28,8 +28,7 @@ final class TransactionRepository: TransactionRepositoryProtocol {
     }
     
     func deleteTransaction(_ transaction: Transaction) throws {
-        let object = TransactionObject(transaction)
-        try storage.delete(object)
+        // TODO: 
     }
     
     func updateTransaction(_ transaction: Transaction) throws {
