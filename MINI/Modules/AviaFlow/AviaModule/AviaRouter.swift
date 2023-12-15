@@ -19,7 +19,7 @@ final class AviaRouter: AviaRouterProtocol {
     func goDetailResult(id: Int) {
         let resultView = UIViewController()
         resultView.view.backgroundColor = .white
-        view?.navigationController?.pushViewController(resultView, animated: true)
+        view?.navigationController?.push(resultView)
     }
     
 }

@@ -5,79 +5,32 @@
 //  Created by Yan Rybkin on 12.06.2023.
 //
 
+import Foundation
 import CoreLocation
 
-protocol LocationServiceProtocol: AnyObject {
-    typealias closure = ([Location]) -> Void
-    func findLocations(with query: String, completion: @escaping closure)
-    func getCurrentLocation(completion: @escaping (CLLocation) -> Void)
-}
-
-struct Location {
-    var title: String
-    var coordinate: CLLocationCoordinate2D?
-}
-
-final class LocationService: NSObject, LocationServiceProtocol {
+final class LocationService: NSObject {
     
-    typealias closure = ([Location]) -> Void
-    typealias current = (CLLocation) -> Void
+    static let shared = LocationService()
     
-    private var manager: CLLocationManager {
-        let manager = CLLocationManager()
-        manager.desiredAccuracy = kCLLocationAccuracyBest
+    var userLocation: CLLocationCoordinate2D?
+    var userRegion: CLCircularRegion?
+    
+    private let manager = CLLocationManager()
+    
+    override private init() {
+        super.init()
         manager.delegate = self
-        return manager
-    }
-    
-    private let geocoder = CLGeocoder()
-    
-    public func findLocations(with query: String, completion: @escaping closure) {
-        geocoder.geocodeAddressString(query) { placemarks, error in
-            guard let placemarks = placemarks,
-                  error == nil
-            else { return completion([]) }
-            
-            let models: [Location] = placemarks
-                .compactMap { place in
-                    var name = ""
-                    if let locationName = place.name {
-                        name += locationName
-                    }
-                    if let adminRegion = place.administrativeArea {
-                        name += ", \(adminRegion)"
-                    }
-                    if let locality = place.locality {
-                        name += ", \(locality)"
-                    }
-                    if let country = place.country {
-                        name += ", \(country)"
-                    }
-                    let result = Location(
-                        title: name,
-                        coordinate: place.location?.coordinate)
-                    return result
-                }
-            
-            completion(models)
-        }
-    }
-    
-    public func getCurrentLocation(completion: @escaping current) {
         manager.desiredAccuracy = kCLLocationAccuracyBest
+    }
+    
+    func request() {
         manager.requestWhenInUseAuthorization()
-        
-        guard CLLocationManager.locationServicesEnabled() else { return }
-        
-        manager.requestLocation()
-        
-        if let location = manager.location {
-            completion(location)
-        }
-        
+        manager.startUpdatingLocation()
     }
     
 }
+
+// MARK: - CLLocationManagerDelegate
 
 extension LocationService: CLLocationManagerDelegate {
     
@@ -85,14 +38,18 @@ extension LocationService: CLLocationManagerDelegate {
         _ manager: CLLocationManager,
         didUpdateLocations locations: [CLLocation]
     ) {
-        
+        guard let location = locations.first else { return }
+        self.userLocation = location.coordinate
+        manager.stopUpdatingLocation()
     }
     
     func locationManager(
         _ manager: CLLocationManager,
-        didFailWithError error: Error
+        didEnterRegion region: CLRegion
     ) {
-        
+        guard let region = region as? CLCircularRegion
+        else {  return }
+        userRegion = region
     }
     
 }

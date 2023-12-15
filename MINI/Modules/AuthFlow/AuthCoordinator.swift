@@ -28,7 +28,7 @@ final class AuthCoordinator: Coordinator {
     
     public func goToRegistrate() {
         let register = RegisterBuilder.build(coordinator: self)
-        navController.pushViewController(register, animated: true)
+        navController.push(register)
     }
     
 }

@@ -28,10 +28,7 @@ final class PayoutsRouter: PayoutsRouterProtocol {
     }
     
     private func push(to vc: UIViewController) {
-        view?.navigationController?.pushViewController(
-            vc,
-            animated: true
-        )
+        view?.navigationController?.push(vc)
     }
     
 }

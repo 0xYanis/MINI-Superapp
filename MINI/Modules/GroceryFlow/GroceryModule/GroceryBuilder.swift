@@ -10,18 +10,9 @@ import UIKit
 final class GroceryBuilder {
     
     static func build() -> UIViewController {
-        let groceryService = GroceryService()
-        let locationService = LocationService()
-        let placemarkService = PlacemarkService()
-        let fbFirestoreManager = FBFirestoreManager()
-        
         let view = GroceryViewController()
         let router = GroceryRouter()
-        let interactor = GroceryInteractor(
-            groceryService: groceryService,
-            locationService: locationService,
-            placemarkService: placemarkService,
-            fbFirestoreManager: fbFirestoreManager)
+        let interactor = GroceryInteractor()
         let presenter = GroceryPresenter(
             router: router,
             interactor: interactor)

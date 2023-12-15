@@ -31,8 +31,14 @@ final class OnboardingPresenter: OnboardingPresenterProtocol {
     }
     
     func readyToContinue() {
-        UserDefaults.standard.set(true, forKey: "seenOnboarding")
+        UserDefaults.standard.set(true, forKey: udSeenOnboardingKey)
         coordinator?.finish()
     }
     
+}
+
+private extension OnboardingPresenter {
+    var udSeenOnboardingKey: String {
+        "seenOnboarding"
+    }
 }
