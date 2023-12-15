@@ -45,11 +45,12 @@
 ## Технологии
 
 Архитектура:
-- Swift, VIPER + DI контейнеры (Builders)
-- Сервер: Firebase, mock-объекты через mock-API, общение через Alamofire
+- двухуровневая, насыщенный клиент
+- Swift, VIPER + Coordinator, DI builder containters
+- Сервер: Firebase
+- Данные: Realm
 - Изображения + кеш: SDWebImage
 - Многопоточность: GCD
-- Flow приложения - Coordinator
 
 Безопасность:
 - Keychain
@@ -57,7 +58,7 @@
 - Firebase auth
 
 Данные:
-- Firebase storage, firestore, Realm (опционально)
+- Firebase storage, firestore, Realm
 - UserDefaults для хранения переменных состояний приложения
 
 UI:

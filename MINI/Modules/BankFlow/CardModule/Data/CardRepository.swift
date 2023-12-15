@@ -10,8 +10,7 @@ import Foundation
 protocol CardRepositoryProtocol: AnyObject {
     func addCard(_ card: Card) throws
     func readCard(primaryKey: UUID) -> Card?
-    func deleteCard(_ card: Card) throws
-    func deleteCardBy(key: UUID) throws 
+    func deleteCard(key: UUID) throws
     func updateCard(_ card: Card) throws
     func fetchCards() throws -> [Card]
 }
@@ -35,13 +34,8 @@ final class CardRepository: CardRepositoryProtocol {
         return Card(object)
     }
     
-    func deleteCard(_ card: Card) throws {
-        let object = CardObject(card)
-        try storage.delete(object)
-    }
-    
-    func deleteCardBy(key: UUID) throws {
-        try storage.deleteByKey(CardObject.self, forKey: key)
+    func deleteCard(key: UUID) throws {
+        try storage.delete(CardObject.self, forKey: key)
     }
     
     func updateCard(_ card: Card) throws {

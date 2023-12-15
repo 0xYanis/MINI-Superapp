@@ -29,7 +29,7 @@ final class AllTemplatesInteractor: AllTemplatesInteractorProtocol {
     
     func deleteTemplate(id: Int) {
         let current = tempaltes.remove(at: id)
-        try? repository.deleteTemplateBy(key: current.id)
+        try? repository.deleteTemplate(key: current.id)
     }
     
     func moveTemplate(from: Int, to: Int) {
