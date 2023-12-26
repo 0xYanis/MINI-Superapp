@@ -248,8 +248,8 @@
 		09D8E3CE2AEA69AC00C7D7D2 /* OnBoardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D8E3CD2AEA69AC00C7D7D2 /* OnBoardingCoordinator.swift */; };
 		09D8E3D02AEA69E300C7D7D2 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D8E3CF2AEA69E300C7D7D2 /* AuthCoordinator.swift */; };
 		09D8E3D22AEA6A2800C7D7D2 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D8E3D12AEA6A2800C7D7D2 /* TabBarCoordinator.swift */; };
-		09DD5E8E2B3B0A18007F93A5 /* PurchaseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DD5E8C2B3B0A18007F93A5 /* PurchaseObject.swift */; };
-		09DD5E8F2B3B0A18007F93A5 /* CartRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DD5E8D2B3B0A18007F93A5 /* CartRepository.swift */; };
+		09DD5EBC2B3B1A3C007F93A5 /* PurchaseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DD5EBA2B3B1A34007F93A5 /* PurchaseObject.swift */; };
+		09DD5EBD2B3B1A3C007F93A5 /* CartRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DD5EBB2B3B1A3B007F93A5 /* CartRepository.swift */; };
 		09DF83792A38BB8F00ECAEB6 /* LaunchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DF83782A38BB8F00ECAEB6 /* LaunchController.swift */; };
 		09E24C112A12239A00A91F74 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E24C102A12239A00A91F74 /* Card.swift */; };
 		09E24C132A1227C200A91F74 /* cardsColor.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09E24C122A1227C200A91F74 /* cardsColor.xcassets */; };
@@ -503,8 +503,8 @@
 		09D8E3CD2AEA69AC00C7D7D2 /* OnBoardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingCoordinator.swift; sourceTree = "<group>"; };
 		09D8E3CF2AEA69E300C7D7D2 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
 		09D8E3D12AEA6A2800C7D7D2 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
-		09DD5E8C2B3B0A18007F93A5 /* PurchaseObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseObject.swift; sourceTree = "<group>"; };
-		09DD5E8D2B3B0A18007F93A5 /* CartRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartRepository.swift; sourceTree = "<group>"; };
+		09DD5EBA2B3B1A34007F93A5 /* PurchaseObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseObject.swift; sourceTree = "<group>"; };
+		09DD5EBB2B3B1A3B007F93A5 /* CartRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartRepository.swift; sourceTree = "<group>"; };
 		09DF83782A38BB8F00ECAEB6 /* LaunchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchController.swift; sourceTree = "<group>"; };
 		09E24C102A12239A00A91F74 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		09E24C122A1227C200A91F74 /* cardsColor.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = cardsColor.xcassets; sourceTree = "<group>"; };
@@ -942,8 +942,8 @@
 		097905CD2B1E22F100EADB03 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				09DD5E8D2B3B0A18007F93A5 /* CartRepository.swift */,
-				09DD5E8C2B3B0A18007F93A5 /* PurchaseObject.swift */,
+				09DD5EBB2B3B1A3B007F93A5 /* CartRepository.swift */,
+				09DD5EBA2B3B1A34007F93A5 /* PurchaseObject.swift */,
 				09EE2F5B2AA728F0003F08E3 /* Purchase.swift */,
 			);
 			path = Data;
@@ -1802,7 +1802,7 @@
 				09796E8D2B18D2D600DC76DA /* CardRepository.swift in Sources */,
 				09B02C7D2A8EC8C300F474E9 /* PayoutsInteractor.swift in Sources */,
 				090AE1DF29FBAA120092515D /* TemplateInteractor.swift in Sources */,
-				09DD5E8E2B3B0A18007F93A5 /* PurchaseObject.swift in Sources */,
+				09DD5EBC2B3B1A3C007F93A5 /* PurchaseObject.swift in Sources */,
 				097905CF2B1F628900EADB03 /* OnboardingViewController.swift in Sources */,
 				090E87B42AAF7A2500C6AEF3 /* AviaCountryCell.swift in Sources */,
 				090BAB942A029924006AE8F9 /* AviaRouter.swift in Sources */,
@@ -1852,7 +1852,7 @@
 				092F67AF2A3CE87500E0F2B9 /* UIColor+Extensions.swift in Sources */,
 				09E9E81929EAE9410084416B /* LoginViewController.swift in Sources */,
 				097ACF222A2E1E470023106A /* RegisterPresenter.swift in Sources */,
-				09DD5E8F2B3B0A18007F93A5 /* CartRepository.swift in Sources */,
+				09DD5EBD2B3B1A3C007F93A5 /* CartRepository.swift in Sources */,
 				09EE2F5C2AA728F0003F08E3 /* CartPresenter.swift in Sources */,
 				09D8E3D02AEA69E300C7D7D2 /* AuthCoordinator.swift in Sources */,
 				09FC394A29FAD3ED00B2D97E /* TransactionInteractor.swift in Sources */,

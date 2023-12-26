@@ -83,18 +83,6 @@ private extension BankCollectionView {
         return section
     }
     
-    func makeTransferSection() -> NSCollectionLayoutSection {
-        let groupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(0.18),
-            heightDimension: .fractionalHeight(0.09))
-        let group = NSCollectionLayoutGroup.horizontal(
-            layoutSize: groupSize,
-            subitems: [defaultItem])
-        let section = customSection(group: group, subItems: [makeDefaultHeader()], spacing: 8, scrollType: .continuous)
-        section.contentInsets = .init(top: 16, leading: 16, bottom: 16, trailing: 16)
-        return section
-    }
-    
 }
 
 //MARK: - Private helper methods
