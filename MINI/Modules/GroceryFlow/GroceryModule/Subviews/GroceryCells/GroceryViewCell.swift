@@ -23,6 +23,7 @@ final class GroceryViewCell: UICollectionViewCell {
     func configure(with data: GroceryItem) {
         textLabel.text = data.productName
         imageView.sd_setImage(with: URL(string: data.image))
+        if data.isSale { discountView.isHidden = true }
     }
     
     override init(frame: CGRect) {

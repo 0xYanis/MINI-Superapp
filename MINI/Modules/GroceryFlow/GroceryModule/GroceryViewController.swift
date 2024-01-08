@@ -222,7 +222,8 @@ private extension GroceryViewController {
     }
     
     @objc func scrollToTopAction() {
-        collectionView.setContentOffset(.zero, animated: true)
+        let topRect = CGRect(x: 0, y: 0, width: 1, height: 1)
+        collectionView.scrollRectToVisible(topRect, animated: true)
     }
     
 }
