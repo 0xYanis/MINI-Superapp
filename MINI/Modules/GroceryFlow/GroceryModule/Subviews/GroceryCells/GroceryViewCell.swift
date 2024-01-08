@@ -58,12 +58,13 @@ private extension GroceryViewCell {
     }
     
     func createImageView() {
-        imageView.contentMode = .scaleToFill
+        imageView.contentMode = .scaleAspectFill
         insertSubview(imageView, at: 0)
         imageView.snp.makeConstraints { make in
             make.height.equalToSuperview()
             make.width.equalToSuperview()
         }
+        imageView.roundCorners(radius: 12)
     }
     
     func createDiscountView() {
