@@ -35,12 +35,12 @@ private extension GroceryCollectionView {
     func collectionViewRegistrate() {
         register(
             GroceryViewCell.self,
-            forCellWithReuseIdentifier: GroceryViewCell.cellId
+            forCellWithReuseIdentifier: String(describing: GroceryViewCell.self)
         )
         register(
             GroceryHeaderCell.self,
             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-            withReuseIdentifier: GroceryHeaderCell.cellId
+            withReuseIdentifier: String(describing: GroceryHeaderCell.self)
         )
     }
     
@@ -52,27 +52,27 @@ extension GroceryCollectionView: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView
     ) -> Int {
-        presenter?.getGroceryData().count ?? 3
+        presenter?.getGroceryData().count ?? 0
     }
     
     func collectionView(
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        presenter?.getGroceryData()[section].count ?? 4
+        presenter?.getGroceryData()[section].items.count ?? 0
     }
     
     func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
-        guard let data = presenter?.getGroceryData()[indexPath.section],
-              indexPath.row < data.count,
+        guard let data = presenter?.getGroceryData()[indexPath.section].items[indexPath.row],
               let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: GroceryViewCell.cellId,
+            withReuseIdentifier: String(describing: GroceryViewCell.self),
             for: indexPath) as? GroceryViewCell
         else { return UICollectionViewCell() }
-        cell.configure(with: data[indexPath.row])
+        
+        cell.configure(with: data)
         return cell
     }
     
@@ -87,15 +87,15 @@ extension GroceryCollectionView {
         viewForSupplementaryElementOfKind kind: String,
         at indexPath: IndexPath
     ) -> UICollectionReusableView {
-        
-        guard let view = collectionView.dequeueReusableSupplementaryView(
+        guard let type = presenter?.getGroceryData()[indexPath.section].type,
+              let view = collectionView.dequeueReusableSupplementaryView(
             ofKind: kind,
-            withReuseIdentifier: GroceryHeaderCell.cellId,
+            withReuseIdentifier: String(describing: GroceryHeaderCell.self),
             for: indexPath
         ) as? GroceryHeaderCell else {
             return UICollectionReusableView()
         }
-        view.configure(with: "Category")
+        view.configure(with: type.rawValue)
         return view
     }
     
