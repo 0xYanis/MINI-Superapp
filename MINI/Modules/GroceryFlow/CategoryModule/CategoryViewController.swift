@@ -28,7 +28,7 @@ final class CategoryViewController: UIViewController {
             collectionView.dataSource = self
             collectionView.register(
                 CategoryCell.self,
-                forCellWithReuseIdentifier: CategoryCell.cellId
+                forCellWithReuseIdentifier: String(describing: CategoryCell.self)
             )
             collectionView.register(
                 CategoryHeader.self,
@@ -205,7 +205,7 @@ extension CategoryViewController: UICollectionViewDataSource {
     ) -> UICollectionViewCell {
         
         guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: CategoryCell.cellId,
+            withReuseIdentifier: String(describing: CategoryCell.self),
             for: indexPath) as? CategoryCell else {
             return UICollectionViewCell()
         }

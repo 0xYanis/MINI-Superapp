@@ -7,22 +7,23 @@
 
 import UIKit
 import SnapKit
-import SkeletonView
+import SDWebImage
 
 final class GroceryViewCell: UICollectionViewCell {
     
-    //MARK: Public properties
-    static let cellId = "GroceryViewCell"
+    // MARK: Private properties
     
-    //MARK: Private properties
-    private lazy var textLabel    = UILabel()
-    private lazy var imageView    = UIImageView()
-    private lazy var discountView = UIView()
-    private lazy var percentView  = UIImageView()
+    private let textLabel    = UILabel()
+    private let imageView    = UIImageView()
+    private let discountView = UIView()
+    private let percentView  = UIImageView()
     
-    //MARK: Public methods
-    func configure(with data: GroceryEntity) {
+    // MARK: Public methods
+    
+    func configure(with data: GroceryItem) {
         textLabel.text = data.productName
+        imageView.sd_setImage(with: URL(string: data.image))
+        if data.isSale { discountView.isHidden = true }
     }
     
     override init(frame: CGRect) {
@@ -31,15 +32,14 @@ final class GroceryViewCell: UICollectionViewCell {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError()
     }
 }
 
 //MARK: - Private methods
 private extension GroceryViewCell {
+    
     func initialize() {
-        isSkeletonable = true
-        skeletonCornerRadius = 10
         backgroundColor = .backMINI
         createTextLabel()
         createImageView()
@@ -49,7 +49,6 @@ private extension GroceryViewCell {
     }
     
     func createTextLabel() {
-        textLabel.text = "Double Big mac with extra cheese"
         textLabel.textColor = .tintMINI
         textLabel.font = .boldSystemFont(ofSize: 12)
         textLabel.numberOfLines = 3
@@ -60,14 +59,13 @@ private extension GroceryViewCell {
     }
     
     func createImageView() {
-        imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(named: "burger")
+        imageView.contentMode = .scaleAspectFill
         insertSubview(imageView, at: 0)
         imageView.snp.makeConstraints { make in
-            make.size.equalToSuperview().multipliedBy(0.7)
-            make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview()
+            make.height.equalToSuperview()
+            make.width.equalToSuperview()
         }
+        imageView.roundCorners(radius: 12)
     }
     
     func createDiscountView() {

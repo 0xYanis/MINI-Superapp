@@ -22,7 +22,7 @@ protocol GroceryPresenterProtocol: AnyObject {
     func userDidTapCart()
     func userDidTapSearchProduct()
     
-    func getGroceryData() -> [[GroceryEntity]]
+    func getGroceryData() -> [Grocery]
     func loadingDataGetFailed(with message: String)
 }
 
@@ -85,8 +85,8 @@ extension GroceryPresenter: GroceryPresenterProtocol {
         router.goToSearchView()
     }
     
-    func getGroceryData() -> [[GroceryEntity]] {
-        []
+    func getGroceryData() -> [Grocery] {
+        groceryItems
     }
     
     func loadingDataGetFailed(with message: String) {
