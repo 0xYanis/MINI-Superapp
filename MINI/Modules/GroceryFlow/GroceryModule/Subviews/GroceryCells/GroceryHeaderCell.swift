@@ -22,7 +22,7 @@ final class GroceryHeaderCell: UICollectionReusableView {
     }
     
     func configure(with text: String) {
-        textLabel.text = text
+        textLabel.text = text.capitalized
     }
     
 }
