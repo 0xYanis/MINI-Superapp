@@ -80,6 +80,7 @@ final class AviaSearchView: UICollectionReusableView {
         dateButton.setImage(UIImage(.calendar), for: .normal)
         dateButton.tintColor = .gray
         dateButton.backgroundColor = .darkGray
+        dateButton.addPulseAnimation()
         container.addSubview(dateButton)
         dateButton.snp.makeConstraints { make in
             make.top.equalTo(tableView.snp.bottom)
