@@ -65,7 +65,7 @@ extension AviaViewController: AviaSearchViewDelegate {
     }
     
     func didTapDatePicker() {
-        
+        present(DateViewController.modalDate, animated: true)
     }
     
     func showSearchResults() {
@@ -94,6 +94,9 @@ private extension AviaViewController {
     func createNavigation() {
         navigationItem.title = "tickets_navbar".localized
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.largeTitleTextAttributes = [
+            NSAttributedString.Key.foregroundColor : UIColor.white
+        ]
     }
     
     func addConstraints() {

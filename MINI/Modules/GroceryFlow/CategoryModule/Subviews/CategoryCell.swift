@@ -10,14 +10,12 @@ import SnapKit
 
 final class CategoryCell: UICollectionViewCell {
     
-    //MARK: Public properties
-    static let cellId = "CategoryCell"
-    
     //MARK: Private properties
+    
     var isAddedToCart: Bool       = false
-    private lazy var view         = UIView()
-    private lazy var textLabel    = UILabel()
-    private lazy var imageView    = UIImageView()
+    private let view         = UIView()
+    private let textLabel    = UILabel()
+    private let imageView    = UIImageView()
     
     lazy var priceButton = UIButton(
         label: "$59.9",
@@ -29,8 +27,9 @@ final class CategoryCell: UICollectionViewCell {
     private lazy var percentView  = UIImageView()
     
     //MARK: Public methods
-    func configure(with data: GroceryEntity) {
+    func configure(with data: GroceryItem) {
         textLabel.text = data.productName
+        
     }
     
     override init(frame: CGRect) {
