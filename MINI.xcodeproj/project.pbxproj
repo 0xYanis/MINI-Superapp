@@ -169,6 +169,7 @@
 		097E03A129EC44A500CE2A6F /* BankRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097E03A029EC44A500CE2A6F /* BankRouter.swift */; };
 		097E03A329EC44BD00CE2A6F /* BankBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097E03A229EC44BD00CE2A6F /* BankBuilder.swift */; };
 		097EFCB72AD53CBE002D5946 /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097EFCB62AD53CBE002D5946 /* TransactionCell.swift */; };
+		0983D7882B6D22D0005F83CE /* DateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0983D7872B6D22D0005F83CE /* DateViewController.swift */; };
 		098632E72AE7CAB000F39A8C /* PaymentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098632E62AE7CAB000F39A8C /* PaymentButton.swift */; };
 		098999262A2772890040B67D /* LoginModuleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098999252A2772890040B67D /* LoginModuleTests.swift */; };
 		098999362A27781F0040B67D /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 098999352A27781F0040B67D /* SDWebImage */; };
@@ -429,6 +430,7 @@
 		097E03A029EC44A500CE2A6F /* BankRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankRouter.swift; sourceTree = "<group>"; };
 		097E03A229EC44BD00CE2A6F /* BankBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankBuilder.swift; sourceTree = "<group>"; };
 		097EFCB62AD53CBE002D5946 /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
+		0983D7872B6D22D0005F83CE /* DateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateViewController.swift; sourceTree = "<group>"; };
 		098632E62AE7CAB000F39A8C /* PaymentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentButton.swift; sourceTree = "<group>"; };
 		098999232A2772890040B67D /* LoginModuleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoginModuleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		098999252A2772890040B67D /* LoginModuleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModuleTests.swift; sourceTree = "<group>"; };
@@ -1417,6 +1419,7 @@
 				090E87AF2AAF7A0400C6AEF3 /* AviaPlaceCell.swift */,
 				090E87B12AAF7A1700C6AEF3 /* AviaCityCell.swift */,
 				090E87B32AAF7A2500C6AEF3 /* AviaCountryCell.swift */,
+				0983D7872B6D22D0005F83CE /* DateViewController.swift */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -1808,6 +1811,7 @@
 				090BAB942A029924006AE8F9 /* AviaRouter.swift in Sources */,
 				097E039D29EC448F00CE2A6F /* BankPresenter.swift in Sources */,
 				099A79C029F16406004B95C7 /* BankCardCell.swift in Sources */,
+				0983D7882B6D22D0005F83CE /* DateViewController.swift in Sources */,
 				099046D82A9E7D5600987B64 /* MapPresenter.swift in Sources */,
 				09BB78842B2092EE00C26A5C /* MapView.swift in Sources */,
 				097CC4E72ACC47FF008F82A6 /* AviaSearchView.swift in Sources */,

@@ -65,7 +65,7 @@ extension AviaViewController: AviaSearchViewDelegate {
     }
     
     func didTapDatePicker() {
-        
+        present(DateViewController.modalDate, animated: true)
     }
     
     func showSearchResults() {

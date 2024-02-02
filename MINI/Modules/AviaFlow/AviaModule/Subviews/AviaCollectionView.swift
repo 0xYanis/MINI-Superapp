@@ -240,29 +240,3 @@ extension AviaCollectionView: UICollectionViewDelegate {
     }
     
 }
-/*
- 
-import SwiftUI
-
-struct AviaPreview: PreviewProvider {
-    
-    static var previews: some View {
-        NavigationStack {
-            ContentView().ignoresSafeArea()
-                .navigationTitle("Avia")
-                .navigationBarTitleDisplayMode(.large)
-        }
-    }
-    
-    struct ContentView: UIViewControllerRepresentable {
-        func makeUIViewController(context: Context) -> UIViewController {
-            return AviaBuilder.build()
-        }
-        
-        func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
-            
-        }
-    }
-}
- 
-*/
