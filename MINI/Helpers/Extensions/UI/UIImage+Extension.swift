@@ -29,7 +29,7 @@ extension UIImage {
         case chevronRigthCircle = "chevron.right.circle"
         case person
         case personFill = "person.fill"
-        case lockCircle = "lock.rircle"
+        case lockCircle = "lock.circle"
         case creditcardFill = "creditcard.fill"
         case plusRectangleFill = "plus.rectangle.fill"
         case sqaureAndPencil = "square.and.pencil"
