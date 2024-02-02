@@ -70,7 +70,7 @@ extension CartTableView: UITableViewDataSource {
     ) -> String? {
         if section == 1 {
             let count = presenter?.getPurchases().count ?? 0
-            return count > 0 ? "Ваша корзина" : nil
+            return count > 0 ? "Ваша корзина (\(count))" : nil
         }
         return nil
     }
