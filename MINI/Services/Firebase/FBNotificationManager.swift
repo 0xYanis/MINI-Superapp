@@ -7,13 +7,12 @@
 
 import FirebaseMessaging
 
-protocol FBNotificationProtocol: AnyObject {
+public protocol FBNotificationProtocol: AnyObject {
     func subscribe(to topic: String)
     func unsubscribe(from topic: String)
 }
 
-final class FBNotificationManager: FBNotificationProtocol {
-    
+final public class FBNotificationManager: FBNotificationProtocol {
     private let messaging = Messaging.messaging()
     
     public func subscribe(to topic: String) {
@@ -23,6 +22,5 @@ final class FBNotificationManager: FBNotificationProtocol {
     public func unsubscribe(from topic: String) {
         messaging.unsubscribe(fromTopic: topic)
     }
-    
 }
 

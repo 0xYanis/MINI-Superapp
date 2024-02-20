@@ -7,29 +7,25 @@
 
 import LocalAuthentication
 
-protocol BiometryServiceProtocol: AnyObject {
+public protocol BiometryServiceProtocol: AnyObject {
     func authWithBiometry(completion: @escaping (Bool, Error?) -> Void)
 }
 
-final class BiometryService: BiometryServiceProtocol {
-    
+public final class BiometryService: BiometryServiceProtocol {
     private let context = LAContext()
     
     private enum Consts: String {
         case reason = "Authenticate with Face ID"
     }
     
-    func authWithBiometry(completion: @escaping (Bool, Error?) -> Void) {
+    public func authWithBiometry(completion: @escaping (Bool, Error?) -> Void) {
         let reason = Consts.reason.rawValue
         var error: NSError?
         
         guard context.canEvaluatePolicy(
             .deviceOwnerAuthenticationWithBiometrics,
             error: &error
-        ) else {
-            completion(false, error)
-            return
-        }
+        ) else { completion(false, error); return }
         
         context.evaluatePolicy(
             .deviceOwnerAuthenticationWithBiometrics,
@@ -38,5 +34,4 @@ final class BiometryService: BiometryServiceProtocol {
             completion(success, error as NSError?)
         }
     }
-    
 }

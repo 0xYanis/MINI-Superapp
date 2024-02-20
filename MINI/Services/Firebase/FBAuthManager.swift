@@ -7,8 +7,7 @@
 
 import FirebaseAuth
 
-protocol FBAuthProtocol: AnyObject {
-    
+public protocol FBAuthProtocol: AnyObject {
     typealias closure = (User?, Error?) -> Void
     
     var currentUser: User? { get }
@@ -20,12 +19,9 @@ protocol FBAuthProtocol: AnyObject {
     
 }
 
-final class FBAuthManager: FBAuthProtocol {
-    
+public final class FBAuthManager: FBAuthProtocol {
     typealias closure  = (User?, Error?) -> Void
     private let firebase = Auth.auth()
-    
-    
     
     public var currentUser: User? {
         if UserDefaults.standard.bool(forKey: Consts.seenOnboardingKey.rawValue) == true {
@@ -72,7 +68,6 @@ final class FBAuthManager: FBAuthProtocol {
             print(error.localizedDescription)
         }
     }
-    
 }
 
 // MARK: - Constants

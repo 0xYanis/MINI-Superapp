@@ -9,12 +9,12 @@ import MapKit
 
 // MARK: - Input protocol
 
-struct LocalSearchResult {
+public struct LocalSearchResult {
     var title: String
     var subtitle: String
 }
 
-protocol LocalSearchService: AnyObject {
+public protocol LocalSearchService: AnyObject {
     var output: LocalSearchOutput? { get set }
     
     func searchLocations(localRegion: MKCoordinateRegion, query: String)
@@ -23,32 +23,31 @@ protocol LocalSearchService: AnyObject {
 
 // MARK: - Output protocol
 
-protocol LocalSearchOutput: AnyObject {
+public protocol LocalSearchOutput: AnyObject {
     func didUpdateResults(_ results: [LocalSearchResult])
     func didFailWithError(_ error: Error)
 }
 
 
-final class LocalSearchServiceImpl: NSObject, LocalSearchService {
-    
-    weak var output: LocalSearchOutput?
+final public class LocalSearchServiceImpl: NSObject, LocalSearchService {
+    weak public var output: LocalSearchOutput?
     
     private var completer: MKLocalSearchCompleter?
     
-    override init() {
+    override public init() {
         super.init()
         completer = MKLocalSearchCompleter()
         completer?.delegate = self
     }
     
     /// Search for locations
-    func searchLocations(localRegion: MKCoordinateRegion, query: String) {
+    public func searchLocations(localRegion: MKCoordinateRegion, query: String) {
         completer?.region = localRegion
         completer?.queryFragment = query
     }
     
     /// Search 
-    func getLocalPlace(
+    public func getLocalPlace(
         from location: LocalSearchResult,
         completion: @escaping MKLocalSearch.CompletionHandler
     ) {
@@ -57,14 +56,13 @@ final class LocalSearchServiceImpl: NSObject, LocalSearchService {
         let search = MKLocalSearch(request: request)
         search.start(completionHandler: completion)
     }
-    
 }
 
 // MARK: - MKLocalSearchCompleterDelegate
 
-extension LocalSearchServiceImpl: MKLocalSearchCompleterDelegate {
+public extension LocalSearchServiceImpl: MKLocalSearchCompleterDelegate {
     
-    func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
+    public func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
         let results = completer.results.map { result in
             return LocalSearchResult(
                 title: result.title,
@@ -74,7 +72,7 @@ extension LocalSearchServiceImpl: MKLocalSearchCompleterDelegate {
         output?.didUpdateResults(results)
     }
     
-    func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {
+    public func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {
         output?.didFailWithError(error)
     }
     

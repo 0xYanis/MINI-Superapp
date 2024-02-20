@@ -8,20 +8,19 @@
 import FirebaseStorage
 import Foundation
 
-protocol FBStorageProtocol: AnyObject {
+public protocol FBStorageProtocol: AnyObject {
     typealias uploadClosure = (Result<URL, StorageError>) -> Void
     func removeAvatar(_ uid: String)
     func uploadAvatar(_ data: Data, userID: String, completion: @escaping uploadClosure)
 }
 
-enum StorageError: Error {
+public enum StorageError: Error {
     case someError
     case invalidUpload
     case invalidURL
 }
 
-final class FBStorageManager: FBStorageProtocol {
-    
+final public class FBStorageManager: FBStorageProtocol {
     typealias uploadClosure = (Result<URL, StorageError>) -> Void
     
     private let storage = Storage.storage()
@@ -60,13 +59,11 @@ final class FBStorageManager: FBStorageProtocol {
             }
         }
     }
-    
 }
 
 // MARK: - Constants
 
 private extension FBStorageManager {
-    
     var avatars: StorageReference {
         storage.reference().child(Consts.avatars.rawValue)
     }
@@ -75,5 +72,4 @@ private extension FBStorageManager {
         case avatars
         case contentType = "image.jpeg"
     }
-    
 }
