@@ -7,8 +7,9 @@
 
 import Foundation
 
-final public class FBUserRemover {
-    static public let shared = FBUserRemover()
+final class FBUserRemover {
+    
+    static let shared = FBUserRemover()
     
     private let auth: FBAuthProtocol           = FBAuthManager()
     private let storage: FBStorageProtocol     = FBStorageManager()
@@ -23,4 +24,5 @@ final public class FBUserRemover {
         storage.removeAvatar(uid)
         user.delete()
     }
+    
 }

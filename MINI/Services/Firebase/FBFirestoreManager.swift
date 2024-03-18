@@ -8,14 +8,15 @@
 import FirebaseAuth
 import FirebaseFirestore
 
-public protocol FBFirestoreProtocol: AnyObject {
+protocol FBFirestoreProtocol: AnyObject {
     func setUserData(user: User)
     func getUserData(uid: String?, completion: @escaping ([String:Any])->Void)
     func updateUserData(uid: String?, updatedData: [String: Any])
     func removeUserData(_ uid: String)
 }
 
-final public class FBFirestoreManager: FBFirestoreProtocol {
+final class FBFirestoreManager: FBFirestoreProtocol {
+    
     typealias UserDict = [String:Any]
     
     private let db = Firestore.firestore()
@@ -51,11 +52,13 @@ final public class FBFirestoreManager: FBFirestoreProtocol {
         let path = users.document(uid)
         path.delete()
     }
+    
 }
 
 // MARK: - Constants
 
 private extension FBFirestoreManager {
+    
     var users: CollectionReference {
         db.collection(Consts.users.rawValue)
     }
@@ -66,4 +69,5 @@ private extension FBFirestoreManager {
         case email
         case address
     }
+    
 }

@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-public protocol RealmServiceProtocol {
+protocol RealmServiceProtocol {
     func add<T: Object>(_ object: T) throws
     func read<T: Object>(_ objectType: T.Type, key: UUID) -> T?
     func delete<T: Object>(_ objectType: T.Type, forKey primaryKey: UUID) throws
@@ -17,7 +17,7 @@ public protocol RealmServiceProtocol {
     func deleteAll() throws
 }
 
-public final class RealmService: RealmServiceProtocol {
+final class RealmService: RealmServiceProtocol {
     
     // MARK: - Private properties
     
@@ -26,26 +26,26 @@ public final class RealmService: RealmServiceProtocol {
     
     // MARK: - Lifecycle
     
-    public init(_ configuration: Realm.Configuration = .defaultConfiguration) {
+    init(_ configuration: Realm.Configuration = .defaultConfiguration) {
         self.configuration = configuration
     }
     
     // MARK: - Methods
     
-    public func add<T: Object>(_ object: T) throws {
+    func add<T: Object>(_ object: T) throws {
         guard let realm else { return }
         try realm.write {
             realm.add(object, update: .all)
         }
     }
     
-    public func read<T: Object>(_ objectType: T.Type, key: UUID) -> T? {
+    func read<T: Object>(_ objectType: T.Type, key: UUID) -> T? {
         guard let realm else { return nil }
         let object = realm.object(ofType: objectType, forPrimaryKey: key)
         return object
     }
     
-    public func delete<T: Object>(_ objectType: T.Type, forKey primaryKey: UUID) throws {
+    func delete<T: Object>(_ objectType: T.Type, forKey primaryKey: UUID) throws {
         guard let realm else { return }
         try realm.write {
             guard let object = realm.object(ofType: T.self, forPrimaryKey: primaryKey)
@@ -54,28 +54,31 @@ public final class RealmService: RealmServiceProtocol {
         }
     }
     
-    public func update<T: Object>(_ object: T) throws {
+    func update<T: Object>(_ object: T) throws {
         guard let realm else { return }
         try realm.write {
             realm.add(object, update: .modified)
         }
     }
     
-    public func fetchAll<T: Object>(_ objectType: T.Type) throws -> [T] {
+    func fetchAll<T: Object>(_ objectType: T.Type) throws -> [T] {
         guard let realm else { return [] }
         return realm.objects(T.self).asArray
     }
     
-    public func deleteAll() throws {
+    func deleteAll() throws {
         guard let realm else { return }
         try realm.write {
             realm.deleteAll()
         }
     }
+    
 }
 
 // MARK: - Results+Extension
 
-public extension Results {
-    var asArray: [Element] { return Results(self) }
+extension Results {
+    var asArray: [Element] {
+        .init(self)
+    }
 }

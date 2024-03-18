@@ -8,11 +8,12 @@
 import Foundation
 import CoreLocation
 
-final public class LocationService: NSObject {
-    static public let shared = LocationService()
+final class LocationService: NSObject {
     
-    public var userLocation: CLLocationCoordinate2D?
-    public var userRegion: CLCircularRegion?
+    static let shared = LocationService()
+    
+    var userLocation: CLLocationCoordinate2D?
+    var userRegion: CLCircularRegion?
     
     private let manager = CLLocationManager()
     
@@ -22,7 +23,7 @@ final public class LocationService: NSObject {
         manager.desiredAccuracy = kCLLocationAccuracyBest
     }
     
-    public func request() {
+    func request() {
         manager.requestWhenInUseAuthorization()
         manager.startUpdatingLocation()
     }
@@ -31,8 +32,9 @@ final public class LocationService: NSObject {
 
 // MARK: - CLLocationManagerDelegate
 
-public extension LocationService: CLLocationManagerDelegate {
-    public func locationManager(
+extension LocationService: CLLocationManagerDelegate {
+    
+    func locationManager(
         _ manager: CLLocationManager,
         didUpdateLocations locations: [CLLocation]
     ) {
@@ -41,7 +43,7 @@ public extension LocationService: CLLocationManagerDelegate {
         manager.stopUpdatingLocation()
     }
     
-    public func locationManager(
+    func locationManager(
         _ manager: CLLocationManager,
         didEnterRegion region: CLRegion
     ) {
